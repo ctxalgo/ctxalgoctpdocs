@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在context中储存跨交易日数据</title>
+    <link rel="stylesheet" href="/css/bt.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/pygments.css">
+</head>
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Pages</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li class=""><a href="/languages.html">Languages</a></li>
+    </ul>
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <header>
+    
+</header>
+    <div class="main container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10">
+                <div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h1>在context中储存跨交易日数据</h1>
+        </div>
+        <div>
+            <p>CTX系统中的回测模块每天会重新创建一个交易策略的对象，这样做的目的是模拟策略实盘运行是的情景。在实盘运行时，
+一般会在开盘前启动策略，收盘后结束策略。
+每次创建策略对象，之前存放在对象中的数据就会丢失。但有时候，我们需要将一些数据保存才策略中，然后在之后的交易日中使用。
+比如，我们想记录已经持有一些头寸的交易日的数目，到达最大数目后，我们进行平仓。
+我们可以使用<code>self.context</code>来保存这些数据。保存在<code>self.context</code>中的数据会在跨交易日的时候依然可以访问。<code>self.context</code>的
+使用方法和dict一致。你也可以通过<code>self.context.key</code>和<code>self.context.key = value</code>来读取和设置<code>self.context</code>的内容。
+请注意，<code>self.context</code>不能在策略对象的<code>__init__</code>中使用，以为在<code>__init__</code>中<code>self.context</code>还没有被初始化。 <code>self.context</code>
+可以在交易策略开始运行之后使用。
+在以下的代码中，我们对之前双均线趋势跟踪策略做了如下扩展：当持仓到达一定天数的时候，我们会平掉所有头寸。我们在
+<code>on_before_run</code>方法中对<code>self.context</code>进行操作。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">ctxalgolib.ta.online_indicators.moving_averages</span> <span class="kn">import</span> <span class="n">MovingAveragesIndicator</span>
+<span class="kn">from</span> <span class="nn">ctxalgolib.ta.cross</span> <span class="kn">import</span> <span class="n">cross_direction</span>
+<span class="kn">from</span> <span class="nn">ctxalgoctp.ctp.backtesting_utils</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="k">class</span> <span class="nc">TrendFollowingWithMaxHoldingDayStrategy</span><span class="p">(</span><span class="n">AbstractStrategy</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A single double moving average trend following strategy:</span>
+<span class="sd">    1. If the fast moving average up-cross the slow moving average, change position to 1.</span>
+<span class="sd">    2. If the fast moving average down-cross the slow moving average, change position to -1.</span>
+<span class="sd">    That is, the position can be 0, -1 and 1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instrument_ids</span><span class="p">,</span> <span class="n">strategy_period</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">base_folder</span><span class="p">,</span>
+                 <span class="n">periods</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">AbstractStrategy</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">instrument_ids</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">base_folder</span><span class="p">,</span> <span class="n">strategy_period</span><span class="o">=</span><span class="n">strategy_period</span><span class="p">,</span>
+            <span class="n">periods</span><span class="o">=</span><span class="n">periods</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ma_ind1</span> <span class="o">=</span> <span class="n">MovingAveragesIndicator</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fast_ma_period</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ma_ind2</span> <span class="o">=</span> <span class="n">MovingAveragesIndicator</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">slow_ma_period</span><span class="p">)</span>
+
+        <span class="c"># We register the on_before_run action, this action will be invoked</span>
+        <span class="c"># every trading day before the trading starts.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on_before_run_actions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_before_run</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_before_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strategy</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_position</span><span class="p">():</span>
+            <span class="c"># If we have positions, we increase the day counter.</span>
+            <span class="c"># Since on_before_run will be called only once a day, the counter then records the</span>
+            <span class="c"># number of days we have held some position.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">holding_days</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">on_bar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instrument_id</span><span class="p">,</span> <span class="n">bars</span><span class="p">,</span> <span class="n">tick</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ohlc</span><span class="p">()</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">slow_ma_period</span><span class="p">:</span>
+            <span class="n">ma_fast</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ma_ind1</span><span class="o">.</span><span class="n">calculate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ohlc</span><span class="p">())</span>
+            <span class="n">ma_slow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ma_ind2</span><span class="o">.</span><span class="n">calculate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ohlc</span><span class="p">())</span>
+            <span class="n">signal</span> <span class="o">=</span> <span class="n">cross_direction</span><span class="p">(</span><span class="n">ma_fast</span><span class="p">,</span> <span class="n">ma_slow</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">signal</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_position</span><span class="p">():</span>
+                    <span class="c"># Check if we have already held the position for long enough,</span>
+                    <span class="c"># if so, flat the position.</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">holding_days</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">max_holding_days</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">change_position_to</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">change_position_to</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">holding_days</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div>
+<p>现在我们对以上交易策略进行历史数据的回测。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="s">&#39;2014-01-01&#39;</span>  <span class="c"># Backtesting start date.</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="s">&#39;2014-12-31&#39;</span>    <span class="c"># Backtesting end date.</span>
+
+    <span class="c"># The values in config will be used to instantiate the strategy objects by the backtest method.</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;instrument_ids&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;IF99&#39;</span><span class="p">],</span>                      <span class="c"># We are trading this future instrument.</span>
+        <span class="s">&#39;strategy_period&#39;</span><span class="p">:</span> <span class="n">Periodicity</span><span class="o">.</span><span class="n">FIFTEEN_MINUTE</span><span class="p">,</span>   <span class="c"># The ohlc bar granularity on which trading happens.</span>
+        <span class="s">&#39;parameters&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&#39;fast_ma_period&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>    <span class="c"># The parameter for the fast moving average.</span>
+            <span class="s">&#39;slow_ma_period&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>   <span class="c"># The parameter for the slow moving average.</span>
+            <span class="s">&#39;max_holding_days&#39;</span><span class="p">:</span> <span class="mi">2</span>   <span class="c"># The maximum number of days we should hold a position.</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">backtest</span><span class="p">(</span><span class="n">TrendFollowingWithMaxHoldingDayStrategy</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div style="margin-top:10px;margin-bottom:10px">
+        
+        <span class="next">
+            上篇：
+            <a href="/zh/zh_e103_locating_bars_in_days.html">如何定位不同交易日中的K线</a>
+        </span>
+         
+        
+        <span class="prev">
+            下篇：
+            <a href="/zh/zh_e120_statistical_arbitrage_with_two_instruments.html">Statistical Arbitrage With Two Instruments</a>
+        </span>
+        
+    </div>
+</div>
+<div class="row">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1959741"></script>
+    <!-- UY END -->
+</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+    <hr>
+    <div class="container">
+        <p align="center">Copyright © ctxalgo.com, build with jekyll. Email me with admin@ctxalgo.com</p>
+    </div>
+</footer>
+    <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/js/bt.js"></script>
+</body>
+</html>

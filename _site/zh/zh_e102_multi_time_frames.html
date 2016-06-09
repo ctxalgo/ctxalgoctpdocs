@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多时间周期策略</title>
+    <link rel="stylesheet" href="/css/bt.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/pygments.css">
+</head>
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Pages</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li class=""><a href="/languages.html">Languages</a></li>
+    </ul>
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <header>
+    
+</header>
+    <div class="main container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10">
+                <div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h1>多时间周期策略</h1>
+        </div>
+        <div>
+            <p>本示例展示如何订阅不同周期的K线。你需要在策略的<code>__init__</code>方法的<code>periods</code>参数中列出所有需要的K线周期。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">ctxalgoctp.ctp.backtesting_utils</span> <span class="kn">import</span> <span class="o">*</span>
+</code></pre></div>
+<p>在<code>periods</code>中，我们列出了两个周期，15分钟和30分钟。和之前一样，<code>strategy_period</code>定义了交易所在的周期（我们在
+此示例中不包括交易的代码）。
+config对象的内容会被用来初始化策略对象。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;instrument_ids&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;IF99&#39;</span><span class="p">],</span>                      <span class="c"># We are trading this future instrument.</span>
+    <span class="s">&#39;strategy_period&#39;</span><span class="p">:</span> <span class="n">Periodicity</span><span class="o">.</span><span class="n">FIFTEEN_MINUTE</span><span class="p">,</span>   <span class="c"># The ohlc bar granularity on which trading happens.</span>
+    <span class="s">&#39;periods&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">Periodicity</span><span class="o">.</span><span class="n">FIFTEEN_MINUTE</span><span class="p">,</span> <span class="n">Periodicity</span><span class="o">.</span><span class="n">THIRTY_MINUTE</span><span class="p">],</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>以下是策略代码。当一根或多根K线到来的时候，<code>on_bar</code>方法会被调用，其参数中包括了所生成的所有的K线的信息。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">MultiTimeFrameStrategy</span><span class="p">(</span><span class="n">AbstractStrategy</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instrument_ids</span><span class="p">,</span> <span class="n">strategy_period</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">base_folder</span><span class="p">,</span>
+                 <span class="n">periods</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">AbstractStrategy</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">instrument_ids</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">base_folder</span><span class="p">,</span> <span class="n">strategy_period</span><span class="o">=</span><span class="n">strategy_period</span><span class="p">,</span>
+            <span class="n">periods</span><span class="o">=</span><span class="n">periods</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_bar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instrument_id</span><span class="p">,</span> <span class="n">bars</span><span class="p">,</span> <span class="n">tick</span><span class="p">):</span>
+        <span class="c"># We do not do trading here, instead, we only print out the arrived ohlc bars.</span>
+        <span class="c"># Since we only asked for time-based ohlcs, we get them from bars[self.time_based].</span>
+        <span class="k">for</span> <span class="n">period</span><span class="p">,</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">bars</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">time_based</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;Period={}</span><span class="se">\t</span><span class="s">Time={}</span><span class="se">\t</span><span class="s">Close price={}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Periodicity</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">period</span><span class="p">),</span> <span class="n">bar</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">bar</span><span class="o">.</span><span class="n">close</span><span class="p">))</span>
+</code></pre></div>
+<p>现在我们对以上交易策略进行历史数据的回测。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">start_date</span> <span class="o">=</span> <span class="s">&#39;2014-01-01&#39;</span>  <span class="c"># Backtesting start date.</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s">&#39;2014-12-31&#39;</span>    <span class="c"># Backtesting end date.</span>
+<span class="n">report</span><span class="p">,</span> <span class="n">data_source</span> <span class="o">=</span> <span class="n">backtest</span><span class="p">(</span><span class="n">MultiTimeFrameStrategy</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+</code></pre></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div style="margin-top:10px;margin-bottom:10px">
+        
+        <span class="next">
+            上篇：
+            <a href="/zh/zh_e101_using_ta_lib_indicators.html">在策略中使用来自ta-lib的指标</a>
+        </span>
+         
+        
+        <span class="prev">
+            下篇：
+            <a href="/zh/zh_e103_locating_bars_in_days.html">如何定位不同交易日中的K线</a>
+        </span>
+        
+    </div>
+</div>
+<div class="row">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1959741"></script>
+    <!-- UY END -->
+</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+    <hr>
+    <div class="container">
+        <p align="center">Copyright © ctxalgo.com, build with jekyll. Email me with admin@ctxalgo.com</p>
+    </div>
+</footer>
+    <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/js/bt.js"></script>
+</body>
+</html>

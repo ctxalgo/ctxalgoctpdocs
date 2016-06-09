@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistical Arbitrage With Two Instruments</title>
+    <link rel="stylesheet" href="/css/bt.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/pygments.css">
+</head>
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Pages</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li class=""><a href="/languages.html">Languages</a></li>
+    </ul>
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <header>
+    
+</header>
+    <div class="main container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10">
+                <div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h1>Statistical Arbitrage With Two Instruments</h1>
+        </div>
+        <div>
+            <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">ctxalgoctp.ctp.backtesting_utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tools.tools</span> <span class="kn">import</span> <span class="n">add_constant</span><span class="p">,</span> <span class="n">Bunch</span>
+<span class="kn">from</span> <span class="nn">statsmodels.regression.linear_model</span> <span class="kn">import</span> <span class="n">OLS</span><span class="p">,</span> <span class="n">yule_walker</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+
+<span class="k">def</span> <span class="nf">ADF</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">crit</span><span class="o">=</span><span class="s">&#39;5%&#39;</span><span class="p">,</span> <span class="n">max_d</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="s">&#39;nc&#39;</span><span class="p">,</span> <span class="n">autolag</span><span class="o">=</span><span class="s">&#39;AIC&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Augmented Dickey Fuller test</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    v: ndarray matrix</span>
+<span class="sd">        residuals matrix</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool: boolean</span>
+<span class="sd">        true if v pass the test</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">testResult</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">adf</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">max_d</span><span class="p">,</span> <span class="n">reg</span><span class="p">,</span> <span class="n">autolag</span><span class="p">)</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">adf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">adf</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="n">crit</span><span class="p">]):</span>
+        <span class="n">testResult</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="n">testResult</span>
+
+
+<span class="k">class</span> <span class="nc">StatisticalArbitrageStrategy</span><span class="p">(</span><span class="n">AbstractStrategy</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instrument_ids</span><span class="p">,</span> <span class="n">strategy_period</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">base_folder</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">AbstractStrategy</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">instrument_ids</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">base_folder</span><span class="p">,</span>
+            <span class="n">strategy_period</span><span class="o">=</span><span class="n">strategy_period</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">on_before_run_actions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_before_run</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">should_trade</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="bp">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_bar_arrival_action</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_multiple_bars</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_multiple_bars</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strategy</span><span class="p">,</span> <span class="n">ohlc_kind</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ohlcs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param strategy: AbstractStrategy, which will be initialized with the current strategy object.</span>
+<span class="sd">        :param ohlc_kind: string, the ohlc kind, can be &#39;time-based&#39;, &#39;volatility-based&#39;.</span>
+<span class="sd">        :param period: Periodicity in case of time-based ohlc, or int/float as volatility threshold</span>
+<span class="sd">            in case of volatility-based ohlc.</span>
+<span class="sd">        :param name: string, the bar arrival action name, same as the name parameter specified here.</span>
+<span class="sd">        :param ohlcs: dict{string: OHLC}, the list of ohlcs, keys are instrument ids, values are the ohlc objects.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">should_trade</span><span class="p">:</span>
+            <span class="n">ohlc1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ohlc</span><span class="p">(</span><span class="s">&#39;i99&#39;</span><span class="p">)</span>
+            <span class="n">ohlc2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ohlc</span><span class="p">(</span><span class="s">&#39;rb99&#39;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">ohlc2</span><span class="o">.</span><span class="n">closes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">ohlc1</span><span class="o">.</span><span class="n">closes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">std</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">change_positions_to</span><span class="p">({</span><span class="s">&#39;rb99&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;i99&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">change_positions_to</span><span class="p">({</span><span class="s">&#39;rb99&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;i99&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">on_before_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strategy</span><span class="p">):</span>
+        <span class="n">ohlc1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yesterday_ohlc</span><span class="p">(</span><span class="s">&#39;i99&#39;</span><span class="p">)</span>
+        <span class="n">ohlc2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yesterday_ohlc</span><span class="p">(</span><span class="s">&#39;rb99&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ohlc1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">ohlc2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">common_dates</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ohlc1</span><span class="o">.</span><span class="n">dates</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">ohlc2</span><span class="o">.</span><span class="n">dates</span><span class="p">)</span>
+            <span class="n">y1</span> <span class="o">=</span> <span class="n">ohlc1</span><span class="o">.</span><span class="n">project_by_dates</span><span class="p">(</span><span class="n">common_dates</span><span class="p">)</span>
+            <span class="n">y2</span> <span class="o">=</span> <span class="n">ohlc2</span><span class="o">.</span><span class="n">project_by_dates</span><span class="p">(</span><span class="n">common_dates</span><span class="p">)</span>
+
+            <span class="n">log_closes1</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">y1</span><span class="o">.</span><span class="n">closes</span><span class="p">]</span>
+            <span class="n">log_closes2</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">y2</span><span class="o">.</span><span class="n">closes</span><span class="p">]</span>
+            <span class="n">log_closes1</span> <span class="o">=</span> <span class="n">add_constant</span><span class="p">(</span><span class="n">log_closes1</span><span class="p">)</span>
+            <span class="n">st1_fit</span> <span class="o">=</span> <span class="n">OLS</span><span class="p">(</span><span class="n">log_closes2</span><span class="p">,</span> <span class="n">log_closes1</span><span class="p">,</span> <span class="n">hasconst</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+            <span class="n">st1_resid</span> <span class="o">=</span> <span class="n">st1_fit</span><span class="o">.</span><span class="n">resid</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">should_trade</span> <span class="o">=</span> <span class="n">ADF</span><span class="p">(</span><span class="n">st1_resid</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">st1_fit</span><span class="o">.</span><span class="n">params</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">std</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">st1_resid</span><span class="p">))</span>
+
+
+<span class="n">start_date</span> <span class="o">=</span> <span class="s">&#39;2014-01-01&#39;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s">&#39;2014-12-31&#39;</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;instrument_ids&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;i99&#39;</span><span class="p">,</span> <span class="s">&#39;rb99&#39;</span><span class="p">],</span>  <span class="c"># Specify multiple instrument ids to trade.</span>
+    <span class="s">&#39;strategy_period&#39;</span><span class="p">:</span> <span class="n">Periodicity</span><span class="o">.</span><span class="n">ONE_MINUTE</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">backtest</span><span class="p">(</span><span class="n">StatisticalArbitrageStrategy</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+</code></pre></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div style="margin-top:10px;margin-bottom:10px">
+        
+        <span class="next">
+            上篇：
+            <a href="/en/en_e104_store_information_in_context.html">Persist information in context across trading days</a>
+        </span>
+         
+        
+        <span class="prev">
+            下篇：
+            <a href="/en/en_e200_directly_iterate_over_data_source.html">Iterating over a data source directly</a>
+        </span>
+        
+    </div>
+</div>
+<div class="row">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1959741"></script>
+    <!-- UY END -->
+</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+    <hr>
+    <div class="container">
+        <p align="center">Copyright © ctxalgo.com, build with jekyll. Email me with admin@ctxalgo.com</p>
+    </div>
+</footer>
+    <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/js/bt.js"></script>
+</body>
+</html>

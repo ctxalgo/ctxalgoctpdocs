@@ -1,0 +1,48 @@
+---
+layout: default
+title: Pages
+---
+<div>
+    <h2>Pages</h2>
+    <ul id="archive">
+        {% for cate in site.categories %}
+        {% if cate[0] == 'zh' %}
+            <li id="{{ cate[0] }}">
+                <ul>
+                    {% for post in cate[1] %}
+                    <li>
+                        <h4>
+                            <a href="{{ post.url }}">{{ post.title }}</a>
+                        </h4>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% elsif cate[0] != 'en' %}
+            <li id="{{ cate[0] }}">
+                <h4><a href="./{{ cate[0] }}.html">{{ cate[0] }}</a></h4>
+            </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+<div>
+    <ul class="pager">
+        {% if paginator.previous_page %} 
+            {% if paginator.previous_page == 1 %}
+            <li class="previous">
+                <a href="{{ site.url }}/">首页</a>
+            </li>
+            {% else %}
+            <li class="previous">
+                <a href="{{ site.url }}/page{{ paginator.previous_page }}">上一页</a>
+            </li>
+            {% endif %} 
+        {% endif %}
+        {% if paginator.next_page %}
+        <li class="next">
+            <a href="{{ site.url }}/page{{ paginator.next_page }}">下一页</a>
+        </li>
+        {% endif %}
+    </ul>
+</div>

@@ -1,0 +1,15 @@
+timezone: Asia/Shanghai
+permalink: /:categories/:title.html
+url:
+
+paginate: 12
+paginate_path: "page:num"
+
+gems: 
+  [jekyll-paginate]
+
+markdown: redcarpet
+redcarpet:
+    extensions: ["fenced_code_blocks", "autolink", "tables", "strikethrough"]
+
+highlighter: pygments

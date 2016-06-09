@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用简化回测器</title>
+    <link rel="stylesheet" href="/css/bt.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/pygments.css">
+</head>
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Pages</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li class=""><a href="/languages.html">Languages</a></li>
+    </ul>
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <header>
+    
+</header>
+    <div class="main container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10">
+                <div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h1>使用简化回测器</h1>
+        </div>
+        <div>
+            <p>有时候，你只想快速测试一个策略的想法，这时候，你可以使用<code>PlainBacktester</code>。这个类提供了一组和<code>AbstractStrategy</code>类似
+的API，让你能够快速进行策略原型的编程和实验。使用<code>PlainBacktester</code>的好处是它比标准的回测器要快很多，原因如下：
+1. <code>PlainBacktester</code>不进行真实交易时的各种事件回调的仿真，它只接受来自ohlc的K线数据。
+2. <code>PlainBacktester</code>默认所有的交易都立即全部执行。
+本例子展示如何用<code>PlainBacktester</code>书写一个双均线趋势跟踪策略。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">talib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">ctxalgolib.ohlc.periodicity</span> <span class="kn">import</span> <span class="n">Periodicity</span>
+<span class="kn">from</span> <span class="nn">ctxalgolib.ta.cross</span> <span class="kn">import</span> <span class="n">cross_direction</span>
+<span class="kn">from</span> <span class="nn">ctxalgolib.charting.charts</span> <span class="kn">import</span> <span class="n">ChartsWithReport</span>
+
+<span class="kn">from</span> <span class="nn">ctxalgoctp.ctp.backtesting_utils</span> <span class="kn">import</span> <span class="n">get_data_source</span>
+<span class="kn">from</span> <span class="nn">ctxalgoctp.ctp.plain_backtester</span> <span class="kn">import</span> <span class="n">PlainBacktester</span>
+<span class="kn">from</span> <span class="nn">ctxalgoctp.ctp.slippage_models</span> <span class="kn">import</span> <span class="n">VolumeBasedSlippageModel</span>
+</code></pre></div>
+<p>首先，我们使用<code>get_data_source</code>来获取所需要的K线数据。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">instrument_id</span> <span class="o">=</span> <span class="s">&#39;cu99&#39;</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s">&#39;2014-01-01&#39;</span>  <span class="c"># Backtesting start date.</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s">&#39;2014-12-31&#39;</span>    <span class="c"># Backtesting end date.</span>
+<span class="n">base_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;CTXALGO_TEST&#39;</span><span class="p">],</span> <span class="s">&#39;strategies&#39;</span><span class="p">,</span> <span class="s">&#39;plain_backtester&#39;</span><span class="p">)</span>
+<span class="n">data_period</span> <span class="o">=</span> <span class="n">Periodicity</span><span class="o">.</span><span class="n">HOURLY</span>
+<span class="n">data_source</span> <span class="o">=</span> <span class="n">get_data_source</span><span class="p">([</span><span class="n">instrument_id</span><span class="p">],</span> <span class="n">base_folder</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">data_period</span><span class="p">)</span>
+
+<span class="c"># Get ohlc from data source. The ohlc object contains the required data for the instrument.</span>
+<span class="n">ohlc</span> <span class="o">=</span> <span class="n">data_source</span><span class="o">.</span><span class="n">ohlcs</span><span class="p">()[</span><span class="s">&#39;time-based&#39;</span><span class="p">][</span><span class="n">instrument_id</span><span class="p">][</span><span class="n">data_period</span><span class="p">]</span>
+</code></pre></div>
+<p>接着，我们来实现一个双均线趋势跟踪策略。策略的逻辑可参见<a href="e100_trend_following_strategy.html">这里</a>。
+我们实例化一个简化的回测器，指定初始资本100万，并且指定在交易时使用真实的手续费。然后，我们迭代K线数据，并且
+使用<code>change_position_to</code>方法来改变持仓仓位。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;slow_ma_bars&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="s">&#39;fast_ma_bars&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c"># Use talib to calculate the two moving averages. Because we already know all the ohlc bars,</span>
+<span class="c"># we can calculate the whole fast and slow moving averages in one go.</span>
+<span class="n">fast_ma</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">SMA</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ohlc</span><span class="o">.</span><span class="n">closes</span><span class="p">),</span> <span class="n">timeperiod</span><span class="o">=</span><span class="n">parameters</span><span class="p">[</span><span class="s">&#39;fast_ma_bars&#39;</span><span class="p">])</span>
+<span class="n">slow_ma</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">SMA</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ohlc</span><span class="o">.</span><span class="n">closes</span><span class="p">),</span> <span class="n">timeperiod</span><span class="o">=</span><span class="n">parameters</span><span class="p">[</span><span class="s">&#39;slow_ma_bars&#39;</span><span class="p">])</span>
+
+<span class="c"># Create a plain backtester, set the initial capital to one million,</span>
+<span class="c"># You can set the initial capital, and you can decide if the backtester will include trade commission or slippage.</span>
+<span class="c"># Both commission and slippage contribute to transaction cost, which will affect your backtesting result.</span>
+<span class="c"># Here we set the backtester to include commission and use `VolumeBasedSlippageModel` to introduce slippage.</span>
+<span class="c"># Other slippage models are available at `ctxalgoctp.ctp.slippage_models&#39;. If you set `slippage_model` to None,</span>
+<span class="c"># No slippage will be included.</span>
+<span class="n">backtester</span> <span class="o">=</span> <span class="n">PlainBacktester</span><span class="p">(</span><span class="n">initial_capital</span><span class="o">=</span><span class="mf">1000000.0</span><span class="p">,</span> <span class="n">has_commission</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">slippage_model</span><span class="o">=</span><span class="n">VolumeBasedSlippageModel</span><span class="p">())</span>
+<span class="n">backtester</span><span class="o">.</span><span class="n">set_instrument_ids</span><span class="p">([</span><span class="n">instrument_id</span><span class="p">])</span>
+
+<span class="c"># Iterating through the ohlc bars. We start from parameters[&#39;slow_ma_bars&#39;], because</span>
+<span class="c"># before this bar, there won&#39;t be enough data to to calculate slow moving average.</span>
+<span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s">&#39;slow_ma_bars&#39;</span><span class="p">],</span> <span class="n">ohlc</span><span class="o">.</span><span class="n">length</span><span class="p">):</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">ohlc</span><span class="o">.</span><span class="n">closes</span><span class="p">[</span><span class="n">bar</span><span class="p">]</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">ohlc</span><span class="o">.</span><span class="n">dates</span><span class="p">[</span><span class="n">bar</span><span class="p">]</span>
+    <span class="n">volume</span> <span class="o">=</span> <span class="n">ohlc</span><span class="o">.</span><span class="n">volumes</span><span class="p">[</span><span class="n">bar</span><span class="p">]</span>
+
+    <span class="c"># We update the current price from the bar close price into the plain backtester. This is important.</span>
+    <span class="c"># Only with the updated instrument price, the backtester can correctly calculate balance, profit.</span>
+    <span class="c"># It is recommended to do price update as soon as you have the newest price, so the backtester</span>
+    <span class="c"># can calculate balance, profit more accurately.</span>
+    <span class="n">backtester</span><span class="o">.</span><span class="n">update_price</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">volume</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">instrument_id</span><span class="o">=</span><span class="n">instrument_id</span><span class="p">)</span>
+
+    <span class="c"># Check if the fast moving average up or down crosses the slow moving average.</span>
+    <span class="c"># Change our position according to this cross information.</span>
+    <span class="n">signal</span> <span class="o">=</span> <span class="n">cross_direction</span><span class="p">(</span><span class="n">fast_ma</span><span class="p">,</span> <span class="n">slow_ma</span><span class="p">,</span> <span class="n">offset</span><span class="o">=-</span><span class="n">bar</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">signal</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">backtester</span><span class="o">.</span><span class="n">change_position_to</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">instrument_id</span><span class="o">=</span><span class="n">instrument_id</span><span class="p">)</span>
+</code></pre></div>
+<p>在回测完成后，我们可以查看结果。我们先打印出交易报表，然后在浏览器中显示交易细节。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">report</span> <span class="o">=</span> <span class="n">backtester</span><span class="o">.</span><span class="n">report</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+
+<span class="c"># Calculate the average number of bars for transactions.</span>
+<span class="n">transaction_lengths</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">length_by_bar</span><span class="p">()</span> <span class="k">for</span> <span class="n">tran_list</span> <span class="ow">in</span> <span class="n">report</span><span class="o">.</span><span class="n">get_transactions</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tran_list</span> <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">length_by_bar</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Average transaction length by bar: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">transaction_lengths</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">transaction_lengths</span><span class="p">)))</span>
+
+<span class="c"># Chart the ohlc and transactions.</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ChartsWithReport</span><span class="p">(</span><span class="n">data_feed</span><span class="o">=</span><span class="n">data_source</span><span class="p">,</span> <span class="n">report</span><span class="o">=</span><span class="n">report</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">set_instrument</span><span class="p">(</span><span class="n">instrument_id</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">period</span><span class="p">(</span><span class="n">data_period</span><span class="p">)</span>
+
+<span class="c"># Chart ohlc bars and volume.</span>
+<span class="n">c</span><span class="o">.</span><span class="n">ohlc</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">volume</span><span class="p">()</span>
+
+<span class="c"># Draw the fast and slow moving averages.</span>
+<span class="n">c</span><span class="o">.</span><span class="n">ma</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s">&#39;slow_ma_bars&#39;</span><span class="p">])</span>
+<span class="n">c</span><span class="o">.</span><span class="n">ma</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s">&#39;fast_ma_bars&#39;</span><span class="p">])</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">balance</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">drawdowns</span><span class="p">(</span><span class="n">max_drawdown_color</span><span class="o">=</span><span class="s">&#39;pink&#39;</span><span class="p">,</span> <span class="n">only_max</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">instrument_positions</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">transactions</span><span class="p">(</span><span class="n">pnl</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c"># Display the chart in browser.</span>
+<span class="n">c</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div style="margin-top:10px;margin-bottom:10px">
+        
+        <span class="next">
+            上篇：
+            <a href="/zh/zh_e200_directly_iterate_over_data_source.html">直接迭代访问回测数据</a>
+        </span>
+         
+        
+    </div>
+</div>
+<div class="row">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1959741"></script>
+    <!-- UY END -->
+</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+    <hr>
+    <div class="container">
+        <p align="center">Copyright © ctxalgo.com, build with jekyll. Email me with admin@ctxalgo.com</p>
+    </div>
+</footer>
+    <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/js/bt.js"></script>
+</body>
+</html>

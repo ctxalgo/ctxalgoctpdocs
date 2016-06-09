@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在策略中使用来自ta-lib的指标</title>
+    <link rel="stylesheet" href="/css/bt.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/pygments.css">
+</head>
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Pages</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li class=""><a href="/languages.html">Languages</a></li>
+    </ul>
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <header>
+    
+</header>
+    <div class="main container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10">
+                <div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h1>在策略中使用来自ta-lib的指标</h1>
+        </div>
+        <div>
+            <p>本示例展示如何在策略中使用来自<a href="https://github.com/mrjbq7/ta-lib">ta-lib</a>的指标。ta-lib中包括了上百种常用的金融指标,
+比如EMA, EMA, MACD, RSI。
+<a href="https://github.com/mrjbq7/ta-lib/tree/master/docs/func_groups">这里</a>包括了ta-lib中的所有指标。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">talib</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">ctxalgolib.ta.cross</span> <span class="kn">import</span> <span class="n">cross_direction</span>
+<span class="kn">from</span> <span class="nn">ctxalgoctp.ctp.backtesting_utils</span> <span class="kn">import</span> <span class="o">*</span>
+</code></pre></div>
+<p>一下代码段展示了完整的交易策略。在<code>on_bar</code>方法中，我们使用<code>talib.SMA</code>来计算移动平均线。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">TrendFollowingStrategy</span><span class="p">(</span><span class="n">AbstractStrategy</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A single double moving average trend following strategy:</span>
+<span class="sd">    1. If the fast moving average up-cross the slow moving average, change position to 1.</span>
+<span class="sd">    2. If the fast moving average down-cross the slow moving average, change position to -1.</span>
+<span class="sd">    That is, the position can be 0, -1 and 1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instrument_ids</span><span class="p">,</span> <span class="n">strategy_period</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">base_folder</span><span class="p">,</span>
+                 <span class="n">periods</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">AbstractStrategy</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">instrument_ids</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">base_folder</span><span class="p">,</span> <span class="n">strategy_period</span><span class="o">=</span><span class="n">strategy_period</span><span class="p">,</span>
+            <span class="n">periods</span><span class="o">=</span><span class="n">periods</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_bar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instrument_id</span><span class="p">,</span> <span class="n">bars</span><span class="p">,</span> <span class="n">tick</span><span class="p">):</span>
+        <span class="c"># Here, self.slow_ma_period is a syntax shorthand for self.parameters[&#39;slow_ma_period&#39;].</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ohlc</span><span class="p">()</span><span class="o">.</span><span class="n">length</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">slow_ma_period</span><span class="p">:</span>
+            <span class="c"># Construct a numpy array from Python array, as talib requires numpy arrays as inputs,</span>
+            <span class="c"># then calculate the simple moving average function SMA.</span>
+            <span class="n">closes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ohlc</span><span class="p">()</span><span class="o">.</span><span class="n">closes</span><span class="p">)</span>
+            <span class="n">ma_fast</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">SMA</span><span class="p">(</span><span class="n">closes</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fast_ma_period</span><span class="p">)</span>
+            <span class="n">ma_slow</span> <span class="o">=</span> <span class="n">talib</span><span class="o">.</span><span class="n">SMA</span><span class="p">(</span><span class="n">closes</span><span class="p">,</span> <span class="n">timeperiod</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">slow_ma_period</span><span class="p">)</span>
+
+            <span class="c"># Check if fast moving average up-crosses or down-crosses slow moving average.</span>
+            <span class="c"># cross_direction return 1 if ma_fast up-crosses ma_slow, -1 if ma_fast down-crosses ma_fast,</span>
+            <span class="c"># and 0 otherwise. The strategy uses this signal to change its position of the traded instrument.</span>
+            <span class="n">signal</span> <span class="o">=</span> <span class="n">cross_direction</span><span class="p">(</span><span class="n">ma_fast</span><span class="p">,</span> <span class="n">ma_slow</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">signal</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c"># Change position according to signal.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">change_position_to</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+</code></pre></div>
+<p>现在我们对以上交易策略进行历史数据的回测。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">ctxalgoctp.ctp.starterkit.e100_trend_following_strategy</span> <span class="kn">import</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">config</span>
+<span class="n">report</span><span class="p">,</span> <span class="n">data_source</span> <span class="o">=</span> <span class="n">backtest</span><span class="p">(</span><span class="n">TrendFollowingStrategy</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+</code></pre></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div style="margin-top:10px;margin-bottom:10px">
+        
+        <span class="next">
+            上篇：
+            <a href="/zh/zh_e100_trend_following_strategy.html">双均线趋势跟踪策略</a>
+        </span>
+         
+        
+        <span class="prev">
+            下篇：
+            <a href="/zh/zh_e102_multi_time_frames.html">多时间周期策略</a>
+        </span>
+        
+    </div>
+</div>
+<div class="row">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1959741"></script>
+    <!-- UY END -->
+</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+    <hr>
+    <div class="container">
+        <p align="center">Copyright © ctxalgo.com, build with jekyll. Email me with admin@ctxalgo.com</p>
+    </div>
+</footer>
+    <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/js/bt.js"></script>
+</body>
+</html>

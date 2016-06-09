@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>直接迭代访问回测数据</title>
+    <link rel="stylesheet" href="/css/bt.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/pygments.css">
+</head>
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Pages</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li class=""><a href="/languages.html">Languages</a></li>
+    </ul>
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <header>
+    
+</header>
+    <div class="main container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10">
+                <div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h1>直接迭代访问回测数据</h1>
+        </div>
+        <div>
+            <p>本示例展示如何直接对回测历史数据进行迭代访问，以及如何设置需要对哪些周期的K线数据进行迭代访问。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">ctxalgolib.ohlc.periodicity</span> <span class="kn">import</span> <span class="n">Periodicity</span>
+<span class="kn">from</span> <span class="nn">ctxalgolib.trading_utils.future_info_calculator_factory</span> <span class="kn">import</span> <span class="n">FutureInfoCalculatorFactory</span>
+<span class="kn">from</span> <span class="nn">ctxalgoctp.ctp.backtesting_utils</span> <span class="kn">import</span> <span class="n">get_data_source</span>
+</code></pre></div>
+<h2>迭代访问单一交易品种的数据</h2>
+
+<p>首先，我们从CTX服务器获取历史交易数据。下载的数据会被存放在<code>base_folder</code>文件夹中。你可以指定其它的文件夹。
+需要获取历史数据的品种在<code>instrument_ids</code>中指定。现在我们指定一个品种。历史数据的起止时间由<code>start_date</code>和<code>end_date</code>指定。
+历史数据的周期由<code>data_period</code>来指定，这个周期应该是以后需要生成的K线周期中最小的。在此，我们指定历史数据的周期为15分钟。
+在调用<code>get_data_source</code>后，历史数据就可以从<code>data_source</code>中获得。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">instrument_ids</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;cu99&#39;</span><span class="p">]</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s">&#39;2014-01-01&#39;</span>  <span class="c"># Backtesting start date.</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s">&#39;2014-12-31&#39;</span>    <span class="c"># Backtesting end date.</span>
+<span class="n">base_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;CTXALGO_TEST&#39;</span><span class="p">],</span> <span class="s">&#39;strategies&#39;</span><span class="p">,</span> <span class="s">&#39;iterating_data_source&#39;</span><span class="p">)</span>
+<span class="n">data_period</span> <span class="o">=</span> <span class="n">Periodicity</span><span class="o">.</span><span class="n">FIFTEEN_MINUTE</span>
+<span class="n">data_source</span> <span class="o">=</span> <span class="n">get_data_source</span><span class="p">(</span><span class="n">instrument_ids</span><span class="p">,</span> <span class="n">base_folder</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">data_period</span><span class="p">)</span>
+</code></pre></div>
+<p>接着，我们迭代历史数据。<code>ohlc_periods</code>中指定迭代器需要返回哪些周期的K线数据。在这里，我们指定需要返回30分钟和日线级别的
+K线。这些级别的K线都是由之前下载的15分钟级别的历史数据生成的。
+然后，我们通过调用<code>bars_iterator</code>来获得一个K线数据的迭代器。该迭代器返回一个又三个元素组成的元组
+(instrumment<em>id, bars, all</em>ohlcs)。<code>instrument_id</code>指明生成的是哪个品种的K线。<code>bars</code>包含着刚生成的K线。<code>all_ohlcs</code>包含着
+到目前为止生成的所有的K线。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">iterate_over_data</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">periods</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Iterate over data_source.</span>
+<span class="sd">    :param ds: BacktestingDataSource, the data source containing historical trading data.</span>
+<span class="sd">    :param periods: [Periodicity], the list of periods that the iterator should generate ohlcs for.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">factory</span> <span class="o">=</span> <span class="n">FutureInfoCalculatorFactory</span><span class="p">()</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">margin_calculator</span><span class="p">()</span>      <span class="c"># Used to calculate margin .</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">commssion_calculator</span><span class="p">()</span>   <span class="c"># Used to calculate commission.</span>
+    <span class="k">for</span> <span class="n">instrument_id</span><span class="p">,</span> <span class="n">bars</span><span class="p">,</span> <span class="n">all_ohlcs</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">bars_iterator</span><span class="p">(</span><span class="n">periods</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">period</span><span class="p">,</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">bars</span><span class="p">[</span><span class="s">&#39;time-based&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">ohlc</span> <span class="o">=</span> <span class="n">all_ohlcs</span><span class="p">[</span><span class="s">&#39;time-based&#39;</span><span class="p">][</span><span class="n">instrument_id</span><span class="p">][</span><span class="n">period</span><span class="p">]</span>
+            <span class="n">last_price</span> <span class="o">=</span> <span class="n">ohlc</span><span class="o">.</span><span class="n">closes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">day</span> <span class="o">=</span> <span class="n">ohlc</span><span class="o">.</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+            <span class="c"># Calculate the margin and commission to open one lot in the long direction.</span>
+            <span class="n">margin_money</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">margin_money</span><span class="p">(</span><span class="n">instrument_id</span><span class="p">,</span> <span class="n">last_price</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
+            <span class="n">commission</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">commission</span><span class="p">(</span><span class="n">instrument_id</span><span class="p">,</span> <span class="n">last_price</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="s">&#39;Open&#39;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">&#39;instrument={}</span><span class="se">\t</span><span class="s">timestamp={}</span><span class="se">\t</span><span class="s">period={}</span><span class="se">\t</span><span class="s">ohlc_bar_count={}</span><span class="se">\t</span><span class="s">margin={}</span><span class="se">\t</span><span class="s">commission={}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">instrument_id</span><span class="p">,</span>
+                <span class="n">Periodicity</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">period</span><span class="p">),</span>
+                <span class="n">bar</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span>
+                <span class="n">ohlc</span><span class="o">.</span><span class="n">length</span><span class="p">,</span> <span class="n">margin_money</span><span class="p">,</span> <span class="n">commission</span><span class="p">))</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;============ Iterate over single instrument</span><span class="se">\&#39;</span><span class="s">s ohlcs ============&#39;</span><span class="p">)</span>
+<span class="n">ohlc_periods</span> <span class="o">=</span> <span class="p">[</span><span class="n">Periodicity</span><span class="o">.</span><span class="n">THIRTY_MINUTE</span><span class="p">,</span> <span class="n">Periodicity</span><span class="o">.</span><span class="n">DAILY</span><span class="p">]</span>
+<span class="n">iterate_over_data</span><span class="p">(</span><span class="n">data_source</span><span class="p">,</span> <span class="n">ohlc_periods</span><span class="p">)</span>
+</code></pre></div>
+<h2>迭代访问多个交易品种的数据</h2>
+
+<p>以上代码展示的是如何迭代单一品种的交易数据。接下来我们展示如何同时迭代多品种的交易数据。要迭代多品种，唯一需要进行的
+代码修改是通过<code>instrument_ids</code>指定多个品种的ID。在这里我们指定了两个品种cu99和rb99。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">instrument_ids</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;cu99&#39;</span><span class="p">,</span> <span class="s">&#39;rb99&#39;</span><span class="p">]</span>
+<span class="n">data_source2</span> <span class="o">=</span> <span class="n">get_data_source</span><span class="p">(</span><span class="n">instrument_ids</span><span class="p">,</span> <span class="n">base_folder</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">data_period</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;============ Iterate over two instruments</span><span class="se">\&#39;</span><span class="s"> ohlcs ============&#39;</span><span class="p">)</span>
+<span class="n">iterate_over_data</span><span class="p">(</span><span class="n">data_source2</span><span class="p">,</span> <span class="n">ohlc_periods</span><span class="p">)</span>
+</code></pre></div>
+<h2>迭代多个品种的K线</h2>
+
+<p>如果你需要在多个品种的指定K线同时向前走过了一根K线时得到一个事件，你可以使用<code>multiple_bars_iterator</code>。
+该方法返回一个迭代器。当所有指定品种都走过一根K线后，这个迭代器会生成一个元素。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">&#39;============ Iterate over multiple bars ============&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ohlcs</span> <span class="ow">in</span> <span class="n">data_source2</span><span class="o">.</span><span class="n">multiple_bars_iterator</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="n">Periodicity</span><span class="o">.</span><span class="n">THIRTY_MINUTE</span><span class="p">,</span> <span class="n">instrument_ids</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;cu99&#39;</span><span class="p">,</span> <span class="s">&#39;rb99&#39;</span><span class="p">]):</span>
+    <span class="n">ohlc1</span> <span class="o">=</span> <span class="n">ohlcs</span><span class="p">[</span><span class="s">&#39;cu99&#39;</span><span class="p">]</span>
+    <span class="n">ohlc2</span> <span class="o">=</span> <span class="n">ohlcs</span><span class="p">[</span><span class="s">&#39;rb99&#39;</span><span class="p">]</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">&#39;{} {}: {}</span><span class="se">\t</span><span class="s">{} {}: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">&#39;cu99&#39;</span><span class="p">,</span> <span class="n">ohlc1</span><span class="o">.</span><span class="n">length</span><span class="p">,</span> <span class="n">ohlc1</span><span class="o">.</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;rb99&#39;</span><span class="p">,</span> <span class="n">ohlc2</span><span class="o">.</span><span class="n">length</span><span class="p">,</span> <span class="n">ohlc2</span><span class="o">.</span><span class="n">dates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+</code></pre></div>
+<h2>直接返回完整的ohlc数据</h2>
+
+<p>有时候，你希望直接获得完整的ohlc数据，而不是通过一个迭代器一根K线一根K线的获得。这时候，可以使用<code>ohlcs</code>方法。该方法
+具有和<code>bars_iterator</code>方法一样的参数，所不同的是，<code>ohlcs</code>返回生成完的完整的ohlc。</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s">&#39;============ Get whole ohlcs directly ============&#39;</span><span class="p">)</span>
+<span class="n">ohlcs</span> <span class="o">=</span> <span class="n">data_source2</span><span class="o">.</span><span class="n">ohlcs</span><span class="p">(</span><span class="n">ohlc_periods</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;30 minute cu99 ohlc length: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ohlcs</span><span class="p">[</span><span class="s">&#39;time-based&#39;</span><span class="p">][</span><span class="s">&#39;cu99&#39;</span><span class="p">][</span><span class="n">Periodicity</span><span class="o">.</span><span class="n">THIRTY_MINUTE</span><span class="p">]</span><span class="o">.</span><span class="n">length</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Daily cu99 ohlc length: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ohlcs</span><span class="p">[</span><span class="s">&#39;time-based&#39;</span><span class="p">][</span><span class="s">&#39;cu99&#39;</span><span class="p">][</span><span class="n">Periodicity</span><span class="o">.</span><span class="n">DAILY</span><span class="p">]</span><span class="o">.</span><span class="n">length</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;30 minute rb99 ohlc length: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ohlcs</span><span class="p">[</span><span class="s">&#39;time-based&#39;</span><span class="p">][</span><span class="s">&#39;rb99&#39;</span><span class="p">][</span><span class="n">Periodicity</span><span class="o">.</span><span class="n">THIRTY_MINUTE</span><span class="p">]</span><span class="o">.</span><span class="n">length</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&#39;Daily rb99 ohlc length: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ohlcs</span><span class="p">[</span><span class="s">&#39;time-based&#39;</span><span class="p">][</span><span class="s">&#39;rb99&#39;</span><span class="p">][</span><span class="n">Periodicity</span><span class="o">.</span><span class="n">DAILY</span><span class="p">]</span><span class="o">.</span><span class="n">length</span><span class="p">))</span>
+</code></pre></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div style="margin-top:10px;margin-bottom:10px">
+        
+        <span class="next">
+            上篇：
+            <a href="/zh/zh_e120_statistical_arbitrage_with_two_instruments.html">Statistical Arbitrage With Two Instruments</a>
+        </span>
+         
+        
+        <span class="prev">
+            下篇：
+            <a href="/zh/zh_e201_plain_backtester.html">使用简化回测器</a>
+        </span>
+        
+    </div>
+</div>
+<div class="row">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1959741"></script>
+    <!-- UY END -->
+</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+    <hr>
+    <div class="container">
+        <p align="center">Copyright © ctxalgo.com, build with jekyll. Email me with admin@ctxalgo.com</p>
+    </div>
+</footer>
+    <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/js/bt.js"></script>
+</body>
+</html>

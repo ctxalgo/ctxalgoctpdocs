@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/css/bt.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/pygments.css">
+</head>
+<body>
+    {% include top_nav.html %}
+    {% include header.html %}
+    <div class="main container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10">
+                {{ content }}
+            </div>
+        </div>
+    </div>
+    {% include footer.html %}
+    <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/js/bt.js"></script>
+</body>
+</html>
