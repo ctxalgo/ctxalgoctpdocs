@@ -10,7 +10,7 @@ categories: [ipython,zh,en]
 # Import a trend following strategy.
 from ctxalgoctp.ctp.backtesting_utils import *
 from ctxalgolib.charting.charts import ChartsWithReport
-from ctxalgoctp.ctp.starterkit.e100_trend_following_strategy import TrendFollowingStrategy
+from ctxalgoctp.ctp.docs.starterkit.e100_trend_following_strategy import TrendFollowingStrategy
 ```
 
 

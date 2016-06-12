@@ -60,6 +60,9 @@ class TrendFollowingStrategy(AbstractStrategy):
                 # change_position_to(1)   # close the short position, and open a long position.
                 # So at the end, you have 1 long position.
                 self.change_position_to(signal)
+
+    def on_trade(self, trade_info):
+        pass
 ```
 
 Now, we create configurations for backtesting the strategy. After backtesting, we generate a chart in form of
@@ -79,8 +82,10 @@ def main():
             'slow_ma_period': 15,  # The parameter for the slow moving average.
         }
     }
-
+    start_time = datetime.now()
     report, data_source = backtest(TrendFollowingStrategy, config, start_date, end_date)
+    end_time = datetime.now()
+    print('Backtesting duration: ' + str(end_time - start_time))
 
     # Use charting facility to visualize trades.
     c = ChartsWithReport(report, data_source, folder=report.base_folder, open_in_browser=True)
