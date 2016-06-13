@@ -32,7 +32,7 @@ instrument_id = 'cu99'
 start_date = '2014-01-01'  # Backtesting start date.
 end_date = '2014-12-31'    # Backtesting end date.
 base_folder = os.path.join(os.environ['CTXALGO_TEST'], 'strategies', 'plain_backtester')
-data_period = Periodicity.ONE_MINUTE
+data_period = Periodicity.HOURLY
 data_source = get_data_source([instrument_id], base_folder, start_date, end_date, data_period)
 
 # Get ohlc from data source. The ohlc object contains the required data for the instrument.
