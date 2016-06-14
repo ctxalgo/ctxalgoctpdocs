@@ -4,6 +4,7 @@ layout: post
 category: en
 ---
 
+## 1. Introduction to plain backtester
 When you want to do a fast prototype of a strategy just be iterating over ohlcs, you can use the `PlainBacktester`
 class. This class provides a API set similar to that of `AbstractStrategy`, which is what you use when writing
 real strategies. The benefit of using `PlainBacktester` is that it runs much faster than the actual backtester.
@@ -42,7 +43,8 @@ data_source = get_data_source([instrument_id], base_folder, start_date, end_date
 ohlc = data_source.ohlcs()['time-based'][instrument_id][data_period]
 ```
 
-Then, we implements a simple double moving average trend following strategy using plain backtester.
+## 2. Use plain backtester to write a trading strategy
+Here, we implements a simple double moving average trend following strategy using plain backtester.
 See [internal-link](here starterkit/e100_trend_following_strategy.py) for the definition of the strategy.
 We create a plain backtester and then iterating the bars from the retrieved ohlc data. During the iteration,
 we call `change_position_to` method from the plain backtester to open and close positions.
@@ -93,6 +95,7 @@ end_time = datetime.now()
 print('Backtesting duration: ' + str(end_time - start_time))
 ```
 
+## 3. Investigating backtesting result and draw charts
 After backtesting, we can investigate the results. We first print out the backtesting summary, and then chart the
 trade details in browser.
 
@@ -126,6 +129,25 @@ c.transactions(pnl=True)
 
 # Display the chart in browser.
 c.show()
+```
+
+## 4. Backtesting strategy with multiple instruments
+Here, we write a strategy that trades multiple instruments using plain backtester. As usual, we create a data source
+with multiple instruments, and use the `multiple_bars_iterator` to iterate over multiple ohlcs. When we have new data
+points, we need to use `update_price` to set the price information into the plain backtester. Note here we specify
+the `ohlcs` parameter of the `update_price` method to set price for multiple instruments in one statement.
+
+```python
+instrument_ids = ['cu99', 'rb99']
+data_source2 = get_data_source(instrument_ids, base_folder, start_date, end_date, data_period)
+
+backtester2 = PlainBacktester(instrument_ids=instrument_ids)
+for ohlcs in data_source2.multiple_bars_iterator(period=Periodicity.THIRTY_MINUTE, instrument_ids=instrument_ids):
+    # Update backtester2 with price from two ohlcs.
+    backtester2.update_price(ohlcs=ohlcs)
+    # Do actual trading here.
+
+
 
 
 ```
