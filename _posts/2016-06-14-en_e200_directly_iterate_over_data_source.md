@@ -48,21 +48,11 @@ def iterate_over_data(ds, periods):
     :param periods: [Periodicity], the list of periods that the iterator should generate ohlcs for.
     """
     factory = FutureInfoCalculatorFactory()
-    m = factory.margin_calculator()      # Used to calculate margin .
-    c = factory.commssion_calculator()   # Used to calculate commission.
     for instrument_id, bars, all_ohlcs in ds.bars_iterator(periods):
         for period, bar in bars['time-based'].items():
             ohlc = all_ohlcs['time-based'][instrument_id][period]
-            last_price = ohlc.closes[-1]
-            day = ohlc.dates[-1].date()
-            # Calculate the margin and commission to open one lot in the long direction.
-            margin_money = m.margin_money(instrument_id, last_price, 1, day)
-            commission = c.commission(instrument_id, last_price, 1, day, 'Open')
-            print('instrument={}\ttimestamp={}\tperiod={}\tohlc_bar_count={}\tmargin={}\tcommission={}'.format(
-                instrument_id,
-                Periodicity.name(period),
-                bar.timestamp,
-                ohlc.length, margin_money, commission))
+            print('instrument={}\ttimestamp={}\tperiod={}\tohlc_bar_count={}'.format(
+                instrument_id, Periodicity.name(period), bar.timestamp, ohlc.length))
 
     print('')
 
