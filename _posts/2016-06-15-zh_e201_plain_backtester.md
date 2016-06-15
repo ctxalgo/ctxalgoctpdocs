@@ -4,6 +4,7 @@ layout: post
 category: zh
 ---
 
+## 1. 简化回测器的介绍
 有时候，你只想快速测试一个策略的想法，这时候，你可以使用`PlainBacktester`。这个类提供了一组和`AbstractStrategy`类似
 的API，让你能够快速进行策略原型的编程和实验。使用`PlainBacktester`的好处是它比标准的回测器要快很多，原因如下：
 1. `PlainBacktester`不进行真实交易时的各种事件回调的仿真，它只接受来自ohlc的K线数据。
@@ -14,6 +15,7 @@ category: zh
 import os
 import talib
 import numpy as np
+from datetime import datetime
 
 from ctxalgolib.ohlc.periodicity import Periodicity
 from ctxalgolib.ta.cross import cross_direction
@@ -38,7 +40,8 @@ data_source = get_data_source([instrument_id], base_folder, start_date, end_date
 ohlc = data_source.ohlcs()['time-based'][instrument_id][data_period]
 ```
 
-接着，我们来实现一个双均线趋势跟踪策略。策略的逻辑可参见[这里](e100_trend_following_strategy.html)。
+## 2. 使用简化回测器来写交易策略
+我们来实现一个双均线趋势跟踪策略。策略的逻辑可参见[internal-link](这里 starterkit/e100_trend_following_strategy.py)。
 我们实例化一个简化的回测器，指定初始资本100万，并且指定在交易时使用真实的手续费。然后，我们迭代K线数据，并且
 使用`change_position_to`方法来改变持仓仓位。
 
@@ -59,11 +62,15 @@ slow_ma = talib.SMA(np.array(ohlc.closes), timeperiod=parameters['slow_ma_bars']
 # Here we set the backtester to include commission and use `VolumeBasedSlippageModel` to introduce slippage.
 # Other slippage models are available at `ctxalgoctp.ctp.slippage_models'. If you set `slippage_model` to None,
 # No slippage will be included.
-backtester = PlainBacktester(initial_capital=1000000.0, has_commission=True, slippage_model=VolumeBasedSlippageModel())
+backtester = PlainBacktester(
+    initial_capital=1000000.0,                  # Initial capital
+    has_commission=True,                        # Include commission in trading
+    slippage_model=VolumeBasedSlippageModel())  # Setup slippage model
 backtester.set_instrument_ids([instrument_id])
 
 # Iterating through the ohlc bars. We start from parameters['slow_ma_bars'], because
 # before this bar, there won't be enough data to to calculate slow moving average.
+start_time = datetime.now()
 for bar in range(parameters['slow_ma_bars'], ohlc.length):
     price = ohlc.closes[bar]
     timestamp = ohlc.dates[bar]
@@ -80,8 +87,11 @@ for bar in range(parameters['slow_ma_bars'], ohlc.length):
     signal = cross_direction(fast_ma, slow_ma, offset=-bar)
     if signal != 0:
         backtester.change_position_to(price, signal, timestamp, instrument_id=instrument_id)
+end_time = datetime.now()
+print('Backtesting duration: ' + str(end_time - start_time))
 ```
 
+## 3. 查看策略回测结果并绘图
 在回测完成后，我们可以查看结果。我们先打印出交易报表，然后在浏览器中显示交易细节。
 
 ```python
@@ -114,6 +124,24 @@ c.transactions(pnl=True)
 
 # Display the chart in browser.
 c.show()
+```
+
+## 4. 使用简化回测器书写多品种的交易策略
+在此，我们用简化回测器书写一个交易多个品种的策略。与之前的过程一样，我们先构造一个对品种的的数据源`data_source2`，然后
+使用`multiple_bars_iterator`来对对个品种的K线进行迭代。当有新的K线的时候，我们调用`update_price`把新的价格信息设置到简化
+回测器中。注意，这里使用的`update_price`方法中的`ohlcs`参数来传入多个品种的K线信息。
+
+```python
+instrument_ids = ['cu99', 'rb99']
+data_source2 = get_data_source(instrument_ids, base_folder, start_date, end_date, data_period)
+
+backtester2 = PlainBacktester(instrument_ids=instrument_ids)
+for ohlcs in data_source2.multiple_bars_iterator(period=Periodicity.THIRTY_MINUTE, instrument_ids=instrument_ids):
+    # Update backtester2 with price from two ohlcs.
+    backtester2.update_price(ohlcs=ohlcs)
+    # Do actual trading here.
+
+
 
 
 ```
