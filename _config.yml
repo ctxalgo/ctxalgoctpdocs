@@ -8,8 +8,9 @@ paginate_path: "page:num"
 gems: 
   [jekyll-paginate]
 
-markdown: redcarpet
-redcarpet:
-    extensions: ["fenced_code_blocks", "autolink", "tables", "strikethrough"]
-
-highlighter: pygments
+markdown: kramdown
+kramdown:
+    highlighter: rouge
+    syntax_highlighter_opts:
+        block:
+            line_numbers: true
