@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="/css/pygments.css">
 </head>
 <body>
-    <nav class="navbar navbar-default" role="navigation">
+    <div class="wrap">
+        <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -26,34 +27,58 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-    <header>
+        <header>
     
 </header>
-    <div class="main container">
-        <div class="row">
-            <div class="col-md-offset-1 col-md-10">
-                <div class="row">
+        <div class="main container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10">
+                    <div class="row">
     <div class="col-md-12">
         <div class="page-header">
             <h1>Multi-time frame strategy</h1>
         </div>
         <div>
-            <p>This example shows how to register ohlcs for different time periods. You do this by specifying the <code>periods</code> parameter
-of the strategy&#39;s<code>__init__</code> method.</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">ctxalgoctp.ctp.backtesting_utils</span> <span class="kn">import</span> <span class="o">*</span>
-</code></pre></div>
-<p>In the <code>periods</code> parameter, we specifies two periods: 15 minutes and 30 minutes. And as before, the <code>startegy_period</code>
+            <p>This example shows how to register ohlcs for different time periods. You do this by specifying the <code class="highlighter-rouge">periods</code> parameter
+of the strategy’s<code class="highlighter-rouge">__init__</code> method.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1</pre></td><td class="code"><pre><span class="kn">from</span> <span class="nn">ctxalgoctp.ctp.backtesting_utils</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>In the <code class="highlighter-rouge">periods</code> parameter, we specifies two periods: 15 minutes and 30 minutes. And as before, the <code class="highlighter-rouge">startegy_period</code>
 parameter defines the period on which trade should happen (note we do not trade in this example).
 The config object will be used to initialize a strategy object.</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;instrument_ids&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;IF99&#39;</span><span class="p">],</span>                      <span class="c"># We are trading this future instrument.</span>
-    <span class="s">&#39;strategy_period&#39;</span><span class="p">:</span> <span class="n">Periodicity</span><span class="o">.</span><span class="n">FIFTEEN_MINUTE</span><span class="p">,</span>   <span class="c"># The ohlc bar granularity on which trading happens.</span>
-    <span class="s">&#39;periods&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">Periodicity</span><span class="o">.</span><span class="n">FIFTEEN_MINUTE</span><span class="p">,</span> <span class="n">Periodicity</span><span class="o">.</span><span class="n">THIRTY_MINUTE</span><span class="p">],</span>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'instrument_ids'</span><span class="p">:</span> <span class="p">[</span><span class="s">'IF99'</span><span class="p">],</span>                      <span class="c"># We are trading this future instrument.</span>
+    <span class="s">'strategy_period'</span><span class="p">:</span> <span class="n">Periodicity</span><span class="o">.</span><span class="n">FIFTEEN_MINUTE</span><span class="p">,</span>   <span class="c"># The ohlc bar granularity on which trading happens.</span>
+    <span class="s">'periods'</span><span class="p">:</span> <span class="p">[</span><span class="n">Periodicity</span><span class="o">.</span><span class="n">FIFTEEN_MINUTE</span><span class="p">,</span> <span class="n">Periodicity</span><span class="o">.</span><span class="n">THIRTY_MINUTE</span><span class="p">],</span>
 <span class="p">}</span>
-</code></pre></div>
-<p>The following is the strategy code, when one or more ohlc bars arrive, the <code>on_bar</code> method will be invoked with
-all the bars&#39; information.</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">MultiTimeFrameStrategy</span><span class="p">(</span><span class="n">AbstractStrategy</span><span class="p">):</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
+<p>The following is the strategy code, when one or more ohlc bars arrive, the <code class="highlighter-rouge">on_bar</code> method will be invoked with
+all the bars’ information.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">MultiTimeFrameStrategy</span><span class="p">(</span><span class="n">AbstractStrategy</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instrument_ids</span><span class="p">,</span> <span class="n">strategy_period</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">base_folder</span><span class="p">,</span>
                  <span class="n">periods</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">logger</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="n">AbstractStrategy</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span>
@@ -64,13 +89,24 @@ all the bars&#39; information.</p>
         <span class="c"># We do not do trading here, instead, we only print out the arrived ohlc bars.</span>
         <span class="c"># Since we only asked for time-based ohlcs, we get them from bars[self.time_based].</span>
         <span class="k">for</span> <span class="n">period</span><span class="p">,</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">bars</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">time_based</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">&#39;Period={}</span><span class="se">\t</span><span class="s">Time={}</span><span class="se">\t</span><span class="s">Close price={}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Periodicity</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">period</span><span class="p">),</span> <span class="n">bar</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">bar</span><span class="o">.</span><span class="n">close</span><span class="p">))</span>
-</code></pre></div>
+            <span class="k">print</span><span class="p">(</span><span class="s">'Period={}</span><span class="se">\t</span><span class="s">Time={}</span><span class="se">\t</span><span class="s">Close price={}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Periodicity</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">period</span><span class="p">),</span> <span class="n">bar</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">bar</span><span class="o">.</span><span class="n">close</span><span class="p">))</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
 <p>Now, we create configurations for backtesting the strategy.</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">start_date</span> <span class="o">=</span> <span class="s">&#39;2014-01-01&#39;</span>  <span class="c"># Backtesting start date.</span>
-<span class="n">end_date</span> <span class="o">=</span> <span class="s">&#39;2014-12-31&#39;</span>    <span class="c"># Backtesting end date.</span>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="n">start_date</span> <span class="o">=</span> <span class="s">'2014-01-01'</span>  <span class="c"># Backtesting start date.</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s">'2014-12-31'</span>    <span class="c"># Backtesting end date.</span>
 <span class="n">report</span><span class="p">,</span> <span class="n">data_source</span> <span class="o">=</span> <span class="n">backtest</span><span class="p">(</span><span class="n">MultiTimeFrameStrategy</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
-</code></pre></div>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
         </div>
     </div>
 </div>
@@ -96,10 +132,13 @@ all the bars&#39; information.</p>
     <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1959741"></script>
     <!-- UY END -->
 </div>
+<div class="footer-buttom"></div>
+                </div>
             </div>
-        </div>
+        </div>        
     </div>
-    <footer>
+    
+    <footer class="footer">
     <hr>
     <div class="container">
         <p align="center">Copyright © ctxalgo.com, build with jekyll. Email me with admin@ctxalgo.com</p>

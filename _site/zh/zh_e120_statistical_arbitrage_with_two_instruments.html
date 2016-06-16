@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="/css/pygments.css">
 </head>
 <body>
-    <nav class="navbar navbar-default" role="navigation">
+    <div class="wrap">
+        <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -26,19 +27,109 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-    <header>
+        <header>
     
 </header>
-    <div class="main container">
-        <div class="row">
-            <div class="col-md-offset-1 col-md-10">
-                <div class="row">
+        <div class="main container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10">
+                    <div class="row">
     <div class="col-md-12">
         <div class="page-header">
             <h1>Statistical Arbitrage With Two Instruments</h1>
         </div>
         <div>
-            <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">ctxalgoctp.ctp.backtesting_utils</span> <span class="kn">import</span> <span class="o">*</span>
+            <div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91</pre></td><td class="code"><pre><span class="kn">from</span> <span class="nn">ctxalgoctp.ctp.backtesting_utils</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">from</span> <span class="nn">statsmodels.tools.tools</span> <span class="kn">import</span> <span class="n">add_constant</span><span class="p">,</span> <span class="n">Bunch</span>
 <span class="kn">from</span> <span class="nn">statsmodels.regression.linear_model</span> <span class="kn">import</span> <span class="n">OLS</span><span class="p">,</span> <span class="n">yule_walker</span>
@@ -46,19 +137,19 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 
-<span class="k">def</span> <span class="nf">ADF</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">crit</span><span class="o">=</span><span class="s">&#39;5%&#39;</span><span class="p">,</span> <span class="n">max_d</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="s">&#39;nc&#39;</span><span class="p">,</span> <span class="n">autolag</span><span class="o">=</span><span class="s">&#39;AIC&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Augmented Dickey Fuller test</span>
+<span class="k">def</span> <span class="nf">ADF</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">crit</span><span class="o">=</span><span class="s">'5</span><span class="si">%</span><span class="s">'</span><span class="p">,</span> <span class="n">max_d</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="s">'nc'</span><span class="p">,</span> <span class="n">autolag</span><span class="o">=</span><span class="s">'AIC'</span><span class="p">):</span>
+    <span class="s">""" Augmented Dickey Fuller test
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    v: ndarray matrix</span>
-<span class="sd">        residuals matrix</span>
+    Parameters
+    ----------
+    v: ndarray matrix
+        residuals matrix
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    bool: boolean</span>
-<span class="sd">        true if v pass the test</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    Returns
+    -------
+    bool: boolean
+        true if v pass the test
+    """</span>
 
     <span class="n">testResult</span> <span class="o">=</span> <span class="bp">False</span>
     <span class="n">adf</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">max_d</span><span class="p">,</span> <span class="n">reg</span><span class="p">,</span> <span class="n">autolag</span><span class="p">)</span>
@@ -83,26 +174,26 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">add_bar_arrival_action</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_multiple_bars</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_multiple_bars</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strategy</span><span class="p">,</span> <span class="n">ohlc_kind</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ohlcs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :param strategy: AbstractStrategy, which will be initialized with the current strategy object.</span>
-<span class="sd">        :param ohlc_kind: string, the ohlc kind, can be &#39;time-based&#39;, &#39;volatility-based&#39;.</span>
-<span class="sd">        :param period: Periodicity in case of time-based ohlc, or int/float as volatility threshold</span>
-<span class="sd">            in case of volatility-based ohlc.</span>
-<span class="sd">        :param name: string, the bar arrival action name, same as the name parameter specified here.</span>
-<span class="sd">        :param ohlcs: dict{string: OHLC}, the list of ohlcs, keys are instrument ids, values are the ohlc objects.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="s">"""
+        :param strategy: AbstractStrategy, which will be initialized with the current strategy object.
+        :param ohlc_kind: string, the ohlc kind, can be 'time-based', 'volatility-based'.
+        :param period: Periodicity in case of time-based ohlc, or int/float as volatility threshold
+            in case of volatility-based ohlc.
+        :param name: string, the bar arrival action name, same as the name parameter specified here.
+        :param ohlcs: dict{string: OHLC}, the list of ohlcs, keys are instrument ids, values are the ohlc objects.
+        """</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">should_trade</span><span class="p">:</span>
-            <span class="n">ohlc1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ohlc</span><span class="p">(</span><span class="s">&#39;i99&#39;</span><span class="p">)</span>
-            <span class="n">ohlc2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ohlc</span><span class="p">(</span><span class="s">&#39;rb99&#39;</span><span class="p">)</span>
+            <span class="n">ohlc1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ohlc</span><span class="p">(</span><span class="s">'i99'</span><span class="p">)</span>
+            <span class="n">ohlc2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ohlc</span><span class="p">(</span><span class="s">'rb99'</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">ohlc2</span><span class="o">.</span><span class="n">closes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">ohlc1</span><span class="o">.</span><span class="n">closes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">std</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">change_positions_to</span><span class="p">({</span><span class="s">&#39;rb99&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;i99&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">change_positions_to</span><span class="p">({</span><span class="s">'rb99'</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s">'i99'</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">change_positions_to</span><span class="p">({</span><span class="s">&#39;rb99&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;i99&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">})</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">change_positions_to</span><span class="p">({</span><span class="s">'rb99'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'i99'</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">})</span>
 
     <span class="k">def</span> <span class="nf">on_before_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strategy</span><span class="p">):</span>
-        <span class="n">ohlc1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yesterday_ohlc</span><span class="p">(</span><span class="s">&#39;i99&#39;</span><span class="p">)</span>
-        <span class="n">ohlc2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yesterday_ohlc</span><span class="p">(</span><span class="s">&#39;rb99&#39;</span><span class="p">)</span>
+        <span class="n">ohlc1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yesterday_ohlc</span><span class="p">(</span><span class="s">'i99'</span><span class="p">)</span>
+        <span class="n">ohlc2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">yesterday_ohlc</span><span class="p">(</span><span class="s">'rb99'</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">ohlc1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">ohlc2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">common_dates</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ohlc1</span><span class="o">.</span><span class="n">dates</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">ohlc2</span><span class="o">.</span><span class="n">dates</span><span class="p">)</span>
@@ -119,16 +210,20 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">std</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">st1_resid</span><span class="p">))</span>
 
 
-<span class="n">start_date</span> <span class="o">=</span> <span class="s">&#39;2014-01-01&#39;</span>
-<span class="n">end_date</span> <span class="o">=</span> <span class="s">&#39;2014-12-31&#39;</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s">'2014-01-01'</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s">'2014-12-31'</span>
 
 <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;instrument_ids&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;i99&#39;</span><span class="p">,</span> <span class="s">&#39;rb99&#39;</span><span class="p">],</span>  <span class="c"># Specify multiple instrument ids to trade.</span>
-    <span class="s">&#39;strategy_period&#39;</span><span class="p">:</span> <span class="n">Periodicity</span><span class="o">.</span><span class="n">ONE_MINUTE</span><span class="p">,</span>
+    <span class="s">'instrument_ids'</span><span class="p">:</span> <span class="p">[</span><span class="s">'i99'</span><span class="p">,</span> <span class="s">'rb99'</span><span class="p">],</span>  <span class="c"># Specify multiple instrument ids to trade.</span>
+    <span class="s">'strategy_period'</span><span class="p">:</span> <span class="n">Periodicity</span><span class="o">.</span><span class="n">ONE_MINUTE</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">backtest</span><span class="p">(</span><span class="n">StatisticalArbitrageStrategy</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
-</code></pre></div>
+
+</pre></td></tr></tbody></table>
+</div>
+</div>
+
         </div>
     </div>
 </div>
@@ -137,7 +232,7 @@
         
         <span class="next">
             上篇：
-            <a href="/zh/zh_e104_store_information_in_context.html">在context中储存跨交易日数据</a>
+            <a href="/zh/zh_e106_multi_bar_arrival.html">多K线同时递增时的回调函数</a>
         </span>
          
         
@@ -154,10 +249,13 @@
     <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1959741"></script>
     <!-- UY END -->
 </div>
+<div class="footer-buttom"></div>
+                </div>
             </div>
-        </div>
+        </div>        
     </div>
-    <footer>
+    
+    <footer class="footer">
     <hr>
     <div class="container">
         <p align="center">Copyright © ctxalgo.com, build with jekyll. Email me with admin@ctxalgo.com</p>

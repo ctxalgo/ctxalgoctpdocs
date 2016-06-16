@@ -1,3 +1,16 @@
-body{
+html, body{
     /*padding: 10px;*/
+    height:100%;
 }
+
+.wrap {
+	min-height:100%;
+}
+
+.footer-buttom{
+	height: 75px;
+}
+
+.footer {
+  margin-top:-75px;
+} 

@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="/css/pygments.css">
 </head>
 <body>
-    <nav class="navbar navbar-default" role="navigation">
+    <div class="wrap">
+        <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -26,13 +27,13 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-    <header>
+        <header>
     
 </header>
-    <div class="main container">
-        <div class="row">
-            <div class="col-md-offset-1 col-md-10">
-                <div>
+        <div class="main container">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-10">
+                    <div>
     <h2>Pages</h2>
     <ul id="archive">
         
@@ -45,6 +46,12 @@
         
             <li id="zh">
                 <ul>
+                    
+                    <li>
+                        <h4>
+                            <a href="/zh/zh_e220_strategy_with_zmq_logger.html">给策略连接一个基于zeromq的日志输出</a>
+                        </h4>
+                    </li>
                     
                     <li>
                         <h4>
@@ -61,6 +68,18 @@
                     <li>
                         <h4>
                             <a href="/zh/zh_e120_statistical_arbitrage_with_two_instruments.html">Statistical Arbitrage With Two Instruments</a>
+                        </h4>
+                    </li>
+                    
+                    <li>
+                        <h4>
+                            <a href="/zh/zh_e106_multi_bar_arrival.html">多K线同时递增时的回调函数</a>
+                        </h4>
+                    </li>
+                    
+                    <li>
+                        <h4>
+                            <a href="/zh/zh_e105_trading_two_instruments.html">同时交易两个品种</a>
                         </h4>
                     </li>
                     
@@ -119,10 +138,12 @@
     </ul>
 </div>
 
+                </div>
             </div>
-        </div>
+        </div>        
     </div>
-    <footer>
+    
+    <footer class="footer">
     <hr>
     <div class="container">
         <p align="center">Copyright © ctxalgo.com, build with jekyll. Email me with admin@ctxalgo.com</p>
