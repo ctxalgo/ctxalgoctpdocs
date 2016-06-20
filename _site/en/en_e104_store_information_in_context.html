@@ -41,16 +41,20 @@
         <div>
             <p>The backtesting framework in CTX will create a new trading strategy object on every trading day to simulate
 the fact that usually we start our trading strategy before a trading day starts, and turn it down
-when the trading ends.
-When a new trading strategy object is created, all the information stored in it will be gone. Sometime, you want
+when the trading ends.</p>
+
+<p>When a new trading strategy object is created, all the information stored in it will be gone. Sometime, you want
 to keep some information across trading days. For example, in a strategy which keeps positions for multiple days,
 you want to keep counting the number of days that we have already held the position and close a position when
-a maximum holding length is reached.
-You can use <code class="highlighter-rouge">self.context</code> to keep information across trading days. Use <code class="highlighter-rouge">self.context</code> as a dict. You can also
-use the notation self.context.key and self.context.key = value to read and write to <code class="highlighter-rouge">self.context</code>.
-Note that <code class="highlighter-rouge">self.context</code> is not accessible from the <code class="highlighter-rouge">__init__</code> method of the strategy, because <code class="highlighter-rouge">self.context</code>
-has not been initialized in the <code class="highlighter-rouge">__init__</code> method.  It is accessible when the strategy starts to run.
-In the following code, which is an adaption of the double moving average trend following strategy,
+a maximum holding length is reached.</p>
+
+<p>You can use <code class="highlighter-rouge">self.context</code> to keep information across trading days. Use <code class="highlighter-rouge">self.context</code> as a dict. You can also
+use the notation self.context.key and self.context.key = value to read and write to <code class="highlighter-rouge">self.context</code>.</p>
+
+<p>Note that <code class="highlighter-rouge">self.context</code> is not accessible from the <code class="highlighter-rouge">__init__</code> method of the strategy, because <code class="highlighter-rouge">self.context</code>
+has not been initialized in the <code class="highlighter-rouge">__init__</code> method.  It is accessible when the strategy starts to run.</p>
+
+<p>In the following code, which is an adaption of the double moving average trend following strategy,
 we mention <code class="highlighter-rouge">self.context</code> inside the <code class="highlighter-rouge">on_before_run</code> action. The idea is that if we hold a position longer than
 the maximum allowed days, we flat the position.</p>
 

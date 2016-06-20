@@ -7,17 +7,22 @@ category: en
 The backtesting framework in CTX will create a new trading strategy object on every trading day to simulate
 the fact that usually we start our trading strategy before a trading day starts, and turn it down
 when the trading ends.
+
 When a new trading strategy object is created, all the information stored in it will be gone. Sometime, you want
 to keep some information across trading days. For example, in a strategy which keeps positions for multiple days,
 you want to keep counting the number of days that we have already held the position and close a position when
 a maximum holding length is reached.
+
 You can use `self.context` to keep information across trading days. Use `self.context` as a dict. You can also
 use the notation self.context.key and self.context.key = value to read and write to `self.context`.
+
 Note that `self.context` is not accessible from the `__init__` method of the strategy, because `self.context`
 has not been initialized in the `__init__` method.  It is accessible when the strategy starts to run.
+
 In the following code, which is an adaption of the double moving average trend following strategy,
 we mention `self.context` inside the `on_before_run` action. The idea is that if we hold a position longer than
 the maximum allowed days, we flat the position.
+
 
 ```python
 from ctxalgolib.ta.online_indicators.moving_averages import MovingAveragesIndicator

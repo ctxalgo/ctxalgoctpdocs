@@ -6,14 +6,19 @@ category: zh
 
 CTX系统中的回测模块每天会重新创建一个交易策略的对象，这样做的目的是模拟策略实盘运行是的情景。在实盘运行时，
 一般会在开盘前启动策略，收盘后结束策略。
+
 每次创建策略对象，之前存放在对象中的数据就会丢失。但有时候，我们需要将一些数据保存才策略中，然后在之后的交易日中使用。
 比如，我们想记录已经持有一些头寸的交易日的数目，到达最大数目后，我们进行平仓。
+
 我们可以使用`self.context`来保存这些数据。保存在`self.context`中的数据会在跨交易日的时候依然可以访问。`self.context`的
 使用方法和dict一致。你也可以通过`self.context.key`和`self.context.key = value`来读取和设置`self.context`的内容。
+
 请注意，`self.context`不能在策略对象的`__init__`中使用，以为在`__init__`中`self.context`还没有被初始化。 `self.context`
 可以在交易策略开始运行之后使用。
+
 在以下的代码中，我们对之前双均线趋势跟踪策略做了如下扩展：当持仓到达一定天数的时候，我们会平掉所有头寸。我们在
 `on_before_run`方法中对`self.context`进行操作。
+
 
 ```python
 from ctxalgolib.ta.online_indicators.moving_averages import MovingAveragesIndicator
@@ -65,6 +70,7 @@ class TrendFollowingWithMaxHoldingDayStrategy(AbstractStrategy):
 ```
 
 现在我们对以上交易策略进行历史数据的回测。
+
 
 ```python
 def main():

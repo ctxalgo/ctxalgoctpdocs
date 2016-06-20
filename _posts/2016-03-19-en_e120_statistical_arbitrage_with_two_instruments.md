@@ -1,7 +1,7 @@
 ---
-title: Statistical Arbitrage With Two Instruments
+title: Statistical arbitrage with two instruments
 layout: post
-category: zh
+category: en
 ---
 
 ```python

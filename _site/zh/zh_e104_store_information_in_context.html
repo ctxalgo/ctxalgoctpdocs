@@ -40,14 +40,18 @@
         </div>
         <div>
             <p>CTX系统中的回测模块每天会重新创建一个交易策略的对象，这样做的目的是模拟策略实盘运行是的情景。在实盘运行时，
-一般会在开盘前启动策略，收盘后结束策略。
-每次创建策略对象，之前存放在对象中的数据就会丢失。但有时候，我们需要将一些数据保存才策略中，然后在之后的交易日中使用。
-比如，我们想记录已经持有一些头寸的交易日的数目，到达最大数目后，我们进行平仓。
-我们可以使用<code class="highlighter-rouge">self.context</code>来保存这些数据。保存在<code class="highlighter-rouge">self.context</code>中的数据会在跨交易日的时候依然可以访问。<code class="highlighter-rouge">self.context</code>的
-使用方法和dict一致。你也可以通过<code class="highlighter-rouge">self.context.key</code>和<code class="highlighter-rouge">self.context.key = value</code>来读取和设置<code class="highlighter-rouge">self.context</code>的内容。
-请注意，<code class="highlighter-rouge">self.context</code>不能在策略对象的<code class="highlighter-rouge">__init__</code>中使用，以为在<code class="highlighter-rouge">__init__</code>中<code class="highlighter-rouge">self.context</code>还没有被初始化。 <code class="highlighter-rouge">self.context</code>
-可以在交易策略开始运行之后使用。
-在以下的代码中，我们对之前双均线趋势跟踪策略做了如下扩展：当持仓到达一定天数的时候，我们会平掉所有头寸。我们在
+一般会在开盘前启动策略，收盘后结束策略。</p>
+
+<p>每次创建策略对象，之前存放在对象中的数据就会丢失。但有时候，我们需要将一些数据保存才策略中，然后在之后的交易日中使用。
+比如，我们想记录已经持有一些头寸的交易日的数目，到达最大数目后，我们进行平仓。</p>
+
+<p>我们可以使用<code class="highlighter-rouge">self.context</code>来保存这些数据。保存在<code class="highlighter-rouge">self.context</code>中的数据会在跨交易日的时候依然可以访问。<code class="highlighter-rouge">self.context</code>的
+使用方法和dict一致。你也可以通过<code class="highlighter-rouge">self.context.key</code>和<code class="highlighter-rouge">self.context.key = value</code>来读取和设置<code class="highlighter-rouge">self.context</code>的内容。</p>
+
+<p>请注意，<code class="highlighter-rouge">self.context</code>不能在策略对象的<code class="highlighter-rouge">__init__</code>中使用，以为在<code class="highlighter-rouge">__init__</code>中<code class="highlighter-rouge">self.context</code>还没有被初始化。 <code class="highlighter-rouge">self.context</code>
+可以在交易策略开始运行之后使用。</p>
+
+<p>在以下的代码中，我们对之前双均线趋势跟踪策略做了如下扩展：当持仓到达一定天数的时候，我们会平掉所有头寸。我们在
 <code class="highlighter-rouge">on_before_run</code>方法中对<code class="highlighter-rouge">self.context</code>进行操作。</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1

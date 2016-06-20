@@ -2,21 +2,20 @@
 layout: default
 title: English
 ---
+
 <div>
     <ul>
         {% for cate in site.categories %}
         {% if cate[0] == 'en' %}
-            <li id="{{ cate[0] }}">
-                <ul>
-                    {% for post in cate[1] %}
-                    <li>
-                        <h4>
-                            <a href="{{ post.url }}">{{ post.title }}</a>
-                        </h4>
-                    </li>
-                    {% endfor %}
-                </ul>
+    
+            {% for post in cate[1] reversed %}
+            <li>
+                <h4>
+                    <a href="{{ post.url }}">{{ post.title }}</a>
+                </h4>
             </li>
+            {% endfor %}
+                
         {% endif %}
         {% endfor %}
     </ul> 

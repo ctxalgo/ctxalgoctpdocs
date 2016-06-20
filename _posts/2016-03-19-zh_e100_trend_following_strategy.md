@@ -6,6 +6,7 @@ category: zh
 
 本示例展示如何书写单品种的交易策略，它包括一个基于双均线的趋势跟踪交易策略，回测以及查看结果的代码。
 
+
 ```python
 from ctxalgolib.ta.online_indicators.moving_averages import MovingAveragesIndicator
 from ctxalgolib.charting.charts import ChartsWithReport
@@ -14,6 +15,7 @@ from ctxalgoctp.ctp.backtesting_utils import *
 ```
 
 以下代码段展示了完整的交易策略
+
 
 ```python
 class TrendFollowingStrategy(AbstractStrategy):
@@ -65,6 +67,7 @@ class TrendFollowingStrategy(AbstractStrategy):
 
 现在我们对以上交易策略进行历史数据的回测。回测之后，我们生成一个网页，包括所有产生的交易记录。
 你可以在浏览器中打开该页面查看具体的交易信息。
+
 
 ```python
 def main():

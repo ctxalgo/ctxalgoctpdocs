@@ -1,12 +1,13 @@
 ---
-title: Trading two instruments
+title: 同时交易两个品种
 layout: post
-category: en
+category: zh
 ---
 
-This example shows how to write a strategy to trade two instruments, and the same goes for more instruments:
- 1. Specify the instrument ids that you want to trade in the `instrument_ids` parameter in the `__init__` method of the strategy.
- 2. When using APIs such as `has_position`, `has_pending_order` and `change_position_to`, you need to specify the instrument_id for the instrument that you want to operate.
+这个示例展示了如何在一个策略中同时交易两个品种，多个品种的情况类推：
+1. 在策略的`__init__`方法的`instrument_ids`参数中指定要交易的所有的品种的ID。
+2. 在使用`has_position`，`has_pending_order`和`change_position_to`等API时，通过`instrument_id`参数来指定要操作的品种。
+
 
 ```python
 from ctxalgoctp.ctp.backtesting_utils import *

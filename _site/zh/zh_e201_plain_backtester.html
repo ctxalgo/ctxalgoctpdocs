@@ -40,11 +40,16 @@
         </div>
         <div>
             <h2 id="section">1. 简化回测器的介绍</h2>
+
 <p>有时候，你只想快速测试一个策略的想法，这时候，你可以使用<code class="highlighter-rouge">PlainBacktester</code>。这个类提供了一组和<code class="highlighter-rouge">AbstractStrategy</code>类似
-的API，让你能够快速进行策略原型的编程和实验。使用<code class="highlighter-rouge">PlainBacktester</code>的好处是它比标准的回测器要快很多，原因如下：
-1. <code class="highlighter-rouge">PlainBacktester</code>不进行真实交易时的各种事件回调的仿真，它只接受来自ohlc的K线数据。
-2. <code class="highlighter-rouge">PlainBacktester</code>默认所有的交易都立即全部执行。
-本例子展示如何用<code class="highlighter-rouge">PlainBacktester</code>书写一个双均线趋势跟踪策略。</p>
+的API，让你能够快速进行策略原型的编程和实验。使用<code class="highlighter-rouge">PlainBacktester</code>的好处是它比标准的回测器要快很多，原因如下：</p>
+
+<ol>
+  <li><code class="highlighter-rouge">PlainBacktester</code>不进行真实交易时的各种事件回调的仿真，它只接受来自ohlc的K线数据。</li>
+  <li><code class="highlighter-rouge">PlainBacktester</code>默认所有的交易都立即全部执行。</li>
+</ol>
+
+<p>本例子展示如何用<code class="highlighter-rouge">PlainBacktester</code>书写一个双均线趋势跟踪策略。</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -97,8 +102,10 @@
 </div>
 
 <h2 id="section-1">2. 使用简化回测器来写交易策略</h2>
-<p>我们来实现一个双均线趋势跟踪策略。策略的逻辑可参见<a href="这里 starterkit/e100_trend_following_strategy.py">internal-link</a>。
-我们实例化一个简化的回测器，指定初始资本100万，并且指定在交易时使用真实的手续费。然后，我们迭代K线数据，并且
+
+<p>我们来实现一个双均线趋势跟踪策略。策略的逻辑可参见<a href="/zh/zh_e100_trend_following_strategy.html">这里</a>。</p>
+
+<p>我们实例化一个简化的回测器，指定初始资本100万，并且指定在交易时使用真实的手续费。然后，我们迭代K线数据，并且
 使用<code class="highlighter-rouge">change_position_to</code>方法来改变持仓仓位。</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
@@ -191,6 +198,7 @@
 </div>
 
 <h2 id="section-2">3. 查看策略回测结果并绘图</h2>
+
 <p>在回测完成后，我们可以查看结果。我们先打印出交易报表，然后在浏览器中显示交易细节。</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
@@ -255,6 +263,7 @@
 </div>
 
 <h2 id="section-3">4. 使用简化回测器书写多品种的交易策略</h2>
+
 <p>在此，我们用简化回测器书写一个交易多个品种的策略。与之前的过程一样，我们先构造一个对品种的的数据源<code class="highlighter-rouge">data_source2</code>，然后
 使用<code class="highlighter-rouge">multiple_bars_iterator</code>来对对个品种的K线进行迭代。当有新的K线的时候，我们调用<code class="highlighter-rouge">update_price</code>把新的价格信息设置到简化
 回测器中。注意，这里使用的<code class="highlighter-rouge">update_price</code>方法中的<code class="highlighter-rouge">ohlcs</code>参数来传入多个品种的K线信息。</p>

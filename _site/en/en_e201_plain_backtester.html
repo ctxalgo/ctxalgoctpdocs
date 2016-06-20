@@ -40,13 +40,18 @@
         </div>
         <div>
             <h2 id="introduction-to-plain-backtester">1. Introduction to plain backtester</h2>
+
 <p>When you want to do a fast prototype of a strategy just be iterating over ohlcs, you can use the <code class="highlighter-rouge">PlainBacktester</code>
 class. This class provides a API set similar to that of <code class="highlighter-rouge">AbstractStrategy</code>, which is what you use when writing
 real strategies. The benefit of using <code class="highlighter-rouge">PlainBacktester</code> is that it runs much faster than the actual backtester.
-<code class="highlighter-rouge">PlainBacktester</code> runs faster because:
-1. It does not simulate trading events, it only accepts close price from ohlc bars.
-2. It assumes all trades are executed immediately on bar close.
-This example demonstrates <code class="highlighter-rouge">PlainBacktester</code> with a double moving average trend following strategy.</p>
+<code class="highlighter-rouge">PlainBacktester</code> runs faster because:</p>
+
+<ol>
+  <li>It does not simulate trading events, it only accepts close price from ohlc bars.</li>
+  <li>It assumes all trades are executed immediately on bar close.</li>
+</ol>
+
+<p>This example demonstrates <code class="highlighter-rouge">PlainBacktester</code> with a double moving average trend following strategy.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -100,9 +105,11 @@ From the retrieved data source, we can get desired ohlcs.</p>
 </div>
 
 <h2 id="use-plain-backtester-to-write-a-trading-strategy">2. Use plain backtester to write a trading strategy</h2>
+
 <p>Here, we implements a simple double moving average trend following strategy using plain backtester.
-See <a href="here starterkit/e100_trend_following_strategy.py">internal-link</a> for the definition of the strategy.
-We create a plain backtester and then iterating the bars from the retrieved ohlc data. During the iteration,
+See <a href="/en/en_e100_trend_following_strategy.html">here</a> for the definition of the strategy.</p>
+
+<p>We create a plain backtester and then iterating the bars from the retrieved ohlc data. During the iteration,
 we call <code class="highlighter-rouge">change_position_to</code> method from the plain backtester to open and close positions.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
@@ -195,6 +202,7 @@ we call <code class="highlighter-rouge">change_position_to</code> method from th
 </div>
 
 <h2 id="investigating-backtesting-result-and-draw-charts">3. Investigating backtesting result and draw charts</h2>
+
 <p>After backtesting, we can investigate the results. We first print out the backtesting summary, and then chart the
 trade details in browser.</p>
 
@@ -260,6 +268,7 @@ trade details in browser.</p>
 </div>
 
 <h2 id="backtesting-strategy-with-multiple-instruments">4. Backtesting strategy with multiple instruments</h2>
+
 <p>Here, we write a strategy that trades multiple instruments using plain backtester. As usual, we create a data source
 with multiple instruments, and use the <code class="highlighter-rouge">multiple_bars_iterator</code> to iterate over multiple ohlcs. When we have new data
 points, we need to use <code class="highlighter-rouge">update_price</code> to set the price information into the plain backtester. Note here we specify

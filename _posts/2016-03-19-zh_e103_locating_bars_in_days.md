@@ -7,11 +7,13 @@ category: zh
 本示例展示如何定位不同交易日中的K线，比如如何获得当前交易日的所有K线，如何获得昨天的所有K线。通过使用`today_ohlc`方法，
 `yesterday_ohlc`方法，以及更基础的`ohlc_in_last_days`方法可以很方便的实现这些功能。
 
+
 ```python
 from ctxalgoctp.ctp.backtesting_utils import *
 ```
 
 以下代码段展示了一个简单的交易策略，在`on_bar`方法中，我们定位来自不同交易日的K线。
+
 
 ```python
 class DummyStrategy(AbstractStrategy):
@@ -51,6 +53,7 @@ class DummyStrategy(AbstractStrategy):
 ```
 
 现在我们对以上交易策略进行历史数据的回测。
+
 
 ```python
 start_date = '2014-01-01'  # Backtesting start date.

@@ -1,19 +1,21 @@
 ---
-title: Multi-time frame strategy
+title: 多时间周期策略
 layout: post
-category: en
+category: zh
 ---
 
-This example shows how to register ohlcs for different time periods. You do this by specifying the `periods` parameter
-of the strategy's`__init__` method.
+本示例展示如何订阅不同周期的K线。你需要在策略的`__init__`方法的`periods`参数中列出所有需要的K线周期。
+
 
 ```python
 from ctxalgoctp.ctp.backtesting_utils import *
 ```
 
-In the `periods` parameter, we specifies two periods: 15 minutes and 30 minutes. And as before, the `startegy_period`
-parameter defines the period on which trade should happen (note we do not trade in this example).
-The config object will be used to initialize a strategy object.
+在`periods`中，我们列出了两个周期，15分钟和30分钟。和之前一样，`strategy_period`定义了交易所在的周期（我们在
+此示例中不包括交易的代码）。
+
+config对象的内容会被用来初始化策略对象。
+
 
 ```python
 config = {
@@ -23,8 +25,8 @@ config = {
 }
 ```
 
-The following is the strategy code, when one or more ohlc bars arrive, the `on_bar` method will be invoked with
-all the bars' information.
+以下是策略代码。当一根或多根K线到来的时候，`on_bar`方法会被调用，其参数中包括了所生成的所有的K线的信息。
+
 
 ```python
 class MultiTimeFrameStrategy(AbstractStrategy):
@@ -41,7 +43,8 @@ class MultiTimeFrameStrategy(AbstractStrategy):
             print('Period={}\tTime={}\tClose price={}'.format(Periodicity.name(period), bar.timestamp, bar.close))
 ```
 
-Now, we create configurations for backtesting the strategy.
+现在我们对以上交易策略进行历史数据的回测。
+
 
 ```python
 start_date = '2014-01-01'  # Backtesting start date.

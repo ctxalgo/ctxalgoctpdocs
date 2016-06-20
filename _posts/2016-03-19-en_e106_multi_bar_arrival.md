@@ -8,18 +8,24 @@ In a strategy that trades multiple instrument, sometimes you want to have a call
 have advanced by one bar. For example, in a pair trading strategy, you want to access some arbitrage possibility when
 both the instruments have a new bar arrived. In this case, you can use the `add_bar_arrival_action` method in the
 strategy class.
+
 The `add_bar_arrival_action` method has the following signature:
-```
+
+```python
 def add_bar_arrival_action(self, action, period=None, instrument_ids=None,
     ohlc_kind=OhlcGeneratorConstants.time_based, name=''):
+    pass
 ```
+
 You use the `period` and `ohlc_kind` parameter to specify what kinds of ohlc bars you are waiting for, and use the
 `instrument_ids` parameter to specify which instruments' ohlc bars you are waiting for. The `action` parameter
 specifies a function pointer, which will be invoked when all the required bars arrive. You can use the same
 function pointer for more than one cases of multiple bar arrivals, in this case, you can use the `name` parameter
 to give each case a name.
+
 The following strategy shows an example of `add_bar_arrival_action`, and the `on_multiple_bars` method is the
 callback function. Its comment explains the parameters needed for this callback.
+
 
 ```python
 from ctxalgoctp.ctp.backtesting_utils import *

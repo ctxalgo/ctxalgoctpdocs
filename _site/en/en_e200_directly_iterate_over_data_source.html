@@ -56,13 +56,15 @@ But similar to going over data in the backtester, you can setup the iterator to 
 </div>
 
 <h2 id="iterating-over-a-single-instruments-ohlc">Iterating over a single instrument’s ohlc.</h2>
+
 <p>First, we get some historical trading data. The data is downloaded from CTX servers and stored in <code class="highlighter-rouge">base_folder</code>.
 You can get the <code class="highlighter-rouge">base_folder</code> to your own folder. Use <code class="highlighter-rouge">instrument_ids</code> to specify the instruments whose data
 is to be downloaded. Here, we only specify a single instrument. The historical data time range is decided by
 <code class="highlighter-rouge">start_date</code> and <code class="highlighter-rouge">end_date</code>. <code class="highlighter-rouge">data_period</code> specifies the granularity period of the data. It should be smallest
 among the periods of the ohlcs that you want your iterator to generate. Here we specify
-that we want to download 15 minute bars as historical data.
-The historical trading data will be accessible through <code class="highlighter-rouge">data_source</code>.</p>
+that we want to download 15 minute bars as historical data.</p>
+
+<p>The historical trading data will be accessible through <code class="highlighter-rouge">data_source</code>.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
 2
@@ -81,8 +83,9 @@ The historical trading data will be accessible through <code class="highlighter-
 
 <p>Next, we iterate over the historical data. <code class="highlighter-rouge">ohlc_periods</code> specifies the periods of the ohlcs that we want
 to iterate over. Here we specify that we want to iterate over two periods of ohlcs, 30 minute bars and daily bars.
-These 30 minute and daily bars are generated from the downloaded 15 minute bars.
-Then, we call <code class="highlighter-rouge">bars_iterator</code> to get an iterator which yields the required 30 minute and daily bars. The iterator yields
+These 30 minute and daily bars are generated from the downloaded 15 minute bars.</p>
+
+<p>Then, we call <code class="highlighter-rouge">bars_iterator</code> to get an iterator which yields the required 30 minute and daily bars. The iterator yields
 a tuple of three elements (instrument_id, bars, all_ohlcs). <code class="highlighter-rouge">instrument_id</code> tells you whose bars are being returned
 this time. <code class="highlighter-rouge">bars' contains the returned bars. </code>all_ohlcs` contains all the ohlcs that are generated so far.</p>
 
@@ -126,10 +129,12 @@ this time. <code class="highlighter-rouge">bars' contains the returned bars. </c
 </div>
 
 <h2 id="iterating-over-multiple-instruments-ohlcs">Iterating over multiple instruments’ ohlcs</h2>
+
 <p>The above code demonstrates how to iterate over a single instrument’s ohlcs. The following code shows how to
 iterate over multiple instruments’ ohlcs at the same time. This is useful when designing strategies involving
-multiple instruments.
-To iterate over multiple instruments, the only change we need is to get data for those instruments. So we
+multiple instruments.</p>
+
+<p>To iterate over multiple instruments, the only change we need is to get data for those instruments. So we
 set <code class="highlighter-rouge">instrument_ids</code> to have two instruments. Here we specify two instruments, cu99 and rb99. That’s it.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
@@ -146,6 +151,7 @@ set <code class="highlighter-rouge">instrument_ids</code> to have two instrument
 </div>
 
 <h2 id="iterating-over-multiple-bars">Iterating over multiple bars</h2>
+
 <p>If you want to get an event when a set of instruments have all proceeded with a bar,
 you can use <code class="highlighter-rouge">multiple_bars_iterator</code>. This method returns an iterator. The iterator yields an element
 when all the listed instruments progressed with a bar in the given periods.</p>
@@ -166,6 +172,7 @@ when all the listed instruments progressed with a bar in the given periods.</p>
 </div>
 
 <h2 id="getting-whole-ohlcs-directly">Getting whole ohlcs directly</h2>
+
 <p>If you want to get the whole ohlcs directly, instead of iterating over an iterator and get the ohlc gradually,
 call the <code class="highlighter-rouge">ohlcs</code> method from a data source. The <code class="highlighter-rouge">ohlcs</code> method has the same parameters as the <code class="highlighter-rouge">bars_iterator</code> method,
 but it returns the full ohlcs, instead of an iterator.</p>
@@ -197,7 +204,7 @@ but it returns the full ohlcs, instead of an iterator.</p>
         
         <span class="next">
             上篇：
-            <a href="/en/en_e120_statistical_arbitrage_with_two_instruments.html">Statistical Arbitrage With Two Instruments</a>
+            <a href="/en/en_e120_statistical_arbitrage_with_two_instruments.html">Statistical arbitrage with two instruments</a>
         </span>
          
         

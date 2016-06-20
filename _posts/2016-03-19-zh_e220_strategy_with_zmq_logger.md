@@ -1,15 +1,17 @@
 ---
-title: Strategy with zeromq logger
+title: 给策略连接一个基于zeromq的日志输出
 layout: post
-category: en
+category: zh
 ---
 
-This example demonstrates how to attach a zeromq logger to a strategy. A strategy can have different loggers,
-we have used file-based logger, which stores all messages from a strategy in a file, and console logger,
-which outputs all messages to the console.
-The zeromq-based logger will send all the messages to a zeromq queue. Typical use of such a logger includes:
-1. Have a GUI to visualize the progress of the strategy.
-2. A rule checker will check orders from the strategy to see if they satisfy algo-trading regulations.
+本示例展示如何给交易策略连接一个基于zeromq的日志输出。一个交易策略可以连接多个日志输出。我们之前已经使用过了基于文件的
+日志输出，这个输出会把来自策略的消息写入一个文件。我们也使用过了命令行日志输出，这个输出把来自策略的消息打印到命令行。
+
+基于zeromq的日志输出会把来自策略的消息发送到指定的zeromq队列中。这个输出有以下一些用途：
+
+1. 在队列的另一端可以连接一个图形界面，来显示策略运行的实时情况。
+2. 在队列的另一端可以连接一个规则检查器，用来检查策略的下单是否满足程序化接入的规则，比如下单速度不能过快等。
+
 
 ```python
 import threading
@@ -17,9 +19,10 @@ from ctxalgoctp.ctp.docs.starterkit.e100_trend_following_strategy import TrendFo
 from ctxalgoctp.ctp.backtesting_utils import *
 ```
 
-To Attach a zeromq logger to a strategy, specify the `logger` parameter at the strategy's `__init__` method. Here,
-we use the `StrategyUtils.get_logger` method to create such as logger. Then, we run the backtesting in a separate
-thread, and in the main thread, we use a zeromq subscriber to listen to and print the messages from the strategy.
+要给策略连接一个基于zeromq的日志输出，只需要设置策略类`__init__`方法中的`logger`参数即可。这里，我们使用
+`StartegyUtils.get_logger`来返回一个包含zeromq日志输出的对象。然后，我们在一个单独的线程中启动策略回测，并且在
+主线程中监听来自zeromq队列的策略的消息，并把这些消息打印出来。
+
 
 ```python
 class StrategyBacktestingThread(threading.Thread):

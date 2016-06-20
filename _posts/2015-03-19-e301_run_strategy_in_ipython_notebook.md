@@ -1,5 +1,5 @@
 ---
-title: Run Strategy In Ipython Notebook
+title: Run strategy in ipython notebook
 layout: post
 categories: [ipython,zh,en]
 ---

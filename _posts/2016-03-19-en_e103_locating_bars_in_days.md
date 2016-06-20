@@ -8,6 +8,7 @@ This example shows how to locate ohlc bars in trading days. For example, how to 
 from current trading day, how to get bars from yesterday by using the `today_ohlc`, `yesterday_ohlc` and
 the more general `ohlc_in_last_days` method.
 
+
 ```python
 from ctxalgoctp.ctp.backtesting_utils import *
 ```
