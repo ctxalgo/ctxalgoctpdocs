@@ -158,8 +158,53 @@ for ohlcs in data_source2.multiple_bars_iterator(period=Periodicity.THIRTY_MINUT
     # Update backtester2 with price from two ohlcs.
     backtester2.update_price(ohlcs=ohlcs)
     # Do actual trading here.
+```
+
+## 5. Use external data source in plain backtesting
+
+If you have your own ohlc data stored in csv files, you can config the `get_data_source` method to load those files.
+The following code listing showing how to do this.
 
 
+```python
+def parse_ohlc_line(line):
+    """
+    Parse a line from ohlc file into data.
+    :param line: string, a line from the ohlc file.
+    :return: (timestamp, open, high, low, close_, volume, amount)
+        The return is a tuple containing the parsed data:
+            timestamp: datetime, the timestamp of the ohlc line.
+            open: float, the open price,
+            high: float, the high price,
+            low: float, the low price,
+            close: float, the close price,
+            volume: int, the volume,
+            amount: float, the amount of money that has been traded, if there is no amount data
+                in the raw text, set this to 0.
+    """
+    parts = line.split(',')
+    ts = datetime.strptime(parts[1], '%Y-%m-%d %H:%M:%S')
+    open_ = float(parts[4])
+    high = float(parts[5])
+    low = float(parts[6])
+    close_ = float(parts[7])
+    volume = float(parts[8])
+    return ts, open_, high, low, close_, volume, 0
 
+instrument_ids = ['IF99']
+data_paths = {
+    'IF99': os.path.join('..', '..', 'tests', 'data', 'IF99_15m_20140101_20141231.csv')
+}
+
+data_source3 = get_data_source(
+    instrument_ids, base_folder, start_date, end_date, data_period,
+    data_paths=data_paths,            # Point data file locations to data source.
+    line_parser=parse_ohlc_line)      # Specify how to parse your data files.
+
+backtester3 = PlainBacktester(instrument_ids=instrument_ids)
+for ohlcs in data_source3.multiple_bars_iterator(period=Periodicity.FIVE_MINUTE, instrument_ids=instrument_ids):
+    # Update backtester3 with price from two ohlcs.
+    backtester3.update_price(ohlcs=ohlcs)
+    # Do actual trading here.
 
 ```
