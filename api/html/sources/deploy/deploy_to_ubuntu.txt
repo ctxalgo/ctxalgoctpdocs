@@ -1,0 +1,6 @@
+Deploy in ubuntu
+*******************
+
+Setup server like :ref:`develop_with_ubuntu`
+
+Use nginx, gunicorn, supervisor

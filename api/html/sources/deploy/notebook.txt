@@ -1,0 +1,21 @@
+Deploy and update notebook
+**************************
+
+Install path
+============
+
+:
+
+    ls /var/www/ipython
+
+    docs/ venv/
+
+Update virtual env
+==================
+
+:
+    cd /var/www/ipython;
+    sudo su
+    . venv/bin/activate
+    pip install -r requirement.txt
+

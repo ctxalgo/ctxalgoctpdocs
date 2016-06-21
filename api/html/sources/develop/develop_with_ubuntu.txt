@@ -1,0 +1,66 @@
+.. _develop_with_ubuntu:
+
+Develop with ubuntu
+*********************
+
+Install dependency
+===================
+
+Update system libs
+-------------------
+::
+
+    sudo apt-get update
+    sudo apt-get upgrade
+
+Install R
+----------
+
+::
+
+    sudo apt-get install r-base
+
+Config R, Type R in console and input `install.packages("TTR")` in R.
+
+Install Ta-lib
+----------------
+
+::
+
+    wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz
+    tar -zxvf ta-lib/ta-lib-0.4.0-src.tar.gz
+    cd ta-lib
+    ./configure --prefix=/usr
+    make
+    sudo make install
+
+Install other libs
+-------------------
+
+::
+
+    sudo apt-get install libfreetype6-dev libxft-dev python-dev python-pip libxml2-dev libxslt1-dev python-lxml
+    sudo apt-get install libmysqlclient-dev libatlas-base-dev gfortran python-dev build-essential g++ unrar
+    sudo apt-get install python-pandas
+
+
+Install requirements
+-----------------------
+
+.. note::
+
+    If develop in virtualenv, active env before install requirements!
+
+::
+
+    cd /var/www/ctxalgowebsite
+    make requirements
+
+
+.. note::
+
+    If failed in make requirements, just pip install the failed one, and retry make requirements!
+
+Now, you can run the website with::
+
+    python run_local.py
