@@ -46,8 +46,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'CoreTX'
-copyright = u'2015, '
+project = u'ctxalgoctp'
+copyright = u'2016, '
 author = u''
 
 # The version info for the project you're documenting, acts as replacement for
@@ -199,7 +199,7 @@ html_last_updated_fmt = '%b %d, %Y'
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'CoreTX_site_doc'
+htmlhelp_basename = 'ctxalgoctp_api_doc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -221,7 +221,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'ctxsite.tex', u'CTX site Documentation',
+  (master_doc, 'ctxalgoctp.tex', u'CTX ctp Documentation',
    u'way', 'manual'),
 ]
 
@@ -251,7 +251,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'ctxsite', u'CTX site Documentation',
+    (master_doc, 'ctxalgoctp doc', u'CTX ctp api Documentation',
      [author], 1)
 ]
 
@@ -265,7 +265,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'ctxsite', u'CTX site Documentation',
+  (master_doc, 'ctxalgoctp', u'CTX ctp api Documentation',
    author, 'Way', 'One line description of project.',
    'Miscellaneous'),
 ]

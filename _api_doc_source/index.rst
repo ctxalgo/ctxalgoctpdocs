@@ -1,4 +1,4 @@
-CoreTX Website docs
+ctxalgoctp api docs
 ###################
 
 .. automodule:: ctxalgoctp.ctp.report_generator
