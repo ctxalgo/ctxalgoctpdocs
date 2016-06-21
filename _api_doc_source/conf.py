@@ -283,7 +283,7 @@ texinfo_documents = [
 #texinfo_no_detailmenu = False
 autoclass_content = 'both'
 autodoc_member_order = 'bysource'
-autodoc_default_flags = ['members', 'show-inheritance', 'inherited-members']
+autodoc_default_flags = ['members', 'show-inheritance', 'inherited-members', 'undoc-members']
 
 sphinx_to_github = True
 sphinx_to_github_verbose = True

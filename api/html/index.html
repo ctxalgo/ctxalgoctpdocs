@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CoreTX Website docs &mdash; CoreTX 0.1 documentation</title>
+  <title>ctxalgoctp api docs &mdash; ctxalgoctp 0.1 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="CoreTX 0.1 documentation" href="#"/> 
+    <link rel="top" title="ctxalgoctp 0.1 documentation" href="#"/> 
 
   
   <script src="static/js/modernizr.min.js"></script>
@@ -47,7 +47,7 @@
         
 
         
-          <a href="#" class="icon icon-home"> CoreTX
+          <a href="#" class="icon icon-home"> ctxalgoctp
         
 
         
@@ -71,7 +71,7 @@
           
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">CoreTX Website docs</a></li>
+<li><a class="reference internal" href="#">ctxalgoctp api docs</a></li>
 </ul>
 </div>
           
@@ -85,7 +85,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">CoreTX</a>
+        <a href="#">ctxalgoctp</a>
       </nav>
 
 
@@ -96,7 +96,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="#">Docs</a> &raquo;</li>
       
-    <li>CoreTX Website docs</li>
+    <li>ctxalgoctp api docs</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -111,7 +111,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="module-ctxalgoctp.ctp.report_generator">
-<span id="coretx-website-docs"></span><h1>CoreTX Website docs<a class="headerlink" href="#module-ctxalgoctp.ctp.report_generator" title="Permalink to this headline">¶</a></h1>
+<span id="ctxalgoctp-api-docs"></span><h1>ctxalgoctp api docs<a class="headerlink" href="#module-ctxalgoctp.ctp.report_generator" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator">
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.report_generator.</code><code class="descname">CtpReportGenerator</code><span class="sig-paren">(</span><em>include_url=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator" title="Permalink to this definition">¶</a></dt>
@@ -239,6 +239,2008 @@ log size that those kinds of tags take.</td>
 
 </dd></dl>
 
+<span class="target" id="module-ctxalgoctp.ctp.report"></span><dl class="class">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.report.</code><code class="descname">CtpAbstractStrategyReport</code><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport" title="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport"><code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport</span></code></a></p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_summary">
+<code class="descname">get_summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as self.get_summary_report.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_summary_report">
+<code class="descname">get_summary_report</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_summary_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the summary report including various metrics such as sharp_ratio.
+:return: dict{string: object}, Keys are metric names, values are metric values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.abs">
+<code class="descname">abs</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.abs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.array_max">
+<code class="descname">array_max</code><span class="sig-paren">(</span><em>data</em>, <em>default_value=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.array_max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.array_min">
+<code class="descname">array_min</code><span class="sig-paren">(</span><em>data</em>, <em>default_value=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.array_min" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.calculate_cagr">
+<code class="descname">calculate_cagr</code><span class="sig-paren">(</span><em>daily_balances</em>, <em>trading_day_count</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.calculate_cagr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate CAGR.
+:param daily_balances: OHLC, daily balances.
+:param trading_day_count: int, the number of trading days.
+:return: float, CAGR value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.calculate_longest_drawdown">
+<code class="descname">calculate_longest_drawdown</code><span class="sig-paren">(</span><em>balance</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.calculate_longest_drawdown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.calculate_max_drawdown_percent">
+<code class="descname">calculate_max_drawdown_percent</code><span class="sig-paren">(</span><em>balance</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.calculate_max_drawdown_percent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.calculate_sharpe_ratio">
+<code class="descname">calculate_sharpe_ratio</code><span class="sig-paren">(</span><em>daily_returns</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.calculate_sharpe_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate sharpe ratio.
+:param daily_returns: OHLC, daily returns.
+:return: float, sharpe ratio.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.calculate_sortino_ratio">
+<code class="descname">calculate_sortino_ratio</code><span class="sig-paren">(</span><em>daily_returns</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.calculate_sortino_ratio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.divide">
+<code class="descname">divide</code><span class="sig-paren">(</span><em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.divide" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_accumulated_commission">
+<code class="descname">get_accumulated_commission</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_accumulated_commission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the accumulated commission from self.trades.
+:param period: Periodicity, the periodicity of the commission. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the commission.</p>
+<blockquote>
+<div>If None, start from the first trade.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the commission. If None, ends at the last trade.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for accumulated commission.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_accumulated_profit">
+<code class="descname">get_accumulated_profit</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_accumulated_profit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the accumulated profit from self.trades.
+:param period: Periodicity, the periodicity of the profit. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the profit. If None, start from the first trade.
+:param end_time: datetime, the end time (inclusive) to get the profit. If None, ends at the last trade.
+:return: OHLC. The OHLC object for accumulated profit.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_ascii_plot">
+<code class="descname">get_ascii_plot</code><span class="sig-paren">(</span><em>data_kind='balance'</em>, <em>period=None</em>, <em>width=200</em>, <em>height=30</em>, <em>marker='-'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_ascii_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a string representing a plot for some kind of data in ASCII.
+:param data_kind: string, specify the kind of data to plot.</p>
+<blockquote>
+<div>Valid values are: balance, return, drawdown_percent.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity. The periodicity of the data. Valid values are DAILY, MONTHLY.
+If None, choose DAILY or MONTHLY according to the number of data points: if the number of data points
+is more than 100, use MONTHLY, otherwise, use DAILY.</li>
+<li><strong>width</strong> &#8211; int, the width of the chart.</li>
+<li><strong>height</strong> &#8211; int, the height of the chart.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string, a string representing the chart.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_available_money">
+<code class="descname">get_available_money</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_available_money" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the available money from self.account_info.
+:param period: Periodicity, the periodicity of the available money. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the available money.</p>
+<blockquote>
+<div>If None, start from the first data point.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the available money.
+If None, ends at the last data point.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for available money.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_balance">
+<code class="descname">get_balance</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the balance from self.account_info.
+:param period: Periodicity, the periodicity of the balance. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the balance.</p>
+<blockquote>
+<div>If None, start from the first available data point.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the balance. If None, ends at the last data point..</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for accumulated balance.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_drawdown_percent_ohlc">
+<code class="descname">get_drawdown_percent_ohlc</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_drawdown_percent_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get drawdown values.
+:param period: Periodicity, the periodicity of the drawdown. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the drawdown.</p>
+<blockquote>
+<div>If None, start from the first trade.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the drawdown. If None, ends at the last trade.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for accumulated drawdown.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_drawdowns">
+<code class="descname">get_drawdowns</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>only_max=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_drawdowns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of drawdown periods.
+:param period: Periodicity, the periodicity of the drawdown areas. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the drawdown.</p>
+<blockquote>
+<div>If None, start from the first trade.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the drawdown. If None, ends at the last trade.</li>
+<li><strong>only_max</strong> &#8211; boolean, if True, only return max drawdown periods.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">[Drawdown], the list of drawdowns.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_drawdowns_from_balance">
+<code class="descname">get_drawdowns_from_balance</code><span class="sig-paren">(</span><em>balance</em>, <em>only_max=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_drawdowns_from_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get drawdowns from the given balance series.
+:param balance: OHLC, the balance series.
+:param only_max: boolean, if True, only return max drawdown periods.
+:return: [Drawdown], the list of drawdowns.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_initial_capital">
+<code class="descname">get_initial_capital</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_initial_capital" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the initial capital.
+:return: float, initial capital.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_margin">
+<code class="descname">get_margin</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_margin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the margin money from self.account_info.
+:param period: Periodicity, the periodicity of the margin money. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the margin money.</p>
+<blockquote>
+<div>If None, start from the first data point.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the margin money.
+If None, ends at the last data point.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for accumulated margin money.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_position_sizing">
+<code class="descname">get_position_sizing</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_position_sizing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Get position sizing.</dt>
+<dd>balance - available_money</dd>
+<dt>Position sizing = &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</dt>
+<dd>balance</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity, the periodicity of the available money. If None, use self.default_period.</li>
+<li><strong>start_time</strong> &#8211; datetime, the start time (inclusive) to get the available money.
+If None, start from the first data point.</li>
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the available money.
+If None, ends at the last data point.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">OHLC. The OHLC object for position sizing.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_positions">
+<code class="descname">get_positions</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>merge=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get instrument positions.
+:param instrument_id: string, instrument id. If None, return positions for all traded instruments</p>
+<blockquote>
+<div>in this report. If not None, only return positions for the given instrument.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity, the periodicity of the commission. If None, use self.default_period.</li>
+<li><strong>start_time</strong> &#8211; datetime, the start time (inclusive) to get the commission.
+If None, start from the first trade.</li>
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the commission. If None, ends at the last trade.</li>
+<li><strong>merge</strong> &#8211; boolean, if False, no merge will happen.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict{string: dict{string: OHLC}}, meaning dict{instrument_id: dict{position_direction: position_OHLC}}
+Outer keys are instrument ids. Inner keys are position direction, either &#8216;long&#8217; or &#8216;short&#8217;.
+Inner values are OHLC objects whose closes series represent the position information.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_return">
+<code class="descname">get_return</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_return" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the return series.
+:param period: Periodicity, the periodicity of the profit. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the profit. If None, start from the first trade.
+:param end_time: datetime, the end time (inclusive) to get the profit. If None, ends at the last trade.
+:return: OHLC. The OHLC object for return.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_transactions">
+<code class="descname">get_transactions</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.get_transactions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get transactions for an instrument.
+:param instrument_id: string, instrument id. If None, return positions for all traded instruments</p>
+<blockquote>
+<div>in this report. If not None, only return positions for the given instrument.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>direction</strong> &#8211; string, can be &#8216;long&#8217;, &#8216;short&#8217; or None. Return only transactions in the given direction.
+If None, return transactions in both long and short directions.</li>
+<li><strong>start_time</strong> &#8211; datetime, the start time (inclusive) to get the commission.
+If None, start from the first trade.</li>
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the commission. If None, ends at the last trade.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict{string: TransactionList},
+the list of transactions. Keys are instrument ids, values are transactions for that instrument.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.jpeg">
+<code class="descname">jpeg</code><span class="sig-paren">(</span><em>kinds=None</em>, <em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.jpeg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a IPython notebook displayable JPEG image.
+:param kinds: [string], list of curves to draw. Multiple curves are drawn in the same plotting area.
+:param period: Periodicity, the periodicity of the balance. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the balance.</p>
+<blockquote>
+<div>If None, start from the first available data point.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the balance. If None, ends at the last data point..</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A jpeg image which can be displayed directly in IPython notebook.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.sorted_summary_keys">
+<code class="descname">sorted_summary_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.sorted_summary_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sorted metric names used for summary report printing.
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.report.</code><code class="descname">CtpStrategyReport</code><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport" title="ctxalgoctp.ctp.report.CtpAbstractStrategyReport"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.report.CtpAbstractStrategyReport</span></code></a></p>
+<p>Class that represents a report for a strategy.</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.set_log_file">
+<code class="descname">set_log_file</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.set_log_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.log_file with path.
+:param path: string, the path to the log file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_initial_capital">
+<code class="descname">get_initial_capital</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_initial_capital" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_accumulated_profit">
+<code class="descname">get_accumulated_profit</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_accumulated_profit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the accumulated profit from self.trades.
+:param period: Periodicity, the periodicity of the profit. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the profit. If None, start from the first trade.
+:param end_time: datetime, the end time (inclusive) to get the profit. If None, ends at the last trade.
+:return: OHLC. The OHLC object for accumulated profit.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_accumulated_commission">
+<code class="descname">get_accumulated_commission</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_accumulated_commission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the accumulated commission from self.trades.
+:param period: Periodicity, the periodicity of the commission. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the commission.</p>
+<blockquote>
+<div>If None, start from the first trade.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the commission. If None, ends at the last trade.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for accumulated commission.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_balance">
+<code class="descname">get_balance</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the balance from self.account_info.
+:param period: Periodicity, the periodicity of the balance. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the balance.</p>
+<blockquote>
+<div>If None, start from the first available data point.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the balance. If None, ends at the last data point..</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for accumulated balance.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_available_money">
+<code class="descname">get_available_money</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_available_money" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the available money from self.account_info.
+:param period: Periodicity, the periodicity of the available money. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the available money.</p>
+<blockquote>
+<div>If None, start from the first data point.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the available money.
+If None, ends at the last data point.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for available money.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_margin">
+<code class="descname">get_margin</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_margin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the margin money from self.account_info.
+:param period: Periodicity, the periodicity of the margin money. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the margin money.</p>
+<blockquote>
+<div>If None, start from the first data point.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the margin money.
+If None, ends at the last data point.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for accumulated margin money.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_positions">
+<code class="descname">get_positions</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>merge=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_positions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_transactions">
+<code class="descname">get_transactions</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_transactions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_market_periods">
+<code class="descname">get_market_periods</code><span class="sig-paren">(</span><em>instrument_prefix</em>, <em>day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_market_periods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_ohlc">
+<code class="descname">get_ohlc</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get trading ohlc for the given instrument.
+:param instrument_id: string, instrument id.
+:param period: Periodicity, the periodicity of the OHLC. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the ohlc.
+If None, start from the first trade.
+:param end_time: datetime, the end time (inclusive) to get the available money. If None, ends at the last trade.
+:return: OHLC. The OHLC object for accumulated balance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_trades">
+<code class="descname">get_trades</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_trades" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of trades.
+:return: [Trade], the list of trades.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_detailed_report">
+<code class="descname">get_detailed_report</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_detailed_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated, use get_trades instead.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_return">
+<code class="descname">get_return</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_return" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the return series.
+:param period: Periodicity, the periodicity of the profit. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the profit. If None, start from the first trade.
+:param end_time: datetime, the end time (inclusive) to get the profit. If None, ends at the last trade.
+:return: OHLC. The OHLC object for return.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_ohlc_return">
+<code class="descname">get_ohlc_return</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_ohlc_return" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the returns from an instrument.
+:param instrument_id: string, the id of the instrument..
+:param period: Periodicity, the periodicity of the profit. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the profit. If None, start from the first trade.
+:param end_time: datetime, the end time (inclusive) to get the profit. If None, ends at the last trade.
+:return: OHLC. The OHLC object for return.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_summary">
+<code class="descname">get_summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the summary report.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.generate_charts">
+<code class="descname">generate_charts</code><span class="sig-paren">(</span><em>data_source</em>, <em>folder</em>, <em>index_page_name='index.html'</em>, <em>individual_html_base_name='index'</em>, <em>language='zh'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.generate_charts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate local html charts for current report.
+:param data_source: AbstractDataSource, the data source used for the backtesting session.
+:param folder: string, the folder to contain generated html pages.
+:param index_page_name: string, the name of the entry page name.
+:param individual_html_base_name: string, the base name for the generated html pages. The generated html files</p>
+<blockquote>
+<div>are named html_base_named.html where d is the page index starting from 1.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>language</strong> &#8211; string, the language in the generated html page, can be &#8216;zh&#8217; or &#8216;en&#8217;.</td>
+</tr>
+</tbody>
+</table>
+<p>:return string, the file location of the index page.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_charting_spec">
+<code class="descname">get_charting_spec</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_charting_spec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the specification for charting.
+:param url: string, a url from self.get_urls().
+:return: (instrument_id, indicators),</p>
+<blockquote>
+<div>instrument_id: string, the instrument id.
+indicators: [string], the chart specification, each element represents the indicators for a single chart.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_summary_report">
+<code class="descname">get_summary_report</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_summary_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the summary report.
+:return: [(metric_name, all_transaction_value, long_transaction_value, short_transaction_value)]</p>
+<blockquote>
+<div>metric_name: string, name of the metric (in English).
+all_transaction_value: float or None, the metric value for all transactions.
+long_transaction_value: float or None, the metric value for long transactions.
+short_transaction_value: float or None, the metric value for short transactions.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_urls">
+<code class="descname">get_urls</code><span class="sig-paren">(</span><em>lang='zh'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_urls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the set of urls for strategy debugging.
+:param lang: string, language, &#8216;zh&#8217; means Chinese, &#8216;en&#8217; means English.
+:return: OrderedDict from string to string. Keys are url titles, values are the url themselves.</p>
+<blockquote>
+<div>The urls are ordered by date ascendingly.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_transactions_in_bars">
+<code class="descname">get_transactions_in_bars</code><span class="sig-paren">(</span><em>transactions</em>, <em>ohlc</em>, <em>bars</em>, <em>reversed=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_transactions_in_bars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select the transactions which starts within the specified bars. In other words, a transaction is selected from
+transactions and put into the result if and only if its start time is within
+a ohlc bar whose 0-based bar indexes are in bars.
+:param transactions: [CtpTransaction], the list of transactions to choose from.
+:param ohlc: OHLC, the ohlc object.
+:param bars: [int], the 0-based bar indexes. Only transactions whose start time is</p>
+<blockquote>
+<div>within these bars are selected.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reversed</strong> &#8211; boolean, if True, perform the reversed selection. That is, select
+a transaction if its start time is not in any of bars.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">[CtpTransaction], the selected transactions.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.abs">
+<code class="descname">abs</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.abs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.array_max">
+<code class="descname">array_max</code><span class="sig-paren">(</span><em>data</em>, <em>default_value=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.array_max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.array_min">
+<code class="descname">array_min</code><span class="sig-paren">(</span><em>data</em>, <em>default_value=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.array_min" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.calculate_cagr">
+<code class="descname">calculate_cagr</code><span class="sig-paren">(</span><em>daily_balances</em>, <em>trading_day_count</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.calculate_cagr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate CAGR.
+:param daily_balances: OHLC, daily balances.
+:param trading_day_count: int, the number of trading days.
+:return: float, CAGR value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.calculate_longest_drawdown">
+<code class="descname">calculate_longest_drawdown</code><span class="sig-paren">(</span><em>balance</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.calculate_longest_drawdown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.calculate_max_drawdown_percent">
+<code class="descname">calculate_max_drawdown_percent</code><span class="sig-paren">(</span><em>balance</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.calculate_max_drawdown_percent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.calculate_sharpe_ratio">
+<code class="descname">calculate_sharpe_ratio</code><span class="sig-paren">(</span><em>daily_returns</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.calculate_sharpe_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate sharpe ratio.
+:param daily_returns: OHLC, daily returns.
+:return: float, sharpe ratio.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.calculate_sortino_ratio">
+<code class="descname">calculate_sortino_ratio</code><span class="sig-paren">(</span><em>daily_returns</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.calculate_sortino_ratio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.divide">
+<code class="descname">divide</code><span class="sig-paren">(</span><em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.divide" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_ascii_plot">
+<code class="descname">get_ascii_plot</code><span class="sig-paren">(</span><em>data_kind='balance'</em>, <em>period=None</em>, <em>width=200</em>, <em>height=30</em>, <em>marker='-'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_ascii_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a string representing a plot for some kind of data in ASCII.
+:param data_kind: string, specify the kind of data to plot.</p>
+<blockquote>
+<div>Valid values are: balance, return, drawdown_percent.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity. The periodicity of the data. Valid values are DAILY, MONTHLY.
+If None, choose DAILY or MONTHLY according to the number of data points: if the number of data points
+is more than 100, use MONTHLY, otherwise, use DAILY.</li>
+<li><strong>width</strong> &#8211; int, the width of the chart.</li>
+<li><strong>height</strong> &#8211; int, the height of the chart.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string, a string representing the chart.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_drawdown_percent_ohlc">
+<code class="descname">get_drawdown_percent_ohlc</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_drawdown_percent_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get drawdown values.
+:param period: Periodicity, the periodicity of the drawdown. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the drawdown.</p>
+<blockquote>
+<div>If None, start from the first trade.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the drawdown. If None, ends at the last trade.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for accumulated drawdown.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_drawdowns">
+<code class="descname">get_drawdowns</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>only_max=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_drawdowns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of drawdown periods.
+:param period: Periodicity, the periodicity of the drawdown areas. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the drawdown.</p>
+<blockquote>
+<div>If None, start from the first trade.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the drawdown. If None, ends at the last trade.</li>
+<li><strong>only_max</strong> &#8211; boolean, if True, only return max drawdown periods.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">[Drawdown], the list of drawdowns.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_drawdowns_from_balance">
+<code class="descname">get_drawdowns_from_balance</code><span class="sig-paren">(</span><em>balance</em>, <em>only_max=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_drawdowns_from_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get drawdowns from the given balance series.
+:param balance: OHLC, the balance series.
+:param only_max: boolean, if True, only return max drawdown periods.
+:return: [Drawdown], the list of drawdowns.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.get_position_sizing">
+<code class="descname">get_position_sizing</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.get_position_sizing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Get position sizing.</dt>
+<dd>balance - available_money</dd>
+<dt>Position sizing = &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</dt>
+<dd>balance</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity, the periodicity of the available money. If None, use self.default_period.</li>
+<li><strong>start_time</strong> &#8211; datetime, the start time (inclusive) to get the available money.
+If None, start from the first data point.</li>
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the available money.
+If None, ends at the last data point.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">OHLC. The OHLC object for position sizing.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.jpeg">
+<code class="descname">jpeg</code><span class="sig-paren">(</span><em>kinds=None</em>, <em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.jpeg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a IPython notebook displayable JPEG image.
+:param kinds: [string], list of curves to draw. Multiple curves are drawn in the same plotting area.
+:param period: Periodicity, the periodicity of the balance. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the balance.</p>
+<blockquote>
+<div>If None, start from the first available data point.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the balance. If None, ends at the last data point..</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A jpeg image which can be displayed directly in IPython notebook.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report.CtpStrategyReport.sorted_summary_keys">
+<code class="descname">sorted_summary_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.sorted_summary_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sorted metric names used for summary report printing.
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-ctxalgolib.report.abstract_strategy_report"></span><dl class="class">
+<dt id="ctxalgolib.report.abstract_strategy_report.Trade">
+<em class="property">class </em><code class="descclassname">ctxalgolib.report.abstract_strategy_report.</code><code class="descname">Trade</code><span class="sig-paren">(</span><em>order_id</em>, <em>trade_id</em>, <em>instrument_id</em>, <em>role</em>, <em>kind</em>, <em>timestamp</em>, <em>price</em>, <em>volume</em>, <em>position_size_percent</em>, <em>commission</em>, <em>slippage</em>, <em>profit</em>, <em>max_float_profit</em>, <em>max_float_loss</em>, <em>duration</em>, <em>transaction_open_time</em>, <em>transaction_close_time</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.Trade" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Class that represents a trade.</p>
+<p>Initialize current.
+:param order_id: string, the order id.
+:param trade_id: string, the trade id.
+:param instrument_id: string, id of the traded instrument.
+:param role: string, the role type, such as OpenLong, OpenShort, CLoseLong, CloseShort.
+:param kind: string, the trade kind, such as market order, limit order.
+:param timestamp: datetime, time when the trade happens.
+:param price: float, price at which the trade happens.
+:param volume: int, the volume of the trade. Positive integer means long positions,</p>
+<blockquote>
+<div>negative integer means short position.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>position_size_percent</strong> &#8211; float, the position size percent.</li>
+<li><strong>commission</strong> &#8211; float, the commission of current trade.</li>
+<li><strong>slippage</strong> &#8211; float, the slippage of current trade.</li>
+<li><strong>profit</strong> &#8211; float, the profit of current trade.
+Value is meaningful when current trade is an open trade, that is, role is OpenLong or OpenShort.</li>
+<li><strong>max_float_profit</strong> &#8211; float, the max float profit.
+Value is meaningful when current trade is an open trade, that is, role is OpenLong or OpenShort.</li>
+<li><strong>max_float_loss</strong> &#8211; float, the max float loss.
+Value is meaningful when current trade is an open trade, that is, role is OpenLong or OpenShort.</li>
+<li><strong>duration</strong> &#8211; timedelta, the duration of current trade.
+Value is meaningful when current trade is an open trade, that is, role is OpenLong or OpenShort.</li>
+<li><strong>transaction_open_time</strong> &#8211; datetime, the transaction open time.</li>
+<li><strong>transaction_close_time</strong> &#8211; datetime, the transaction close time.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.Trade.as_list">
+<code class="descname">as_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.Trade.as_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return current as a list of objects.
+:return: [object], the content in current.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractTransaction">
+<em class="property">class </em><code class="descclassname">ctxalgolib.report.abstract_strategy_report.</code><code class="descname">AbstractTransaction</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>open_time</em>, <em>close_time</em>, <em>volume</em>, <em>open_price</em>, <em>close_price</em>, <em>profit</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractTransaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractTransaction.set_start_bar">
+<code class="descname">set_start_bar</code><span class="sig-paren">(</span><em>bar</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractTransaction.set_start_bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.start_bar with bar.
+:param bar: int, 0-based bar index.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractTransaction.set_end_bar">
+<code class="descname">set_end_bar</code><span class="sig-paren">(</span><em>bar</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractTransaction.set_end_bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.end_bar with bar.
+:param bar: int, 0-based bar index.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractTransaction.length_by_bar">
+<code class="descname">length_by_bar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractTransaction.length_by_bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the length of current transaction by bar.
+:return: int, length of current transaction by bar.</p>
+<blockquote>
+<div>If start_bar or end_bar is not available, return None.</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgolib.report.abstract_strategy_report.Transaction">
+<em class="property">class </em><code class="descclassname">ctxalgolib.report.abstract_strategy_report.</code><code class="descname">Transaction</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>open_time</em>, <em>close_time</em>, <em>volume</em>, <em>profit</em>, <em>max_float_profit</em>, <em>max_float_loss</em>, <em>open_reason</em>, <em>close_reason</em>, <em>open_trade_id</em>, <em>close_trade_id</em>, <em>open_price</em>, <em>close_price</em>, <em>open_commission</em>, <em>close_commission</em>, <em>open_slippage</em>, <em>close_slippage</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.Transaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgolib.report.abstract_strategy_report.AbstractTransaction" title="ctxalgolib.report.abstract_strategy_report.AbstractTransaction"><code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.report.abstract_strategy_report.AbstractTransaction</span></code></a></p>
+<p>Class that represents a transaction. A transaction consists of an open position and close position pair.
+It specifies a bunch of positions that are opened and closed together.</p>
+<p>Initialize current.
+:param instrument_id: string, id of the traded instrument.
+:param open_time: datetime, the time when the open position leg of current transaction happens.
+:param close_time: datetime, the time when the close position leg of current transaction happens.</p>
+<blockquote>
+<div>Same as open_time when current is a unfinished transaction.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>volume</strong> &#8211; int, volume of the trade. Positive integer means long positions,</td>
+</tr>
+</tbody>
+</table>
+<p>:param profit, float, profit of current transaction.
+:param max_float_profit: float, max float profit.
+:param max_float_loss: float, max float loss.
+:param open_reason: string, reason for opening the position.
+:param close_reason: string, reason for closing the position.
+:param open_trade_id: string, trade id of the open position leg.
+:param close_trade_id: string, trade id of the close position leg.
+:param open_price: float, price at which current transaction is opened.
+:param close_price: float, price at which current transaction is closed.</p>
+<blockquote>
+<div>None if current is a unfinished transaction.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>open_commission</strong> &#8211; float, commission occurred when current transaction is opened.
+None if current is a unfinished transaction.</li>
+<li><strong>close_commission</strong> &#8211; float, commission occurred when current transaction is closed.
+None if current is a unfinished transaction.</li>
+<li><strong>open_slippage</strong> &#8211; float, slippage occurred when current transaction is opened.
+None if current is a unfinished transaction.</li>
+<li><strong>close_slippage</strong> &#8211; float, slippage occurred when current transaction is closed.
+None if current is a unfinished transaction.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.Transaction.to_dict">
+<code class="descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.Transaction.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dict to represent the data inside current transaction.
+Return: dict from string to objects.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.Transaction.length_by_bar">
+<code class="descname">length_by_bar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.Transaction.length_by_bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the length of current transaction by bar.
+:return: int, length of current transaction by bar.</p>
+<blockquote>
+<div>If start_bar or end_bar is not available, return None.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.Transaction.set_end_bar">
+<code class="descname">set_end_bar</code><span class="sig-paren">(</span><em>bar</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.Transaction.set_end_bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.end_bar with bar.
+:param bar: int, 0-based bar index.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.Transaction.set_start_bar">
+<code class="descname">set_start_bar</code><span class="sig-paren">(</span><em>bar</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.Transaction.set_start_bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.start_bar with bar.
+:param bar: int, 0-based bar index.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgolib.report.abstract_strategy_report.TransactionList">
+<em class="property">class </em><code class="descclassname">ctxalgolib.report.abstract_strategy_report.</code><code class="descname">TransactionList</code><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.TransactionList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">list</span></code></p>
+<p>List of transactions, whose elements should be of type ctxalgolib.report.abstract_strategy_report.Transaction.
+Used to support rich display in IPython notebook. The rich display of a transaction list should be a table,
+which includes the following columns:
+instrument_id, open_time, close_time, open_price, close_price, volume, profit, max_float_profit, max_float_loss,
+open_slippage, close_slippage, open_reason, close_reason.</p>
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.TransactionList.as_dataframe">
+<code class="descname">as_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.TransactionList.as_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a Pandas data frame object.
+:return: DataFrame. The dataframe has the following columns in the given order:</p>
+<blockquote>
+<div>instrument_id, open_time, close_time, open_price, close_price, volume, profit.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.TransactionList.append">
+<code class="descname">append</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.TransactionList.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>L.append(object) &#8211; append object to end</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.TransactionList.count">
+<code class="descname">count</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span> &rarr; integer -- return number of occurrences of value<a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.TransactionList.count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.TransactionList.extend">
+<code class="descname">extend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.TransactionList.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>L.extend(iterable) &#8211; extend list by appending elements from the iterable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.TransactionList.index">
+<code class="descname">index</code><span class="sig-paren">(</span><em>value</em><span class="optional">[</span>, <em>start</em><span class="optional">[</span>, <em>stop</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span> &rarr; integer -- return first index of value.<a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.TransactionList.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises ValueError if the value is not present.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.TransactionList.insert">
+<code class="descname">insert</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.TransactionList.insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>L.insert(index, object) &#8211; insert object before index</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.TransactionList.pop">
+<code class="descname">pop</code><span class="sig-paren">(</span><span class="optional">[</span><em>index</em><span class="optional">]</span><span class="sig-paren">)</span> &rarr; item -- remove and return item at index (default last).<a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.TransactionList.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raises IndexError if list is empty or index is out of range.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.TransactionList.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.TransactionList.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>L.remove(value) &#8211; remove first occurrence of value.
+Raises ValueError if the value is not present.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.TransactionList.reverse">
+<code class="descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.TransactionList.reverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>L.reverse() &#8211; reverse <em>IN PLACE</em></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.TransactionList.sort">
+<code class="descname">sort</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.TransactionList.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>L.sort(cmp=None, key=None, reverse=False) &#8211; stable sort <em>IN PLACE</em>;
+cmp(x, y) -&gt; -1, 0, 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport">
+<em class="property">class </em><code class="descclassname">ctxalgolib.report.abstract_strategy_report.</code><code class="descname">AbstractStrategyReport</code><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_initial_capital">
+<code class="descname">get_initial_capital</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_initial_capital" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the initial capital.
+:return: float, initial capital.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_summary_report">
+<code class="descname">get_summary_report</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_summary_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the summary report including various metrics such as sharp_ratio.
+:return: dict{string: object}, Keys are metric names, values are metric values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_summary">
+<code class="descname">get_summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_balance">
+<code class="descname">get_balance</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the balance from self.account_info.
+:param period: Periodicity, the periodicity of the balance. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the balance.</p>
+<blockquote>
+<div>If None, start from the first available data point.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the balance. If None, ends at the last data point..</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for accumulated balance.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_return">
+<code class="descname">get_return</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_return" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the return series.
+:param period: Periodicity, the periodicity of the profit. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the profit. If None, start from the first trade.
+:param end_time: datetime, the end time (inclusive) to get the profit. If None, ends at the last trade.
+:return: OHLC. The OHLC object for return.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_available_money">
+<code class="descname">get_available_money</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_available_money" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the available money from self.account_info.
+:param period: Periodicity, the periodicity of the available money. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the available money.</p>
+<blockquote>
+<div>If None, start from the first data point.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the available money.
+If None, ends at the last data point.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for available money.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_accumulated_profit">
+<code class="descname">get_accumulated_profit</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_accumulated_profit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the accumulated profit from self.trades.
+:param period: Periodicity, the periodicity of the profit. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the profit. If None, start from the first trade.
+:param end_time: datetime, the end time (inclusive) to get the profit. If None, ends at the last trade.
+:return: OHLC. The OHLC object for accumulated profit.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_margin">
+<code class="descname">get_margin</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_margin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the margin money from self.account_info.
+:param period: Periodicity, the periodicity of the margin money. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the margin money.</p>
+<blockquote>
+<div>If None, start from the first data point.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the margin money.
+If None, ends at the last data point.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for accumulated margin money.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_accumulated_commission">
+<code class="descname">get_accumulated_commission</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_accumulated_commission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the accumulated commission from self.trades.
+:param period: Periodicity, the periodicity of the commission. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the commission.</p>
+<blockquote>
+<div>If None, start from the first trade.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the commission. If None, ends at the last trade.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for accumulated commission.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_positions">
+<code class="descname">get_positions</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>merge=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get instrument positions.
+:param instrument_id: string, instrument id. If None, return positions for all traded instruments</p>
+<blockquote>
+<div>in this report. If not None, only return positions for the given instrument.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity, the periodicity of the commission. If None, use self.default_period.</li>
+<li><strong>start_time</strong> &#8211; datetime, the start time (inclusive) to get the commission.
+If None, start from the first trade.</li>
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the commission. If None, ends at the last trade.</li>
+<li><strong>merge</strong> &#8211; boolean, if False, no merge will happen.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict{string: dict{string: OHLC}}, meaning dict{instrument_id: dict{position_direction: position_OHLC}}
+Outer keys are instrument ids. Inner keys are position direction, either &#8216;long&#8217; or &#8216;short&#8217;.
+Inner values are OHLC objects whose closes series represent the position information.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_transactions">
+<code class="descname">get_transactions</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_transactions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get transactions for an instrument.
+:param instrument_id: string, instrument id. If None, return positions for all traded instruments</p>
+<blockquote>
+<div>in this report. If not None, only return positions for the given instrument.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>direction</strong> &#8211; string, can be &#8216;long&#8217;, &#8216;short&#8217; or None. Return only transactions in the given direction.
+If None, return transactions in both long and short directions.</li>
+<li><strong>start_time</strong> &#8211; datetime, the start time (inclusive) to get the commission.
+If None, start from the first trade.</li>
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the commission. If None, ends at the last trade.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict{string: TransactionList},
+the list of transactions. Keys are instrument ids, values are transactions for that instrument.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_position_sizing">
+<code class="descname">get_position_sizing</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_position_sizing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Get position sizing.</dt>
+<dd>balance - available_money</dd>
+<dt>Position sizing = &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</dt>
+<dd>balance</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity, the periodicity of the available money. If None, use self.default_period.</li>
+<li><strong>start_time</strong> &#8211; datetime, the start time (inclusive) to get the available money.
+If None, start from the first data point.</li>
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the available money.
+If None, ends at the last data point.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">OHLC. The OHLC object for position sizing.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_drawdown_percent_ohlc">
+<code class="descname">get_drawdown_percent_ohlc</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_drawdown_percent_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get drawdown values.
+:param period: Periodicity, the periodicity of the drawdown. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the drawdown.</p>
+<blockquote>
+<div>If None, start from the first trade.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the drawdown. If None, ends at the last trade.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for accumulated drawdown.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_drawdowns_from_balance">
+<em class="property">static </em><code class="descname">get_drawdowns_from_balance</code><span class="sig-paren">(</span><em>balance</em>, <em>only_max=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_drawdowns_from_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get drawdowns from the given balance series.
+:param balance: OHLC, the balance series.
+:param only_max: boolean, if True, only return max drawdown periods.
+:return: [Drawdown], the list of drawdowns.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_drawdowns">
+<code class="descname">get_drawdowns</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>only_max=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_drawdowns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of drawdown periods.
+:param period: Periodicity, the periodicity of the drawdown areas. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the drawdown.</p>
+<blockquote>
+<div>If None, start from the first trade.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the drawdown. If None, ends at the last trade.</li>
+<li><strong>only_max</strong> &#8211; boolean, if True, only return max drawdown periods.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">[Drawdown], the list of drawdowns.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_ascii_plot">
+<code class="descname">get_ascii_plot</code><span class="sig-paren">(</span><em>data_kind='balance'</em>, <em>period=None</em>, <em>width=200</em>, <em>height=30</em>, <em>marker='-'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.get_ascii_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a string representing a plot for some kind of data in ASCII.
+:param data_kind: string, specify the kind of data to plot.</p>
+<blockquote>
+<div>Valid values are: balance, return, drawdown_percent.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity. The periodicity of the data. Valid values are DAILY, MONTHLY.
+If None, choose DAILY or MONTHLY according to the number of data points: if the number of data points
+is more than 100, use MONTHLY, otherwise, use DAILY.</li>
+<li><strong>width</strong> &#8211; int, the width of the chart.</li>
+<li><strong>height</strong> &#8211; int, the height of the chart.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string, a string representing the chart.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.calculate_cagr">
+<em class="property">static </em><code class="descname">calculate_cagr</code><span class="sig-paren">(</span><em>daily_balances</em>, <em>trading_day_count</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.calculate_cagr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate CAGR.
+:param daily_balances: OHLC, daily balances.
+:param trading_day_count: int, the number of trading days.
+:return: float, CAGR value.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.calculate_sharpe_ratio">
+<em class="property">static </em><code class="descname">calculate_sharpe_ratio</code><span class="sig-paren">(</span><em>daily_returns</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.calculate_sharpe_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate sharpe ratio.
+:param daily_returns: OHLC, daily returns.
+:return: float, sharpe ratio.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.calculate_sortino_ratio">
+<em class="property">static </em><code class="descname">calculate_sortino_ratio</code><span class="sig-paren">(</span><em>daily_returns</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.calculate_sortino_ratio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.calculate_max_drawdown_percent">
+<em class="property">static </em><code class="descname">calculate_max_drawdown_percent</code><span class="sig-paren">(</span><em>balance</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.calculate_max_drawdown_percent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.calculate_longest_drawdown">
+<em class="property">static </em><code class="descname">calculate_longest_drawdown</code><span class="sig-paren">(</span><em>balance</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.calculate_longest_drawdown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.divide">
+<code class="descname">divide</code><span class="sig-paren">(</span><em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.divide" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.abs">
+<code class="descname">abs</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.abs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.array_max">
+<code class="descname">array_max</code><span class="sig-paren">(</span><em>data</em>, <em>default_value=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.array_max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.array_min">
+<code class="descname">array_min</code><span class="sig-paren">(</span><em>data</em>, <em>default_value=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.array_min" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.sorted_summary_keys">
+<code class="descname">sorted_summary_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.sorted_summary_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sorted metric names used for summary report printing.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.jpeg">
+<code class="descname">jpeg</code><span class="sig-paren">(</span><em>kinds=None</em>, <em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport.jpeg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a IPython notebook displayable JPEG image.
+:param kinds: [string], list of curves to draw. Multiple curves are drawn in the same plotting area.
+:param period: Periodicity, the periodicity of the balance. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the balance.</p>
+<blockquote>
+<div>If None, start from the first available data point.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the balance. If None, ends at the last data point..</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A jpeg image which can be displayed directly in IPython notebook.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport">
+<em class="property">class </em><code class="descclassname">ctxalgolib.report.abstract_strategy_report.</code><code class="descname">CompositeStrategyReport</code><span class="sig-paren">(</span><em>period=20</em>, <em>reports=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport" title="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport"><code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport</span></code></a></p>
+<p>Initialize current.
+:param period: Periodicity, the default period for current.
+:param reports: [AbstractStrategyReport], the list of individual reports to include in current composite report.</p>
+<blockquote>
+<div>You can also use self.add_reports or self.add_report to add individual report(s) later.</div></blockquote>
+<dl class="staticmethod">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.from_individual_reports">
+<em class="property">static </em><code class="descname">from_individual_reports</code><span class="sig-paren">(</span><em>reports</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.from_individual_reports" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate composite report from a list of individual reports.
+:param reports: [AbstractStrategyReport], reports.
+:return: CtpCompositeStrategyReport, the composite report.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.add_reports">
+<code class="descname">add_reports</code><span class="sig-paren">(</span><em>reports</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.add_reports" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add all reports into current.
+:param reports: [CtpStrategyReport], the list of reports to add.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.add_report">
+<code class="descname">add_report</code><span class="sig-paren">(</span><em>report</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.add_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a report into current composite report.
+:param report: CtpStrategyReport.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_initial_capital">
+<code class="descname">get_initial_capital</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_initial_capital" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_return">
+<code class="descname">get_return</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_return" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the composite return series.
+:param period: Periodicity, the periodicity of the profit. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the profit. If None, start from the first trade.
+:param end_time: datetime, the end time (inclusive) to get the profit. If None, ends at the last trade.
+:return: OHLC. The OHLC object for return.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_balance">
+<code class="descname">get_balance</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the composited balance from self.account_info.
+:param period: Periodicity, the periodicity of the balance. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the balance.</p>
+<blockquote>
+<div>If None, start from the first available data point.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the balance. If None, ends at the last data point..</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for accumulated balance.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_accumulated_profit">
+<code class="descname">get_accumulated_profit</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_accumulated_profit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_accumulated_commission">
+<code class="descname">get_accumulated_commission</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_accumulated_commission" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_available_money">
+<code class="descname">get_available_money</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_available_money" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_margin">
+<code class="descname">get_margin</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_positions">
+<code class="descname">get_positions</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>merge=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_positions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_transactions">
+<code class="descname">get_transactions</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_transactions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_summary">
+<code class="descname">get_summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_summary_report">
+<code class="descname">get_summary_report</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_summary_report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.abs">
+<code class="descname">abs</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.abs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.array_max">
+<code class="descname">array_max</code><span class="sig-paren">(</span><em>data</em>, <em>default_value=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.array_max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.array_min">
+<code class="descname">array_min</code><span class="sig-paren">(</span><em>data</em>, <em>default_value=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.array_min" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.calculate_cagr">
+<code class="descname">calculate_cagr</code><span class="sig-paren">(</span><em>daily_balances</em>, <em>trading_day_count</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.calculate_cagr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate CAGR.
+:param daily_balances: OHLC, daily balances.
+:param trading_day_count: int, the number of trading days.
+:return: float, CAGR value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.calculate_longest_drawdown">
+<code class="descname">calculate_longest_drawdown</code><span class="sig-paren">(</span><em>balance</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.calculate_longest_drawdown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.calculate_max_drawdown_percent">
+<code class="descname">calculate_max_drawdown_percent</code><span class="sig-paren">(</span><em>balance</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.calculate_max_drawdown_percent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.calculate_sharpe_ratio">
+<code class="descname">calculate_sharpe_ratio</code><span class="sig-paren">(</span><em>daily_returns</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.calculate_sharpe_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate sharpe ratio.
+:param daily_returns: OHLC, daily returns.
+:return: float, sharpe ratio.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.calculate_sortino_ratio">
+<code class="descname">calculate_sortino_ratio</code><span class="sig-paren">(</span><em>daily_returns</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.calculate_sortino_ratio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.divide">
+<code class="descname">divide</code><span class="sig-paren">(</span><em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.divide" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_ascii_plot">
+<code class="descname">get_ascii_plot</code><span class="sig-paren">(</span><em>data_kind='balance'</em>, <em>period=None</em>, <em>width=200</em>, <em>height=30</em>, <em>marker='-'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_ascii_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a string representing a plot for some kind of data in ASCII.
+:param data_kind: string, specify the kind of data to plot.</p>
+<blockquote>
+<div>Valid values are: balance, return, drawdown_percent.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity. The periodicity of the data. Valid values are DAILY, MONTHLY.
+If None, choose DAILY or MONTHLY according to the number of data points: if the number of data points
+is more than 100, use MONTHLY, otherwise, use DAILY.</li>
+<li><strong>width</strong> &#8211; int, the width of the chart.</li>
+<li><strong>height</strong> &#8211; int, the height of the chart.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string, a string representing the chart.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_drawdown_percent_ohlc">
+<code class="descname">get_drawdown_percent_ohlc</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_drawdown_percent_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get drawdown values.
+:param period: Periodicity, the periodicity of the drawdown. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the drawdown.</p>
+<blockquote>
+<div>If None, start from the first trade.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the drawdown. If None, ends at the last trade.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for accumulated drawdown.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_drawdowns">
+<code class="descname">get_drawdowns</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>only_max=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_drawdowns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of drawdown periods.
+:param period: Periodicity, the periodicity of the drawdown areas. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the drawdown.</p>
+<blockquote>
+<div>If None, start from the first trade.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the drawdown. If None, ends at the last trade.</li>
+<li><strong>only_max</strong> &#8211; boolean, if True, only return max drawdown periods.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">[Drawdown], the list of drawdowns.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_drawdowns_from_balance">
+<code class="descname">get_drawdowns_from_balance</code><span class="sig-paren">(</span><em>balance</em>, <em>only_max=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_drawdowns_from_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get drawdowns from the given balance series.
+:param balance: OHLC, the balance series.
+:param only_max: boolean, if True, only return max drawdown periods.
+:return: [Drawdown], the list of drawdowns.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_position_sizing">
+<code class="descname">get_position_sizing</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.get_position_sizing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Get position sizing.</dt>
+<dd>balance - available_money</dd>
+<dt>Position sizing = &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</dt>
+<dd>balance</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity, the periodicity of the available money. If None, use self.default_period.</li>
+<li><strong>start_time</strong> &#8211; datetime, the start time (inclusive) to get the available money.
+If None, start from the first data point.</li>
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the available money.
+If None, ends at the last data point.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">OHLC. The OHLC object for position sizing.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.jpeg">
+<code class="descname">jpeg</code><span class="sig-paren">(</span><em>kinds=None</em>, <em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.jpeg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a IPython notebook displayable JPEG image.
+:param kinds: [string], list of curves to draw. Multiple curves are drawn in the same plotting area.
+:param period: Periodicity, the periodicity of the balance. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the balance.</p>
+<blockquote>
+<div>If None, start from the first available data point.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the balance. If None, ends at the last data point..</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A jpeg image which can be displayed directly in IPython notebook.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.sorted_summary_keys">
+<code class="descname">sorted_summary_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.CompositeStrategyReport.sorted_summary_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sorted metric names used for summary report printing.
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport">
+<em class="property">class </em><code class="descclassname">ctxalgolib.report.abstract_strategy_report.</code><code class="descname">PlainStrategyReport</code><span class="sig-paren">(</span><em>initial_capital</em>, <em>balance</em>, <em>available_money</em>, <em>margin</em>, <em>profit</em>, <em>commission</em>, <em>transactions</em>, <em>instrument_positions</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport" title="ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport"><code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.report.abstract_strategy_report.AbstractStrategyReport</span></code></a></p>
+<p>Strategy report from plain backtester.</p>
+<p>Initialize current.
+:param initial_capital: float, initial capital.
+:param balance: OHLC, the balance ohlc.
+:param available_money: OHLC, the available money ohlc.
+:param margin: OHLC, margin ohlc.
+:param profit: OHLC, the profit ohlc.
+:param commission: OHLC, the commission ohlc.
+:param transactions: dict{string: TransactionList}, keys are instrument ids, values are transactions</p>
+<blockquote>
+<div>on those instruments.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instrument_positions</strong> &#8211; dict{string: dict{string: OHLC}},
+meaning dict{instrument_id: dict{direction: OHLC}}. The instrument positions.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_initial_capital">
+<code class="descname">get_initial_capital</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_initial_capital" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_summary_report">
+<code class="descname">get_summary_report</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_summary_report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_balance">
+<code class="descname">get_balance</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_balance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_margin">
+<code class="descname">get_margin</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_available_money">
+<code class="descname">get_available_money</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_available_money" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.abs">
+<code class="descname">abs</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.abs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.array_max">
+<code class="descname">array_max</code><span class="sig-paren">(</span><em>data</em>, <em>default_value=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.array_max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.array_min">
+<code class="descname">array_min</code><span class="sig-paren">(</span><em>data</em>, <em>default_value=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.array_min" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.calculate_cagr">
+<code class="descname">calculate_cagr</code><span class="sig-paren">(</span><em>daily_balances</em>, <em>trading_day_count</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.calculate_cagr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate CAGR.
+:param daily_balances: OHLC, daily balances.
+:param trading_day_count: int, the number of trading days.
+:return: float, CAGR value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.calculate_longest_drawdown">
+<code class="descname">calculate_longest_drawdown</code><span class="sig-paren">(</span><em>balance</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.calculate_longest_drawdown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.calculate_max_drawdown_percent">
+<code class="descname">calculate_max_drawdown_percent</code><span class="sig-paren">(</span><em>balance</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.calculate_max_drawdown_percent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.calculate_sharpe_ratio">
+<code class="descname">calculate_sharpe_ratio</code><span class="sig-paren">(</span><em>daily_returns</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.calculate_sharpe_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate sharpe ratio.
+:param daily_returns: OHLC, daily returns.
+:return: float, sharpe ratio.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.calculate_sortino_ratio">
+<code class="descname">calculate_sortino_ratio</code><span class="sig-paren">(</span><em>daily_returns</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.calculate_sortino_ratio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.divide">
+<code class="descname">divide</code><span class="sig-paren">(</span><em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.divide" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_accumulated_profit">
+<code class="descname">get_accumulated_profit</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_accumulated_profit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_ascii_plot">
+<code class="descname">get_ascii_plot</code><span class="sig-paren">(</span><em>data_kind='balance'</em>, <em>period=None</em>, <em>width=200</em>, <em>height=30</em>, <em>marker='-'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_ascii_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a string representing a plot for some kind of data in ASCII.
+:param data_kind: string, specify the kind of data to plot.</p>
+<blockquote>
+<div>Valid values are: balance, return, drawdown_percent.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity. The periodicity of the data. Valid values are DAILY, MONTHLY.
+If None, choose DAILY or MONTHLY according to the number of data points: if the number of data points
+is more than 100, use MONTHLY, otherwise, use DAILY.</li>
+<li><strong>width</strong> &#8211; int, the width of the chart.</li>
+<li><strong>height</strong> &#8211; int, the height of the chart.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string, a string representing the chart.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_drawdown_percent_ohlc">
+<code class="descname">get_drawdown_percent_ohlc</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_drawdown_percent_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get drawdown values.
+:param period: Periodicity, the periodicity of the drawdown. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the drawdown.</p>
+<blockquote>
+<div>If None, start from the first trade.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the drawdown. If None, ends at the last trade.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">OHLC. The OHLC object for accumulated drawdown.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_drawdowns">
+<code class="descname">get_drawdowns</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>only_max=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_drawdowns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of drawdown periods.
+:param period: Periodicity, the periodicity of the drawdown areas. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the drawdown.</p>
+<blockquote>
+<div>If None, start from the first trade.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the drawdown. If None, ends at the last trade.</li>
+<li><strong>only_max</strong> &#8211; boolean, if True, only return max drawdown periods.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">[Drawdown], the list of drawdowns.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_drawdowns_from_balance">
+<code class="descname">get_drawdowns_from_balance</code><span class="sig-paren">(</span><em>balance</em>, <em>only_max=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_drawdowns_from_balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get drawdowns from the given balance series.
+:param balance: OHLC, the balance series.
+:param only_max: boolean, if True, only return max drawdown periods.
+:return: [Drawdown], the list of drawdowns.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_position_sizing">
+<code class="descname">get_position_sizing</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_position_sizing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Get position sizing.</dt>
+<dd>balance - available_money</dd>
+<dt>Position sizing = &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</dt>
+<dd>balance</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity, the periodicity of the available money. If None, use self.default_period.</li>
+<li><strong>start_time</strong> &#8211; datetime, the start time (inclusive) to get the available money.
+If None, start from the first data point.</li>
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the available money.
+If None, ends at the last data point.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">OHLC. The OHLC object for position sizing.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_return">
+<code class="descname">get_return</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_return" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the return series.
+:param period: Periodicity, the periodicity of the profit. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the profit. If None, start from the first trade.
+:param end_time: datetime, the end time (inclusive) to get the profit. If None, ends at the last trade.
+:return: OHLC. The OHLC object for return.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_summary">
+<code class="descname">get_summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.jpeg">
+<code class="descname">jpeg</code><span class="sig-paren">(</span><em>kinds=None</em>, <em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.jpeg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a IPython notebook displayable JPEG image.
+:param kinds: [string], list of curves to draw. Multiple curves are drawn in the same plotting area.
+:param period: Periodicity, the periodicity of the balance. If None, use self.default_period.
+:param start_time: datetime, the start time (inclusive) to get the balance.</p>
+<blockquote>
+<div>If None, start from the first available data point.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the balance. If None, ends at the last data point..</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A jpeg image which can be displayed directly in IPython notebook.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.sorted_summary_keys">
+<code class="descname">sorted_summary_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.sorted_summary_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sorted metric names used for summary report printing.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_accumulated_commission">
+<code class="descname">get_accumulated_commission</code><span class="sig-paren">(</span><em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_accumulated_commission" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_positions">
+<code class="descname">get_positions</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em>, <em>merge=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_positions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_transactions">
+<code class="descname">get_transactions</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgolib.report.abstract_strategy_report.PlainStrategyReport.get_transactions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 
 
@@ -251,7 +2253,7 @@ log size that those kinds of tags take.</td>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2015, .
+        &copy; Copyright 2016, .
       Last updated on Jun 21, 2016.
     </p>
   </div>

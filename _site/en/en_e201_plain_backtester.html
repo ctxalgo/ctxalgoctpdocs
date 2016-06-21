@@ -281,11 +281,7 @@ the <code class="highlighter-rouge">ohlcs</code> parameter of the <code class="h
 5
 6
 7
-8
-9
-10
-11
-12</pre></td><td class="code"><pre><span class="n">instrument_ids</span> <span class="o">=</span> <span class="p">[</span><span class="s">'cu99'</span><span class="p">,</span> <span class="s">'rb99'</span><span class="p">]</span>
+8</pre></td><td class="code"><pre><span class="n">instrument_ids</span> <span class="o">=</span> <span class="p">[</span><span class="s">'cu99'</span><span class="p">,</span> <span class="s">'rb99'</span><span class="p">]</span>
 <span class="n">data_source2</span> <span class="o">=</span> <span class="n">get_data_source</span><span class="p">(</span><span class="n">instrument_ids</span><span class="p">,</span> <span class="n">base_folder</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">data_period</span><span class="p">)</span>
 
 <span class="n">backtester2</span> <span class="o">=</span> <span class="n">PlainBacktester</span><span class="p">(</span><span class="n">instrument_ids</span><span class="o">=</span><span class="n">instrument_ids</span><span class="p">)</span>
@@ -293,9 +289,93 @@ the <code class="highlighter-rouge">ohlcs</code> parameter of the <code class="h
     <span class="c"># Update backtester2 with price from two ohlcs.</span>
     <span class="n">backtester2</span><span class="o">.</span><span class="n">update_price</span><span class="p">(</span><span class="n">ohlcs</span><span class="o">=</span><span class="n">ohlcs</span><span class="p">)</span>
     <span class="c"># Do actual trading here.</span>
+</pre></td></tr></tbody></table>
+</div>
+</div>
 
+<h2 id="use-external-data-source-in-plain-backtesting">5. Use external data source in plain backtesting</h2>
 
+<p>If you have your own ohlc data stored in csv files, you can config the <code class="highlighter-rouge">get_data_source</code> method to load those files.
+The following code listing showing how to do this.</p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></td><td class="code"><pre><span class="k">def</span> <span class="nf">parse_ohlc_line</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+    <span class="s">"""
+    Parse a line from ohlc file into data.
+    :param line: string, a line from the ohlc file.
+    :return: (timestamp, open, high, low, close_, volume, amount)
+        The return is a tuple containing the parsed data:
+            timestamp: datetime, the timestamp of the ohlc line.
+            open: float, the open price,
+            high: float, the high price,
+            low: float, the low price,
+            close: float, the close price,
+            volume: int, the volume,
+            amount: float, the amount of money that has been traded, if there is no amount data
+                in the raw text, set this to 0.
+    """</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">','</span><span class="p">)</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">'</span><span class="si">%</span><span class="s">Y-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">d </span><span class="si">%</span><span class="s">H:</span><span class="si">%</span><span class="s">M:</span><span class="si">%</span><span class="s">S'</span><span class="p">)</span>
+    <span class="n">open_</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+    <span class="n">high</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+    <span class="n">low</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+    <span class="n">close_</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">7</span><span class="p">])</span>
+    <span class="n">volume</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">8</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">ts</span><span class="p">,</span> <span class="n">open_</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">close_</span><span class="p">,</span> <span class="n">volume</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="n">instrument_ids</span> <span class="o">=</span> <span class="p">[</span><span class="s">'IF99'</span><span class="p">]</span>
+<span class="n">data_paths</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'IF99'</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">'..'</span><span class="p">,</span> <span class="s">'..'</span><span class="p">,</span> <span class="s">'tests'</span><span class="p">,</span> <span class="s">'data'</span><span class="p">,</span> <span class="s">'IF99_15m_20140101_20141231.csv'</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">data_source3</span> <span class="o">=</span> <span class="n">get_data_source</span><span class="p">(</span>
+    <span class="n">instrument_ids</span><span class="p">,</span> <span class="n">base_folder</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">data_period</span><span class="p">,</span>
+    <span class="n">data_paths</span><span class="o">=</span><span class="n">data_paths</span><span class="p">,</span>            <span class="c"># Point data file locations to data source.</span>
+    <span class="n">line_parser</span><span class="o">=</span><span class="n">parse_ohlc_line</span><span class="p">)</span>      <span class="c"># Specify how to parse your data files.</span>
+
+<span class="n">backtester3</span> <span class="o">=</span> <span class="n">PlainBacktester</span><span class="p">(</span><span class="n">instrument_ids</span><span class="o">=</span><span class="n">instrument_ids</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ohlcs</span> <span class="ow">in</span> <span class="n">data_source3</span><span class="o">.</span><span class="n">multiple_bars_iterator</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="n">Periodicity</span><span class="o">.</span><span class="n">FIVE_MINUTE</span><span class="p">,</span> <span class="n">instrument_ids</span><span class="o">=</span><span class="n">instrument_ids</span><span class="p">):</span>
+    <span class="c"># Update backtester3 with price from two ohlcs.</span>
+    <span class="n">backtester3</span><span class="o">.</span><span class="n">update_price</span><span class="p">(</span><span class="n">ohlcs</span><span class="o">=</span><span class="n">ohlcs</span><span class="p">)</span>
+    <span class="c"># Do actual trading here.</span>
 
 </pre></td></tr></tbody></table>
 </div>
