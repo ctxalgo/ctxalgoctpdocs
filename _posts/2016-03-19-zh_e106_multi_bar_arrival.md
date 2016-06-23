@@ -9,7 +9,7 @@ category: zh
 
 `add_bar_arrival_action`的定义如下：
 
-```
+```python
 def add_bar_arrival_action(self, action, period=None, instrument_ids=None,
     ohlc_kind=OhlcGeneratorConstants.time_based, name=''):
 ```

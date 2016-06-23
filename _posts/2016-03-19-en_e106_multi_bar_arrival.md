@@ -11,7 +11,7 @@ strategy class.
 
 The `add_bar_arrival_action` method has the following signature:
 
-```
+```python
 def add_bar_arrival_action(self, action, period=None, instrument_ids=None,
     ohlc_kind=OhlcGeneratorConstants.time_based, name=''):
 ```
