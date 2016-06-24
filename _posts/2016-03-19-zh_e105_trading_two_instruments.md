@@ -5,6 +5,7 @@ category: zh
 ---
 
 这个示例展示了如何在一个策略中同时交易两个品种，多个品种的情况类推：
+
 1. 在策略的`__init__`方法的`instrument_ids`参数中指定要交易的所有的品种的ID。
 2. 在使用`has_position`，`has_pending_order`和`change_position_to`等API时，通过`instrument_id`参数来指定要操作的品种。
 

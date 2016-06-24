@@ -5,6 +5,7 @@ category: en
 ---
 
 This example shows how to write a strategy to trade two instruments, and the same goes for more instruments:
+
  1. Specify the instrument ids that you want to trade in the `instrument_ids` parameter in the `__init__` method of the strategy.
  2. When using APIs such as `has_position`, `has_pending_order` and `change_position_to`, you need to specify the instrument_id for the instrument that you want to operate.
 
