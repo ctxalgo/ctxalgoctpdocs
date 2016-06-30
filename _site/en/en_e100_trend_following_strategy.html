@@ -185,49 +185,39 @@ HTML page to view all the traded. You can review the trades inside a browser.</p
 31
 32
 33
-34
-35
-36
-37
-38
-39</pre></td><td class="code"><pre><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">start_date</span> <span class="o">=</span> <span class="s">'2014-01-01'</span>  <span class="c"># Backtesting start date.</span>
-    <span class="n">end_date</span> <span class="o">=</span> <span class="s">'2014-12-31'</span>    <span class="c"># Backtesting end date.</span>
+34</pre></td><td class="code"><pre><span class="n">start_date</span> <span class="o">=</span> <span class="s">'2014-01-01'</span>  <span class="c"># Backtesting start date.</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s">'2014-12-31'</span>    <span class="c"># Backtesting end date.</span>
 
-    <span class="c"># The values in config will be used to instantiate the strategy objects by the backtest method.</span>
-    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s">'instrument_ids'</span><span class="p">:</span> <span class="p">[</span><span class="s">'IF99'</span><span class="p">],</span>                      <span class="c"># We are trading this future instrument.</span>
-        <span class="s">'strategy_period'</span><span class="p">:</span> <span class="n">Periodicity</span><span class="o">.</span><span class="n">FIFTEEN_MINUTE</span><span class="p">,</span>   <span class="c"># The ohlc bar granularity on which trading happens.</span>
-        <span class="s">'parameters'</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s">'fast_ma_period'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>   <span class="c"># The parameter for the fast moving average.</span>
-            <span class="s">'slow_ma_period'</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>  <span class="c"># The parameter for the slow moving average.</span>
-        <span class="p">}</span>
+<span class="c"># The values in config will be used to instantiate the strategy objects by the backtest method.</span>
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'instrument_ids'</span><span class="p">:</span> <span class="p">[</span><span class="s">'IF99'</span><span class="p">],</span>                      <span class="c"># We are trading this future instrument.</span>
+    <span class="s">'strategy_period'</span><span class="p">:</span> <span class="n">Periodicity</span><span class="o">.</span><span class="n">FIFTEEN_MINUTE</span><span class="p">,</span>   <span class="c"># The ohlc bar granularity on which trading happens.</span>
+    <span class="s">'parameters'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">'fast_ma_period'</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>   <span class="c"># The parameter for the fast moving average.</span>
+        <span class="s">'slow_ma_period'</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>  <span class="c"># The parameter for the slow moving average.</span>
     <span class="p">}</span>
-    <span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-    <span class="n">report</span><span class="p">,</span> <span class="n">data_source</span> <span class="o">=</span> <span class="n">backtest</span><span class="p">(</span><span class="n">TrendFollowingStrategy</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
-    <span class="n">end_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Backtesting duration: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+<span class="p">}</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">report</span><span class="p">,</span> <span class="n">data_source</span> <span class="o">=</span> <span class="n">backtest</span><span class="p">(</span><span class="n">TrendFollowingStrategy</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+<span class="n">end_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Backtesting duration: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
 
-    <span class="c"># Use charting facility to visualize trades.</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">ChartsWithReport</span><span class="p">(</span><span class="n">report</span><span class="p">,</span> <span class="n">data_source</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="n">report</span><span class="o">.</span><span class="n">base_folder</span><span class="p">,</span> <span class="n">open_in_browser</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">set_instrument</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s">'instrument_ids'</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">period</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s">'strategy_period'</span><span class="p">])</span>
+<span class="c"># Use charting facility to visualize trades.</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ChartsWithReport</span><span class="p">(</span><span class="n">report</span><span class="p">,</span> <span class="n">data_source</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="n">report</span><span class="o">.</span><span class="n">base_folder</span><span class="p">,</span> <span class="n">open_in_browser</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">set_instrument</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s">'instrument_ids'</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">c</span><span class="o">.</span><span class="n">period</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s">'strategy_period'</span><span class="p">])</span>
 
-    <span class="n">c</span><span class="o">.</span><span class="n">ohlc</span><span class="p">()</span>                                        <span class="c"># Draw ohlc bars.</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">volume</span><span class="p">()</span>                                      <span class="c"># Draw volumes bars.</span>
+<span class="n">c</span><span class="o">.</span><span class="n">ohlc</span><span class="p">()</span>                                        <span class="c"># Draw ohlc bars.</span>
+<span class="n">c</span><span class="o">.</span><span class="n">volume</span><span class="p">()</span>                                      <span class="c"># Draw volumes bars.</span>
 
-    <span class="n">c</span><span class="o">.</span><span class="n">ma</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s">'parameters'</span><span class="p">][</span><span class="s">'fast_ma_period'</span><span class="p">])</span>    <span class="c"># Draw the fast moving average.</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">ma</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s">'parameters'</span><span class="p">][</span><span class="s">'slow_ma_period'</span><span class="p">])</span>    <span class="c"># Draw the slow moving average.</span>
+<span class="n">c</span><span class="o">.</span><span class="n">ma</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s">'parameters'</span><span class="p">][</span><span class="s">'fast_ma_period'</span><span class="p">])</span>    <span class="c"># Draw the fast moving average.</span>
+<span class="n">c</span><span class="o">.</span><span class="n">ma</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s">'parameters'</span><span class="p">][</span><span class="s">'slow_ma_period'</span><span class="p">])</span>    <span class="c"># Draw the slow moving average.</span>
 
-    <span class="n">c</span><span class="o">.</span><span class="n">drawdowns</span><span class="p">(</span><span class="n">max_drawdown_color</span><span class="o">=</span><span class="s">'pink'</span><span class="p">)</span>          <span class="c"># Visualize the max-drawdown period(s).</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">instrument_positions</span><span class="p">()</span>                        <span class="c"># Draw the current positions that we are holding.</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">transactions</span><span class="p">()</span>                                <span class="c"># Draw all the transactions (open and close of a position).</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">balance</span><span class="p">()</span>                                     <span class="c"># Draw the balance.</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                        <span class="c"># Open the html page in browser.</span>
-
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">drawdowns</span><span class="p">(</span><span class="n">max_drawdown_color</span><span class="o">=</span><span class="s">'pink'</span><span class="p">)</span>          <span class="c"># Visualize the max-drawdown period(s).</span>
+<span class="n">c</span><span class="o">.</span><span class="n">instrument_positions</span><span class="p">()</span>                        <span class="c"># Draw the current positions that we are holding.</span>
+<span class="n">c</span><span class="o">.</span><span class="n">transactions</span><span class="p">()</span>                                <span class="c"># Draw all the transactions (open and close of a position).</span>
+<span class="n">c</span><span class="o">.</span><span class="n">balance</span><span class="p">()</span>                                     <span class="c"># Draw the balance.</span>
+<span class="n">c</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                        <span class="c"># Open the html page in browser.</span>
 
 </pre></td></tr></tbody></table>
 </div>
