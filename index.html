@@ -8,12 +8,15 @@ title: Pages
         {% for cate in site.categories %}
             {% if cate[0] == 'zh' %}
         
-                {% for post in cate[1] %}
-                <li>
-                    <h4>
-                        <a href="{{ post.url }}">{{ post.title }}</a>
-                    </h4>
-                </li>
+                {% for post in cate[1] reversed %}
+                    {% if post.category_other %}
+                    {% else %}
+                    <li>
+                        <h4>
+                            <a href="{{ post.url }}">{{ post.title }}</a>
+                        </h4>
+                    </li>
+                    {% endif %}
                 {% endfor %}
             
             {% endif %}

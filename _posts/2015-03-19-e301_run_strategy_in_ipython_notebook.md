@@ -2,6 +2,7 @@
 title: Run strategy in ipython notebook
 layout: post
 categories: [ipython,zh,en]
+category_other: true
 ---
 
 

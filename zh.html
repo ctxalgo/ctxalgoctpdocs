@@ -3,19 +3,31 @@ layout: default
 title: Docs
 ---
 <div>
-    <ul>
+    <ul id="archive">
         {% for cate in site.categories %}
-        {% if cate[0] == 'zh' %}
-   
-            {% for post in cate[1] %}
-            <li>
-                <h4>
-                    <a href="{{ post.url }}">{{ post.title }}</a>
-                </h4>
-            </li>
-            {% endfor %}
+            {% if cate[0] == 'zh' %}
         
-        {% endif %}
+                {% for post in cate[1] reversed %}
+                    {% if post.category_other %}
+                    {% else %}
+                    <li>
+                        <h4>
+                            <a href="{{ post.url }}">{{ post.title }}</a>
+                        </h4>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            
+            {% endif %}
         {% endfor %}
-    </ul> 
+        
+        {% for cate in site.categories %}
+            
+            {% if site.data.page.categories contains cate[0] %}
+                <li id="{{ cate[0] }}">
+                    <h4><a href="./{{ cate[0] }}.html">{{ cate[0] }}/</a></h4>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
 </div>
