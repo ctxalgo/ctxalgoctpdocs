@@ -14,3 +14,8 @@ html, body{
 .footer {
   margin-top:-75px;
 } 
+
+# code block
+td.code {
+    width: 100%;
+}
