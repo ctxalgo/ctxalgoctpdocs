@@ -1,0 +1,2450 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>r105_place_pending_order_and_exit &mdash; ctxalgoctp 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ctxalgoctp 0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="live" href="index.html"/>
+        <link rel="next" title="r106_cancel_all_pending_orders_from_previous_session" href="r106_cancel_all_pending_orders_from_previous_session.html"/>
+        <link rel="prev" title="r104_automatic_order_cancellation" href="r104_automatic_order_cancellation.html"/> 
+
+  
+  <script src="../../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> ctxalgoctp
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ctp</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../code_gen/index.html">code_gen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_producers/index.html">data_producers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../execution_drivers/index.html">execution_drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../factories/index.html">factories</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">live</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="r100_connect_to_ctp.html">r100_connect_to_ctp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r101_change_positions.html">r101_change_positions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r102_cancel_order_after_fully_executed.html">r102_cancel_order_after_fully_executed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r103_cancel_order_while_pending.html">r103_cancel_order_while_pending</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r104_automatic_order_cancellation.html">r104_automatic_order_cancellation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">r105_place_pending_order_and_exit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r106_cancel_all_pending_orders_from_previous_session.html">r106_cancel_all_pending_orders_from_previous_session</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../logger/index.html">logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategies/index.html">strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtester.html">backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtesting.html">backtesting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtesting_utils.html">backtesting_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base.html">base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callback_base.html">callback_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comm.html">comm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constants.html">constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datetime_utils.html">datetime_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../market_data_feed.html">market_data_feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../market_order_simulator.html">market_order_simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../offline_optimization.html">offline_optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../order_cancellation.html">order_cancellation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plain_backtester.html">plain_backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../real.html">real</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report.html">report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report_generator.html">report_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roll.html">roll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../slippage_models.html">slippage_models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../state_utils.html">state_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategy.html">strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategy_utils.html">strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_account.html">trading_account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_constants.html">trading_constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils.html">utils</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ctxalgoctp</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">ctp</a> &raquo;</li>
+      
+          <li><a href="index.html">live</a> &raquo;</li>
+      
+    <li>r105_place_pending_order_and_exit</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../sources/ctp/live/r105_place_pending_order_and_exit.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="r105-place-pending-order-and-exit">
+<h1>r105_place_pending_order_and_exit<a class="headerlink" href="#r105-place-pending-order-and-exit" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-ctxalgoctp.ctp.live.r105_place_pending_order_and_exit"></span><dl class="class">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.</code><code class="descname">PlacePendingOrderAndExit</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>strategy_period</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../strategy.html#ctxalgoctp.ctp.strategy.AbstractStrategy" title="ctxalgoctp.ctp.strategy.AbstractStrategy"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.strategy.AbstractStrategy</span></code></a></p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_tick">
+<code class="descname">on_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_tick" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trade">
+<code class="descname">on_trade</code><span class="sig-paren">(</span><em>trade_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_time_to_exit">
+<code class="descname">on_time_to_exit</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>supposed_trigger_time</em>, <em>timer_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_time_to_exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.TRADING_CONNECTED">
+<code class="descname">TRADING_CONNECTED</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.TRADING_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.TRADING_NOT_CONNECTED">
+<code class="descname">TRADING_NOT_CONNECTED</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.TRADING_NOT_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.account_size">
+<code class="descname">account_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.account_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.add_bar_arrival_action">
+<code class="descname">add_bar_arrival_action</code><span class="sig-paren">(</span><em>action</em>, <em>period=None</em>, <em>instrument_ids=None</em>, <em>ohlc_kind='time-based'</em>, <em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.add_bar_arrival_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup an action, which will be called when all required ohlc bars have arrived.
+For example, if period=Periodicity.HOURLY, and instrument_ids are the list of all the traded instruments,
+then action will be called the next time when all hourly bars for the traded instruments have arrived.
+:param action: function pointer with the following four parameters:</p>
+<blockquote>
+<div><p>ohlc_kind: string, the ohlc kind, can be &#8216;time-based&#8217;, &#8216;volatility-based&#8217;.
+period: Periodicity in case of time-based ohlc, or int/float as volatility threshold</p>
+<blockquote>
+<div>in case of volatility-based ohlc.</div></blockquote>
+<p>name: string, the bar arrival action name, same as the name parameter specified here.
+ohlcs: dict{string: OHLC}, the list of ohlcs, keys are instrument ids, values are the ohlc objects.</p>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>period</strong> &#8211; Periodicity in case of time-based ohlc, or int/float as volatility threshold
+in case of volatility-based ohlc. This is the period for the required ohlc bars.
+If None, use self.strategy_period().
+This will be passed into the action when it is invoked.</li>
+<li><strong>instrument_ids</strong> &#8211; [string], the list of instruments whose last ohlc bar of required period must
+arrived before action can be invoked. If None, defaults to self.instrument_ids(), which are
+the full list of traded instruments.</li>
+<li><strong>ohlc_kind</strong> &#8211; string, the ohlc kind, can be &#8216;time-based&#8217;, &#8216;volatility-based&#8217;.
+This will be passed into the action when it is invoked.</li>
+<li><strong>name</strong> &#8211; string, the bar arrival action name, used to identify different bar arrival requests.
+This will be passed into the action when it is invoked.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.add_timer">
+<code class="descname">add_timer</code><span class="sig-paren">(</span><em>timer=None</em>, <em>trigger_time=None</em>, <em>timedelta=None</em>, <em>on_time_action=None</em>, <em>start=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.add_timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add timer into current strategy.
+:param timer: SimulatedTimer, the timer to add. If None, use trigger_time to create a timer.
+:param trigger_time: datetime or time, or string in form of yyyy-mm-dd or yyyy-mm-dd HH:MM:SS, or</p>
+<blockquote>
+<div>a list of the above types. The time(s) used to create a timer .
+If specified, create an alarm timer.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>timedelta</strong> &#8211; timedelta, if specified, create a repeated count down timer.</li>
+<li><strong>on_time_action</strong> &#8211; function pointer whose signature is same as self.on_timer.
+If not None and there is no on_time_action set in timer, then set this as the callback for timer.
+If None and there is no on_time_action in timer, then set self.on_timer into the timer.</li>
+<li><strong>start</strong> &#8211; boolean, if True start the timer right away.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>:return string, the name of the added timer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.all_position_details">
+<code class="descname">all_position_details</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.all_position_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return position details for all traded instruments.
+:return: dict{string: dict{string: [dict{string: object}]}}</p>
+<blockquote>
+<div><p>The out most keys are instrument ides, and the values are the same as the result of self.position_details.
+For example:
+{</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>&#8216;IF99&#8217;: {</dt>
+<dd><dl class="first last docutils">
+<dt>&#8216;long&#8217;: [</dt>
+<dd><blockquote class="first">
+<div><dl class="docutils">
+<dt>{</dt>
+<dd>&#8216;order_ref&#8217;: order reference string
+&#8216;price&#8217;: the price when the position is opened.
+&#8216;volume&#8217;: the volume that are executed at this price.
+&#8216;timestamp&#8217;: the time when this position is executed.</dd>
+</dl>
+<p>}, ...</p>
+</div></blockquote>
+<p class="last">],</p>
+</dd>
+<dt>&#8216;short&#8217;: [</dt>
+<dd><blockquote class="first">
+<div><dl class="docutils">
+<dt>{</dt>
+<dd>&#8216;order_ref&#8217;: order reference string
+&#8216;price&#8217;: the price when the position is opened.
+&#8216;volume&#8217;: the volume that are executed at this price.
+&#8216;timestamp&#8217;: the time when this position is executed.</dd>
+</dl>
+<p>}, ...</p>
+</div></blockquote>
+<p class="last">],</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.all_positions">
+<code class="descname">all_positions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.all_positions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.available_money">
+<code class="descname">available_money</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.available_money" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.balance">
+<code class="descname">balance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.balance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.bars_in_last_days">
+<code class="descname">bars_in_last_days</code><span class="sig-paren">(</span><em>ohlc</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>start=-1</em>, <em>end=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.bars_in_last_days" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.calculate_latest_market_end_time">
+<code class="descname">calculate_latest_market_end_time</code><span class="sig-paren">(</span><em>market_periods</em>, <em>now</em>, <em>delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.calculate_latest_market_end_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given traded instruments and current timestamp, calculate when the market will be closed.
+This is used by the strategy infrastructure to decide when to exit strategies: strategies
+should terminate after the latest market periods of the traded instrument ends, plus</p>
+<blockquote>
+<div>a given extra time. This automatic termination only has effect
+when self.should_terminate_after_market_close is True.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Param:</th><td class="field-body"><p class="first">market_periods, dict{string: [(time, time)]}, keys are instrument ids, values are market periods.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>now</strong> &#8211; datetime, current timestamp.</li>
+<li><strong>delta</strong> &#8211; timedelta, some extra amount of time that is added into the traded market periods to allow
+the strategy to continue running for some time after the market closes, for example, to do
+some bookkeeping work. If None, no extra time is added.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">datetime, the time when strategies should terminate.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.can_close_position_wrt_time">
+<code class="descname">can_close_position_wrt_time</code><span class="sig-paren">(</span><em>now=None</em>, <em>instrument_ids=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.can_close_position_wrt_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Can we close positions for all the instruments given by instrument_ids?
+Whether any position can be closed for an instrument id is defined by now &lt;= self.latest_time_to_close_position.
+:param now: datetime, current time. If None, use current timestamp.
+:param instrument_ids: [string], the list of instrument ids whose positions need to be closed.</p>
+<blockquote>
+<div>If None, use self.instrument_id() as the only instrument.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool, True if we can close positions for all the given instrument ids.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.can_open_and_close_position_wrt_time">
+<code class="descname">can_open_and_close_position_wrt_time</code><span class="sig-paren">(</span><em>now=None</em>, <em>instrument_ids=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.can_open_and_close_position_wrt_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Can we open and close positions for all the instruments given by instrument_ids?
+Whether any position can be closed for an instrument id is defined by
+now &lt;= self.latest_time_to_open_position and now &lt;= self.latest_time_to_close_position.
+:param now: datetime, current time. If None, use current timestamp.
+:param instrument_ids: [string], the list of instrument ids whose positions need to be closed.</p>
+<blockquote>
+<div>If None, use self.instrument_id() as the only instrument.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool, True if we can open and close close positions for all the given instrument ids.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.can_open_position_wrt_time">
+<code class="descname">can_open_position_wrt_time</code><span class="sig-paren">(</span><em>now=None</em>, <em>instrument_ids=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.can_open_position_wrt_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Can we open positions for all the instruments given by instrument_ids?
+Whether any position can be opened for an instrument id is defined by now &lt;= self.latest_time_to_open_position.
+:param now: datetime, current time. If None, use current timstamp.
+:param instrument_ids: [string], the list of instrument ids whose positions need to be opened.</p>
+<blockquote>
+<div>If None, use self.instrument_id() as the only instrument.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool, True if we can open positions for all the given instrument ids.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.cancel_external_order">
+<code class="descname">cancel_external_order</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>order_ref_id</em>, <em>front_id</em>, <em>session_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.cancel_external_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancel an (pending) order which is not submitted in current session.
+This is useful if you want to have a strategy which cancels some pending orders.
+:param instrument_id: string, instrument id of the order.
+:param order_ref_id: string, original CTP order ref.
+:param front_id: int, front id of the order.
+:param session_id: int ,session id of the order.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.cancel_external_orders">
+<code class="descname">cancel_external_orders</code><span class="sig-paren">(</span><em>orders</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.cancel_external_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancel external orders.
+:param orders: [dict{string: object}], external orders, each element must contain at least the following keys:</p>
+<blockquote>
+<div>instrument_id, order_ref_id, front_id, session_id.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.cancel_order">
+<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order_ref</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.cancel_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancel order.
+:param order_ref: string, the order reference.
+:param reason: string, the reason for cancelling the order.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.change_position_to">
+<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>new_position</em>, <em>price=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>cancellation=None</em>, <em>order_book=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.change_position_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the position of the given instrument to new_position. If price is given, all underlying orders
+are limit orders at that price, otherwise, market orders.
+:param new_position: int, the new position for the instrument.
+:param price: float, if None, newly placed orders are market orders, otherwise, limit orders.
+:param reason: string, the reason for this operation.
+:param instrument_id: string, instrument id. If None, use self.instrument_id.
+:param transaction_id: int, the transaction id, if None, use an automatically calculated id.
+:param cancellation: AbstractOrderCancellation, the cancellation policy for current order.</p>
+<blockquote>
+<div>If None, no cancellation policy is specified.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>order_book</strong> &#8211; dict{string: object}, order book information, it has keys such as &#8216;ask_price1&#8217;, &#8216;bid_price1&#8217;.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
+<dd>may cause the strategy to place two orders. Each element is a dict containing the following keys:
+order_ref: string, the value is string, the order reference.
+transaction_id: string, the value is string, the transaction id.
+enforce_one_direction: bool, the value is bool, True if the order is placed because the strategy<blockquote class="last">
+<div>needs to close positions in the opposite direction.</div></blockquote>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.change_positions_to">
+<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>new_positions</em>, <em>prices=None</em>, <em>reason=''</em>, <em>transaction_id=None</em>, <em>cancellation=None</em>, <em>order_books=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.change_positions_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change positions of multiple instruments to their new values.
+:param new_positions: dict{string: int}, keys are instrument ids,</p>
+<blockquote>
+<div>values are the new positions for those instruments.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>prices</strong> &#8211; dict{string: float}, meaning dict{instrument_id: price}, keys are instrument ids,
+values are prices at which limit orders are placed. If prices is None, all orders are market orders.
+If prices is a dict and for some instrument (through dict keys), the key is missing or the value
+is None, then the orders for that instrument are market orders, otherwise, limit orders.</li>
+<li><strong>reason</strong> &#8211; string, the reason for current order(s).</li>
+<li><strong>transaction_id</strong> &#8211; string, transition id, set to None.</li>
+<li><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the order cancellation policy used to
+cancel all the placed orders.</li>
+<li><strong>order_books</strong> &#8211; dict{string: dict{string: object}}, meaning dict{instrument_id: order_book}, while
+order_book is of type dict{string: object}. each order_book contain keys such as &#8216;ask_price1&#8217;,
+&#8216;bid_price1&#8217;. order_books contains the latest known order book for all instrumented given in
+new_positions.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
+<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
+<dd><p class="first">may cause the strategy to place two orders. Each element is a dict containing the following keys:
+order_ref: string, the value is string, the order reference.
+transaction_id: string, the value is string, the transaction id.
+enforce_one_direction: bool, the value is bool, True if the order is placed because the strategy</p>
+<blockquote class="last">
+<div><p>needs to close positions in the opposite direction.</p>
+</div></blockquote>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.check_bar_based_order_cancellations">
+<code class="descname">check_bar_based_order_cancellations</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>bars</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.check_bar_based_order_cancellations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.check_order_cancellations">
+<code class="descname">check_order_cancellations</code><span class="sig-paren">(</span><em>cancellations</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.check_order_cancellations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if we should cancel some orders because of previously setup order cancellations.
+:param cancellations: [AbstractOrderCancellation], the list of order cancellations.
+:param data: dict{string: object}, the data needed by order cancellations to decide</p>
+<blockquote>
+<div>whether pending orders should be cancelled. Different kinds of order cancellations
+need different data.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.check_time_based_order_cancellations">
+<code class="descname">check_time_based_order_cancellations</code><span class="sig-paren">(</span><em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.check_time_based_order_cancellations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if there are some order cancellation that should be triggered by the given timestamp now.
+If so, cancel those orders.
+:param now: datetime, current timestamp.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.check_timers">
+<code class="descname">check_timers</code><span class="sig-paren">(</span><em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.check_timers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if there are some timers that can be triggered by the given timestamp now.
+If so, call self.on_timer.
+:param now: datetime, current timestamp.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.close_limit_order">
+<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.close_limit_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close a limit order at price. Note that for limit orders, there is no support for enforce_one_direction,
+because limit orders cannot guarantee that all positions in one direction are fully closed.
+The strategy is responsible for maintaining positions in a single direction, if desirable.
+:param price: float, the price.
+:param volume: int, the volume to open. Positive volume means open long; Negative volume means open short.
+:param kind: OrderKind. Distinguish between Normal, FAK, FOK limit orders.
+:param reason: string, a reason for the open operation.
+:param instrument_id: string, instrument id. If None, use self.instrument_id.
+:param transaction_id: int, the transaction id, if None, use an automatically calculated id.</p>
+<blockquote>
+<div>Note that a smaller default transaction id does not mean that the order happens earlier.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the cancellation policy for current order.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
+<dd>may cause the strategy to place two orders. Each element is a dict containing the following keys:
+order_ref: string, the value is string, the order reference.
+transaction_id: string, the value is string, the transaction id.
+enforce_one_direction: string, the value is bool, True if the order is placed because the strategy<blockquote class="last">
+<div>needs to close positions in the opposite direction.</div></blockquote>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.close_market_order">
+<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>volume</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.close_market_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close market order for future_id. If there is only one future in current strategy, you don&#8217;t need to
+provide future_id, self.future_id will be used implicitly.
+:param volume: int, the volume to close. Positive volume means open close; Negative volume means close short.
+:param reason: string, a reason for the close operation.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:param transaction_id: int, the transaction id, if None, use an automatically calculated id.</p>
+<blockquote>
+<div>Note that a smaller default transaction id does not mean that the order happens earlier.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the cancellation policy for current order.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
+<dd>may cause the strategy to place two orders. Each element is a dict containing the following keys:
+order_ref: string, the value is string, the order reference.
+transaction_id: string, the value is string, the transaction id.
+enforce_one_direction: bool, the value is bool, True if the order is placed because the strategy<blockquote class="last">
+<div>needs to close positions in the opposite direction.</div></blockquote>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.close_position">
+<code class="descname">close_position</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>cancellation=None</em>, <em>order_book=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.close_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close a position for the instrumeent given by instrument_id.
+:param price: float, if None, send a market order. If not None, send a limit order at that price.
+:param kind: OrderKind, the order kind.
+:param reason: string, reason for this open position operation.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:param transaction_id: string, transaction id.
+:param cancellation: AbstractOrderCancellation, the cancellation policy for current order.
+:param order_book: dict{string: object}, order book information, it has keys such as &#8216;ask_price1&#8217;, &#8216;bid_price1&#8217;.
+:return:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
+<dd><p class="first">may cause the strategy to place two orders. Each element is a dict containing the following keys:
+order_ref: string, the value is string, the order reference.
+transaction_id: string, the value is string, the transaction id.
+enforce_one_direction: bool, the value is bool, True if the order is placed because the strategy</p>
+<blockquote class="last">
+<div>needs to close positions in the opposite direction.</div></blockquote>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.current_transaction_id">
+<code class="descname">current_transaction_id</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.current_transaction_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.data_feed">
+<code class="descname">data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.data_feed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.delete_context_file">
+<code class="descname">delete_context_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.delete_context_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the context.txt file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.direction">
+<code class="descname">direction</code><span class="sig-paren">(</span><em>volume</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return &#8216;long&#8217; or &#8216;short&#8217; as direction.
+:param volume: int, positive number means long direction, negative numer means short direction.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.dominant_instrument">
+<code class="descname">dominant_instrument</code><span class="sig-paren">(</span><em>instrument_prefix</em>, <em>trading_day</em>, <em>level=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.dominant_instrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the level dominant instrument id on the given trading day.
+:param instrument_prefix: string, instrument id prefix, such as IF, cu.
+:param trading_day: date, or string in form of yyyy-mm-dd. trading day.
+:param level: int, 0 means the dominant contract, 1 means the next dominant contract, and so on.
+:return: string, the instrument id of the asked dominant contract.</p>
+<blockquote>
+<div>If no such dominant contract, return None.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.dump_json">
+<code class="descname">dump_json</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.dump_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.filtered_position">
+<code class="descname">filtered_position</code><span class="sig-paren">(</span><em>direction</em>, <em>condition</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.filtered_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return current position details for a given instrument.
+:param direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;.
+:param condition: string, values can be:</p>
+<blockquote>
+<div>highest_price: return the position which has the highest filled price.
+lowest_price: return the position which has the lowest filled price.
+earliest_filled: return the position which has the earliest filled time.
+latest_filled: return the position which as the latest filled time.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instrument_id</strong> &#8211; string, the instrument id whose position details are to be retrieved.
+If None, use self.instrument_id().</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict{string: object}
+The details of a particular position which satisfy the given condition. The format is:
+{<blockquote>
+<div>&#8216;order_ref&#8217;: order reference string
+&#8216;price&#8217;: the price when the position is opened.
+&#8216;volume&#8217;: the volume that are executed at this price.
+&#8216;timestamp&#8217;: the time when this position is executed.</div></blockquote>
+<p>}.
+If there are more than one position satisfies the condition, randomly choose one.
+If there is no position, return None.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.futures">
+<code class="descname">futures</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.futures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.get_investor_position">
+<code class="descname">get_investor_position</code><span class="sig-paren">(</span><em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.get_investor_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a request for investor position for the given future.
+:param instrument_id: string, instrument id. If an empty string, then get</p>
+<blockquote>
+<div>positions for all the held instruments.</div></blockquote>
+<p>The returned information will be accessible through the corresponding callback function.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.get_order_status">
+<code class="descname">get_order_status</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.get_order_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the status of an order.
+:param order_ref: string, the order reference number returned when placing an order via</p>
+<blockquote>
+<div>open_market_order, open_limit_order, close_market_order or close_limit_order.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">OrderStatus. The status of the order. None if no order is found by order_ref.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.get_trading_account">
+<code class="descname">get_trading_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.get_trading_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a request for trading account information.
+The returned information will be accessible through the corresponding callback function.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.has_data_feed">
+<code class="descname">has_data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.has_data_feed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is data feed set?
+:return: boolean.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.has_long_position">
+<code class="descname">has_long_position</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.has_long_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does current strategy have long positions?
+:param instrument_id: string, instrument id. If None, use self.instrument_id().</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.has_pending_order">
+<code class="descname">has_pending_order</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.has_pending_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.has_position">
+<code class="descname">has_position</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.has_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.has_run">
+<code class="descname">has_run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.has_run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Has current strategy started running&gt;
+:return: boolean.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.has_short_position">
+<code class="descname">has_short_position</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.has_short_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does current strategy have short positions?
+:param instrument_id: string, instrument id. If None, use self.instrument_id().</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.highest_position_price">
+<code class="descname">highest_position_price</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.highest_position_price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the price of lowest long position.
+:param direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;.
+:param instrument_id: string, the instrument id whose position details are to be retrieved.</p>
+<blockquote>
+<div>If None, use self.instrument_id().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">float, position price.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.in_state">
+<code class="descname">in_state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.in_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is current state machine in state named name?
+:param name: string, name of a state.
+:return string, name of the state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.initialize_before_run">
+<code class="descname">initialize_before_run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.initialize_before_run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.instrument_id">
+<code class="descname">instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.instrument_ids">
+<code class="descname">instrument_ids</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.instrument_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_day">
+<code class="descname">is_day</code><span class="sig-paren">(</span><em>timestamp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_day" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is the given timestamp in day trading period?
+:param timestamp: datetime, the given timestamp. If None, use self.now().
+:return: boolean.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_market_order_supported">
+<code class="descname">is_market_order_supported</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>trading_day=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_market_order_supported" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_night">
+<code class="descname">is_night</code><span class="sig-paren">(</span><em>timestamp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_night" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is the given timestamp in night trading period?
+:param timestamp: datetime, the given timestamp. If None, use self.now().
+:return: boolean.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_order_pending">
+<code class="descname">is_order_pending</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_order_pending" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_position_reached">
+<code class="descname">is_position_reached</code><span class="sig-paren">(</span><em>target_position</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_position_reached" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the current position for the given instrument is the same as target position.
+:param target_position: int, the target position. If None, meaning that target position is unknown,</p>
+<blockquote>
+<div>then this method always returns False.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id().</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">boolean.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_position_single_sided">
+<code class="descname">is_position_single_sided</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_position_single_sided" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is current position for the given instrument single sided?
+Meaning either long or short positions, but not both.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return bool, True if position for the given instrument is single-sided, False otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_stop_loss_touched">
+<code class="descname">is_stop_loss_touched</code><span class="sig-paren">(</span><em>price</em>, <em>stop_loss</em>, <em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_stop_loss_touched" title="Permalink to this definition">¶</a></dt>
+<dd><p>Has price touched given stop loss?
+:param price: float, the current instrument price.
+:param stop_loss: float, the predefined stop loss price.
+:param direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;.
+:return: bool, True if given price touches stop loss.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_stop_win_touched">
+<code class="descname">is_stop_win_touched</code><span class="sig-paren">(</span><em>price</em>, <em>stop_win</em>, <em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_stop_win_touched" title="Permalink to this definition">¶</a></dt>
+<dd><p>Has price touched given stop win?
+:param price: float, the current instrument price.
+:param stop_win: float, the predefined stop loss price.
+:param direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;.
+:return: bool, True if given price touches stop win.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_trading_connected">
+<code class="descname">is_trading_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.is_trading_connected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.last_known_price">
+<code class="descname">last_known_price</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.last_known_price" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.latest_time_to_close_position">
+<code class="descname">latest_time_to_close_position</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.latest_time_to_close_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.latest_time_to_open_position">
+<code class="descname">latest_time_to_open_position</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.latest_time_to_open_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_cancel_order">
+<code class="descname">log_cancel_order</code><span class="sig-paren">(</span><em>order_ref_id</em>, <em>order_ref</em>, <em>reason</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_cancel_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log cancel order.
+:param order_ref: string, order reference.
+:param reason: string, the reason for order.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_connect_to_market">
+<code class="descname">log_connect_to_market</code><span class="sig-paren">(</span><em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_connect_to_market" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log the action to connect to the market data server.
+:param now: datetime, current timestamp.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_connect_to_trading">
+<code class="descname">log_connect_to_trading</code><span class="sig-paren">(</span><em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_connect_to_trading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log the action to connect to the trading server.
+:param now: datetime, current timestamp.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_err_order_action">
+<code class="descname">log_err_order_action</code><span class="sig-paren">(</span><em>order_ref</em>, <em>order_action</em>, <em>rsp_info</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_err_order_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_err_order_insert">
+<code class="descname">log_err_order_insert</code><span class="sig-paren">(</span><em>order_ref</em>, <em>input_order</em>, <em>rsp_info</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_err_order_insert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_exception">
+<code class="descname">log_exception</code><span class="sig-paren">(</span><em>e</em>, <em>tb</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_exception" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log exception.
+:param Exception, the exception object.
+:param tb string, the traceback.
+:param other_data: dict{string: object}, other kinds of data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_heartbeat">
+<code class="descname">log_heartbeat</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_heartbeat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_investor_position">
+<code class="descname">log_investor_position</code><span class="sig-paren">(</span><em>investor_position</em>, <em>timestamp</em>, <em>is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_investor_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log investor position.
+:param investor_position: The investor position object.
+:param is_last: boolean, is the result the last batch.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_ohlc">
+<code class="descname">log_ohlc</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>bars</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log ohlc.
+:param instrument_id: string, the instrument id.
+:param bars: dict{string: dict{Periodicity or int/float: Bar}} The bars.</p>
+<blockquote>
+<div>Outer keys are ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.
+Inner keys are Periodicity or volatility thresholds, inner values are the generated bars.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_order">
+<code class="descname">log_order</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>action</em>, <em>volume</em>, <em>order_ref</em>, <em>reason</em>, <em>transaction_id</em>, <em>order_kind='Market'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log order.
+:param instrument_id: string, the instrument id.
+:param action: OrderAction, the action of this order.
+:param volume: int, volume to trade.</p>
+<blockquote>
+<div>Positive volume means long position, negative volume means short position.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>order_ref</strong> &#8211; int, order reference.</li>
+<li><strong>reason</strong> &#8211; string the reason for order.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>:param transaction_id, int, the transaction id.
+:param order_kind: OrderKind. The kind of the order.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_order_action">
+<code class="descname">log_order_action</code><span class="sig-paren">(</span><em>order_ref</em>, <em>order_action</em>, <em>rsp_info</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_order_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_order_insert">
+<code class="descname">log_order_insert</code><span class="sig-paren">(</span><em>order_ref</em>, <em>input_order</em>, <em>rsp_info</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_order_insert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_rtn_order">
+<code class="descname">log_rtn_order</code><span class="sig-paren">(</span><em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_rtn_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_signal">
+<code class="descname">log_signal</code><span class="sig-paren">(</span><em>signal</em>, <em>tag=None</em>, <em>reason=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log signal.
+:param signal: EntrySignal, the signal to log.
+:param tag: string, the tag to use, if None, the method will decide a tag name.
+:param reason: string, some additional reason. Can be None if there is no reason.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_state_transition">
+<code class="descname">log_state_transition</code><span class="sig-paren">(</span><em>start_state</em>, <em>end_state</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_state_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_stop_loss">
+<code class="descname">log_stop_loss</code><span class="sig-paren">(</span><em>timestamp</em>, <em>direction</em>, <em>value</em>, <em>transaction_id</em>, <em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_stop_loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log stop loss.
+Parameters:</p>
+<blockquote>
+<div><p>timestamp: datetime, the time when the stop loss is calculated.
+direction: int, 1 means long stop loss, -1 means short stop loss.
+value: float, the stop loss value.
+transaction_id: string, transaction id.
+name: string, a possible additional name for the stop loss line. This is helpful to</p>
+<blockquote>
+<div>support multiple stop lines (for example, a close-bar stop loss and an in-bar stop loss)
+for the same transaction.</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_strategy">
+<code class="descname">log_strategy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_strategy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log information about current strategy.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_strategy_info">
+<code class="descname">log_strategy_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_strategy_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_trade">
+<code class="descname">log_trade</code><span class="sig-paren">(</span><em>trade</em>, <em>extra_info</em>, <em>is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_trade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_trading_account">
+<code class="descname">log_trading_account</code><span class="sig-paren">(</span><em>account</em>, <em>is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_trading_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log trading account.
+:param account, the trading account object.
+:param is_last: boolean, is the result the last batch.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_with_tag">
+<code class="descname">log_with_tag</code><span class="sig-paren">(</span><em>tag</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.log_with_tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log data with tag.
+:param tag: string, the log message tag indicating the kind of the message, for example, BAR, ORDER, ACCOUNT.
+:param data: dict{string: object}, the data to be logged. Keys are data item names, values are data items.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.long_position_profit">
+<code class="descname">long_position_profit</code><span class="sig-paren">(</span><em>condition='average_price'</em>, <em>price=None</em>, <em>instrument_id=None</em>, <em>percent=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.long_position_profit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the profit of held long positions.
+:param condition: string, the condition to select positions. Values can be the following:</p>
+<blockquote>
+<div>highest_price: use the highest price of the held position to calculate profit.
+lowest_price: use the lowest price of the held position.
+average_price: use the average price of the held position.
+This condition is needed because the positions of the given direction for the given instrument
+may have different entry prices.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>price</strong> &#8211; float, the current price of the instrument. If None, use the last known price for that instrument.</li>
+<li><strong>instrument_id</strong> &#8211; string, the instrument id whose position details are to be retrieved.
+If None, use self.instrument_id().</li>
+<li><strong>percent</strong> &#8211; boolean, if True, the profit is returned as a percentage, otherwise, as difference
+between the current price and the position price.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>:return float, the position profit. Positive number means profit, negative number means loss.</dt>
+<dd>The percent parameter decides if the returned number is a percentage or actual price delta.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.long_positions">
+<code class="descname">long_positions</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.long_positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return long positions for future_id.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: int, the long position, positive value or zero.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.lowest_position_price">
+<code class="descname">lowest_position_price</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.lowest_position_price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the price of lowest long position.
+:param direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;.
+:param instrument_id: string, the instrument id whose position details are to be retrieved.</p>
+<blockquote>
+<div>If None, use self.instrument_id().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">float, position price.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.margin">
+<code class="descname">margin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.margin_money">
+<code class="descname">margin_money</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.margin_money" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.margin_rate_by_money">
+<code class="descname">margin_rate_by_money</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.margin_rate_by_money" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.market">
+<code class="descname">market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.market_order_simulator">
+<code class="descname">market_order_simulator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.market_order_simulator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.market_periods">
+<code class="descname">market_periods</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>trading_day=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.market_periods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.max_positions_to_open">
+<code class="descname">max_positions_to_open</code><span class="sig-paren">(</span><em>price</em>, <em>direction</em>, <em>instrument_id=None</em>, <em>available_money=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.max_positions_to_open" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.mission_control">
+<code class="descname">mission_control</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.mission_control" title="Permalink to this definition">¶</a></dt>
+<dd><p>The mission control. The mission control is set through self.ctp_factory.set_mission_control.
+:return: MissionControl. If no mission control is set, return None.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.now">
+<code class="descname">now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.now" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.ohlc">
+<code class="descname">ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.ohlc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.ohlc_in_last_days">
+<code class="descname">ohlc_in_last_days</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>start=-1</em>, <em>end=None</em>, <em>ohlc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.ohlc_in_last_days" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sliced ohlc, which covers all bars from start to end (in days).
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
+<blockquote>
+<div>If None, defaults to &#8216;time-based&#8217;.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity, the periodicity of the ohlc to return.
+If None, use self.strategy_period().</li>
+<li><strong>now</strong> &#8211; datetime, an optional timestamp indicating current time, if None,
+use the last timestamp in ohlc as current time.</li>
+<li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
+<li><strong>start</strong> &#8211; int, start day index. Must be negative. Index days from backward.</li>
+<li><strong>end</strong> &#8211; int, end day index. Must be negative or None. Index days from backward.</li>
+<li><strong>ohlc</strong> &#8211; OHLC, the ohlc object. If not None, use this ohlc, instead of using
+instrument_id, kind and period to find the ohlc.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">OHLC, the sliced OHLC. If no such bars from ohlc, return None.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.ohlcs">
+<code class="descname">ohlcs</code><span class="sig-paren">(</span><em>kind=None</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.ohlcs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_bar">
+<code class="descname">on_bar</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>bars</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be called when there is some ohlc bars generated.
+When a tick arrives and this tick can cause the generation of one or more bars, the callback invocation
+order between on_tick and on_bar is decided by self.on_tick_before_on_bar().
+:param instrument_id, string, the instrument id of the generated bar(s).
+:param bars: dict{string: dict{Periodicity or int/float: Bar}.</p>
+<blockquote>
+<div>Meaning: dict{ohlc_kind: dict{period or volatility threshold: Bar}
+Outer keys are ohlc kind such as &#8216;time-based&#8217;, &#8216;volatility-based&#8217; from OhlcGeneratorConstants.
+Outer values are dict from Periodicity to Bar in the case of time-based ohlcs or
+dict from int/float to Bar in the case of volatility-based ohlcs.
+It may contains more than one bars: a single bar under each periodicity.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tick</strong> &#8211; dict{string: object}, the tick which triggers current ohlc bar(s) generation.
+The object has the following keys (non-exhaustive):
+timestamp, last_price, volume, ask_price1, ask_volume1, bid_price1, bid_volume1,
+pre_open_interest, open_interest. Note that when backtesting, only when the data source is tick level,
+tick includes order book information such as ask_price1, bid_price1. Otherwise, those order book
+related fields will have default values.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_bar_from_zmq">
+<code class="descname">on_bar_from_zmq</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_bar_from_zmq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when there is a bar arrives from zeromq bar feed.
+:param data: dict{string: object}, the bar information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_bar_method">
+<code class="descname">on_bar_method</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_bar_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the function pointer for on_bar.
+:return: function pointer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_before_run">
+<code class="descname">on_before_run</code><span class="sig-paren">(</span><em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_before_run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_cancel_order">
+<code class="descname">on_cancel_order</code><span class="sig-paren">(</span><em>order_ref</em>, <em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_cancel_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when an cancel order request is sent.
+:param order_ref: string, order reference.
+:param instrument_id: string, instrument id of the order that is requested to be cancelled.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_err_order_insert">
+<code class="descname">on_err_order_insert</code><span class="sig-paren">(</span><em>order_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_err_order_insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoke when insert order is considered to be invalid by the exchange.
+:param order_info: dict, order information.</p>
+<blockquote>
+<div>Keys (non-exhaustively) include:
+instrument_id, order_ref, traded_volume, left_volume, status, error_id, error_message</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_error_order_action">
+<code class="descname">on_error_order_action</code><span class="sig-paren">(</span><em>order_action_error</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_error_order_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when cancel order is considered to be invalid by the exchange.
+:param order_action_error: dict{string: object}. Information about the order action error.</p>
+<blockquote>
+<div>Keys (non-exhausively) include: instrument_id, order_ref, error_id, error_message, status_message.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_exit">
+<code class="descname">on_exit</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_exit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated. Use on_after_run_actions instead.
+The action to be invoked when a new trading_day ends.
+Parameters:</p>
+<blockquote>
+<div>context: dict, can store arbitrary data.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_external_order">
+<code class="descname">on_external_order</code><span class="sig-paren">(</span><em>order_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_external_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when order status change for an order which is not started by current strategy session.
+:param order_info: dict{string: object}, order information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_idle_event">
+<code class="descname">on_idle_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_idle_event" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_investor_position">
+<code class="descname">on_investor_position</code><span class="sig-paren">(</span><em>investor_position</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_investor_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be called when investor position for a particular future arrived,
+requested by get_investor_position.
+:param investor_position: dict{string: object}</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Keys (non-exhaustively) include:</dt>
+<dd>instrument_id, volume, direction.</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_market_connected">
+<code class="descname">on_market_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_user_login</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_market_connected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_market_disconnected">
+<code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_market_rsp_error">
+<code class="descname">on_market_rsp_error</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_market_rsp_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_market_rtn_depth_market_data">
+<code class="descname">on_market_rtn_depth_market_data</code><span class="sig-paren">(</span><em>p_api</em>, <em>depth_market_data</em>, <em>timestamp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_market_rtn_depth_market_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_mission_control">
+<code class="descname">on_mission_control</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_mission_control" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when a message from control center is arrived.
+:param message: string, the message from the the control center.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_order">
+<code class="descname">on_order</code><span class="sig-paren">(</span><em>order_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when order status changes.
+:param order_info: dict, order information. The dict includes the following keys (non-exhaustive):</p>
+<blockquote>
+<div>instrument_id, order_ref, action (type OrderAction), price, volume, timestamp, transaction_id,
+traded_volume, left_volume, reason, order_kind (type OrderKind), status.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_order_action">
+<code class="descname">on_order_action</code><span class="sig-paren">(</span><em>order_action_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_order_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when cancel order is considered to be invalid by front.
+:param order_action_info: dict{string: object}, information about the order action.</p>
+<blockquote>
+<div>Keys (non-exhaustively) include:
+broker_id, investor_id, order_ref, action_flag, volume_change, instrument_id, error_id, error_message</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_order_canceled">
+<code class="descname">on_order_canceled</code><span class="sig-paren">(</span><em>order_ref</em>, <em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_order_canceled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when an order has been cancelled successfully.
+:param order_ref: string, order reference.
+:param instrument_id: string, instrument id of the order that is requested to be cancelled.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_order_insert">
+<code class="descname">on_order_insert</code><span class="sig-paren">(</span><em>order_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_order_insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when insert order is considered to be invalid by front.
+:param order_info: dict, order information.</p>
+<blockquote>
+<div>Keys (non-exhaustively) include:
+instrument_id, order_ref, traded_volume, left_volume, status, error_id, error_message.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_query_order">
+<code class="descname">on_query_order</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_query_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when some result arrived from self.query_order.
+:param data: dict{string: object}, data containing order information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_start">
+<code class="descname">on_start</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated. Use on_before_run_actions instead.
+The action to be invoked when a new trading_day starts.
+Parameters:</p>
+<blockquote>
+<div>context: dict, can store arbitrary data.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_tick_from_producer">
+<code class="descname">on_tick_from_producer</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_tick_from_producer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_timer">
+<code class="descname">on_timer</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>supposed_trigger_time</em>, <em>timer_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when some timer is triggered.
+:param trigger_time: datetime, the time when the timer is actually triggered.</p>
+<blockquote>
+<div>trigger_time and supposed_trigger_time may be different because the timer may be a simulated timer.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>supposed_trigger_time</strong> &#8211; datetime, the time when the timer is supposed to be triggered.</li>
+<li><strong>timer_name</strong> &#8211; string, the name of the triggered timer.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_account">
+<code class="descname">on_trading_account</code><span class="sig-paren">(</span><em>trading_account</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be called when trading account information arrives, requested by get_trading_account.
+:param trading_account: dict{string:object}</p>
+<blockquote>
+<div>Keys (non-exhaustively) include: balance, available, curr_margin, commission, close_profit.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_connected">
+<code class="descname">on_trading_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_user_login</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_connected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_disconnected">
+<code class="descname">on_trading_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_disconnected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_err_rtn_order_action">
+<code class="descname">on_trading_err_rtn_order_action</code><span class="sig-paren">(</span><em>p_api</em>, <em>order_action</em>, <em>res_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_err_rtn_order_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_err_rtn_order_insert">
+<code class="descname">on_trading_err_rtn_order_insert</code><span class="sig-paren">(</span><em>p_api</em>, <em>input_order</em>, <em>res_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_err_rtn_order_insert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_not_ready">
+<code class="descname">on_trading_not_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_not_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when trading becomes not ready.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_ready">
+<code class="descname">on_trading_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when trading is ready, meaning that trading server is connected.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_error">
+<code class="descname">on_trading_rsp_error</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_order_action">
+<code class="descname">on_trading_rsp_order_action</code><span class="sig-paren">(</span><em>p_api</em>, <em>input_order_action</em>, <em>res_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_order_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_order_insert">
+<code class="descname">on_trading_rsp_order_insert</code><span class="sig-paren">(</span><em>p_api</em>, <em>input_order</em>, <em>res_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_order_insert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_depth_market_data">
+<code class="descname">on_trading_rsp_qry_depth_market_data</code><span class="sig-paren">(</span><em>p_api</em>, <em>depth_market_data</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_depth_market_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询行情响应。当客户端发出请求查询行情指令后，交易托管系统返回响应时，该方法会被调用。
+:param p_api: c_void_p
+:param depth_market_data: CThostFtdcDepthMarketDataField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_instrument">
+<code class="descname">on_trading_rsp_qry_instrument</code><span class="sig-paren">(</span><em>p_api</em>, <em>instrument</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_instrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询合约响应。当客户端发出请求查询合约指令后，交易托管系统返回响应时，该方法会被调用。
+:param p_api: c_void_p
+:param instrument: CThostFtdcInstrumentField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_instrument_commission_rate">
+<code class="descname">on_trading_rsp_qry_instrument_commission_rate</code><span class="sig-paren">(</span><em>p_api</em>, <em>instrument_commission_rate</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_instrument_commission_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询手续费响应。
+:param p_api: c_void_p
+:param instrument_commission_rate: CThostFtdcInstrumentCommissionRateField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_instrument_margin_rate">
+<code class="descname">on_trading_rsp_qry_instrument_margin_rate</code><span class="sig-paren">(</span><em>p_api</em>, <em>instrument_margin_rate</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_instrument_margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询保证金响应。
+:param p_api: c_void_p
+:param instrument_margin_rate: CThostFtdcInstrumentMarginRateField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_instrument_order_comm_rate">
+<code class="descname">on_trading_rsp_qry_instrument_order_comm_rate</code><span class="sig-paren">(</span><em>p_api</em>, <em>instrument_order_comm_rate</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_instrument_order_comm_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询下单撤单手续费响应。
+:param p_api: c_void_p
+:param instrument_order_comm_rate: CThostFtdcInstrumentOrderCommRateField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_investor_position">
+<code class="descname">on_trading_rsp_qry_investor_position</code><span class="sig-paren">(</span><em>p_api</em>, <em>investor_position</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_investor_position" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>b_is_last</strong> &#8211; boolean, True if current information is the last from a possibly list of
+information about the requested investor position. One piece of information is returned
+for one position direction. If there is positions for both long and short trades for the asked future,
+then this callback will be invoked twice, once for each position direction.
+This callback will be invoked at most twice for an investor position request.</td>
+</tr>
+</tbody>
+</table>
+<p>Note: on_* methods which inherits from CtpCallbacks cannot have their parameters renamed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_investor_position_detail">
+<code class="descname">on_trading_rsp_qry_investor_position_detail</code><span class="sig-paren">(</span><em>p_api</em>, <em>investor_position_detail</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_investor_position_detail" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询投资者持仓明细响应。当客户端发出请求请求查询投资者持仓明细指令后，交易托管系统返回响应时，该方法会被调用。
+:param p_api:c_void_p
+:param investor_position_detail: CThostFtdcInvestorPositionDetailField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_order">
+<code class="descname">on_trading_rsp_qry_order</code><span class="sig-paren">(</span><em>p_api</em>, <em>order</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_trade">
+<code class="descname">on_trading_rsp_qry_trade</code><span class="sig-paren">(</span><em>p_api</em>, <em>trade</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_trade" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询成交响应
+:param p_api: c_void_p
+:param trade: CThostFtdcTradeField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_trading_account">
+<code class="descname">on_trading_rsp_qry_trading_account</code><span class="sig-paren">(</span><em>p_api</em>, <em>trading_account</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rsp_qry_trading_account" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>b_is_last</strong> &#8211; boolean, True if current information is the last from a possibly list of
+information about trading account. Normally, there should be only one piece of information
+about a trading account. In case the account has multiple currencies (RMB, USD, GDP), there will be
+multiple pieces of information, one piece for each currency.</td>
+</tr>
+</tbody>
+</table>
+<p>Note: on_* methods which inherits from CtpCallbacks cannot have their parameters renamed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rtn_order">
+<code class="descname">on_trading_rtn_order</code><span class="sig-paren">(</span><em>p_api</em>, <em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rtn_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rtn_trade">
+<code class="descname">on_trading_rtn_trade</code><span class="sig-paren">(</span><em>p_api</em>, <em>trade</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.on_trading_rtn_trade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.open_limit_order">
+<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>enforce_one_direction=False</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.open_limit_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a limit order at price. Note that for limit orders, there is no support for enforce_one_direction,
+because limit orders cannot guarantee that all positions in one direction are fully closed.
+The strategy is responsible for maintaining positions in a single direction, if desirable.
+:param price: float, the price.
+:param volume: int, the volume to open. Positive volume means open long; Negative volume means open short.
+:param kind: OrderKind. Distinguish between Normal, FAK, FOK limit orders.
+:param reason: string, a reason for the open operation.
+:param instrument_id: string, instrument id. If None, use self.instrument_id.
+:param transaction_id: int, the transaction id, if None, use an automatically calculated id.</p>
+<blockquote>
+<div>Note that a smaller default transaction id does not mean that the order happens earlier.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>enforce_one_direction</strong> &#8211; boolean. If True, close existing positions (if any) which are in the
+direction opposite to the direction indicated by volume.
+For example, if volume &gt; 0 (meaning to open a long position), and if currently, the account holds some
+short directions, enforce_one_direction is True will force the strategy to make an order to close
+all short positions as well, resulting in two orders: one to close existing short positions, and the
+other to open long directions. Note that the strategy will not wait for the first order to fully execute,
+it will place two orders at the same time. This is a simplification, and can be improved in the future.</li>
+<li><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the cancellation policy for current order.
+If None, no cancellation policy is specified. The cancellation policy does not affect the
+order that has to be placed when enforce_one_direction is True.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
+<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
+<dd><p class="first">may cause the strategy to place two orders. Each element is a dict containing the following keys:
+order_ref: string, the value is string, the order reference.
+transaction_id: string, the value is string, the transaction id.
+enforce_one_direction: string, the value is bool, True if the order is placed because the strategy</p>
+<blockquote class="last">
+<div><p>needs to close positions in the opposite direction.</p>
+</div></blockquote>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.open_market_order">
+<code class="descname">open_market_order</code><span class="sig-paren">(</span><em>volume</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>enforce_one_direction=False</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.open_market_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open market order for future_id. If there is only one future in current strategy, you don&#8217;t need to
+provide future_id, self.future_id will be used implicitly.
+:param volume: int, the volume to open. Positive volume means open long; Negative volume means open short.
+:param reason: string, a reason for the open operation.
+:param instrument_id: string, instrument id. If None, use self.instrument_id.
+:param transaction_id: int, the transaction id, if None, use an automatically calculated id.</p>
+<blockquote>
+<div>Note that a smaller default transaction id does not mean that the order happens earlier.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>enforce_one_direction</strong> &#8211; boolean. If True, close existing positions (if any) which are in the
+direction opposite to the direction indicated by volume.
+For example, if volume &gt; 0 (meaning to open a long position), and if currently, the account holds some
+short directions, enforce_one_direction is True will force the strategy to make an order to close
+all short positions as well, resulting in two orders: one to close existing short positions, and the
+other to open long directions. Note that the strategy will not wait for the first order to fully execute,
+it will place two orders at the same time. This is a simplification, and can be improved in the future.</li>
+<li><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the cancellation policy for current order.
+If None, no cancellation policy is specified. The cancellation policy does not affect the
+order that has to be placed when enforce_one_direction is True.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
+<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
+<dd><p class="first">may cause the strategy to place two orders. Each element is a dict containing the following keys:
+order_ref: string, the value is string, the order reference.
+transaction_id: string, the value is string, the transaction id.
+enforce_one_direction: string, the value is bool, True if the order is placed because the strategy</p>
+<blockquote class="last">
+<div><p>needs to close positions in the opposite direction.</p>
+</div></blockquote>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.open_position">
+<code class="descname">open_position</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>enforce_one_direction=False</em>, <em>cancellation=None</em>, <em>order_book=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.open_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a position for the instrument given by instrument_id.
+:param volume: int, the position to open,</p>
+<blockquote>
+<div>positive number means long position, negative number means short position.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>price</strong> &#8211; float, if None, send a market order. If not None, send a limit order at that price.</li>
+<li><strong>kind</strong> &#8211; OrderKind, the order kind.</li>
+<li><strong>reason</strong> &#8211; string, reason for this open position operation.</li>
+<li><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id().</li>
+<li><strong>transaction_id</strong> &#8211; string, transaction id.</li>
+<li><strong>enforce_one_direction</strong> &#8211; boolean. If True, close existing positions (if any) which are in the
+direction opposite to the direction indicated by volume.</li>
+<li><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the cancellation policy for current order.</li>
+<li><strong>order_book</strong> &#8211; dict{string: object}, order book information, it has keys such as &#8216;ask_price1&#8217;, &#8216;bid_price1&#8217;.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
+<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
+<dd><p class="first">may cause the strategy to place two orders. Each element is a dict containing the following keys:
+order_ref: string, the value is string, the order reference.
+transaction_id: string, the value is string, the transaction id.
+enforce_one_direction: bool, the value is bool, True if the order is placed because the strategy</p>
+<blockquote class="last">
+<div><p>needs to close positions in the opposite direction.</p>
+</div></blockquote>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.order_info">
+<code class="descname">order_info</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.order_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return order information.
+:param order_ref: string, the order reference number returned when placing an order via</p>
+<blockquote>
+<div>open_market_order, open_limit_order, close_market_order or close_limit_order.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string: object}. The order object. None if no order if found by order_ref.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.periods">
+<code class="descname">periods</code><span class="sig-paren">(</span><em>kind=None</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.periods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.place_market_order">
+<code class="descname">place_market_order</code><span class="sig-paren">(</span><em>action</em>, <em>volume</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>enforce_one_direction=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.place_market_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>make market order for instrument id.
+:param instrument_id: string, instrument id. If None, use self.instrument_id.
+:param action: OrderAction, the action kind of current order.
+:param volume: int, the volume to close. Positive volume means open close; Negative volume means close short.
+:param reason: string, a reason for the close operation.
+:param transaction_id: int, the transaction id, if None, use an automatically calculated id.
+:param enforce_one_direction: boolean. If True, close existing positions (if any) which are in the</p>
+<blockquote>
+<div>direction opposite to the direction indicated by volume.
+For example, if volume &gt; 0 (meaning to open a long position), and if currently, the account holds some
+short directions, enforce_one_direction is True will force the strategy to make an order to close
+all short positions as well, resulting in two orders: one to close existing short positions, and the
+other to open long directions. Note that the strategy will not wait for the first order to fully execute,
+it will place two orders at the same time. This is a simplification, and can be improved in the future.</div></blockquote>
+<dl class="docutils">
+<dt>:return:f</dt>
+<dd><dl class="first last docutils">
+<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
+<dd><p class="first">may cause the strategy to place two orders. Each element is a dict containing the following keys:
+order_ref: string, the value is string, the order reference.
+transaction_id: string, the value is string, the transaction id.
+enforce_one_direction: bool, the value is bool, True if the order is placed because the strategy</p>
+<blockquote class="last">
+<div>needs to close positions in the opposite direction.</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.position_details">
+<code class="descname">position_details</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.position_details" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.position_profit">
+<code class="descname">position_profit</code><span class="sig-paren">(</span><em>direction=None</em>, <em>condition='average_price'</em>, <em>price=None</em>, <em>instrument_id=None</em>, <em>percent=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.position_profit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the profit of held positions.
+:param direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;, specifies the direction of the position whose</p>
+<blockquote>
+<div>profit is to be calculated.
+If None, assume that there is only one direction position, and use self.single_sided_position.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>condition</strong> &#8211; string, the condition to select positions. Values can be the following:
+highest_price: use the highest price of the held position to calculate profit.
+lowest_price: use the lowest price of the held position.
+average_price: use the average price of the held position.
+This condition is needed because the positions of the given direction for the given instrument
+may have different entry prices.</li>
+<li><strong>price</strong> &#8211; float, the current price of the instrument. If None, use the last known price for that instrument.</li>
+<li><strong>instrument_id</strong> &#8211; string, the instrument id whose position details are to be retrieved.
+If None, use self.instrument_id().</li>
+<li><strong>percent</strong> &#8211; boolean, if True, the profit is returned as a percentage, otherwise, as difference
+between the current price and the position price.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>:return float, the position profit. Positive number means profit, negative number means loss.</dt>
+<dd>The percent parameter decides if the returned number is a percentage or actual price delta.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.positions">
+<code class="descname">positions</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.positions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.price">
+<code class="descname">price</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as self.last_known_price().
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:return float, the last known price, None if no price is known for the given instrument.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.product">
+<code class="descname">product</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return name of the product to which this strategy belongs.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.profit">
+<code class="descname">profit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.profit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.query_order">
+<code class="descname">query_order</code><span class="sig-paren">(</span><em>instrument_id=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.query_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve order information from CTP. When query result arrives, self.on_query_order will be invoked.
+:param instrument_id: string, the instrument id. If empty string, retrieve orders for any instruments.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.relevant_instrument_ids">
+<code class="descname">relevant_instrument_ids</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.relevant_instrument_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the relevant instrument ids. All the returned instrument ids are actual instrument ids.
+:return: {string}, set of relevant instrument ids.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.relevant_instruments">
+<code class="descname">relevant_instruments</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.relevant_instruments" title="Permalink to this definition">¶</a></dt>
+<dd><p>The set of relevant actual instrument ids.
+:return: {string}, set of instrument ids.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.remove_bar_arrival_action">
+<code class="descname">remove_bar_arrival_action</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.remove_bar_arrival_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the specified bar arrival action.
+:param name: string, the bar arrival action name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.remove_order_cancellations">
+<code class="descname">remove_order_cancellations</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.remove_order_cancellations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove order cancellations.
+:param order_ref: string, full order reference.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.remove_timer">
+<code class="descname">remove_timer</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.remove_timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the timer with name.
+:param name: string, the timer name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.safe_instrument_id">
+<code class="descname">safe_instrument_id</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.safe_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the final instrument id.
+:param instrument_id: string.
+:return: string, the final instrument id.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.same_external_order">
+<code class="descname">same_external_order</code><span class="sig-paren">(</span><em>order1</em>, <em>order2</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.same_external_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Are two external order the same?
+:param order1: dict{string: object}, the first order.
+:param order2: dict{string: object}, the second order.
+:return: bool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.send_message">
+<code class="descname">send_message</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.send_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send message using self.message_sender.
+:param message: string, the message to send.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_all_callbacks">
+<code class="descname">set_all_callbacks</code><span class="sig-paren">(</span><em>all_callbacks</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_all_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.all_callbacks to all_callbacks.
+:param all_callbacks: OrderedDict{string: AbstractStrategyCallbacks},</p>
+<blockquote>
+<div>The set of individual strategy callbacks. Keys are strategy callback names,
+values are callbacks. Note that it is an ordered dict. So when callbacks are invoked,
+they follow the order that is given here. The callback names are useful to find
+corresponding strategy callbacks from outside.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_ctp_factory">
+<code class="descname">set_ctp_factory</code><span class="sig-paren">(</span><em>ctp_factory</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_ctp_factory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_market">
+<code class="descname">set_market</code><span class="sig-paren">(</span><em>market</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_market_and_trading">
+<code class="descname">set_market_and_trading</code><span class="sig-paren">(</span><em>market</em>, <em>trading</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_market_and_trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_market_order_simulator">
+<code class="descname">set_market_order_simulator</code><span class="sig-paren">(</span><em>simulator</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_market_order_simulator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_should_exit">
+<code class="descname">set_should_exit</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_should_exit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self._should_exit to the given boolean.
+:param b: boolean, the value to set self._should_exit.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_should_terminate_after_market_close">
+<code class="descname">set_should_terminate_after_market_close</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_should_terminate_after_market_close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_should_use_remote_account_and_position">
+<code class="descname">set_should_use_remote_account_and_position</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_should_use_remote_account_and_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_step_action">
+<code class="descname">set_step_action</code><span class="sig-paren">(</span><em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_step_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_strategy_callbacks">
+<code class="descname">set_strategy_callbacks</code><span class="sig-paren">(</span><em>callbacks</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_strategy_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.strategy_callbacks according to callbacks.
+:param callbacks: AbstractStrategyCallbacks, the external strategy callbacks.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_trading">
+<code class="descname">set_trading</code><span class="sig-paren">(</span><em>trading</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_use_mid_ask_bid">
+<code class="descname">set_use_mid_ask_bid</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_use_mid_ask_bid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.setup_order_cancellations">
+<code class="descname">setup_order_cancellations</code><span class="sig-paren">(</span><em>order_ref</em>, <em>order_place_time</em>, <em>instrument_id</em>, <em>cancellation</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.setup_order_cancellations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup order cancellation.
+:param order_ref: string, full order reference.
+:param order_place_time: datetime, the time when the order is placed.
+:param instrument_id: string, the instrument to trade.
+:param cancellation: AbstractOrderCancellation, order cancellation policy.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.short_position_profit">
+<code class="descname">short_position_profit</code><span class="sig-paren">(</span><em>condition='average_price'</em>, <em>price=None</em>, <em>instrument_id=None</em>, <em>percent=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.short_position_profit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the profit of held short positions.
+:param condition: string, the condition to select positions. Values can be the following:</p>
+<blockquote>
+<div>highest_price: use the highest price of the held position to calculate profit.
+lowest_price: use the lowest price of the held position.
+average_price: use the average price of the held position.
+This condition is needed because the positions of the given direction for the given instrument
+may have different entry prices.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>price</strong> &#8211; float, the current price of the instrument. If None, use the last known price for that instrument.</li>
+<li><strong>instrument_id</strong> &#8211; string, the instrument id whose position details are to be retrieved.
+If None, use self.instrument_id().</li>
+<li><strong>percent</strong> &#8211; boolean, if True, the profit is returned as a percentage, otherwise, as difference
+between the current price and the position price.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>:return float, the position profit. Positive number means profit, negative number means loss.</dt>
+<dd>The percent parameter decides if the returned number is a percentage or actual price delta.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.short_positions">
+<code class="descname">short_positions</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.short_positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return long positions for future_id.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: int, the short position, negative value or zero.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.should_exit">
+<code class="descname">should_exit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.should_exit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Should current strategy exit?
+:return: boolean, True if current strategy should exit.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.should_use_remote_account_and_position">
+<code class="descname">should_use_remote_account_and_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.should_use_remote_account_and_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.sign">
+<code class="descname">sign</code><span class="sig-paren">(</span><em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.sign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sign 1 or -1 for the position direction. This is useful
+when calculating volumes from directions.
+:param direction: string or int, can be &#8216;long&#8217; or &#8216;short&#8217;.</p>
+<blockquote>
+<div>Or an integer, positive number means long, negative number mean short.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int, return 1 if direction is &#8216;long&#8217;, otherwise -1.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.single_sided_position">
+<code class="descname">single_sided_position</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.single_sided_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the single sided position for given instrument.
+Single sided means: assuming that there is no both long and short positions for the instrument, then</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>If long position is positive, return the long position number (positive).</li>
+<li>If short position is negative, return the short position number (negative).</li>
+<li>Otherwise return 0.</li>
+</ol>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id().</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>:return int, single-sided position. If the instrument have both long and short side positions,</dt>
+<dd>return None.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.single_sided_positions">
+<code class="descname">single_sided_positions</code><span class="sig-paren">(</span><em>instrument_ids=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.single_sided_positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the single sided position for the given instrument ids.
+:param instrument_ids: [string], the required instrument ids.</p>
+<blockquote>
+<div>If None, use self.instrument_ids().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string: int}, meaning dict{instrument_id: position}.
+Keys are the same as instrument_ids. Values are the single sided positions for those instruments.
+If an instrument has no position, its corresponding value is 0.
+If an instrument has both long and short sided positions, its corresponding value is None.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.state">
+<code class="descname">state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the name of the current state in stat machine.
+Note: the current state may not be the same as current object.
+:return: string, tne name of the current state in self.state_machine.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.strategy_name">
+<code class="descname">strategy_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.strategy_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the name of current strategy.
+:return: string, name of the current strategy.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.strategy_ohlc">
+<code class="descname">strategy_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.strategy_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.strategy_period">
+<code class="descname">strategy_period</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.strategy_period" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.strategy_period_kind">
+<code class="descname">strategy_period_kind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.strategy_period_kind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.tick_size">
+<code class="descname">tick_size</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.tick_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.today_bars">
+<code class="descname">today_bars</code><span class="sig-paren">(</span><em>ohlc</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.today_bars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the bar slice in ohlc, which covers all bars from today.
+:param ohlc: OHLC, the ohlc object.
+:param now: datetime, an optional timestamp indicating current time, if None,</p>
+<blockquote>
+<div>use the last timestamp in ohlc as current time.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
+<li><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id().</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">slice, the slice used to index into ohlc. If no such bars from ohlc, return None.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.today_ohlc">
+<code class="descname">today_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>ohlc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.today_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return today&#8217;s ohlc, the sliced part only contain bars from today.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
+<blockquote>
+<div>If None, defaults to &#8216;time-based&#8217;.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity, the periodicity of the ohlc to return.
+If None, use self.strategy_period().</li>
+<li><strong>now</strong> &#8211; datetime, an optional timestamp indicating current time, if None,
+use the last timestamp in ohlc as current time.</li>
+<li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
+<li><strong>ohlc</strong> &#8211; OHLC, the ohlc object. If not None, use this ohlc, instead of using
+instrument_id, kind and period to find the ohlc.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">OHLC, the sliced OHLC. If no such bars from ohlc, return None.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.trading">
+<code class="descname">trading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.trading_account_id">
+<code class="descname">trading_account_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.trading_account_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Current trading account id.
+:return: string, the trading account id.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.trading_day">
+<code class="descname">trading_day</code><span class="sig-paren">(</span><em>now=None</em>, <em>delta=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.trading_day" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.transaction_id_from_order_ref">
+<code class="descname">transaction_id_from_order_ref</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.transaction_id_from_order_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.volume_multiple">
+<code class="descname">volume_multiple</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.volume_multiple" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.yesterday_bars">
+<code class="descname">yesterday_bars</code><span class="sig-paren">(</span><em>ohlc</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.yesterday_bars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the bar slice in ohlc, which covers all bars from yesterday.
+:param ohlc: OHLC, the ohlc object.
+:param now: datetime, an optional timestamp indicating current time, if None,</p>
+<blockquote>
+<div>use the last timestamp in ohlc as current time.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
+<li><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id().</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">slice, the slice used to index into ohlc. If no such bars from ohlc, return None.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.yesterday_ohlc">
+<code class="descname">yesterday_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>ohlc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.yesterday_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sliced part from the given ohlc, the sliced part only contain bars from yesterday.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
+<blockquote>
+<div>If None, defaults to &#8216;time-based&#8217;.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity, the periodicity of the ohlc to return.
+If None, use self.strategy_period().</li>
+<li><strong>now</strong> &#8211; datetime, an optional timestamp indicating current time, if None,
+use the last timestamp in ohlc as current time.</li>
+<li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
+<li><strong>ohlc</strong> &#8211; OHLC, the ohlc object. If not None, use this ohlc, instead of using
+instrument_id, kind and period to find the ohlc.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">OHLC, the sliced OHLC. If no such bars from ohlc, return None.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.main">
+<code class="descclassname">ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="r106_cancel_all_pending_orders_from_previous_session.html" class="btn btn-neutral float-right" title="r106_cancel_all_pending_orders_from_previous_session" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="r104_automatic_order_cancellation.html" class="btn btn-neutral" title="r104_automatic_order_cancellation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, .
+      Last updated on Jul 02, 2016.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../static/jquery.js"></script>
+      <script type="text/javascript" src="../../static/underscore.js"></script>
+      <script type="text/javascript" src="../../static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

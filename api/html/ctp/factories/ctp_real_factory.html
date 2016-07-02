@@ -1,0 +1,587 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ctp_real_factory &mdash; ctxalgoctp 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ctxalgoctp 0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="factories" href="index.html"/>
+        <link rel="next" title="live" href="../live/index.html"/>
+        <link rel="prev" title="ctp_backtesting_factory" href="ctp_backtesting_factory.html"/> 
+
+  
+  <script src="../../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> ctxalgoctp
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ctp</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../code_gen/index.html">code_gen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_producers/index.html">data_producers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../execution_drivers/index.html">execution_drivers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">factories</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="abstract_ctp_factory.html">abstract_ctp_factory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ctp_backtesting_factory.html">ctp_backtesting_factory</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ctp_real_factory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../live/index.html">live</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logger/index.html">logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategies/index.html">strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtester.html">backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtesting.html">backtesting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtesting_utils.html">backtesting_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base.html">base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callback_base.html">callback_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comm.html">comm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constants.html">constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datetime_utils.html">datetime_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../market_data_feed.html">market_data_feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../market_order_simulator.html">market_order_simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../offline_optimization.html">offline_optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../order_cancellation.html">order_cancellation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plain_backtester.html">plain_backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../real.html">real</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report.html">report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report_generator.html">report_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roll.html">roll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../slippage_models.html">slippage_models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../state_utils.html">state_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategy.html">strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategy_utils.html">strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_account.html">trading_account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_constants.html">trading_constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils.html">utils</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ctxalgoctp</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">ctp</a> &raquo;</li>
+      
+          <li><a href="index.html">factories</a> &raquo;</li>
+      
+    <li>ctp_real_factory</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../sources/ctp/factories/ctp_real_factory.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ctxalgoctp.ctp.factories.ctp_real_factory">
+<span id="ctp-real-factory"></span><h1>ctp_real_factory<a class="headerlink" href="#module-ctxalgoctp.ctp.factories.ctp_real_factory" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpTimeGeneratorReal">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.factories.ctp_real_factory.</code><code class="descname">CtpTimeGeneratorReal</code><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpTimeGeneratorReal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="abstract_ctp_factory.html#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpTimeGenerator" title="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpTimeGenerator"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpTimeGenerator</span></code></a></p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpTimeGeneratorReal.now">
+<code class="descname">now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpTimeGeneratorReal.now" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.factories.ctp_real_factory.</code><code class="descname">CtpRealFactory</code><span class="sig-paren">(</span><em>account</em>, <em>security_company=None</em>, <em>data_feed=None</em>, <em>account_initial_capital=1000000.0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="abstract_ctp_factory.html#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory" title="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory</span></code></a></p>
+<p>This factory returns real CTP market and trading classes.</p>
+<p>Initialize current.
+:param account: dict{string: object}, information of the trading account.</p>
+<blockquote>
+<div>The dict must have the following keys: market_server, trading_server, user, password, broker_id.
+market_server: string, the server for market data.
+trading_server: string, the server for trading data.
+user: string, user name.
+password: string, password.
+broker_id: string, broker id.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>security_company</strong> &#8211; string, security company name.</li>
+<li><strong>data_feed</strong> &#8211; AbstractDataFeed, the data feed.</li>
+<li><strong>account_initial_capital</strong> &#8211; float, the initial capital for the trading account.
+This is used to make sure the strategy report will use the current initial capital to
+calculate metrics.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.order_book_level">
+<code class="descname">order_book_level</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.order_book_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_order_book_level">
+<code class="descname">set_order_book_level</code><span class="sig-paren">(</span><em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_order_book_level" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.account_initial_capital">
+<code class="descname">account_initial_capital</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.account_initial_capital" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_message_queue">
+<code class="descname">create_message_queue</code><span class="sig-paren">(</span><em>callbacks</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_message_queue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a message queue instance.
+:return: CtpMessageQueue.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_market">
+<code class="descname">create_market</code><span class="sig-paren">(</span><em>msg_queue</em>, <em>ctp_folder</em>, <em>logger</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_trading">
+<code class="descname">create_trading</code><span class="sig-paren">(</span><em>message_queue</em>, <em>local_path</em>, <em>resume_type</em>, <em>user_product_info</em>, <em>auth_code</em>, <em>logger</em>, <em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_time_generator">
+<code class="descname">get_time_generator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_time_generator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.reset">
+<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.is_backtesting">
+<code class="descname">is_backtesting</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.is_backtesting" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.put_historical_ohlcs">
+<code class="descname">put_historical_ohlcs</code><span class="sig-paren">(</span><em>future_id</em>, <em>new_ohlcs</em>, <em>max_bar</em>, <em>kind</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.put_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_historical_ohlcs">
+<code class="descname">get_historical_ohlcs</code><span class="sig-paren">(</span><em>future_id</em>, <em>periods</em>, <em>max_bar</em>, <em>kind</em>, <em>with_open_interests=False</em>, <em>order_book_level=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_trading_account">
+<code class="descname">get_trading_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_trading_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trading account (only used for backtesting).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_trading_account_id">
+<code class="descname">get_trading_account_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_trading_account_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_broker_id">
+<code class="descname">get_broker_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_broker_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_commission">
+<code class="descname">has_commission</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_commission" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.is_ready_for_backtest">
+<code class="descname">is_ready_for_backtest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.is_ready_for_backtest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_is_ready_for_backtest">
+<code class="descname">set_is_ready_for_backtest</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_is_ready_for_backtest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.add_data_subscription">
+<code class="descname">add_data_subscription</code><span class="sig-paren">(</span><em>data_subscription</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.add_data_subscription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add data subscription into current.
+:param data_subscription: AbstractDataSubscriber, the data subscription.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.bar_feed">
+<code class="descname">bar_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.bar_feed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.data_producer">
+<code class="descname">data_producer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.data_producer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.future_trading_utils">
+<code class="descname">future_trading_utils</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.future_trading_utils" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_trading_account_type">
+<code class="descname">get_trading_account_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_trading_account_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trading account type.
+:return: string, the trading account type. Return future because this is a future trading layer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_bar_feed">
+<code class="descname">has_bar_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_bar_feed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_data_subscription">
+<code class="descname">has_data_subscription</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_data_subscription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is there any data subscription registered?
+:return: boolean.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_market_data_feed">
+<code class="descname">has_market_data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_market_data_feed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is the market data feed setup?
+:return: boolean.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_mission_control">
+<code class="descname">has_mission_control</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_mission_control" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is the mission control setup?
+:return: boolean.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.is_supported_instrument_id">
+<code class="descname">is_supported_instrument_id</code><span class="sig-paren">(</span><em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.is_supported_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is instrument_id a supported instrument?
+:param instrument_id: string, instrument id.
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.market_data_feed">
+<code class="descname">market_data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.market_data_feed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the registered market data feed.
+:return: MarketDataFeed. None if no market data feed is set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.max_initialization_retries">
+<code class="descname">max_initialization_retries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.max_initialization_retries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.max_initialization_time">
+<code class="descname">max_initialization_time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.max_initialization_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.mission_control">
+<code class="descname">mission_control</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.mission_control" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return current mission control.
+:return: MissionControl, the registered mission control.</p>
+<blockquote>
+<div>Return None if no mission control is registered.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.poll_subscribed_data">
+<code class="descname">poll_subscribed_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.poll_subscribed_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Poll from registered data subscriptions.
+:return: boolean, True if there is some data available, False otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.security_company">
+<code class="descname">security_company</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.security_company" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_bar_feed">
+<code class="descname">set_bar_feed</code><span class="sig-paren">(</span><em>bar_feed</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_bar_feed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set bar feed with bar_feed. Bar feed is an zeromq based data publisher which publishes
+time-based and volatility-based ohlc bars.
+:param bar_feed: BarFeed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_data_producer">
+<code class="descname">set_data_producer</code><span class="sig-paren">(</span><em>data_producer</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_data_producer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_market_data_feed">
+<code class="descname">set_market_data_feed</code><span class="sig-paren">(</span><em>market_data_feed</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_market_data_feed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.data_feed to data_feed.
+If market_data_feed is not None, the strategy will not connect to CTP market server. Instead, it will
+receive market data from the market data feed&#8217;s zeromq queue.
+The default setting is the there is no market_data_feed, so the strategy by default will connect
+to CTP market server to get tick data.
+:param market_data_feed: MarketDataFeed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_max_initialization_retries">
+<code class="descname">set_max_initialization_retries</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_max_initialization_retries" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_max_initialization_time">
+<code class="descname">set_max_initialization_time</code><span class="sig-paren">(</span><em>duration</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_max_initialization_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_mission_control">
+<code class="descname">set_mission_control</code><span class="sig-paren">(</span><em>mission_control</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_mission_control" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set mission control into current.
+:param mission_control: MissionControl.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_security_company">
+<code class="descname">set_security_company</code><span class="sig-paren">(</span><em>company</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_security_company" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>company</strong> &#8211; string, security company. None means a default company.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_should_get_commission_ratio">
+<code class="descname">set_should_get_commission_ratio</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_should_get_commission_ratio" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_should_get_instrument_info">
+<code class="descname">set_should_get_instrument_info</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_should_get_instrument_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_should_get_margin_rate">
+<code class="descname">set_should_get_margin_rate</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_should_get_margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_should_get_order_comm_rate">
+<code class="descname">set_should_get_order_comm_rate</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_should_get_order_comm_rate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.should_get_commission_ratio">
+<code class="descname">should_get_commission_ratio</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.should_get_commission_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Should we get commission ratio information from CTP?
+This only effect real trading. In real trading some CTP providers does not offer this ability. In this case,
+# set this to False, so CTX will use internally stored commission information.
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.should_get_instrument_info">
+<code class="descname">should_get_instrument_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.should_get_instrument_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.should_get_margin_rate">
+<code class="descname">should_get_margin_rate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.should_get_margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.should_get_order_comm_rate">
+<code class="descname">should_get_order_comm_rate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.should_get_order_comm_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Should we get order comm rate information from CTP?
+This only effect real trading. In real trading some CTP providers does not offer this ability. In this case,
+# set this to False, so CTX will use internally stored information.
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.store_context">
+<code class="descname">store_context</code><span class="sig-paren">(</span><em>context</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.store_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.trading_days">
+<code class="descname">trading_days</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.trading_days" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.load_context">
+<code class="descname">load_context</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.load_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.data_feed">
+<code class="descname">data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.data_feed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../live/index.html" class="btn btn-neutral float-right" title="live" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ctp_backtesting_factory.html" class="btn btn-neutral" title="ctp_backtesting_factory" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, .
+      Last updated on Jul 02, 2016.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../static/jquery.js"></script>
+      <script type="text/javascript" src="../../static/underscore.js"></script>
+      <script type="text/javascript" src="../../static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

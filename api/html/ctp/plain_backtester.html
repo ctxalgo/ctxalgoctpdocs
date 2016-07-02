@@ -1,0 +1,1205 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>plain_backtester &mdash; ctxalgoctp 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ctxalgoctp 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="ctp" href="index.html"/>
+        <link rel="next" title="real" href="real.html"/>
+        <link rel="prev" title="order_cancellation" href="order_cancellation.html"/> 
+
+  
+  <script src="../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> ctxalgoctp
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ctp</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="code_gen/index.html">code_gen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_producers/index.html">data_producers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution_drivers/index.html">execution_drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factories/index.html">factories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="live/index.html">live</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logger/index.html">logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategies/index.html">strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backtester.html">backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backtesting.html">backtesting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backtesting_utils.html">backtesting_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html">base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="callback_base.html">callback_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comm.html">comm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datetime_utils.html">datetime_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market_data_feed.html">market_data_feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market_order_simulator.html">market_order_simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offline_optimization.html">offline_optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="order_cancellation.html">order_cancellation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">plain_backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="real.html">real</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report.html">report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roll.html">roll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slippage_models.html">slippage_models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_utils.html">state_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategy.html">strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategy_utils.html">strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading_account.html">trading_account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading_constants.html">trading_constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ctxalgoctp</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">ctp</a> &raquo;</li>
+      
+    <li>plain_backtester</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../sources/ctp/plain_backtester.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ctxalgoctp.ctp.plain_backtester">
+<span id="plain-backtester"></span><h1>plain_backtester<a class="headerlink" href="#module-ctxalgoctp.ctp.plain_backtester" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.plain_backtester.</code><code class="descname">PlainBacktester</code><span class="sig-paren">(</span><em>account=None</em>, <em>initial_capital=1000000.0</em>, <em>has_commission=True</em>, <em>instrument_ids=None</em>, <em>slippage_model=None</em>, <em>data_feed=None</em>, <em>security_company=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.trading_utils.strategy_queries.AbstractStrategyQueries</span></code></p>
+<p>Plain backtester, used when you want to do a quick strategy prototype by just iterating over ohlc bars.</p>
+<p>Initialize current.
+:param account: TradingAccount, provide a trading account for the backtester to use.</p>
+<blockquote>
+<div>If None, a default trading account with initial_capital and has_commission will be created.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>initial_capital</strong> &#8211; float, the initial capital to use.</li>
+<li><strong>has_commission</strong> &#8211; boolean, if True, no trading commission will be applied.</li>
+<li><strong>instrument_ids</strong> &#8211; [string], the list of instrument ids that are to be traded.</li>
+<li><strong>slippage_model</strong> &#8211; AbstractSlippageModel, the slippage model to use.
+If None, there is no slippage for all the trades.</li>
+<li><strong>data_feed</strong> &#8211; AbstractDataFeed, external data feed. If None, then no data feed is set.</li>
+<li><strong>security_company</strong> &#8211; string, security company, which offers different commissions to different instruments.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.set_instrument_id">
+<code class="descname">set_instrument_id</code><span class="sig-paren">(</span><em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.set_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set THE ONLY traded instrument.
+:param instrument_id: string, instrument id.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.set_instrument_ids">
+<code class="descname">set_instrument_ids</code><span class="sig-paren">(</span><em>instrument_ids</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.set_instrument_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the list of traded instruments.
+:param instrument_ids: [string], instrument ids.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.get_positions">
+<code class="descname">get_positions</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.get_positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the instrument positions.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: dict{string: OHLC}, keys are position directions &#8216;long&#8217; or &#8216;short&#8217;. Values are position OHLCs.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.get_transactions">
+<code class="descname">get_transactions</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.get_transactions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of transactions.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: [AbstractTransaction].</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.update_price">
+<code class="descname">update_price</code><span class="sig-paren">(</span><em>price=None</em>, <em>volume=None</em>, <em>timestamp=None</em>, <em>instrument_id=None</em>, <em>ohlcs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.update_price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the observed instrument price into current backtester.
+Call this method when you have a new ohlc bar for an instrument. The new price is used to
+update balance, profit related information in current backtester.
+:param price: float, instrument price.</p>
+<blockquote>
+<div>If None, use data from ohlcs.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>volume</strong> &#8211; int, the traded volume.
+If None, use data from ohlcs.</li>
+<li><strong>timestamp</strong> &#8211; datetime, current timestamp.
+If None, use data from ohlcs.</li>
+<li><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id().</li>
+<li><strong>ohlcs</strong> &#8211; dict{string: OHLC}, keys are instrument ids, values are ohlcs.
+If not None, use the information from here to update prices for multiple instruments; and
+ignore price, volume and timestamp parameters.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.change_position_to">
+<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>price</em>, <em>new_position</em>, <em>timestamp</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.change_position_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the position of the given instrument to new_position.
+:param price: float, if None, newly placed orders are market orders, otherwise, limit orders.
+:param price: float, the instrument price.
+:param new_position: int, the new position for the instrument.
+:param timestamp: datetime, current timestamp.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.open_position">
+<code class="descname">open_position</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>timestamp</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.open_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open position.
+:param price: float, instrument price.
+:param volume: int, volume to open, positive number means long position, negative number means short position.
+:param timestamp: datetime, current timestamp.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.close_position">
+<code class="descname">close_position</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>timestamp</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.close_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close position.
+:param price: float, instrument price.
+:param volume: int, volume to close, positive number means long position, negative number means short position.
+:param timestamp: datetime, current timestamp.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.position_details">
+<code class="descname">position_details</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.position_details" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.instrument_id">
+<code class="descname">instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.positions">
+<code class="descname">positions</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.positions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.has_position">
+<code class="descname">has_position</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.has_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.last_known_price">
+<code class="descname">last_known_price</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.last_known_price" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.instrument_ids">
+<code class="descname">instrument_ids</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.instrument_ids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.periods">
+<code class="descname">periods</code><span class="sig-paren">(</span><em>kind=None</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.periods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.strategy_period_kind">
+<code class="descname">strategy_period_kind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.strategy_period_kind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.strategy_period">
+<code class="descname">strategy_period</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.strategy_period" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.ohlcs">
+<code class="descname">ohlcs</code><span class="sig-paren">(</span><em>kind=None</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.ohlcs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.strategy_ohlc">
+<code class="descname">strategy_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.strategy_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.ohlc">
+<code class="descname">ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.ohlc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.available_money">
+<code class="descname">available_money</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.available_money" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.balance_ohlc">
+<code class="descname">balance_ohlc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.balance_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.margin_ohlc">
+<code class="descname">margin_ohlc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.margin_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.return_ohlc">
+<code class="descname">return_ohlc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.return_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.available_money_ohlc">
+<code class="descname">available_money_ohlc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.available_money_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.accumulated_commission_ohlc">
+<code class="descname">accumulated_commission_ohlc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.accumulated_commission_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.accumulated_profit_ohlc">
+<code class="descname">accumulated_profit_ohlc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.accumulated_profit_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.balance">
+<code class="descname">balance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.balance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.profit">
+<code class="descname">profit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.profit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.account_size">
+<code class="descname">account_size</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.account_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.margin">
+<code class="descname">margin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.margin_money">
+<code class="descname">margin_money</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.margin_money" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.all_positions">
+<code class="descname">all_positions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.all_positions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.has_pending_order">
+<code class="descname">has_pending_order</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.has_pending_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_order_pending">
+<code class="descname">is_order_pending</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_order_pending" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.strategy_name">
+<code class="descname">strategy_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.strategy_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.state">
+<code class="descname">state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.max_positions_to_open">
+<code class="descname">max_positions_to_open</code><span class="sig-paren">(</span><em>price</em>, <em>direction</em>, <em>instrument_id=None</em>, <em>available_money=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.max_positions_to_open" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.latest_time_to_close_position">
+<code class="descname">latest_time_to_close_position</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.latest_time_to_close_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.latest_time_to_open_position">
+<code class="descname">latest_time_to_open_position</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.latest_time_to_open_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.volume_multiple">
+<code class="descname">volume_multiple</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.volume_multiple" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.margin_rate_by_money">
+<code class="descname">margin_rate_by_money</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.margin_rate_by_money" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.current_transaction_id">
+<code class="descname">current_transaction_id</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.current_transaction_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.transaction_id_from_order_ref">
+<code class="descname">transaction_id_from_order_ref</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.transaction_id_from_order_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.now">
+<code class="descname">now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.now" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.trading_day">
+<code class="descname">trading_day</code><span class="sig-paren">(</span><em>now=None</em>, <em>delta=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.trading_day" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.bars_in_last_days">
+<code class="descname">bars_in_last_days</code><span class="sig-paren">(</span><em>ohlc</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>start=-1</em>, <em>end=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.bars_in_last_days" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.report">
+<code class="descname">report</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the strategy report.
+:return: ctxalgolib.report.abstract_strategy_report.PlainStrategyReport. The report.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.has_run">
+<code class="descname">has_run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.has_run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.futures">
+<code class="descname">futures</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.futures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.all_position_details">
+<code class="descname">all_position_details</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.all_position_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return position details for all traded instruments.
+:return: dict{string: dict{string: [dict{string: object}]}}</p>
+<blockquote>
+<div><p>The out most keys are instrument ides, and the values are the same as the result of self.position_details.
+For example:
+{</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>&#8216;IF99&#8217;: {</dt>
+<dd><dl class="first last docutils">
+<dt>&#8216;long&#8217;: [</dt>
+<dd><blockquote class="first">
+<div><dl class="docutils">
+<dt>{</dt>
+<dd>&#8216;order_ref&#8217;: order reference string
+&#8216;price&#8217;: the price when the position is opened.
+&#8216;volume&#8217;: the volume that are executed at this price.
+&#8216;timestamp&#8217;: the time when this position is executed.</dd>
+</dl>
+<p>}, ...</p>
+</div></blockquote>
+<p class="last">],</p>
+</dd>
+<dt>&#8216;short&#8217;: [</dt>
+<dd><blockquote class="first">
+<div><dl class="docutils">
+<dt>{</dt>
+<dd>&#8216;order_ref&#8217;: order reference string
+&#8216;price&#8217;: the price when the position is opened.
+&#8216;volume&#8217;: the volume that are executed at this price.
+&#8216;timestamp&#8217;: the time when this position is executed.</dd>
+</dl>
+<p>}, ...</p>
+</div></blockquote>
+<p class="last">],</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.can_close_position_wrt_time">
+<code class="descname">can_close_position_wrt_time</code><span class="sig-paren">(</span><em>now=None</em>, <em>instrument_ids=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.can_close_position_wrt_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Can we close positions for all the instruments given by instrument_ids?
+Whether any position can be closed for an instrument id is defined by now &lt;= self.latest_time_to_close_position.
+:param now: datetime, current time. If None, use current timestamp.
+:param instrument_ids: [string], the list of instrument ids whose positions need to be closed.</p>
+<blockquote>
+<div>If None, use self.instrument_id() as the only instrument.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool, True if we can close positions for all the given instrument ids.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.can_open_and_close_position_wrt_time">
+<code class="descname">can_open_and_close_position_wrt_time</code><span class="sig-paren">(</span><em>now=None</em>, <em>instrument_ids=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.can_open_and_close_position_wrt_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Can we open and close positions for all the instruments given by instrument_ids?
+Whether any position can be closed for an instrument id is defined by
+now &lt;= self.latest_time_to_open_position and now &lt;= self.latest_time_to_close_position.
+:param now: datetime, current time. If None, use current timestamp.
+:param instrument_ids: [string], the list of instrument ids whose positions need to be closed.</p>
+<blockquote>
+<div>If None, use self.instrument_id() as the only instrument.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool, True if we can open and close close positions for all the given instrument ids.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.can_open_position_wrt_time">
+<code class="descname">can_open_position_wrt_time</code><span class="sig-paren">(</span><em>now=None</em>, <em>instrument_ids=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.can_open_position_wrt_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Can we open positions for all the instruments given by instrument_ids?
+Whether any position can be opened for an instrument id is defined by now &lt;= self.latest_time_to_open_position.
+:param now: datetime, current time. If None, use current timstamp.
+:param instrument_ids: [string], the list of instrument ids whose positions need to be opened.</p>
+<blockquote>
+<div>If None, use self.instrument_id() as the only instrument.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool, True if we can open positions for all the given instrument ids.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.data_feed">
+<code class="descname">data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.data_feed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.direction">
+<code class="descname">direction</code><span class="sig-paren">(</span><em>volume</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return &#8216;long&#8217; or &#8216;short&#8217; as direction.
+:param volume: int, positive number means long direction, negative numer means short direction.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.dominant_instrument">
+<code class="descname">dominant_instrument</code><span class="sig-paren">(</span><em>instrument_prefix</em>, <em>trading_day</em>, <em>level=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.dominant_instrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the level dominant instrument id on the given trading day.
+:param instrument_prefix: string, instrument id prefix, such as IF, cu.
+:param trading_day: date, or string in form of yyyy-mm-dd. trading day.
+:param level: int, 0 means the dominant contract, 1 means the next dominant contract, and so on.
+:return: string, the instrument id of the asked dominant contract.</p>
+<blockquote>
+<div>If no such dominant contract, return None.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.filtered_position">
+<code class="descname">filtered_position</code><span class="sig-paren">(</span><em>direction</em>, <em>condition</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.filtered_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return current position details for a given instrument.
+:param direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;.
+:param condition: string, values can be:</p>
+<blockquote>
+<div>highest_price: return the position which has the highest filled price.
+lowest_price: return the position which has the lowest filled price.
+earliest_filled: return the position which has the earliest filled time.
+latest_filled: return the position which as the latest filled time.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instrument_id</strong> &#8211; string, the instrument id whose position details are to be retrieved.
+If None, use self.instrument_id().</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict{string: object}
+The details of a particular position which satisfy the given condition. The format is:
+{<blockquote>
+<div>&#8216;order_ref&#8217;: order reference string
+&#8216;price&#8217;: the price when the position is opened.
+&#8216;volume&#8217;: the volume that are executed at this price.
+&#8216;timestamp&#8217;: the time when this position is executed.</div></blockquote>
+<p>}.
+If there are more than one position satisfies the condition, randomly choose one.
+If there is no position, return None.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.has_data_feed">
+<code class="descname">has_data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.has_data_feed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is data feed set?
+:return: boolean.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.has_long_position">
+<code class="descname">has_long_position</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.has_long_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does current strategy have long positions?
+:param instrument_id: string, instrument id. If None, use self.instrument_id().</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.has_short_position">
+<code class="descname">has_short_position</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.has_short_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does current strategy have short positions?
+:param instrument_id: string, instrument id. If None, use self.instrument_id().</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.highest_position_price">
+<code class="descname">highest_position_price</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.highest_position_price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the price of lowest long position.
+:param direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;.
+:param instrument_id: string, the instrument id whose position details are to be retrieved.</p>
+<blockquote>
+<div>If None, use self.instrument_id().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">float, position price.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.in_state">
+<code class="descname">in_state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.in_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is current state machine in state named name?
+:param name: string, name of a state.
+:return string, name of the state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_day">
+<code class="descname">is_day</code><span class="sig-paren">(</span><em>timestamp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_day" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is the given timestamp in day trading period?
+:param timestamp: datetime, the given timestamp. If None, use self.now().
+:return: boolean.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_market_order_supported">
+<code class="descname">is_market_order_supported</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>trading_day=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_market_order_supported" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return if an instrument supports market order on the given trading day.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:param trading_day: date, current trading day, if None ,use self.trading_day()
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_night">
+<code class="descname">is_night</code><span class="sig-paren">(</span><em>timestamp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_night" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is the given timestamp in night trading period?
+:param timestamp: datetime, the given timestamp. If None, use self.now().
+:return: boolean.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_position_reached">
+<code class="descname">is_position_reached</code><span class="sig-paren">(</span><em>target_position</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_position_reached" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the current position for the given instrument is the same as target position.
+:param target_position: int, the target position. If None, meaning that target position is unknown,</p>
+<blockquote>
+<div>then this method always returns False.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id().</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">boolean.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_position_single_sided">
+<code class="descname">is_position_single_sided</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_position_single_sided" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is current position for the given instrument single sided?
+Meaning either long or short positions, but not both.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return bool, True if position for the given instrument is single-sided, False otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_stop_loss_touched">
+<code class="descname">is_stop_loss_touched</code><span class="sig-paren">(</span><em>price</em>, <em>stop_loss</em>, <em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_stop_loss_touched" title="Permalink to this definition">¶</a></dt>
+<dd><p>Has price touched given stop loss?
+:param price: float, the current instrument price.
+:param stop_loss: float, the predefined stop loss price.
+:param direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;.
+:return: bool, True if given price touches stop loss.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_stop_win_touched">
+<code class="descname">is_stop_win_touched</code><span class="sig-paren">(</span><em>price</em>, <em>stop_win</em>, <em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.is_stop_win_touched" title="Permalink to this definition">¶</a></dt>
+<dd><p>Has price touched given stop win?
+:param price: float, the current instrument price.
+:param stop_win: float, the predefined stop loss price.
+:param direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;.
+:return: bool, True if given price touches stop win.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.long_position_profit">
+<code class="descname">long_position_profit</code><span class="sig-paren">(</span><em>condition='average_price'</em>, <em>price=None</em>, <em>instrument_id=None</em>, <em>percent=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.long_position_profit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the profit of held long positions.
+:param condition: string, the condition to select positions. Values can be the following:</p>
+<blockquote>
+<div>highest_price: use the highest price of the held position to calculate profit.
+lowest_price: use the lowest price of the held position.
+average_price: use the average price of the held position.
+This condition is needed because the positions of the given direction for the given instrument
+may have different entry prices.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>price</strong> &#8211; float, the current price of the instrument. If None, use the last known price for that instrument.</li>
+<li><strong>instrument_id</strong> &#8211; string, the instrument id whose position details are to be retrieved.
+If None, use self.instrument_id().</li>
+<li><strong>percent</strong> &#8211; boolean, if True, the profit is returned as a percentage, otherwise, as difference
+between the current price and the position price.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>:return float, the position profit. Positive number means profit, negative number means loss.</dt>
+<dd>The percent parameter decides if the returned number is a percentage or actual price delta.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.long_positions">
+<code class="descname">long_positions</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.long_positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return long positions for future_id.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: int, the long position, positive value or zero.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.lowest_position_price">
+<code class="descname">lowest_position_price</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.lowest_position_price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the price of lowest long position.
+:param direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;.
+:param instrument_id: string, the instrument id whose position details are to be retrieved.</p>
+<blockquote>
+<div>If None, use self.instrument_id().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">float, position price.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.market_periods">
+<code class="descname">market_periods</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>trading_day=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.market_periods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the market periods for the given instrument on the given trading day.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:param trading_day: date, current trading day, if None ,use self.trading_day()
+:return: [(start_ts, end_ts)], the list of market periods.</p>
+<blockquote>
+<div>start_ts and end_ts are both of type datetime.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.ohlc_in_last_days">
+<code class="descname">ohlc_in_last_days</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>start=-1</em>, <em>end=None</em>, <em>ohlc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.ohlc_in_last_days" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sliced ohlc, which covers all bars from start to end (in days).
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
+<blockquote>
+<div>If None, defaults to &#8216;time-based&#8217;.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity, the periodicity of the ohlc to return.
+If None, use self.strategy_period().</li>
+<li><strong>now</strong> &#8211; datetime, an optional timestamp indicating current time, if None,
+use the last timestamp in ohlc as current time.</li>
+<li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
+<li><strong>start</strong> &#8211; int, start day index. Must be negative. Index days from backward.</li>
+<li><strong>end</strong> &#8211; int, end day index. Must be negative or None. Index days from backward.</li>
+<li><strong>ohlc</strong> &#8211; OHLC, the ohlc object. If not None, use this ohlc, instead of using
+instrument_id, kind and period to find the ohlc.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">OHLC, the sliced OHLC. If no such bars from ohlc, return None.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.position_profit">
+<code class="descname">position_profit</code><span class="sig-paren">(</span><em>direction=None</em>, <em>condition='average_price'</em>, <em>price=None</em>, <em>instrument_id=None</em>, <em>percent=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.position_profit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the profit of held positions.
+:param direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;, specifies the direction of the position whose</p>
+<blockquote>
+<div>profit is to be calculated.
+If None, assume that there is only one direction position, and use self.single_sided_position.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>condition</strong> &#8211; string, the condition to select positions. Values can be the following:
+highest_price: use the highest price of the held position to calculate profit.
+lowest_price: use the lowest price of the held position.
+average_price: use the average price of the held position.
+This condition is needed because the positions of the given direction for the given instrument
+may have different entry prices.</li>
+<li><strong>price</strong> &#8211; float, the current price of the instrument. If None, use the last known price for that instrument.</li>
+<li><strong>instrument_id</strong> &#8211; string, the instrument id whose position details are to be retrieved.
+If None, use self.instrument_id().</li>
+<li><strong>percent</strong> &#8211; boolean, if True, the profit is returned as a percentage, otherwise, as difference
+between the current price and the position price.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>:return float, the position profit. Positive number means profit, negative number means loss.</dt>
+<dd>The percent parameter decides if the returned number is a percentage or actual price delta.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.price">
+<code class="descname">price</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as self.last_known_price().
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:return float, the last known price, None if no price is known for the given instrument.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.short_position_profit">
+<code class="descname">short_position_profit</code><span class="sig-paren">(</span><em>condition='average_price'</em>, <em>price=None</em>, <em>instrument_id=None</em>, <em>percent=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.short_position_profit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the profit of held short positions.
+:param condition: string, the condition to select positions. Values can be the following:</p>
+<blockquote>
+<div>highest_price: use the highest price of the held position to calculate profit.
+lowest_price: use the lowest price of the held position.
+average_price: use the average price of the held position.
+This condition is needed because the positions of the given direction for the given instrument
+may have different entry prices.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>price</strong> &#8211; float, the current price of the instrument. If None, use the last known price for that instrument.</li>
+<li><strong>instrument_id</strong> &#8211; string, the instrument id whose position details are to be retrieved.
+If None, use self.instrument_id().</li>
+<li><strong>percent</strong> &#8211; boolean, if True, the profit is returned as a percentage, otherwise, as difference
+between the current price and the position price.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>:return float, the position profit. Positive number means profit, negative number means loss.</dt>
+<dd>The percent parameter decides if the returned number is a percentage or actual price delta.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.short_positions">
+<code class="descname">short_positions</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.short_positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return long positions for future_id.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: int, the short position, negative value or zero.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.sign">
+<code class="descname">sign</code><span class="sig-paren">(</span><em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.sign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sign 1 or -1 for the position direction. This is useful
+when calculating volumes from directions.
+:param direction: string or int, can be &#8216;long&#8217; or &#8216;short&#8217;.</p>
+<blockquote>
+<div>Or an integer, positive number means long, negative number mean short.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int, return 1 if direction is &#8216;long&#8217;, otherwise -1.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.single_sided_position">
+<code class="descname">single_sided_position</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.single_sided_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the single sided position for given instrument.
+Single sided means: assuming that there is no both long and short positions for the instrument, then</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>If long position is positive, return the long position number (positive).</li>
+<li>If short position is negative, return the short position number (negative).</li>
+<li>Otherwise return 0.</li>
+</ol>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id().</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>:return int, single-sided position. If the instrument have both long and short side positions,</dt>
+<dd>return None.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.single_sided_positions">
+<code class="descname">single_sided_positions</code><span class="sig-paren">(</span><em>instrument_ids=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.single_sided_positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the single sided position for the given instrument ids.
+:param instrument_ids: [string], the required instrument ids.</p>
+<blockquote>
+<div>If None, use self.instrument_ids().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string: int}, meaning dict{instrument_id: position}.
+Keys are the same as instrument_ids. Values are the single sided positions for those instruments.
+If an instrument has no position, its corresponding value is 0.
+If an instrument has both long and short sided positions, its corresponding value is None.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.tick_size">
+<code class="descname">tick_size</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.tick_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the tick size of the given instrument.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, tick size of the instrument on the current trading day.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.today_bars">
+<code class="descname">today_bars</code><span class="sig-paren">(</span><em>ohlc</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.today_bars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the bar slice in ohlc, which covers all bars from today.
+:param ohlc: OHLC, the ohlc object.
+:param now: datetime, an optional timestamp indicating current time, if None,</p>
+<blockquote>
+<div>use the last timestamp in ohlc as current time.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
+<li><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id().</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">slice, the slice used to index into ohlc. If no such bars from ohlc, return None.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.today_ohlc">
+<code class="descname">today_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>ohlc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.today_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return today&#8217;s ohlc, the sliced part only contain bars from today.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
+<blockquote>
+<div>If None, defaults to &#8216;time-based&#8217;.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity, the periodicity of the ohlc to return.
+If None, use self.strategy_period().</li>
+<li><strong>now</strong> &#8211; datetime, an optional timestamp indicating current time, if None,
+use the last timestamp in ohlc as current time.</li>
+<li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
+<li><strong>ohlc</strong> &#8211; OHLC, the ohlc object. If not None, use this ohlc, instead of using
+instrument_id, kind and period to find the ohlc.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">OHLC, the sliced OHLC. If no such bars from ohlc, return None.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.yesterday_bars">
+<code class="descname">yesterday_bars</code><span class="sig-paren">(</span><em>ohlc</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.yesterday_bars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the bar slice in ohlc, which covers all bars from yesterday.
+:param ohlc: OHLC, the ohlc object.
+:param now: datetime, an optional timestamp indicating current time, if None,</p>
+<blockquote>
+<div>use the last timestamp in ohlc as current time.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
+<li><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id().</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">slice, the slice used to index into ohlc. If no such bars from ohlc, return None.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.yesterday_ohlc">
+<code class="descname">yesterday_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>ohlc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.yesterday_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sliced part from the given ohlc, the sliced part only contain bars from yesterday.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
+<blockquote>
+<div>If None, defaults to &#8216;time-based&#8217;.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>period</strong> &#8211; Periodicity, the periodicity of the ohlc to return.
+If None, use self.strategy_period().</li>
+<li><strong>now</strong> &#8211; datetime, an optional timestamp indicating current time, if None,
+use the last timestamp in ohlc as current time.</li>
+<li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
+<li><strong>ohlc</strong> &#8211; OHLC, the ohlc object. If not None, use this ohlc, instead of using
+instrument_id, kind and period to find the ohlc.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">OHLC, the sliced OHLC. If no such bars from ohlc, return None.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="real.html" class="btn btn-neutral float-right" title="real" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="order_cancellation.html" class="btn btn-neutral" title="order_cancellation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, .
+      Last updated on Jul 02, 2016.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../static/jquery.js"></script>
+      <script type="text/javascript" src="../static/underscore.js"></script>
+      <script type="text/javascript" src="../static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

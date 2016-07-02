@@ -1,0 +1,942 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>base &mdash; ctxalgoctp 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ctxalgoctp 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="ctp" href="index.html"/>
+        <link rel="next" title="callback_base" href="callback_base.html"/>
+        <link rel="prev" title="backtesting_utils" href="backtesting_utils.html"/> 
+
+  
+  <script src="../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> ctxalgoctp
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ctp</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="code_gen/index.html">code_gen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_producers/index.html">data_producers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution_drivers/index.html">execution_drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factories/index.html">factories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="live/index.html">live</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logger/index.html">logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategies/index.html">strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backtester.html">backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backtesting.html">backtesting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backtesting_utils.html">backtesting_utils</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="callback_base.html">callback_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comm.html">comm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datetime_utils.html">datetime_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market_data_feed.html">market_data_feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market_order_simulator.html">market_order_simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offline_optimization.html">offline_optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="order_cancellation.html">order_cancellation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plain_backtester.html">plain_backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="real.html">real</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report.html">report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roll.html">roll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slippage_models.html">slippage_models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_utils.html">state_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategy.html">strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategy_utils.html">strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading_account.html">trading_account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading_constants.html">trading_constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ctxalgoctp</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">ctp</a> &raquo;</li>
+      
+    <li>base</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../sources/ctp/base.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ctxalgoctp.ctp.base">
+<span id="base"></span><h1>base<a class="headerlink" href="#module-ctxalgoctp.ctp.base" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="ctxalgoctp.ctp.base.pointer_to_object">
+<code class="descclassname">ctxalgoctp.ctp.base.</code><code class="descname">pointer_to_object</code><span class="sig-paren">(</span><em>callbacks</em>, <em>logger</em>, <em>func=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.pointer_to_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.base.OrderKind">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.base.</code><code class="descname">OrderKind</code><a class="headerlink" href="#ctxalgoctp.ctp.base.OrderKind" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ctxalgoctp.ctp.base.OrderKind.Market">
+<code class="descname">Market</code><em class="property"> = 'Market'</em><a class="headerlink" href="#ctxalgoctp.ctp.base.OrderKind.Market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.base.OrderKind.NormalLimit">
+<code class="descname">NormalLimit</code><em class="property"> = 'Normal'</em><a class="headerlink" href="#ctxalgoctp.ctp.base.OrderKind.NormalLimit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.base.OrderKind.FillAndKill">
+<code class="descname">FillAndKill</code><em class="property"> = 'FAK'</em><a class="headerlink" href="#ctxalgoctp.ctp.base.OrderKind.FillAndKill" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.base.OrderKind.FillOrKill">
+<code class="descname">FillOrKill</code><em class="property"> = 'FOK'</em><a class="headerlink" href="#ctxalgoctp.ctp.base.OrderKind.FillOrKill" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.base.</code><code class="descname">CtpCallBacks</code><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class for all callbacks for both market and trading APIs.
+Sub-class should redefine needed callbacks to implement customized behavior.
+Note:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">that some callbacks from the market API and trading API have the same name,
+but we put them into different callbacks. See on_market_connected and on_trading_connected
+as an example.</p>
+</li>
+<li><p class="first">Callbacks related to order:
+Insert Order:</p>
+<blockquote>
+<div><p>OnRtnOrder: invoked when status change
+OnRspOrderInsert: invoked when error happens in front
+OnErrRtnOrderInsert: invoked when error happens in exchange</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>Cancel Order:</dt>
+<dd><p class="first last">OnRtnOrder: invoked when status change
+OnRspOrderAction: invoked when error happens in front
+OnErrRtnOrderAction: invoked when error happens in exchange</p>
+</dd>
+</dl>
+<p>During order insert or action (cancel), if some error happens, OnRtnOrder callback won’t be invoked,
+instead corresponding callbacks such as OnRspOrderInsert, OnErrRtnOrderInsert, OnRspOrderAction or
+OnErrRtnOrderAction will be invoked.</p>
+<p>Another case, when inserting a limit order but “已撤单报单被拒绝SHFE:价格非最小单位的倍数”, in this case,
+it is not considered to be an error, and your order will be canceled.</p>
+</li>
+</ol>
+</div></blockquote>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_market_connected">
+<code class="descname">on_market_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_user_login</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_market_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback on market server connect status change
+:param p_api: c_void_p
+:param rsp_user_login: CThostFtdcRspUserLoginField
+:param status: ConnectionStatus int
+:param other_data: dict{string: object}, optional other data.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_market_disconnected">
+<code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback on market server disconnected
+:param p_api: c_void_p
+:param rsp_info: CThostFtdcRspInfoField
+:param status: ConnectionStatus int
+:param other_data: dict{string: object}, optional other data.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_market_rsp_error">
+<code class="descname">on_market_rsp_error</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_market_rsp_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback on market server when error occurred
+:param p_api: c_void_p
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:param other_data: dict{string: object}, optional other data.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_market_rtn_depth_market_data">
+<code class="descname">on_market_rtn_depth_market_data</code><span class="sig-paren">(</span><em>p_api</em>, <em>depth_market_data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_market_rtn_depth_market_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback on market server when receive market data
+:param p_api:  c_void_p
+:param depth_market_data: CThostFtdcDepthMarketDataField
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_connected">
+<code class="descname">on_trading_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_user_login</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback on trading server connect status change
+:param p_api: c_void_p
+:param rsp_user_login: CThostFtdcRspUserLoginField
+:param status: ConnectionStatus int
+:param other_data: dict{string: object}, optional other data.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_disconnected">
+<code class="descname">on_trading_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_disconnected" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback on trading server disconnected
+:param p_api: c_void_p
+:param rsp_info: CThostFtdcRspInfoField
+:param status: ConnectionStatus int
+:param other_data: dict{string: object}, optional other data.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_error">
+<code class="descname">on_trading_rsp_error</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback on trading server when error occurred
+:param p_api: c_void_p
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:param other_data: dict{string: object}, optional other data.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_err_rtn_order_action">
+<code class="descname">on_trading_err_rtn_order_action</code><span class="sig-paren">(</span><em>p_api</em>, <em>order_action</em>, <em>res_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_err_rtn_order_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>如果交易所认为撤单错误。由交易托管系统主动通知客户端，该方法会被调用。
+:param p_api: c_void_p
+:param order_action: CThostFtdcOrderActionField
+:param res_info: CThostFtdcRspInfoField
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_err_rtn_order_insert">
+<code class="descname">on_trading_err_rtn_order_insert</code><span class="sig-paren">(</span><em>p_api</em>, <em>input_order</em>, <em>res_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_err_rtn_order_insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>如果交易所认为报单错误。由交易托管系统主动通知客户端，该方法会被调用。
+:param p_api: c_void_p
+:param input_order: CThostFtdcInputOrderField
+:param res_info: CThostFtdcRspInfoField
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_order_action">
+<code class="descname">on_trading_rsp_order_action</code><span class="sig-paren">(</span><em>p_api</em>, <em>input_order_action</em>, <em>res_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_order_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>交易托管系统收到撤单指令，如果没有通过参数校验，拒绝接受撤单指令。用户就会收到此消息，其中包含了错误编码和错误消息
+:param p_api: c_void_p
+:param order_action: CThostFtdcInputOrderActionField
+:param res_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_order_insert">
+<code class="descname">on_trading_rsp_order_insert</code><span class="sig-paren">(</span><em>p_api</em>, <em>input_order</em>, <em>res_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_order_insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>交易托管系统收到报单指令，如果没有通过参数校验，拒绝接受报单指令。用户就会收到此消息，其中包含了错误编码和错误消息
+:param p_api: c_void_p
+:param input_order: CThostFtdcInputOrderField
+:param res_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_depth_market_data">
+<code class="descname">on_trading_rsp_qry_depth_market_data</code><span class="sig-paren">(</span><em>p_api</em>, <em>depth_market_data</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_depth_market_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询行情响应。当客户端发出请求查询行情指令后，交易托管系统返回响应时，该方法会被调用。
+:param p_api: c_void_p
+:param depth_market_data: CThostFtdcDepthMarketDataField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_instrument">
+<code class="descname">on_trading_rsp_qry_instrument</code><span class="sig-paren">(</span><em>p_api</em>, <em>instrument</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_instrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询合约响应。当客户端发出请求查询合约指令后，交易托管系统返回响应时，该方法会被调用。
+:param p_api: c_void_p
+:param instrument: CThostFtdcInstrumentField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_instrument_commission_rate">
+<code class="descname">on_trading_rsp_qry_instrument_commission_rate</code><span class="sig-paren">(</span><em>p_api</em>, <em>instrument_commission_rate</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_instrument_commission_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询手续费响应。
+:param p_api: c_void_p
+:param instrument_commission_rate: CThostFtdcInstrumentCommissionRateField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_instrument_margin_rate">
+<code class="descname">on_trading_rsp_qry_instrument_margin_rate</code><span class="sig-paren">(</span><em>p_api</em>, <em>instrument_margin_rate</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_instrument_margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询保证金响应。
+:param p_api: c_void_p
+:param instrument_margin_rate: CThostFtdcInstrumentMarginRateField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_instrument_order_comm_rate">
+<code class="descname">on_trading_rsp_qry_instrument_order_comm_rate</code><span class="sig-paren">(</span><em>p_api</em>, <em>instrument_order_comm_rate</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_instrument_order_comm_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询下单撤单手续费响应。
+:param p_api: c_void_p
+:param instrument_order_comm_rate: CThostFtdcInstrumentOrderCommRateField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_investor_position">
+<code class="descname">on_trading_rsp_qry_investor_position</code><span class="sig-paren">(</span><em>p_api</em>, <em>investor_position</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_investor_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>投资者持仓查询应答。当客户端发出投资者持仓查询指令后，后交易托管系统返回响应时，该方法会被调用。
+:param p_api: c_void_p
+:param investor_position: CThostFtdcInvestorPositionField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_investor_position_detail">
+<code class="descname">on_trading_rsp_qry_investor_position_detail</code><span class="sig-paren">(</span><em>p_api</em>, <em>investor_position_detail</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_investor_position_detail" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询投资者持仓明细响应。当客户端发出请求请求查询投资者持仓明细指令后，交易托管系统返回响应时，该方法会被调用。
+:param p_api:c_void_p
+:param investor_position_detail: CThostFtdcInvestorPositionDetailField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_trading_account">
+<code class="descname">on_trading_rsp_qry_trading_account</code><span class="sig-paren">(</span><em>p_api</em>, <em>trading_account</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_trading_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询资金账户响应。当客户端发出请求查询资金账户指令后，交易托管系统返回响应时，该方法会被调用。
+:param p_api: c_void_p
+:param trading_account: CThostFtdcTradingAccountField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rtn_order">
+<code class="descname">on_trading_rtn_order</code><span class="sig-paren">(</span><em>p_api</em>, <em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rtn_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>报单回报。当客户端进行报单录入、报单操作及其它原因（如部分成交）导致报单状态发生变化时，交易托管系统会主动通知客户端，该方法会被调用。
+:param p_api: c_void_p
+:param order: CThostFtdcOrderField</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rtn_trade">
+<code class="descname">on_trading_rtn_trade</code><span class="sig-paren">(</span><em>p_api</em>, <em>trade</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rtn_trade" title="Permalink to this definition">¶</a></dt>
+<dd><p>成交回报。当发生成交时交易托管系统会通知客户端，该方法会被调用。
+:param p_api: c_void_p
+:param trade:CThostFtdcTradeField
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_order">
+<code class="descname">on_trading_rsp_qry_order</code><span class="sig-paren">(</span><em>p_api</em>, <em>order</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询报单响应
+:param p_api: c_void_p
+:param order: CThostFtdcOrderField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_trade">
+<code class="descname">on_trading_rsp_qry_trade</code><span class="sig-paren">(</span><em>p_api</em>, <em>trade</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_qry_trade" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询成交响应
+:param p_api: c_void_p
+:param trade: CThostFtdcTradeField
+:param rsp_info: CThostFtdcRspInfoField
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_mission_control">
+<code class="descname">on_mission_control</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_mission_control" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when a message from control center is arrived.
+:param message: string, the message from the the control center.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpCallBacks.on_idle_event">
+<code class="descname">on_idle_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_idle_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when there is no event from the outside.
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.base.CtpMessageQueue">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.base.</code><code class="descname">CtpMessageQueue</code><span class="sig-paren">(</span><em>callbacks</em>, <em>is_backtesting</em>, <em>c2ctp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpMessageQueue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize message queue.
+:param callbacks: list of CtpCallBacks, the callbacks.
+:param is_backtesting: boolean, True if the queue is created in backtesting.
+:param c2ctp: pointer, pointer to the underlying c API.</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpMessageQueue.set_callback_change_action">
+<code class="descname">set_callback_change_action</code><span class="sig-paren">(</span><em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpMessageQueue.set_callback_change_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpMessageQueue.set_callbacks">
+<code class="descname">set_callbacks</code><span class="sig-paren">(</span><em>callbacks</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpMessageQueue.set_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpMessageQueue.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpMessageQueue.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear all messages in current message queue.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpMessageQueue.release">
+<code class="descname">release</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpMessageQueue.release" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release resourced used by current message queue.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpMessageQueue.process_first_message">
+<code class="descname">process_first_message</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpMessageQueue.process_first_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process the first message in the queue (if any).
+Invoke corresponding callback function for that message.
+:return bool, True if there is some message in the queue to process. False otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpMessageQueue.start_pulling">
+<code class="descname">start_pulling</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpMessageQueue.start_pulling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start pulling messages from the server and call corresponding callback functions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpMessageQueue.stop_pulling">
+<code class="descname">stop_pulling</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpMessageQueue.stop_pulling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop pulling of messages.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpMessageQueue.enqueue">
+<code class="descname">enqueue</code><span class="sig-paren">(</span><em>func_name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpMessageQueue.enqueue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.CtpMessageQueue.invoke_log">
+<code class="descname">invoke_log</code><span class="sig-paren">(</span><em>caller_class</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpMessageQueue.invoke_log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpMarket">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.base.</code><code class="descname">AbstractCtpMarket</code><span class="sig-paren">(</span><em>message_queue</em>, <em>local_path</em>, <em>server_address</em>, <em>broker_id</em>, <em>investor_id</em>, <em>password</em>, <em>logger</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpMarket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Initialize market API with message queue.
+:param message_queue: CtpMessageQueue, Message queue.
+:param local_path: string, the local folder to store temp files.
+:param server_address: string, the server address to connect to.
+:param broker_id: string, Broker id.
+:param investor_id: string, investor id.
+:param password: string, investor password.
+:param logger: Logger</p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpMarket.connection_status">
+<code class="descname">connection_status</code><em class="property"> = None</em><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpMarket.connection_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpMarket.front_id">
+<code class="descname">front_id</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpMarket.front_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpMarket.session_id">
+<code class="descname">session_id</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpMarket.session_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpMarket.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpMarket.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to the marker server.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpMarket.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><em>future_ids</em>, <em>exchange_id=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpMarket.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe market data for the given futures.
+:param future_ids: [string], list of future ids.
+:param exchange_id: string, exchange id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpMarket.unsubscribe">
+<code class="descname">unsubscribe</code><span class="sig-paren">(</span><em>future_ids</em>, <em>exchange_id=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpMarket.unsubscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Un-subscribe market data for the given futures.
+:param future_ids: [string], list of future ids.
+:param exchange_id: string, exchange id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpMarket.release">
+<code class="descname">release</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpMarket.release" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release resources used by current market API.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpMarket.now">
+<code class="descname">now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpMarket.now" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current time stamp.
+:return: datetime</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.base.</code><code class="descname">AbstractCtpTrading</code><span class="sig-paren">(</span><em>message_queue</em>, <em>local_path</em>, <em>server_address</em>, <em>broker_id</em>, <em>investor_id</em>, <em>password</em>, <em>resume_type</em>, <em>user_product_info</em>, <em>auth_code</em>, <em>logger</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Initialize market API with message queue.
+:param message_queue: CtpMessageQueue, Message queue.
+:param local_path: string, the local folder to store temp files.
+:param server_address: string, the server address to connect to.
+:param broker_id: string, Broker id.
+:param investor_id: string, investor id.
+:param password: string, investor password.
+:param resume_type: resume type
+:param user_product_info: the user&#8217;s product info
+:param auth_code: auth code
+:param logger: Logger</p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.connection_status">
+<code class="descname">connection_status</code><em class="property"> = None</em><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.connection_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.front_id">
+<code class="descname">front_id</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.front_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.session_id">
+<code class="descname">session_id</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.session_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.setup_callbacks">
+<code class="descname">setup_callbacks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.setup_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup callbacks, must be called if callbacks from self.message_queue changes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>connect to the trading server
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>disconnect from the trading server
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.release">
+<code class="descname">release</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.release" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release resources used by current trading API.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.open_market_order">
+<code class="descname">open_market_order</code><span class="sig-paren">(</span><em>future_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.open_market_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send an order to open a trade at market price.
+:param future_id, string, a SINGLE future id.
+:param volume: int, the volume to order, positive number means long position,</p>
+<blockquote>
+<div>negative number means short position.</div></blockquote>
+<p>:param order_ref, the order reference number. -1 means that the system will assign a value.
+:param transaction_id: string, transaction id.
+:param reason: string, reason for placing the order.
+:return: int, order reference number.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.close_market_order">
+<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>future_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.close_market_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send an order to close a trade at market price.
+:param future_id, string, a SINGLE future id.
+:param volume: int, the volume to order, positive number means long position,</p>
+<blockquote>
+<div>negative number means short position.</div></blockquote>
+<p>:param order_ref, the order reference number. -1 means that the system will assign a value.
+:param transaction_id: string, transaction id.
+:param reason: string, reason for placing the order.
+:return: int, order reference number.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.open_limit_order">
+<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>future_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.open_limit_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a limit order.
+:param future_id: string, A single future id.
+:param price: double, the price for the limit order.
+:param volume: int, the volume for the limit order. Positive number means long position,</p>
+<blockquote>
+<div>negative number means short position.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kind</strong> &#8211; LimitOrderKind. Normal means a normal limit order. FAK means Fill-and-kill, FOK means Fill-or-Kill.</td>
+</tr>
+</tbody>
+</table>
+<p>:param order_ref, the order reference number. -1 means that the system will assign a value.
+:param transaction_id: string, transaction id.
+:param reason: string, reason for placing the order.
+:return: int, order reference number.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.close_limit_order">
+<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>future_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.close_limit_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close a limit order.
+:param future_id: string, A single future id.
+:param price: double, the price for the limit order.
+:param volume: int, the volume for the limit order. Positive number means long position,</p>
+<blockquote>
+<div>negative number means short position.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kind</strong> &#8211; LimitOrderKind. Normal means a normal limit order. FAK means Fill-and-kill, FOK means Fill-or-Kill.</td>
+</tr>
+</tbody>
+</table>
+<p>:param order_ref, the order reference number. -1 means that the system will assign a value.
+:param transaction_id: string, transaction id.
+:param reason: string, reason for placing the order.
+:return: int, order reference number.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.send_order">
+<code class="descname">send_order</code><span class="sig-paren">(</span><em>order_ref</em>, <em>future_id</em>, <em>direction</em>, <em>comb_offset_flag</em>, <em>comb_hedge_flag</em>, <em>volume_total_original</em>, <em>limit_price</em>, <em>order_price_type</em>, <em>time_condition</em>, <em>contingent_condition</em>, <em>stop_price</em>, <em>volume_condition</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.send_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>create a new order
+:param order_ref: int, if order ref less than 0, it will auto generate an order ref
+:param future_id: string, future id
+:param direction: TThostFtdcDirectionType, THOST_FTDC_D_Buy or THOST_FTDC_D_Sell
+:param comb_offset_flag: TThostFtdcCombOffsetFlagType
+:param comb_hedge_flag: TThostFtdcCombHedgeFlagType
+:param volume_total_original: TThostFtdcVolumeType
+:param limit_price: double, Limit price
+:param order_price_type: TThostFtdcOrderPriceTypeType
+:param time_condition: TThostFtdcTimeConditionType
+:param contingent_condition: TThostFtdcContingentConditionType
+:param stop_price: double
+:param volume_condition: TThostFtdcVolumeConditionType
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.cancel_order">
+<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.cancel_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>cancel an order
+:param order: CThostFtdcOrderField
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.get_investor_position">
+<code class="descname">get_investor_position</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.get_investor_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>get investor position
+:param future_id: string
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.get_investor_position_detail">
+<code class="descname">get_investor_position_detail</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.get_investor_position_detail" title="Permalink to this definition">¶</a></dt>
+<dd><p>get investor position detail
+:param future_id: string
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.get_order">
+<code class="descname">get_order</code><span class="sig-paren">(</span><em>future_id=''</em>, <em>exchange_id=''</em>, <em>order_sys_id=''</em>, <em>insert_time_start=''</em>, <em>insert_time_end=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.get_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>查询报单
+:param future_id: string future id
+:param exchange_id: string exchange id
+:param order_sys_id: string order sys id
+:param insert_time_start: string insert start time
+:param insert_time_end: string insert end time
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.get_trade">
+<code class="descname">get_trade</code><span class="sig-paren">(</span><em>future_id=''</em>, <em>exchange_id=''</em>, <em>trade_id=''</em>, <em>trade_time_start=''</em>, <em>trade_time_end=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.get_trade" title="Permalink to this definition">¶</a></dt>
+<dd><p>查询报单
+:param future_id: string future id
+:param exchange_id: string exchange id
+:param trade_id: string trade id
+:param trade_time_start: string trade start time
+:param trade_time_end: string trade end time
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.get_trading_account">
+<code class="descname">get_trading_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.get_trading_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>get trading account info
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.get_instrument">
+<code class="descname">get_instrument</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.get_instrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>get future info
+:param futrre_id: string
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.get_commission_rate">
+<code class="descname">get_commission_rate</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.get_commission_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>get future&#8217;s commission rate
+:param future_id: string
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.get_margin_rate">
+<code class="descname">get_margin_rate</code><span class="sig-paren">(</span><em>future_id</em>, <em>hedge_flag</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.get_margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>get future margin rate
+:param future_id: string
+:param hedge_flag: TThostFtdcHedgeFlagType
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.get_order_commission_rate">
+<code class="descname">get_order_commission_rate</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.get_order_commission_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get open and close order commission rate.
+:param future_id: string, the future id.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.get_deep_market_data">
+<code class="descname">get_deep_market_data</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.get_deep_market_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe market data for the given futures.
+:param future_id: string
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.now">
+<code class="descname">now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.now" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current time stamp.
+:return: datetime</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="callback_base.html" class="btn btn-neutral float-right" title="callback_base" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="backtesting_utils.html" class="btn btn-neutral" title="backtesting_utils" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, .
+      Last updated on Jul 02, 2016.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../static/jquery.js"></script>
+      <script type="text/javascript" src="../static/underscore.js"></script>
+      <script type="text/javascript" src="../static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

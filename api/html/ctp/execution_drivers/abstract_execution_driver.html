@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>abstract_execution_driver &mdash; ctxalgoctp 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ctxalgoctp 0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="execution_drivers" href="index.html"/>
+        <link rel="next" title="initializer_strategy_driver" href="initializer_strategy_driver.html"/>
+        <link rel="prev" title="execution_drivers" href="index.html"/> 
+
+  
+  <script src="../../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> ctxalgoctp
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ctp</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../code_gen/index.html">code_gen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_producers/index.html">data_producers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">execution_drivers</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">abstract_execution_driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="initializer_strategy_driver.html">initializer_strategy_driver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="strategy_execution_driver.html">strategy_execution_driver</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../factories/index.html">factories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../live/index.html">live</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logger/index.html">logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategies/index.html">strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtester.html">backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtesting.html">backtesting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtesting_utils.html">backtesting_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base.html">base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callback_base.html">callback_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comm.html">comm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constants.html">constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datetime_utils.html">datetime_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../market_data_feed.html">market_data_feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../market_order_simulator.html">market_order_simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../offline_optimization.html">offline_optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../order_cancellation.html">order_cancellation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plain_backtester.html">plain_backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../real.html">real</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report.html">report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report_generator.html">report_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roll.html">roll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../slippage_models.html">slippage_models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../state_utils.html">state_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategy.html">strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategy_utils.html">strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_account.html">trading_account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_constants.html">trading_constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils.html">utils</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ctxalgoctp</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">ctp</a> &raquo;</li>
+      
+          <li><a href="index.html">execution_drivers</a> &raquo;</li>
+      
+    <li>abstract_execution_driver</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../sources/ctp/execution_drivers/abstract_execution_driver.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ctxalgoctp.ctp.execution_drivers.abstract_execution_driver">
+<span id="abstract-execution-driver"></span><h1>abstract_execution_driver<a class="headerlink" href="#module-ctxalgoctp.ctp.execution_drivers.abstract_execution_driver" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.</code><code class="descname">AbstractStrategyExecutionDriver</code><span class="sig-paren">(</span><em>future_ids</em>, <em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.datetime_format">
+<code class="descname">datetime_format</code><em class="property"> = '%Y-%m-%d %H:%M:%S'</em><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.datetime_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.create_trading">
+<code class="descname">create_trading</code><span class="sig-paren">(</span><em>msg_queue</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.create_trading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new trading object and return it.
+:param msg_queue: CtpMessageQueue.
+:return: CtpTrading.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.reset_trading">
+<code class="descname">reset_trading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.reset_trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.market">
+<code class="descname">market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.trading">
+<code class="descname">trading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.set_market">
+<code class="descname">set_market</code><span class="sig-paren">(</span><em>market</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.set_market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.set_trading">
+<code class="descname">set_trading</code><span class="sig-paren">(</span><em>trading</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.set_trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.set_step_action">
+<code class="descname">set_step_action</code><span class="sig-paren">(</span><em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.set_step_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.adapted_time">
+<code class="descname">adapted_time</code><span class="sig-paren">(</span><em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.adapted_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.now">
+<code class="descname">now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.now" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.drive">
+<code class="descname">drive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver.drive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="initializer_strategy_driver.html" class="btn btn-neutral float-right" title="initializer_strategy_driver" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="execution_drivers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, .
+      Last updated on Jul 02, 2016.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../static/jquery.js"></script>
+      <script type="text/javascript" src="../../static/underscore.js"></script>
+      <script type="text/javascript" src="../../static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,481 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>logging_utils &mdash; ctxalgoctp 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ctxalgoctp 0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="logger" href="index.html"/>
+        <link rel="next" title="mysql_logger" href="mysql_logger.html"/>
+        <link rel="prev" title="logger" href="logger.html"/> 
+
+  
+  <script src="../../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> ctxalgoctp
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ctp</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../code_gen/index.html">code_gen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_producers/index.html">data_producers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../execution_drivers/index.html">execution_drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../factories/index.html">factories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../live/index.html">live</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">logger</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="file_logger.html">file_logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logger.html">logger</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">logging_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mysql_logger.html">mysql_logger</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../strategies/index.html">strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtester.html">backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtesting.html">backtesting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtesting_utils.html">backtesting_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base.html">base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callback_base.html">callback_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comm.html">comm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constants.html">constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datetime_utils.html">datetime_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../market_data_feed.html">market_data_feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../market_order_simulator.html">market_order_simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../offline_optimization.html">offline_optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../order_cancellation.html">order_cancellation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plain_backtester.html">plain_backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../real.html">real</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report.html">report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report_generator.html">report_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roll.html">roll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../slippage_models.html">slippage_models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../state_utils.html">state_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategy.html">strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategy_utils.html">strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_account.html">trading_account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_constants.html">trading_constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils.html">utils</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ctxalgoctp</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">ctp</a> &raquo;</li>
+      
+          <li><a href="index.html">logger</a> &raquo;</li>
+      
+    <li>logging_utils</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../sources/ctp/logger/logging_utils.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ctxalgoctp.ctp.logger.logging_utils">
+<span id="logging-utils"></span><h1>logging_utils<a class="headerlink" href="#module-ctxalgoctp.ctp.logger.logging_utils" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.logger.logging_utils.</code><code class="descname">LogUrlGenerator</code><span class="sig-paren">(</span><em>day_separator=True</em>, <em>profit=False</em>, <em>investor_position=True</em>, <em>balance=True</em>, <em>available_money=False</em>, <em>pre_loaded_bars=200</em>, <em>max_days_per_chart=None</em>, <em>signal_with_price=True</em>, <em>stop_loss=True</em>, <em>chart_period=None</em>, <em>show_ignored_signals=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to generate urls for the website from strategy logs.</p>
+<p>Initialize the url generator.
+:param records: [LogRecord], the list of log records read from the output.txt file.
+:param day_separator: boolean, if True, display vertical bar between trading days.
+:param profit: boolean, if True, output an auxiliary chart to display position profits.
+:param investor_position: boolean, if True, output an auxiliary chart to display investor positions.
+:param balance: boolean, if True, output an auxiliary chart to display balance and available money.
+:param pre_loaded_bars: int, the number of bars to load before the starting of the main data.
+:param max_days_per_chart: int, the maximum number of trading days to display per chart.</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.get_end_timestamp">
+<code class="descname">get_end_timestamp</code><span class="sig-paren">(</span><em>current_time</em>, <em>periodicity</em>, <em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.get_end_timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.gettext">
+<code class="descname">gettext</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.gettext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the translation of text in self.language.
+:param text: string, the text in English to translate.
+:return: string, the translated text.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate">
+<code class="descname">generate</code><span class="sig-paren">(</span><em>records</em>, <em>sid=None</em>, <em>extra_indicators=None</em>, <em>kind='trade'</em>, <em>lang='en'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate urls. When kind is &#8216;trade&#8217;, the generation also sets self.last_transactions.
+:param sid: string, the security id.
+:param extra_indicators: string, extra indicators to display.</p>
+<blockquote>
+<div>If None, use the url_indicators information from the log.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>kind</strong> &#8211; string, can be &#8216;signal&#8217;, &#8216;trade&#8217;.</li>
+<li><strong>lang</strong> &#8211; string, the language for the text in the generated url.
+&#8216;zh&#8217; means Chinese, &#8216;en&#8217; means English.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict from string to string, keys are url titles, values are urls.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.get_base_url">
+<code class="descname">get_base_url</code><span class="sig-paren">(</span><em>sid</em>, <em>extra_indicators</em>, <em>parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.get_base_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.get_hmark_delta">
+<code class="descname">get_hmark_delta</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.get_hmark_delta" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_trade">
+<code class="descname">generate_trade</code><span class="sig-paren">(</span><em>date_ranges</em>, <em>trades</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_trade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_available_money">
+<code class="descname">generate_available_money</code><span class="sig-paren">(</span><em>date_ranges</em>, <em>money</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_available_money" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_balance">
+<code class="descname">generate_balance</code><span class="sig-paren">(</span><em>date_ranges</em>, <em>money</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_balance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_profit">
+<code class="descname">generate_profit</code><span class="sig-paren">(</span><em>date_ranges</em>, <em>profits</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_profit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_investor_positions">
+<code class="descname">generate_investor_positions</code><span class="sig-paren">(</span><em>date_ranges</em>, <em>positions</em>, <em>sizings</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_investor_positions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_account">
+<code class="descname">process_account</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_account" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_investor_position">
+<code class="descname">process_investor_position</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_investor_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_position_sizing">
+<code class="descname">process_position_sizing</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_position_sizing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_bar">
+<code class="descname">process_bar</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_bar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_order">
+<code class="descname">process_order</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_trade">
+<code class="descname">process_trade</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_trade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.handle_unfinished_trades">
+<code class="descname">handle_unfinished_trades</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.handle_unfinished_trades" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_stop_loss">
+<code class="descname">process_stop_loss</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_stop_loss" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_stop_loss">
+<code class="descname">generate_stop_loss</code><span class="sig-paren">(</span><em>date_range</em>, <em>stop_loss_series</em>, <em>stop_loss_directions</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_stop_loss" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_orders">
+<code class="descname">generate_orders</code><span class="sig-paren">(</span><em>date_range</em>, <em>orders</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_orders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_signal">
+<code class="descname">process_signal</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_signal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_signal_confirmed">
+<code class="descname">process_signal_confirmed</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_signal_confirmed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_signal_ignored">
+<code class="descname">process_signal_ignored</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_signal_ignored" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_strategy">
+<code class="descname">process_strategy</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_strategy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_strategy_extra">
+<code class="descname">process_strategy_extra</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.process_strategy_extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_datetime_range">
+<code class="descname">generate_datetime_range</code><span class="sig-paren">(</span><em>date_range</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_datetime_range" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_period">
+<code class="descname">generate_period</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_period" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_signals">
+<code class="descname">generate_signals</code><span class="sig-paren">(</span><em>date_range</em>, <em>signals</em>, <em>confirmed_signals</em>, <em>ignored_signals</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_signals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_day_separators">
+<code class="descname">generate_day_separators</code><span class="sig-paren">(</span><em>date_range</em>, <em>days</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.generate_day_separators" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.get_bars_in_one_day">
+<code class="descname">get_bars_in_one_day</code><span class="sig-paren">(</span><em>period</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.get_bars_in_one_day" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the approximate number of bars in a single trading day for a given periodicity.
+:param period: Periodicity.
+:return: int, the number of bars in a single trading day.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.get_pre_date">
+<code class="descname">get_pre_date</code><span class="sig-paren">(</span><em>period</em>, <em>start_date</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.get_pre_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.get_actual_max_days_per_chart">
+<code class="descname">get_actual_max_days_per_chart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.get_actual_max_days_per_chart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.reset">
+<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogUrlGenerator.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogMergeKind">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.logger.logging_utils.</code><code class="descname">LogMergeKind</code><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogMergeKind" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogMergeKind.APPEND_ALL">
+<code class="descname">APPEND_ALL</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogMergeKind.APPEND_ALL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogMergeKind.APPEND_NEW">
+<code class="descname">APPEND_NEW</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogMergeKind.APPEND_NEW" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogFileManipulator">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.logger.logging_utils.</code><code class="descname">LogFileManipulator</code><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogFileManipulator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogFileManipulator.merge">
+<code class="descname">merge</code><span class="sig-paren">(</span><em>old_log</em>, <em>new_log</em>, <em>kind=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogFileManipulator.merge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge part or all of new_output into old_output.
+:param old_log: string, path to the old output file.
+:param new_log: string, path to the new output file.
+:param kind: LogMergeKind.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logging_utils.LogFileManipulator.extract">
+<code class="descname">extract</code><span class="sig-paren">(</span><em>old_log</em>, <em>new_log</em>, <em>start_date</em>, <em>end_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logging_utils.LogFileManipulator.extract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract part of the old_log file and store the extracted part into the new_log file.
+:param old_log: string, the path to the old (existing) log file.
+:param new_log: string, the path to the new (to be created) log file.
+:param start_date: date or string in form of yyyy-mm-dd, specify the start date (inclusive) of the extraction.
+:param end_date: date or string in form of yyyy-mm-dd, specify the end date (inclusive) of the extraction.</p>
+<blockquote>
+<div>If None, defaults to start_date.</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mysql_logger.html" class="btn btn-neutral float-right" title="mysql_logger" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="logger.html" class="btn btn-neutral" title="logger" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, .
+      Last updated on Jul 02, 2016.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../static/jquery.js"></script>
+      <script type="text/javascript" src="../../static/underscore.js"></script>
+      <script type="text/javascript" src="../../static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

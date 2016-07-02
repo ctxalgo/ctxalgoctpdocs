@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>slippage_models &mdash; ctxalgoctp 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ctxalgoctp 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="ctp" href="index.html"/>
+        <link rel="next" title="state_utils" href="state_utils.html"/>
+        <link rel="prev" title="roll" href="roll.html"/> 
+
+  
+  <script src="../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> ctxalgoctp
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ctp</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="code_gen/index.html">code_gen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_producers/index.html">data_producers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution_drivers/index.html">execution_drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factories/index.html">factories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="live/index.html">live</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logger/index.html">logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategies/index.html">strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backtester.html">backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backtesting.html">backtesting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backtesting_utils.html">backtesting_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html">base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="callback_base.html">callback_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comm.html">comm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datetime_utils.html">datetime_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market_data_feed.html">market_data_feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market_order_simulator.html">market_order_simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offline_optimization.html">offline_optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="order_cancellation.html">order_cancellation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plain_backtester.html">plain_backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="real.html">real</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report.html">report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roll.html">roll</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">slippage_models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_utils.html">state_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategy.html">strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategy_utils.html">strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading_account.html">trading_account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading_constants.html">trading_constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ctxalgoctp</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">ctp</a> &raquo;</li>
+      
+    <li>slippage_models</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../sources/ctp/slippage_models.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ctxalgoctp.ctp.slippage_models">
+<span id="slippage-models"></span><h1>slippage_models<a class="headerlink" href="#module-ctxalgoctp.ctp.slippage_models" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.slippage_models.AbstractSlippageModel">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.slippage_models.</code><code class="descname">AbstractSlippageModel</code><span class="sig-paren">(</span><em>is_tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.AbstractSlippageModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Initialize current.
+:param is_tick: bool, indicates whether the backtesting is done on tick level data.</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.AbstractSlippageModel.get_max_executable_trade_volume">
+<code class="descname">get_max_executable_trade_volume</code><span class="sig-paren">(</span><em>timestamp</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.AbstractSlippageModel.get_max_executable_trade_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the maximum volumes that can be traded by the backtester, given the actually traded
+volumes in the historical data. The result is a fraction of the observed traded volumes
+controlled by self.max_executable_trade_volume_ratio.
+:param timestamp: datetime, the current timestamp.
+:param market_price: float, the traded price from historical data.
+:param market_volume: int, the traded volume from historical data.
+:param instrument_id: string, the instrument id.
+:return int, the max volume that can be traded by the backtester.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.AbstractSlippageModel.get_slippage">
+<code class="descname">get_slippage</code><span class="sig-paren">(</span><em>timestamp</em>, <em>tick_size</em>, <em>volume_to_trade</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.AbstractSlippageModel.get_slippage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the slippage for some volume to be trade.
+:param timestamp: datetime, the current timestamp.
+:param tick_size: float, tick size.
+:param market_price: float, the traded price from historical data.
+:param market_volume: int, the traded volume from historical data.
+:param instrument_id: string, the instrument id.
+:return float, the absolute slippage (the result is non-negative) that the backtester should</p>
+<blockquote>
+<div>add or subtract to the traded price. The backtester needs to use the trade direction (long or short)
+to decide to add or subtract the slippage.</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.slippage_models.VolumeBasedSlippageModel">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.slippage_models.</code><code class="descname">VolumeBasedSlippageModel</code><span class="sig-paren">(</span><em>max_executable_trade_volume_ratio=0.1</em>, <em>slippage_multiple=1</em>, <em>is_tick=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.VolumeBasedSlippageModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.slippage_models.AbstractSlippageModel" title="ctxalgoctp.ctp.slippage_models.AbstractSlippageModel"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.slippage_models.AbstractSlippageModel</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>max_executable_trade_volume_ratio</strong> &#8211; float, the ratio that controls the number of lots that
+can be executed by the backtester. Let the current traded lots from historical data at current
+timestamp is x, then the maximum lots that can be executed by the backtester is:
+max_executable_trade_volume_ratio * x.</li>
+<li><strong>slippage_multiple</strong> &#8211; int, the number of tick sizes added to the order filled price to simulate slippage.</li>
+<li><strong>is_tick</strong> &#8211; bool, indicates whether the backtesting is done on tick level data.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.VolumeBasedSlippageModel.get_max_executable_trade_volume">
+<code class="descname">get_max_executable_trade_volume</code><span class="sig-paren">(</span><em>timestamp</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.VolumeBasedSlippageModel.get_max_executable_trade_volume" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.VolumeBasedSlippageModel.get_slippage">
+<code class="descname">get_slippage</code><span class="sig-paren">(</span><em>timestamp</em>, <em>tick_size</em>, <em>volume_to_trade</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.VolumeBasedSlippageModel.get_slippage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.slippage_models.EmptySlippageModel">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.slippage_models.</code><code class="descname">EmptySlippageModel</code><span class="sig-paren">(</span><em>is_tick</em>, <em>max_executable_trade_volume_ratio=0.25</em>, <em>slippage_multiple=1</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.EmptySlippageModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.slippage_models.AbstractSlippageModel" title="ctxalgoctp.ctp.slippage_models.AbstractSlippageModel"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.slippage_models.AbstractSlippageModel</span></code></a></p>
+<p>Class that always gives empty slippage.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>max_executable_trade_volume_ratio</strong> &#8211; float, the ratio that controls the number of lots that
+can be executed by the backtester. Let the current traded lots from historical data at current
+timestamp is x, then the maximum lots that can be executed by the backtester is:
+max_executable_trade_volume_ratio * x.</li>
+<li><strong>slippage_multiple</strong> &#8211; int, the number of tick sizes added to the order filled price to simulate slippage.</li>
+<li><strong>is_tick</strong> &#8211; bool, indicates whether the backtesting is done on tick level data.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.EmptySlippageModel.get_max_executable_trade_volume">
+<code class="descname">get_max_executable_trade_volume</code><span class="sig-paren">(</span><em>timestamp</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.EmptySlippageModel.get_max_executable_trade_volume" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.EmptySlippageModel.get_slippage">
+<code class="descname">get_slippage</code><span class="sig-paren">(</span><em>timestamp</em>, <em>tick_size</em>, <em>volume_to_trade</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.EmptySlippageModel.get_slippage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.slippage_models.BidAskSlippageModel">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.slippage_models.</code><code class="descname">BidAskSlippageModel</code><span class="sig-paren">(</span><em>contract_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.BidAskSlippageModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.slippage_models.AbstractSlippageModel" title="ctxalgoctp.ctp.slippage_models.AbstractSlippageModel"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.slippage_models.AbstractSlippageModel</span></code></a></p>
+<p>Slippage for models that trade small amounts of a mid-prices series of most liquid contract
+We assumes that we have to pay spread / 2</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>contract_name</strong> &#8211; Name of contract</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.BidAskSlippageModel.get_max_executable_trade_volume">
+<code class="descname">get_max_executable_trade_volume</code><span class="sig-paren">(</span><em>timestamp</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.BidAskSlippageModel.get_max_executable_trade_volume" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.BidAskSlippageModel.get_slippage">
+<code class="descname">get_slippage</code><span class="sig-paren">(</span><em>timestamp</em>, <em>tick_size</em>, <em>volume_to_trade</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.BidAskSlippageModel.get_slippage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="state_utils.html" class="btn btn-neutral float-right" title="state_utils" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="roll.html" class="btn btn-neutral" title="roll" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, .
+      Last updated on Jul 02, 2016.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../static/jquery.js"></script>
+      <script type="text/javascript" src="../static/underscore.js"></script>
+      <script type="text/javascript" src="../static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

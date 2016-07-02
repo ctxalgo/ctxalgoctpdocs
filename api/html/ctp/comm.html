@@ -1,0 +1,3216 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>comm &mdash; ctxalgoctp 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ctxalgoctp 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="ctp" href="index.html"/>
+        <link rel="next" title="constants" href="constants.html"/>
+        <link rel="prev" title="callback_base" href="callback_base.html"/> 
+
+  
+  <script src="../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> ctxalgoctp
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ctp</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="code_gen/index.html">code_gen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_producers/index.html">data_producers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution_drivers/index.html">execution_drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factories/index.html">factories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="live/index.html">live</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logger/index.html">logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategies/index.html">strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backtester.html">backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backtesting.html">backtesting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backtesting_utils.html">backtesting_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html">base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="callback_base.html">callback_base</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">comm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datetime_utils.html">datetime_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market_data_feed.html">market_data_feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market_order_simulator.html">market_order_simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offline_optimization.html">offline_optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="order_cancellation.html">order_cancellation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plain_backtester.html">plain_backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="real.html">real</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report.html">report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roll.html">roll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slippage_models.html">slippage_models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_utils.html">state_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategy.html">strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategy_utils.html">strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading_account.html">trading_account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading_constants.html">trading_constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ctxalgoctp</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">ctp</a> &raquo;</li>
+      
+    <li>comm</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../sources/ctp/comm.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="comm">
+<h1>comm<a class="headerlink" href="#comm" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-ctxalgoctp.ctp.comm"></span><dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcBrokerIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcBrokerIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcBrokerIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcInvestorIDType是一个投资者代码类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_11</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcInvestorIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcInvestorIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcInvestorIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcOrderActionRefType是一个报单操作引用类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_13</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcOrderActionRefType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcOrderActionRefType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcOrderActionRefType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcOrderRefType是一个报单引用类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_int</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcOrderRefType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcOrderRefType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcOrderRefType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcRequestIDType是一个请求编号类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_13</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcRequestIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcRequestIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcRequestIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcFrontIDType是一个前置编号类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_int</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcFrontIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcFrontIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcFrontIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcSessionIDType是一个会话编号类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_int</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcSessionIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcSessionIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcSessionIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcExchangeIDType是一个交易所代码类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_int</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcExchangeIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcExchangeIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcExchangeIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcOrderSysIDType是一个报单编号类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_9</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcOrderSysIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcOrderSysIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcOrderSysIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcActionFlagType是一个操作标志类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_21</span></code></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_AF_Modify">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_AF_Modify</code><em class="property"> = c_char('3')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_AF_Modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcPriceType是一个价格类型</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcPriceType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcPriceType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcPriceType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcVolumeType是一个数量类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_double</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcVolumeType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcVolumeType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcVolumeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcUserIDType是一个用户代码类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_int</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcUserIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcUserIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcUserIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcInstrumentIDType是一个合约代码类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_16</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcInstrumentIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcInstrumentIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcInstrumentIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcInstrumentNameType是一个合约名称类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_31</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcInstrumentNameType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcInstrumentNameType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcInstrumentNameType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcExchangeInstIDType是一个合约在交易所的代码类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_21</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcExchangeInstIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcExchangeInstIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcExchangeInstIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcProductClassType是一个产品类型类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_31</span></code></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_PC_EFP">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_PC_EFP</code><em class="property"> = c_char('5')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_PC_EFP" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcYearType是一个年份类型</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcYearType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcYearType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcYearType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcMonthType是一个月份类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_int</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcMonthType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcMonthType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcMonthType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcVolumeMultipleType是一个合约数量乘数类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_int</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcVolumeMultipleType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcVolumeMultipleType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcVolumeMultipleType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcDateType是一个日期类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_int</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcDateType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcDateType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcDateType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcInstLifePhaseType是一个合约生命周期状态类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_9</span></code></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_IP_Expired">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_IP_Expired</code><em class="property"> = c_char('3')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_IP_Expired" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcBoolType是一个布尔型类型</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcBoolType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcBoolType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcBoolType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcPositionDateType是一个持仓日期类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_int</span></code></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_PSD_History">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_PSD_History</code><em class="property"> = c_char('2')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_PSD_History" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcPositionTypeType是一个持仓类型类型</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_PT_Gross">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_PT_Gross</code><em class="property"> = c_char('2')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_PT_Gross" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcPositionDateTypeType是一个持仓日期类型类型</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_PDT_NoUseHistory">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_PDT_NoUseHistory</code><em class="property"> = c_char('2')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_PDT_NoUseHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcRatioType是一个比率类型</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcRatioType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcRatioType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcRatioType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcMaxMarginSideAlgorithmType是一个大额单边保证金算法类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_double</span></code></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_MMSA_YES">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_MMSA_YES</code><em class="property"> = c_char('1')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_MMSA_YES" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcOptionsTypeType是一个期权类型类型</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_IR_Single">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_IR_Single</code><em class="property"> = c_char('3')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_IR_Single" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcHedgeFlagType是一个投机套保标志类型</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_HF_Hedge">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_HF_Hedge</code><em class="property"> = c_char('3')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_HF_Hedge" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcMoneyType是一个资金类型</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcMoneyType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcMoneyType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcMoneyType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcPosiDirectionType是一个持仓多空方向类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_double</span></code></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_PD_Short">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_PD_Short</code><em class="property"> = c_char('3')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_PD_Short" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcSettlementIDType是一个结算编号类型</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcSettlementIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcSettlementIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcSettlementIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcDirectionType是一个买卖方向类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_int</span></code></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_D_Sell">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_D_Sell</code><em class="property"> = c_char('1')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_D_Sell" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcTradeIDType是一个成交编号类型</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcTradeIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcTradeIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcTradeIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcTradeTypeType是一个成交类型类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_21</span></code></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_TRDT_CombinationDerived">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_TRDT_CombinationDerived</code><em class="property"> = c_char('4')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_TRDT_CombinationDerived" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcOrderPriceTypeType是一个报单价格条件类型</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_OPT_BidPrice1PlusThreeTicks">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_OPT_BidPrice1PlusThreeTicks</code><em class="property"> = c_char('F')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_OPT_BidPrice1PlusThreeTicks" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcCombOffsetFlagType是一个组合开平标志类型</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcCombOffsetFlagType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcCombOffsetFlagType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcCombOffsetFlagType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcCombHedgeFlagType是一个组合投机套保标志类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_5</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcCombHedgeFlagType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcCombHedgeFlagType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcCombHedgeFlagType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcTimeConditionType是一个有效期类型类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_5</span></code></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_TC_GFA">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_TC_GFA</code><em class="property"> = c_char('6')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_TC_GFA" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcVolumeConditionType是一个成交量类型类型</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_VC_CV">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_VC_CV</code><em class="property"> = c_char('3')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_VC_CV" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcContingentConditionType是一个触发条件类型</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_CC_BidPriceLesserEqualStopPrice">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_CC_BidPriceLesserEqualStopPrice</code><em class="property"> = c_char('H')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_CC_BidPriceLesserEqualStopPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcForceCloseReasonType是一个强平原因类型</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_FCC_PersonDeliv">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_FCC_PersonDeliv</code><em class="property"> = c_char('7')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_FCC_PersonDeliv" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcBusinessUnitType是一个业务单元类型</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcBusinessUnitType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcBusinessUnitType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcBusinessUnitType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcOrderLocalIDType是一个本地报单编号类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_21</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcOrderLocalIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcOrderLocalIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcOrderLocalIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcParticipantIDType是一个会员代码类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_13</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcParticipantIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcParticipantIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcParticipantIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcClientIDType是一个交易编码类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_11</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcClientIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcClientIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcClientIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcTraderIDType是一个交易所交易员代码类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_11</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcTraderIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcTraderIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcTraderIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcInstallIDType是一个安装编号类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_21</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcInstallIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcInstallIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcInstallIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcOrderSubmitStatusType是一个报单提交状态类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_int</span></code></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_OSS_ModifyRejected">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_OSS_ModifyRejected</code><em class="property"> = c_char('6')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_OSS_ModifyRejected" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcSequenceNoType是一个序号类型</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcSequenceNoType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcSequenceNoType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcSequenceNoType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcOrderSourceType是一个报单来源类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_int</span></code></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_OSRC_Administrator">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_OSRC_Administrator</code><em class="property"> = c_char('1')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_OSRC_Administrator" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcOrderStatusType是一个报单状态类型</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_OST_Touched">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_OST_Touched</code><em class="property"> = c_char('c')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_OST_Touched" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcOrderTypeType是一个报单类型类型</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_ORDT_Swap">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_ORDT_Swap</code><em class="property"> = c_char('5')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_ORDT_Swap" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcTimeType是一个时间类型</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcTimeType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcTimeType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcTimeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcProductInfoType是一个产品信息类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_9</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcProductInfoType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcProductInfoType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcProductInfoType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcErrorMsgType是一个错误信息类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_11</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcErrorMsgType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcErrorMsgType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcErrorMsgType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcTradingRoleType是一个交易角色类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_81</span></code></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_ER_Maker">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_ER_Maker</code><em class="property"> = c_char('3')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_ER_Maker" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcOffsetFlagType是一个开平标志类型</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_OF_LocalForceClose">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_OF_LocalForceClose</code><em class="property"> = c_char('6')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_OF_LocalForceClose" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcPriceSourceType是一个成交价来源类型</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_PSRC_Sell">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_PSRC_Sell</code><em class="property"> = c_char('2')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_PSRC_Sell" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcTradeSourceType是一个成交来源类型</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_TSRC_QUERY">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_TSRC_QUERY</code><em class="property"> = c_char('1')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_TSRC_QUERY" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcAccountIDType是一个投资者帐号类型</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcAccountIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcAccountIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcAccountIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcCurrencyIDType是一个币种代码类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_13</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcCurrencyIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcCurrencyIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcCurrencyIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcSettlementGroupIDType是一个结算组代码类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_4</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcSettlementGroupIDType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcSettlementGroupIDType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcSettlementGroupIDType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcInstrumentStatusType是一个合约交易状态类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_char_Array_9</span></code></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_IS_Closed">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_IS_Closed</code><em class="property"> = c_char('6')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_IS_Closed" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcTradingSegmentSNType是一个交易阶段编号类型</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.TThostFtdcTradingSegmentSNType">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">TThostFtdcTradingSegmentSNType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.TThostFtdcTradingSegmentSNType" title="Permalink to this definition">¶</a></dt>
+<dd><p>TFtdcInstStatusEnterReasonType是一个品种进入交易状态原因类型</p>
+<p>alias of <code class="xref py py-class docutils literal"><span class="pre">c_int</span></code></p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_FTDC_IER_Fuse">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_FTDC_IER_Fuse</code><em class="property"> = c_char('3')</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_FTDC_IER_Fuse" title="Permalink to this definition">¶</a></dt>
+<dd><p>THOST_TE_RESUME_TYPE为枚举类型</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="ctxalgoctp.ctp.comm.THOST_TERT_QUICK">
+<code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">THOST_TERT_QUICK</code><em class="property"> = c_int(2)</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.THOST_TERT_QUICK" title="Permalink to this definition">¶</a></dt>
+<dd><p>连接状态枚举</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcRspUserLoginField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.BrokerID">
+<code class="descname">BrokerID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.BrokerID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.CZCETime">
+<code class="descname">CZCETime</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.CZCETime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.DCETime">
+<code class="descname">DCETime</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.DCETime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.FFEXTime">
+<code class="descname">FFEXTime</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.FFEXTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.FrontID">
+<code class="descname">FrontID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.FrontID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.INETime">
+<code class="descname">INETime</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.INETime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.LoginTime">
+<code class="descname">LoginTime</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.LoginTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.MaxOrderRef">
+<code class="descname">MaxOrderRef</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.MaxOrderRef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.SHFETime">
+<code class="descname">SHFETime</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.SHFETime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.SessionID">
+<code class="descname">SessionID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.SessionID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.SystemName">
+<code class="descname">SystemName</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.SystemName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.TradingDay">
+<code class="descname">TradingDay</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.TradingDay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.UserID">
+<code class="descname">UserID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspUserLoginField.UserID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspInfoField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcRspInfoField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspInfoField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspInfoField.ErrorID">
+<code class="descname">ErrorID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspInfoField.ErrorID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcRspInfoField.ErrorMsg">
+<code class="descname">ErrorMsg</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcRspInfoField.ErrorMsg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcOrderActionField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.ActionDate">
+<code class="descname">ActionDate</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.ActionDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.ActionFlag">
+<code class="descname">ActionFlag</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.ActionFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.ActionLocalID">
+<code class="descname">ActionLocalID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.ActionLocalID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.ActionTime">
+<code class="descname">ActionTime</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.ActionTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.BrokerID">
+<code class="descname">BrokerID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.BrokerID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.BusinessUnit">
+<code class="descname">BusinessUnit</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.BusinessUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.ClientID">
+<code class="descname">ClientID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.ClientID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.ExchangeID">
+<code class="descname">ExchangeID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.ExchangeID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.FrontID">
+<code class="descname">FrontID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.FrontID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.InstallID">
+<code class="descname">InstallID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.InstallID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.InstrumentID">
+<code class="descname">InstrumentID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.InstrumentID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.InvestorID">
+<code class="descname">InvestorID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.InvestorID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.LimitPrice">
+<code class="descname">LimitPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.LimitPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.OrderActionRef">
+<code class="descname">OrderActionRef</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.OrderActionRef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.OrderActionStatus">
+<code class="descname">OrderActionStatus</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.OrderActionStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.OrderLocalID">
+<code class="descname">OrderLocalID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.OrderLocalID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.OrderRef">
+<code class="descname">OrderRef</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.OrderRef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.OrderSysID">
+<code class="descname">OrderSysID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.OrderSysID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.ParticipantID">
+<code class="descname">ParticipantID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.ParticipantID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.RequestID">
+<code class="descname">RequestID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.RequestID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.SessionID">
+<code class="descname">SessionID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.SessionID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.StatusMsg">
+<code class="descname">StatusMsg</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.StatusMsg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.TraderID">
+<code class="descname">TraderID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.TraderID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.UserID">
+<code class="descname">UserID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.UserID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.VolumeChange">
+<code class="descname">VolumeChange</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderActionField.VolumeChange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcInputOrderField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.BrokerID">
+<code class="descname">BrokerID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.BrokerID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.BusinessUnit">
+<code class="descname">BusinessUnit</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.BusinessUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.CombHedgeFlag">
+<code class="descname">CombHedgeFlag</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.CombHedgeFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.CombOffsetFlag">
+<code class="descname">CombOffsetFlag</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.CombOffsetFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.ContingentCondition">
+<code class="descname">ContingentCondition</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.ContingentCondition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.Direction">
+<code class="descname">Direction</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.Direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.ForceCloseReason">
+<code class="descname">ForceCloseReason</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.ForceCloseReason" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.InstrumentID">
+<code class="descname">InstrumentID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.InstrumentID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.InvestorID">
+<code class="descname">InvestorID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.InvestorID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.IsAutoSuspend">
+<code class="descname">IsAutoSuspend</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.IsAutoSuspend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.IsSwapOrder">
+<code class="descname">IsSwapOrder</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.IsSwapOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.LimitPrice">
+<code class="descname">LimitPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.LimitPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.MinVolume">
+<code class="descname">MinVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.MinVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.OrderPriceType">
+<code class="descname">OrderPriceType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.OrderPriceType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.OrderRef">
+<code class="descname">OrderRef</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.OrderRef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.RequestID">
+<code class="descname">RequestID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.RequestID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.StopPrice">
+<code class="descname">StopPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.StopPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.TimeCondition">
+<code class="descname">TimeCondition</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.TimeCondition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.UserForceClose">
+<code class="descname">UserForceClose</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.UserForceClose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.UserID">
+<code class="descname">UserID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.UserID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.VolumeCondition">
+<code class="descname">VolumeCondition</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.VolumeCondition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.VolumeTotalOriginal">
+<code class="descname">VolumeTotalOriginal</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderField.VolumeTotalOriginal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcInputOrderActionField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.ActionFlag">
+<code class="descname">ActionFlag</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.ActionFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.BrokerID">
+<code class="descname">BrokerID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.BrokerID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.ExchangeID">
+<code class="descname">ExchangeID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.ExchangeID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.FrontID">
+<code class="descname">FrontID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.FrontID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.InstrumentID">
+<code class="descname">InstrumentID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.InstrumentID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.InvestorID">
+<code class="descname">InvestorID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.InvestorID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.LimitPrice">
+<code class="descname">LimitPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.LimitPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.OrderActionRef">
+<code class="descname">OrderActionRef</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.OrderActionRef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.OrderRef">
+<code class="descname">OrderRef</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.OrderRef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.OrderSysID">
+<code class="descname">OrderSysID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.OrderSysID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.RequestID">
+<code class="descname">RequestID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.RequestID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.SessionID">
+<code class="descname">SessionID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.SessionID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.UserID">
+<code class="descname">UserID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.UserID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.VolumeChange">
+<code class="descname">VolumeChange</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInputOrderActionField.VolumeChange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcDepthMarketDataField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.ActionDay">
+<code class="descname">ActionDay</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.ActionDay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskPrice1">
+<code class="descname">AskPrice1</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskPrice1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskPrice2">
+<code class="descname">AskPrice2</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskPrice2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskPrice3">
+<code class="descname">AskPrice3</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskPrice3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskPrice4">
+<code class="descname">AskPrice4</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskPrice4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskPrice5">
+<code class="descname">AskPrice5</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskPrice5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskVolume1">
+<code class="descname">AskVolume1</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskVolume1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskVolume2">
+<code class="descname">AskVolume2</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskVolume2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskVolume3">
+<code class="descname">AskVolume3</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskVolume3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskVolume4">
+<code class="descname">AskVolume4</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskVolume4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskVolume5">
+<code class="descname">AskVolume5</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AskVolume5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AveragePrice">
+<code class="descname">AveragePrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.AveragePrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidPrice1">
+<code class="descname">BidPrice1</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidPrice1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidPrice2">
+<code class="descname">BidPrice2</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidPrice2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidPrice3">
+<code class="descname">BidPrice3</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidPrice3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidPrice4">
+<code class="descname">BidPrice4</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidPrice4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidPrice5">
+<code class="descname">BidPrice5</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidPrice5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidVolume1">
+<code class="descname">BidVolume1</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidVolume1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidVolume2">
+<code class="descname">BidVolume2</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidVolume2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidVolume3">
+<code class="descname">BidVolume3</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidVolume3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidVolume4">
+<code class="descname">BidVolume4</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidVolume4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidVolume5">
+<code class="descname">BidVolume5</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.BidVolume5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.ClosePrice">
+<code class="descname">ClosePrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.ClosePrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.CurrDelta">
+<code class="descname">CurrDelta</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.CurrDelta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.ExchangeID">
+<code class="descname">ExchangeID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.ExchangeID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.ExchangeInstID">
+<code class="descname">ExchangeInstID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.ExchangeInstID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.HighestPrice">
+<code class="descname">HighestPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.HighestPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.InstrumentID">
+<code class="descname">InstrumentID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.InstrumentID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.LastPrice">
+<code class="descname">LastPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.LastPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.LowerLimitPrice">
+<code class="descname">LowerLimitPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.LowerLimitPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.LowestPrice">
+<code class="descname">LowestPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.LowestPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.OpenInterest">
+<code class="descname">OpenInterest</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.OpenInterest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.OpenPrice">
+<code class="descname">OpenPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.OpenPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.PreClosePrice">
+<code class="descname">PreClosePrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.PreClosePrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.PreDelta">
+<code class="descname">PreDelta</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.PreDelta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.PreOpenInterest">
+<code class="descname">PreOpenInterest</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.PreOpenInterest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.PreSettlementPrice">
+<code class="descname">PreSettlementPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.PreSettlementPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.SettlementPrice">
+<code class="descname">SettlementPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.SettlementPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.TradingDay">
+<code class="descname">TradingDay</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.TradingDay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.Turnover">
+<code class="descname">Turnover</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.Turnover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.UpdateMillisec">
+<code class="descname">UpdateMillisec</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.UpdateMillisec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.UpdateTime">
+<code class="descname">UpdateTime</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.UpdateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.UpperLimitPrice">
+<code class="descname">UpperLimitPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.UpperLimitPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.Volume">
+<code class="descname">Volume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcDepthMarketDataField.Volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcInstrumentField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.CreateDate">
+<code class="descname">CreateDate</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.CreateDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.DeliveryMonth">
+<code class="descname">DeliveryMonth</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.DeliveryMonth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.DeliveryYear">
+<code class="descname">DeliveryYear</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.DeliveryYear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.EndDelivDate">
+<code class="descname">EndDelivDate</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.EndDelivDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.ExchangeID">
+<code class="descname">ExchangeID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.ExchangeID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.ExchangeInstID">
+<code class="descname">ExchangeInstID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.ExchangeInstID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.ExpireDate">
+<code class="descname">ExpireDate</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.ExpireDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.InstLifePhase">
+<code class="descname">InstLifePhase</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.InstLifePhase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.InstrumentID">
+<code class="descname">InstrumentID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.InstrumentID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.InstrumentName">
+<code class="descname">InstrumentName</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.InstrumentName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.IsTrading">
+<code class="descname">IsTrading</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.IsTrading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.LongMarginRatio">
+<code class="descname">LongMarginRatio</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.LongMarginRatio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.MaxLimitOrderVolume">
+<code class="descname">MaxLimitOrderVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.MaxLimitOrderVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.MaxMarginSideAlgorithm">
+<code class="descname">MaxMarginSideAlgorithm</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.MaxMarginSideAlgorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.MaxMarketOrderVolume">
+<code class="descname">MaxMarketOrderVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.MaxMarketOrderVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.MinLimitOrderVolume">
+<code class="descname">MinLimitOrderVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.MinLimitOrderVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.MinMarketOrderVolume">
+<code class="descname">MinMarketOrderVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.MinMarketOrderVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.OpenDate">
+<code class="descname">OpenDate</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.OpenDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.PositionDateType">
+<code class="descname">PositionDateType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.PositionDateType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.PositionType">
+<code class="descname">PositionType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.PositionType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.PriceTick">
+<code class="descname">PriceTick</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.PriceTick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.ProductClass">
+<code class="descname">ProductClass</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.ProductClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.ProductID">
+<code class="descname">ProductID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.ProductID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.ShortMarginRatio">
+<code class="descname">ShortMarginRatio</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.ShortMarginRatio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.StartDelivDate">
+<code class="descname">StartDelivDate</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.StartDelivDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.VolumeMultiple">
+<code class="descname">VolumeMultiple</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentField.VolumeMultiple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcInstrumentCommissionRateField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.BrokerID">
+<code class="descname">BrokerID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.BrokerID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.CloseRatioByMoney">
+<code class="descname">CloseRatioByMoney</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.CloseRatioByMoney" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.CloseRatioByVolume">
+<code class="descname">CloseRatioByVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.CloseRatioByVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.CloseTodayRatioByMoney">
+<code class="descname">CloseTodayRatioByMoney</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.CloseTodayRatioByMoney" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.CloseTodayRatioByVolume">
+<code class="descname">CloseTodayRatioByVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.CloseTodayRatioByVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.InstrumentID">
+<code class="descname">InstrumentID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.InstrumentID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.InvestorID">
+<code class="descname">InvestorID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.InvestorID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.InvestorRange">
+<code class="descname">InvestorRange</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.InvestorRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.OpenRatioByMoney">
+<code class="descname">OpenRatioByMoney</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.OpenRatioByMoney" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.OpenRatioByVolume">
+<code class="descname">OpenRatioByVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentCommissionRateField.OpenRatioByVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcInstrumentMarginRateField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.BrokerID">
+<code class="descname">BrokerID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.BrokerID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.HedgeFlag">
+<code class="descname">HedgeFlag</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.HedgeFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.InstrumentID">
+<code class="descname">InstrumentID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.InstrumentID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.InvestorID">
+<code class="descname">InvestorID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.InvestorID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.InvestorRange">
+<code class="descname">InvestorRange</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.InvestorRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.IsRelative">
+<code class="descname">IsRelative</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.IsRelative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.LongMarginRatioByMoney">
+<code class="descname">LongMarginRatioByMoney</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.LongMarginRatioByMoney" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.LongMarginRatioByVolume">
+<code class="descname">LongMarginRatioByVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.LongMarginRatioByVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.ShortMarginRatioByMoney">
+<code class="descname">ShortMarginRatioByMoney</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.ShortMarginRatioByMoney" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.ShortMarginRatioByVolume">
+<code class="descname">ShortMarginRatioByVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentMarginRateField.ShortMarginRatioByVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcInstrumentOrderCommRateField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField.BrokerID">
+<code class="descname">BrokerID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField.BrokerID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField.HedgeFlag">
+<code class="descname">HedgeFlag</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField.HedgeFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField.InstrumentID">
+<code class="descname">InstrumentID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField.InstrumentID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField.InvestorID">
+<code class="descname">InvestorID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField.InvestorID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField.InvestorRange">
+<code class="descname">InvestorRange</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField.InvestorRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField.OrderActionCommByVolume">
+<code class="descname">OrderActionCommByVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField.OrderActionCommByVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField.OrderCommByVolume">
+<code class="descname">OrderCommByVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentOrderCommRateField.OrderCommByVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcInvestorPositionField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.BrokerID">
+<code class="descname">BrokerID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.BrokerID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CashIn">
+<code class="descname">CashIn</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CashIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CloseAmount">
+<code class="descname">CloseAmount</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CloseAmount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CloseProfit">
+<code class="descname">CloseProfit</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CloseProfit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CloseProfitByDate">
+<code class="descname">CloseProfitByDate</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CloseProfitByDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CloseProfitByTrade">
+<code class="descname">CloseProfitByTrade</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CloseProfitByTrade" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CloseVolume">
+<code class="descname">CloseVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CloseVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CombLongFrozen">
+<code class="descname">CombLongFrozen</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CombLongFrozen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CombPosition">
+<code class="descname">CombPosition</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CombPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CombShortFrozen">
+<code class="descname">CombShortFrozen</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.CombShortFrozen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.Commission">
+<code class="descname">Commission</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.Commission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.ExchangeMargin">
+<code class="descname">ExchangeMargin</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.ExchangeMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.FrozenCash">
+<code class="descname">FrozenCash</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.FrozenCash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.FrozenCommission">
+<code class="descname">FrozenCommission</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.FrozenCommission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.FrozenMargin">
+<code class="descname">FrozenMargin</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.FrozenMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.HedgeFlag">
+<code class="descname">HedgeFlag</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.HedgeFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.InstrumentID">
+<code class="descname">InstrumentID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.InstrumentID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.InvestorID">
+<code class="descname">InvestorID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.InvestorID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.LongFrozen">
+<code class="descname">LongFrozen</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.LongFrozen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.LongFrozenAmount">
+<code class="descname">LongFrozenAmount</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.LongFrozenAmount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.MarginRateByMoney">
+<code class="descname">MarginRateByMoney</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.MarginRateByMoney" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.MarginRateByVolume">
+<code class="descname">MarginRateByVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.MarginRateByVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.OpenAmount">
+<code class="descname">OpenAmount</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.OpenAmount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.OpenCost">
+<code class="descname">OpenCost</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.OpenCost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.OpenVolume">
+<code class="descname">OpenVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.OpenVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.PosiDirection">
+<code class="descname">PosiDirection</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.PosiDirection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.Position">
+<code class="descname">Position</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.Position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.PositionCost">
+<code class="descname">PositionCost</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.PositionCost" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.PositionDate">
+<code class="descname">PositionDate</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.PositionDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.PositionProfit">
+<code class="descname">PositionProfit</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.PositionProfit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.PreMargin">
+<code class="descname">PreMargin</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.PreMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.PreSettlementPrice">
+<code class="descname">PreSettlementPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.PreSettlementPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.SettlementID">
+<code class="descname">SettlementID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.SettlementID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.SettlementPrice">
+<code class="descname">SettlementPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.SettlementPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.ShortFrozen">
+<code class="descname">ShortFrozen</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.ShortFrozen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.ShortFrozenAmount">
+<code class="descname">ShortFrozenAmount</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.ShortFrozenAmount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.TodayPosition">
+<code class="descname">TodayPosition</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.TodayPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.TradingDay">
+<code class="descname">TradingDay</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.TradingDay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.UseMargin">
+<code class="descname">UseMargin</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.UseMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.YdPosition">
+<code class="descname">YdPosition</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionField.YdPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcInvestorPositionDetailField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.BrokerID">
+<code class="descname">BrokerID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.BrokerID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.CloseAmount">
+<code class="descname">CloseAmount</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.CloseAmount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.CloseProfitByDate">
+<code class="descname">CloseProfitByDate</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.CloseProfitByDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.CloseProfitByTrade">
+<code class="descname">CloseProfitByTrade</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.CloseProfitByTrade" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.CloseVolume">
+<code class="descname">CloseVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.CloseVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.CombInstrumentID">
+<code class="descname">CombInstrumentID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.CombInstrumentID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.Direction">
+<code class="descname">Direction</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.Direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.ExchMargin">
+<code class="descname">ExchMargin</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.ExchMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.ExchangeID">
+<code class="descname">ExchangeID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.ExchangeID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.HedgeFlag">
+<code class="descname">HedgeFlag</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.HedgeFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.InstrumentID">
+<code class="descname">InstrumentID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.InstrumentID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.InvestorID">
+<code class="descname">InvestorID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.InvestorID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.LastSettlementPrice">
+<code class="descname">LastSettlementPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.LastSettlementPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.Margin">
+<code class="descname">Margin</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.Margin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.MarginRateByMoney">
+<code class="descname">MarginRateByMoney</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.MarginRateByMoney" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.MarginRateByVolume">
+<code class="descname">MarginRateByVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.MarginRateByVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.OpenDate">
+<code class="descname">OpenDate</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.OpenDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.OpenPrice">
+<code class="descname">OpenPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.OpenPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.PositionProfitByDate">
+<code class="descname">PositionProfitByDate</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.PositionProfitByDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.PositionProfitByTrade">
+<code class="descname">PositionProfitByTrade</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.PositionProfitByTrade" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.SettlementID">
+<code class="descname">SettlementID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.SettlementID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.SettlementPrice">
+<code class="descname">SettlementPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.SettlementPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.TradeID">
+<code class="descname">TradeID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.TradeID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.TradeType">
+<code class="descname">TradeType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.TradeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.TradingDay">
+<code class="descname">TradingDay</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.TradingDay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.Volume">
+<code class="descname">Volume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInvestorPositionDetailField.Volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcOrderField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.ActiveTime">
+<code class="descname">ActiveTime</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.ActiveTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.ActiveTraderID">
+<code class="descname">ActiveTraderID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.ActiveTraderID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.ActiveUserID">
+<code class="descname">ActiveUserID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.ActiveUserID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.BrokerID">
+<code class="descname">BrokerID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.BrokerID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.BrokerOrderSeq">
+<code class="descname">BrokerOrderSeq</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.BrokerOrderSeq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.BusinessUnit">
+<code class="descname">BusinessUnit</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.BusinessUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.CancelTime">
+<code class="descname">CancelTime</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.CancelTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.ClearingPartID">
+<code class="descname">ClearingPartID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.ClearingPartID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.ClientID">
+<code class="descname">ClientID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.ClientID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.CombHedgeFlag">
+<code class="descname">CombHedgeFlag</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.CombHedgeFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.CombOffsetFlag">
+<code class="descname">CombOffsetFlag</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.CombOffsetFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.ContingentCondition">
+<code class="descname">ContingentCondition</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.ContingentCondition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.Direction">
+<code class="descname">Direction</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.Direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.ExchangeID">
+<code class="descname">ExchangeID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.ExchangeID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.ExchangeInstID">
+<code class="descname">ExchangeInstID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.ExchangeInstID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.ForceCloseReason">
+<code class="descname">ForceCloseReason</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.ForceCloseReason" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.FrontID">
+<code class="descname">FrontID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.FrontID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.GTDDate">
+<code class="descname">GTDDate</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.GTDDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.InsertDate">
+<code class="descname">InsertDate</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.InsertDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.InsertTime">
+<code class="descname">InsertTime</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.InsertTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.InstallID">
+<code class="descname">InstallID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.InstallID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.InstrumentID">
+<code class="descname">InstrumentID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.InstrumentID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.InvestorID">
+<code class="descname">InvestorID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.InvestorID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.IsAutoSuspend">
+<code class="descname">IsAutoSuspend</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.IsAutoSuspend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.IsSwapOrder">
+<code class="descname">IsSwapOrder</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.IsSwapOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.LimitPrice">
+<code class="descname">LimitPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.LimitPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.MinVolume">
+<code class="descname">MinVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.MinVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.NotifySequence">
+<code class="descname">NotifySequence</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.NotifySequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderLocalID">
+<code class="descname">OrderLocalID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderLocalID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderPriceType">
+<code class="descname">OrderPriceType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderPriceType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderRef">
+<code class="descname">OrderRef</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderRef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderSource">
+<code class="descname">OrderSource</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderStatus">
+<code class="descname">OrderStatus</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderSubmitStatus">
+<code class="descname">OrderSubmitStatus</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderSubmitStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderSysID">
+<code class="descname">OrderSysID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderSysID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderType">
+<code class="descname">OrderType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.OrderType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.ParticipantID">
+<code class="descname">ParticipantID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.ParticipantID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.RelativeOrderSysID">
+<code class="descname">RelativeOrderSysID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.RelativeOrderSysID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.RequestID">
+<code class="descname">RequestID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.RequestID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.SequenceNo">
+<code class="descname">SequenceNo</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.SequenceNo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.SessionID">
+<code class="descname">SessionID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.SessionID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.SettlementID">
+<code class="descname">SettlementID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.SettlementID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.StatusMsg">
+<code class="descname">StatusMsg</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.StatusMsg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.StopPrice">
+<code class="descname">StopPrice</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.StopPrice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.SuspendTime">
+<code class="descname">SuspendTime</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.SuspendTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.TimeCondition">
+<code class="descname">TimeCondition</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.TimeCondition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.TraderID">
+<code class="descname">TraderID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.TraderID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.TradingDay">
+<code class="descname">TradingDay</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.TradingDay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.UpdateTime">
+<code class="descname">UpdateTime</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.UpdateTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.UserForceClose">
+<code class="descname">UserForceClose</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.UserForceClose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.UserID">
+<code class="descname">UserID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.UserID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.UserProductInfo">
+<code class="descname">UserProductInfo</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.UserProductInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.VolumeCondition">
+<code class="descname">VolumeCondition</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.VolumeCondition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.VolumeTotal">
+<code class="descname">VolumeTotal</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.VolumeTotal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.VolumeTotalOriginal">
+<code class="descname">VolumeTotalOriginal</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.VolumeTotalOriginal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.VolumeTraded">
+<code class="descname">VolumeTraded</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.VolumeTraded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcOrderField.ZCETotalTradedVolume">
+<code class="descname">ZCETotalTradedVolume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcOrderField.ZCETotalTradedVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcTradeField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.BrokerID">
+<code class="descname">BrokerID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.BrokerID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.BrokerOrderSeq">
+<code class="descname">BrokerOrderSeq</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.BrokerOrderSeq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.BusinessUnit">
+<code class="descname">BusinessUnit</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.BusinessUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.ClearingPartID">
+<code class="descname">ClearingPartID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.ClearingPartID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.ClientID">
+<code class="descname">ClientID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.ClientID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.Direction">
+<code class="descname">Direction</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.Direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.ExchangeID">
+<code class="descname">ExchangeID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.ExchangeID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.ExchangeInstID">
+<code class="descname">ExchangeInstID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.ExchangeInstID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.HedgeFlag">
+<code class="descname">HedgeFlag</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.HedgeFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.InstrumentID">
+<code class="descname">InstrumentID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.InstrumentID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.InvestorID">
+<code class="descname">InvestorID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.InvestorID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.OffsetFlag">
+<code class="descname">OffsetFlag</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.OffsetFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.OrderLocalID">
+<code class="descname">OrderLocalID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.OrderLocalID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.OrderRef">
+<code class="descname">OrderRef</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.OrderRef" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.OrderSysID">
+<code class="descname">OrderSysID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.OrderSysID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.ParticipantID">
+<code class="descname">ParticipantID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.ParticipantID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.Price">
+<code class="descname">Price</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.Price" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.PriceSource">
+<code class="descname">PriceSource</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.PriceSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.SequenceNo">
+<code class="descname">SequenceNo</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.SequenceNo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.SettlementID">
+<code class="descname">SettlementID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.SettlementID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.TradeDate">
+<code class="descname">TradeDate</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.TradeDate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.TradeID">
+<code class="descname">TradeID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.TradeID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.TradeSource">
+<code class="descname">TradeSource</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.TradeSource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.TradeTime">
+<code class="descname">TradeTime</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.TradeTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.TradeType">
+<code class="descname">TradeType</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.TradeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.TraderID">
+<code class="descname">TraderID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.TraderID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.TradingDay">
+<code class="descname">TradingDay</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.TradingDay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.TradingRole">
+<code class="descname">TradingRole</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.TradingRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.UserID">
+<code class="descname">UserID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.UserID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradeField.Volume">
+<code class="descname">Volume</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradeField.Volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcTradingAccountField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.AccountID">
+<code class="descname">AccountID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.AccountID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Available">
+<code class="descname">Available</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Available" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Balance">
+<code class="descname">Balance</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Balance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.BrokerID">
+<code class="descname">BrokerID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.BrokerID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.CashIn">
+<code class="descname">CashIn</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.CashIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.CloseProfit">
+<code class="descname">CloseProfit</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.CloseProfit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Commission">
+<code class="descname">Commission</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Commission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Credit">
+<code class="descname">Credit</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Credit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.CurrMargin">
+<code class="descname">CurrMargin</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.CurrMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.CurrencyID">
+<code class="descname">CurrencyID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.CurrencyID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.DeliveryMargin">
+<code class="descname">DeliveryMargin</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.DeliveryMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Deposit">
+<code class="descname">Deposit</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Deposit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.ExchangeDeliveryMargin">
+<code class="descname">ExchangeDeliveryMargin</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.ExchangeDeliveryMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.ExchangeMargin">
+<code class="descname">ExchangeMargin</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.ExchangeMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.FrozenCash">
+<code class="descname">FrozenCash</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.FrozenCash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.FrozenCommission">
+<code class="descname">FrozenCommission</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.FrozenCommission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.FrozenMargin">
+<code class="descname">FrozenMargin</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.FrozenMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.FundMortgageAvailable">
+<code class="descname">FundMortgageAvailable</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.FundMortgageAvailable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.FundMortgageIn">
+<code class="descname">FundMortgageIn</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.FundMortgageIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.FundMortgageOut">
+<code class="descname">FundMortgageOut</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.FundMortgageOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Interest">
+<code class="descname">Interest</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Interest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.InterestBase">
+<code class="descname">InterestBase</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.InterestBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Mortgage">
+<code class="descname">Mortgage</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Mortgage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.MortgageableFund">
+<code class="descname">MortgageableFund</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.MortgageableFund" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.OptionCloseProfit">
+<code class="descname">OptionCloseProfit</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.OptionCloseProfit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.OptionValue">
+<code class="descname">OptionValue</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.OptionValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PositionProfit">
+<code class="descname">PositionProfit</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PositionProfit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PreBalance">
+<code class="descname">PreBalance</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PreBalance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PreCredit">
+<code class="descname">PreCredit</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PreCredit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PreDeposit">
+<code class="descname">PreDeposit</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PreDeposit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PreFundMortgageIn">
+<code class="descname">PreFundMortgageIn</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PreFundMortgageIn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PreFundMortgageOut">
+<code class="descname">PreFundMortgageOut</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PreFundMortgageOut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PreMargin">
+<code class="descname">PreMargin</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PreMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PreMortgage">
+<code class="descname">PreMortgage</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.PreMortgage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Reserve">
+<code class="descname">Reserve</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Reserve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.ReserveBalance">
+<code class="descname">ReserveBalance</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.ReserveBalance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SettlementID">
+<code class="descname">SettlementID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SettlementID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductCloseProfit">
+<code class="descname">SpecProductCloseProfit</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductCloseProfit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductCommission">
+<code class="descname">SpecProductCommission</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductCommission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductExchangeMargin">
+<code class="descname">SpecProductExchangeMargin</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductExchangeMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductFrozenCommission">
+<code class="descname">SpecProductFrozenCommission</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductFrozenCommission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductFrozenMargin">
+<code class="descname">SpecProductFrozenMargin</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductFrozenMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductMargin">
+<code class="descname">SpecProductMargin</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductMargin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductPositionProfit">
+<code class="descname">SpecProductPositionProfit</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductPositionProfit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductPositionProfitByAlg">
+<code class="descname">SpecProductPositionProfitByAlg</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.SpecProductPositionProfitByAlg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.TradingDay">
+<code class="descname">TradingDay</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.TradingDay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Withdraw">
+<code class="descname">Withdraw</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.Withdraw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.WithdrawQuota">
+<code class="descname">WithdrawQuota</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcTradingAccountField.WithdrawQuota" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CThostFtdcInstrumentStatusField</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_ctypes.Structure</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.EnterReason">
+<code class="descname">EnterReason</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.EnterReason" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.EnterTime">
+<code class="descname">EnterTime</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.EnterTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.ExchangeID">
+<code class="descname">ExchangeID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.ExchangeID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.ExchangeInstID">
+<code class="descname">ExchangeInstID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.ExchangeInstID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.InstrumentID">
+<code class="descname">InstrumentID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.InstrumentID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.InstrumentStatus">
+<code class="descname">InstrumentStatus</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.InstrumentStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.SettlementGroupID">
+<code class="descname">SettlementGroupID</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.SettlementGroupID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.TradingSegmentSN">
+<code class="descname">TradingSegmentSN</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CThostFtdcInstrumentStatusField.TradingSegmentSN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.comm.CtpComm">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.comm.</code><code class="descname">CtpComm</code><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.msgQueue2Callback">
+<code class="descname">msgQueue2Callback</code><em class="property"> = {}</em><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.msgQueue2Callback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.preserve_callbacks">
+<em class="property">static </em><code class="descname">preserve_callbacks</code><span class="sig-paren">(</span><em>p_msg_queue</em>, <em>p_callback</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.preserve_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.clear_callbacks">
+<em class="property">static </em><code class="descname">clear_callbacks</code><span class="sig-paren">(</span><em>p_msg_queue</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.clear_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.CreateMsgQueue">
+<em class="property">static </em><code class="descname">CreateMsgQueue</code><span class="sig-paren">(</span><em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.CreateMsgQueue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnConnect">
+<em class="property">static </em><code class="descname">RegOnConnect</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnConnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnDisconnect">
+<em class="property">static </em><code class="descname">RegOnDisconnect</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnDisconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnErrRtnOrderAction">
+<em class="property">static </em><code class="descname">RegOnErrRtnOrderAction</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnErrRtnOrderAction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnErrRtnOrderInsert">
+<em class="property">static </em><code class="descname">RegOnErrRtnOrderInsert</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnErrRtnOrderInsert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRspError">
+<em class="property">static </em><code class="descname">RegOnRspError</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRspError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRspOrderAction">
+<em class="property">static </em><code class="descname">RegOnRspOrderAction</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRspOrderAction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRspOrderInsert">
+<em class="property">static </em><code class="descname">RegOnRspOrderInsert</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRspOrderInsert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryDepthMarketData">
+<em class="property">static </em><code class="descname">RegOnRspQryDepthMarketData</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryDepthMarketData" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryInstrument">
+<em class="property">static </em><code class="descname">RegOnRspQryInstrument</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryInstrument" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryInstrumentCommissionRate">
+<em class="property">static </em><code class="descname">RegOnRspQryInstrumentCommissionRate</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryInstrumentCommissionRate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryInstrumentMarginRate">
+<em class="property">static </em><code class="descname">RegOnRspQryInstrumentMarginRate</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryInstrumentMarginRate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryInstrumentOrderCommRate">
+<em class="property">static </em><code class="descname">RegOnRspQryInstrumentOrderCommRate</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryInstrumentOrderCommRate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryInvestorPosition">
+<em class="property">static </em><code class="descname">RegOnRspQryInvestorPosition</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryInvestorPosition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryInvestorPositionDetail">
+<em class="property">static </em><code class="descname">RegOnRspQryInvestorPositionDetail</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryInvestorPositionDetail" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryOrder">
+<em class="property">static </em><code class="descname">RegOnRspQryOrder</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryOrder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryTrade">
+<em class="property">static </em><code class="descname">RegOnRspQryTrade</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryTrade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryTradingAccount">
+<em class="property">static </em><code class="descname">RegOnRspQryTradingAccount</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRspQryTradingAccount" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRtnDepthMarketData">
+<em class="property">static </em><code class="descname">RegOnRtnDepthMarketData</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRtnDepthMarketData" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRtnInstrumentStatus">
+<em class="property">static </em><code class="descname">RegOnRtnInstrumentStatus</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRtnInstrumentStatus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRtnOrder">
+<em class="property">static </em><code class="descname">RegOnRtnOrder</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRtnOrder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.RegOnRtnTrade">
+<em class="property">static </em><code class="descname">RegOnRtnTrade</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>pCallback</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.RegOnRtnTrade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.ReleaseMsgQueue">
+<em class="property">static </em><code class="descname">ReleaseMsgQueue</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.ReleaseMsgQueue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.ClearMsgQueue">
+<em class="property">static </em><code class="descname">ClearMsgQueue</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.ClearMsgQueue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.ProcessMsgQueue">
+<em class="property">static </em><code class="descname">ProcessMsgQueue</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.ProcessMsgQueue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.StartMsgQueue">
+<em class="property">static </em><code class="descname">StartMsgQueue</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.StartMsgQueue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.comm.CtpComm.StopMsgQueue">
+<em class="property">static </em><code class="descname">StopMsgQueue</code><span class="sig-paren">(</span><em>pMsgQueue</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.comm.CtpComm.StopMsgQueue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="constants.html" class="btn btn-neutral float-right" title="constants" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="callback_base.html" class="btn btn-neutral" title="callback_base" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, .
+      Last updated on Jul 02, 2016.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../static/jquery.js"></script>
+      <script type="text/javascript" src="../static/underscore.js"></script>
+      <script type="text/javascript" src="../static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
