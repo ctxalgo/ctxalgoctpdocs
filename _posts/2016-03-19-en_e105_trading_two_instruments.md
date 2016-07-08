@@ -1,7 +1,8 @@
 ---
 title: Trading two instruments
 layout: post
-category: en
+category: root
+language: en
 ---
 
 This example shows how to write a strategy to trade two instruments, and the same goes for more instruments:

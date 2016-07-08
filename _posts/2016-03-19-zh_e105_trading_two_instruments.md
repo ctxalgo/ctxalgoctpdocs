@@ -1,7 +1,8 @@
 ---
 title: 同时交易两个品种
 layout: post
-category: zh
+category: root
+language: zh
 ---
 
 这个示例展示了如何在一个策略中同时交易两个品种，多个品种的情况类推：

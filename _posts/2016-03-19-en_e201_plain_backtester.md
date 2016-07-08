@@ -1,7 +1,8 @@
 ---
 title: Using the plain backtester
 layout: post
-category: en
+category: root
+language: en
 ---
 
 

@@ -1,7 +1,8 @@
 ---
 title: 直接迭代访问回测数据
 layout: post
-category: zh
+category: root
+language: zh
 ---
 
 本示例展示如何直接对回测历史数据进行迭代访问，以及如何设置需要对哪些周期的K线数据进行迭代访问。

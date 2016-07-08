@@ -1,7 +1,8 @@
 ---
 title: Getting market periods for instruments
 layout: post
-category: en
+category: root
+language: en
 ---
 
 

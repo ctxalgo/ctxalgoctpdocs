@@ -1,7 +1,8 @@
 ---
 title: Persist information in context across trading days
 layout: post
-category: en
+category: root
+language: en
 ---
 
 The backtesting framework in CTX will create a new trading strategy object on every trading day to simulate

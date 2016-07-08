@@ -1,7 +1,8 @@
 ---
 title: 多时间周期策略
 layout: post
-category: zh
+category: root
+language: zh
 ---
 
 本示例展示如何订阅不同周期的K线。你需要在策略的`__init__`方法的`periods`参数中列出所有需要的K线周期。

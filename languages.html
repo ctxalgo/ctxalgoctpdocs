@@ -2,19 +2,14 @@
 layout: default
 title: Languages
 ---
+
 <div>
     <ul>
-        {% for cate in site.categories %}
-        {% if cate[0] == 'zh' %}
-            <li id="{{ cate[0] }}">
-                <h2><a href="zh.html" >中文 ({{ cate[1].size }})</a></h2>
-            </li>
-        {% endif %}
-        {% if cate[0] == 'en' %}
-            <li id="{{ cate[0] }}">
-                <h2><a href="en.html" >English ({{ cate[1].size }})</a></h2>
-            </li>
-        {% endif %}
-        {% endfor %}
+        <li>
+            <h2><a href="./index.html" >中文</a></h2>
+        </li>
+        <li>
+            <h2><a href="./en.html" >English</a></h2>
+        </li>
     </ul> 
 </div>

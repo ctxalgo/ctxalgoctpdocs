@@ -1,7 +1,8 @@
 ---
 title: 在context中储存跨交易日数据
 layout: post
-category: zh
+category: root
+language: zh
 ---
 
 CTX系统中的回测模块每天会重新创建一个交易策略的对象，这样做的目的是模拟策略实盘运行是的情景。在实盘运行时，

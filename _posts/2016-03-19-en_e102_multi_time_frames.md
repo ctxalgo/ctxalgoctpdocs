@@ -1,7 +1,8 @@
 ---
 title: Multi-time frame strategy
 layout: post
-category: en
+category: root
+language: en
 ---
 
 This example shows how to register ohlcs for different time periods. You do this by specifying the `periods` parameter

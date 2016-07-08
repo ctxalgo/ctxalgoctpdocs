@@ -1,7 +1,8 @@
 ---
 title: 给策略连接一个基于zeromq的日志输出
 layout: post
-category: zh
+category: root
+language: zh
 ---
 
 本示例展示如何给交易策略连接一个基于zeromq的日志输出。一个交易策略可以连接多个日志输出。我们之前已经使用过了基于文件的

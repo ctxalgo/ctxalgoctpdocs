@@ -1,7 +1,8 @@
 ---
 title: Using financial indicators from ta-lib in strategies
 layout: post
-category: en
+category: root
+language: en
 ---
 
 This example shows how to use indicators from [ta-lib](https://github.com/mrjbq7/ta-lib), a library that

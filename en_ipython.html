@@ -1,0 +1,22 @@
+---
+layout: default
+title: ipython
+---
+<div>
+    <ul>
+        {% for cate in site.categories %}
+            {% if cate[0] == 'ipython' %}
+                {% for post in cate[1] %}
+                    {% if post.language == 'en' %}
+                        <li>
+                            <h4>
+                                <a href="{{ post.url }}">{{ post.title }}</a>
+                            </h4>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+

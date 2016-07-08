@@ -1,7 +1,8 @@
 ---
 title: Multiple-bar arrival event
 layout: post
-category: en
+category: root
+language: en
 ---
 
 In a strategy that trades multiple instrument, sometimes you want to have a callback when all the traded instruments

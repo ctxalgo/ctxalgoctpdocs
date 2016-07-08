@@ -1,7 +1,8 @@
 ---
 title: 多K线同时递增时的回调函数
 layout: post
-category: zh
+category: root
+language: zh
 ---
 
 在同时交易多个品种的策略中，有时候我们希望在所有品种都递增了一根K线时，获得一个函数回调。比如，在配对交易中，你希望

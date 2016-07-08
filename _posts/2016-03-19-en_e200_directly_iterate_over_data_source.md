@@ -1,7 +1,8 @@
 ---
 title: Iterating over a data source directly
 layout: post
-category: en
+category: root
+language: en
 ---
 
 This example shows how to iterate over data source for backtesting directly, without going through the backtester.

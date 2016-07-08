@@ -1,7 +1,8 @@
 ---
 title: Strategy with zeromq logger
 layout: post
-category: en
+category: root
+language: en
 ---
 
 This example demonstrates how to attach a zeromq logger to a strategy. A strategy can have different loggers,

@@ -1,7 +1,8 @@
 ---
 title: Locating ohlc bars in trading days
 layout: post
-category: en
+category: root
+language: en
 ---
 
 This example shows how to locate ohlc bars in trading days. For example, how to get all the bars

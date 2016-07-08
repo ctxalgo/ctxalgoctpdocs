@@ -1,7 +1,8 @@
 ---
 title: 如何定位不同交易日中的K线
 layout: post
-category: zh
+category: root
+language: zh
 ---
 
 本示例展示如何定位不同交易日中的K线，比如如何获得当前交易日的所有K线，如何获得昨天的所有K线。通过使用`today_ohlc`方法，

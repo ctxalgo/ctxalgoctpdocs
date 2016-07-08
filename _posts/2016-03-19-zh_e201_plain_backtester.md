@@ -1,7 +1,8 @@
 ---
 title: 使用简化回测器
 layout: post
-category: zh
+category: root
+language: zh
 ---
 
 

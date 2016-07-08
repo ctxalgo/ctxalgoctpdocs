@@ -1,7 +1,8 @@
 ---
 title: 在策略中使用来自ta-lib的指标
 layout: post
-category: zh
+category: root
+language: zh
 ---
 
 本示例展示如何在策略中使用来自[ta-lib](https://github.com/mrjbq7/ta-lib)的指标。ta-lib中包括了上百种常用的金融指标,

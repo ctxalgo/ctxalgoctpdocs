@@ -2,20 +2,19 @@
 layout: default
 title: English
 ---
-
 <div>
+    <h2>Pages</h2>
     <ul id="archive">
         {% for cate in site.categories %}
-            {% if cate[0] == 'en' %}
+            {% if cate[0] == 'root' %}
         
                 {% for post in cate[1] reversed %}
-                    {% if post.category_other %}
-                    {% else %}
-                    <li>
-                        <h4>
-                            <a href="{{ post.url }}">{{ post.title }}</a>
-                        </h4>
-                    </li>
+                    {% if post.language == 'en' %}
+                        <li>
+                            <h4>
+                                <a href="{{ post.url }}">{{ post.title }}</a>
+                            </h4>
+                        </li>
                     {% endif %}
                 {% endfor %}
             
@@ -26,7 +25,7 @@ title: English
             
             {% if site.data.page.categories contains cate[0] %}
                 <li id="{{ cate[0] }}">
-                    <h4><a href="./{{ cate[0] }}.html">{{ cate[0] }}/</a></h4>
+                    <h4><a href="./en_{{ cate[0] }}.html">{{ cate[0] }}/</a></h4>
                 </li>
             {% endif %}
         {% endfor %}

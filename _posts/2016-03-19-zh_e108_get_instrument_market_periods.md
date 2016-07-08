@@ -1,7 +1,8 @@
 ---
 title: 获取某个品种的交易时段
 layout: post
-category: zh
+category: root
+language: zh
 ---
 
 
