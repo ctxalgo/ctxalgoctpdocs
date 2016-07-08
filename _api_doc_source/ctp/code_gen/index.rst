@@ -6,6 +6,6 @@ code_gen
 
    templates/index
    backtesting_template
-   base_template_info_extractor
-   code_gen_utils
    template_strategy_generator
+   code_gen_utils
+   base_template_info_extractor

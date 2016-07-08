@@ -4,37 +4,37 @@ ctp
 .. toctree::
    :maxdepth: 2
 
-   code_gen/index
-   data_producers/index
-   execution_drivers/index
-   factories/index
    live/index
+   factories/index
+   code_gen/index
    logger/index
+   execution_drivers/index
+   data_producers/index
    strategies/index
+   slippage_models
+   strategy_utils
    backtester
-   backtesting
-   backtesting_utils
+   trading_account
+   report_pdf_generator
+   optimization
+   offline_optimization
+   tick_and_bar_publisher
+   market_data_feed
    base
-   callback_base
-   comm
+   order_cancellation
+   roll
+   state_utils
    constants
    datetime_utils
-   market_data_feed
-   market_order_simulator
-   offline_optimization
-   optimization
-   order_cancellation
-   plain_backtester
-   real
-   report
-   report_generator
-   report_pdf_generator
-   roll
-   slippage_models
-   state_utils
    strategy
-   strategy_utils
-   tick_and_bar_publisher
-   trading_account
-   trading_constants
+   callback_base
+   market_order_simulator
+   plain_backtester
+   backtesting_utils
+   comm
+   report_generator
+   real
    utils
+   trading_constants
+   report
+   backtesting
