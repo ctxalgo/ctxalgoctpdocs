@@ -51,8 +51,8 @@ Now, we can visualize the composite report just as how we visualize individual r
 ```python
 c = ChartsWithReport(composite_report, None, open_in_browser=True)
 c.range(7)  # Zoom out to view the whole chart.
-c.balance(position='v1', net_value=False, height=500)  # Draw the balance.
-c.drawdowns(max_drawdown_color='pink', position='v1')  # Visualize the max-drawdown period(s).
+c.balance(net_value=False, height=500, position='a1')  # Draw the balance.
+c.drawdowns(max_drawdown_color='pink', position='a1')  # Visualize the max-drawdown period(s).
 c.instrument_positions(instrument_id='IF99')  # Draw the positions for IF99.
 c.instrument_positions(instrument_id='cu99')  # Draw the positions for cu99.
 c.show()  # Open the html page in browser.
