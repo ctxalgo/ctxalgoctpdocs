@@ -150,8 +150,1092 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="report-pdf-generator">
-<h1>report_pdf_generator<a class="headerlink" href="#report-pdf-generator" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.report_pdf_generator">
+<span id="report-pdf-generator"></span><h1>report_pdf_generator<a class="headerlink" href="#module-ctxalgoctp.ctp.report_pdf_generator" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.report_pdf_generator.</code><code class="descname">NumberedCanvas</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">reportlab.pdfgen.canvas.Canvas</span></code></p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.language">
+<code class="descname">language</code><em class="property"> = 'english'</em><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.language" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.showPage">
+<code class="descname">showPage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.showPage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.save">
+<code class="descname">save</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.draw_page_number">
+<code class="descname">draw_page_number</code><span class="sig-paren">(</span><em>page_count</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.draw_page_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.STATE_ATTRIBUTES">
+<code class="descname">STATE_ATTRIBUTES</code><em class="property"> = ['_x', '_y', '_fontname', '_fontsize', '_textMode', '_leading', '_currentMatrix', '_fillMode', '_charSpace', '_wordSpace', '_horizScale', '_textRenderMode', '_rise', '_textLineMatrix', '_textMatrix', '_lineCap', '_lineJoin', '_lineDash', '_lineWidth', '_mitreLimit', '_fillColorObj', '_strokeColorObj', '_extgstate']</em><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.STATE_ATTRIBUTES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.STATE_RANGE">
+<code class="descname">STATE_RANGE</code><em class="property"> = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]</em><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.STATE_RANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.absolutePosition">
+<code class="descname">absolutePosition</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.absolutePosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the absolute position of x,y in user space w.r.t. default user space</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.addFont">
+<code class="descname">addFont</code><span class="sig-paren">(</span><em>fontObj</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.addFont" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a new font for subsequent use.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.addLiteral">
+<code class="descname">addLiteral</code><span class="sig-paren">(</span><em>s</em>, <em>escaped=1</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.addLiteral" title="Permalink to this definition">¶</a></dt>
+<dd><p>introduce the literal text of PDF operations s into the current stream.
+Only use this if you are an expert in the PDF file format.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.addOutlineEntry">
+<code class="descname">addOutlineEntry</code><span class="sig-paren">(</span><em>title</em>, <em>key</em>, <em>level=0</em>, <em>closed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.addOutlineEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a new entry to the outline at given level.  If LEVEL not specified,
+entry goes at the top level.  If level specified, it must be
+no more than 1 greater than the outline level in the last call.</p>
+<p>The key must be the (unique) name of a bookmark.
+the title is the (non-unique) name to be displayed for the entry.</p>
+<p>If closed is set then the entry should show no subsections by default
+when displayed.</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">c</span><span class="o">.</span><span class="n">addOutlineEntry</span><span class="p">(</span><span class="s">&quot;first section&quot;</span><span class="p">,</span> <span class="s">&quot;section1&quot;</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">addOutlineEntry</span><span class="p">(</span><span class="s">&quot;introduction&quot;</span><span class="p">,</span> <span class="s">&quot;s1s1&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">addOutlineEntry</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">,</span> <span class="s">&quot;s1s2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">addOutlineEntry</span><span class="p">(</span><span class="s">&quot;detail1&quot;</span><span class="p">,</span> <span class="s">&quot;s1s2s1&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">addOutlineEntry</span><span class="p">(</span><span class="s">&quot;detail2&quot;</span><span class="p">,</span> <span class="s">&quot;s1s2s2&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">addOutlineEntry</span><span class="p">(</span><span class="s">&quot;conclusion&quot;</span><span class="p">,</span> <span class="s">&quot;s1s3&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">addOutlineEntry</span><span class="p">(</span><span class="s">&quot;further reading&quot;</span><span class="p">,</span> <span class="s">&quot;s1s3s1&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">addOutlineEntry</span><span class="p">(</span><span class="s">&quot;second section&quot;</span><span class="p">,</span> <span class="s">&quot;section1&quot;</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">addOutlineEntry</span><span class="p">(</span><span class="s">&quot;introduction&quot;</span><span class="p">,</span> <span class="s">&quot;s2s1&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">addOutlineEntry</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">,</span> <span class="s">&quot;s2s2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">addOutlineEntry</span><span class="p">(</span><span class="s">&quot;detail1&quot;</span><span class="p">,</span> <span class="s">&quot;s2s2s1&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">addOutlineEntry</span><span class="p">(</span><span class="s">&quot;detail2&quot;</span><span class="p">,</span> <span class="s">&quot;s2s2s2&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">addOutlineEntry</span><span class="p">(</span><span class="s">&quot;conclusion&quot;</span><span class="p">,</span> <span class="s">&quot;s2s3&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">addOutlineEntry</span><span class="p">(</span><span class="s">&quot;further reading&quot;</span><span class="p">,</span> <span class="s">&quot;s2s3s1&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>generated outline looks like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="o">-</span> <span class="n">first</span> <span class="n">section</span>
+<span class="o">|-</span> <span class="n">introduction</span>
+<span class="o">|-</span> <span class="n">body</span>
+<span class="o">|</span>  <span class="o">|-</span> <span class="n">detail1</span>
+<span class="o">|</span>  <span class="o">|-</span> <span class="n">detail2</span>
+<span class="o">|-</span> <span class="n">conclusion</span>
+<span class="o">|</span>  <span class="o">|-</span> <span class="n">further</span> <span class="n">reading</span>
+<span class="o">-</span> <span class="n">second</span> <span class="n">section</span>
+<span class="o">|-</span> <span class="n">introduction</span>
+<span class="o">|+</span> <span class="n">body</span>
+<span class="o">|-</span> <span class="n">conclusion</span>
+<span class="o">|</span>  <span class="o">|-</span> <span class="n">further</span> <span class="n">reading</span>
+</pre></div>
+</div>
+<p>Note that the second &#8220;body&#8221; is closed.</p>
+<p>Note that you can jump from level 5 to level 3 but not
+from 3 to 5: instead you need to provide all intervening
+levels going down (4 in this case).  Note that titles can
+collide but keys cannot.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.addPageLabel">
+<code class="descname">addPageLabel</code><span class="sig-paren">(</span><em>pageNum</em>, <em>style=None</em>, <em>start=None</em>, <em>prefix=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.addPageLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a PDFPageLabel for pageNum</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.addPostScriptCommand">
+<code class="descname">addPostScriptCommand</code><span class="sig-paren">(</span><em>command</em>, <em>position=1</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.addPostScriptCommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Embed literal Postscript in the document.</p>
+<p>With position=0, it goes at very beginning of page stream;
+with position=1, at current point; and
+with position=2, at very end of page stream.  What that does
+to the resulting Postscript depends on Adobe&#8217;s header :-)</p>
+<p>Use with extreme caution, but sometimes needed for printer tray commands.
+Acrobat 4.0 will export Postscript to a printer or file containing
+the given commands.  Adobe Reader 6.0 no longer does as this feature is
+deprecated.  5.0, I don&#8217;t know about (please let us know!). This was
+funded by Bob Marshall of Vector.co.uk and tested on a Lexmark 750.
+See test_pdfbase_postscript.py for 2 test cases - one will work on
+any Postscript device, the other uses a &#8216;setpapertray&#8217; command which
+will error in Distiller but work on printers supporting it.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.arc">
+<code class="descname">arc</code><span class="sig-paren">(</span><em>x1</em>, <em>y1</em>, <em>x2</em>, <em>y2</em>, <em>startAng=0</em>, <em>extent=90</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.arc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a partial ellipse inscribed within the rectangle x1,y1,x2,y2,
+starting at startAng degrees and covering extent degrees.   Angles
+start with 0 to the right (+x) and increase counter-clockwise.
+These should have x1&lt;x2 and y1&lt;y2.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.beginForm">
+<code class="descname">beginForm</code><span class="sig-paren">(</span><em>name</em>, <em>lowerx=0</em>, <em>lowery=0</em>, <em>upperx=None</em>, <em>uppery=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.beginForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>declare the current graphics stream to be a named form.
+A graphics stream can either be a page or a form, not both.
+Some operations (like bookmarking) are permitted for pages
+but not forms.  The form will not automatically be shown in the
+document but must be explicitly referenced using doForm in pages
+that require the form.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.beginPath">
+<code class="descname">beginPath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.beginPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fresh path object.  Paths are used to draw
+complex figures.  The object returned follows the protocol
+for a pathobject.PDFPathObject instance</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.beginText">
+<code class="descname">beginText</code><span class="sig-paren">(</span><em>x=0</em>, <em>y=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.beginText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fresh text object.  Text objects are used
+to add large amounts of text.  See textobject.PDFTextObject</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.bezier">
+<code class="descname">bezier</code><span class="sig-paren">(</span><em>x1</em>, <em>y1</em>, <em>x2</em>, <em>y2</em>, <em>x3</em>, <em>y3</em>, <em>x4</em>, <em>y4</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.bezier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bezier curve with the four given control points</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.bookmarkHorizontal">
+<code class="descname">bookmarkHorizontal</code><span class="sig-paren">(</span><em>key</em>, <em>relativeX</em>, <em>relativeY</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.bookmarkHorizontal" title="Permalink to this definition">¶</a></dt>
+<dd><p>w.r.t. the current transformation, bookmark this horizontal.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.bookmarkHorizontalAbsolute">
+<code class="descname">bookmarkHorizontalAbsolute</code><span class="sig-paren">(</span><em>key</em>, <em>top</em>, <em>left=0</em>, <em>fit='XYZ'</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.bookmarkHorizontalAbsolute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bind a bookmark (destination) to the current page at a horizontal position.
+Note that the yhorizontal of the book mark is with respect to the default
+user space (where the origin is at the lower left corner of the page)
+and completely ignores any transform (translation, scale, skew, rotation,
+etcetera) in effect for the current graphics state.  The programmer is
+responsible for making sure the bookmark matches an appropriate item on
+the page.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.bookmarkPage">
+<code class="descname">bookmarkPage</code><span class="sig-paren">(</span><em>key</em>, <em>fit='Fit'</em>, <em>left=None</em>, <em>top=None</em>, <em>bottom=None</em>, <em>right=None</em>, <em>zoom=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.bookmarkPage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This creates a bookmark to the current page which can
+be referred to with the given key elsewhere.</p>
+<p>PDF offers very fine grained control over how Acrobat
+reader is zoomed when people link to this. The default
+is to keep the user&#8217;s current zoom settings. the last
+arguments may or may not be needed depending on the
+choice of &#8216;fitType&#8217;.</p>
+<p>Fit types and the other arguments they use are:</p>
+<ul class="simple">
+<li>XYZ left top zoom - fine grained control.  null
+or zero for any of the parameters means &#8216;leave
+as is&#8217;, so &#8220;0,0,0&#8221; will keep the reader&#8217;s settings.
+NB. Adobe Reader appears to prefer &#8220;null&#8221; to 0&#8217;s.</li>
+<li>Fit - entire page fits in window</li>
+<li>FitH top - top coord at top of window, width scaled
+to fit.</li>
+<li>FitV left - left coord at left of window, height
+scaled to fit</li>
+<li>FitR left bottom right top - scale window to fit
+the specified rectangle</li>
+</ul>
+<p>(question: do we support /FitB, FitBH and /FitBV
+which are hangovers from version 1.1 / Acrobat 3.0?)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.circle">
+<code class="descname">circle</code><span class="sig-paren">(</span><em>x_cen</em>, <em>y_cen</em>, <em>r</em>, <em>stroke=1</em>, <em>fill=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.circle" title="Permalink to this definition">¶</a></dt>
+<dd><p>draw a cirle centered at (x_cen,y_cen) with radius r (special case of ellipse)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.clipPath">
+<code class="descname">clipPath</code><span class="sig-paren">(</span><em>aPath</em>, <em>stroke=1</em>, <em>fill=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.clipPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>clip as well as drawing</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.delCatalogEntry">
+<code class="descname">delCatalogEntry</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.delCatalogEntry" title="Permalink to this definition">¶</a></dt>
+<dd><p>you&#8217;ll get an error here if it&#8217;s not been set</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.delViewerPreference">
+<code class="descname">delViewerPreference</code><span class="sig-paren">(</span><em>pref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.delViewerPreference" title="Permalink to this definition">¶</a></dt>
+<dd><p>you&#8217;ll get an error here if none have been set</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.doForm">
+<code class="descname">doForm</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.doForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>use a form XObj in current operation stream.</p>
+<p>The form should either have been defined previously using
+beginForm ... endForm, or may be defined later.  If it is not
+defined at save time, an exception will be raised. The form
+will be drawn within the context of the current graphics
+state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawAlignedString">
+<code class="descname">drawAlignedString</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>text</em>, <em>pivotChar='.'</em>, <em>mode=None</em>, <em>charSpace=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawAlignedString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a string aligned on the first &#8216;.&#8217; (or other pivot character).</p>
+<p>The centre position of the pivot character will be used as x.
+So, you could draw a straight line down through all the decimals in a
+column of numbers, and anything without a decimal should be
+optically aligned with those that have.</p>
+<p>There is one special rule to help with accounting formatting.  Here&#8217;s
+how normal numbers should be aligned on the &#8216;dot&#8217;. Look at the
+LAST two:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="mi">12</span><span class="p">,</span><span class="mi">345</span><span class="p">,</span><span class="mi">67</span>
+   <span class="mf">987.15</span>
+    <span class="mi">42</span>
+<span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mf">234.56</span>
+  <span class="p">(</span><span class="mf">456.78</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">456</span><span class="p">)</span>
+    <span class="mi">27</span> <span class="n">inches</span>
+    <span class="mi">13</span><span class="n">cm</span>
+</pre></div>
+</div>
+<p>Since the last three do not contain a dot, a crude dot-finding
+rule would place them wrong. So we test for the special case
+where no pivot is found, digits are present, but the last character
+is not a digit.  We then work back from the end of the string
+This case is a tad slower but hopefully rare.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawCentredString">
+<code class="descname">drawCentredString</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>text</em>, <em>mode=None</em>, <em>charSpace=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawCentredString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a string centred on the x coordinate.</p>
+<p>We&#8217;re British, dammit, and proud of our spelling!</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawImage">
+<code class="descname">drawImage</code><span class="sig-paren">(</span><em>image</em>, <em>x</em>, <em>y</em>, <em>width=None</em>, <em>height=None</em>, <em>mask=None</em>, <em>preserveAspectRatio=False</em>, <em>anchor='c'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws the image (ImageReader object or filename) as specified.</p>
+<p>&#8220;image&#8221; may be an image filename or an ImageReader object.</p>
+<p>x and y define the lower left corner of the image you wish to
+draw (or of its bounding box, if using preserveAspectRation below).</p>
+<p>If width and height are not given, the width and height of the
+image in pixels is used at a scale of 1 point to 1 pixel.</p>
+<p>If width and height are given, the image will be stretched to fill 
+the given rectangle bounded by (x, y, x+width, y-height).</p>
+<p>If you supply negative widths and/or heights, it inverts them and adjusts
+x and y accordingly.</p>
+<p>The method returns the width and height of the underlying image, since
+this is often useful for layout algorithms and saves you work if you have
+not specified them yourself.</p>
+<p>The mask parameter supports transparent backgrounds. It takes 6 numbers
+and defines the range of RGB values which will be masked out or treated
+as transparent.  For example with [0,2,40,42,136,139], it will mask out
+any pixels with a Red value from 0-2, Green from 40-42 and
+Blue from 136-139  (on a scale of 0-255).</p>
+<p>New post version 2.0:  drawImage can center an image in a box you
+provide, while preserving its aspect ratio.  For example, you might
+have a fixed square box in your design, and a collection of photos
+which might be landscape or portrait that you want to appear within 
+the box.  If preserveAspectRatio is true, your image will appear within
+the box specified.</p>
+<p>If preserveAspectRatio is True, the anchor property can be used to
+specify how images should fit into the given box.  It should 
+be set to one of the following values, taken from the points of
+the compass (plus &#8216;c&#8217; for &#8216;centre&#8217;):</p>
+<blockquote>
+<div>nw   n   ne
+w    c    e
+sw   s   se</div></blockquote>
+<p>The default value is &#8216;c&#8217; for &#8216;centre&#8217;.  Thus, if you want your
+bitmaps to always be centred and appear at the top of the given box,
+set anchor=&#8217;n&#8217;.      There are good examples of this in the output
+of test_pdfgen_general.py</p>
+<p>Unlike drawInlineImage, this creates &#8216;external images&#8217; which
+are only stored once in the PDF file but can be drawn many times.
+If you give it the same filename twice, even at different locations
+and sizes, it will reuse the first occurrence, resulting in a saving
+in file size and generation time.  If you use ImageReader objects,
+it tests whether the image content has changed before deciding
+whether to reuse it.</p>
+<p>In general you should use drawImage in preference to drawInlineImage
+unless you have read the PDF Spec and understand the tradeoffs.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawInlineImage">
+<code class="descname">drawInlineImage</code><span class="sig-paren">(</span><em>image</em>, <em>x</em>, <em>y</em>, <em>width=None</em>, <em>height=None</em>, <em>preserveAspectRatio=False</em>, <em>anchor='c'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawInlineImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>See drawImage, which should normally be used instead...</p>
+<p>drawInlineImage behaves like drawImage, but stores the image content
+within the graphics stream for the page.  This means that the mask
+parameter for transparency is not available.  It also means that there 
+is no saving in file size or time if the same image is reused.</p>
+<p>In theory it allows images to be displayed slightly faster; however, 
+we doubt if the difference is noticeable to any human user these days.
+Only use this if you have studied the PDF specification and know the
+implications.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawPath">
+<code class="descname">drawPath</code><span class="sig-paren">(</span><em>aPath</em>, <em>stroke=1</em>, <em>fill=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the path object in the mode indicated</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawRightString">
+<code class="descname">drawRightString</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>text</em>, <em>mode=None</em>, <em>charSpace=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawRightString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a string right-aligned with the x coordinate</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawString">
+<code class="descname">drawString</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>text</em>, <em>mode=None</em>, <em>charSpace=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a string in the current text styles.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawText">
+<code class="descname">drawText</code><span class="sig-paren">(</span><em>aTextObject</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.drawText" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a text object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.ellipse">
+<code class="descname">ellipse</code><span class="sig-paren">(</span><em>x1</em>, <em>y1</em>, <em>x2</em>, <em>y2</em>, <em>stroke=1</em>, <em>fill=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.ellipse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw an ellipse defined by an enclosing rectangle.</p>
+<p>Note that (x1,y1) and (x2,y2) are the corner points of
+the enclosing rectangle.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.endForm">
+<code class="descname">endForm</code><span class="sig-paren">(</span><em>**extra_attributes</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.endForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>emit the current collection of graphics operations as a Form
+as declared previously in beginForm.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.freeTextAnnotation">
+<code class="descname">freeTextAnnotation</code><span class="sig-paren">(</span><em>contents</em>, <em>DA</em>, <em>Rect=None</em>, <em>addtopage=1</em>, <em>name=None</em>, <em>relative=0</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.freeTextAnnotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>DA is the default appearance string???</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.getAvailableFonts">
+<code class="descname">getAvailableFonts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.getAvailableFonts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of PostScript font names available.</p>
+<p>Standard set now, but may grow in future with font embedding.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.getCatalogEntry">
+<code class="descname">getCatalogEntry</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.getCatalogEntry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.getCurrentPageContent">
+<code class="descname">getCurrentPageContent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.getCurrentPageContent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return uncompressed contents of current page buffer.</p>
+<p>This is useful in creating test cases and assertions of what
+got drawn, without necessarily saving pages to disk</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.getPageNumber">
+<code class="descname">getPageNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.getPageNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the page number for the current page being generated.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.getViewerPreference">
+<code class="descname">getViewerPreference</code><span class="sig-paren">(</span><em>pref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.getViewerPreference" title="Permalink to this definition">¶</a></dt>
+<dd><p>you&#8217;ll get an error here if none have been set</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.getpdfdata">
+<code class="descname">getpdfdata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.getpdfdata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the PDF data that would normally be written to a file.
+If there is current data a ShowPage is executed automatically.
+After this operation the canvas must not be used further.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.grid">
+<code class="descname">grid</code><span class="sig-paren">(</span><em>xlist</em>, <em>ylist</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lays out a grid in current line style.  Supply list of
+x an y positions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.hasForm">
+<code class="descname">hasForm</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.hasForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query whether form XObj really exists yet.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.highlightAnnotation">
+<code class="descname">highlightAnnotation</code><span class="sig-paren">(</span><em>contents, Rect, QuadPoints=None, Color=[0.83, 0.89, 0.95], addtopage=1, name=None, relative=0, **kw</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.highlightAnnotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows adding of a highlighted annotation.</p>
+<p>Rect: Mouseover area to show contents of annotation
+QuadPoints: List of four x/y points [TOP-LEFT, TOP-RIGHT, BOTTOM-LEFT, BOTTOM-RIGHT]</p>
+<blockquote>
+<div>These points outline the areas to highlight.
+You can have multiple groups of four to allow multiple highlighted areas.
+Is in the format [x1, y1, x2, y2, x3, y3, x4, y4, x1, y1, x2, y2, x3, y3, x4, y4] etc
+QuadPoints defaults to be area inside of passed in Rect</div></blockquote>
+<p>Color: The color of the highlighting.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.init_graphics_state">
+<code class="descname">init_graphics_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.init_graphics_state" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.inkAnnotation">
+<code class="descname">inkAnnotation</code><span class="sig-paren">(</span><em>contents</em>, <em>InkList=None</em>, <em>Rect=None</em>, <em>addtopage=1</em>, <em>name=None</em>, <em>relative=0</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.inkAnnotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.inkAnnotation0">
+<code class="descname">inkAnnotation0</code><span class="sig-paren">(</span><em>contents</em>, <em>InkList=None</em>, <em>Rect=None</em>, <em>addtopage=1</em>, <em>name=None</em>, <em>relative=0</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.inkAnnotation0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.line">
+<code class="descname">line</code><span class="sig-paren">(</span><em>x1</em>, <em>y1</em>, <em>x2</em>, <em>y2</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.line" title="Permalink to this definition">¶</a></dt>
+<dd><p>draw a line segment from (x1,y1) to (x2,y2) (with color, thickness and
+other attributes determined by the current graphics state).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.linearGradient">
+<code class="descname">linearGradient</code><span class="sig-paren">(</span><em>x0</em>, <em>y0</em>, <em>x1</em>, <em>y1</em>, <em>colors</em>, <em>positions=None</em>, <em>extend=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.linearGradient" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.lines">
+<code class="descname">lines</code><span class="sig-paren">(</span><em>linelist</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like line(), permits many lines to be drawn in one call.
+for example for the figure:</p>
+<div class="highlight-default"><div class="highlight"><pre>  <span class="o">|</span>
+<span class="o">--</span> <span class="o">--</span>
+  <span class="o">|</span>
+
+<span class="n">crosshairs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">20</span><span class="p">)]</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">lines</span><span class="p">(</span><span class="n">crosshairs</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.linkAbsolute">
+<code class="descname">linkAbsolute</code><span class="sig-paren">(</span><em>contents</em>, <em>destinationname</em>, <em>Rect=None</em>, <em>addtopage=1</em>, <em>name=None</em>, <em>thickness=0</em>, <em>color=None</em>, <em>dashArray=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.linkAbsolute" title="Permalink to this definition">¶</a></dt>
+<dd><p>rectangular link annotation positioned wrt the default user space.
+The identified rectangle on the page becomes a &#8220;hot link&#8221; which
+when clicked will send the viewer to the page and position identified
+by the destination.</p>
+<p>Rect identifies (lowerx, lowery, upperx, uppery) for lower left
+and upperright points of the rectangle.  Translations and other transforms
+are IGNORED (the rectangular position is given with respect
+to the default user space.
+destinationname should be the name of a bookmark (which may be defined later
+but must be defined before the document is generated).</p>
+<p>You may want to use the keyword argument Border=&#8217;[0 0 0]&#8217; to
+suppress the visible rectangle around the during viewing link.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.linkRect">
+<code class="descname">linkRect</code><span class="sig-paren">(</span><em>contents</em>, <em>destinationname</em>, <em>Rect=None</em>, <em>addtopage=1</em>, <em>name=None</em>, <em>relative=1</em>, <em>thickness=0</em>, <em>color=None</em>, <em>dashArray=None</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.linkRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>rectangular link annotation w.r.t the current user transform.
+if the transform is skewed/rotated the absolute rectangle will use the max/min x/y</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.linkURL">
+<code class="descname">linkURL</code><span class="sig-paren">(</span><em>url</em>, <em>rect</em>, <em>relative=0</em>, <em>thickness=0</em>, <em>color=None</em>, <em>dashArray=None</em>, <em>kind='URI'</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.linkURL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a rectangular URL &#8216;hotspot&#8217; in the given rectangle.</p>
+<p>if relative=1, this is in the current coord system, otherwise
+in absolute page space.
+The remaining options affect the border appearance; the border is
+drawn by Acrobat, not us.  Set thickness to zero to hide it.
+Any border drawn this way is NOT part of the page stream and
+will not show when printed to a Postscript printer or distilled;
+it is safest to draw your own.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.listLoadedFonts0">
+<code class="descname">listLoadedFonts0</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.listLoadedFonts0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience function to list all loaded fonts</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.pageHasData">
+<code class="descname">pageHasData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.pageHasData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Info function - app can call it after showPage to see if it needs a save</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.pop_state_stack">
+<code class="descname">pop_state_stack</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.pop_state_stack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.push_state_stack">
+<code class="descname">push_state_stack</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.push_state_stack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.radialGradient">
+<code class="descname">radialGradient</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>radius</em>, <em>colors</em>, <em>positions=None</em>, <em>extend=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.radialGradient" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.rect">
+<code class="descname">rect</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>width</em>, <em>height</em>, <em>stroke=1</em>, <em>fill=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.rect" title="Permalink to this definition">¶</a></dt>
+<dd><p>draws a rectangle with lower left corner at (x,y) and width and height as given.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.resetTransforms">
+<code class="descname">resetTransforms</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.resetTransforms" title="Permalink to this definition">¶</a></dt>
+<dd><p>I want to draw something (eg, string underlines) w.r.t. the default user space.
+Reset the matrix! This should be used usually as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">canv</span><span class="o">.</span><span class="n">saveState</span><span class="p">()</span>
+<span class="n">canv</span><span class="o">.</span><span class="n">resetTransforms</span><span class="p">()</span>
+<span class="c">#...draw some stuff in default space coords...</span>
+<span class="n">canv</span><span class="o">.</span><span class="n">restoreState</span><span class="p">()</span> <span class="c"># go back!</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.restoreState">
+<code class="descname">restoreState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.restoreState" title="Permalink to this definition">¶</a></dt>
+<dd><p>restore the graphics state to the matching saved state (see saveState).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>theta</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate the canvas by the angle theta (in degrees).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.roundRect">
+<code class="descname">roundRect</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>width</em>, <em>height</em>, <em>radius</em>, <em>stroke=1</em>, <em>fill=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.roundRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a rectangle with rounded corners.  The corners are
+approximately quadrants of a circle, with the given radius.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.saveState">
+<code class="descname">saveState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.saveState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the current graphics state to be restored later by restoreState.</p>
+<dl class="docutils">
+<dt>For example:</dt>
+<dd>canvas.setFont(&#8220;Helvetica&#8221;, 20)
+canvas.saveState()
+...
+canvas.setFont(&#8220;Courier&#8221;, 9)
+...
+canvas.restoreState()
+# if the save/restore pairs match then font is Helvetica 20 again.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scale the horizontal dimension by x and the vertical by y
+(with respect to the current graphics state).
+For example canvas.scale(2.0, 0.5) will make everything short and fat.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setAuthor">
+<code class="descname">setAuthor</code><span class="sig-paren">(</span><em>author</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setAuthor" title="Permalink to this definition">¶</a></dt>
+<dd><p>identify the author for invisible embedding inside the PDF document.
+the author annotation will appear in the the text of the file but will
+not automatically be seen when the document is viewed, but is visible
+in document properties etc etc.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setCatalogEntry">
+<code class="descname">setCatalogEntry</code><span class="sig-paren">(</span><em>key</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setCatalogEntry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setCreator">
+<code class="descname">setCreator</code><span class="sig-paren">(</span><em>creator</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setCreator" title="Permalink to this definition">¶</a></dt>
+<dd><p>write a creator into the PDF file that won&#8217;t automatically display
+in the document itself. This should be used to name the original app
+which is passing data into ReportLab, if you wish to name it.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setDash">
+<code class="descname">setDash</code><span class="sig-paren">(</span><em>array=[]</em>, <em>phase=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setDash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Two notations.  pass two numbers, or an array and phase</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setDateFormatter">
+<code class="descname">setDateFormatter</code><span class="sig-paren">(</span><em>dateFormatter</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setDateFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>accepts a func(yyyy,mm,dd,hh,m,s) used to create embedded formatted date</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setEncrypt">
+<code class="descname">setEncrypt</code><span class="sig-paren">(</span><em>encrypt</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setEncrypt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the encryption used for the pdf generated by this canvas.
+If encrypt is a string object, it is used as the user password for the pdf.
+If encrypt is an instance of reportlab.lib.pdfencrypt.StandardEncryption, this object is
+used to encrypt the pdf. This allows more finegrained control over the encryption settings.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFillAlpha">
+<code class="descname">setFillAlpha</code><span class="sig-paren">(</span><em>a</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFillAlpha" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFillColor">
+<code class="descname">setFillColor</code><span class="sig-paren">(</span><em>aColor</em>, <em>alpha=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFillColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a color object, allowing colors to be referred to by name</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFillColorCMYK">
+<code class="descname">setFillColorCMYK</code><span class="sig-paren">(</span><em>c</em>, <em>m</em>, <em>y</em>, <em>k</em>, <em>alpha=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFillColorCMYK" title="Permalink to this definition">¶</a></dt>
+<dd><p>set the fill color useing negative color values
+(cyan, magenta, yellow and darkness value).
+Takes 4 arguments between 0.0 and 1.0</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFillColorRGB">
+<code class="descname">setFillColorRGB</code><span class="sig-paren">(</span><em>r</em>, <em>g</em>, <em>b</em>, <em>alpha=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFillColorRGB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the fill color using positive color description
+(Red,Green,Blue).  Takes 3 arguments between 0.0 and 1.0</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFillGray">
+<code class="descname">setFillGray</code><span class="sig-paren">(</span><em>gray</em>, <em>alpha=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFillGray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the gray level; 0.0=black, 1.0=white</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFillOverprint">
+<code class="descname">setFillOverprint</code><span class="sig-paren">(</span><em>a</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFillOverprint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFont">
+<code class="descname">setFont</code><span class="sig-paren">(</span><em>psfontname</em>, <em>size</em>, <em>leading=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFont" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the font.  If leading not specified, defaults to 1.2 x
+font size. Raises a readable exception if an illegal font
+is supplied.  Font names are case-sensitive! Keeps track
+of font name and size for metrics.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFontSize">
+<code class="descname">setFontSize</code><span class="sig-paren">(</span><em>size=None</em>, <em>leading=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setFontSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets font size or leading without knowing the font face</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setKeywords">
+<code class="descname">setKeywords</code><span class="sig-paren">(</span><em>keywords</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setKeywords" title="Permalink to this definition">¶</a></dt>
+<dd><p>write a list of keywords into the PDF file which shows in document properties.
+Either submit a single string or a list/tuple</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setLineCap">
+<code class="descname">setLineCap</code><span class="sig-paren">(</span><em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setLineCap" title="Permalink to this definition">¶</a></dt>
+<dd><p>0=butt,1=round,2=square</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setLineJoin">
+<code class="descname">setLineJoin</code><span class="sig-paren">(</span><em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setLineJoin" title="Permalink to this definition">¶</a></dt>
+<dd><p>0=mitre, 1=round, 2=bevel</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setLineWidth">
+<code class="descname">setLineWidth</code><span class="sig-paren">(</span><em>width</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setLineWidth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setMiterLimit">
+<code class="descname">setMiterLimit</code><span class="sig-paren">(</span><em>limit</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setMiterLimit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setOutlineNames0">
+<code class="descname">setOutlineNames0</code><span class="sig-paren">(</span><em>*nametree</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setOutlineNames0" title="Permalink to this definition">¶</a></dt>
+<dd><p>nametree should can be a recursive tree like so:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">c</span><span class="o">.</span><span class="n">setOutlineNames</span><span class="p">(</span>
+  <span class="s">&quot;chapter1dest&quot;</span><span class="p">,</span>
+  <span class="p">(</span><span class="s">&quot;chapter2dest&quot;</span><span class="p">,</span>
+   <span class="p">[</span><span class="s">&quot;chapter2section1dest&quot;</span><span class="p">,</span>
+    <span class="s">&quot;chapter2section2dest&quot;</span><span class="p">,</span>
+    <span class="s">&quot;chapter2conclusiondest&quot;</span><span class="p">]</span>
+  <span class="p">),</span> <span class="c"># end of chapter2 description</span>
+  <span class="s">&quot;chapter3dest&quot;</span><span class="p">,</span>
+  <span class="p">(</span><span class="s">&quot;chapter4dest&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;c4s1&quot;</span><span class="p">,</span> <span class="s">&quot;c4s2&quot;</span><span class="p">])</span>
+  <span class="p">)</span>
+</pre></div>
+</div>
+<p>each of the string names inside must be bound to a bookmark
+before the document is generated.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setOverprintMask">
+<code class="descname">setOverprintMask</code><span class="sig-paren">(</span><em>a</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setOverprintMask" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setPageCallBack">
+<code class="descname">setPageCallBack</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setPageCallBack" title="Permalink to this definition">¶</a></dt>
+<dd><p>func(pageNum) will be called on each page end.</p>
+<dl class="docutils">
+<dt>This is mainly a hook for progress monitoring.</dt>
+<dd>Call setPageCallback(None) to clear a callback.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setPageCompression">
+<code class="descname">setPageCompression</code><span class="sig-paren">(</span><em>pageCompression=1</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setPageCompression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Possible values None, 1 or 0
+If None the value from rl_config will be used.
+If on, the page data will be compressed, leading to much
+smaller files, but takes a little longer to create the files.
+This applies to all subsequent pages, or until setPageCompression()
+is next called.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setPageDuration">
+<code class="descname">setPageDuration</code><span class="sig-paren">(</span><em>duration=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setPageDuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows hands-off animation of presentations :-)</p>
+<p>If this is set to a number, in full screen mode, Acrobat Reader
+will advance to the next page after this many seconds. The
+duration of the transition itself (fade/flicker etc.) is controlled
+by the &#8216;duration&#8217; argument to setPageTransition; this controls
+the time spent looking at the page.  This is effective for all
+subsequent pages.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setPageRotation">
+<code class="descname">setPageRotation</code><span class="sig-paren">(</span><em>rot</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setPageRotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instruct display device that this page is to be rotated</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setPageSize">
+<code class="descname">setPageSize</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setPageSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>accepts a 2-tuple in points for paper size for this
+and subsequent pages</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setPageTransition">
+<code class="descname">setPageTransition</code><span class="sig-paren">(</span><em>effectname=None</em>, <em>duration=1</em>, <em>direction=0</em>, <em>dimension='H'</em>, <em>motion='I'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setPageTransition" title="Permalink to this definition">¶</a></dt>
+<dd><p>PDF allows page transition effects for use when giving
+presentations.  There are six possible effects.  You can
+just guive the effect name, or supply more advanced options
+to refine the way it works.  There are three types of extra
+argument permitted, and here are the allowed values:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">direction_arg</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">180</span><span class="p">,</span><span class="mi">270</span><span class="p">]</span>
+<span class="n">dimension_arg</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;H&#39;</span><span class="p">,</span> <span class="s">&#39;V&#39;</span><span class="p">]</span>
+<span class="n">motion_arg</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;I&#39;</span><span class="p">,</span><span class="s">&#39;O&#39;</span><span class="p">]</span> <span class="p">(</span><span class="n">start</span> <span class="n">at</span> <span class="n">inside</span> <span class="ow">or</span> <span class="n">outside</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This table says which ones take which arguments:</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">PageTransitionEffects</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;Split&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">direction_arg</span><span class="p">,</span> <span class="n">motion_arg</span><span class="p">],</span>
+    <span class="s">&#39;Blinds&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">dimension_arg</span><span class="p">],</span>
+    <span class="s">&#39;Box&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">motion_arg</span><span class="p">],</span>
+    <span class="s">&#39;Wipe&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="n">direction_arg</span><span class="p">],</span>
+    <span class="s">&#39;Dissolve&#39;</span> <span class="p">:</span> <span class="p">[],</span>
+    <span class="s">&#39;Glitter&#39;</span><span class="p">:[</span><span class="n">direction_arg</span><span class="p">]</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>Have fun!</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setStrokeAlpha">
+<code class="descname">setStrokeAlpha</code><span class="sig-paren">(</span><em>a</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setStrokeAlpha" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setStrokeColor">
+<code class="descname">setStrokeColor</code><span class="sig-paren">(</span><em>aColor</em>, <em>alpha=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setStrokeColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a color object, allowing colors to be referred to by name</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setStrokeColorCMYK">
+<code class="descname">setStrokeColorCMYK</code><span class="sig-paren">(</span><em>c</em>, <em>m</em>, <em>y</em>, <em>k</em>, <em>alpha=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setStrokeColorCMYK" title="Permalink to this definition">¶</a></dt>
+<dd><p>set the stroke color useing negative color values
+(cyan, magenta, yellow and darkness value).
+Takes 4 arguments between 0.0 and 1.0</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setStrokeColorRGB">
+<code class="descname">setStrokeColorRGB</code><span class="sig-paren">(</span><em>r</em>, <em>g</em>, <em>b</em>, <em>alpha=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setStrokeColorRGB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the stroke color using positive color description
+(Red,Green,Blue).  Takes 3 arguments between 0.0 and 1.0</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setStrokeGray">
+<code class="descname">setStrokeGray</code><span class="sig-paren">(</span><em>gray</em>, <em>alpha=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setStrokeGray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the gray level; 0.0=black, 1.0=white</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setStrokeOverprint">
+<code class="descname">setStrokeOverprint</code><span class="sig-paren">(</span><em>a</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setStrokeOverprint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setSubject">
+<code class="descname">setSubject</code><span class="sig-paren">(</span><em>subject</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setSubject" title="Permalink to this definition">¶</a></dt>
+<dd><p>write a subject into the PDF file that won&#8217;t automatically display
+in the document itself.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setTitle">
+<code class="descname">setTitle</code><span class="sig-paren">(</span><em>title</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setTitle" title="Permalink to this definition">¶</a></dt>
+<dd><p>write a title into the PDF file that won&#8217;t automatically display
+in the document itself.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setViewerPreference">
+<code class="descname">setViewerPreference</code><span class="sig-paren">(</span><em>pref</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.setViewerPreference" title="Permalink to this definition">¶</a></dt>
+<dd><p>set one of the allowed enbtries in the documents viewer preferences</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.shade">
+<code class="descname">shade</code><span class="sig-paren">(</span><em>shading</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.shade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.showFullScreen0">
+<code class="descname">showFullScreen0</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.showFullScreen0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify that Acrobat Reader should start in full screen mode.
+showFullScreen() and showOutline() conflict; the one called last
+wins.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.showOutline">
+<code class="descname">showOutline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.showOutline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify that Acrobat Reader should start with the outline tree visible.
+showFullScreen() and showOutline() conflict; the one called last
+wins.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.skew">
+<code class="descname">skew</code><span class="sig-paren">(</span><em>alpha</em>, <em>beta</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.skew" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.stringWidth">
+<code class="descname">stringWidth</code><span class="sig-paren">(</span><em>text</em>, <em>fontName=None</em>, <em>fontSize=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.stringWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>gets width of a string in the given font and size</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.textAnnotation">
+<code class="descname">textAnnotation</code><span class="sig-paren">(</span><em>contents</em>, <em>Rect=None</em>, <em>addtopage=1</em>, <em>name=None</em>, <em>relative=0</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.textAnnotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Experimental, but works.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.textAnnotation0">
+<code class="descname">textAnnotation0</code><span class="sig-paren">(</span><em>contents</em>, <em>Rect=None</em>, <em>addtopage=1</em>, <em>name=None</em>, <em>relative=0</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.textAnnotation0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Experimental, but works.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>c</em>, <em>d</em>, <em>e</em>, <em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>adjoin a mathematical transform to the current graphics state matrix.
+Not recommended for beginners.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.translate">
+<code class="descname">translate</code><span class="sig-paren">(</span><em>dx</em>, <em>dy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>move the origin from the current (0,0) point to the (dx,dy) point
+(with respect to the current graphics state).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.wedge">
+<code class="descname">wedge</code><span class="sig-paren">(</span><em>x1</em>, <em>y1</em>, <em>x2</em>, <em>y2</em>, <em>startAng</em>, <em>extent</em>, <em>stroke=1</em>, <em>fill=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.NumberedCanvas.wedge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Like arc, but connects to the centre of the ellipse.
+Most useful for pie charts and PacMan!</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.AbstractPdfGenerator">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.report_pdf_generator.</code><code class="descname">AbstractPdfGenerator</code><span class="sig-paren">(</span><em>report</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.AbstractPdfGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>report</strong> &#8211; CtpCompositeStrategyReport or CtpStrategyReport</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.AbstractPdfGenerator.generate">
+<code class="descname">generate</code><span class="sig-paren">(</span><em>pdf_path</em>, <em>language='english'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.AbstractPdfGenerator.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the report in PDF in the given language.
+:param pdf_path: string, the path of the output PDF file.
+:param language: string, the language in which the PDF file is written.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.AbstractPdfGenerator.use_suggested_periods">
+<code class="descname">use_suggested_periods</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.AbstractPdfGenerator.use_suggested_periods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Suggest the appropriate periods for different charts and set the corresponding properties.
+The guideline is that a chart should contain more or less self.max_point_in_chart number of points.
+The possible choices for periods are Periodicity.DAILY, Periodicity.WEEKLY, Periodicity.MONTHLY.
+Perform the calculation and set self.*_period.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.ReportPdfGenerator">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.report_pdf_generator.</code><code class="descname">ReportPdfGenerator</code><span class="sig-paren">(</span><em>report</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.ReportPdfGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.report_pdf_generator.AbstractPdfGenerator" title="ctxalgoctp.ctp.report_pdf_generator.AbstractPdfGenerator"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.report_pdf_generator.AbstractPdfGenerator</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>report</strong> &#8211; CtpStrategyReport.</td>
+</tr>
+</tbody>
+</table>
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.ReportPdfGenerator.generate_from_file">
+<em class="property">static </em><code class="descname">generate_from_file</code><span class="sig-paren">(</span><em>log_path</em>, <em>pdf_path</em>, <em>language='english'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.ReportPdfGenerator.generate_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate Pdf report from given log file.
+:param log_path: string, the path to the strategy log file.
+:param pdf_path: string, the path for the output pdf file.
+:param language: string, the language in which the PDF file is written. Valid values are &#8216;english&#8217; or &#8216;chinese&#8217;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.ReportPdfGenerator.generate">
+<code class="descname">generate</code><span class="sig-paren">(</span><em>pdf_path</em>, <em>language='english'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.ReportPdfGenerator.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the report in PDF in the given language.
+:param pdf_path: string, the path of the output PDF file.
+:param language: string, the language in which the PDF file is written. Valid values are &#8216;english&#8217; or &#8216;chinese&#8217;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.ReportPdfGenerator.use_suggested_periods">
+<code class="descname">use_suggested_periods</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.ReportPdfGenerator.use_suggested_periods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Suggest the appropriate periods for different charts and set the corresponding properties.
+The guideline is that a chart should contain more or less self.max_point_in_chart number of points.
+The possible choices for periods are Periodicity.DAILY, Periodicity.WEEKLY, Periodicity.MONTHLY.
+Perform the calculation and set self.*_period.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.CompositeReportPdfGenerator">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.report_pdf_generator.</code><code class="descname">CompositeReportPdfGenerator</code><span class="sig-paren">(</span><em>report</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.CompositeReportPdfGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.report_pdf_generator.AbstractPdfGenerator" title="ctxalgoctp.ctp.report_pdf_generator.AbstractPdfGenerator"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.report_pdf_generator.AbstractPdfGenerator</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>report</strong> &#8211; CtpCompositeStrategyReport</td>
+</tr>
+</tbody>
+</table>
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.CompositeReportPdfGenerator.generate_from_file">
+<em class="property">static </em><code class="descname">generate_from_file</code><span class="sig-paren">(</span><em>log_paths</em>, <em>pdf_path</em>, <em>language='english'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.CompositeReportPdfGenerator.generate_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate Pdf report from given log file.
+:param log_paths: [string], the paths to the strategy log files.
+:param pdf_path: string, the path for the output pdf file.
+:param language: string, the language in which the PDF file is written. Valid values are &#8216;english&#8217; or &#8216;chinese&#8217;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.CompositeReportPdfGenerator.generate">
+<code class="descname">generate</code><span class="sig-paren">(</span><em>pdf_path</em>, <em>language='english'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.CompositeReportPdfGenerator.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the report in PDF in the given language.
+:param pdf_path: string, the path of the output PDF file.
+:param language: string, the language in which the PDF file is written.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_pdf_generator.CompositeReportPdfGenerator.use_suggested_periods">
+<code class="descname">use_suggested_periods</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_pdf_generator.CompositeReportPdfGenerator.use_suggested_periods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Suggest the appropriate periods for different charts and set the corresponding properties.
+The guideline is that a chart should contain more or less self.max_point_in_chart number of points.
+The possible choices for periods are Periodicity.DAILY, Periodicity.WEEKLY, Periodicity.MONTHLY.
+Perform the calculation and set self.*_period.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

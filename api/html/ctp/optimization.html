@@ -150,8 +150,149 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="optimization">
-<h1>optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.optimization">
+<span id="optimization"></span><h1>optimization<a class="headerlink" href="#module-ctxalgoctp.ctp.optimization" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="ctxalgoctp.ctp.optimization.make_walk_forward_config">
+<code class="descclassname">ctxalgoctp.ctp.optimization.</code><code class="descname">make_walk_forward_config</code><span class="sig-paren">(</span><em>train_window</em>, <em>pred_window</em>, <em>param_specs</em>, <em>funs</em>, <em>pred_start_days=None</em>, <em>optimizer=None</em>, <em>optimizer_options=None</em>, <em>cons=None</em>, <em>regularizers=None</em>, <em>output_folder='training'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.optimization.make_walk_forward_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>A utility function to make a dictionary about walk forward configuration.
+The optimizer argument can be either an optimizer object or a string that specifies the optimizer
+name. Specifically: &#8220;brute-force&#8221;: BruteForceOptimizer , &#8220;random-guess&#8221;: RandomGuessOptimizer,
+&#8220;simulated-annealing&#8221;: SimulatedAnnealingOptimizer, &#8220;hill-climbing&#8221;: HillClimbingOptimizer.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ctxalgoctp.ctp.optimization.objective_factory">
+<code class="descclassname">ctxalgoctp.ctp.optimization.</code><code class="descname">objective_factory</code><span class="sig-paren">(</span><em>start_date</em>, <em>end_date</em>, <em>last_param</em>, <em>data_source_factory</em>, <em>strategy_class</em>, <em>config</em>, <em>param_specs</em>, <em>funs</em>, <em>cons</em>, <em>regularizers</em>, <em>slippage_model=None</em>, <em>has_commission=True</em>, <em>daily_start_time=None</em>, <em>daily_end_time=None</em>, <em>message_random_delay_enabled=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.optimization.objective_factory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate an objective object given start_date, end_date and previous
+parameter value.</p>
+<p>This function can be used as a lambda function in the walk forward
+backtesting.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start_date</strong> &#8211; start date of the rolling window for the backtesting.</li>
+<li><strong>end_date</strong> &#8211; end date of the rolling window for the backtesting.</li>
+<li><strong>last_param</strong> &#8211; numpy array of the parameter value in the last rolling
+window.</li>
+<li><strong>data_source_factory</strong> &#8211; function, returns the data source within
+[start_date, end_date)</li>
+<li><strong>config, param_specs, funs, cons, regularizers</strong> (<em>strategy_class,</em>) &#8211; the same as in CtpBacktestingObjective.</li>
+<li><strong>daily_start_time</strong> &#8211; time, the time when the backtester simulation starts everyday.
+(Because walk-forward optimization uses backtester internally).
+If None, a default value is used.</li>
+<li><strong>daily_end_time</strong> &#8211; time, the time when the backtester simulation ends everyday.
+If None, a default value is used.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a CtpBacktestingObjective object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.optimization.CtpBacktestingObjective">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.optimization.</code><code class="descname">CtpBacktestingObjective</code><span class="sig-paren">(</span><em>data_source</em>, <em>strategy_class</em>, <em>config</em>, <em>param_specs</em>, <em>funs</em>, <em>cons=None</em>, <em>regularizers=None</em>, <em>slippage_model=None</em>, <em>has_commission=True</em>, <em>daily_start_time=None</em>, <em>daily_end_time=None</em>, <em>message_random_delay_enabled=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.optimization.CtpBacktestingObjective" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.ta.optimization.objective.ObjectiveBase</span></code></p>
+<p>Objective function for strategy optimization in backtesting.</p>
+<p>A function or constraint specification should be a lambda function and the argument names should be strings
+that are recognizable by CtpBacktestingObjective. Supported argument names are:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Performance metrics in the backtesting summary report. For example, &#8216;transaction_count&#8217;, &#8216;max_drawdown&#8217;,</li>
+</ol>
+<blockquote>
+<div>&#8216;max_drawdown_percent&#8217;, &#8216;net_profit&#8217;, &#8216;average_net_profit_by_transaction&#8217;, &#8216;maximum drawdown duration&#8217;</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Parameter name in param_specs</li>
+<li>Internal representation of the parameters in the format &#8216;[parameter name]_internal&#8217;</li>
+<li>Others that are defined separately (we should keep these strings in a list and prepare to add more strings
+later): &#8216;maximum drawdown duration&#8217;: maximum drawdown duration in seconds.</li>
+</ol>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data_source</strong> &#8211; </li>
+<li><strong>strategy_class</strong> &#8211; </li>
+<li><strong>config</strong> &#8211; strategy configuration.</li>
+<li><strong>param_specs</strong> &#8211; ParameterVector object that specifies parameters
+to be optimized in the config[&#8216;parameters&#8217;] dict.</li>
+<li><strong>funs</strong> &#8211; a list of lambda functions to specify report entries (with arguments) as function output.</li>
+<li><strong>cons</strong> &#8211; a list of lambda function to specify report entries (with arguments) as constraint output.</li>
+<li><strong>regularizers</strong> &#8211; list of regularizer objective object, each for one parameter, or None if not used.</li>
+<li><strong>slippage_model</strong> &#8211; AbstractSlippageModel, the slippage model to use for the backtester.
+If None, VolumeBasedSlippageModel will be used.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.optimization.CtpBacktestingObjective.eval">
+<code class="descname">eval</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.optimization.CtpBacktestingObjective.eval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.optimization.CtpBacktestingObjective.energy">
+<code class="descname">energy</code><span class="sig-paren">(</span><em>foutput</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.optimization.CtpBacktestingObjective.energy" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>foutput</strong> &#8211; one output of all objectvie functions</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return float:</th><td class="field-body">energy value of foutput</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.optimization.CtpBacktestingObjective.equals">
+<code class="descname">equals</code><span class="sig-paren">(</span><em>foutputs1</em>, <em>foutputs2</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.optimization.CtpBacktestingObjective.equals" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>foutputs1</strong> &#8211; one output of all objectvie functions</li>
+<li><strong>foutputs2</strong> &#8211; another output of all objectvie functions</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>:return True, if foutputs &#8216;qeuals to&#8217; foutputs2; otherwise False.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.optimization.CtpBacktestingObjective.less_then">
+<code class="descname">less_then</code><span class="sig-paren">(</span><em>foutputs1</em>, <em>foutputs2</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.optimization.CtpBacktestingObjective.less_then" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>foutputs1</strong> &#8211; one output of all objectvie functions</li>
+<li><strong>foutputs2</strong> &#8211; another output of all objectvie functions</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>:return True, if foutputs &#8216;less then&#8217; foutputs2; otherwise False.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

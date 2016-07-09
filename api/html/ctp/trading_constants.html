@@ -150,8 +150,353 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="trading-constants">
-<h1>trading_constants<a class="headerlink" href="#trading-constants" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.trading_constants">
+<span id="trading-constants"></span><h1>trading_constants<a class="headerlink" href="#module-ctxalgoctp.ctp.trading_constants" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderAction">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trading_constants.</code><code class="descname">OrderAction</code><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Constant values for different kinds of orders.</p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderAction.Open">
+<code class="descname">Open</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderAction.Open" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderAction.Close">
+<code class="descname">Close</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderAction.Close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderAction.ForceClose">
+<code class="descname">ForceClose</code><em class="property"> = 2</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderAction.ForceClose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderAction.CloseToday">
+<code class="descname">CloseToday</code><em class="property"> = 3</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderAction.CloseToday" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderAction.CloseYesterday">
+<code class="descname">CloseYesterday</code><em class="property"> = 4</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderAction.CloseYesterday" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderAction.ForceOff">
+<code class="descname">ForceOff</code><em class="property"> = 5</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderAction.ForceOff" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderAction.LocalForceClose">
+<code class="descname">LocalForceClose</code><em class="property"> = 6</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderAction.LocalForceClose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderAction.Cancel">
+<code class="descname">Cancel</code><em class="property"> = 7</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderAction.Cancel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderAction.get_action_name">
+<em class="property">static </em><code class="descname">get_action_name</code><span class="sig-paren">(</span><em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderAction.get_action_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the name of the action.
+Parameters:</p>
+<blockquote>
+<div>action: int, one of the order action constant defined above.</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>string: the name for that action.</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderAction.get_action_from_name">
+<em class="property">static </em><code class="descname">get_action_from_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderAction.get_action_from_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the action from its name.
+Parameters:</p>
+<blockquote>
+<div>name: string, name of the action.</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>int: the action value.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderStatus">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trading_constants.</code><code class="descname">OrderStatus</code><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Order status</p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderStatus.AllTraded">
+<code class="descname">AllTraded</code><em class="property"> = '0'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderStatus.AllTraded" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderStatus.PartTradedQueueing">
+<code class="descname">PartTradedQueueing</code><em class="property"> = '1'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderStatus.PartTradedQueueing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderStatus.PartTradedNotQueueing">
+<code class="descname">PartTradedNotQueueing</code><em class="property"> = '2'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderStatus.PartTradedNotQueueing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderStatus.NoTradeQueueing">
+<code class="descname">NoTradeQueueing</code><em class="property"> = '3'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderStatus.NoTradeQueueing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderStatus.NoTradeNotQueueing">
+<code class="descname">NoTradeNotQueueing</code><em class="property"> = '4'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderStatus.NoTradeNotQueueing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderStatus.Canceled">
+<code class="descname">Canceled</code><em class="property"> = '5'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderStatus.Canceled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderStatus.Unknown">
+<code class="descname">Unknown</code><em class="property"> = 'a'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderStatus.Unknown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderStatus.NotTouched">
+<code class="descname">NotTouched</code><em class="property"> = 'b'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderStatus.NotTouched" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderStatus.Touched">
+<code class="descname">Touched</code><em class="property"> = 'c'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderStatus.Touched" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.OrderStatus.Error">
+<code class="descname">Error</code><em class="property"> = 'x'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.OrderStatus.Error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trading_constants.</code><code class="descname">LogTags</code><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of tags used for logging.</p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.ACCOUNT">
+<code class="descname">ACCOUNT</code><em class="property"> = 'ACCOUNT'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.ACCOUNT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.BAR">
+<code class="descname">BAR</code><em class="property"> = 'BAR'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.BAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.COMMISSION_RATE">
+<code class="descname">COMMISSION_RATE</code><em class="property"> = 'COMMISSION_RATE'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.COMMISSION_RATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.CANCEL_ORDER">
+<code class="descname">CANCEL_ORDER</code><em class="property"> = 'CANCEL_ORDER'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.CANCEL_ORDER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.CONNECT_MARKET">
+<code class="descname">CONNECT_MARKET</code><em class="property"> = 'CONNECT_MARKET'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.CONNECT_MARKET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.CONNECT_TRADING">
+<code class="descname">CONNECT_TRADING</code><em class="property"> = 'CONNECT_TRADING'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.CONNECT_TRADING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.ERROR_ORDER_ACTION">
+<code class="descname">ERROR_ORDER_ACTION</code><em class="property"> = 'ERROR_ORDER_ACTION'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.ERROR_ORDER_ACTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.ERROR_ORDER_INSERT">
+<code class="descname">ERROR_ORDER_INSERT</code><em class="property"> = 'ERROR_ORDER_INSERT'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.ERROR_ORDER_INSERT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.MARKET_ERROR">
+<code class="descname">MARKET_ERROR</code><em class="property"> = 'MARKET_ERROR'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.MARKET_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.TRADING_ERROR">
+<code class="descname">TRADING_ERROR</code><em class="property"> = 'TRADING_ERROR'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.TRADING_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.EXCEPTION">
+<code class="descname">EXCEPTION</code><em class="property"> = 'EXCEPTION'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.EXCEPTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.INSTRUMENT">
+<code class="descname">INSTRUMENT</code><em class="property"> = 'INSTRUMENT'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.INSTRUMENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.MARGIN_RATE">
+<code class="descname">MARGIN_RATE</code><em class="property"> = 'MARGIN_RATE'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.MARGIN_RATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.MARKET">
+<code class="descname">MARKET</code><em class="property"> = 'MARKET'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.MARKET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.MARKET_CONNECTED">
+<code class="descname">MARKET_CONNECTED</code><em class="property"> = 'MARKET_CONNECTED'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.MARKET_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.MARKET_DISCONNECTED">
+<code class="descname">MARKET_DISCONNECTED</code><em class="property"> = 'MARKET_DISCONNECTED'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.MARKET_DISCONNECTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.MARKET_PERIOD">
+<code class="descname">MARKET_PERIOD</code><em class="property"> = 'MARKET_PERIOD'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.MARKET_PERIOD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.OHLC">
+<code class="descname">OHLC</code><em class="property"> = 'OHLC'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.OHLC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.ORDER">
+<code class="descname">ORDER</code><em class="property"> = 'ORDER'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.ORDER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.ORDER_ACTION">
+<code class="descname">ORDER_ACTION</code><em class="property"> = 'ORDER_ACTION'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.ORDER_ACTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.ORDER_COMMISSION_RATE">
+<code class="descname">ORDER_COMMISSION_RATE</code><em class="property"> = 'ORDER_COMMISSION_RATE'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.ORDER_COMMISSION_RATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.ORDER_INSERT">
+<code class="descname">ORDER_INSERT</code><em class="property"> = 'ORDER_INSERT'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.ORDER_INSERT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.POSITION">
+<code class="descname">POSITION</code><em class="property"> = 'POSITION'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.POSITION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.POSITION_SIZING">
+<code class="descname">POSITION_SIZING</code><em class="property"> = 'POSITION_SIZING'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.POSITION_SIZING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.RTN_ORDER">
+<code class="descname">RTN_ORDER</code><em class="property"> = 'RTN_ORDER'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.RTN_ORDER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.SIGNAL">
+<code class="descname">SIGNAL</code><em class="property"> = 'SIGNAL'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.SIGNAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.SIGNAL_CONFIRMED">
+<code class="descname">SIGNAL_CONFIRMED</code><em class="property"> = 'SIGNAL_CONFIRMED'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.SIGNAL_CONFIRMED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.SIGNAL_IGNORED">
+<code class="descname">SIGNAL_IGNORED</code><em class="property"> = 'SIGNAL_IGNORED'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.SIGNAL_IGNORED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.STATE_TRANSITION">
+<code class="descname">STATE_TRANSITION</code><em class="property"> = 'STATE_TRANSITION'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.STATE_TRANSITION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.STRATEGY">
+<code class="descname">STRATEGY</code><em class="property"> = 'STRATEGY'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.STRATEGY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.STRATEGY_EXTRA">
+<code class="descname">STRATEGY_EXTRA</code><em class="property"> = 'STRATEGY_EXTRA'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.STRATEGY_EXTRA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.STOP_LOSS">
+<code class="descname">STOP_LOSS</code><em class="property"> = 'STOP_LOSS'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.STOP_LOSS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.TRADED">
+<code class="descname">TRADED</code><em class="property"> = 'TRADED'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.TRADED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.TRADING_CONNECTED">
+<code class="descname">TRADING_CONNECTED</code><em class="property"> = 'TRADING_CONNECTED'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.TRADING_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.TRADING_DISCONNECTED">
+<code class="descname">TRADING_DISCONNECTED</code><em class="property"> = 'TRADING_DISCONNECTED'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.TRADING_DISCONNECTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.VOLATILITY_BAR">
+<code class="descname">VOLATILITY_BAR</code><em class="property"> = 'VOLATILITY_BAR'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.VOLATILITY_BAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.WALK_FORWARD_TRAINING">
+<code class="descname">WALK_FORWARD_TRAINING</code><em class="property"> = 'WALK_FORWARD_TRAINING'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.WALK_FORWARD_TRAINING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.WALK_FORWARD_PREDICTION">
+<code class="descname">WALK_FORWARD_PREDICTION</code><em class="property"> = 'WALK_FORWARD_PREDICATION'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.WALK_FORWARD_PREDICTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.EXTERNAL">
+<code class="descname">EXTERNAL</code><em class="property"> = 'EXTERNAL'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.EXTERNAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.STRATEGY_START">
+<code class="descname">STRATEGY_START</code><em class="property"> = 'STRATEGY_START'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.STRATEGY_START" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.STRATEGY_END">
+<code class="descname">STRATEGY_END</code><em class="property"> = 'STRATEGY_END'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.STRATEGY_END" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trading_constants.LogTags.STRATEGY_HEARTBEAT">
+<code class="descname">STRATEGY_HEARTBEAT</code><em class="property"> = 'STRATEGY_HEARTBEAT'</em><a class="headerlink" href="#ctxalgoctp.ctp.trading_constants.LogTags.STRATEGY_HEARTBEAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 
 

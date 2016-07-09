@@ -150,8 +150,135 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="report-generator">
-<h1>report_generator<a class="headerlink" href="#report-generator" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.report_generator">
+<span id="report-generator"></span><h1>report_generator<a class="headerlink" href="#module-ctxalgoctp.ctp.report_generator" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.report_generator.</code><code class="descname">CtpReportGenerator</code><span class="sig-paren">(</span><em>include_url=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Initialize current.
+:param include_url:  bool, if True, generate urls for visualization.</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.generate_from_file">
+<code class="descname">generate_from_file</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.generate_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate report from file.
+:param path: string, the path to the strategy output file.
+:return: CtpStrategyReport.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.from_files">
+<em class="property">static </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>paths</em>, <em>period=None</em>, <em>include_urls=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a composite report from a list of log paths.
+:param paths: [string], list if log paths.
+:param period: Periodicity, the default period of the composite report to be generated.
+:param include_urls: boolean, if True, include generated urls for visualization.
+:return: CtpCompositeStrategyReport.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.from_file">
+<em class="property">static </em><code class="descname">from_file</code><span class="sig-paren">(</span><em>path</em>, <em>include_urls=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a report from the tiven log path.
+:param path: string, log path.
+:param include_urls: boolean, if True, include generated urls for visualization.
+:return: CtpStrategyReport.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.generate">
+<code class="descname">generate</code><span class="sig-paren">(</span><em>records</em>, <em>instrument_id=None</em>, <em>size_statistics=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate report from a list of output file records.
+:param records: [LogRecord], the list of log records.
+:param instrument_id: string, the instrument id to include in the generated url.</p>
+<blockquote>
+<div>If None, a proper one will be decided.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size_statistics</strong> &#8211; dict{string: float}, keys are log tag names, values are ratio of
+log size that those kinds of tags take.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">CtpStrategyReport.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_walk_forward_training">
+<code class="descname">process_walk_forward_training</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_walk_forward_training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_strategy">
+<code class="descname">process_strategy</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_strategy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_strategy_extra">
+<code class="descname">process_strategy_extra</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_strategy_extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_market_period">
+<code class="descname">process_market_period</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_market_period" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_bar">
+<code class="descname">process_bar</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_bar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_account">
+<code class="descname">process_account</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_account" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_position">
+<code class="descname">process_position</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_trade">
+<code class="descname">process_trade</code><span class="sig-paren">(</span><em>trade</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_trade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.get_most_suited_ohlc">
+<code class="descname">get_most_suited_ohlc</code><span class="sig-paren">(</span><em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.get_most_suited_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.handle_not_finished_transactions">
+<code class="descname">handle_not_finished_transactions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.handle_not_finished_transactions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_position_sizing">
+<code class="descname">process_position_sizing</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.process_position_sizing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.generate_report">
+<em class="property">static </em><code class="descname">generate_report</code><span class="sig-paren">(</span><em>log_file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.generate_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate composite report from given individual strategy log files.
+:param log_file_path: string, the path to the strategy log file.
+:return: CtpStrategyReport, the report.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.report_generator.CtpReportGenerator.generate_composite_report">
+<em class="property">static </em><code class="descname">generate_composite_report</code><span class="sig-paren">(</span><em>log_file_paths</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report_generator.CtpReportGenerator.generate_composite_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate composite report from given individual strategy log files.
+:param log_file_paths: [string], list of strategy log file paths.
+:return: CtpCompositeStrategyReport, the composite report.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

@@ -158,8 +158,322 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="logger">
-<h1>logger<a class="headerlink" href="#logger" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.logger.logger">
+<span id="logger"></span><h1>logger<a class="headerlink" href="#module-ctxalgoctp.ctp.logger.logger" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.logger.logger.</code><code class="descname">CtpLogger</code><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../base.html#ctxalgoctp.ctp.base.CtpCallBacks" title="ctxalgoctp.ctp.base.CtpCallBacks"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.base.CtpCallBacks</span></code></a></p>
+<p>Initialize current callback.</p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.is_flushing">
+<code class="descname">is_flushing</code><em class="property"> = False</em><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.is_flushing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.market_data">
+<code class="descname">market_data</code><em class="property"> = []</em><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.market_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.trading_data">
+<code class="descname">trading_data</code><em class="property"> = []</em><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.trading_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_market_connected">
+<code class="descname">on_market_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_user_login</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_market_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback on market server connect status change
+:param p_api: c_void_p
+:param rsp_user_login: CtxFtdcRspUserLoginField
+:param status: ConnectionStatus int
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_market_disconnected">
+<code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback on market server disconnected</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_market_rsp_error">
+<code class="descname">on_market_rsp_error</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_market_rsp_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback on market server when error occurred
+:param p_api: c_void_p
+:param rsp_info: CtxFtdcRspInfoField:return
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_market_rtn_depth_market_data">
+<code class="descname">on_market_rtn_depth_market_data</code><span class="sig-paren">(</span><em>p_api</em>, <em>depth_market_data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_market_rtn_depth_market_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback on market server when receive market data
+:param p_api:  c_void_p
+:param depth_market_data: CtxFtdcDepthMarketDataField
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_connected">
+<code class="descname">on_trading_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_user_login</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback on trading server connect status change
+:param p_api: c_void_p
+:param rsp_user_login: CtxFtdcRspUserLoginField
+:param status: ConnectionStatus int
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_disconnected">
+<code class="descname">on_trading_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_disconnected" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback on trading server disconnected
+:param p_api: c_void_p
+:param rsp_info: CtxFtdcRspInfoField:return
+:param status: ConnectionStatus int
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_error">
+<code class="descname">on_trading_rsp_error</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>callback on trading server when error occurred
+:param p_api: c_void_p
+:param rsp_info: CtxFtdcRspInfoField:return
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_err_rtn_order_action">
+<code class="descname">on_trading_err_rtn_order_action</code><span class="sig-paren">(</span><em>p_api</em>, <em>order_action</em>, <em>rsp_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_err_rtn_order_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>如果交易所认为撤单错误。由交易托管系统主动通知客户端，该方法会被调用。
+:param p_api: c_void_p
+:param order_action: CtxFtdcOrderActionField
+:param rsp_info: CtxFtdcRspInfoField:return
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_err_rtn_order_insert">
+<code class="descname">on_trading_err_rtn_order_insert</code><span class="sig-paren">(</span><em>p_api</em>, <em>input_order</em>, <em>rsp_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_err_rtn_order_insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>如果交易所认为报单错误。由交易托管系统主动通知客户端，该方法会被调用。
+:param p_api: c_void_p
+:param input_order: CtxFtdcInputOrderField
+:param rsp_info: CtxFtdcRspInfoField:return
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_order_action">
+<code class="descname">on_trading_rsp_order_action</code><span class="sig-paren">(</span><em>p_api</em>, <em>input_order_action</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_order_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>交易托管系统收到撤单指令，如果没有通过参数校验，拒绝接受撤单指令。用户就会收到此消息，其中包含了错误编码和错误消息
+:param p_api: c_void_p
+:param input_order_action: CtxFtdcInputOrderActionField
+:param rsp_info: CtxFtdcRspInfoField:return
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_order_insert">
+<code class="descname">on_trading_rsp_order_insert</code><span class="sig-paren">(</span><em>p_api</em>, <em>input_order</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_order_insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>交易托管系统收到报单指令，如果没有通过参数校验，拒绝接受报单指令。用户就会收到此消息，其中包含了错误编码和错误消息
+:param p_api: c_void_p
+:param input_order: CtxFtdcInputOrderField
+:param rsp_info: CtxFtdcRspInfoField:return
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_depth_market_data">
+<code class="descname">on_trading_rsp_qry_depth_market_data</code><span class="sig-paren">(</span><em>p_api</em>, <em>depth_market_data</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_depth_market_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询行情响应。当客户端发出请求查询行情指令后，交易托管系统返回响应时，该方法会被调用。
+:param p_api: c_void_p
+:param depth_market_data: CtxFtdcDepthMarketDataField
+:param rsp_info: CtxFtdcRspInfoField:return
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_instrument">
+<code class="descname">on_trading_rsp_qry_instrument</code><span class="sig-paren">(</span><em>p_api</em>, <em>instrument</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_instrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询合约响应。当客户端发出请求查询合约指令后，交易托管系统返回响应时，该方法会被调用。
+:param p_api: c_void_p
+:param instrument: CtxFtdcInstrumentField
+:param rsp_info: CtxFtdcRspInfoField:return
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_instrument_commission_rate">
+<code class="descname">on_trading_rsp_qry_instrument_commission_rate</code><span class="sig-paren">(</span><em>p_api</em>, <em>instrument_commission_rate</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_instrument_commission_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询手续费响应。
+:param p_api: c_void_p
+:param instrument_commission_rate: CtxFtdcInstrumentCommissionRateField
+:param rsp_info: CtxFtdcRspInfoField:return
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_instrument_margin_rate">
+<code class="descname">on_trading_rsp_qry_instrument_margin_rate</code><span class="sig-paren">(</span><em>p_api</em>, <em>instrument_margin_rate</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_instrument_margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询保证金响应。
+:param p_api: c_void_p
+:param instrument_margin_rate: CtxFtdcInstrumentMarginRateField
+:param rsp_info: CtxFtdcRspInfoField:return
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_instrument_order_comm_rate">
+<code class="descname">on_trading_rsp_qry_instrument_order_comm_rate</code><span class="sig-paren">(</span><em>p_api</em>, <em>instrument_order_comm_rate</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_instrument_order_comm_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询报单撤单手续费。
+:param p_api: c_void_p
+:param instrument_order_comm_rate: CtxFtdcInstrumentOrderCommRateField
+:param rsp_info: CtxFtdcRspInfoField:return
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_investor_position">
+<code class="descname">on_trading_rsp_qry_investor_position</code><span class="sig-paren">(</span><em>p_api</em>, <em>investor_position</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_investor_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>投资者持仓查询应答。当客户端发出投资者持仓查询指令后，后交易托管系统返回响应时，该方法会被调用。
+:param p_api: c_void_p
+:param investor_position: CtxFtdcInvestorPositionField
+:param rsp_info: CtxFtdcRspInfoField:return
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_investor_position_detail">
+<code class="descname">on_trading_rsp_qry_investor_position_detail</code><span class="sig-paren">(</span><em>p_api</em>, <em>investor_position_detail</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_investor_position_detail" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询投资者持仓明细响应。当客户端发出请求请求查询投资者持仓明细指令后，交易托管系统返回响应时，该方法会被调用。
+:param p_api:c_void_p
+:param investor_position_detail: CtxFtdcInvestorPositionDetailField
+:param rsp_info: CtxFtdcRspInfoField:return
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_trading_account">
+<code class="descname">on_trading_rsp_qry_trading_account</code><span class="sig-paren">(</span><em>p_api</em>, <em>trading_account</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_trading_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询资金账户响应。当客户端发出请求查询资金账户指令后，交易托管系统返回响应时，该方法会被调用。
+:param p_api: c_void_p
+:param trading_account: CtxFtdcTradingAccountField
+:param rsp_info: CtxFtdcRspInfoField:return
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rtn_order">
+<code class="descname">on_trading_rtn_order</code><span class="sig-paren">(</span><em>p_api</em>, <em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rtn_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>报单回报。当客户端进行报单录入、报单操作及其它原因（如部分成交）导致报单状态发生变化时，交易托管系统会主动通知客户端，该方法会被调用。
+:param p_api: c_void_p
+:param order: CtxFtdcOrderField</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rtn_trade">
+<code class="descname">on_trading_rtn_trade</code><span class="sig-paren">(</span><em>p_api</em>, <em>trade</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rtn_trade" title="Permalink to this definition">¶</a></dt>
+<dd><p>成交回报。当发生成交时交易托管系统会通知客户端，该方法会被调用。
+:param p_api: c_void_p
+:param trade:CtxFtdcTradeField
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_order">
+<code class="descname">on_trading_rsp_qry_order</code><span class="sig-paren">(</span><em>p_api</em>, <em>order</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询报单响应
+:param p_api: c_void_p
+:param order: CtxFtdcOrderField
+:param rsp_info: CtxFtdcRspInfoField:return
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_trade">
+<code class="descname">on_trading_rsp_qry_trade</code><span class="sig-paren">(</span><em>p_api</em>, <em>trade</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_trading_rsp_qry_trade" title="Permalink to this definition">¶</a></dt>
+<dd><p>请求查询成交响应
+:param p_api: c_void_p
+:param trade: CtxFtdcTradeField
+:param rsp_info: CtxFtdcRspInfoField:return
+:param n_request_id: int
+:param b_is_last: boolean, True if it is the last response for this request
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_mission_control">
+<code class="descname">on_mission_control</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_mission_control" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> &#8211; </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.persist">
+<code class="descname">persist</code><span class="sig-paren">(</span><em>now</em>, <em>data_kind</em>, <em>content</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.persist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Persist log data.
+:param now: datetime, timestamp.
+:param data_kind: string, the kind (tag) of the log data.
+:param content: string, the actual log data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.flush">
+<code class="descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flush unwritten data into permanent storage. Can be used when the trading program ends.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.flush_impl">
+<code class="descname">flush_impl</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.flush_impl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sub-class should redefine this to implement permanent storage..
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.logger.logger.CtpLogger.on_idle_event">
+<code class="descname">on_idle_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.logger.logger.CtpLogger.on_idle_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when there is no event from the outside.
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

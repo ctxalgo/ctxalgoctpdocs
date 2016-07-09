@@ -157,8 +157,111 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="strategy-execution-driver">
-<h1>strategy_execution_driver<a class="headerlink" href="#strategy-execution-driver" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.execution_drivers.strategy_execution_driver">
+<span id="strategy-execution-driver"></span><h1>strategy_execution_driver<a class="headerlink" href="#module-ctxalgoctp.ctp.execution_drivers.strategy_execution_driver" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.</code><code class="descname">StrategyExecutionDriver</code><span class="sig-paren">(</span><em>future_ids</em>, <em>strategy</em>, <em>should_get_instrument_info=True</em>, <em>should_get_margin_rate=True</em>, <em>should_get_commission_ratio=False</em>, <em>should_get_order_comm_rate=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="abstract_execution_driver.html#ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver" title="ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.execution_drivers.abstract_execution_driver.AbstractStrategyExecutionDriver</span></code></a></p>
+<p>Initialize current strategy.
+:param future_ids, [string], the list of future ids to trade.
+:param strategy: AbstractStrategy, the strategy who needs drive.</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.initialize_info">
+<code class="descname">initialize_info</code><span class="sig-paren">(</span><em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.initialize_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get information about the traded future and current trading account.
+Initialize self.market_periods using the collected future.
+Set self.info with the retrieved values.
+:param now: datetime, current timestamp.
+:return bool, True if initialization succeeded, False otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.get_market_periods">
+<code class="descname">get_market_periods</code><span class="sig-paren">(</span><em>future_id</em>, <em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.get_market_periods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trading periods (within one trading day) for the given future.
+Note: only support IF for the moment.
+:param future_id: string, the future_id
+:param now: datetime, current timestamp.
+:return: trading_day, market_periods</p>
+<blockquote>
+<div><p>trading_day: date, the current trading date for the given future.
+market_periods: [(time, time)], the list of trading periods,</p>
+<blockquote>
+<div>each of which is defined by start time and end time.</div></blockquote>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.should_exit">
+<code class="descname">should_exit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.should_exit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.drive">
+<code class="descname">drive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.drive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.dispose_logger">
+<code class="descname">dispose_logger</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.dispose_logger" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.adapted_time">
+<code class="descname">adapted_time</code><span class="sig-paren">(</span><em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.adapted_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.create_trading">
+<code class="descname">create_trading</code><span class="sig-paren">(</span><em>msg_queue</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.create_trading" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new trading object and return it.
+:param msg_queue: CtpMessageQueue.
+:return: CtpTrading.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.datetime_format">
+<code class="descname">datetime_format</code><em class="property"> = '%Y-%m-%d %H:%M:%S'</em><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.datetime_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.market">
+<code class="descname">market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.now">
+<code class="descname">now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.now" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.reset_trading">
+<code class="descname">reset_trading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.reset_trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.set_market">
+<code class="descname">set_market</code><span class="sig-paren">(</span><em>market</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.set_market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.set_step_action">
+<code class="descname">set_step_action</code><span class="sig-paren">(</span><em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.set_step_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.set_trading">
+<code class="descname">set_trading</code><span class="sig-paren">(</span><em>trading</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.set_trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.trading">
+<code class="descname">trading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.strategy_execution_driver.StrategyExecutionDriver.trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 
 

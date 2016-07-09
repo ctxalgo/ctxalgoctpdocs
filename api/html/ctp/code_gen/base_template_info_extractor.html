@@ -161,6 +161,37 @@
             
   <div class="section" id="base-template-info-extractor">
 <h1>base_template_info_extractor<a class="headerlink" href="#base-template-info-extractor" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-ctxalgoctp.ctp.code_gen.base_template_info_extractor"></span><dl class="class">
+<dt id="ctxalgoctp.ctp.code_gen.base_template_info_extractor.BaseTemplateInfoExtractor">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.code_gen.base_template_info_extractor.</code><code class="descname">BaseTemplateInfoExtractor</code><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.base_template_info_extractor.BaseTemplateInfoExtractor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.base_template_info_extractor.BaseTemplateInfoExtractor.extract">
+<code class="descname">extract</code><span class="sig-paren">(</span><em>base_template</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.base_template_info_extractor.BaseTemplateInfoExtractor.extract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract information from the base template.
+:param base_template: string, name of the template to be used in code generation.</p>
+<blockquote>
+<div>The name corresponds to file names in the templates folder.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string: dict{string:string}}
+Outer keys are language tags, either &#8220;en&#8221; or &#8220;zh&#8221;.
+Inner keys are information tags: title, description, dot.<blockquote>
+<div>title: string, the title of the template.
+description: string, the description of the template.
+dot: string, the dot description of the template. Note that the dot description is the same<blockquote>
+<div>for both en and zh language.</div></blockquote>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

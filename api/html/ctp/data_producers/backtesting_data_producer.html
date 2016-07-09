@@ -158,8 +158,80 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="backtesting-data-producer">
-<h1>backtesting_data_producer<a class="headerlink" href="#backtesting-data-producer" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.data_producers.backtesting_data_producer">
+<span id="backtesting-data-producer"></span><h1>backtesting_data_producer<a class="headerlink" href="#module-ctxalgoctp.ctp.data_producers.backtesting_data_producer" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.data_producers.backtesting_data_producer.</code><code class="descname">BacktestingDataProducer</code><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="abstract_data_producer.html#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer" title="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer</span></code></a></p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.market">
+<code class="descname">market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.should_enforce_tick">
+<code class="descname">should_enforce_tick</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.should_enforce_tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>A CTP data producer always need to subscribe tick data for each instrument to get
+data to generate all kinds of ohlc bars.
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.subscribe_tick">
+<code class="descname">subscribe_tick</code><span class="sig-paren">(</span><em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.subscribe_tick" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.subscribe_ohlcs">
+<code class="descname">subscribe_ohlcs</code><span class="sig-paren">(</span><em>periods</em>, <em>historical_ohlcs</em>, <em>market_periods</em>, <em>order_book_level=1</em>, <em>with_open_interest=False</em>, <em>profits=False</em>, <em>use_mid_ask_bid=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.subscribe_ohlcs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.prepare_before_run">
+<code class="descname">prepare_before_run</code><span class="sig-paren">(</span><em>message_queue</em>, <em>strategy</em>, <em>ctp_folder</em>, <em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.prepare_before_run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.reset">
+<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.dispose">
+<code class="descname">dispose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.dispose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.ohlcs">
+<code class="descname">ohlcs</code><span class="sig-paren">(</span><em>kind</em>, <em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.ohlcs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.ohlc">
+<code class="descname">ohlc</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>kind</em>, <em>period</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.ohlc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.on_market_rtn_depth_market_data">
+<code class="descname">on_market_rtn_depth_market_data</code><span class="sig-paren">(</span><em>depth_market_data</em>, <em>timestamp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.on_market_rtn_depth_market_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.data_subscriptions">
+<code class="descname">data_subscriptions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.data_subscriptions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.set_data_actions">
+<code class="descname">set_data_actions</code><span class="sig-paren">(</span><em>on_tick</em>, <em>on_bar</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.set_data_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.on_tick and self.on_bar.
+:param on_tick: function pointer.
+:param on_bar:  function pointer.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

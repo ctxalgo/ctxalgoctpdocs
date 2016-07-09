@@ -150,8 +150,159 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="strategy-utils">
-<h1>strategy_utils<a class="headerlink" href="#strategy-utils" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.strategy_utils">
+<span id="strategy-utils"></span><h1>strategy_utils<a class="headerlink" href="#module-ctxalgoctp.ctp.strategy_utils" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.strategy_utils.</code><code class="descname">StrategyUtils</code><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.get_logger">
+<em class="property">static </em><code class="descname">get_logger</code><span class="sig-paren">(</span><em>folder</em>, <em>has_console=True</em>, <em>has_file=True</em>, <em>log_file_name='output.txt'</em>, <em>has_binary_file=False</em>, <em>binary_file_name='output.bin'</em>, <em>queue_address=None</em>, <em>queue_context=None</em>, <em>cache_size=100</em>, <em>compact_mode=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.get_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a logger with two handlers, one for console and one for file.
+:param folder: string, the folder to store the file log.
+:param has_console: boolean, True if the console logger is enabled.
+:param has_file: boolean, True if the file logger is enabled.
+:param log_file_name: string, the name of the log file. Only have effect when has_file is True.
+:param has_binary_file: bool, True if a binary file logger is enabled.
+:param binary_file_name: string, the path to the binary file.
+:param queue_address: string, the network address to connect to a queued broker.
+:param cache_size: int, the cache size indicating how many log messages to store in memory</p>
+<blockquote>
+<div>before writing them to file.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>compact_mode</strong> &#8211; bool, if True, file based loggers are configured to generate compact logs,
+which will reduce the size of the log file.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Logger.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.remove_log_file">
+<em class="property">static </em><code class="descname">remove_log_file</code><span class="sig-paren">(</span><em>folder</em>, <em>log_file_name='output.txt'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.remove_log_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the log file if it exists.
+:param folder: string, the folder where the log file should appear.
+:param log_file_name: string, the log file name.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.close_logger">
+<em class="property">static </em><code class="descname">close_logger</code><span class="sig-paren">(</span><em>logger</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.close_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the logger.
+:param logger: logger.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.flush_logger">
+<em class="property">static </em><code class="descname">flush_logger</code><span class="sig-paren">(</span><em>logger</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.flush_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flush all handlers in the logger.
+:param logger: Logger.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.prepare_ohlc">
+<em class="property">static </em><code class="descname">prepare_ohlc</code><span class="sig-paren">(</span><em>jinmofang_data_file</em>, <em>periodicity</em>, <em>base_folder</em>, <em>future_id_prefix='IF'</em>, <em>max_bars=2400</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.prepare_ohlc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform Jinmofang data file into ohlc format and put it in proper location in base_folder.
+Note: Only sup
+:param jinmofang_data_file: string, Jinmofang data file path.
+:param periodicity: Periodicity, the periodicity of the data.
+:param base_folder: folder to store transformed data.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.get_subfolders">
+<em class="property">static </em><code class="descname">get_subfolders</code><span class="sig-paren">(</span><em>base_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.get_subfolders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sub-folders used by current strategy.
+:param base_folder: The base folder.
+:return: dict from sub-folder types to sub folder paths.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.create_folders">
+<em class="property">static </em><code class="descname">create_folders</code><span class="sig-paren">(</span><em>base_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.create_folders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create folders and subfolders.
+Parameters:</p>
+<blockquote>
+<div>base_folder: string, the base folder path.</div></blockquote>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.deepcopy_config">
+<em class="property">static </em><code class="descname">deepcopy_config</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.deepcopy_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deep clone the content of config, and return the cloned object. Treat objects that
+should not be cloned (loggers and parameter getters) in a special way, by not cloning them.
+Have special treatment for loggers since file loggers cannot be properly cloned.
+:param config: dict{string: object}, strategy configuration.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.get_fields">
+<em class="property">static </em><code class="descname">get_fields</code><span class="sig-paren">(</span><em>o</em>, <em>normalize_field_name=False</em>, <em>cache=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.get_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dict containing all the fields from o.
+:param o: a structure object.
+:param normalize_field_name: bool, if True, normalize field names.
+:param cache: dict{string: string}, keys are names to be normalized,</p>
+<blockquote>
+<div>values are the normalized names. If this cache is available, cache the normalized names
+because normalization is expensive.</div></blockquote>
+<p>:return dict{string:object} dict representation of o.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.normalize_field_name">
+<em class="property">static </em><code class="descname">normalize_field_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.normalize_field_name" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> &#8211; string, the name to normalize.</td>
+</tr>
+</tbody>
+</table>
+<p>:return string, normalized name.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.load_json">
+<em class="property">static </em><code class="descname">load_json</code><span class="sig-paren">(</span><em>base_folder</em>, <em>file_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.load_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load JSON content from file.
+:param base_folder: string, the base folder for the strategy.
+:param file_name: string, the file name.
+:return: dict{string: object}, the content of the context file.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.load_context">
+<em class="property">static </em><code class="descname">load_context</code><span class="sig-paren">(</span><em>base_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.load_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load strategy context JSON content from file.
+:param base_folder: string, the base folder for the strategy.
+:return: dict{string: object}, the content of the context file.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.dump_json">
+<em class="property">static </em><code class="descname">dump_json</code><span class="sig-paren">(</span><em>base_folder</em>, <em>file_name</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.dump_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump data into file_name under base_folder.
+:param base_folder: string, the path to a folder.
+:param file_name: string, the file name inside base_folder.
+:param data: dict{string: object}, json data.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.dump_context">
+<em class="property">static </em><code class="descname">dump_context</code><span class="sig-paren">(</span><em>base_folder</em>, <em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.dump_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump data into file_name under base_folder.
+:param base_folder: string, the path to a folder.
+:param context: dict{string: object}, json data.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

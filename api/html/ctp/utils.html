@@ -150,8 +150,54 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="utils">
-<h1>utils<a class="headerlink" href="#utils" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.utils">
+<span id="utils"></span><h1>utils<a class="headerlink" href="#module-ctxalgoctp.ctp.utils" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.utils.CtpVisualizationUtils">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.utils.</code><code class="descname">CtpVisualizationUtils</code><a class="headerlink" href="#ctxalgoctp.ctp.utils.CtpVisualizationUtils" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.utils.CtpVisualizationUtils.visualize_report">
+<em class="property">static </em><code class="descname">visualize_report</code><span class="sig-paren">(</span><em>report_file</em>, <em>user</em>, <em>password</em>, <em>report_name_to_save=None</em>, <em>server=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.utils.CtpVisualizationUtils.visualize_report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.utils.CtpVisualizationUtils.send_report_to_server">
+<em class="property">static </em><code class="descname">send_report_to_server</code><span class="sig-paren">(</span><em>report_file</em>, <em>user</em>, <em>password</em>, <em>report_name_to_save</em>, <em>server=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.utils.CtpVisualizationUtils.send_report_to_server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send the report file to server.
+:param report_file: string, path to the report file.
+:param report_name_to_save: string, is not None, save the uploaded</p>
+<blockquote>
+<div>report to the reports page with this name. If None, do not store
+the report.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>user</strong> &#8211; string, the name used to save the uploaded report.
+If None, use the default user name.</li>
+<li><strong>password</strong> &#8211; string, the password to the website.</li>
+<li><strong>server</strong> &#8211; string, the server ip. If None, use the default.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string, return an url <a class="reference external" href="http://ctxalgo.com/detailed-report">http://ctxalgo.com/detailed-report</a>...
+for the user to open detailed report link.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.utils.CtpVisualizationUtils.send_url_and_open_browser">
+<em class="property">static </em><code class="descname">send_url_and_open_browser</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.utils.CtpVisualizationUtils.send_url_and_open_browser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send url to visualize by posting the url to ctxalgo.com and open a new tab in the browser.
+:param url: string, the url to be opened.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

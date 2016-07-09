@@ -150,8 +150,135 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="slippage-models">
-<h1>slippage_models<a class="headerlink" href="#slippage-models" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.slippage_models">
+<span id="slippage-models"></span><h1>slippage_models<a class="headerlink" href="#module-ctxalgoctp.ctp.slippage_models" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.slippage_models.AbstractSlippageModel">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.slippage_models.</code><code class="descname">AbstractSlippageModel</code><span class="sig-paren">(</span><em>is_tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.AbstractSlippageModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Initialize current.
+:param is_tick: bool, indicates whether the backtesting is done on tick level data.</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.AbstractSlippageModel.get_max_executable_trade_volume">
+<code class="descname">get_max_executable_trade_volume</code><span class="sig-paren">(</span><em>timestamp</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.AbstractSlippageModel.get_max_executable_trade_volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the maximum volumes that can be traded by the backtester, given the actually traded
+volumes in the historical data. The result is a fraction of the observed traded volumes
+controlled by self.max_executable_trade_volume_ratio.
+:param timestamp: datetime, the current timestamp.
+:param market_price: float, the traded price from historical data.
+:param market_volume: int, the traded volume from historical data.
+:param instrument_id: string, the instrument id.
+:return int, the max volume that can be traded by the backtester.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.AbstractSlippageModel.get_slippage">
+<code class="descname">get_slippage</code><span class="sig-paren">(</span><em>timestamp</em>, <em>tick_size</em>, <em>volume_to_trade</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.AbstractSlippageModel.get_slippage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the slippage for some volume to be trade.
+:param timestamp: datetime, the current timestamp.
+:param tick_size: float, tick size.
+:param market_price: float, the traded price from historical data.
+:param market_volume: int, the traded volume from historical data.
+:param instrument_id: string, the instrument id.
+:return float, the absolute slippage (the result is non-negative) that the backtester should</p>
+<blockquote>
+<div>add or subtract to the traded price. The backtester needs to use the trade direction (long or short)
+to decide to add or subtract the slippage.</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.slippage_models.VolumeBasedSlippageModel">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.slippage_models.</code><code class="descname">VolumeBasedSlippageModel</code><span class="sig-paren">(</span><em>max_executable_trade_volume_ratio=0.1</em>, <em>slippage_multiple=1</em>, <em>is_tick=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.VolumeBasedSlippageModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.slippage_models.AbstractSlippageModel" title="ctxalgoctp.ctp.slippage_models.AbstractSlippageModel"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.slippage_models.AbstractSlippageModel</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>max_executable_trade_volume_ratio</strong> &#8211; float, the ratio that controls the number of lots that
+can be executed by the backtester. Let the current traded lots from historical data at current
+timestamp is x, then the maximum lots that can be executed by the backtester is:
+max_executable_trade_volume_ratio * x.</li>
+<li><strong>slippage_multiple</strong> &#8211; int, the number of tick sizes added to the order filled price to simulate slippage.</li>
+<li><strong>is_tick</strong> &#8211; bool, indicates whether the backtesting is done on tick level data.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.VolumeBasedSlippageModel.get_max_executable_trade_volume">
+<code class="descname">get_max_executable_trade_volume</code><span class="sig-paren">(</span><em>timestamp</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.VolumeBasedSlippageModel.get_max_executable_trade_volume" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.VolumeBasedSlippageModel.get_slippage">
+<code class="descname">get_slippage</code><span class="sig-paren">(</span><em>timestamp</em>, <em>tick_size</em>, <em>volume_to_trade</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.VolumeBasedSlippageModel.get_slippage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.slippage_models.EmptySlippageModel">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.slippage_models.</code><code class="descname">EmptySlippageModel</code><span class="sig-paren">(</span><em>is_tick</em>, <em>max_executable_trade_volume_ratio=0.25</em>, <em>slippage_multiple=1</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.EmptySlippageModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.slippage_models.AbstractSlippageModel" title="ctxalgoctp.ctp.slippage_models.AbstractSlippageModel"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.slippage_models.AbstractSlippageModel</span></code></a></p>
+<p>Class that always gives empty slippage.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>max_executable_trade_volume_ratio</strong> &#8211; float, the ratio that controls the number of lots that
+can be executed by the backtester. Let the current traded lots from historical data at current
+timestamp is x, then the maximum lots that can be executed by the backtester is:
+max_executable_trade_volume_ratio * x.</li>
+<li><strong>slippage_multiple</strong> &#8211; int, the number of tick sizes added to the order filled price to simulate slippage.</li>
+<li><strong>is_tick</strong> &#8211; bool, indicates whether the backtesting is done on tick level data.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.EmptySlippageModel.get_max_executable_trade_volume">
+<code class="descname">get_max_executable_trade_volume</code><span class="sig-paren">(</span><em>timestamp</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.EmptySlippageModel.get_max_executable_trade_volume" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.EmptySlippageModel.get_slippage">
+<code class="descname">get_slippage</code><span class="sig-paren">(</span><em>timestamp</em>, <em>tick_size</em>, <em>volume_to_trade</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.EmptySlippageModel.get_slippage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.slippage_models.BidAskSlippageModel">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.slippage_models.</code><code class="descname">BidAskSlippageModel</code><span class="sig-paren">(</span><em>contract_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.BidAskSlippageModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.slippage_models.AbstractSlippageModel" title="ctxalgoctp.ctp.slippage_models.AbstractSlippageModel"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.slippage_models.AbstractSlippageModel</span></code></a></p>
+<p>Slippage for models that trade small amounts of a mid-prices series of most liquid contract
+We assumes that we have to pay spread / 2</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>contract_name</strong> &#8211; Name of contract</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.BidAskSlippageModel.get_max_executable_trade_volume">
+<code class="descname">get_max_executable_trade_volume</code><span class="sig-paren">(</span><em>timestamp</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.BidAskSlippageModel.get_max_executable_trade_volume" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.slippage_models.BidAskSlippageModel.get_slippage">
+<code class="descname">get_slippage</code><span class="sig-paren">(</span><em>timestamp</em>, <em>tick_size</em>, <em>volume_to_trade</em>, <em>market_price</em>, <em>market_volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.slippage_models.BidAskSlippageModel.get_slippage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 
 

@@ -150,8 +150,58 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="market-data-feed">
-<h1>market_data_feed<a class="headerlink" href="#market-data-feed" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.market_data_feed">
+<span id="market-data-feed"></span><h1>market_data_feed<a class="headerlink" href="#module-ctxalgoctp.ctp.market_data_feed" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.market_data_feed.MarketDataFeed">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.market_data_feed.</code><code class="descname">MarketDataFeed</code><span class="sig-paren">(</span><em>context</em>, <em>address</em>, <em>instrument_ids</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_data_feed.MarketDataFeed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.pub_subs.abstract_data_subscriber.AbstractDataSubscriber</span></code></p>
+<p>Initialize current.
+:param context: zeromq Context.
+:param address: string, the address (such as IP address and port) to receive market data.
+:param instrument_ids: [string], the list of instrument ids whose market data is to be retrieved.</p>
+<blockquote>
+<div>If None, no instrument will be subscribed initially. Later</div></blockquote>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.market_data_feed.MarketDataFeed.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_data_feed.MarketDataFeed.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe instrument for market data.
+:param instrument_id: string, instrument id.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.market_data_feed.MarketDataFeed.unsubscribe">
+<code class="descname">unsubscribe</code><span class="sig-paren">(</span><em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_data_feed.MarketDataFeed.unsubscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unsubscribe instrument.
+:param instrument_id: string, instrument id.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.market_data_feed.MarketDataFeed.subscriber_socket">
+<code class="descname">subscriber_socket</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_data_feed.MarketDataFeed.subscriber_socket" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.market_data_feed.MarketDataFeed.context">
+<code class="descname">context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_data_feed.MarketDataFeed.context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the context used by zeromq sockets.
+:return: zeromq Context.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.market_data_feed.MarketDataFeed.receive">
+<code class="descname">receive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_data_feed.MarketDataFeed.receive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.market_data_feed.MarketDataFeed.set_on_data_action">
+<code class="descname">set_on_data_action</code><span class="sig-paren">(</span><em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_data_feed.MarketDataFeed.set_on_data_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.on_data_action with action.
+:param action: Function pointer with a single parameter.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

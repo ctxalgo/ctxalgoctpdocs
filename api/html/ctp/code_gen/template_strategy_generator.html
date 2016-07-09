@@ -161,6 +161,156 @@
             
   <div class="section" id="template-strategy-generator">
 <h1>template_strategy_generator<a class="headerlink" href="#template-strategy-generator" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-ctxalgoctp.ctp.code_gen.template_strategy_generator"></span><dl class="class">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.code_gen.template_strategy_generator.</code><code class="descname">TemplateStrategyGenerator</code><span class="sig-paren">(</span><em>dot</em>, <em>spec</em>, <em>base_template='template0'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Initialize current.
+:param dot: string, the DOT description for the state machine.
+:param spec: dict{string:object}, the extra configuration for code generation.
+:param base_template: string, name of the template to be used in code generation.</p>
+<blockquote>
+<div>The name corresponds to file names in the templates folder.</div></blockquote>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate">
+<code class="descname">generate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the template strategy class and make result available at self.template_strategy.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_strategy_classes">
+<code class="descname">generate_strategy_classes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_strategy_classes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_imports">
+<code class="descname">generate_imports</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_imports" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the $IMPORTS part.
+Note that the imports will include the import from referenced indicators, from the backtesting,</p>
+<blockquote>
+<div>from the live trading and from the optimization parts.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_parameters">
+<code class="descname">generate_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the $PARAMETERS part and make result available at self.parameters_placeholder.
+Use the information from self.indicator_info. Each element in indicator_info has a parameters property,
+which contains the code used to generate the $PARAMETERS part.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_indicator_calculators">
+<code class="descname">generate_indicator_calculators</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_indicator_calculators" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the $INDICATOR_CALCULATORS part and make result available at self.indicator_calculators_placeholder.
+Use both the information from self.transformed_indicators and self.indicator_info to generate code.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_indicator_results">
+<code class="descname">generate_indicator_results</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_indicator_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the $INDICATOR_RESULTS part and make result available at self.indicator_results_placeholder.
+Use both the information from self.transformed_indicators and self.indicator_info to generate code.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_indicator_calculation_method">
+<code class="descname">generate_indicator_calculation_method</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_indicator_calculation_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the $INDICATOR_CALCULATION_METHOD part and make result
+available at self.indicator_calculation_method_placeholder.
+Note: if there is no indicator, this part should be an empty string.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_indicator_calculation_before_run_method">
+<code class="descname">generate_indicator_calculation_before_run_method</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_indicator_calculation_before_run_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the $INDICATOR_CALCULATION_BEFORE_RUN_METHOD part and make result
+available at self.indicator_calculation_before_run_method_placeholder.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_on_before_run_indicator_calculation">
+<code class="descname">generate_on_before_run_indicator_calculation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_on_before_run_indicator_calculation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the $ON_BEFORE_RUN_INDICATOR_CALCULATION part and make result
+available at self.on_before_run_indicator_calculation_placeholder.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_on_bar_method">
+<code class="descname">generate_on_bar_method</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_on_bar_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the $ON_BAR_METHOD part of the code and make
+result available at self.on_bar_method_placeholder.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_get_strategy_config">
+<code class="descname">generate_get_strategy_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_get_strategy_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate strategy config, the $GET_STRATEGY_CONFIG part.
+The template for strategy config is at templates.template_strategy_config.
+Make result available at self.get_strategy_config_placeholder.
+Use self.indicator_info[_].url_indicator to generate $URL_INDICATORS.
+Use self.transformed_indicators[_][&#8216;instrument&#8217;] to generate $INSTRUMENT_IDS.
+Use self.spec[&#8216;strategy_period&#8217;] to generate $STRATEGY_PERIOD.
+Use self.spec[&#8216;registered_periods&#8217;] to generate $REGISTERED_OHLC_PERIODS.
+Use self.indicator_info[_].indicator_parameters to generate $PARAMETERS.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_backtesting_data_period">
+<code class="descname">generate_backtesting_data_period</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_backtesting_data_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate data period for backtesting, the $BACKTESTING_DATA_PERIOD part.
+Make result available at self.backtesting_data_period_placeholder.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_get_optimization_config">
+<code class="descname">generate_get_optimization_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_get_optimization_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate walk-forward optimization , the $WALK_FORWARD_OPTIMIZATION part, and make result
+available at self.walk_forward_optimization_placeholder.
+The template for this part is at templates.template_walk_forward_optimization.
+Use self.indicator_info to generate the parameters (for optimization).
+Note:  The way each parameter is generated will be different depending on the type of the parameter,</p>
+<blockquote>
+<div>accessible through self.indicator_info[_][&#8216;indicator_parameters&#8217;]</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_state_classes">
+<code class="descname">generate_state_classes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_state_classes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate state classes, the $STATE_CLASSES part and make result available at self.state_classes_placeholder.
+Use self.state_classes for the code generation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_state_classes_creation">
+<code class="descname">generate_state_classes_creation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_state_classes_creation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate state classes creation, the $STATE_CLASSES_CREATION part and
+make result available at self.state_classes_creation_placeholder.
+Use self.state_classes for the code generation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_dot_description">
+<code class="descname">generate_dot_description</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_dot_description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate dot description, the $DOT_DESCRIPTION part and
+make result at self.dot_description_placeholder.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_parse_ohlc_line">
+<code class="descname">generate_parse_ohlc_line</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_parse_ohlc_line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_main">
+<code class="descname">generate_main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.code_gen.template_strategy_generator.TemplateStrategyGenerator.generate_main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate the $MAIN part and make result available at self.main_placeholder.
+The template for this part is at templates.template_main.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
