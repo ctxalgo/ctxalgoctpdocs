@@ -37,12 +37,12 @@ class TrendFollowingStrategy(AbstractStrategy):
 
     def on_bar(self, instrument_id, bars, tick):
         # Here, self.slow_ma_period is a syntax shorthand for self.parameters['slow_ma_period'].
-        if self.ohlc().length >= self.slow_ma_period:
+        if self.ohlc().length >= self.parameters.slow_ma_period:
             # Construct a numpy array from Python array, as talib requires numpy arrays as inputs,
             # then calculate the simple moving average function SMA.
             closes = np.array(self.ohlc().closes)
-            ma_fast = talib.SMA(closes, timeperiod=self.fast_ma_period)
-            ma_slow = talib.SMA(closes, timeperiod=self.slow_ma_period)
+            ma_fast = talib.SMA(closes, timeperiod=self.parameters.fast_ma_period)
+            ma_slow = talib.SMA(closes, timeperiod=self.parameters.slow_ma_period)
 
             # Check if fast moving average up-crosses or down-crosses slow moving average.
             # cross_direction return 1 if ma_fast up-crosses ma_slow, -1 if ma_fast down-crosses ma_fast,

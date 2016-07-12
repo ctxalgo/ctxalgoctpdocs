@@ -39,7 +39,7 @@ for instrument_id in ['IF99', 'cu99']:
     }
 
     # Backtest the current strategy, and collect individual reports.
-    report, data_source = backtest(TrendFollowingStrategy, config, start_date, end_date)
+    report, data_source = backtest(TrendFollowingStrategy, config, start_date, end_date, perform_backtest=False)
     individual_reports.append(report)
 
 # Construct a composite backtesting report from individual ones.

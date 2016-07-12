@@ -34,15 +34,15 @@ class TrendFollowingStrategy(AbstractStrategy):
 
         # Setup the moving average calculators. This strategy needs two moving averages, a fast one and a slow one.
         # The fast moving average use the fast_ma_period as its parameter, the slow moving average uses slow_ma_period.
-        # Note that you can directly reference the parameters, such as fast_ma_period through self.fast_ma_period.
-        # You can also use the notation self.parameters.fast_ma_period to reference the parameter.
-        self.ma_ind1 = MovingAveragesIndicator(period=self.fast_ma_period)
-        self.ma_ind2 = MovingAveragesIndicator(period=self.slow_ma_period)
+        # Note that you can directly reference the parameters, such as fast_ma_period
+        # through self.parameters.fast_ma_period.
+        self.ma_ind1 = MovingAveragesIndicator(period=self.parameters.fast_ma_period)
+        self.ma_ind2 = MovingAveragesIndicator(period=self.parameters.slow_ma_period)
 
     def on_bar(self, instrument_id, bars, tick):
         # Check if there is enough ohlc bars to calculate the slow moving average because it needs
         # more bars than the fast moving average.
-        if self.ohlc().length >= self.slow_ma_period:
+        if self.ohlc().length >= self.parameters.slow_ma_period:
             # Calculate the two moving averages.
             ma_fast = self.ma_ind1.calculate(self.ohlc())
             ma_slow = self.ma_ind2.calculate(self.ohlc())

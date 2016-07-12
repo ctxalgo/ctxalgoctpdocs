@@ -44,8 +44,8 @@ class TrendFollowingWithMaxHoldingDayStrategy(AbstractStrategy):
             self, instrument_ids, parameters, base_folder, strategy_period=strategy_period,
             periods=periods, description=description, logger=logger)
 
-        self.ma_ind1 = MovingAveragesIndicator(period=self.fast_ma_period)
-        self.ma_ind2 = MovingAveragesIndicator(period=self.slow_ma_period)
+        self.ma_ind1 = MovingAveragesIndicator(period=self.parameters.fast_ma_period)
+        self.ma_ind2 = MovingAveragesIndicator(period=self.parameters.slow_ma_period)
 
         # We register the on_before_run action, this action will be invoked
         # every trading day before the trading starts.
@@ -59,7 +59,7 @@ class TrendFollowingWithMaxHoldingDayStrategy(AbstractStrategy):
             self.context.holding_days += 1
 
     def on_bar(self, instrument_id, bars, tick):
-        if self.ohlc().length >= self.slow_ma_period:
+        if self.ohlc().length >= self.parameters.slow_ma_period:
             ma_fast = self.ma_ind1.calculate(self.ohlc())
             ma_slow = self.ma_ind2.calculate(self.ohlc())
             signal = cross_direction(ma_fast, ma_slow)
