@@ -100,6 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../roll.html">roll</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../state_utils.html">state_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../constants.html">constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dominant_provider.html">dominant_provider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../datetime_utils.html">datetime_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../strategy.html">strategy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../callback_base.html">callback_base</a></li>
@@ -199,6 +200,13 @@ calculate metrics.</li>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_dominant_provider">
+<code class="descname">set_dominant_provider</code><span class="sig-paren">(</span><em>provider</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_dominant_provider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.dominant_provider with provider.
+:param provider: AbstractDominantProvider.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.order_book_level">
 <code class="descname">order_book_level</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.order_book_level" title="Permalink to this definition">¶</a></dt>
@@ -307,6 +315,11 @@ calculate metrics.</li>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.data_producer">
 <code class="descname">data_producer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.data_producer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.dominant_provider">
+<code class="descname">dominant_provider</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.dominant_provider" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -546,7 +559,7 @@ This only effect real trading. In real trading some CTP providers does not offer
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 12, 2016.
+      Last updated on Jul 13, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

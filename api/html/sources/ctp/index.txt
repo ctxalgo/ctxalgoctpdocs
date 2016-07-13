@@ -25,6 +25,7 @@ ctp
    roll
    state_utils
    constants
+   dominant_provider
    datetime_utils
    strategy
    callback_base

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>market_data_feed &mdash; ctxalgoctp 0.1 documentation</title>
+  <title>dominant_provider &mdash; ctxalgoctp 0.1 documentation</title>
   
 
   
@@ -32,8 +32,8 @@
   
     <link rel="top" title="ctxalgoctp 0.1 documentation" href="../index.html"/>
         <link rel="up" title="ctp" href="index.html"/>
-        <link rel="next" title="base" href="base.html"/>
-        <link rel="prev" title="tick_and_bar_publisher" href="tick_and_bar_publisher.html"/> 
+        <link rel="next" title="datetime_utils" href="datetime_utils.html"/>
+        <link rel="prev" title="constants" href="constants.html"/> 
 
   
   <script src="../static/js/modernizr.min.js"></script>
@@ -89,13 +89,13 @@
 <li class="toctree-l2"><a class="reference internal" href="optimization.html">optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="offline_optimization.html">offline_optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">market_data_feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market_data_feed.html">market_data_feed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="base.html">base</a></li>
 <li class="toctree-l2"><a class="reference internal" href="order_cancellation.html">order_cancellation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="roll.html">roll</a></li>
 <li class="toctree-l2"><a class="reference internal" href="state_utils.html">state_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="constants.html">constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dominant_provider.html">dominant_provider</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">dominant_provider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datetime_utils.html">datetime_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strategy.html">strategy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="callback_base.html">callback_base</a></li>
@@ -137,11 +137,11 @@
       
           <li><a href="index.html">ctp</a> &raquo;</li>
       
-    <li>market_data_feed</li>
+    <li>dominant_provider</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../sources/ctp/market_data_feed.txt" rel="nofollow"> View page source</a>
+            <a href="../sources/ctp/dominant_provider.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -151,55 +151,65 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ctxalgoctp.ctp.market_data_feed">
-<span id="market-data-feed"></span><h1>market_data_feed<a class="headerlink" href="#module-ctxalgoctp.ctp.market_data_feed" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.dominant_provider">
+<span id="dominant-provider"></span><h1>dominant_provider<a class="headerlink" href="#module-ctxalgoctp.ctp.dominant_provider" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="ctxalgoctp.ctp.market_data_feed.MarketDataFeed">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.market_data_feed.</code><code class="descname">MarketDataFeed</code><span class="sig-paren">(</span><em>context</em>, <em>address</em>, <em>instrument_ids</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_data_feed.MarketDataFeed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.pub_subs.abstract_data_subscriber.AbstractDataSubscriber</span></code></p>
+<dt id="ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.dominant_provider.</code><code class="descname">AbstractDominantProvider</code><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider.actual_instrument_id">
+<code class="descname">actual_instrument_id</code><span class="sig-paren">(</span><em>dominant_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider.actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>From a dominant instrument id, such as IF00, IF01, return the actual instrument id, such as IF1601, IF1602.
+:param dominant_id: string, dominant instrument id.
+:return: string, actual instrument id.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider.dominant_instrument_id">
+<code class="descname">dominant_instrument_id</code><span class="sig-paren">(</span><em>actual_instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider.dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>From a actual instrument id, return a dominant instrument id.
+:param actual_instrument_id: string, actual instrument id.
+:return: string, dominant instrument id.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.dominant_provider.DominantProvider">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.dominant_provider.</code><code class="descname">DominantProvider</code><span class="sig-paren">(</span><em>dominant_instruments</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider" title="ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider</span></code></a></p>
+<p>Class that loads dominant information from external data.</p>
 <p>Initialize current.
-:param context: zeromq Context.
-:param address: string, the address (such as IP address and port) to receive market data.
-:param instrument_ids: [string], the list of instrument ids whose market data is to be retrieved.</p>
+:param dominant_instruments: dict{string: string},</p>
 <blockquote>
-<div>If None, no instrument will be subscribed initially. Later</div></blockquote>
+<div>meaning dict{instrument_prefix: actual_instrument_id_of_the_dominant_contract}.</div></blockquote>
 <dl class="method">
-<dt id="ctxalgoctp.ctp.market_data_feed.MarketDataFeed.subscribe">
-<code class="descname">subscribe</code><span class="sig-paren">(</span><em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_data_feed.MarketDataFeed.subscribe" title="Permalink to this definition">¶</a></dt>
-<dd><p>Subscribe instrument for market data.
-:param instrument_id: string, instrument id.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.market_data_feed.MarketDataFeed.unsubscribe">
-<code class="descname">unsubscribe</code><span class="sig-paren">(</span><em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_data_feed.MarketDataFeed.unsubscribe" title="Permalink to this definition">¶</a></dt>
-<dd><p>Unsubscribe instrument.
-:param instrument_id: string, instrument id.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.market_data_feed.MarketDataFeed.subscriber_socket">
-<code class="descname">subscriber_socket</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_data_feed.MarketDataFeed.subscriber_socket" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.dominant_provider.DominantProvider.actual_instrument_id">
+<code class="descname">actual_instrument_id</code><span class="sig-paren">(</span><em>dominant_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProvider.actual_instrument_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.market_data_feed.MarketDataFeed.context">
-<code class="descname">context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_data_feed.MarketDataFeed.context" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the context used by zeromq sockets.
-:return: zeromq Context.</p>
+<dt id="ctxalgoctp.ctp.dominant_provider.DominantProvider.dominant_instrument_id">
+<code class="descname">dominant_instrument_id</code><span class="sig-paren">(</span><em>actual_instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProvider.dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
+<dl class="class">
+<dt id="ctxalgoctp.ctp.dominant_provider.BacktestingDominantProvider">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.dominant_provider.</code><code class="descname">BacktestingDominantProvider</code><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.BacktestingDominantProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider" title="ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider</span></code></a></p>
+<p>Used in backtesting, in backtesting, do not distinguish between dominant and non-dominant instruments.</p>
 <dl class="method">
-<dt id="ctxalgoctp.ctp.market_data_feed.MarketDataFeed.receive">
-<code class="descname">receive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_data_feed.MarketDataFeed.receive" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.dominant_provider.BacktestingDominantProvider.actual_instrument_id">
+<code class="descname">actual_instrument_id</code><span class="sig-paren">(</span><em>dominant_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.BacktestingDominantProvider.actual_instrument_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.market_data_feed.MarketDataFeed.set_on_data_action">
-<code class="descname">set_on_data_action</code><span class="sig-paren">(</span><em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_data_feed.MarketDataFeed.set_on_data_action" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set self.on_data_action with action.
-:param action: Function pointer with a single parameter.</p>
-</dd></dl>
+<dt id="ctxalgoctp.ctp.dominant_provider.BacktestingDominantProvider.dominant_instrument_id">
+<code class="descname">dominant_instrument_id</code><span class="sig-paren">(</span><em>actual_instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.BacktestingDominantProvider.dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -212,10 +222,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="base.html" class="btn btn-neutral float-right" title="base" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="datetime_utils.html" class="btn btn-neutral float-right" title="datetime_utils" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tick_and_bar_publisher.html" class="btn btn-neutral" title="tick_and_bar_publisher" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="constants.html" class="btn btn-neutral" title="constants" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
