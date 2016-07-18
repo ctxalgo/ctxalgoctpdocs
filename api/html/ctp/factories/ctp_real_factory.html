@@ -88,6 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../strategies/index.html">strategies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../slippage_models.html">slippage_models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../strategy_utils.html">strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exchanges.html">exchanges</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../backtester.html">backtester</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trading_account.html">trading_account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../report_pdf_generator.html">report_pdf_generator</a></li>
@@ -338,6 +339,14 @@ calculate metrics.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.exchange_code">
+<code class="descname">exchange_code</code><span class="sig-paren">(</span><em>instrument_prefix</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.exchange_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return exchange code for underlying trading APIs from exchange name.
+:param instrument_prefix: string, instrument prefix such as IF, cu.
+:return: string, exchange code.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.future_trading_utils">
 <code class="descname">future_trading_utils</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.future_trading_utils" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -559,7 +568,7 @@ This only effect real trading. In real trading some CTP providers does not offer
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 16, 2016.
+      Last updated on Jul 18, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

@@ -86,6 +86,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../slippage_models.html">slippage_models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../strategy_utils.html">strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exchanges.html">exchanges</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../backtester.html">backtester</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trading_account.html">trading_account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../report_pdf_generator.html">report_pdf_generator</a></li>
@@ -436,7 +437,7 @@ This is useful if you want to have a strategy which cancels some pending orders.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.change_position_to">
-<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>new_position</em>, <em>price=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>cancellation=None</em>, <em>order_book=None</em>, <em>cross_book=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.change_position_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>new_position</em>, <em>price=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>cancellation=None</em>, <em>order_book=None</em>, <em>cross_book=False</em>, <em>close_with_market_order=True</em>, <em>close_price=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.change_position_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the position of the given instrument to new_position. If price is given, all underlying orders
 are limit orders at that price, otherwise, market orders.
 :param new_position: int, the new position for the instrument.
@@ -459,6 +460,34 @@ an order cross the order book, meaning:</p>
 <div>If open long or close short, the limit order price will be max(price, order_book[&#8216;ask_price1&#8217;].
 If close long or open short, the limit order price will be min(price, order_book[&#8216;bid_price1&#8217;].</div></blockquote>
 </li>
+<li><strong>close_with_market_order</strong> &#8211; bool, if True, always use market order to close positions.
+A change_position_to may result in several orders to close existing positions and open new positions.
+If close_with_market_order is True, then market orders are used to close existing positions (For
+instruments that do not support market order, a simulated market order is placed, through
+self.market_order_simulator).</li>
+<li><strong>close_price</strong> &#8211; float, the price used to close positions.
+Only have effect if it is not None, and close_with_market_order is False.
+The following table defines the close position semantis for each price, close_with_market_order and
+close_price combination:
++&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
+|    price   |  close_with_market_order   |  close_price  |  close position semantics      |
++&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
+|     None   |           True             |     None      |      market order              |
++&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
+|     None   |           True             |   not None    |      market order              |
++&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
+|     None   |          False             |     None      |       assertion                |
++&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
+|     None   |          False             |   not None    |  limit order with close_price  |
++&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
+|  not None  |           True             |    None       |     market order               |
++&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; +&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
+|  not None  |           True             |   not None    |     market order               |
++&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
+|  not None  |          False             |    None       |    limit order with price      |
++&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; +&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
+|  not None  |          False             |   not None    |  limit order with close_price  |
++&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+</li>
 </ul>
 </td>
 </tr>
@@ -482,7 +511,7 @@ enforce_one_direction: bool, the value is bool, True if the order is placed beca
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.change_positions_to">
-<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>new_positions</em>, <em>prices=None</em>, <em>reason=''</em>, <em>transaction_id=None</em>, <em>cancellation=None</em>, <em>order_books=None</em>, <em>cross_book=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.change_positions_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>new_positions</em>, <em>prices=None</em>, <em>reason=''</em>, <em>transaction_id=None</em>, <em>cancellation=None</em>, <em>order_books=None</em>, <em>cross_book=False</em>, <em>close_with_market_order=True</em>, <em>close_prices=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.change_positions_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change positions of multiple instruments to their new values.
 :param new_positions: dict{string: int}, keys are instrument ids,</p>
 <blockquote>
@@ -510,6 +539,13 @@ an order cross the order book, meaning:</p>
 <div>If open long or close short, the limit order price will be max(price, order_book[&#8216;ask_price1&#8217;].
 If close long or open short, the limit order price will be min(price, order_book[&#8216;bid_price1&#8217;].</div></blockquote>
 </li>
+<li><strong>close_with_market_order</strong> &#8211; bool, if True, always use market order to close positions.
+A change_position_to may result in several orders to close existing positions and open new positions.
+If close_with_market_order is True, then market orders are used to close existing positions (For
+instruments that do not support market order, a simulated market order is placed, through
+self.market_order_simulator).</li>
+<li><strong>close_prices</strong> &#8211; dict{string: float} ,keys are instrument ids, values are close prices.
+See the close_price parameter comment in method change_position_to for details.</li>
 </ul>
 </td>
 </tr>
@@ -2413,7 +2449,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 16, 2016.
+      Last updated on Jul 18, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

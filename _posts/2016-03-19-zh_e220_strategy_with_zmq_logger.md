@@ -16,6 +16,7 @@ language: zh
 
 ```python
 import threading
+import zmq
 from ctxalgoctp.ctp.docs.starterkit.e100_trend_following_strategy import TrendFollowingStrategy
 from ctxalgoctp.ctp.backtesting_utils import *
 ```
@@ -73,10 +74,13 @@ def main():
     backtester.start()
 
     # Output received strategy messages until the backtesting finishes.
+    c = 0
     while backtester.is_alive():
         try:
             [topic, content] = subscriber.recv_multipart(flags=zmq.NOBLOCK)
-            print('{}\t{}'.format(topic, content))
+            print(c)
+            c += 1
+            # print('{}\t{}'.format(topic, content))
         except Exception as e:
             pass
     backtester.join()

@@ -13,6 +13,7 @@ ctp
    strategies/index
    slippage_models
    strategy_utils
+   exchanges
    backtester
    trading_account
    report_pdf_generator
