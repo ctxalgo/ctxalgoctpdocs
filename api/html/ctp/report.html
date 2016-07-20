@@ -522,19 +522,22 @@ the list of transactions. Keys are instrument ids, values are transactions for t
 <dl class="method">
 <dt id="ctxalgoctp.ctp.report.CtpAbstractStrategyReport.jpeg">
 <code class="descname">jpeg</code><span class="sig-paren">(</span><em>kinds=None</em>, <em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpAbstractStrategyReport.jpeg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a IPython notebook displayable JPEG image.
-:param kinds: [string], list of curves to draw. Multiple curves are drawn in the same plotting area.
-:param period: Periodicity, the periodicity of the balance. If None, use self.default_period.
-:param start_time: datetime, the start time (inclusive) to get the balance.</p>
-<blockquote>
-<div>If None, start from the first available data point.</div></blockquote>
+<dd><p>Return a IPython notebook displayable JPEG image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the balance. If None, ends at the last data point..</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>kinds</strong> &#8211; [string], list of curves to draw. Multiple curves are drawn in the same plotting area.</li>
+<li><strong>period</strong> &#8211; Periodicity, the periodicity of the balance. If None, use self.default_period.</li>
+<li><strong>start_time</strong> &#8211; datetime, the start time (inclusive) to get the balance.
+If None, start from the first available data point.</li>
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the balance. If None, ends at the last data point..</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A jpeg image which can be displayed directly in IPython notebook.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A jpeg image which can be displayed directly in IPython notebook.</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -988,19 +991,22 @@ If None, ends at the last data point.</li>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.report.CtpStrategyReport.jpeg">
 <code class="descname">jpeg</code><span class="sig-paren">(</span><em>kinds=None</em>, <em>period=None</em>, <em>start_time=None</em>, <em>end_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.report.CtpStrategyReport.jpeg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a IPython notebook displayable JPEG image.
-:param kinds: [string], list of curves to draw. Multiple curves are drawn in the same plotting area.
-:param period: Periodicity, the periodicity of the balance. If None, use self.default_period.
-:param start_time: datetime, the start time (inclusive) to get the balance.</p>
-<blockquote>
-<div>If None, start from the first available data point.</div></blockquote>
+<dd><p>Return a IPython notebook displayable JPEG image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the balance. If None, ends at the last data point..</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>kinds</strong> &#8211; [string], list of curves to draw. Multiple curves are drawn in the same plotting area.</li>
+<li><strong>period</strong> &#8211; Periodicity, the periodicity of the balance. If None, use self.default_period.</li>
+<li><strong>start_time</strong> &#8211; datetime, the start time (inclusive) to get the balance.
+If None, start from the first available data point.</li>
+<li><strong>end_time</strong> &#8211; datetime, the end time (inclusive) to get the balance. If None, ends at the last data point..</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A jpeg image which can be displayed directly in IPython notebook.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A jpeg image which can be displayed directly in IPython notebook.</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -1037,7 +1043,7 @@ If None, ends at the last data point.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 18, 2016.
+      Last updated on Jul 20, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

@@ -78,6 +78,7 @@
 <li class="toctree-l3"><a class="reference internal" href="r102_cancel_order_after_fully_executed.html">r102_cancel_order_after_fully_executed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r104_automatic_order_cancellation.html">r104_automatic_order_cancellation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r106_cancel_all_pending_orders_from_previous_session.html">r106_cancel_all_pending_orders_from_previous_session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r107_high_frequency_both_direction_trade.html">r107_high_frequency_both_direction_trade</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r103_cancel_order_while_pending.html">r103_cancel_order_while_pending</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r101_change_positions.html">r101_change_positions</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">r105_place_pending_order_and_exit</a></li>
@@ -451,7 +452,7 @@ This is useful if you want to have a strategy which cancels some pending orders.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.change_position_to">
-<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>new_position</em>, <em>price=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>cancellation=None</em>, <em>order_book=None</em>, <em>cross_book=False</em>, <em>close_with_market_order=True</em>, <em>close_price=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.change_position_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>new_position</em>, <em>price=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>cancellation=None</em>, <em>order_book=None</em>, <em>cross_book=False</em>, <em>close_with_market_order=False</em>, <em>close_price=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.change_position_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the position of the given instrument to new_position. If price is given, all underlying orders
 are limit orders at that price, otherwise, market orders.
 :param new_position: int, the new position for the instrument.
@@ -478,10 +479,12 @@ If close long or open short, the limit order price will be min(price, order_book
 A change_position_to may result in several orders to close existing positions and open new positions.
 If close_with_market_order is True, then market orders are used to close existing positions (For
 instruments that do not support market order, a simulated market order is placed, through
-self.market_order_simulator).</li>
+self.market_order_simulator).
+Default value is True, the intention is to make sure the flatting position request can be executed
+as soon as possible.</li>
 <li><strong>close_price</strong> &#8211; float, the price used to close positions.
 Only have effect if it is not None, and close_with_market_order is False.
-The following table defines the close position semantis for each price, close_with_market_order and
+The following table defines the close position semantics for each price, close_with_market_order and
 close_price combination:
 +&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
 |    price   |  close_with_market_order   |  close_price  |  close position semantics      |
@@ -2465,7 +2468,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 18, 2016.
+      Last updated on Jul 20, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
