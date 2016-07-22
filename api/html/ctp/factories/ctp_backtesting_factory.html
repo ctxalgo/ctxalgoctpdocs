@@ -239,7 +239,7 @@
 
 <dl class="class">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.Order">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.factories.ctp_backtesting_factory.</code><code class="descname">Order</code><span class="sig-paren">(</span><em>id_</em>, <em>future_id</em>, <em>is_open</em>, <em>price</em>, <em>traded_volume</em>, <em>left_volume</em>, <em>order_ref</em>, <em>transaction_id</em>, <em>timestamp</em>, <em>reason</em>, <em>kind</em>, <em>canceled</em>, <em>offset_flag</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.Order" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.factories.ctp_backtesting_factory.</code><code class="descname">Order</code><span class="sig-paren">(</span><em>id_</em>, <em>future_id</em>, <em>actual_future_id</em>, <em>is_open</em>, <em>price</em>, <em>traded_volume</em>, <em>left_volume</em>, <em>order_ref</em>, <em>transaction_id</em>, <em>timestamp</em>, <em>reason</em>, <em>kind</em>, <em>canceled</em>, <em>offset_flag</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.Order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class that represent an order.</p>
 <p>Initialize current.
 :param <a href="#id1"><span class="problematic" id="id2">id_</span></a>: int, id of the order, will be increasing in the same trading day.</p>
@@ -365,11 +365,6 @@ when order book data is present (in tick level backtesting). They represents the
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.send_order">
-<code class="descname">send_order</code><span class="sig-paren">(</span><em>order_ref</em>, <em>exchange_id</em>, <em>future_id</em>, <em>direction</em>, <em>comb_offset_flag</em>, <em>comb_hedge_flag</em>, <em>volume_total_original</em>, <em>limit_price</em>, <em>order_price_type</em>, <em>time_condition</em>, <em>contingent_condition</em>, <em>stop_price</em>, <em>volume_condition</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.send_order" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.cancel_order">
 <code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.cancel_order" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -426,22 +421,22 @@ when order book data is present (in tick level backtesting). They represents the
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.open_market_order">
-<code class="descname">open_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>future_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.open_market_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.open_market_order" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.close_market_order">
-<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>future_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.close_market_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.close_market_order" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.open_limit_order">
-<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>future_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.open_limit_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.open_limit_order" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.close_limit_order">
-<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>future_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.close_limit_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.close_limit_order" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -503,6 +498,25 @@ The parameters open_price, high_price, low_price and close_price are used for li
 <div>in which the response should occur.</div></blockquote>
 </dd></dl>
 
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.send_order">
+<code class="descname">send_order</code><span class="sig-paren">(</span><em>order_ref</em>, <em>exchange_id</em>, <em>future_id</em>, <em>direction</em>, <em>comb_offset_flag</em>, <em>comb_hedge_flag</em>, <em>volume_total_original</em>, <em>limit_price</em>, <em>order_price_type</em>, <em>time_condition</em>, <em>contingent_condition</em>, <em>stop_price</em>, <em>volume_condition</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.send_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>create a new order
+:param order_ref: int, if order ref less than 0, it will auto generate an order ref
+:param future_id: string, future id
+:param direction: CtxFtdcDirectionType, CTX_FTDC_D_Buy or THOST_FTDC_D_Sell
+:param comb_offset_flag: TThostFtdcCombOffsetFlagType
+:param comb_hedge_flag: TThostFtdcCombHedgeFlagType
+:param volume_total_original: TThostFtdcVolumeType
+:param limit_price: double, Limit price
+:param order_price_type: TThostFtdcOrderPriceTypeType
+:param time_condition: TThostFtdcTimeConditionType
+:param contingent_condition: TThostFtdcContingentConditionType
+:param stop_price: double
+:param volume_condition: TThostFtdcVolumeConditionType
+:return:</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.session_id">
 <code class="descname">session_id</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpTradingBacktester.session_id" title="Permalink to this definition">¶</a></dt>
@@ -522,6 +536,21 @@ The parameters open_price, high_price, low_price and close_price are used for li
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.factories.ctp_backtesting_factory.</code><code class="descname">CtpBacktestingFactory</code><span class="sig-paren">(</span><em>backtester</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="abstract_ctp_factory.html#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory" title="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory</span></code></a></p>
 <p>Factory that returns market, trading and time generator for backtesting.</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.historical_bars">
+<code class="descname">historical_bars</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>ohlc_kind</em>, <em>period</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.historical_bars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the length of historical bars that is needed by the strategy.
+:param instrument_id: string, instrument id.
+:param ohlc_kind: string, ohlc kind, values are &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.
+:param period: Periodicity or int/float, period or volatility-threshold.
+:return: int, the number of bars.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.set_data_feed">
+<code class="descname">set_data_feed</code><span class="sig-paren">(</span><em>feed</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.set_data_feed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.order_book_level">
 <code class="descname">order_book_level</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.order_book_level" title="Permalink to this definition">¶</a></dt>
@@ -579,7 +608,7 @@ The parameters open_price, high_price, low_price and close_price are used for li
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.get_historical_ohlcs">
-<code class="descname">get_historical_ohlcs</code><span class="sig-paren">(</span><em>future_id</em>, <em>periods</em>, <em>max_bar</em>, <em>kind</em>, <em>with_open_interests=False</em>, <em>order_book_level=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.get_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_historical_ohlcs</code><span class="sig-paren">(</span><em>future_id</em>, <em>periods</em>, <em>max_bar</em>, <em>kind</em>, <em>with_open_interests=False</em>, <em>order_book_level=0</em>, <em>profits=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.get_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -688,13 +717,6 @@ The parameters open_price, high_price, low_price and close_price are used for li
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.has_market_data_feed">
-<code class="descname">has_market_data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.has_market_data_feed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Is the market data feed setup?
-:return: boolean.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.has_mission_control">
 <code class="descname">has_mission_control</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.has_mission_control" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is the mission control setup?
@@ -718,13 +740,6 @@ The parameters open_price, high_price, low_price and close_price are used for li
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_context">
 <code class="descname">load_context</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_context" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.market_data_feed">
-<code class="descname">market_data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.market_data_feed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the registered market data feed.
-:return: MarketDataFeed. None if no market data feed is set.</p>
-</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.max_initialization_retries">
@@ -771,14 +786,10 @@ time-based and volatility-based ohlc bars.
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.set_market_data_feed">
-<code class="descname">set_market_data_feed</code><span class="sig-paren">(</span><em>market_data_feed</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.set_market_data_feed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set self.data_feed to data_feed.
-If market_data_feed is not None, the strategy will not connect to CTP market server. Instead, it will
-receive market data from the market data feed&#8217;s zeromq queue.
-The default setting is the there is no market_data_feed, so the strategy by default will connect
-to CTP market server to get tick data.
-:param market_data_feed: MarketDataFeed.</p>
+<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.set_dominant_provider">
+<code class="descname">set_dominant_provider</code><span class="sig-paren">(</span><em>provider</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.set_dominant_provider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.dominant_provider with provider.
+:param provider: AbstractDominantProvider.</p>
 </dd></dl>
 
 <dl class="method">
@@ -895,7 +906,7 @@ This only effect real trading. In real trading some CTP providers does not offer
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 20, 2016.
+      Last updated on Jul 22, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

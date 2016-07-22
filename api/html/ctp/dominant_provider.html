@@ -160,56 +160,97 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider.actual_instrument_id">
-<code class="descname">actual_instrument_id</code><span class="sig-paren">(</span><em>dominant_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider.actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<code class="descname">actual_instrument_id</code><span class="sig-paren">(</span><em>dominant_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider.actual_instrument_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>From a dominant instrument id, such as IF00, IF01, return the actual instrument id, such as IF1601, IF1602.
 :param dominant_id: string, dominant instrument id.
+:param trading_day: date, current trading day.
 :return: string, actual instrument id.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider.dominant_instrument_id">
-<code class="descname">dominant_instrument_id</code><span class="sig-paren">(</span><em>actual_instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider.dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dominant_instrument_id</code><span class="sig-paren">(</span><em>actual_instrument_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider.dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>From a actual instrument id, return a dominant instrument id.
 :param actual_instrument_id: string, actual instrument id.
+:param trading_day: date, current trading day.
 :return: string, dominant instrument id.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider.dominant_instrument_id_or_self">
+<code class="descname">dominant_instrument_id_or_self</code><span class="sig-paren">(</span><em>actual_instrument_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider.dominant_instrument_id_or_self" title="Permalink to this definition">¶</a></dt>
+<dd><p>If there is a dominant instrument corresponding to actual_instrument_id, return that
+dominant instrument id, otherwise, return actual_instrument_id.
+:param actual_instrument_id: string, actual instrument id.
+:param trading_day: date, current trading day.
+:return: string, an instrument id.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider.has_dominant_instrument_id">
+<code class="descname">has_dominant_instrument_id</code><span class="sig-paren">(</span><em>dominant_instrument_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider.has_dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is dominant_instrument_id in current provider?
+:param dominant_instrument_id: string, dominant instrument id.
+:param trading_day: date, current trading day.
+:return: bool.</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="ctxalgoctp.ctp.dominant_provider.DominantProvider">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.dominant_provider.</code><code class="descname">DominantProvider</code><span class="sig-paren">(</span><em>dominant_instruments</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProvider" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.dominant_provider.</code><code class="descname">DominantProvider</code><span class="sig-paren">(</span><em>actual_by_dominant</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProvider" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider" title="ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider</span></code></a></p>
 <p>Class that loads dominant information from external data.</p>
 <p>Initialize current.
-:param dominant_instruments: dict{string: string},</p>
+:param actual_by_dominant: dict{string: string},</p>
 <blockquote>
-<div>meaning dict{instrument_prefix: actual_instrument_id_of_the_dominant_contract}.</div></blockquote>
+<div>meaning dict{dominant_instrument_id: actual_instrument_id}.</div></blockquote>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.dominant_provider.DominantProvider.actual_instrument_id">
-<code class="descname">actual_instrument_id</code><span class="sig-paren">(</span><em>dominant_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProvider.actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<code class="descname">actual_instrument_id</code><span class="sig-paren">(</span><em>dominant_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProvider.actual_instrument_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.dominant_provider.DominantProvider.dominant_instrument_id">
-<code class="descname">dominant_instrument_id</code><span class="sig-paren">(</span><em>actual_instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProvider.dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
+<code class="descname">dominant_instrument_id</code><span class="sig-paren">(</span><em>actual_instrument_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProvider.dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.dominant_provider.DominantProvider.dominant_instrument_id_or_self">
+<code class="descname">dominant_instrument_id_or_self</code><span class="sig-paren">(</span><em>actual_instrument_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProvider.dominant_instrument_id_or_self" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.dominant_provider.DominantProvider.has_dominant_instrument_id">
+<code class="descname">has_dominant_instrument_id</code><span class="sig-paren">(</span><em>dominant_instrument_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProvider.has_dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
-<dt id="ctxalgoctp.ctp.dominant_provider.BacktestingDominantProvider">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.dominant_provider.</code><code class="descname">BacktestingDominantProvider</code><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.BacktestingDominantProvider" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.dominant_provider.DummyDominantProvider">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.dominant_provider.</code><code class="descname">DummyDominantProvider</code><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DummyDominantProvider" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider" title="ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider</span></code></a></p>
 <p>Used in backtesting, in backtesting, do not distinguish between dominant and non-dominant instruments.</p>
 <dl class="method">
-<dt id="ctxalgoctp.ctp.dominant_provider.BacktestingDominantProvider.actual_instrument_id">
-<code class="descname">actual_instrument_id</code><span class="sig-paren">(</span><em>dominant_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.BacktestingDominantProvider.actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.dominant_provider.DummyDominantProvider.actual_instrument_id">
+<code class="descname">actual_instrument_id</code><span class="sig-paren">(</span><em>dominant_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DummyDominantProvider.actual_instrument_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.dominant_provider.BacktestingDominantProvider.dominant_instrument_id">
-<code class="descname">dominant_instrument_id</code><span class="sig-paren">(</span><em>actual_instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.BacktestingDominantProvider.dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.dominant_provider.DummyDominantProvider.dominant_instrument_id">
+<code class="descname">dominant_instrument_id</code><span class="sig-paren">(</span><em>actual_instrument_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DummyDominantProvider.dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.dominant_provider.DummyDominantProvider.dominant_instrument_id_or_self">
+<code class="descname">dominant_instrument_id_or_self</code><span class="sig-paren">(</span><em>actual_instrument_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DummyDominantProvider.dominant_instrument_id_or_self" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.dominant_provider.DummyDominantProvider.has_dominant_instrument_id">
+<code class="descname">has_dominant_instrument_id</code><span class="sig-paren">(</span><em>dominant_instrument_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DummyDominantProvider.has_dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -236,7 +277,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 20, 2016.
+      Last updated on Jul 22, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

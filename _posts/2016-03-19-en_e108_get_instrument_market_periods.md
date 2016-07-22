@@ -15,6 +15,7 @@ market close, for intra-day strategies.
 
 
 ```python
+from functools import partial
 from ctxalgoctp.ctp.backtesting_utils import *
 
 

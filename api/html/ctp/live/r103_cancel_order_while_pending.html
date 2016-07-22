@@ -462,71 +462,36 @@ This is useful if you want to have a strategy which cancels some pending orders.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.change_position_to">
-<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>new_position</em>, <em>price=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>cancellation=None</em>, <em>order_book=None</em>, <em>cross_book=False</em>, <em>close_with_market_order=False</em>, <em>close_price=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.change_position_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>new_position</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.change_position_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the position of the given instrument to new_position. If price is given, all underlying orders
 are limit orders at that price, otherwise, market orders.
 :param new_position: int, the new position for the instrument.
 :param price: float, if None, newly placed orders are market orders, otherwise, limit orders.
-:param reason: string, the reason for this operation.
-:param instrument_id: string, instrument id. If None, use self.instrument_id.
-:param transaction_id: int, the transaction id, if None, use an automatically calculated id.
-:param cancellation: AbstractOrderCancellation, the cancellation policy for current order.</p>
+:param cross_book: bool, If True, when placing a limit order, and when order_book is given, place</p>
 <blockquote>
-<div>If None, no cancellation policy is specified.</div></blockquote>
+<div><dl class="docutils">
+<dt>an order cross the order book, meaning:</dt>
+<dd>If open long or close short, the limit order price will be max(price, order_book[&#8216;ask_price1&#8217;].
+If close long or open short, the limit order price will be min(price, order_book[&#8216;bid_price1&#8217;].</dd>
+</dl>
+</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>order_book</strong> &#8211; dict{string: object}, order book information, it has keys such as &#8216;ask_price1&#8217;, &#8216;bid_price1&#8217;.</li>
-<li><strong>cross_book</strong> &#8211; <p>bool, If True, when placing a limit order, and when order_book is given, place
-an order cross the order book, meaning:</p>
-<blockquote>
-<div>If open long or close short, the limit order price will be max(price, order_book[&#8216;ask_price1&#8217;].
-If close long or open short, the limit order price will be min(price, order_book[&#8216;bid_price1&#8217;].</div></blockquote>
-</li>
-<li><strong>close_with_market_order</strong> &#8211; bool, if True, always use market order to close positions.
-A change_position_to may result in several orders to close existing positions and open new positions.
-If close_with_market_order is True, then market orders are used to close existing positions (For
-instruments that do not support market order, a simulated market order is placed, through
-self.market_order_simulator).
-Default value is True, the intention is to make sure the flatting position request can be executed
-as soon as possible.</li>
-<li><strong>close_price</strong> &#8211; float, the price used to close positions.
-Only have effect if it is not None, and close_with_market_order is False.
-The following table defines the close position semantics for each price, close_with_market_order and
-close_price combination:
-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
-|    price   |  close_with_market_order   |  close_price  |  close position semantics      |
-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
-|     None   |           True             |     None      |      market order              |
-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
-|     None   |           True             |   not None    |      market order              |
-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
-|     None   |          False             |     None      |       assertion                |
-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
-|     None   |          False             |   not None    |  limit order with close_price  |
-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
-|  not None  |           True             |    None       |     market order               |
-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; +&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
-|  not None  |           True             |   not None    |     market order               |
-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
-|  not None  |          False             |    None       |    limit order with price      |
-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; +&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
-|  not None  |          False             |   not None    |  limit order with close_price  |
-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+</li>
+<li><strong>reason</strong> &#8211; string, the reason for this operation.</li>
+<li><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id.</li>
+<li><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the cancellation policy for current order.
+If None, no cancellation policy is specified.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
-<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
-<dd><p class="first">may cause the strategy to place two orders. Each element is a dict containing the following keys:
+<dt>[dict{string:object}], the list of orders.</dt>
+<dd><p class="first last">Each element is a dict containing the following keys:
 order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.
-enforce_one_direction: bool, the value is bool, True if the order is placed because the strategy</p>
-<blockquote class="last">
-<div><p>needs to close positions in the opposite direction.</p>
-</div></blockquote>
+transaction_id: string, the value is string, the transaction id.</p>
 </dd>
 </dl>
 </p>
@@ -538,7 +503,7 @@ enforce_one_direction: bool, the value is bool, True if the order is placed beca
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.change_positions_to">
-<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>new_positions</em>, <em>prices=None</em>, <em>reason=''</em>, <em>transaction_id=None</em>, <em>cancellation=None</em>, <em>order_books=None</em>, <em>cross_book=False</em>, <em>close_with_market_order=True</em>, <em>close_prices=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.change_positions_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>new_positions</em>, <em>prices=None</em>, <em>cross_book=False</em>, <em>reason=''</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.change_positions_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change positions of multiple instruments to their new values.
 :param new_positions: dict{string: int}, keys are instrument ids,</p>
 <blockquote>
@@ -553,38 +518,22 @@ values are prices at which limit orders are placed. If prices is None, all order
 If prices is a dict and for some instrument (through dict keys), the key is missing or the value
 is None, then the orders for that instrument are market orders, otherwise, limit orders.</li>
 <li><strong>reason</strong> &#8211; string, the reason for current order(s).</li>
-<li><strong>transaction_id</strong> &#8211; string, transition id, set to None.</li>
 <li><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the order cancellation policy used to
 cancel all the placed orders.</li>
-<li><strong>order_books</strong> &#8211; dict{string: dict{string: object}}, meaning dict{instrument_id: order_book}, while
-order_book is of type dict{string: object}. each order_book contain keys such as &#8216;ask_price1&#8217;,
-&#8216;bid_price1&#8217;. order_books contains the latest known order book for all instrumented given in
-new_positions.</li>
 <li><strong>cross_book</strong> &#8211; <p>bool, If True, when placing a limit order, and when order_book is given, place
 an order cross the order book, meaning:</p>
 <blockquote>
 <div>If open long or close short, the limit order price will be max(price, order_book[&#8216;ask_price1&#8217;].
 If close long or open short, the limit order price will be min(price, order_book[&#8216;bid_price1&#8217;].</div></blockquote>
 </li>
-<li><strong>close_with_market_order</strong> &#8211; bool, if True, always use market order to close positions.
-A change_position_to may result in several orders to close existing positions and open new positions.
-If close_with_market_order is True, then market orders are used to close existing positions (For
-instruments that do not support market order, a simulated market order is placed, through
-self.market_order_simulator).</li>
-<li><strong>close_prices</strong> &#8211; dict{string: float} ,keys are instrument ids, values are close prices.
-See the close_price parameter comment in method change_position_to for details.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
-<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
-<dd><p class="first">may cause the strategy to place two orders. Each element is a dict containing the following keys:
+<dt>[dict{string:object}], the list of orders.</dt>
+<dd><p class="first last">Each element is a dict containing the following keys:
 order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.
-enforce_one_direction: bool, the value is bool, True if the order is placed because the strategy</p>
-<blockquote class="last">
-<div><p>needs to close positions in the opposite direction.</p>
-</div></blockquote>
+transaction_id: string, the value is string, the transaction id.</p>
 </dd>
 </dl>
 </p>
@@ -628,107 +577,44 @@ If so, call self.on_timer.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.close_limit_order">
-<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.close_limit_order" title="Permalink to this definition">¶</a></dt>
-<dd><p>Close a limit order at price. Note that for limit orders, there is no support for enforce_one_direction,
-because limit orders cannot guarantee that all positions in one direction are fully closed.
+<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=False</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.close_limit_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close a limit order at price. Note that for limit orders.
 The strategy is responsible for maintaining positions in a single direction, if desirable.
 :param price: float, the price.
 :param volume: int, the volume to open. Positive volume means open long; Negative volume means open short.
 :param kind: OrderKind. Distinguish between Normal, FAK, FOK limit orders.
 :param reason: string, a reason for the open operation.
 :param instrument_id: string, instrument id. If None, use self.instrument_id.
-:param transaction_id: int, the transaction id, if None, use an automatically calculated id.</p>
+:param cancellation: AbstractOrderCancellation, the cancellation policy for current order.
+:return:</p>
 <blockquote>
-<div>Note that a smaller default transaction id does not mean that the order happens earlier.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the cancellation policy for current order.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
-<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
-<dd>may cause the strategy to place two orders. Each element is a dict containing the following keys:
+<div><dl class="docutils">
+<dt>[dict{string:object}], the list of orders.</dt>
+<dd>Each element is a dict containing the following keys:
 order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.
-enforce_one_direction: string, the value is bool, True if the order is placed because the strategy<blockquote class="last">
-<div>needs to close positions in the opposite direction.</div></blockquote>
-</dd>
+transaction_id: string, the value is string, the transaction id.</dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</div></blockquote>
 </dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.close_market_order">
-<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>volume</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.close_market_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>volume</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.close_market_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close market order for future_id. If there is only one future in current strategy, you don&#8217;t need to
 provide future_id, self.future_id will be used implicitly.
 :param volume: int, the volume to close. Positive volume means open close; Negative volume means close short.
 :param reason: string, a reason for the close operation.
 :param instrument_id: string, instrument id. If None, use self.instrument_id().
-:param transaction_id: int, the transaction id, if None, use an automatically calculated id.</p>
-<blockquote>
-<div>Note that a smaller default transaction id does not mean that the order happens earlier.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the cancellation policy for current order.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
-<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
-<dd>may cause the strategy to place two orders. Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.
-enforce_one_direction: bool, the value is bool, True if the order is placed because the strategy<blockquote class="last">
-<div>needs to close positions in the opposite direction.</div></blockquote>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.close_position">
-<code class="descname">close_position</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>cancellation=None</em>, <em>order_book=None</em>, <em>cross_book=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.close_position" title="Permalink to this definition">¶</a></dt>
-<dd><p>Close a position for the instrumeent given by instrument_id.
-:param price: float, if None, send a market order. If not None, send a limit order at that price.
-:param kind: OrderKind, the order kind.
-:param reason: string, reason for this open position operation.
-:param instrument_id: string, instrument id. If None, use self.instrument_id().
-:param transaction_id: string, transaction id.
 :param cancellation: AbstractOrderCancellation, the cancellation policy for current order.
-:param order_book: dict{string: object}, order book information, it has keys such as &#8216;ask_price1&#8217;, &#8216;bid_price1&#8217;.
-:param cross_book: bool, If True, when placing a limit order, and when order_book is given, place</p>
+:return:</p>
 <blockquote>
 <div><dl class="docutils">
-<dt>an order cross the order book, meaning:</dt>
-<dd>If open long or close short, the limit order price will be max(price, order_book[&#8216;ask_price1&#8217;].
-If close long or open short, the limit order price will be min(price, order_book[&#8216;bid_price1&#8217;].</dd>
+<dt>[dict{string:object}], the list of orders.</dt>
+<dd>Each element is a dict containing the following keys:
+order_ref: string, the value is string, the order reference.
+transaction_id: string, the value is string, the transaction id.</dd>
 </dl>
 </div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
-<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
-<dd>may cause the strategy to place two orders. Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.
-enforce_one_direction: bool, the value is bool, True if the order is placed because the strategy<blockquote class="last">
-<div>needs to close positions in the opposite direction.</div></blockquote>
-</dd>
-</dl>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">
@@ -752,18 +638,6 @@ enforce_one_direction: bool, the value is bool, True if the order is placed beca
 <code class="descname">direction</code><span class="sig-paren">(</span><em>volume</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.direction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return &#8216;long&#8217; or &#8216;short&#8217; as direction.
 :param volume: int, positive number means long direction, negative numer means short direction.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.dominant_instrument">
-<code class="descname">dominant_instrument</code><span class="sig-paren">(</span><em>instrument_prefix</em>, <em>trading_day</em>, <em>level=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.dominant_instrument" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the level dominant instrument id on the given trading day.
-:param instrument_prefix: string, instrument id prefix, such as IF, cu.
-:param trading_day: date, or string in form of yyyy-mm-dd. trading day.
-:param level: int, 0 means the dominant contract, 1 means the next dominant contract, and so on.
-:return: string, the instrument id of the asked dominant contract.</p>
-<blockquote>
-<div>If no such dominant contract, return None.</div></blockquote>
 </dd></dl>
 
 <dl class="method">
@@ -1008,16 +882,6 @@ Meaning either long or short positions, but not both.
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.latest_time_to_close_position">
-<code class="descname">latest_time_to_close_position</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.latest_time_to_close_position" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.latest_time_to_open_position">
-<code class="descname">latest_time_to_open_position</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.latest_time_to_open_position" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.log_cancel_order">
 <code class="descname">log_cancel_order</code><span class="sig-paren">(</span><em>order_ref_id</em>, <em>order_ref</em>, <em>reason</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.log_cancel_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log cancel order.
@@ -1084,7 +948,7 @@ Inner keys are Periodicity or volatility thresholds, inner values are the genera
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.log_order">
-<code class="descname">log_order</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>action</em>, <em>volume</em>, <em>order_ref</em>, <em>reason</em>, <em>transaction_id</em>, <em>offset_flag</em>, <em>order_kind='Market'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.log_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_order</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>actual_instrument_id</em>, <em>action</em>, <em>volume</em>, <em>order_ref</em>, <em>reason</em>, <em>transaction_id</em>, <em>offset_flag</em>, <em>order_kind='Market'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.log_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log order.
 :param instrument_id: string, the instrument id.
 :param action: OrderAction, the action of this order.
@@ -1506,7 +1370,20 @@ Parameters:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.on_tick_from_producer">
 <code class="descname">on_tick_from_producer</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.on_tick_from_producer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Action to be invoked when tick data arrived from the underlying data producer.
+:param instrument_id: string, the instrument id. This can be an actual instrument id or a relative id.</p>
+<blockquote>
+<div>It is can be a relative instrument id because the underlying data producer may be a zmq-based
+producer, to which current strategy can register relative instruments.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tick</strong> &#8211; dict{string: object}, tick data.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.on_timer">
@@ -1722,48 +1599,27 @@ multiple pieces of information, one piece for each currency.</td>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.open_limit_order">
-<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>enforce_one_direction=False</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.open_limit_order" title="Permalink to this definition">¶</a></dt>
-<dd><p>Open a limit order at price. Note that for limit orders, there is no support for enforce_one_direction,
-because limit orders cannot guarantee that all positions in one direction are fully closed.
+<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=False</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.open_limit_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a limit order at price. Note that for limit orders.
 The strategy is responsible for maintaining positions in a single direction, if desirable.
 :param price: float, the price.
 :param volume: int, the volume to open. Positive volume means open long; Negative volume means open short.
 :param kind: OrderKind. Distinguish between Normal, FAK, FOK limit orders.
 :param reason: string, a reason for the open operation.
 :param instrument_id: string, instrument id. If None, use self.instrument_id.
-:param transaction_id: int, the transaction id, if None, use an automatically calculated id.</p>
+:param cancellation: AbstractOrderCancellation, the cancellation policy for current order.</p>
 <blockquote>
-<div>Note that a smaller default transaction id does not mean that the order happens earlier.</div></blockquote>
+<div>If None, no cancellation policy is specified.</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>enforce_one_direction</strong> &#8211; boolean. If True, close existing positions (if any) which are in the
-direction opposite to the direction indicated by volume.
-For example, if volume &gt; 0 (meaning to open a long position), and if currently, the account holds some
-short directions, enforce_one_direction is True will force the strategy to make an order to close
-all short positions as well, resulting in two orders: one to close existing short positions, and the
-other to open long directions. Note that the strategy will not wait for the first order to fully execute,
-it will place two orders at the same time. This is a simplification, and can be improved in the future.</li>
-<li><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the cancellation policy for current order.
-If None, no cancellation policy is specified. The cancellation policy does not affect the
-order that has to be placed when enforce_one_direction is True.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
-<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
-<dd><p class="first">may cause the strategy to place two orders. Each element is a dict containing the following keys:
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>[dict{string:object}], the list of orders.</dt>
+<dd>Each element is a dict containing the following keys:
 order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.
-enforce_one_direction: string, the value is bool, True if the order is placed because the strategy</p>
-<blockquote class="last">
-<div><p>needs to close positions in the opposite direction.</p>
-</div></blockquote>
-</dd>
+transaction_id: string, the value is string, the transaction id.</dd>
 </dl>
-</p>
 </td>
 </tr>
 </tbody>
@@ -1772,93 +1628,25 @@ enforce_one_direction: string, the value is bool, True if the order is placed be
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.open_market_order">
-<code class="descname">open_market_order</code><span class="sig-paren">(</span><em>volume</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>enforce_one_direction=False</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.open_market_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open_market_order</code><span class="sig-paren">(</span><em>volume</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.open_market_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open market order for future_id. If there is only one future in current strategy, you don&#8217;t need to
 provide future_id, self.future_id will be used implicitly.
 :param volume: int, the volume to open. Positive volume means open long; Negative volume means open short.
 :param reason: string, a reason for the open operation.
 :param instrument_id: string, instrument id. If None, use self.instrument_id.
-:param transaction_id: int, the transaction id, if None, use an automatically calculated id.</p>
+:param cancellation: AbstractOrderCancellation, the cancellation policy for current order.</p>
 <blockquote>
-<div>Note that a smaller default transaction id does not mean that the order happens earlier.</div></blockquote>
+<div>If None, no cancellation policy is specified.</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>enforce_one_direction</strong> &#8211; boolean. If True, close existing positions (if any) which are in the
-direction opposite to the direction indicated by volume.
-For example, if volume &gt; 0 (meaning to open a long position), and if currently, the account holds some
-short directions, enforce_one_direction is True will force the strategy to make an order to close
-all short positions as well, resulting in two orders: one to close existing short positions, and the
-other to open long directions. Note that the strategy will not wait for the first order to fully execute,
-it will place two orders at the same time. This is a simplification, and can be improved in the future.</li>
-<li><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the cancellation policy for current order.
-If None, no cancellation policy is specified. The cancellation policy does not affect the
-order that has to be placed when enforce_one_direction is True.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
-<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
-<dd><p class="first">may cause the strategy to place two orders. Each element is a dict containing the following keys:
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>[dict{string:object}], the list of orders.</dt>
+<dd>Each element is a dict containing the following keys:
 order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.
-enforce_one_direction: string, the value is bool, True if the order is placed because the strategy</p>
-<blockquote class="last">
-<div><p>needs to close positions in the opposite direction.</p>
-</div></blockquote>
-</dd>
+transaction_id: string, the value is string, the transaction id.</dd>
 </dl>
-</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.open_position">
-<code class="descname">open_position</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>enforce_one_direction=False</em>, <em>cancellation=None</em>, <em>order_book=None</em>, <em>cross_book=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.open_position" title="Permalink to this definition">¶</a></dt>
-<dd><p>Open a position for the instrument given by instrument_id.
-:param volume: int, the position to open,</p>
-<blockquote>
-<div>positive number means long position, negative number means short position.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>price</strong> &#8211; float, if None, send a market order. If not None, send a limit order at that price.</li>
-<li><strong>kind</strong> &#8211; OrderKind, the order kind.</li>
-<li><strong>reason</strong> &#8211; string, reason for this open position operation.</li>
-<li><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id().</li>
-<li><strong>transaction_id</strong> &#8211; string, transaction id.</li>
-<li><strong>enforce_one_direction</strong> &#8211; boolean. If True, close existing positions (if any) which are in the
-direction opposite to the direction indicated by volume.</li>
-<li><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the cancellation policy for current order.</li>
-<li><strong>order_book</strong> &#8211; dict{string: object}, order book information, it has keys such as &#8216;ask_price1&#8217;, &#8216;bid_price1&#8217;.</li>
-<li><strong>cross_book</strong> &#8211; <p>bool, If True, when placing a limit order, and when order_book is given, place
-an order cross the order book, meaning:</p>
-<blockquote>
-<div>If open long or close short, the limit order price will be max(price, order_book[&#8216;ask_price1&#8217;].
-If close long or open short, the limit order price will be min(price, order_book[&#8216;bid_price1&#8217;].</div></blockquote>
-</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
-<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
-<dd><p class="first">may cause the strategy to place two orders. Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.
-enforce_one_direction: bool, the value is bool, True if the order is placed because the strategy</p>
-<blockquote class="last">
-<div><p>needs to close positions in the opposite direction.</p>
-</div></blockquote>
-</dd>
-</dl>
-</p>
 </td>
 </tr>
 </tbody>
@@ -1886,39 +1674,6 @@ enforce_one_direction: bool, the value is bool, True if the order is placed beca
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.periods">
 <code class="descname">periods</code><span class="sig-paren">(</span><em>kind=None</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.periods" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.place_market_order">
-<code class="descname">place_market_order</code><span class="sig-paren">(</span><em>action</em>, <em>volume</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>transaction_id=None</em>, <em>enforce_one_direction=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.place_market_order" title="Permalink to this definition">¶</a></dt>
-<dd><p>make market order for instrument id.
-:param instrument_id: string, instrument id. If None, use self.instrument_id.
-:param action: OrderAction, the action kind of current order.
-:param volume: int, the volume to close. Positive volume means open close; Negative volume means close short.
-:param reason: string, a reason for the close operation.
-:param transaction_id: int, the transaction id, if None, use an automatically calculated id.
-:param enforce_one_direction: boolean. If True, close existing positions (if any) which are in the</p>
-<blockquote>
-<div>direction opposite to the direction indicated by volume.
-For example, if volume &gt; 0 (meaning to open a long position), and if currently, the account holds some
-short directions, enforce_one_direction is True will force the strategy to make an order to close
-all short positions as well, resulting in two orders: one to close existing short positions, and the
-other to open long directions. Note that the strategy will not wait for the first order to fully execute,
-it will place two orders at the same time. This is a simplification, and can be improved in the future.</div></blockquote>
-<dl class="docutils">
-<dt>:return:f</dt>
-<dd><dl class="first last docutils">
-<dt>[dict{string:object}], the list of orders. It is a list because enforce_one_direction</dt>
-<dd><p class="first">may cause the strategy to place two orders. Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.
-enforce_one_direction: bool, the value is bool, True if the order is placed because the strategy</p>
-<blockquote class="last">
-<div>needs to close positions in the opposite direction.</div></blockquote>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.position_details">
@@ -2033,12 +1788,22 @@ between the current price and the position price.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.safe_actual_instrument_id">
+<code class="descname">safe_actual_instrument_id</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>actual_instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.safe_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.safe_instrument_id">
 <code class="descname">safe_instrument_id</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.safe_instrument_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the final instrument id.
 :param instrument_id: string.
 :return: string, the final instrument id.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.safe_sids">
+<code class="descname">safe_sids</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>actual_instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.safe_sids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.same_external_order">
@@ -2094,6 +1859,11 @@ corresponding strategy callbacks from outside.</div></blockquote>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.set_market_order_simulator">
 <code class="descname">set_market_order_simulator</code><span class="sig-paren">(</span><em>simulator</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.set_market_order_simulator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.set_order_ref_starting_value">
+<code class="descname">set_order_ref_starting_value</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.set_order_ref_starting_value" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2462,7 +2232,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 20, 2016.
+      Last updated on Jul 22, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

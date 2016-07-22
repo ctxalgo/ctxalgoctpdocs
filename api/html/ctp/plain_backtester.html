@@ -601,18 +601,6 @@ Whether any position can be opened for an instrument id is defined by now &lt;= 
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.dominant_instrument">
-<code class="descname">dominant_instrument</code><span class="sig-paren">(</span><em>instrument_prefix</em>, <em>trading_day</em>, <em>level=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.dominant_instrument" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the level dominant instrument id on the given trading day.
-:param instrument_prefix: string, instrument id prefix, such as IF, cu.
-:param trading_day: date, or string in form of yyyy-mm-dd. trading day.
-:param level: int, 0 means the dominant contract, 1 means the next dominant contract, and so on.
-:return: string, the instrument id of the asked dominant contract.</p>
-<blockquote>
-<div>If no such dominant contract, return None.</div></blockquote>
-</dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.filtered_position">
 <code class="descname">filtered_position</code><span class="sig-paren">(</span><em>direction</em>, <em>condition</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.filtered_position" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return current position details for a given instrument.
@@ -1156,7 +1144,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 20, 2016.
+      Last updated on Jul 22, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

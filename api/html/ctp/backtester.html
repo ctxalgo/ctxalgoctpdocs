@@ -229,7 +229,7 @@ slow down the backtesting only during the time range of interest.</p>
 
 <dl class="class">
 <dt id="ctxalgoctp.ctp.backtester.CtpBacktester">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.backtester.</code><code class="descname">CtpBacktester</code><span class="sig-paren">(</span><em>data_source</em>, <em>strategy_class</em>, <em>strategy_config</em>, <em>account=None</em>, <em>time_step=None</em>, <em>daily_start_time=None</em>, <em>daily_end_time=None</em>, <em>is_eager_order_execution=False</em>, <em>message_sender=None</em>, <em>initial_capital=1000000.0</em>, <em>on_strategy_object_created=None</em>, <em>user=None</em>, <em>slippage_model=None</em>, <em>has_commission=True</em>, <em>message_random_delay_enabled=False</em>, <em>strategy_callbacks=None</em>, <em>is_extrapolate_data_allowed=True</em>, <em>future_trading_utils=None</em>, <em>report_has_charting_url=False</em>, <em>security_company=None</em>, <em>data_feed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtester.CtpBacktester" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.backtester.</code><code class="descname">CtpBacktester</code><span class="sig-paren">(</span><em>data_source</em>, <em>strategy_class</em>, <em>strategy_config</em>, <em>account=None</em>, <em>time_step=None</em>, <em>daily_start_time=None</em>, <em>daily_end_time=None</em>, <em>is_eager_order_execution=False</em>, <em>message_sender=None</em>, <em>initial_capital=1000000.0</em>, <em>on_strategy_object_created=None</em>, <em>user=None</em>, <em>slippage_model=None</em>, <em>has_commission=True</em>, <em>message_random_delay_enabled=False</em>, <em>strategy_callbacks=None</em>, <em>is_extrapolate_data_allowed=True</em>, <em>future_trading_utils=None</em>, <em>report_has_charting_url=False</em>, <em>security_company=None</em>, <em>data_feed=None</em>, <em>dominant_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtester.CtpBacktester" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.backtester.CtpAbstractBacktester" title="ctxalgoctp.ctp.backtester.CtpAbstractBacktester"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.backtester.CtpAbstractBacktester</span></code></a></p>
 <p>Class to perform backtesting for trading strategies.</p>
 <p>Initialize current CTP backtester.
@@ -565,7 +565,7 @@ None means do not change current invariant evaluation setting.</li>
 
 <dl class="class">
 <dt id="ctxalgoctp.ctp.backtester.CtpSingleDaySimulator">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.backtester.</code><code class="descname">CtpSingleDaySimulator</code><span class="sig-paren">(</span><em>start_time</em>, <em>end_time</em>, <em>data_source</em>, <em>time_step</em>, <em>is_data_source_tick</em>, <em>future_trading_utils</em>, <em>is_eager_order_execution=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtester.CtpSingleDaySimulator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.backtester.</code><code class="descname">CtpSingleDaySimulator</code><span class="sig-paren">(</span><em>start_time</em>, <em>end_time</em>, <em>data_source</em>, <em>time_step</em>, <em>is_data_source_tick</em>, <em>future_trading_utils</em>, <em>backtester</em>, <em>is_eager_order_execution=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtester.CtpSingleDaySimulator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p>Class that simulates a trading strategy for a single trading day.
 This is designed because in real-time trading, the strategy is usually designed to run on a daily bases.</p>
@@ -654,7 +654,7 @@ we process all trading-related messages properly before we terminate the strateg
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 20, 2016.
+      Last updated on Jul 22, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

@@ -164,8 +164,13 @@
 <span id="abstract-data-producer"></span><h1>abstract_data_producer<a class="headerlink" href="#module-ctxalgoctp.ctp.data_producers.abstract_data_producer" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.data_producers.abstract_data_producer.</code><code class="descname">AbstractDataProducer</code><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.data_producers.abstract_data_producer.</code><code class="descname">AbstractDataProducer</code><span class="sig-paren">(</span><em>dominant_provider</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.set_dominant_provider">
+<code class="descname">set_dominant_provider</code><span class="sig-paren">(</span><em>provider</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.set_dominant_provider" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.market">
 <code class="descname">market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.market" title="Permalink to this definition">¶</a></dt>
@@ -198,7 +203,7 @@ register for tick data. For those data producers, you will have a set_should_enf
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_ohlcs">
-<code class="descname">subscribe_ohlcs</code><span class="sig-paren">(</span><em>periods</em>, <em>historical_ohlcs</em>, <em>market_periods</em>, <em>order_book_level=1</em>, <em>with_open_interest=False</em>, <em>profits=False</em>, <em>use_mid_ask_bid=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_ohlcs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">subscribe_ohlcs</code><span class="sig-paren">(</span><em>periods</em>, <em>historical_ohlcs</em>, <em>market_periods</em>, <em>trading_day</em>, <em>order_book_level=1</em>, <em>with_open_interest=False</em>, <em>profits=False</em>, <em>use_mid_ask_bid=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_ohlcs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subscribe ohlcs so a strategy can use those subscribed ohlcs.
 :param periods: dict{string: dict{string: [Periodicity or float/int]}}, meaning</p>
 <blockquote>
@@ -258,7 +263,7 @@ Refer to AbstractStrategy.ohlc to see the meaning.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.on_market_rtn_depth_market_data">
-<code class="descname">on_market_rtn_depth_market_data</code><span class="sig-paren">(</span><em>depth_market_data</em>, <em>timestamp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.on_market_rtn_depth_market_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_market_rtn_depth_market_data</code><span class="sig-paren">(</span><em>depth_market_data</em>, <em>trading_day</em>, <em>timestamp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.on_market_rtn_depth_market_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Event that will be invoked when a tick data arrives from CTP.
 Not all data producers need this.</p>
 </dd></dl>
@@ -296,7 +301,7 @@ The ZmqDataProducer needs to return data subscriptions which represent zmq conne
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 20, 2016.
+      Last updated on Jul 22, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

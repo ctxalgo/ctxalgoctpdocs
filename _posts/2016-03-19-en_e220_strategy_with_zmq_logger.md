@@ -80,9 +80,7 @@ def main():
     while backtester.is_alive():
         try:
             [topic, content] = subscriber.recv_multipart(flags=zmq.NOBLOCK)
-            print(c)
-            c += 1
-            # print('{}\t{}'.format(topic, content))
+            print('{}\t{}'.format(topic, content))
         except Exception as e:
             pass
     backtester.join()

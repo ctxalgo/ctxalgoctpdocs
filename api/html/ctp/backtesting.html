@@ -365,10 +365,10 @@
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.backtesting.CtpTradingBacktesting.close_limit_order">
-<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>future_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtesting.CtpTradingBacktesting.close_limit_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtesting.CtpTradingBacktesting.close_limit_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close a limit order.
 :param exchange_id: string, exchange id.
-:param future_id: string, A single future id.
+:param instrument_id: string, A single future id.
 :param price: double, the price for the limit order.
 :param volume: int, the volume for the limit order. Positive number means long position,</p>
 <blockquote>
@@ -389,10 +389,10 @@
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.backtesting.CtpTradingBacktesting.close_market_order">
-<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>future_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtesting.CtpTradingBacktesting.close_market_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtesting.CtpTradingBacktesting.close_market_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send an order to close a trade at market price.
 :param exchange_id: string, exchange id.
-:param future_id, string, a SINGLE future id.
+:param instrument_id, string, a SINGLE future id.
 :param volume: int, the volume to order, positive number means long position,</p>
 <blockquote>
 <div>negative number means short position.</div></blockquote>
@@ -422,10 +422,10 @@
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.backtesting.CtpTradingBacktesting.open_limit_order">
-<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>future_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtesting.CtpTradingBacktesting.open_limit_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtesting.CtpTradingBacktesting.open_limit_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open a limit order.
 :param exchange_id: string, exchange id.
-:param future_id: string, A single future id.
+:param instrument_id: string, A single future id.
 :param price: double, the price for the limit order.
 :param volume: int, the volume for the limit order. Positive number means long position,</p>
 <blockquote>
@@ -446,10 +446,10 @@
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.backtesting.CtpTradingBacktesting.open_market_order">
-<code class="descname">open_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>future_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtesting.CtpTradingBacktesting.open_market_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>transaction_id=None</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtesting.CtpTradingBacktesting.open_market_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send an order to open a trade at market price.
 :param exchange_id: string, exchange id.
-:param future_id, string, a SINGLE future id.
+:param instrument_id, string, a SINGLE future id.
 :param volume: int, the volume to order, positive number means long position,</p>
 <blockquote>
 <div>negative number means short position.</div></blockquote>
@@ -540,7 +540,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 20, 2016.
+      Last updated on Jul 22, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

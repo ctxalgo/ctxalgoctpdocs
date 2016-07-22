@@ -14,6 +14,7 @@ language: zh
 
 
 ```python
+from functools import partial
 from ctxalgoctp.ctp.backtesting_utils import *
 
 

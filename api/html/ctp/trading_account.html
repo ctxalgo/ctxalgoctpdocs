@@ -198,7 +198,7 @@ takes that into consideration. If None, use a default security company.</div></b
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trading_account.TradingAccount.update_instrument_price">
-<code class="descname">update_instrument_price</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>price</em>, <em>actual_instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.update_instrument_price" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update_instrument_price</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.update_instrument_price" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update current trading account with the last known future price. This future price is used
 to calculate running profit of this account. This is only needed for backtesting.
 :param instrument_id: string, future id.
@@ -372,7 +372,7 @@ trading_day, open_commission, order_ref, margin.</p>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trading_account.TradingAccount.close_positions">
-<code class="descname">close_positions</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>price</em>, <em>volume</em>, <em>timestamp</em>, <em>trading_day</em>, <em>actual_instrument_id=None</em>, <em>open_today=None</em>, <em>close_yesterday=None</em>, <em>close_today=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.close_positions" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_positions</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>price</em>, <em>volume</em>, <em>timestamp</em>, <em>trading_day</em>, <em>actual_instrument_id</em>, <em>open_today=None</em>, <em>close_yesterday=None</em>, <em>close_today=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.close_positions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close positions.
 :param instrument_id, string, the instrument id.
 :param price: float, the price at which the positions are closed.
@@ -524,7 +524,7 @@ L&gt;0             S&lt;0             p2&lt;0, p2==S     close_long(L)</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 20, 2016.
+      Last updated on Jul 22, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

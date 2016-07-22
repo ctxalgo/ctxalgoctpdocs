@@ -159,7 +159,7 @@
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.strategy_utils.</code><code class="descname">StrategyUtils</code><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="staticmethod">
 <dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.get_logger">
-<em class="property">static </em><code class="descname">get_logger</code><span class="sig-paren">(</span><em>folder</em>, <em>has_console=True</em>, <em>has_file=True</em>, <em>log_file_name='output.txt'</em>, <em>has_binary_file=False</em>, <em>binary_file_name='output.bin'</em>, <em>queue_address=None</em>, <em>queue_context=None</em>, <em>cache_size=100</em>, <em>compact_mode=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.get_logger" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">get_logger</code><span class="sig-paren">(</span><em>folder</em>, <em>has_console=True</em>, <em>has_file=True</em>, <em>log_file_name='output.txt'</em>, <em>has_binary_file=False</em>, <em>binary_file_name='output.bin'</em>, <em>queue_address=None</em>, <em>queue_context=None</em>, <em>cache_size=100</em>, <em>compact_mode=True</em>, <em>append=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.get_logger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a logger with two handlers, one for console and one for file.
 :param folder: string, the folder to store the file log.
 :param has_console: boolean, True if the console logger is enabled.
@@ -175,10 +175,15 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>compact_mode</strong> &#8211; bool, if True, file based loggers are configured to generate compact logs,
-which will reduce the size of the log file.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>compact_mode</strong> &#8211; bool, if True, file based loggers are configured to generate compact logs,
+which will reduce the size of the log file.</li>
+<li><strong>append</strong> &#8211; bool, if True, append to existing log files.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Logger.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Logger.</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -327,7 +332,7 @@ because normalization is expensive.</div></blockquote>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 20, 2016.
+      Last updated on Jul 22, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
