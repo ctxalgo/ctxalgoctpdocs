@@ -32,7 +32,7 @@
   
     <link rel="top" title="ctxalgoctp 0.1 documentation" href="../../index.html"/>
         <link rel="up" title="live" href="index.html"/>
-        <link rel="next" title="factories" href="../factories/index.html"/>
+        <link rel="next" title="r200_connect_to_ctp_relative_id" href="r200_connect_to_ctp_relative_id.html"/>
         <link rel="prev" title="r105_place_pending_order_and_exit" href="r105_place_pending_order_and_exit.html"/> 
 
   
@@ -78,11 +78,13 @@
 <li class="toctree-l3"><a class="reference internal" href="r102_cancel_order_after_fully_executed.html">r102_cancel_order_after_fully_executed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r104_automatic_order_cancellation.html">r104_automatic_order_cancellation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r106_cancel_all_pending_orders_from_previous_session.html">r106_cancel_all_pending_orders_from_previous_session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r201_change_position_relative_id.html">r201_change_position_relative_id</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r107_high_frequency_both_direction_trade.html">r107_high_frequency_both_direction_trade</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r103_cancel_order_while_pending.html">r103_cancel_order_while_pending</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r101_change_positions.html">r101_change_positions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r105_place_pending_order_and_exit.html">r105_place_pending_order_and_exit</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">r100_connect_to_ctp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r200_connect_to_ctp_relative_id.html">r200_connect_to_ctp_relative_id</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../factories/index.html">factories</a></li>
@@ -167,9 +169,14 @@
             
   <div class="section" id="module-ctxalgoctp.ctp.live.r100_connect_to_ctp">
 <span id="r100-connect-to-ctp"></span><h1>r100_connect_to_ctp<a class="headerlink" href="#module-ctxalgoctp.ctp.live.r100_connect_to_ctp" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live.r100_connect_to_ctp.display_positions">
+<code class="descclassname">ctxalgoctp.ctp.live.r100_connect_to_ctp.</code><code class="descname">display_positions</code><span class="sig-paren">(</span><em>strategy</em>, <em>label='Positions'</em>, <em>color='yellow'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r100_connect_to_ctp.display_positions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="class">
 <dt id="ctxalgoctp.ctp.live.r100_connect_to_ctp.JustConnect">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r100_connect_to_ctp.</code><code class="descname">JustConnect</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>strategy_period</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r100_connect_to_ctp.JustConnect" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r100_connect_to_ctp.</code><code class="descname">JustConnect</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>strategy_period</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em>, <em>use_remote_account=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r100_connect_to_ctp.JustConnect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../strategy.html#ctxalgoctp.ctp.strategy.AbstractStrategy" title="ctxalgoctp.ctp.strategy.AbstractStrategy"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.strategy.AbstractStrategy</span></code></a></p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r100_connect_to_ctp.JustConnect.on_before_run">
@@ -2187,7 +2194,7 @@ instrument_id, kind and period to find the ohlc.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../factories/index.html" class="btn btn-neutral float-right" title="factories" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="r200_connect_to_ctp_relative_id.html" class="btn btn-neutral float-right" title="r200_connect_to_ctp_relative_id" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="r105_place_pending_order_and_exit.html" class="btn btn-neutral" title="r105_place_pending_order_and_exit" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
