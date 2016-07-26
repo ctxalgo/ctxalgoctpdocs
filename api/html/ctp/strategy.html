@@ -81,6 +81,7 @@
 <li class="toctree-l2"><a class="reference internal" href="execution_drivers/index.html">execution_drivers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_producers/index.html">data_producers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strategies/index.html">strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading_account_loaders/index.html">trading_account_loaders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slippage_models.html">slippage_models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strategy_utils.html">strategy_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exchanges.html">exchanges</a></li>
@@ -503,6 +504,17 @@ pre_open_interest, open_interest.</div></blockquote>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_order_dropped">
+<code class="descname">on_order_dropped</code><span class="sig-paren">(</span><em>kind</em>, <em>action</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>reason</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_order_dropped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be called when an order request is dropped due to lack of order book information.
+:param kind: OrderKind, the order kind.
+:param action: OrderAction, the order action.
+:param instrument_id: string, instrument id, the instrument id.
+:param actual_instrument_id: string, actual instrument id.
+:param reason: string, the reason for the order request.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_query_order">
 <code class="descname">on_query_order</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_query_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be invoked when some result arrived from self.query_order.
@@ -515,7 +527,7 @@ pre_open_interest, open_interest.</div></blockquote>
 <dd><p>Action to be invoked when order status changes.
 :param order_info: dict, order information. The dict includes the following keys (non-exhaustive):</p>
 <blockquote>
-<div>instrument_id, order_ref, action (type OrderAction), price, volume, timestamp, transaction_id,
+<div>instrument_id, order_ref, action (type OrderAction), price, volume, timestamp,
 traded_volume, left_volume, reason, order_kind (type OrderKind), status.</div></blockquote>
 </dd></dl>
 
@@ -552,7 +564,7 @@ of this action for a single order.
 :param trade_info: dict, providing information of the trade.</p>
 <blockquote>
 <div>Keys (non-exhaustively) include:
-instrument_id, slippage, commission, profits, transaction_id, traded_volume, left_volume,
+instrument_id, slippage, commission, profits, traded_volume, left_volume,
 order_ref, current_traded_volume, current_traded_price, action, reason, kind, status.</div></blockquote>
 </dd></dl>
 
@@ -760,6 +772,11 @@ Parameters:</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.all_positions_with_actual_instrument_id">
+<code class="descname">all_positions_with_actual_instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.all_positions_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.positions">
 <code class="descname">positions</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.positions" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -768,6 +785,54 @@ Parameters:</p>
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.position_details">
 <code class="descname">position_details</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.position_details" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.all_position_details">
+<code class="descname">all_position_details</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.all_position_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return position details for all traded instruments.
+:return: dict{string: dict{string: [dict{string: object}]}}</p>
+<blockquote>
+<div><p>The out most keys are instrument ides, and the values are the same as the result of self.position_details.
+For example:
+{</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>&#8216;IF99&#8217;: {</dt>
+<dd><dl class="first last docutils">
+<dt>&#8216;long&#8217;: [</dt>
+<dd><blockquote class="first">
+<div><dl class="docutils">
+<dt>{</dt>
+<dd>&#8216;order_ref&#8217;: order reference string
+&#8216;price&#8217;: the price when the position is opened.
+&#8216;volume&#8217;: the volume that are executed at this price.
+&#8216;timestamp&#8217;: the time when this position is executed.</dd>
+</dl>
+<p>}, ...</p>
+</div></blockquote>
+<p class="last">],</p>
+</dd>
+<dt>&#8216;short&#8217;: [</dt>
+<dd><blockquote class="first">
+<div><dl class="docutils">
+<dt>{</dt>
+<dd>&#8216;order_ref&#8217;: order reference string
+&#8216;price&#8217;: the price when the position is opened.
+&#8216;volume&#8217;: the volume that are executed at this price.
+&#8216;timestamp&#8217;: the time when this position is executed.</dd>
+</dl>
+<p>}, ...</p>
+</div></blockquote>
+<p class="last">],</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.has_position">
@@ -802,16 +867,6 @@ Parameters:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.last_known_price">
 <code class="descname">last_known_price</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.last_known_price" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.current_transaction_id">
-<code class="descname">current_transaction_id</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.current_transaction_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.transaction_id_from_order_ref">
-<code class="descname">transaction_id_from_order_ref</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.transaction_id_from_order_ref" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -875,8 +930,7 @@ provide future_id, self.future_id will be used implicitly.
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd>Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.</dd>
+order_ref: string, the value is string, the order reference.</dd>
 </dl>
 </td>
 </tr>
@@ -904,8 +958,7 @@ The strategy is responsible for maintaining positions in a single direction, if 
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd>Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.</dd>
+order_ref: string, the value is string, the order reference.</dd>
 </dl>
 </td>
 </tr>
@@ -927,8 +980,7 @@ provide future_id, self.future_id will be used implicitly.
 <div><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd>Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.</dd>
+order_ref: string, the value is string, the order reference.</dd>
 </dl>
 </div></blockquote>
 </dd></dl>
@@ -949,8 +1001,7 @@ The strategy is responsible for maintaining positions in a single direction, if 
 <div><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd>Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.</dd>
+order_ref: string, the value is string, the order reference.</dd>
 </dl>
 </div></blockquote>
 </dd></dl>
@@ -969,6 +1020,14 @@ are limit orders at that price, otherwise, market orders.
 <dd>If open long or close short, the limit order price will be max(price, order_book[&#8216;ask_price1&#8217;].
 If close long or open short, the limit order price will be min(price, order_book[&#8216;bid_price1&#8217;].</dd>
 </dl>
+<p>If price is None and cross_book is False, then place market order(s). If the instrument does not support
+market order, self.market_order_simulator is used to simulate a market order.</p>
+<p>Note that limit orders crossing order book and simulated market orders need to have order book information.
+If there is no order book information (no tick has arrived for ths instrument), those orders will
+be ignored. In such as case, the result is that some requests are ignored. Later when you check
+your holding position with your expectation, you will notice the difference. Then you can use another
+change_position_to to place orders again, hoping that between then and now, some tick data for the
+instrument has arrived, so orders can be placed correctly.</p>
 </div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -985,8 +1044,7 @@ If None, no cancellation policy is specified.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd><p class="first last">Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.</p>
+order_ref: string, the value is string, the order reference.</p>
 </dd>
 </dl>
 </p>
@@ -1027,8 +1085,7 @@ If close long or open short, the limit order price will be min(price, order_book
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd><p class="first last">Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.</p>
+order_ref: string, the value is string, the order reference.</p>
 </dd>
 </dl>
 </p>
@@ -1157,8 +1214,13 @@ Inner keys are Periodicity or volatility thresholds, inner values are the genera
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.log_order_dropped">
+<code class="descname">log_order_dropped</code><span class="sig-paren">(</span><em>kind</em>, <em>action</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>reason</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.log_order_dropped" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.log_order">
-<code class="descname">log_order</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>actual_instrument_id</em>, <em>action</em>, <em>volume</em>, <em>order_ref</em>, <em>reason</em>, <em>transaction_id</em>, <em>offset_flag</em>, <em>order_kind='Market'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.log_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_order</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>actual_instrument_id</em>, <em>action</em>, <em>volume</em>, <em>order_ref</em>, <em>reason</em>, <em>offset_flag</em>, <em>order_kind='Market'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.log_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log order.
 :param instrument_id: string, the instrument id.
 :param action: OrderAction, the action of this order.
@@ -1169,17 +1231,18 @@ Inner keys are Periodicity or volatility thresholds, inner values are the genera
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>order_ref</strong> &#8211; int, order reference.</li>
 <li><strong>reason</strong> &#8211; string the reason for order.</li>
+<li><strong>order_kind</strong> &#8211; OrderKind. The kind of the order.</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
 </td>
 </tr>
 </tbody>
 </table>
-<p>:param transaction_id, int, the transaction id.
-:param order_kind: OrderKind. The kind of the order.
-:return:</p>
 </dd></dl>
 
 <dl class="method">
@@ -1382,54 +1445,6 @@ need different data.</div></blockquote>
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.TRADING_NOT_CONNECTED">
 <code class="descname">TRADING_NOT_CONNECTED</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.TRADING_NOT_CONNECTED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.all_position_details">
-<code class="descname">all_position_details</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.all_position_details" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return position details for all traded instruments.
-:return: dict{string: dict{string: [dict{string: object}]}}</p>
-<blockquote>
-<div><p>The out most keys are instrument ides, and the values are the same as the result of self.position_details.
-For example:
-{</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>&#8216;IF99&#8217;: {</dt>
-<dd><dl class="first last docutils">
-<dt>&#8216;long&#8217;: [</dt>
-<dd><blockquote class="first">
-<div><dl class="docutils">
-<dt>{</dt>
-<dd>&#8216;order_ref&#8217;: order reference string
-&#8216;price&#8217;: the price when the position is opened.
-&#8216;volume&#8217;: the volume that are executed at this price.
-&#8216;timestamp&#8217;: the time when this position is executed.</dd>
-</dl>
-<p>}, ...</p>
-</div></blockquote>
-<p class="last">],</p>
-</dd>
-<dt>&#8216;short&#8217;: [</dt>
-<dd><blockquote class="first">
-<div><dl class="docutils">
-<dt>{</dt>
-<dd>&#8216;order_ref&#8217;: order reference string
-&#8216;price&#8217;: the price when the position is opened.
-&#8216;volume&#8217;: the volume that are executed at this price.
-&#8216;timestamp&#8217;: the time when this position is executed.</dd>
-</dl>
-<p>}, ...</p>
-</div></blockquote>
-<p class="last">],</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.can_close_position_wrt_time">
@@ -1711,23 +1726,6 @@ Meaning either long or short positions, but not both.
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.log_state_transition">
 <code class="descname">log_state_transition</code><span class="sig-paren">(</span><em>start_state</em>, <em>end_state</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.log_state_transition" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.log_stop_loss">
-<code class="descname">log_stop_loss</code><span class="sig-paren">(</span><em>timestamp</em>, <em>direction</em>, <em>value</em>, <em>transaction_id</em>, <em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.log_stop_loss" title="Permalink to this definition">¶</a></dt>
-<dd><p>Log stop loss.
-Parameters:</p>
-<blockquote>
-<div><p>timestamp: datetime, the time when the stop loss is calculated.
-direction: int, 1 means long stop loss, -1 means short stop loss.
-value: float, the stop loss value.
-transaction_id: string, transaction id.
-name: string, a possible additional name for the stop loss line. This is helpful to</p>
-<blockquote>
-<div>support multiple stop lines (for example, a close-bar stop loss and an in-bar stop loss)
-for the same transaction.</div></blockquote>
-</div></blockquote>
-</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.log_trade">
@@ -2440,6 +2438,11 @@ For example:
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.all_positions_with_actual_instrument_id">
+<code class="descname">all_positions_with_actual_instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.all_positions_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.at">
 <code class="descname">at</code><span class="sig-paren">(</span><em>state_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.at" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is current state machien at the state given by name?
@@ -2593,6 +2596,14 @@ are limit orders at that price, otherwise, market orders.
 <dd>If open long or close short, the limit order price will be max(price, order_book[&#8216;ask_price1&#8217;].
 If close long or open short, the limit order price will be min(price, order_book[&#8216;bid_price1&#8217;].</dd>
 </dl>
+<p>If price is None and cross_book is False, then place market order(s). If the instrument does not support
+market order, self.market_order_simulator is used to simulate a market order.</p>
+<p>Note that limit orders crossing order book and simulated market orders need to have order book information.
+If there is no order book information (no tick has arrived for ths instrument), those orders will
+be ignored. In such as case, the result is that some requests are ignored. Later when you check
+your holding position with your expectation, you will notice the difference. Then you can use another
+change_position_to to place orders again, hoping that between then and now, some tick data for the
+instrument has arrived, so orders can be placed correctly.</p>
 </div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2609,8 +2620,7 @@ If None, no cancellation policy is specified.</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd><p class="first last">Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.</p>
+order_ref: string, the value is string, the order reference.</p>
 </dd>
 </dl>
 </p>
@@ -2651,8 +2661,7 @@ If close long or open short, the limit order price will be min(price, order_book
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd><p class="first last">Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.</p>
+order_ref: string, the value is string, the order reference.</p>
 </dd>
 </dl>
 </p>
@@ -2710,8 +2719,7 @@ The strategy is responsible for maintaining positions in a single direction, if 
 <div><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd>Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.</dd>
+order_ref: string, the value is string, the order reference.</dd>
 </dl>
 </div></blockquote>
 </dd></dl>
@@ -2730,8 +2738,7 @@ provide future_id, self.future_id will be used implicitly.
 <div><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd>Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.</dd>
+order_ref: string, the value is string, the order reference.</dd>
 </dl>
 </div></blockquote>
 </dd></dl>
@@ -2745,11 +2752,6 @@ transaction_id: string, the value is string, the transaction id.</dd>
 <div>all_states is of type [AbstractState], it is the full list of states used in current strategy.
 start_state must be an element of all_states as well.</div></blockquote>
 </dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.current_transaction_id">
-<code class="descname">current_transaction_id</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.current_transaction_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.data_feed">
@@ -3101,7 +3103,7 @@ Inner keys are Periodicity or volatility thresholds, inner values are the genera
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_order">
-<code class="descname">log_order</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>actual_instrument_id</em>, <em>action</em>, <em>volume</em>, <em>order_ref</em>, <em>reason</em>, <em>transaction_id</em>, <em>offset_flag</em>, <em>order_kind='Market'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_order</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>actual_instrument_id</em>, <em>action</em>, <em>volume</em>, <em>order_ref</em>, <em>reason</em>, <em>offset_flag</em>, <em>order_kind='Market'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log order.
 :param instrument_id: string, the instrument id.
 :param action: OrderAction, the action of this order.
@@ -3112,22 +3114,28 @@ Inner keys are Periodicity or volatility thresholds, inner values are the genera
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>order_ref</strong> &#8211; int, order reference.</li>
 <li><strong>reason</strong> &#8211; string the reason for order.</li>
+<li><strong>order_kind</strong> &#8211; OrderKind. The kind of the order.</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
 </td>
 </tr>
 </tbody>
 </table>
-<p>:param transaction_id, int, the transaction id.
-:param order_kind: OrderKind. The kind of the order.
-:return:</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_order_action">
 <code class="descname">log_order_action</code><span class="sig-paren">(</span><em>order_ref</em>, <em>order_action</em>, <em>rsp_info</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_order_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_order_dropped">
+<code class="descname">log_order_dropped</code><span class="sig-paren">(</span><em>kind</em>, <em>action</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>reason</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_order_dropped" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -3153,23 +3161,6 @@ Inner keys are Periodicity or volatility thresholds, inner values are the genera
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_state_transition">
 <code class="descname">log_state_transition</code><span class="sig-paren">(</span><em>start_state</em>, <em>end_state</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_state_transition" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_stop_loss">
-<code class="descname">log_stop_loss</code><span class="sig-paren">(</span><em>timestamp</em>, <em>direction</em>, <em>value</em>, <em>transaction_id</em>, <em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_stop_loss" title="Permalink to this definition">¶</a></dt>
-<dd><p>Log stop loss.
-Parameters:</p>
-<blockquote>
-<div><p>timestamp: datetime, the time when the stop loss is calculated.
-direction: int, 1 means long stop loss, -1 means short stop loss.
-value: float, the stop loss value.
-transaction_id: string, transaction id.
-name: string, a possible additional name for the stop loss line. This is helpful to</p>
-<blockquote>
-<div>support multiple stop lines (for example, a close-bar stop loss and an in-bar stop loss)
-for the same transaction.</div></blockquote>
-</div></blockquote>
-</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_strategy">
@@ -3487,7 +3478,7 @@ requested by get_investor_position.
 <dd><p>Action to be invoked when order status changes.
 :param order_info: dict, order information. The dict includes the following keys (non-exhaustive):</p>
 <blockquote>
-<div>instrument_id, order_ref, action (type OrderAction), price, volume, timestamp, transaction_id,
+<div>instrument_id, order_ref, action (type OrderAction), price, volume, timestamp,
 traded_volume, left_volume, reason, order_kind (type OrderKind), status.</div></blockquote>
 </dd></dl>
 
@@ -3507,6 +3498,17 @@ broker_id, investor_id, order_ref, action_flag, volume_change, instrument_id, er
 <dd><p>Action to be invoked when an order has been cancelled successfully.
 :param order_ref: string, order reference.
 :param instrument_id: string, instrument id of the order that is requested to be cancelled.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_order_dropped">
+<code class="descname">on_order_dropped</code><span class="sig-paren">(</span><em>kind</em>, <em>action</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>reason</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_order_dropped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be called when an order request is dropped due to lack of order book information.
+:param kind: OrderKind, the order kind.
+:param action: OrderAction, the order action.
+:param instrument_id: string, instrument id, the instrument id.
+:param actual_instrument_id: string, actual instrument id.
+:param reason: string, the reason for the order request.</p>
 </dd></dl>
 
 <dl class="method">
@@ -3598,7 +3600,7 @@ of this action for a single order.
 :param trade_info: dict, providing information of the trade.</p>
 <blockquote>
 <div>Keys (non-exhaustively) include:
-instrument_id, slippage, commission, profits, transaction_id, traded_volume, left_volume,
+instrument_id, slippage, commission, profits, traded_volume, left_volume,
 order_ref, current_traded_volume, current_traded_price, action, reason, kind, status.</div></blockquote>
 </dd></dl>
 
@@ -3813,8 +3815,7 @@ The strategy is responsible for maintaining positions in a single direction, if 
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd>Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.</dd>
+order_ref: string, the value is string, the order reference.</dd>
 </dl>
 </td>
 </tr>
@@ -3840,8 +3841,7 @@ provide future_id, self.future_id will be used implicitly.
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd>Each element is a dict containing the following keys:
-order_ref: string, the value is string, the order reference.
-transaction_id: string, the value is string, the transaction id.</dd>
+order_ref: string, the value is string, the order reference.</dd>
 </dl>
 </td>
 </tr>
@@ -4343,11 +4343,6 @@ instrument_id, kind and period to find the ohlc.</li>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.transaction_id_from_order_ref">
-<code class="descname">transaction_id_from_order_ref</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.transaction_id_from_order_ref" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.transit_state">
 <code class="descname">transit_state</code><span class="sig-paren">(</span><em>state_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.transit_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply state_inputs to self._state. This will possibly trigger state transition.
@@ -4468,7 +4463,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 25, 2016.
+      Last updated on Jul 27, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

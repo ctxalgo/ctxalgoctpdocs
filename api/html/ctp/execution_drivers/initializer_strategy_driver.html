@@ -86,6 +86,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../data_producers/index.html">data_producers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../strategies/index.html">strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_account_loaders/index.html">trading_account_loaders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../slippage_models.html">slippage_models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../strategy_utils.html">strategy_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exchanges.html">exchanges</a></li>
@@ -327,23 +328,6 @@ remote positions.</li>
 <dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.log_state_transition">
 <code class="descname">log_state_transition</code><span class="sig-paren">(</span><em>start_state</em>, <em>end_state</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.log_state_transition" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.log_stop_loss">
-<code class="descname">log_stop_loss</code><span class="sig-paren">(</span><em>timestamp</em>, <em>direction</em>, <em>value</em>, <em>transaction_id</em>, <em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.log_stop_loss" title="Permalink to this definition">¶</a></dt>
-<dd><p>Log stop loss.
-Parameters:</p>
-<blockquote>
-<div><p>timestamp: datetime, the time when the stop loss is calculated.
-direction: int, 1 means long stop loss, -1 means short stop loss.
-value: float, the stop loss value.
-transaction_id: string, transaction id.
-name: string, a possible additional name for the stop loss line. This is helpful to</p>
-<blockquote>
-<div>support multiple stop lines (for example, a close-bar stop loss and an in-bar stop loss)
-for the same transaction.</div></blockquote>
-</div></blockquote>
-</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.log_trade">
@@ -656,7 +640,7 @@ Information include: future delivery date, investor position for that future.</p
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 25, 2016.
+      Last updated on Jul 27, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

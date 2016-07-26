@@ -81,6 +81,7 @@
 <li class="toctree-l2"><a class="reference internal" href="execution_drivers/index.html">execution_drivers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_producers/index.html">data_producers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strategies/index.html">strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading_account_loaders/index.html">trading_account_loaders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slippage_models.html">slippage_models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strategy_utils.html">strategy_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exchanges.html">exchanges</a></li>
@@ -441,16 +442,6 @@ ignore price, volume and timestamp parameters.</li>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.current_transaction_id">
-<code class="descname">current_transaction_id</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.current_transaction_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.transaction_id_from_order_ref">
-<code class="descname">transaction_id_from_order_ref</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.transaction_id_from_order_ref" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.now">
 <code class="descname">now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.now" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -528,6 +519,14 @@ For example:
 </div></blockquote>
 <p>}</p>
 </div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.all_positions_with_actual_instrument_id">
+<code class="descname">all_positions_with_actual_instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.all_positions_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return currently holding positions in all traded instruments, including information about actual
+instrument ids.
+:return dict{string: dict{string: int}}, meaning {instrument_id: dict{actual_instrument_id: volume}}.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1144,7 +1143,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 25, 2016.
+      Last updated on Jul 27, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

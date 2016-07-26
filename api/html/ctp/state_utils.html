@@ -81,6 +81,7 @@
 <li class="toctree-l2"><a class="reference internal" href="execution_drivers/index.html">execution_drivers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_producers/index.html">data_producers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strategies/index.html">strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading_account_loaders/index.html">trading_account_loaders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slippage_models.html">slippage_models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strategy_utils.html">strategy_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exchanges.html">exchanges</a></li>
@@ -194,6 +195,14 @@ Note that the labels must be certain strings defined in current class.</div></bl
 <dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.all_positions">
 <code class="descname">all_positions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.all_positions" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.all_positions_with_actual_instrument_id">
+<code class="descname">all_positions_with_actual_instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.all_positions_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return currently holding positions in all traded instruments, including information about actual
+instrument ids.
+:return dict{string: dict{string: int}}, meaning {instrument_id: dict{actual_instrument_id: volume}}.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.available_money">
@@ -1117,6 +1126,14 @@ Note that the labels must be certain strings defined in current class.</div></bl
 <dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.all_positions">
 <code class="descname">all_positions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.all_positions" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.all_positions_with_actual_instrument_id">
+<code class="descname">all_positions_with_actual_instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.all_positions_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return currently holding positions in all traded instruments, including information about actual
+instrument ids.
+:return dict{string: dict{string: int}}, meaning {instrument_id: dict{actual_instrument_id: volume}}.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.available_money">
@@ -2055,6 +2072,14 @@ Note that the labels must be certain strings defined in current class.</div></bl
 <dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.all_positions">
 <code class="descname">all_positions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.all_positions" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.all_positions_with_actual_instrument_id">
+<code class="descname">all_positions_with_actual_instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.all_positions_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return currently holding positions in all traded instruments, including information about actual
+instrument ids.
+:return dict{string: dict{string: int}}, meaning {instrument_id: dict{actual_instrument_id: volume}}.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.available_money">
@@ -3002,6 +3027,14 @@ Note that the labels must be certain strings defined in current class.</div></bl
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.all_positions_with_actual_instrument_id">
+<code class="descname">all_positions_with_actual_instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.all_positions_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return currently holding positions in all traded instruments, including information about actual
+instrument ids.
+:return dict{string: dict{string: int}}, meaning {instrument_id: dict{actual_instrument_id: volume}}.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.available_money">
 <code class="descname">available_money</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.available_money" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -3937,6 +3970,14 @@ Note that the labels must be certain strings defined in current class.</div></bl
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.all_positions_with_actual_instrument_id">
+<code class="descname">all_positions_with_actual_instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.all_positions_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return currently holding positions in all traded instruments, including information about actual
+instrument ids.
+:return dict{string: dict{string: int}}, meaning {instrument_id: dict{actual_instrument_id: volume}}.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.available_money">
 <code class="descname">available_money</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.available_money" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -4870,6 +4911,14 @@ Note that the labels must be certain strings defined in current class.</div></bl
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.all_positions">
 <code class="descname">all_positions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.all_positions" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.all_positions_with_actual_instrument_id">
+<code class="descname">all_positions_with_actual_instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.all_positions_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return currently holding positions in all traded instruments, including information about actual
+instrument ids.
+:return dict{string: dict{string: int}}, meaning {instrument_id: dict{actual_instrument_id: volume}}.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.available_money">
@@ -5845,6 +5894,14 @@ Note that the labels must be certain strings defined in current class.</div></bl
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.all_positions_with_actual_instrument_id">
+<code class="descname">all_positions_with_actual_instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.all_positions_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return currently holding positions in all traded instruments, including information about actual
+instrument ids.
+:return dict{string: dict{string: int}}, meaning {instrument_id: dict{actual_instrument_id: volume}}.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.available_money">
 <code class="descname">available_money</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.available_money" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -6771,6 +6828,14 @@ Note that the labels must be certain strings defined in current class.</div></bl
 <dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.all_positions">
 <code class="descname">all_positions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.all_positions" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.all_positions_with_actual_instrument_id">
+<code class="descname">all_positions_with_actual_instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.all_positions_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return currently holding positions in all traded instruments, including information about actual
+instrument ids.
+:return dict{string: dict{string: int}}, meaning {instrument_id: dict{actual_instrument_id: volume}}.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.available_money">
@@ -7737,6 +7802,14 @@ Note that the labels must be certain strings defined in current class.</div></bl
 <dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.all_positions">
 <code class="descname">all_positions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.all_positions" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.all_positions_with_actual_instrument_id">
+<code class="descname">all_positions_with_actual_instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.all_positions_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return currently holding positions in all traded instruments, including information about actual
+instrument ids.
+:return dict{string: dict{string: int}}, meaning {instrument_id: dict{actual_instrument_id: volume}}.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.available_money">
@@ -8715,6 +8788,14 @@ Note that the labels must be certain strings defined in current class.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.all_positions_with_actual_instrument_id">
+<code class="descname">all_positions_with_actual_instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.all_positions_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return currently holding positions in all traded instruments, including information about actual
+instrument ids.
+:return dict{string: dict{string: int}}, meaning {instrument_id: dict{actual_instrument_id: volume}}.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.available_money">
 <code class="descname">available_money</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.available_money" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -9671,7 +9752,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 25, 2016.
+      Last updated on Jul 27, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
