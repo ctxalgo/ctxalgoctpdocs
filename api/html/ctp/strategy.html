@@ -450,11 +450,6 @@ some bookkeeping work. If None, no extra time is added.</li>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_time_step">
-<code class="descname">on_time_step</code><span class="sig-paren">(</span><em>p_api</em>, <em>time_step</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_time_step" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_trading_ready">
 <code class="descname">on_trading_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_trading_ready" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be invoked when trading is ready, meaning that trading server is connected.</p>
@@ -1391,8 +1386,8 @@ multiple pieces of information, one piece for each currency.</td>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_idle_event">
-<code class="descname">on_idle_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_idle_event" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_time_step">
+<code class="descname">on_time_step</code><span class="sig-paren">(</span><em>p_api</em>, <em>time_step</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_time_step" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1849,6 +1844,13 @@ instrument_id, kind and period to find the ohlc.</li>
 <code class="descname">on_bar_method</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_bar_method" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the function pointer for on_bar.
 :return: function pointer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_idle_event">
+<code class="descname">on_idle_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_idle_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when there is no event from the outside.
+:return:</p>
 </dd></dl>
 
 <dl class="method">
@@ -3424,7 +3426,9 @@ Parameters:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_idle_event">
 <code class="descname">on_idle_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_idle_event" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Action to be invoked when there is no event from the outside.
+:return:</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_investor_position">
