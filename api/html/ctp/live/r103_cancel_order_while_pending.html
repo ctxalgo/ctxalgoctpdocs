@@ -1912,11 +1912,12 @@ corresponding strategy callbacks from outside.</div></blockquote>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.setup_order_cancellations">
-<code class="descname">setup_order_cancellations</code><span class="sig-paren">(</span><em>order_ref</em>, <em>order_place_time</em>, <em>instrument_id</em>, <em>cancellation</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.setup_order_cancellations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">setup_order_cancellations</code><span class="sig-paren">(</span><em>order_ref</em>, <em>order_place_time</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>cancellation</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.setup_order_cancellations" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup order cancellation.
 :param order_ref: string, full order reference.
 :param order_place_time: datetime, the time when the order is placed.
 :param instrument_id: string, the instrument to trade.
+:param actual_instrument_id: string, the actual instrument id to trade.
 :param cancellation: AbstractOrderCancellation, order cancellation policy.</p>
 </dd></dl>
 
