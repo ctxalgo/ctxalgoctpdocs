@@ -603,12 +603,12 @@ The parameters open_price, high_price, low_price and close_price are used for li
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.put_historical_ohlcs">
-<code class="descname">put_historical_ohlcs</code><span class="sig-paren">(</span><em>future_id</em>, <em>new_ohlcs</em>, <em>max_bar</em>, <em>kind</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.put_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">put_historical_ohlcs</code><span class="sig-paren">(</span><em>future_id</em>, <em>bars</em>, <em>new_ohlcs_func</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.put_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.get_historical_ohlcs">
-<code class="descname">get_historical_ohlcs</code><span class="sig-paren">(</span><em>future_id</em>, <em>periods</em>, <em>max_bar</em>, <em>kind</em>, <em>with_open_interests=False</em>, <em>order_book_level=0</em>, <em>profits=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.get_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_historical_ohlcs</code><span class="sig-paren">(</span><em>future_id</em>, <em>periods</em>, <em>max_bar</em>, <em>kind</em>, <em>with_open_interests</em>, <em>dominants</em>, <em>profits</em>, <em>order_book_level</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.get_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -663,6 +663,11 @@ The parameters open_price, high_price, low_price and close_price are used for li
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_context">
+<code class="descname">load_context</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.add_data_subscription">
 <code class="descname">add_data_subscription</code><span class="sig-paren">(</span><em>data_subscription</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.add_data_subscription" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add data subscription into current.
@@ -677,6 +682,11 @@ The parameters open_price, high_price, low_price and close_price are used for li
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.bar_feed">
 <code class="descname">bar_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.bar_feed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.data_feed">
+<code class="descname">data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.data_feed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -735,11 +745,6 @@ The parameters open_price, high_price, low_price and close_price are used for li
 :param instrument_id: string, instrument id.
 :return: bool.</p>
 </dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_context">
-<code class="descname">load_context</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_context" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.max_initialization_retries">
@@ -888,8 +893,8 @@ This only effect real trading. In real trading some CTP providers does not offer
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.data_feed">
-<code class="descname">data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.data_feed" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_historical_ohlcs">
+<code class="descname">load_historical_ohlcs</code><span class="sig-paren">(</span><em>all_periods</em>, <em>max_bars</em>, <em>with_open_interests</em>, <em>dominants</em>, <em>profits</em>, <em>use_mid_ask_bid</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -916,7 +921,7 @@ This only effect real trading. In real trading some CTP providers does not offer
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 27, 2016.
+      Last updated on Jul 29, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
