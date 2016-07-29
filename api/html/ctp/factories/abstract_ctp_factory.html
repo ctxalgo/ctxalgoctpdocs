@@ -320,9 +320,10 @@ switch between real trading classes and backtesting classes.</p>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.create_message_queue">
-<code class="descname">create_message_queue</code><span class="sig-paren">(</span><em>callbacks</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.create_message_queue" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_message_queue</code><span class="sig-paren">(</span><em>callbacks</em>, <em>all_event_queue</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.create_message_queue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a message queue instance.
 :param callbacks: CtpCallbacks.
+:param all_event_queue: Queue, the queue to hold all sources of events.
 :return: CtpMessageQueue.</p>
 </dd></dl>
 
@@ -505,11 +506,9 @@ This is only used for backtesting, to do early stage strategy research.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.poll_subscribed_data">
-<code class="descname">poll_subscribed_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.poll_subscribed_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Poll from registered data subscriptions.
-:return: boolean, True if there is some data available, False otherwise.</p>
-</dd></dl>
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.dispose_data_subscriptions">
+<code class="descname">dispose_data_subscriptions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.dispose_data_subscriptions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_mission_control">
@@ -651,7 +650,7 @@ This only effect real trading. In real trading some CTP providers does not offer
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 29, 2016.
+      Last updated on Jul 30, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

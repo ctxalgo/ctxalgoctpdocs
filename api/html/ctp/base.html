@@ -158,7 +158,12 @@
 <span id="base"></span><h1>base<a class="headerlink" href="#module-ctxalgoctp.ctp.base" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="ctxalgoctp.ctp.base.pointer_to_object">
-<code class="descclassname">ctxalgoctp.ctp.base.</code><code class="descname">pointer_to_object</code><span class="sig-paren">(</span><em>callbacks</em>, <em>logger</em>, <em>func=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.pointer_to_object" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ctxalgoctp.ctp.base.</code><code class="descname">pointer_to_object</code><span class="sig-paren">(</span><em>all_event_queue</em>, <em>logger</em>, <em>func_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.pointer_to_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ctxalgoctp.ctp.base.pointer_to_object2">
+<code class="descclassname">ctxalgoctp.ctp.base.</code><code class="descname">pointer_to_object2</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.pointer_to_object2" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="class">
@@ -501,7 +506,7 @@ it is not considered to be an error, and your order will be canceled.</p>
 
 <dl class="class">
 <dt id="ctxalgoctp.ctp.base.CtpMessageQueue">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.base.</code><code class="descname">CtpMessageQueue</code><span class="sig-paren">(</span><em>callbacks</em>, <em>is_backtesting</em>, <em>c2ctp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpMessageQueue" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.base.</code><code class="descname">CtpMessageQueue</code><span class="sig-paren">(</span><em>all_event_queue</em>, <em>callbacks</em>, <em>is_backtesting</em>, <em>c2ctp=None</em>, <em>time_step=1</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpMessageQueue" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize message queue.
 :param callbacks: list of CtpCallBacks, the callbacks.
 :param is_backtesting: boolean, True if the queue is created in backtesting.
@@ -881,7 +886,7 @@ Invoke corresponding callback function for that message.
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 29, 2016.
+      Last updated on Jul 30, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

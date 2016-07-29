@@ -574,7 +574,7 @@ The parameters open_price, high_price, low_price and close_price are used for li
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.create_message_queue">
-<code class="descname">create_message_queue</code><span class="sig-paren">(</span><em>callbacks</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.create_message_queue" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_message_queue</code><span class="sig-paren">(</span><em>callbacks</em>, <em>all_event_queue</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.create_message_queue" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -686,6 +686,11 @@ The parameters open_price, high_price, low_price and close_price are used for li
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.dispose_data_subscriptions">
+<code class="descname">dispose_data_subscriptions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.dispose_data_subscriptions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.dominant_provider">
 <code class="descname">dominant_provider</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.dominant_provider" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -759,13 +764,6 @@ The parameters open_price, high_price, low_price and close_price are used for li
 :return: MissionControl, the registered mission control.</p>
 <blockquote>
 <div>Return None if no mission control is registered.</div></blockquote>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.poll_subscribed_data">
-<code class="descname">poll_subscribed_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.poll_subscribed_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Poll from registered data subscriptions.
-:return: boolean, True if there is some data available, False otherwise.</p>
 </dd></dl>
 
 <dl class="method">
@@ -917,7 +915,7 @@ This only effect real trading. In real trading some CTP providers does not offer
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 29, 2016.
+      Last updated on Jul 30, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
