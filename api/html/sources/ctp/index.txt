@@ -6,6 +6,7 @@ ctp
 
    live/index
    factories/index
+   context_loaders/index
    code_gen/index
    logger/index
    execution_drivers/index

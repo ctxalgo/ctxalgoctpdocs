@@ -32,7 +32,7 @@
   
     <link rel="top" title="ctxalgoctp 0.1 documentation" href="../../index.html"/>
         <link rel="up" title="factories" href="index.html"/>
-        <link rel="next" title="code_gen" href="../code_gen/index.html"/>
+        <link rel="next" title="context_loaders" href="../context_loaders/index.html"/>
         <link rel="prev" title="abstract_ctp_factory" href="abstract_ctp_factory.html"/> 
 
   
@@ -81,6 +81,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">ctp_real_factory</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../context_loaders/index.html">context_loaders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../code_gen/index.html">code_gen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../logger/index.html">logger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../execution_drivers/index.html">execution_drivers</a></li>
@@ -208,6 +209,11 @@ calculate metrics.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_context_loader">
+<code class="descname">set_context_loader</code><span class="sig-paren">(</span><em>loader</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_context_loader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_trading_account_loader">
 <code class="descname">set_trading_account_loader</code><span class="sig-paren">(</span><em>loader</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_trading_account_loader" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -316,16 +322,6 @@ calculate metrics.</li>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.store_context">
-<code class="descname">store_context</code><span class="sig-paren">(</span><em>context</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.store_context" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.load_context">
-<code class="descname">load_context</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.load_context" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.data_feed">
 <code class="descname">data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.data_feed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -345,6 +341,11 @@ calculate metrics.</li>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.bar_feed">
 <code class="descname">bar_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.bar_feed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.context_loader">
+<code class="descname">context_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.context_loader" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -571,7 +572,7 @@ This only effect real trading. In real trading some CTP providers does not offer
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../code_gen/index.html" class="btn btn-neutral float-right" title="code_gen" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../context_loaders/index.html" class="btn btn-neutral float-right" title="context_loaders" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="abstract_ctp_factory.html" class="btn btn-neutral" title="abstract_ctp_factory" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

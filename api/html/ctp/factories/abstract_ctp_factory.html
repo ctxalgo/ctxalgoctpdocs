@@ -81,6 +81,7 @@
 <li class="toctree-l3"><a class="reference internal" href="ctp_real_factory.html">ctp_real_factory</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../context_loaders/index.html">context_loaders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../code_gen/index.html">code_gen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../logger/index.html">logger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../execution_drivers/index.html">execution_drivers</a></li>
@@ -179,6 +180,11 @@ Return: timestamp</p>
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.factories.abstract_ctp_factory.</code><code class="descname">AbstractCtpFactory</code><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract class to generate CtpMarket and CtpTrading classes. Used to
 switch between real trading classes and backtesting classes.</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.context_loader">
+<code class="descname">context_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.context_loader" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_account_loader">
 <code class="descname">set_account_loader</code><span class="sig-paren">(</span><em>loader</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_account_loader" title="Permalink to this definition">¶</a></dt>
@@ -613,21 +619,6 @@ This only effect real trading. In real trading some CTP providers does not offer
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.future_trading_utils">
 <code class="descname">future_trading_utils</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.future_trading_utils" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.store_context">
-<code class="descname">store_context</code><span class="sig-paren">(</span><em>context</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.store_context" title="Permalink to this definition">¶</a></dt>
-<dd><p>Store context object into file.
-:param context: dict{string: object}, context object.
-:param path: string, the file path to store data.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.load_context">
-<code class="descname">load_context</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.load_context" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load context from file.
-:param path: string, the file path to load data.</p>
-</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.account_initial_capital">
