@@ -165,7 +165,7 @@
 <h1>initializer_strategy_driver<a class="headerlink" href="#initializer-strategy-driver" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="module-ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver"></span><dl class="class">
 <dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.</code><code class="descname">StrategyInitializerCallbacks</code><span class="sig-paren">(</span><em>ctp_factory</em>, <em>future_ids</em>, <em>base_folder</em>, <em>logger</em>, <em>adaptation_timedelta</em>, <em>should_get_instrument_info</em>, <em>should_get_margin_rate</em>, <em>should_get_commission_ratio</em>, <em>should_get_order_comm_rate</em>, <em>should_use_remote_instrument_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.</code><code class="descname">StrategyInitializerCallbacks</code><span class="sig-paren">(</span><em>ctp_factory</em>, <em>future_ids</em>, <em>base_folder</em>, <em>logger</em>, <em>adaptation_timedelta</em>, <em>should_get_instrument_info</em>, <em>should_get_margin_rate</em>, <em>should_get_commission_ratio</em>, <em>should_get_order_comm_rate</em>, <em>should_use_remote_instrument_info</em>, <em>product_and_strategy_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../callback_base.html#ctxalgoctp.ctp.callback_base.CallbackBase" title="ctxalgoctp.ctp.callback_base.CallbackBase"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.callback_base.CallbackBase</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -309,7 +309,7 @@ remote positions.</li>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.log_investor_position">
-<code class="descname">log_investor_position</code><span class="sig-paren">(</span><em>investor_position</em>, <em>timestamp</em>, <em>is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.log_investor_position" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_investor_position</code><span class="sig-paren">(</span><em>investor_position</em>, <em>timestamp</em>, <em>product_and_strategy_info</em>, <em>is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.log_investor_position" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log investor position.
 :param investor_position: The investor position object.
 :param is_last: boolean, is the result the last batch.</p>
@@ -646,7 +646,7 @@ Information include: future delivery date, investor position for that future.</p
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 30, 2016.
+      Last updated on Aug 02, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

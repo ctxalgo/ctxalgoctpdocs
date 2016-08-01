@@ -243,7 +243,7 @@ actual_instrument_id: string, actual instrument id, cannot be relative.</div></b
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trading_account.TradingAccount.get_position_with_actual_instrument_id">
-<code class="descname">get_position_with_actual_instrument_id</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>today=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.get_position_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_position_with_actual_instrument_id</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>today=None</em>, <em>info=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.get_position_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return positions for a given future in current account.
 :param instrument_id: string, future id.
 :param today: date, the current trading day.
@@ -261,19 +261,28 @@ there is no position in that direction. The returned list has maximal two elemen
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trading_account.TradingAccount.get_position">
-<code class="descname">get_position</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>today=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.get_position" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_position</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>today=None</em>, <em>info=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.get_position" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return positions for a given future in current account.
 :param instrument_id: string, future id.
 :param today: date, the current trading day.
-:return: [(direction, volume, yesterday_volume, today_volume)],</p>
+:param info: Instrument information provider, when not None, calculate position profit, otherwise</p>
 <blockquote>
-<div>direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;.
+<div>the profit is set to 0.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">[(direction, volume, yesterday_volume, today_volume, profit)],
+direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;.
 volume: int, the overall positions.
 yesterday_volume: int, the positions from previous trading days.
 today_volume: int, the positions from current trading day.
 A list of positions. direction is &#8216;long&#8217; or &#8216;short&#8217; and volume is of type int.
 Positive volume means long position; negative volume means short position. zero volumes means
-there is no position in that direction. The returned list has maximal two elements.</div></blockquote>
+there is no position in that direction. The returned list has maximal two elements.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -289,7 +298,7 @@ Inner keys are position property names, inner values are property values.</div><
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trading_account.TradingAccount.get_positions">
-<code class="descname">get_positions</code><span class="sig-paren">(</span><em>instrument_id=''</em>, <em>today=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.get_positions" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_positions</code><span class="sig-paren">(</span><em>instrument_id=''</em>, <em>today=None</em>, <em>info=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.get_positions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the list of all holding instrument positions.
 :param instrument_id: string, the instrument id.</p>
 <blockquote>
@@ -301,7 +310,7 @@ otherwise, return positions for the specified instrument.</div></blockquote>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>today</strong> &#8211; date, current trading day.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict{string: [(direction, volume, yesterday_volume, today_volume)]}, keys are instrument ids.
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict{string: [(direction, volume, yesterday_volume, today_volume, profit)]}, keys are instrument ids.
 A value is a list of positions. direction is &#8216;long&#8217; or &#8216;short&#8217; and volume is of type int.
 Positive volume means long position; negative volume means short position. zero volumes means
 there is no position in that direction. Each list has maximal two elements.</td>
@@ -444,6 +453,14 @@ instrument ids.
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trading_account.TradingAccount.get_all_position_details_with_actual_instrument_id">
+<code class="descname">get_all_position_details_with_actual_instrument_id</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>today=None</em>, <em>info=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.get_all_position_details_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return currently holding positions in all traded instruments, including information about actual
+instrument ids.
+:return dict{string: dict{string: dict{string: object}}}, meaning {instrument_id: dict{actual_instrument_id: dict{volume fields: values}}}.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trading_account.TradingAccount.get_current_balance">
 <code class="descname">get_current_balance</code><span class="sig-paren">(</span><em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.get_current_balance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the current balance in this account.
@@ -545,7 +562,7 @@ L&gt;0             S&lt;0             p2&lt;0, p2==S     close_long(L)</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 30, 2016.
+      Last updated on Aug 02, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
