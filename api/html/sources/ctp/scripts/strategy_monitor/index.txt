@@ -1,4 +1,4 @@
-scripts
+strategy_monitor
 ########################
 
 .. toctree::
