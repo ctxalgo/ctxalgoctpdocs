@@ -88,6 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../data_producers/index.html">data_producers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../strategies/index.html">strategies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trading_account_loaders/index.html">trading_account_loaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripts/index.html">scripts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../slippage_models.html">slippage_models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../strategy_utils.html">strategy_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exchanges.html">exchanges</a></li>
@@ -542,6 +543,13 @@ This is only used for backtesting, to do early stage strategy research.</p>
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.dispose_data_subscriptions">
 <code class="descname">dispose_data_subscriptions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.dispose_data_subscriptions" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.poll_subscribed_data">
+<code class="descname">poll_subscribed_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.poll_subscribed_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Poll from registered data subscriptions.
+:return: boolean, True if there is some data available, False otherwise.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_mission_control">

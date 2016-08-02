@@ -83,6 +83,7 @@
 <li class="toctree-l2"><a class="reference internal" href="data_producers/index.html">data_producers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strategies/index.html">strategies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trading_account_loaders/index.html">trading_account_loaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripts/index.html">scripts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slippage_models.html">slippage_models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strategy_utils.html">strategy_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exchanges.html">exchanges</a></li>
@@ -232,8 +233,16 @@ If not None, use this reader to load ohlc data from file, and line_parser will n
 </dd></dl>
 
 <dl class="function">
+<dt id="ctxalgoctp.ctp.backtesting_utils.setup_mission_controller">
+<code class="descclassname">ctxalgoctp.ctp.backtesting_utils.</code><code class="descname">setup_mission_controller</code><span class="sig-paren">(</span><em>controller</em>, <em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtesting_utils.setup_mission_controller" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the mission controller inside the given strategy.
+:param controller: CtpMissionController, the mission controller.
+:param strategy: AbstractStateBasedStrategy, the strategy whose mission controller will be set.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="ctxalgoctp.ctp.backtesting_utils.backtest">
-<code class="descclassname">ctxalgoctp.ctp.backtesting_utils.</code><code class="descname">backtest</code><span class="sig-paren">(</span><em>strategy_class</em>, <em>config_getter</em>, <em>start_date</em>, <em>end_date</em>, <em>backtest_data_period=None</em>, <em>initial_capital=1000000.0</em>, <em>data_paths=None</em>, <em>line_parser=None</em>, <em>daily_start_time=None</em>, <em>daily_end_time=None</em>, <em>on_strategy_object_created=None</em>, <em>user=None</em>, <em>slippage_model=None</em>, <em>is_eager_order_execution=True</em>, <em>should_profile=False</em>, <em>has_commission=True</em>, <em>message_random_delay_enabled=False</em>, <em>should_print=True</em>, <em>slow_motion=None</em>, <em>strategy_callbacks=None</em>, <em>is_extrapolate_data_allowed=True</em>, <em>report_has_charting_url=True</em>, <em>perform_backtest=True</em>, <em>ohlc_reader=None</em>, <em>security_company=None</em>, <em>data_feed=None</em>, <em>log_in_console=False</em>, <em>dominant_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtesting_utils.backtest" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ctxalgoctp.ctp.backtesting_utils.</code><code class="descname">backtest</code><span class="sig-paren">(</span><em>strategy_class</em>, <em>config_getter</em>, <em>start_date</em>, <em>end_date</em>, <em>backtest_data_period=None</em>, <em>initial_capital=1000000.0</em>, <em>data_paths=None</em>, <em>line_parser=None</em>, <em>daily_start_time=None</em>, <em>daily_end_time=None</em>, <em>user=None</em>, <em>slippage_model=None</em>, <em>is_eager_order_execution=True</em>, <em>should_profile=False</em>, <em>has_commission=True</em>, <em>message_random_delay_enabled=False</em>, <em>should_print=True</em>, <em>slow_motion=None</em>, <em>strategy_callbacks=None</em>, <em>is_extrapolate_data_allowed=True</em>, <em>report_has_charting_url=True</em>, <em>perform_backtest=True</em>, <em>ohlc_reader=None</em>, <em>security_company=None</em>, <em>data_feed=None</em>, <em>log_in_console=False</em>, <em>dominant_provider=None</em>, <em>mission_control=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtesting_utils.backtest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Backtest your strategy.
 :param strategy_class: class, the class of the strategy.
 :param config_getter: A function pointer to return config to run strategy. Or a dict{string: object}, keys are</p>
@@ -272,9 +281,6 @@ amount: float, the amount of money that has been traded, if there is no amount d
 </li>
 <li><strong>daily_start_time</strong> &#8211; time, the time for the backtester to start every day.</li>
 <li><strong>daily_end_time</strong> &#8211; time, the time for the backtester to end every day.</li>
-<li><strong>on_strategy_object_created</strong> &#8211; function pointer, with a single parameter, which is the
-currently created strategy object. This function will be invoked after the backtester creates
-a new strategy instance. Used for setup things. For example, to setup a mission controller.</li>
 </ul>
 </td>
 </tr>
@@ -321,6 +327,8 @@ f None, use a default company.</li>
 <li><strong>data_feed</strong> &#8211; AbstractDataFeed, data feed.</li>
 <li><strong>log_in_console</strong> &#8211; bool, if True and if there is no logger provided in the strategy configuration,
 create a default logger which prints logs into console.</li>
+<li><strong>dominant_provider</strong> &#8211; AbstractDominantProvider, dominant provider, used for trading relative instrument ids.</li>
+<li><strong>mission_control</strong> &#8211; MissionControl, provide the mission controller.</li>
 </ul>
 </td>
 </tr>

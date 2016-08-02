@@ -83,6 +83,7 @@
 <li class="toctree-l2"><a class="reference internal" href="data_producers/index.html">data_producers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strategies/index.html">strategies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trading_account_loaders/index.html">trading_account_loaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripts/index.html">scripts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slippage_models.html">slippage_models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strategy_utils.html">strategy_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exchanges.html">exchanges</a></li>
@@ -452,6 +453,21 @@ some bookkeeping work. If None, no extra time is added.</li>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_market_disconnected">
 <code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.log_mission_control">
+<code class="descname">log_mission_control</code><span class="sig-paren">(</span><em>tag</em>, <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.log_mission_control" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_mission_control">
+<code class="descname">on_mission_control</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_mission_control" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.send_message_to_mission_controller">
+<code class="descname">send_message_to_mission_controller</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.send_message_to_mission_controller" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1192,13 +1208,6 @@ The returned information will be accessible through the corresponding callback f
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.send_message">
-<code class="descname">send_message</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.send_message" title="Permalink to this definition">¶</a></dt>
-<dd><p>Send message using self.message_sender.
-:param message: string, the message to send.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.get_investor_position">
 <code class="descname">get_investor_position</code><span class="sig-paren">(</span><em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.get_investor_position" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send a request for investor position for the given future.
@@ -1864,11 +1873,9 @@ instrument_id, kind and period to find the ohlc.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_mission_control">
-<code class="descname">on_mission_control</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_mission_control" title="Permalink to this definition">¶</a></dt>
-<dd><p>Action to be invoked when a message from control center is arrived.
-:param message: string, the message from the the control center.</p>
-</dd></dl>
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_message_from_mission_controller">
+<code class="descname">on_message_from_mission_controller</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_message_from_mission_controller" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_trading_rsp_qry_depth_market_data">
@@ -3098,6 +3105,11 @@ Meaning either long or short positions, but not both.
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_mission_control">
+<code class="descname">log_mission_control</code><span class="sig-paren">(</span><em>tag</em>, <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_mission_control" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_ohlc">
 <code class="descname">log_ohlc</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>bars</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_ohlc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log ohlc.
@@ -3480,11 +3492,14 @@ requested by get_investor_position.
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_message_from_mission_controller">
+<code class="descname">on_message_from_mission_controller</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_message_from_mission_controller" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_mission_control">
 <code class="descname">on_mission_control</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_mission_control" title="Permalink to this definition">¶</a></dt>
-<dd><p>Action to be invoked when a message from control center is arrived.
-:param message: string, the message from the the control center.</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_order">
@@ -4030,11 +4045,9 @@ between the current price and the position price.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.send_message">
-<code class="descname">send_message</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.send_message" title="Permalink to this definition">¶</a></dt>
-<dd><p>Send message using self.message_sender.
-:param message: string, the message to send.</p>
-</dd></dl>
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.send_message_to_mission_controller">
+<code class="descname">send_message_to_mission_controller</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.send_message_to_mission_controller" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.set_all_callbacks">

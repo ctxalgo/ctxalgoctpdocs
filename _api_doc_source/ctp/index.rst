@@ -13,6 +13,7 @@ ctp
    data_producers/index
    strategies/index
    trading_account_loaders/index
+   scripts/index
    slippage_models
    strategy_utils
    exchanges

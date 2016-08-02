@@ -88,6 +88,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../data_producers/index.html">data_producers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../strategies/index.html">strategies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trading_account_loaders/index.html">trading_account_loaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripts/index.html">scripts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../slippage_models.html">slippage_models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../strategy_utils.html">strategy_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exchanges.html">exchanges</a></li>
@@ -672,6 +673,11 @@ The parameters open_price, high_price, low_price and close_price are used for li
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.data_feed">
+<code class="descname">data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.data_feed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.add_data_subscription">
 <code class="descname">add_data_subscription</code><span class="sig-paren">(</span><em>data_subscription</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.add_data_subscription" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add data subscription into current.
@@ -691,11 +697,6 @@ The parameters open_price, high_price, low_price and close_price are used for li
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.context_loader">
 <code class="descname">context_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.context_loader" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.data_feed">
-<code class="descname">data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.data_feed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -764,6 +765,11 @@ The parameters open_price, high_price, low_price and close_price are used for li
 :param instrument_id: string, instrument id.
 :return: bool.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_historical_ohlcs">
+<code class="descname">load_historical_ohlcs</code><span class="sig-paren">(</span><em>all_periods</em>, <em>max_bars</em>, <em>with_open_interests</em>, <em>dominants</em>, <em>profits</em>, <em>use_mid_ask_bid</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.max_initialization_retries">
@@ -920,9 +926,11 @@ This only effect real trading. In real trading some CTP providers does not offer
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_historical_ohlcs">
-<code class="descname">load_historical_ohlcs</code><span class="sig-paren">(</span><em>all_periods</em>, <em>max_bars</em>, <em>with_open_interests</em>, <em>dominants</em>, <em>profits</em>, <em>use_mid_ask_bid</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.poll_subscribed_data">
+<code class="descname">poll_subscribed_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.poll_subscribed_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Poll from registered data subscriptions.
+:return: boolean, True if there is some data available, False otherwise.</p>
+</dd></dl>
 
 </dd></dl>
 
