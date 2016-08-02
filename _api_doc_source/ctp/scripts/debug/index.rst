@@ -1,8 +1,7 @@
-scripts
+debug
 ########################
 
 .. toctree::
    :maxdepth: 2
 
-   debug/index
-   strategy_monitor
+   strategy
