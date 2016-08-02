@@ -14,7 +14,7 @@ CTX系统中的回测模块每天会重新创建一个交易策略的对象，�
 我们可以使用`self.context`来保存这些数据。保存在`self.context`中的数据会在跨交易日的时候依然可以访问。`self.context`的
 使用方法和dict一致。你也可以通过`self.context.key`和`self.context.key = value`来读取和设置`self.context`的内容。
 
-请注意，`self.context`不能在策略对象的`__init__`中使用，以为在`__init__`中`self.context`还没有被初始化。 `self.context`
+请注意，`self.context`不能在策略对象的`__init__`中使用，因为在`__init__`中`self.context`还没有被初始化。 `self.context`
 可以在交易策略开始运行之后使用。
 
 在以下的代码中，我们对之前双均线趋势跟踪策略做了如下扩展：当持仓到达一定天数的时候，我们会平掉所有头寸。我们在
