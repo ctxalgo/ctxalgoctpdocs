@@ -56,7 +56,8 @@ class TrendFollowingWithMaxHoldingDayStrategy(AbstractStrategy):
             # If we have positions, we increase the day counter.
             # Since on_before_run will be called only once a day, the counter then records the
             # number of days we have held some position.
-            self.context.holding_days += 1
+            if 'holding_days' in self.context:
+                self.context['holding_days'] += 1
 
     def on_bar(self, instrument_id, bars, tick):
         if self.ohlc().length >= self.parameters.slow_ma_period:
@@ -71,7 +72,7 @@ class TrendFollowingWithMaxHoldingDayStrategy(AbstractStrategy):
                         self.change_position_to(0)
             else:
                 self.change_position_to(signal)
-                self.context.holding_days = 1
+                self.context['holding_days'] = 1
 ```
 
 Now, we create configurations for backtesting the strategy.
