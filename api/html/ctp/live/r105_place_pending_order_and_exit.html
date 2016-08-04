@@ -767,6 +767,17 @@ The returned information will be accessible through the corresponding callback f
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.in_market_period">
+<code class="descname">in_market_period</code><span class="sig-paren">(</span><em>timestamp=None</em>, <em>instrument_id=None</em>, <em>trading_day=None</em>, <em>delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.in_market_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given timestamp is within any of the market periods of the instrument.
+:param timestamp: datetime, current timestamp, if None, use self.now().
+:param instrument_id: string, instrument id, if None, use self.instrument_id().
+:param trading_day: date, current trading day, if None, use self.trading_day().
+:param delta: timedelta, if not None, checks this delta before a market period ends.
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.in_state">
 <code class="descname">in_state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.in_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is current state machine in state named name?
@@ -1697,6 +1708,11 @@ order_ref: string, the value is string, the order reference.</dd>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.pending_orders">
+<code class="descname">pending_orders</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.perform_heartbeat">
 <code class="descname">perform_heartbeat</code><span class="sig-paren">(</span><em>immediately=False</em>, <em>include_position=False</em>, <em>include_account=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.perform_heartbeat" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1906,6 +1922,11 @@ corresponding strategy callbacks from outside.</div></blockquote>
 <dd><p>Set self._should_exit to the given boolean.
 :param b: boolean, the value to set self._should_exit.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_should_log_all_period_ohlcs">
+<code class="descname">set_should_log_all_period_ohlcs</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_should_log_all_period_ohlcs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r105_place_pending_order_and_exit.PlacePendingOrderAndExit.set_should_terminate_after_market_close">
@@ -2262,7 +2283,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Aug 03, 2016.
+      Last updated on Aug 05, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

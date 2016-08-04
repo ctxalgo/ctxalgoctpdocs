@@ -62,7 +62,7 @@ class StrategyBacktestingThread(threading.Thread):
 
 
 def main():
-    queue = 'tcp://127.0.0.1:5555'
+    queue = 'tcp://127.0.0.1:3000'
     context = zmq.Context()
 
     # Create a subscriber which gets message from the strategy.

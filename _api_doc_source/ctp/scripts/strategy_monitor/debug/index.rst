@@ -4,4 +4,4 @@ debug
 .. toctree::
    :maxdepth: 2
 
-   strategy
+   demo_strategy

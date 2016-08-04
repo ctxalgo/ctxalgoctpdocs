@@ -414,6 +414,17 @@ If there is no position, return None.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.in_market_period">
+<code class="descname">in_market_period</code><span class="sig-paren">(</span><em>timestamp=None</em>, <em>instrument_id=None</em>, <em>trading_day=None</em>, <em>delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.in_market_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given timestamp is within any of the market periods of the instrument.
+:param timestamp: datetime, current timestamp, if None, use self.now().
+:param instrument_id: string, instrument id, if None, use self.instrument_id().
+:param trading_day: date, current trading day, if None, use self.trading_day().
+:param delta: timedelta, if not None, checks this delta before a market period ends.
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.in_state">
 <code class="descname">in_state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.in_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is current state machine in state named name?
@@ -699,6 +710,24 @@ instrument_id, kind and period to find the ohlc.</li>
 <dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.on_exit">
 <code class="descname">on_exit</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.on_exit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.pending_orders">
+<code class="descname">pending_orders</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return pending orders.
+:param instrument_id: string, the instrument id whose pending orders are to be returned.</p>
+<blockquote>
+<div>If None, use self.instrument_id().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string:, int}, meaning dict{direction: volume}.
+Keys are direction &#8216;long&#8217; or &#8216;short&#8217;, values are pending volumes in that direction.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.periods">
@@ -1345,6 +1374,17 @@ If there is no position, return None.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.in_market_period">
+<code class="descname">in_market_period</code><span class="sig-paren">(</span><em>timestamp=None</em>, <em>instrument_id=None</em>, <em>trading_day=None</em>, <em>delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.in_market_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given timestamp is within any of the market periods of the instrument.
+:param timestamp: datetime, current timestamp, if None, use self.now().
+:param instrument_id: string, instrument id, if None, use self.instrument_id().
+:param trading_day: date, current trading day, if None, use self.trading_day().
+:param delta: timedelta, if not None, checks this delta before a market period ends.
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.in_state">
 <code class="descname">in_state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.in_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is current state machine in state named name?
@@ -1640,6 +1680,24 @@ instrument_id, kind and period to find the ohlc.</li>
 <dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.out_edges">
 <code class="descname">out_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.out_edges" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.pending_orders">
+<code class="descname">pending_orders</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return pending orders.
+:param instrument_id: string, the instrument id whose pending orders are to be returned.</p>
+<blockquote>
+<div>If None, use self.instrument_id().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string:, int}, meaning dict{direction: volume}.
+Keys are direction &#8216;long&#8217; or &#8216;short&#8217;, values are pending volumes in that direction.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.periods">
@@ -2291,6 +2349,17 @@ If there is no position, return None.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.in_market_period">
+<code class="descname">in_market_period</code><span class="sig-paren">(</span><em>timestamp=None</em>, <em>instrument_id=None</em>, <em>trading_day=None</em>, <em>delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.in_market_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given timestamp is within any of the market periods of the instrument.
+:param timestamp: datetime, current timestamp, if None, use self.now().
+:param instrument_id: string, instrument id, if None, use self.instrument_id().
+:param trading_day: date, current trading day, if None, use self.trading_day().
+:param delta: timedelta, if not None, checks this delta before a market period ends.
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.in_state">
 <code class="descname">in_state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.in_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is current state machine in state named name?
@@ -2586,6 +2655,24 @@ instrument_id, kind and period to find the ohlc.</li>
 <dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.out_edges">
 <code class="descname">out_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.out_edges" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.pending_orders">
+<code class="descname">pending_orders</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return pending orders.
+:param instrument_id: string, the instrument id whose pending orders are to be returned.</p>
+<blockquote>
+<div>If None, use self.instrument_id().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string:, int}, meaning dict{direction: volume}.
+Keys are direction &#8216;long&#8217; or &#8216;short&#8217;, values are pending volumes in that direction.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.periods">
@@ -3244,6 +3331,17 @@ If there is no position, return None.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.in_market_period">
+<code class="descname">in_market_period</code><span class="sig-paren">(</span><em>timestamp=None</em>, <em>instrument_id=None</em>, <em>trading_day=None</em>, <em>delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.in_market_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given timestamp is within any of the market periods of the instrument.
+:param timestamp: datetime, current timestamp, if None, use self.now().
+:param instrument_id: string, instrument id, if None, use self.instrument_id().
+:param trading_day: date, current trading day, if None, use self.trading_day().
+:param delta: timedelta, if not None, checks this delta before a market period ends.
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.in_state">
 <code class="descname">in_state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.in_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is current state machine in state named name?
@@ -3535,6 +3633,24 @@ instrument_id, kind and period to find the ohlc.</li>
 <code class="descname">out_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.out_edges" title="Permalink to this definition">¶</a></dt>
 <dd><p>The list of predefined and fixed out edges leaving current state.
 :return: [string], the list of out edge names that can leave current state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.pending_orders">
+<code class="descname">pending_orders</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return pending orders.
+:param instrument_id: string, the instrument id whose pending orders are to be returned.</p>
+<blockquote>
+<div>If None, use self.instrument_id().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string:, int}, meaning dict{direction: volume}.
+Keys are direction &#8216;long&#8217; or &#8216;short&#8217;, values are pending volumes in that direction.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -4187,6 +4303,17 @@ If there is no position, return None.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.in_market_period">
+<code class="descname">in_market_period</code><span class="sig-paren">(</span><em>timestamp=None</em>, <em>instrument_id=None</em>, <em>trading_day=None</em>, <em>delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.in_market_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given timestamp is within any of the market periods of the instrument.
+:param timestamp: datetime, current timestamp, if None, use self.now().
+:param instrument_id: string, instrument id, if None, use self.instrument_id().
+:param trading_day: date, current trading day, if None, use self.trading_day().
+:param delta: timedelta, if not None, checks this delta before a market period ends.
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.in_state">
 <code class="descname">in_state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.in_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is current state machine in state named name?
@@ -4479,6 +4606,24 @@ instrument_id, kind and period to find the ohlc.</li>
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.on_exit">
 <code class="descname">on_exit</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.on_exit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.pending_orders">
+<code class="descname">pending_orders</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return pending orders.
+:param instrument_id: string, the instrument id whose pending orders are to be returned.</p>
+<blockquote>
+<div>If None, use self.instrument_id().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string:, int}, meaning dict{direction: volume}.
+Keys are direction &#8216;long&#8217; or &#8216;short&#8217;, values are pending volumes in that direction.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.periods">
@@ -5130,6 +5275,17 @@ If there is no position, return None.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.in_market_period">
+<code class="descname">in_market_period</code><span class="sig-paren">(</span><em>timestamp=None</em>, <em>instrument_id=None</em>, <em>trading_day=None</em>, <em>delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.in_market_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given timestamp is within any of the market periods of the instrument.
+:param timestamp: datetime, current timestamp, if None, use self.now().
+:param instrument_id: string, instrument id, if None, use self.instrument_id().
+:param trading_day: date, current trading day, if None, use self.trading_day().
+:param delta: timedelta, if not None, checks this delta before a market period ends.
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.in_state">
 <code class="descname">in_state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.in_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is current state machine in state named name?
@@ -5422,6 +5578,24 @@ instrument_id, kind and period to find the ohlc.</li>
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.on_exit">
 <code class="descname">on_exit</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.on_exit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.pending_orders">
+<code class="descname">pending_orders</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return pending orders.
+:param instrument_id: string, the instrument id whose pending orders are to be returned.</p>
+<blockquote>
+<div>If None, use self.instrument_id().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string:, int}, meaning dict{direction: volume}.
+Keys are direction &#8216;long&#8217; or &#8216;short&#8217;, values are pending volumes in that direction.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.periods">
@@ -6111,6 +6285,17 @@ If there is no position, return None.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.in_market_period">
+<code class="descname">in_market_period</code><span class="sig-paren">(</span><em>timestamp=None</em>, <em>instrument_id=None</em>, <em>trading_day=None</em>, <em>delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.in_market_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given timestamp is within any of the market periods of the instrument.
+:param timestamp: datetime, current timestamp, if None, use self.now().
+:param instrument_id: string, instrument id, if None, use self.instrument_id().
+:param trading_day: date, current trading day, if None, use self.trading_day().
+:param delta: timedelta, if not None, checks this delta before a market period ends.
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.in_state">
 <code class="descname">in_state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.in_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is current state machine in state named name?
@@ -6396,6 +6581,24 @@ instrument_id, kind and period to find the ohlc.</li>
 <dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.on_exit">
 <code class="descname">on_exit</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.on_exit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.pending_orders">
+<code class="descname">pending_orders</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return pending orders.
+:param instrument_id: string, the instrument id whose pending orders are to be returned.</p>
+<blockquote>
+<div>If None, use self.instrument_id().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string:, int}, meaning dict{direction: volume}.
+Keys are direction &#8216;long&#8217; or &#8216;short&#8217;, values are pending volumes in that direction.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.periods">
@@ -7075,6 +7278,17 @@ If there is no position, return None.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.in_market_period">
+<code class="descname">in_market_period</code><span class="sig-paren">(</span><em>timestamp=None</em>, <em>instrument_id=None</em>, <em>trading_day=None</em>, <em>delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.in_market_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given timestamp is within any of the market periods of the instrument.
+:param timestamp: datetime, current timestamp, if None, use self.now().
+:param instrument_id: string, instrument id, if None, use self.instrument_id().
+:param trading_day: date, current trading day, if None, use self.trading_day().
+:param delta: timedelta, if not None, checks this delta before a market period ends.
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.in_state">
 <code class="descname">in_state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.in_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is current state machine in state named name?
@@ -7370,6 +7584,24 @@ instrument_id, kind and period to find the ohlc.</li>
 <dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.out_edges">
 <code class="descname">out_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.out_edges" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.pending_orders">
+<code class="descname">pending_orders</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return pending orders.
+:param instrument_id: string, the instrument id whose pending orders are to be returned.</p>
+<blockquote>
+<div>If None, use self.instrument_id().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string:, int}, meaning dict{direction: volume}.
+Keys are direction &#8216;long&#8217; or &#8216;short&#8217;, values are pending volumes in that direction.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.periods">
@@ -8049,6 +8281,17 @@ If there is no position, return None.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.in_market_period">
+<code class="descname">in_market_period</code><span class="sig-paren">(</span><em>timestamp=None</em>, <em>instrument_id=None</em>, <em>trading_day=None</em>, <em>delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.in_market_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given timestamp is within any of the market periods of the instrument.
+:param timestamp: datetime, current timestamp, if None, use self.now().
+:param instrument_id: string, instrument id, if None, use self.instrument_id().
+:param trading_day: date, current trading day, if None, use self.trading_day().
+:param delta: timedelta, if not None, checks this delta before a market period ends.
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.in_state">
 <code class="descname">in_state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.in_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is current state machine in state named name?
@@ -8344,6 +8587,24 @@ instrument_id, kind and period to find the ohlc.</li>
 <dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.out_edges">
 <code class="descname">out_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.out_edges" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.pending_orders">
+<code class="descname">pending_orders</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return pending orders.
+:param instrument_id: string, the instrument id whose pending orders are to be returned.</p>
+<blockquote>
+<div>If None, use self.instrument_id().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string:, int}, meaning dict{direction: volume}.
+Keys are direction &#8216;long&#8217; or &#8216;short&#8217;, values are pending volumes in that direction.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.periods">
@@ -9033,6 +9294,17 @@ If there is no position, return None.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.in_market_period">
+<code class="descname">in_market_period</code><span class="sig-paren">(</span><em>timestamp=None</em>, <em>instrument_id=None</em>, <em>trading_day=None</em>, <em>delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.in_market_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the given timestamp is within any of the market periods of the instrument.
+:param timestamp: datetime, current timestamp, if None, use self.now().
+:param instrument_id: string, instrument id, if None, use self.instrument_id().
+:param trading_day: date, current trading day, if None, use self.trading_day().
+:param delta: timedelta, if not None, checks this delta before a market period ends.
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.in_state">
 <code class="descname">in_state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.in_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is current state machine in state named name?
@@ -9328,6 +9600,24 @@ instrument_id, kind and period to find the ohlc.</li>
 <dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.out_edges">
 <code class="descname">out_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.out_edges" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.pending_orders">
+<code class="descname">pending_orders</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return pending orders.
+:param instrument_id: string, the instrument id whose pending orders are to be returned.</p>
+<blockquote>
+<div>If None, use self.instrument_id().</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string:, int}, meaning dict{direction: volume}.
+Keys are direction &#8216;long&#8217; or &#8216;short&#8217;, values are pending volumes in that direction.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.periods">
@@ -9753,7 +10043,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Aug 03, 2016.
+      Last updated on Aug 05, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
