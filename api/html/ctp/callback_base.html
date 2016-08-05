@@ -185,13 +185,13 @@ There should be three sub-folders in base_folder:</p>
 </tbody>
 </table>
 <dl class="attribute">
-<dt id="ctxalgoctp.ctp.callback_base.CallbackBase.TRADING_NOT_CONNECTED">
-<code class="descname">TRADING_NOT_CONNECTED</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.callback_base.CallbackBase.TRADING_NOT_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.callback_base.CallbackBase.NOT_CONNECTED">
+<code class="descname">NOT_CONNECTED</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.callback_base.CallbackBase.NOT_CONNECTED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ctxalgoctp.ctp.callback_base.CallbackBase.TRADING_CONNECTED">
-<code class="descname">TRADING_CONNECTED</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.callback_base.CallbackBase.TRADING_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.callback_base.CallbackBase.CONNECTED">
+<code class="descname">CONNECTED</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.callback_base.CallbackBase.CONNECTED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -234,6 +234,11 @@ There should be three sub-folders in base_folder:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.callback_base.CallbackBase.is_trading_connected">
 <code class="descname">is_trading_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.callback_base.CallbackBase.is_trading_connected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.callback_base.CallbackBase.is_market_connected">
+<code class="descname">is_market_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.callback_base.CallbackBase.is_market_connected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -340,12 +345,12 @@ There should be three sub-folders in base_folder:</p>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.callback_base.CallbackBase.on_market_connected">
-<code class="descname">on_market_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_user_login</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.callback_base.CallbackBase.on_market_connected" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_market_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.callback_base.CallbackBase.on_market_connected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.callback_base.CallbackBase.on_market_disconnected">
-<code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.callback_base.CallbackBase.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>dummy</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.callback_base.CallbackBase.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

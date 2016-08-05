@@ -212,6 +212,11 @@ to the existing strategy code without change the code itself.</li>
 </tbody>
 </table>
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.should_auto_connect_disconnect">
+<code class="descname">should_auto_connect_disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.should_auto_connect_disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.set_should_log_all_period_ohlcs">
 <code class="descname">set_should_log_all_period_ohlcs</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.set_should_log_all_period_ohlcs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -456,12 +461,12 @@ some bookkeeping work. If None, no extra time is added.</li>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_market_connected">
-<code class="descname">on_market_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_user_login</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_market_connected" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_market_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_market_connected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_market_disconnected">
-<code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>dummy</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1181,6 +1186,26 @@ This is useful if you want to have a strategy which cancels some pending orders.
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.connect_trading">
+<code class="descname">connect_trading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.connect_trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.disconnect_trading">
+<code class="descname">disconnect_trading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.disconnect_trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.connect_market">
+<code class="descname">connect_market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.connect_market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.disconnect_market">
+<code class="descname">disconnect_market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.disconnect_market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.get_trading_account">
 <code class="descname">get_trading_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.get_trading_account" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send a request for trading account information.
@@ -1466,13 +1491,13 @@ need different data.</div></blockquote>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.TRADING_CONNECTED">
-<code class="descname">TRADING_CONNECTED</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.TRADING_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.CONNECTED">
+<code class="descname">CONNECTED</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.CONNECTED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.TRADING_NOT_CONNECTED">
-<code class="descname">TRADING_NOT_CONNECTED</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.TRADING_NOT_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.NOT_CONNECTED">
+<code class="descname">NOT_CONNECTED</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.NOT_CONNECTED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1644,6 +1669,11 @@ If there is no position, return None.</p>
 :param timestamp: datetime, the given timestamp. If None, use self.now().
 :return: boolean.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.is_market_connected">
+<code class="descname">is_market_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.is_market_connected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.is_night">
@@ -2355,13 +2385,13 @@ to the existing strategy code without change the code itself.</li>
 </tbody>
 </table>
 <dl class="attribute">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.TRADING_CONNECTED">
-<code class="descname">TRADING_CONNECTED</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.TRADING_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.CONNECTED">
+<code class="descname">CONNECTED</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.CONNECTED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.TRADING_NOT_CONNECTED">
-<code class="descname">TRADING_NOT_CONNECTED</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.TRADING_NOT_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.NOT_CONNECTED">
+<code class="descname">NOT_CONNECTED</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.NOT_CONNECTED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2794,6 +2824,16 @@ order_ref: string, the value is string, the order reference.</dd>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.connect_market">
+<code class="descname">connect_market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.connect_market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.connect_trading">
+<code class="descname">connect_trading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.connect_trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.create_states">
 <code class="descname">create_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.create_states" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the list of states used in current strategy and indicates which is the start state.
@@ -2814,6 +2854,16 @@ start_state must be an element of all_states as well.</div></blockquote>
 <dd><p>Return &#8216;long&#8217; or &#8216;short&#8217; as direction.
 :param volume: int, positive number means long direction, negative numer means short direction.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.disconnect_market">
+<code class="descname">disconnect_market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.disconnect_market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.disconnect_trading">
+<code class="descname">disconnect_trading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.disconnect_trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.dump_json">
@@ -3014,6 +3064,11 @@ The returned information will be accessible through the corresponding callback f
 :param timestamp: datetime, the given timestamp. If None, use self.now().
 :return: boolean.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.is_market_connected">
+<code class="descname">is_market_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.is_market_connected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.is_market_order_supported">
@@ -3514,12 +3569,12 @@ requested by get_investor_position.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_market_connected">
-<code class="descname">on_market_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_user_login</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_market_connected" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_market_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_market_connected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_market_disconnected">
-<code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>dummy</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -4265,6 +4320,11 @@ between the current price and the position price.</li>
 :param instrument_id: string, instrument id. If None, use self.instrument_id().
 :return: int, the short position, negative value or zero.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.should_auto_connect_disconnect">
+<code class="descname">should_auto_connect_disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.should_auto_connect_disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.should_exit">

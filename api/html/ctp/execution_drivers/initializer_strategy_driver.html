@@ -250,18 +250,23 @@ remote positions.</li>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.TRADING_CONNECTED">
-<code class="descname">TRADING_CONNECTED</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.TRADING_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.CONNECTED">
+<code class="descname">CONNECTED</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.CONNECTED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.TRADING_NOT_CONNECTED">
-<code class="descname">TRADING_NOT_CONNECTED</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.TRADING_NOT_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.NOT_CONNECTED">
+<code class="descname">NOT_CONNECTED</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.NOT_CONNECTED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.dump_json">
 <code class="descname">dump_json</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.dump_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.is_market_connected">
+<code class="descname">is_market_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.is_market_connected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -370,12 +375,12 @@ remote positions.</li>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.on_market_connected">
-<code class="descname">on_market_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_user_login</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.on_market_connected" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_market_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.on_market_connected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.on_market_disconnected">
-<code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>dummy</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

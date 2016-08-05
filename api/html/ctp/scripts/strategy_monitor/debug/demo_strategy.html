@@ -126,13 +126,13 @@
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.TRADING_CONNECTED">
-<code class="descname">TRADING_CONNECTED</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.TRADING_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.CONNECTED">
+<code class="descname">CONNECTED</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.CONNECTED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.TRADING_NOT_CONNECTED">
-<code class="descname">TRADING_NOT_CONNECTED</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.TRADING_NOT_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.NOT_CONNECTED">
+<code class="descname">NOT_CONNECTED</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.NOT_CONNECTED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -557,6 +557,16 @@ order_ref: string, the value is string, the order reference.</dd>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.connect_market">
+<code class="descname">connect_market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.connect_market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.connect_trading">
+<code class="descname">connect_trading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.connect_trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.data_feed">
 <code class="descname">data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.data_feed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -567,6 +577,16 @@ order_ref: string, the value is string, the order reference.</dd>
 <dd><p>Return &#8216;long&#8217; or &#8216;short&#8217; as direction.
 :param volume: int, positive number means long direction, negative numer means short direction.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.disconnect_market">
+<code class="descname">disconnect_market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.disconnect_market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.disconnect_trading">
+<code class="descname">disconnect_trading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.disconnect_trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.dump_json">
@@ -743,6 +763,11 @@ The returned information will be accessible through the corresponding callback f
 :param timestamp: datetime, the given timestamp. If None, use self.now().
 :return: boolean.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.is_market_connected">
+<code class="descname">is_market_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.is_market_connected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.is_market_order_supported">
@@ -1219,12 +1244,12 @@ requested by get_investor_position.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.on_market_connected">
-<code class="descname">on_market_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_user_login</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.on_market_connected" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_market_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.on_market_connected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.on_market_disconnected">
-<code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>dummy</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1940,6 +1965,11 @@ between the current price and the position price.</li>
 :param instrument_id: string, instrument id. If None, use self.instrument_id().
 :return: int, the short position, negative value or zero.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.should_auto_connect_disconnect">
+<code class="descname">should_auto_connect_disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.should_auto_connect_disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.should_exit">

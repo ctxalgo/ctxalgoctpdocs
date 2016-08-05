@@ -78,8 +78,10 @@
 <li class="toctree-l3"><a class="reference internal" href="r102_cancel_order_after_fully_executed.html">r102_cancel_order_after_fully_executed</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">r104_automatic_order_cancellation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r106_cancel_all_pending_orders_from_previous_session.html">r106_cancel_all_pending_orders_from_previous_session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r110_stand_by_strategy.html">r110_stand_by_strategy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r201_change_position_relative_id.html">r201_change_position_relative_id</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r107_high_frequency_both_direction_trade.html">r107_high_frequency_both_direction_trade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r111_mission_controller.html">r111_mission_controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r103_cancel_order_while_pending.html">r103_cancel_order_while_pending</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r101_change_positions.html">r101_change_positions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r105_place_pending_order_and_exit.html">r105_place_pending_order_and_exit</a></li>
@@ -180,13 +182,13 @@
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.TRADING_CONNECTED">
-<code class="descname">TRADING_CONNECTED</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.TRADING_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.CONNECTED">
+<code class="descname">CONNECTED</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.CONNECTED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.TRADING_NOT_CONNECTED">
-<code class="descname">TRADING_NOT_CONNECTED</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.TRADING_NOT_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.NOT_CONNECTED">
+<code class="descname">NOT_CONNECTED</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.NOT_CONNECTED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -611,6 +613,16 @@ order_ref: string, the value is string, the order reference.</dd>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.connect_market">
+<code class="descname">connect_market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.connect_market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.connect_trading">
+<code class="descname">connect_trading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.connect_trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.data_feed">
 <code class="descname">data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.data_feed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -621,6 +633,16 @@ order_ref: string, the value is string, the order reference.</dd>
 <dd><p>Return &#8216;long&#8217; or &#8216;short&#8217; as direction.
 :param volume: int, positive number means long direction, negative numer means short direction.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.disconnect_market">
+<code class="descname">disconnect_market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.disconnect_market" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.disconnect_trading">
+<code class="descname">disconnect_trading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.disconnect_trading" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.dump_json">
@@ -797,6 +819,11 @@ The returned information will be accessible through the corresponding callback f
 :param timestamp: datetime, the given timestamp. If None, use self.now().
 :return: boolean.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.is_market_connected">
+<code class="descname">is_market_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.is_market_connected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.is_market_order_supported">
@@ -1297,12 +1324,12 @@ requested by get_investor_position.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.on_market_connected">
-<code class="descname">on_market_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_user_login</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.on_market_connected" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_market_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.on_market_connected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.on_market_disconnected">
-<code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>dummy</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2019,6 +2046,11 @@ between the current price and the position price.</li>
 :param instrument_id: string, instrument id. If None, use self.instrument_id().
 :return: int, the short position, negative value or zero.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.should_auto_connect_disconnect">
+<code class="descname">should_auto_connect_disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.should_auto_connect_disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.should_exit">
