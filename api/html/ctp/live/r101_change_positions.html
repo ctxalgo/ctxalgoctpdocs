@@ -1403,6 +1403,14 @@ instrument_id, order_ref, traded_volume, left_volume, status, error_id, error_me
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.on_order_submit_rejected">
+<code class="descname">on_order_submit_rejected</code><span class="sig-paren">(</span><em>order_ref</em>, <em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.on_order_submit_rejected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when an order submit is rejected.
+:param order_ref: string, order reference.
+:param instrument_id: string, instrument id of the order that is requested to be cancelled.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.on_query_order">
 <code class="descname">on_query_order</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.on_query_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be invoked when some result arrived from self.query_order.

@@ -241,7 +241,7 @@
 
 <dl class="class">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.Order">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.factories.ctp_backtesting_factory.</code><code class="descname">Order</code><span class="sig-paren">(</span><em>id_</em>, <em>future_id</em>, <em>actual_future_id</em>, <em>is_open</em>, <em>price</em>, <em>traded_volume</em>, <em>left_volume</em>, <em>order_ref</em>, <em>timestamp</em>, <em>reason</em>, <em>kind</em>, <em>canceled</em>, <em>offset_flag</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.Order" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.factories.ctp_backtesting_factory.</code><code class="descname">Order</code><span class="sig-paren">(</span><em>id_</em>, <em>future_id</em>, <em>actual_future_id</em>, <em>is_open</em>, <em>price</em>, <em>traded_volume</em>, <em>left_volume</em>, <em>order_ref</em>, <em>timestamp</em>, <em>reason</em>, <em>kind</em>, <em>canceled</em>, <em>offset_flag</em>, <em>order_sys_id</em>, <em>request_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.Order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class that represent an order.</p>
 <p>Initialize current.
 :param <a href="#id1"><span class="problematic" id="id2">id_</span></a>: int, id of the order, will be increasing in the same trading day.</p>
@@ -652,13 +652,8 @@ The parameters open_price, high_price, low_price and close_price are used for li
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.get_dummy_exchange_id">
-<code class="descname">get_dummy_exchange_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.get_dummy_exchange_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.get_dummy_order_sys_id">
-<code class="descname">get_dummy_order_sys_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.get_dummy_order_sys_id" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.get_exchange_id">
+<code class="descname">get_exchange_id</code><span class="sig-paren">(</span><em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.get_exchange_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
