@@ -16,5 +16,6 @@ live
    r103_cancel_order_while_pending
    r101_change_positions
    r105_place_pending_order_and_exit
+   r113_trade_at_timer
    r100_connect_to_ctp
    r200_connect_to_ctp_relative_id
