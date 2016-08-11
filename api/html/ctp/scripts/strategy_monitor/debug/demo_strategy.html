@@ -397,7 +397,7 @@ This is useful if you want to have a strategy which cancels some pending orders.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.change_position_to">
-<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>new_position</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.change_position_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>new_position</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.change_position_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the position of the given instrument to new_position. If price is given, all underlying orders
 are limit orders at that price, otherwise, market orders.
 :param new_position: int, the new position for the instrument.
@@ -427,6 +427,9 @@ instrument has arrived, so orders can be placed correctly.</p>
 <li><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id.</li>
 <li><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the cancellation policy for current order.
 If None, no cancellation policy is specified.</li>
+<li><strong>cancel_in_time</strong> &#8211; timedelta, the time the order is allowed to be executed before it is cancelled.
+This is a syntax sugar for setting up TimeBasedCancellation. If not None, you should not specify
+cancellation as well.</li>
 </ul>
 </td>
 </tr>
@@ -518,7 +521,7 @@ If so, call self.on_timer.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.close_limit_order">
-<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=False</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.close_limit_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=False</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.close_limit_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close a limit order at price. Note that for limit orders.
 The strategy is responsible for maintaining positions in a single direction, if desirable.
 :param price: float, the price.
@@ -527,33 +530,51 @@ The strategy is responsible for maintaining positions in a single direction, if 
 :param reason: string, a reason for the open operation.
 :param instrument_id: string, instrument id. If None, use self.instrument_id.
 :param cancellation: AbstractOrderCancellation, the cancellation policy for current order.
-:return:</p>
+:param cancel_in_time: timedelta, the time the order is allowed to be executed before it is cancelled.</p>
 <blockquote>
-<div><dl class="docutils">
+<div>This is a syntax sugar for setting up TimeBasedCancellation. If not None, you should not specify
+cancellation as well.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd>Each element is a dict containing the following keys:
 order_ref: string, the value is string, the order reference.</dd>
 </dl>
-</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.close_market_order">
-<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>volume</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.close_market_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>volume</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.close_market_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close market order for future_id. If there is only one future in current strategy, you don&#8217;t need to
 provide future_id, self.future_id will be used implicitly.
 :param volume: int, the volume to close. Positive volume means open close; Negative volume means close short.
 :param reason: string, a reason for the close operation.
 :param instrument_id: string, instrument id. If None, use self.instrument_id().
 :param cancellation: AbstractOrderCancellation, the cancellation policy for current order.
-:return:</p>
+:param cancel_in_time: timedelta, the time the order is allowed to be executed before it is cancelled.</p>
 <blockquote>
-<div><dl class="docutils">
+<div>This is a syntax sugar for setting up TimeBasedCancellation. If not None, you should not specify
+cancellation as well.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd>Each element is a dict containing the following keys:
 order_ref: string, the value is string, the order reference.</dd>
 </dl>
-</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -1004,6 +1025,11 @@ Inner keys are Periodicity or volatility thresholds, inner values are the genera
 :param account, the trading account object.
 :param is_last: boolean, is the result the last batch.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.log_warning">
+<code class="descname">log_warning</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.log_warning" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.log_with_tag">
@@ -1601,7 +1627,7 @@ multiple pieces of information, one piece for each currency.</td>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.open_limit_order">
-<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=False</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.open_limit_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=False</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.open_limit_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open a limit order at price. Note that for limit orders.
 The strategy is responsible for maintaining positions in a single direction, if desirable.
 :param price: float, the price.
@@ -1616,7 +1642,11 @@ The strategy is responsible for maintaining positions in a single direction, if 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cancel_in_time</strong> &#8211; timedelta, the time the order is allowed to be executed before it is cancelled.
+This is a syntax sugar for setting up TimeBasedCancellation. If not None, you should not specify
+cancellation as well.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd>Each element is a dict containing the following keys:
 order_ref: string, the value is string, the order reference.</dd>
@@ -1629,12 +1659,13 @@ order_ref: string, the value is string, the order reference.</dd>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.open_market_order">
-<code class="descname">open_market_order</code><span class="sig-paren">(</span><em>volume</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.open_market_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open_market_order</code><span class="sig-paren">(</span><em>volume</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.scripts.strategy_monitor.debug.demo_strategy.StrategyWithMissionControl.open_market_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open market order for future_id. If there is only one future in current strategy, you don&#8217;t need to
 provide future_id, self.future_id will be used implicitly.
 :param volume: int, the volume to open. Positive volume means open long; Negative volume means open short.
 :param reason: string, a reason for the open operation.
 :param instrument_id: string, instrument id. If None, use self.instrument_id.
+:param actual_instrument_id: string, the actual instrument id.
 :param cancellation: AbstractOrderCancellation, the cancellation policy for current order.</p>
 <blockquote>
 <div>If None, no cancellation policy is specified.</div></blockquote>
@@ -1642,7 +1673,11 @@ provide future_id, self.future_id will be used implicitly.
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cancel_in_time</strong> &#8211; timedelta, the time the order is allowed to be executed before it is cancelled.
+This is a syntax sugar for setting up TimeBasedCancellation. If not None, you should not specify
+cancellation as well.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd>Each element is a dict containing the following keys:
 order_ref: string, the value is string, the order reference.</dd>

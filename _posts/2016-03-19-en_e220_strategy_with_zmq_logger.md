@@ -46,7 +46,7 @@ class StrategyBacktestingThread(threading.Thread):
         start_date = '2014-01-01'  # Backtesting start date.
         end_date = '2014-12-31'  # Backtesting end date.
 
-        base_folder = os.path.join(os.environ['CTXALGO_TEST'], 'strategies', TrendFollowingStrategy.__name__)
+        base_folder = safe_get_base_folder(TrendFollowingStrategy)
         config = {
             'instrument_ids': ['IF99'],
             'strategy_period': Periodicity.FIFTEEN_MINUTE,

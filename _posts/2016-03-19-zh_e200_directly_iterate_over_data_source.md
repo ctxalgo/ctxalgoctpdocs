@@ -12,7 +12,7 @@ language: zh
 import os
 from ctxalgolib.ohlc.periodicity import Periodicity
 from ctxalgolib.trading_utils.future_info_calculator_factory import FutureInfoCalculatorFactory
-from ctxalgoctp.ctp.backtesting_utils import get_data_source
+from ctxalgoctp.ctp.backtesting_utils import get_data_source, safe_get_base_folder
 
 ```
 
@@ -29,7 +29,7 @@ from ctxalgoctp.ctp.backtesting_utils import get_data_source
 instrument_ids = ['cu99']
 start_date = '2014-01-01'  # Backtesting start date.
 end_date = '2014-12-31'    # Backtesting end date.
-base_folder = os.path.join(os.environ['CTXALGO_TEST'], 'strategies', 'iterating_data_source')
+base_folder = safe_get_base_folder(folder='iterating_data_source')
 data_period = Periodicity.FIFTEEN_MINUTE
 data_source = get_data_source(instrument_ids, base_folder, start_date, end_date, data_period)
 ```

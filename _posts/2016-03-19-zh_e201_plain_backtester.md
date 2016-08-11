@@ -27,7 +27,7 @@ from ctxalgolib.ohlc.periodicity import Periodicity
 from ctxalgolib.ta.cross import cross_direction
 from ctxalgolib.charting.charts import ChartsWithReport
 
-from ctxalgoctp.ctp.backtesting_utils import get_data_source
+from ctxalgoctp.ctp.backtesting_utils import get_data_source, safe_get_base_folder
 from ctxalgoctp.ctp.plain_backtester import PlainBacktester
 from ctxalgoctp.ctp.slippage_models import VolumeBasedSlippageModel
 ```
@@ -39,7 +39,7 @@ from ctxalgoctp.ctp.slippage_models import VolumeBasedSlippageModel
 instrument_id = 'cu99'
 start_date = '2014-01-01'  # Backtesting start date.
 end_date = '2014-12-31'    # Backtesting end date.
-base_folder = os.path.join(os.environ['CTXALGO_TEST'], 'strategies', 'plain_backtester')
+base_folder = safe_get_base_folder(folder='plain_backtester')
 data_period = Periodicity.HOURLY
 data_source = get_data_source([instrument_id], base_folder, start_date, end_date, data_period)
 

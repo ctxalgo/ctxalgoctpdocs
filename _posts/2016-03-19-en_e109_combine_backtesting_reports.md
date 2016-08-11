@@ -17,6 +17,7 @@ from ctxalgolib.report.abstract_strategy_report import CompositeStrategyReport
 from ctxalgoctp.ctp.docs.starterkit.e100_trend_following_strategy import TrendFollowingStrategy
 from ctxalgoctp.ctp.backtesting_utils import backtest
 from ctxalgolib.charting.charts import ChartsWithReport
+from ctxalgoctp.ctp.backtesting_utils import safe_get_base_folder
 
 ```
 
@@ -35,7 +36,7 @@ for instrument_id in ['IF99', 'cu99']:
             'fast_ma_period': 8,   # The parameter for the fast moving average.
             'slow_ma_period': 15,  # The parameter for the slow moving average.
         },
-        'base_folder': os.path.join(os.environ['CTXALGO_TEST'], 'strategies', 'composite_reports', instrument_id)
+        'base_folder': safe_get_base_folder(folder='composite_reports' + '_' + instrument_id)
     }
 
     # Backtest the current strategy, and collect individual reports.
