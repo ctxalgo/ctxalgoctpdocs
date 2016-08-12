@@ -533,6 +533,11 @@ This is only used for backtesting, to do early stage strategy research.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.add_data_subscriptions">
+<code class="descname">add_data_subscriptions</code><span class="sig-paren">(</span><em>data_subscriptions</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.add_data_subscriptions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.add_data_subscription">
 <code class="descname">add_data_subscription</code><span class="sig-paren">(</span><em>data_subscription</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.add_data_subscription" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add data subscription into current.
@@ -568,29 +573,11 @@ This is only used for backtesting, to do early stage strategy research.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_bar_feed">
-<code class="descname">set_bar_feed</code><span class="sig-paren">(</span><em>bar_feed</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_bar_feed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set bar feed with bar_feed. Bar feed is an zeromq based data publisher which publishes
-time-based and volatility-based ohlc bars.
-:param bar_feed: BarFeed.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.bar_feed">
-<code class="descname">bar_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.bar_feed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.has_mission_control">
 <code class="descname">has_mission_control</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.has_mission_control" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is the mission control setup?
 :return: boolean.</p>
 </dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.has_bar_feed">
-<code class="descname">has_bar_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.has_bar_feed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.should_get_commission_ratio">

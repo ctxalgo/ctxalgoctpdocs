@@ -357,13 +357,13 @@ calculate metrics.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.all_instruments">
-<code class="descname">all_instruments</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.all_instruments" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.add_data_subscriptions">
+<code class="descname">add_data_subscriptions</code><span class="sig-paren">(</span><em>data_subscriptions</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.add_data_subscriptions" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.bar_feed">
-<code class="descname">bar_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.bar_feed" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.all_instruments">
+<code class="descname">all_instruments</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.all_instruments" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -400,11 +400,6 @@ calculate metrics.</li>
 <dd><p>Return the trading account type.
 :return: string, the trading account type. Return future because this is a future trading layer.</p>
 </dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_bar_feed">
-<code class="descname">has_bar_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_bar_feed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_data_subscription">
@@ -471,14 +466,6 @@ calculate metrics.</li>
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_account_loader">
 <code class="descname">set_account_loader</code><span class="sig-paren">(</span><em>loader</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_account_loader" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_bar_feed">
-<code class="descname">set_bar_feed</code><span class="sig-paren">(</span><em>bar_feed</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_bar_feed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set bar feed with bar_feed. Bar feed is an zeromq based data publisher which publishes
-time-based and volatility-based ohlc bars.
-:param bar_feed: BarFeed.</p>
-</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_data_feed">

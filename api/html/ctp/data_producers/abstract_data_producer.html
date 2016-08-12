@@ -206,8 +206,8 @@
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.should_enforce_tick">
-<code class="descname">should_enforce_tick</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.should_enforce_tick" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.is_tick_needed">
+<code class="descname">is_tick_needed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.is_tick_needed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Should current data producer register for tick data for instruments that subscribe for ohlc data?
 For some producers, tick data is always needed. For example, CtpDataProducer.
 For other producers such as ZmqDataProducer, if the strategy does not need tick data, no need to
@@ -241,6 +241,11 @@ Market periods for all instruments appearing in periods.</li>
 </tbody>
 </table>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_ticks">
+<code class="descname">subscribe_ticks</code><span class="sig-paren">(</span><em>periods</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_ticks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_tick">
