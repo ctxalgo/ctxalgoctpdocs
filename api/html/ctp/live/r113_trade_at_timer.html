@@ -33,7 +33,7 @@
     <link rel="top" title="ctxalgoctp 0.1 documentation" href="../../index.html"/>
         <link rel="up" title="live" href="index.html"/>
         <link rel="next" title="r100_connect_to_ctp" href="r100_connect_to_ctp.html"/>
-        <link rel="prev" title="r105_place_pending_order_and_exit" href="r105_place_pending_order_and_exit.html"/> 
+        <link rel="prev" title="r300_register_trading_data_from_zmq" href="r300_register_trading_data_from_zmq.html"/> 
 
   
   <script src="../../static/js/modernizr.min.js"></script>
@@ -88,6 +88,7 @@
 <li class="toctree-l3"><a class="reference internal" href="r103_cancel_order_while_pending.html">r103_cancel_order_while_pending</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r101_change_positions.html">r101_change_positions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r105_place_pending_order_and_exit.html">r105_place_pending_order_and_exit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r300_register_trading_data_from_zmq.html">r300_register_trading_data_from_zmq</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">r113_trade_at_timer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r100_connect_to_ctp.html">r100_connect_to_ctp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r200_connect_to_ctp_relative_id.html">r200_connect_to_ctp_relative_id</a></li>
@@ -266,7 +267,7 @@ This will be passed into the action when it is invoked.</li>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.add_timer">
-<code class="descname">add_timer</code><span class="sig-paren">(</span><em>timer=None</em>, <em>trigger_time=None</em>, <em>timedelta=None</em>, <em>on_time_action=None</em>, <em>start=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.add_timer" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_timer</code><span class="sig-paren">(</span><em>timer=None</em>, <em>trigger_time=None</em>, <em>timedelta=None</em>, <em>action=None</em>, <em>start=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.add_timer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add timer into current strategy.
 :param timer: SimulatedTimer, the timer to add. If None, use trigger_time to create a timer.
 :param trigger_time: datetime or time, or string in form of yyyy-mm-dd or yyyy-mm-dd HH:MM:SS, or</p>
@@ -279,9 +280,9 @@ If specified, create an alarm timer.</div></blockquote>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>timedelta</strong> &#8211; timedelta, if specified, create a repeated count down timer.</li>
-<li><strong>on_time_action</strong> &#8211; function pointer whose signature is same as self.on_timer.
-If not None and there is no on_time_action set in timer, then set this as the callback for timer.
-If None and there is no on_time_action in timer, then set self.on_timer into the timer.</li>
+<li><strong>action</strong> &#8211; function pointer whose signature is same as self.on_timer.
+If not None and there is no action set in timer, then set this as the callback for timer.
+If None and there is no action in timer, then set self.on_timer into the timer.</li>
 <li><strong>start</strong> &#8211; boolean, if True start the timer right away.</li>
 </ul>
 </td>
@@ -2364,7 +2365,7 @@ instrument_id, kind and period to find the ohlc.</li>
         <a href="r100_connect_to_ctp.html" class="btn btn-neutral float-right" title="r100_connect_to_ctp" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="r105_place_pending_order_and_exit.html" class="btn btn-neutral" title="r105_place_pending_order_and_exit" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="r300_register_trading_data_from_zmq.html" class="btn btn-neutral" title="r300_register_trading_data_from_zmq" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

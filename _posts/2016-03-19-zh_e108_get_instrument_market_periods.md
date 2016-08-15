@@ -36,7 +36,7 @@ class GetInstrumentMarketPeriod(AbstractStrategy):
             # right before market close, for a intra-day stratgey.
             self.add_timer(
                 trigger_time=market_periods[-1][-1] - timedelta(minutes=5),
-                on_time_action=partial(self.on_before_market_close, sid))
+                action=partial(self.on_before_market_close, sid))
 
     def on_before_market_close(self, instrument_id, trigger_time, supposed_trigger_time, timer_name):
         print('{}: right before market close: {}'.format(instrument_id, trigger_time))
