@@ -1535,7 +1535,12 @@ need different data.</div></blockquote>
 
 <dl class="attribute">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.CONNECTED">
-<code class="descname">CONNECTED</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.CONNECTED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CONNECTED</code><em class="property"> = 2</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.CONNECTING">
+<code class="descname">CONNECTING</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.CONNECTING" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1719,6 +1724,11 @@ If there is no position, return None.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.is_market_disconnected">
+<code class="descname">is_market_disconnected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.is_market_disconnected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.is_night">
 <code class="descname">is_night</code><span class="sig-paren">(</span><em>timestamp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.is_night" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is the given timestamp in night trading period?
@@ -1777,6 +1787,11 @@ Meaning either long or short positions, but not both.
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.is_trading_connected">
 <code class="descname">is_trading_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.is_trading_connected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.is_trading_disconnected">
+<code class="descname">is_trading_disconnected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.is_trading_disconnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2457,7 +2472,12 @@ to the existing strategy code without change the code itself.</li>
 </table>
 <dl class="attribute">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.CONNECTED">
-<code class="descname">CONNECTED</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.CONNECTED" title="Permalink to this definition">¶</a></dt>
+<code class="descname">CONNECTED</code><em class="property"> = 2</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.CONNECTING">
+<code class="descname">CONNECTING</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.CONNECTING" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -3163,6 +3183,11 @@ The returned information will be accessible through the corresponding callback f
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.is_market_disconnected">
+<code class="descname">is_market_disconnected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.is_market_disconnected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.is_market_order_supported">
 <code class="descname">is_market_order_supported</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>trading_day=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.is_market_order_supported" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -3231,6 +3256,11 @@ Meaning either long or short positions, but not both.
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.is_trading_connected">
 <code class="descname">is_trading_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.is_trading_connected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.is_trading_disconnected">
+<code class="descname">is_trading_disconnected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.is_trading_disconnected" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
