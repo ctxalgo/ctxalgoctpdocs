@@ -1308,6 +1308,29 @@ related fields will have default values.</td>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r106_cancel_all_pending_orders_from_previous_session.CancelAllPendingOrders.on_bar_from_data_producer">
+<code class="descname">on_bar_from_data_producer</code><span class="sig-paren">(</span><em>kind</em>, <em>bars</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r106_cancel_all_pending_orders_from_previous_session.CancelAllPendingOrders.on_bar_from_data_producer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be called when there is some ohlc bars generated.
+:param kind: string, the kind of ohlc. Valid values are from OhlcGeneratorConstants,</p>
+<blockquote>
+<div>such as &#8216;time-based&#8217;, &#8216;volatility-based&#8217;.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>bars</strong> &#8211; dict from Periodicity to Bar. keys are periodicities,
+values are generated bars under such periodicities. It may contains more than one bars: a single
+bar under each periodicity.</li>
+<li><strong>tick</strong> &#8211; dict{string: object}, tick data..</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r106_cancel_all_pending_orders_from_previous_session.CancelAllPendingOrders.on_bar_method">
 <code class="descname">on_bar_method</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r106_cancel_all_pending_orders_from_previous_session.CancelAllPendingOrders.on_bar_method" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the function pointer for on_bar.
@@ -1483,8 +1506,8 @@ pre_open_interest, open_interest.</div></blockquote>
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.live.r106_cancel_all_pending_orders_from_previous_session.CancelAllPendingOrders.on_tick_from_producer">
-<code class="descname">on_tick_from_producer</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r106_cancel_all_pending_orders_from_previous_session.CancelAllPendingOrders.on_tick_from_producer" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.live.r106_cancel_all_pending_orders_from_previous_session.CancelAllPendingOrders.on_tick_from_data_producer">
+<code class="descname">on_tick_from_data_producer</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r106_cancel_all_pending_orders_from_previous_session.CancelAllPendingOrders.on_tick_from_data_producer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be invoked when tick data arrived from the underlying data producer.
 :param instrument_id: string, the instrument id. This can be an actual instrument id or a relative id.</p>
 <blockquote>

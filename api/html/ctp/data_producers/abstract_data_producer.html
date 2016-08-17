@@ -169,6 +169,16 @@
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.data_producers.abstract_data_producer.</code><code class="descname">AbstractDataProducer</code><span class="sig-paren">(</span><em>dominant_provider</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.set_all_event_queue">
+<code class="descname">set_all_event_queue</code><span class="sig-paren">(</span><em>queue</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.set_all_event_queue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.all_event_queue">
+<code class="descname">all_event_queue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.all_event_queue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.set_dominant_provider">
 <code class="descname">set_dominant_provider</code><span class="sig-paren">(</span><em>provider</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.set_dominant_provider" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -190,14 +200,6 @@
 <dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.disconnect">
 <code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.disconnect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnect to market server.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.set_data_actions">
-<code class="descname">set_data_actions</code><span class="sig-paren">(</span><em>on_tick</em>, <em>on_bar</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.set_data_actions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set self.on_tick and self.on_bar.
-:param on_tick: function pointer.
-:param on_bar:  function pointer.</p>
 </dd></dl>
 
 <dl class="method">
@@ -294,6 +296,47 @@ Not all data producers need this.</p>
 If current data producer does not rely on an data subscription, return an empty list.
 The ZmqDataProducer needs to return data subscriptions which represent zmq connections.
 :return: [AbstractDataSubscriber], the list of subscriptions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.on_tick">
+<code class="descname">on_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.on_tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when a tick data from underlying data arrives.
+:param instrument_id: string, the instrument id. This can be an actual instrument id or a relative id.</p>
+<blockquote>
+<div>It is can be a relative instrument id because the underlying data producer may be a zmq-based
+producer, to which current strategy can register relative instruments.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tick</strong> &#8211; dict{string: object}, tick data.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.on_bar">
+<code class="descname">on_bar</code><span class="sig-paren">(</span><em>kind</em>, <em>bars</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.on_bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be called when a bar data arrives, either generated or received from zmq.
+:param kind: string, the kind of ohlc. Valid values are from OhlcGeneratorConstants,</p>
+<blockquote>
+<div>such as &#8216;time-based&#8217;, &#8216;volatility-based&#8217;.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>bars</strong> &#8211; dict from Periodicity to Bar. keys are periodicities,
+values are generated bars under such periodicities. It may contains more than one bars: a single
+bar under each periodicity.</li>
+<li><strong>tick</strong> &#8211; dict{string: object}, tick data..</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>

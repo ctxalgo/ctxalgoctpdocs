@@ -382,6 +382,29 @@ remote positions.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.on_bar_from_data_producer">
+<code class="descname">on_bar_from_data_producer</code><span class="sig-paren">(</span><em>kind</em>, <em>bars</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.on_bar_from_data_producer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be called when there is some ohlc bars generated.
+:param kind: string, the kind of ohlc. Valid values are from OhlcGeneratorConstants,</p>
+<blockquote>
+<div>such as &#8216;time-based&#8217;, &#8216;volatility-based&#8217;.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>bars</strong> &#8211; dict from Periodicity to Bar. keys are periodicities,
+values are generated bars under such periodicities. It may contains more than one bars: a single
+bar under each periodicity.</li>
+<li><strong>tick</strong> &#8211; dict{string: object}, tick data..</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.on_idle_event">
 <code class="descname">on_idle_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.on_idle_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be invoked when there is no event from the outside.
@@ -413,6 +436,24 @@ remote positions.</li>
 <code class="descname">on_mission_control</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.on_mission_control" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be invoked when a message from control center is arrived.
 :param message: string, the message from the the control center.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.on_tick_from_data_producer">
+<code class="descname">on_tick_from_data_producer</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.on_tick_from_data_producer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when tick data arrived from the underlying data producer.
+:param instrument_id: string, the instrument id. This can be an actual instrument id or a relative id.</p>
+<blockquote>
+<div>It is can be a relative instrument id because the underlying data producer may be a zmq-based
+producer, to which current strategy can register relative instruments.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tick</strong> &#8211; dict{string: object}, tick data.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
