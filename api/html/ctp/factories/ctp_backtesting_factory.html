@@ -672,6 +672,11 @@ The parameters open_price, high_price, low_price and close_price are used for li
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_historical_ohlcs">
+<code class="descname">load_historical_ohlcs</code><span class="sig-paren">(</span><em>all_periods</em>, <em>max_bars</em>, <em>with_open_interests</em>, <em>dominants</em>, <em>profits</em>, <em>use_mid_ask_bid</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.add_data_subscription">
 <code class="descname">add_data_subscription</code><span class="sig-paren">(</span><em>data_subscription</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.add_data_subscription" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add data subscription into current.
@@ -756,11 +761,6 @@ The parameters open_price, high_price, low_price and close_price are used for li
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_historical_ohlcs">
-<code class="descname">load_historical_ohlcs</code><span class="sig-paren">(</span><em>all_periods</em>, <em>max_bars</em>, <em>with_open_interests</em>, <em>dominants</em>, <em>profits</em>, <em>use_mid_ask_bid</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.load_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.max_initialization_retries">
 <code class="descname">max_initialization_retries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.max_initialization_retries" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -777,6 +777,13 @@ The parameters open_price, high_price, low_price and close_price are used for li
 :return: MissionControl, the registered mission control.</p>
 <blockquote>
 <div>Return None if no mission control is registered.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.poll_subscribed_data">
+<code class="descname">poll_subscribed_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.poll_subscribed_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Poll from registered data subscriptions.
+:return: boolean, True if there is some data available, False otherwise.</p>
 </dd></dl>
 
 <dl class="method">
@@ -907,10 +914,11 @@ This only effect real trading. In real trading some CTP providers does not offer
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.poll_subscribed_data">
-<code class="descname">poll_subscribed_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.poll_subscribed_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Poll from registered data subscriptions.
-:return: boolean, True if there is some data available, False otherwise.</p>
+<dt id="ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.set_signal_handlers">
+<code class="descname">set_signal_handlers</code><span class="sig-paren">(</span><em>sigint_handler</em>, <em>sigterm_handler</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_backtesting_factory.CtpBacktestingFactory.set_signal_handlers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup signal handlers.
+:param sigint_handler: function pointer for SIGINT handler.
+:param sigterm_handler: function pointer for SIGTERM handler.</p>
 </dd></dl>
 
 </dd></dl>
@@ -937,7 +945,7 @@ This only effect real trading. In real trading some CTP providers does not offer
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Aug 16, 2016.
+      Last updated on Aug 17, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

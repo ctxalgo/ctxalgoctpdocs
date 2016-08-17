@@ -350,6 +350,11 @@ calculate metrics.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.poll_subscribed_data">
+<code class="descname">poll_subscribed_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.poll_subscribed_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.add_data_subscription">
 <code class="descname">add_data_subscription</code><span class="sig-paren">(</span><em>data_subscription</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.add_data_subscription" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add data subscription into current.
@@ -453,11 +458,6 @@ calculate metrics.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.poll_subscribed_data">
-<code class="descname">poll_subscribed_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.poll_subscribed_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.security_company">
 <code class="descname">security_company</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.security_company" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -547,6 +547,14 @@ calculate metrics.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_signal_handlers">
+<code class="descname">set_signal_handlers</code><span class="sig-paren">(</span><em>sigint_handler</em>, <em>sigterm_handler</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_signal_handlers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup signal handlers.
+:param sigint_handler: function pointer for SIGINT handler.
+:param sigterm_handler: function pointer for SIGTERM handler.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.should_get_commission_ratio">
 <code class="descname">should_get_commission_ratio</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.should_get_commission_ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Should we get commission ratio information from CTP?
@@ -613,7 +621,7 @@ This only effect real trading. In real trading some CTP providers does not offer
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Aug 16, 2016.
+      Last updated on Aug 17, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

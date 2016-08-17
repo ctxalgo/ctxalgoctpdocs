@@ -70,18 +70,24 @@ class StrategyBacktestingThread(threading.Thread):
 
 ```python
 def main():
-    topic= 'eqb'
+    strategy_name = 'test.s1'
     context = zmq.Context()
-    queue_from_strategy = 'tcp://127.0.0.1:6560'
-    queue_into_strategy = 'tcp://127.0.0.1:6561'
+    queue_from_strategy_to_mission_controller = 'tcp://127.0.0.1:6560'
+    queue_from_mission_controller_to_strategy = 'tcp://127.0.0.1:6561'
 
     # Create a mission control object, which will be given to the strategy.
     mission_control = MissionControl(
-        context, queue_from_strategy=queue_from_strategy, queue_into_strategy=queue_into_strategy, topic=topic)
+        context,
+        queue_to_mission_controller=queue_from_strategy_to_mission_controller,
+        queue_from_mission_controller=queue_from_mission_controller_to_strategy,
+        strategy_name=strategy_name)
 
     # Create a mission controller, which is outside of a strategy and sends and receives messages from a strategy.
     mission_controller = MissionController(
-        context, queues_from_strategy=queue_from_strategy, queues_into_strategy=queue_into_strategy, topic=topic)
+        context,
+        queues_from_strategies=queue_from_strategy_to_mission_controller,
+        queues_into_strategies=queue_from_mission_controller_to_strategy,
+        strategy_name=strategy_name)
 
     backtester = StrategyBacktestingThread(mission_control)
     backtester.start()
@@ -91,9 +97,9 @@ def main():
         message = raw_input("Enter next message: ")
         # Send messages to the strategy.
         print('Send message to strategy:  ' + message)
-        mission_controller.send_to_strategy(topic, message)
+        mission_controller.send_to_strategy(strategy_name, message)
 
-        received = mission_controller.poll_from_strategy(topic=topic)
+        received = mission_controller.poll_from_strategy()
         for received_topic, received_message in received.items():
             print('Messages from strategy: {}: {}'.format(received_topic, received_message))
 
