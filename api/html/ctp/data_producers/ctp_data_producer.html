@@ -169,11 +169,6 @@
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.data_producers.ctp_data_producer.</code><code class="descname">CtpDataProducer</code><span class="sig-paren">(</span><em>dominant_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="abstract_data_producer.html#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer" title="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer</span></code></a></p>
 <dl class="method">
-<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.market">
-<code class="descname">market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.market" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.is_tick_needed">
 <code class="descname">is_tick_needed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.is_tick_needed" title="Permalink to this definition">¶</a></dt>
 <dd><p>A CTP data producer always need to subscribe tick data for each instrument to get
@@ -252,6 +247,19 @@ data to generate all kinds of ohlc bars.
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.backtesting_register_market_data">
+<code class="descname">backtesting_register_market_data</code><span class="sig-paren">(</span><em>tick</em>, <em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.backtesting_register_market_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register market data (used internally by backtester).
+:param tick: dict{string: value}, tick data.
+:param dt: datetime, current timestamp.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.backtesting_process_message">
+<code class="descname">backtesting_process_message</code><span class="sig-paren">(</span><em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.backtesting_process_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.all_event_queue">
 <code class="descname">all_event_queue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.all_event_queue" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -295,7 +303,7 @@ data to generate all kinds of ohlc bars.
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Aug 17, 2016.
+      Last updated on Aug 18, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

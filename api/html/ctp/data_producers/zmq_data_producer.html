@@ -216,11 +216,6 @@
 :param is_tick_needed: bool, if True, register for tick data.
 :param dominant_provider: AbstractDominantProvider. Dominant provider.</p>
 <dl class="method">
-<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.market">
-<code class="descname">market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.market" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.is_tick_needed">
 <code class="descname">is_tick_needed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.is_tick_needed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Since in ZmqDataProducer, tick and bar data comes independently, we don&#8217;t need tick data if we
@@ -315,6 +310,19 @@ from CTP to generate bar data). We can set_is_tick_needed with False to reduce n
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.backtesting_register_market_data">
+<code class="descname">backtesting_register_market_data</code><span class="sig-paren">(</span><em>tick</em>, <em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.backtesting_register_market_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register market data (used internally by backtester).
+:param tick: dict{string: value}, tick data.
+:param dt: datetime, current timestamp.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.backtesting_process_message">
+<code class="descname">backtesting_process_message</code><span class="sig-paren">(</span><em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.backtesting_process_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.all_event_queue">
 <code class="descname">all_event_queue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.all_event_queue" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -358,7 +366,7 @@ from CTP to generate bar data). We can set_is_tick_needed with False to reduce n
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Aug 17, 2016.
+      Last updated on Aug 18, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

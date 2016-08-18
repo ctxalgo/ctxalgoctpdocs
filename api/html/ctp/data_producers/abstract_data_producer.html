@@ -184,13 +184,6 @@
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.market">
-<code class="descname">market</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.market" title="Permalink to this definition">¶</a></dt>
-<dd><p>The market interface to retrieve data.
-:return: AbstractCtpMarket</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.connect">
 <code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect to market server.</p>
@@ -339,6 +332,23 @@ bar under each periodicity.</li>
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.backtesting_register_market_data">
+<code class="descname">backtesting_register_market_data</code><span class="sig-paren">(</span><em>tick</em>, <em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.backtesting_register_market_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register market data (used internally by backtester).
+:param tick: dict{string: value}, tick data.
+:param dt: datetime, current timestamp.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.backtesting_process_message">
+<code class="descname">backtesting_process_message</code><span class="sig-paren">(</span><em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.backtesting_process_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process messages in the market message queue. (used internally by backtester).
+The market message queue is maintained only in the backtesting market object.
+:param now: datetime, current timestamp.
+:return: bool, True if there is at least one message in the market message queue.</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -363,7 +373,7 @@ bar under each periodicity.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Aug 17, 2016.
+      Last updated on Aug 18, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
