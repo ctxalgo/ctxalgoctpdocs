@@ -356,25 +356,6 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.real.CtpTrading.send_order">
-<code class="descname">send_order</code><span class="sig-paren">(</span><em>order_ref</em>, <em>exchange_id</em>, <em>future_id</em>, <em>direction</em>, <em>comb_offset_flag</em>, <em>comb_hedge_flag</em>, <em>volume_total_original</em>, <em>limit_price</em>, <em>order_price_type</em>, <em>time_condition</em>, <em>contingent_condition</em>, <em>stop_price</em>, <em>volume_condition</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.real.CtpTrading.send_order" title="Permalink to this definition">¶</a></dt>
-<dd><p>create a new order
-:param order_ref: int, if order ref less than 0, it will auto generate an order ref
-:param future_id: string, future id
-:param direction: TThostFtdcDirectionType, THOST_FTDC_D_Buy or THOST_FTDC_D_Sell
-:param comb_offset_flag: TThostFtdcCombOffsetFlagType
-:param comb_hedge_flag: TThostFtdcCombHedgeFlagType
-:param volume_total_original: TThostFtdcVolumeType
-:param limit_price: double, Limit price
-:param order_price_type: TThostFtdcOrderPriceTypeType
-:param time_condition: TThostFtdcTimeConditionType
-:param contingent_condition: TThostFtdcContingentConditionType
-:param stop_price: double
-:param volume_condition: TThostFtdcVolumeConditionType
-:return: CtxReturnAndRequestID.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.real.CtpTrading.cancel_order">
 <code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.real.CtpTrading.cancel_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>cancel an order
