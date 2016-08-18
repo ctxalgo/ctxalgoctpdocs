@@ -41,6 +41,6 @@ ctp
    report_generator
    real
    utils
+   future_info_provider
    trading_constants
    report
-   backtesting

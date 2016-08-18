@@ -110,9 +110,9 @@
 <li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="real.html">real</a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils.html">utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="future_info_provider.html">future_info_provider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trading_constants.html">trading_constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="report.html">report</a></li>
-<li class="toctree-l2"><a class="reference internal" href="backtesting.html">backtesting</a></li>
 </ul>
 </li>
 </ul>
@@ -695,16 +695,6 @@ Invoke corresponding callback function for that message.
 :param user_product_info: the user&#8217;s product info
 :param auth_code: auth code
 :param logger: Logger</p>
-<dl class="attribute">
-<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.front_id">
-<code class="descname">front_id</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.front_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.session_id">
-<code class="descname">session_id</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.session_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.setup_callbacks">
 <code class="descname">setup_callbacks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.setup_callbacks" title="Permalink to this definition">¶</a></dt>
@@ -899,13 +889,6 @@ Invoke corresponding callback function for that message.
 <dd><p>Subscribe market data for the given futures.
 :param future_id: string
 :return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.now">
-<code class="descname">now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.now" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the current time stamp.
-:return: datetime</p>
 </dd></dl>
 
 </dd></dl>
