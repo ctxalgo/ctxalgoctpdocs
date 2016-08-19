@@ -563,11 +563,6 @@ bar under each periodicity.</li>
 :param is_backtesting: boolean, True if the queue is created in backtesting.
 :param c2ctp: pointer, pointer to the underlying c API.</p>
 <dl class="method">
-<dt id="ctxalgoctp.ctp.base.CtpMessageQueue.set_callback_change_action">
-<code class="descname">set_callback_change_action</code><span class="sig-paren">(</span><em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpMessageQueue.set_callback_change_action" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.base.CtpMessageQueue.set_callbacks">
 <code class="descname">set_callbacks</code><span class="sig-paren">(</span><em>callbacks</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpMessageQueue.set_callbacks" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -612,7 +607,8 @@ Invoke corresponding callback function for that message.
 <dl class="method">
 <dt id="ctxalgoctp.ctp.base.CtpMessageQueue.invoke_log">
 <code class="descname">invoke_log</code><span class="sig-paren">(</span><em>caller_class</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpMessageQueue.invoke_log" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method is not used anymore.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -696,8 +692,8 @@ Invoke corresponding callback function for that message.
 :param auth_code: auth code
 :param logger: Logger</p>
 <dl class="method">
-<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.setup_callbacks">
-<code class="descname">setup_callbacks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.setup_callbacks" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.base.AbstractCtpTrading.setup_event_actions">
+<code class="descname">setup_event_actions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.AbstractCtpTrading.setup_event_actions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup callbacks, must be called if callbacks from self.message_queue changes.</p>
 </dd></dl>
 
