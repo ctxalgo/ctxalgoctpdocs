@@ -166,6 +166,208 @@
             
   <div class="section" id="module-ctxalgoctp.ctp.trade_executors.ctp_trade_executor">
 <span id="ctp-trade-executor"></span><h1>ctp_trade_executor<a class="headerlink" href="#module-ctxalgoctp.ctp.trade_executors.ctp_trade_executor" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.ctp_trade_executor.</code><code class="descname">CtpTradeExecutor</code><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="abstract_trade_executor.html#ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor" title="ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor</span></code></a></p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.cancel_order">
+<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.cancel_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>cancel an order
+:param order: CtxFtdcOrderField
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.close_limit_order">
+<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.close_limit_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close a limit order.
+:param exchange_id: string, exchange id.
+:param instrument_id: string, A single future id.
+:param price: double, the price for the limit order.
+:param volume: int, the volume for the limit order. Positive number means long position,</p>
+<blockquote>
+<div>negative number means short position.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kind</strong> &#8211; LimitOrderKind. Normal means a normal limit order. FAK means Fill-and-kill, FOK means Fill-or-Kill.</td>
+</tr>
+</tbody>
+</table>
+<p>:param order_ref, the order reference number. -1 means that the system will assign a value.
+:param reason: string, reason for placing the order.
+:return: int, order reference number.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.close_market_order">
+<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.close_market_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send an order to close a trade at market price.
+:param exchange_id: string, exchange id.
+:param instrument_id, string, a SINGLE future id.
+:param volume: int, the volume to order, positive number means long position,</p>
+<blockquote>
+<div>negative number means short position.</div></blockquote>
+<p>:param order_ref, the order reference number. -1 means that the system will assign a value.
+:param reason: string, reason for placing the order.
+:return: int, order reference number.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>connect to the trading server
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>disconnect from the trading server
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_commission_rate">
+<code class="descname">get_commission_rate</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_commission_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>get future&#8217;s commission rate
+:param future_id: string
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_deep_market_data">
+<code class="descname">get_deep_market_data</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_deep_market_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe market data for the given futures.
+:param future_id: string
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_instrument">
+<code class="descname">get_instrument</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_instrument" title="Permalink to this definition">¶</a></dt>
+<dd><p>get future info
+:param futrre_id: string
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_investor_position">
+<code class="descname">get_investor_position</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_investor_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>get investor position
+:param future_id: string
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_investor_position_detail">
+<code class="descname">get_investor_position_detail</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_investor_position_detail" title="Permalink to this definition">¶</a></dt>
+<dd><p>get investor position detail
+:param future_id: string
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_margin_rate">
+<code class="descname">get_margin_rate</code><span class="sig-paren">(</span><em>future_id</em>, <em>hedge_flag</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>get future margin rate
+:param future_id: string
+:param hedge_flag: TThostFtdcHedgeFlagType
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_order">
+<code class="descname">get_order</code><span class="sig-paren">(</span><em>instrument_id=''</em>, <em>exchange_id=''</em>, <em>order_sys_id=''</em>, <em>insert_time_start=''</em>, <em>insert_time_end=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>查询报单
+:param instrument_id: string future id
+:param exchange_id: string exchange id
+:param order_sys_id: string order sys id
+:param insert_time_start: string insert start time
+:param insert_time_end: string insert end time
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_order_commission_rate">
+<code class="descname">get_order_commission_rate</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_order_commission_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get open and close order commission rate.
+:param future_id: string, the future id.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_trade">
+<code class="descname">get_trade</code><span class="sig-paren">(</span><em>future_id=''</em>, <em>exchange_id=''</em>, <em>trade_id=''</em>, <em>trade_time_start=''</em>, <em>trade_time_end=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_trade" title="Permalink to this definition">¶</a></dt>
+<dd><p>查询报单
+:param future_id: string future id
+:param exchange_id: string exchange id
+:param trade_id: string trade id
+:param trade_time_start: string trade start time
+:param trade_time_end: string trade end time
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_trading_account">
+<code class="descname">get_trading_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.get_trading_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>get trading account info
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.open_limit_order">
+<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.open_limit_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a limit order.
+:param exchange_id: string, exchange id.
+:param instrument_id: string, A single future id.
+:param price: double, the price for the limit order.
+:param volume: int, the volume for the limit order. Positive number means long position,</p>
+<blockquote>
+<div>negative number means short position.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kind</strong> &#8211; LimitOrderKind. Normal means a normal limit order. FAK means Fill-and-kill, FOK means Fill-or-Kill.</td>
+</tr>
+</tbody>
+</table>
+<p>:param order_ref, the order reference number. -1 means that the system will assign a value.
+:param reason: string, reason for placing the order.
+:return: int, order reference number.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.open_market_order">
+<code class="descname">open_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.open_market_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send an order to open a trade at market price.
+:param exchange_id: string, exchange id.
+:param instrument_id, string, a SINGLE future id.
+:param volume: int, the volume to order, positive number means long position,</p>
+<blockquote>
+<div>negative number means short position.</div></blockquote>
+<p>:param order_ref, the order reference number. -1 means that the system will assign a value.
+:param reason: string, reason for placing the order.
+:return: int, order reference number.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.release">
+<code class="descname">release</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.release" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release resources used by current trading API.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.setup_event_actions">
+<code class="descname">setup_event_actions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.ctp_trade_executor.CtpTradeExecutor.setup_event_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup callbacks, must be called if callbacks from self.message_queue changes.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
