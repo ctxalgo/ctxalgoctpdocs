@@ -166,8 +166,106 @@
   <div class="section" id="module-ctxalgoctp.ctp.data_producers.backtesting_data_producer">
 <span id="backtesting-data-producer"></span><h1>backtesting_data_producer<a class="headerlink" href="#module-ctxalgoctp.ctp.data_producers.backtesting_data_producer" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.data_producers.backtesting_data_producer.</code><code class="descname">CtpBacktestingUtils</code><span class="sig-paren">(</span><em>backtester</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils.register_response">
+<code class="descname">register_response</code><span class="sig-paren">(</span><em>kind</em>, <em>data</em>, <em>delay_start=0</em>, <em>delay_end=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils.register_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a response handler into the response queue.
+:param kind: string, the name of the response callback.
+:param data: dict from string to object, the data.
+:param delay_start: int,
+:param delay_end: int, delay_start and delay_end defines the time range (both inclusive) in milliseconds,</p>
+<blockquote>
+<div>in which the response should occur.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils.set_message_random_delay_enabled">
+<code class="descname">set_message_random_delay_enabled</code><span class="sig-paren">(</span><em>enabled</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils.set_message_random_delay_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.message_random_delay_enabled to enabled.
+:param enabled: bool, the value.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.data_producers.backtesting_data_producer.</code><code class="descname">CtpMarketBacktester</code><span class="sig-paren">(</span><em>backtester</em>, <em>message_queue</em>, <em>local_path</em>, <em>logger</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../base.html#ctxalgoctp.ctp.base.AbstractCtpMarket" title="ctxalgoctp.ctp.base.AbstractCtpMarket"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.base.AbstractCtpMarket</span></code></a>, <a class="reference internal" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils" title="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils</span></code></a></p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.connect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>disconnect from the trading server
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><em>future_ids</em>, <em>exchange_id=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.unsubscribe">
+<code class="descname">unsubscribe</code><span class="sig-paren">(</span><em>future_ids</em>, <em>exchange_id=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.unsubscribe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.release">
+<code class="descname">release</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.release" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.connection_status">
+<code class="descname">connection_status</code><em class="property"> = None</em><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.connection_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.front_id">
+<code class="descname">front_id</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.front_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.now">
+<code class="descname">now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.now" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current time stamp.
+:return: datetime</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.register_response">
+<code class="descname">register_response</code><span class="sig-paren">(</span><em>kind</em>, <em>data</em>, <em>delay_start=0</em>, <em>delay_end=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.register_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a response handler into the response queue.
+:param kind: string, the name of the response callback.
+:param data: dict from string to object, the data.
+:param delay_start: int,
+:param delay_end: int, delay_start and delay_end defines the time range (both inclusive) in milliseconds,</p>
+<blockquote>
+<div>in which the response should occur.</div></blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.session_id">
+<code class="descname">session_id</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.session_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.set_message_random_delay_enabled">
+<code class="descname">set_message_random_delay_enabled</code><span class="sig-paren">(</span><em>enabled</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpMarketBacktester.set_message_random_delay_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.message_random_delay_enabled to enabled.
+:param enabled: bool, the value.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.data_producers.backtesting_data_producer.</code><code class="descname">BacktestingDataProducer</code><span class="sig-paren">(</span><em>dominant_provider</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.data_producers.backtesting_data_producer.</code><code class="descname">BacktestingDataProducer</code><span class="sig-paren">(</span><em>backtester</em>, <em>dominant_provider</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="abstract_data_producer.html#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer" title="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer</span></code></a></p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.reset">
@@ -201,6 +299,16 @@ data to generate all kinds of ohlc bars.
 <dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.prepare_before_run">
 <code class="descname">prepare_before_run</code><span class="sig-paren">(</span><em>message_queue</em>, <em>all_event_queue</em>, <em>strategy</em>, <em>ctp_folder</em>, <em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.prepare_before_run" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.create_market">
+<code class="descname">create_market</code><span class="sig-paren">(</span><em>msg_queue</em>, <em>ctp_folder</em>, <em>logger</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.create_market" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an CtpMarketBacktester object.
+:param msg_queue: CtpMessageQueue, the message queue for CTP functions.
+:param ctp_folder: string, the folder for CTP to store data.
+:param logger: Logger, the logger.
+:return: AbstractCtpMarket.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.backtesting_data_producer.BacktestingDataProducer.connect">
