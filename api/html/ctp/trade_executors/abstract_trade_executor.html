@@ -115,7 +115,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../backtesting_utils.html">backtesting_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comm.html">comm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../report_generator.html">report_generator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../real.html">real</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../utils.html">utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../future_info_provider.html">future_info_provider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trading_constants.html">trading_constants</a></li>
@@ -170,6 +169,17 @@
 <dt id="ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor">
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.abstract_trade_executor.</code><code class="descname">AbstractTradeExecutor</code><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor.prepare_trade_executor">
+<code class="descname">prepare_trade_executor</code><span class="sig-paren">(</span><em>message_queue</em>, <em>local_path</em>, <em>logger</em>, <em>c2ctp_dll</em>, <em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor.prepare_trade_executor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare trade executor before strategy starts.
+:param message_queue: CtpMessageQueue, message queue.
+:param local_path: string, the local folder to store information generated when strategy is running.
+:param logger: LogHandler, log handler.
+:param c2ctp_dll: dynamic library pointing to C2CTP.
+:param dt: datetime, current datetime.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor.setup_event_actions">
 <code class="descname">setup_event_actions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor.setup_event_actions" title="Permalink to this definition">¶</a></dt>
@@ -364,6 +374,13 @@
 <dd><p>Subscribe market data for the given futures.
 :param future_id: string
 :return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor.backtesting_process_message">
+<code class="descname">backtesting_process_message</code><span class="sig-paren">(</span><em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor.backtesting_process_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process message. Only used by backtester.
+:param now: datetime, current timestamp.</p>
 </dd></dl>
 
 </dd></dl>

@@ -114,7 +114,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../backtesting_utils.html">backtesting_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comm.html">comm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../report_generator.html">report_generator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../real.html">real</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../utils.html">utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../future_info_provider.html">future_info_provider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trading_constants.html">trading_constants</a></li>
@@ -165,6 +164,85 @@
             
   <div class="section" id="module-ctxalgoctp.ctp.data_producers.ctp_data_producer">
 <span id="ctp-data-producer"></span><h1>ctp_data_producer<a class="headerlink" href="#module-ctxalgoctp.ctp.data_producers.ctp_data_producer" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.data_producers.ctp_data_producer.</code><code class="descname">CtpMarket</code><span class="sig-paren">(</span><em>message_queue</em>, <em>local_path</em>, <em>server_address</em>, <em>broker_id</em>, <em>investor_id</em>, <em>password</em>, <em>logger</em>, <em>c2ctp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../base.html#ctxalgoctp.ctp.base.AbstractCtpMarket" title="ctxalgoctp.ctp.base.AbstractCtpMarket"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.base.AbstractCtpMarket</span></code></a></p>
+<p>Initialize market API with message queue.
+:param message_queue: CtpMessageQueue, Message queue.
+:param local_path: string, the local folder to store temp files.
+:param server_address: string, the server address to connect to.
+:param broker_id: string, Broker id.
+:param investor_id: string, investor id.
+:param password: string, investor password.
+:param logger: Logger</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.on_connected">
+<code class="descname">on_connected</code><span class="sig-paren">(</span><em>p_api</em>, <em>status</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.on_connected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.setup_event_actions">
+<code class="descname">setup_event_actions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.setup_event_actions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to the marker server.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>disconnect from the market server
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><em>future_ids</em>, <em>exchange_id=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe market data for the given futures.
+:param future_ids: [string], list of future ids.
+:param exchange_id: string, exchange id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.unsubscribe">
+<code class="descname">unsubscribe</code><span class="sig-paren">(</span><em>future_ids</em>, <em>exchange_id=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.unsubscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Un-subscribe market data for the given futures.
+:param future_ids: [string], list of future ids.
+:param exchange_id: string, exchange id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.release">
+<code class="descname">release</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.release" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release resources used by current market API.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.now">
+<code class="descname">now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.now" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.connection_status">
+<code class="descname">connection_status</code><em class="property"> = None</em><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.connection_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.front_id">
+<code class="descname">front_id</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.front_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.session_id">
+<code class="descname">session_id</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpMarket.session_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="class">
 <dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer">
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.data_producers.ctp_data_producer.</code><code class="descname">CtpDataProducer</code><span class="sig-paren">(</span><em>dominant_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer" title="Permalink to this definition">¶</a></dt>

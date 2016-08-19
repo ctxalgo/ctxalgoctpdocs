@@ -115,7 +115,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../backtesting_utils.html">backtesting_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comm.html">comm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../report_generator.html">report_generator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../real.html">real</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../utils.html">utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../future_info_provider.html">future_info_provider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trading_constants.html">trading_constants</a></li>
@@ -167,203 +166,267 @@
   <div class="section" id="module-ctxalgoctp.ctp.trade_executors.backtesting_trade_executor">
 <span id="backtesting-trade-executor"></span><h1>backtesting_trade_executor<a class="headerlink" href="#module-ctxalgoctp.ctp.trade_executors.backtesting_trade_executor" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.MaxTradableVolumes">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.</code><code class="descname">MaxTradableVolumes</code><span class="sig-paren">(</span><em>now</em>, <em>traded_price</em>, <em>traded_volume</em>, <em>order_book</em>, <em>slippage_model</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.MaxTradableVolumes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that represents max tradable volumes that can be used for order execution.
+It keeps three kinds of volumes, traded volume, ask volume and bid volume.
+Traded volume is the volume that we observed traded. Ask volume and bid volume is only available
+when order book data is present (in tick level backtesting). They represents the ask and bid volume.</p>
+<p>Initialize current.
+:param now: datetime, current timestamp.
+:param traded_price: float, the last known price for a particular contract.
+:param traded_volume: int, the last known traded volume for a particular contract.
+:param order_book: dict{string: object}, order book. If None, no order book is available.
+:param slippage_model: AbstractSlippageModel, slippage model.</p>
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.MaxTradableVolumes.CHANGE_TRADED_VOLUME">
+<code class="descname">CHANGE_TRADED_VOLUME</code><em class="property"> = 0</em><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.MaxTradableVolumes.CHANGE_TRADED_VOLUME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.MaxTradableVolumes.CHANGE_ASK_VOLUME">
+<code class="descname">CHANGE_ASK_VOLUME</code><em class="property"> = 1</em><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.MaxTradableVolumes.CHANGE_ASK_VOLUME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.MaxTradableVolumes.CHANGE_BID_VOLUME">
+<code class="descname">CHANGE_BID_VOLUME</code><em class="property"> = 2</em><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.MaxTradableVolumes.CHANGE_BID_VOLUME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.MaxTradableVolumes.has_volume_left">
+<code class="descname">has_volume_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.MaxTradableVolumes.has_volume_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is there any tradable volume that can be used to execute pending orders?
+:return: bool.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.MaxTradableVolumes.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>delta</em>, <em>volume_change_category</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.MaxTradableVolumes.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change tradable volumes.
+:param delta:
+:param volume_change_category: int, the volume category to change.</p>
+<blockquote>
+<div>Valid value must be in self.valid_volume_change_categories.</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.Order">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.</code><code class="descname">Order</code><span class="sig-paren">(</span><em>id_</em>, <em>future_id</em>, <em>actual_future_id</em>, <em>is_open</em>, <em>price</em>, <em>traded_volume</em>, <em>left_volume</em>, <em>order_ref</em>, <em>timestamp</em>, <em>reason</em>, <em>kind</em>, <em>canceled</em>, <em>offset_flag</em>, <em>order_sys_id</em>, <em>request_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.Order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that represent an order.</p>
+<p>Initialize current.
+:param <a href="#id1"><span class="problematic" id="id2">id_</span></a>: int, id of the order, will be increasing in the same trading day.</p>
+<blockquote>
+<div>Used for decide which order is first placed.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>future_id</strong> &#8211; string, future id.</li>
+<li><strong>is_open</strong> &#8211; boolean, True if the order is to open a position. False to close a position.</li>
+<li><strong>price</strong> &#8211; float, the price of the order.</li>
+<li><strong>traded_volume</strong> &#8211; int, the volume in the order that has been traded.</li>
+<li><strong>left_volume</strong> &#8211; int, the volume that is to be traded.</li>
+<li><strong>order_ref</strong> &#8211; int, order reference.</li>
+<li><strong>timestamp</strong> &#8211; datetime, time stamp when the order is placed.</li>
+<li><strong>reason</strong> &#8211; string, reason for placing the order.</li>
+<li><strong>kind</strong> &#8211; OrderKind, kind of the order, such as Market, NormalLimit, FAK, FOK.</li>
+<li><strong>canceled</strong> &#8211; boolean, True means that current order has been canceled.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.Order.is_open_long">
+<code class="descname">is_open_long</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.Order.is_open_long" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.Order.is_open_short">
+<code class="descname">is_open_short</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.Order.is_open_short" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.Order.is_close_long">
+<code class="descname">is_close_long</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.Order.is_close_long" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.Order.is_close_short">
+<code class="descname">is_close_short</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.Order.is_close_short" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.</code><code class="descname">BacktestingTradeExecutor</code><span class="sig-paren">(</span><em>dominant_provider</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="abstract_trade_executor.html#ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor" title="ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor</span></code></a></p>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.</code><code class="descname">BacktestingTradeExecutor</code><span class="sig-paren">(</span><em>backtester</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="abstract_trade_executor.html#ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor" title="ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor</span></code></a>, <a class="reference internal" href="../data_producers/backtesting_data_producer.html#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils" title="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils</span></code></a></p>
 <dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.cancel_order">
-<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.cancel_order" title="Permalink to this definition">¶</a></dt>
-<dd><p>cancel an order
-:param order: CtxFtdcOrderField
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_limit_order">
-<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_limit_order" title="Permalink to this definition">¶</a></dt>
-<dd><p>Close a limit order.
-:param exchange_id: string, exchange id.
-:param instrument_id: string, A single future id.
-:param price: double, the price for the limit order.
-:param volume: int, the volume for the limit order. Positive number means long position,</p>
-<blockquote>
-<div>negative number means short position.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kind</strong> &#8211; LimitOrderKind. Normal means a normal limit order. FAK means Fill-and-kill, FOK means Fill-or-Kill.</td>
-</tr>
-</tbody>
-</table>
-<p>:param order_ref, the order reference number. -1 means that the system will assign a value.
-:param reason: string, reason for placing the order.
-:return: int, order reference number.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_market_order">
-<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_market_order" title="Permalink to this definition">¶</a></dt>
-<dd><p>Send an order to close a trade at market price.
-:param exchange_id: string, exchange id.
-:param instrument_id, string, a SINGLE future id.
-:param volume: int, the volume to order, positive number means long position,</p>
-<blockquote>
-<div>negative number means short position.</div></blockquote>
-<p>:param order_ref, the order reference number. -1 means that the system will assign a value.
-:param reason: string, reason for placing the order.
-:return: int, order reference number.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.connect">
-<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.connect" title="Permalink to this definition">¶</a></dt>
-<dd><p>connect to the trading server
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.disconnect">
-<code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.disconnect" title="Permalink to this definition">¶</a></dt>
-<dd><p>disconnect from the trading server
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_commission_rate">
-<code class="descname">get_commission_rate</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_commission_rate" title="Permalink to this definition">¶</a></dt>
-<dd><p>get future&#8217;s commission rate
-:param future_id: string
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_deep_market_data">
-<code class="descname">get_deep_market_data</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_deep_market_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Subscribe market data for the given futures.
-:param future_id: string
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_instrument">
-<code class="descname">get_instrument</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_instrument" title="Permalink to this definition">¶</a></dt>
-<dd><p>get future info
-:param futrre_id: string
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_investor_position">
-<code class="descname">get_investor_position</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_investor_position" title="Permalink to this definition">¶</a></dt>
-<dd><p>get investor position
-:param future_id: string
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_investor_position_detail">
-<code class="descname">get_investor_position_detail</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_investor_position_detail" title="Permalink to this definition">¶</a></dt>
-<dd><p>get investor position detail
-:param future_id: string
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_margin_rate">
-<code class="descname">get_margin_rate</code><span class="sig-paren">(</span><em>future_id</em>, <em>hedge_flag</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_margin_rate" title="Permalink to this definition">¶</a></dt>
-<dd><p>get future margin rate
-:param future_id: string
-:param hedge_flag: TThostFtdcHedgeFlagType
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_order">
-<code class="descname">get_order</code><span class="sig-paren">(</span><em>instrument_id=''</em>, <em>exchange_id=''</em>, <em>order_sys_id=''</em>, <em>insert_time_start=''</em>, <em>insert_time_end=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_order" title="Permalink to this definition">¶</a></dt>
-<dd><p>查询报单
-:param instrument_id: string future id
-:param exchange_id: string exchange id
-:param order_sys_id: string order sys id
-:param insert_time_start: string insert start time
-:param insert_time_end: string insert end time
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_order_commission_rate">
-<code class="descname">get_order_commission_rate</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_order_commission_rate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get open and close order commission rate.
-:param future_id: string, the future id.
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_trade">
-<code class="descname">get_trade</code><span class="sig-paren">(</span><em>future_id=''</em>, <em>exchange_id=''</em>, <em>trade_id=''</em>, <em>trade_time_start=''</em>, <em>trade_time_end=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_trade" title="Permalink to this definition">¶</a></dt>
-<dd><p>查询报单
-:param future_id: string future id
-:param exchange_id: string exchange id
-:param trade_id: string trade id
-:param trade_time_start: string trade start time
-:param trade_time_end: string trade end time
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_trading_account">
-<code class="descname">get_trading_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_trading_account" title="Permalink to this definition">¶</a></dt>
-<dd><p>get trading account info
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_limit_order">
-<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_limit_order" title="Permalink to this definition">¶</a></dt>
-<dd><p>Open a limit order.
-:param exchange_id: string, exchange id.
-:param instrument_id: string, A single future id.
-:param price: double, the price for the limit order.
-:param volume: int, the volume for the limit order. Positive number means long position,</p>
-<blockquote>
-<div>negative number means short position.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kind</strong> &#8211; LimitOrderKind. Normal means a normal limit order. FAK means Fill-and-kill, FOK means Fill-or-Kill.</td>
-</tr>
-</tbody>
-</table>
-<p>:param order_ref, the order reference number. -1 means that the system will assign a value.
-:param reason: string, reason for placing the order.
-:return: int, order reference number.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_market_order">
-<code class="descname">open_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_market_order" title="Permalink to this definition">¶</a></dt>
-<dd><p>Send an order to open a trade at market price.
-:param exchange_id: string, exchange id.
-:param instrument_id, string, a SINGLE future id.
-:param volume: int, the volume to order, positive number means long position,</p>
-<blockquote>
-<div>negative number means short position.</div></blockquote>
-<p>:param order_ref, the order reference number. -1 means that the system will assign a value.
-:param reason: string, reason for placing the order.
-:return: int, order reference number.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.release">
-<code class="descname">release</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.release" title="Permalink to this definition">¶</a></dt>
-<dd><p>Release resources used by current trading API.</p>
-</dd></dl>
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.prepare_trade_executor">
+<code class="descname">prepare_trade_executor</code><span class="sig-paren">(</span><em>message_queue</em>, <em>local_path</em>, <em>logger</em>, <em>c2ctp_dll</em>, <em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.prepare_trade_executor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.setup_event_actions">
 <code class="descname">setup_event_actions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.setup_event_actions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Setup callbacks, must be called if callbacks from self.message_queue changes.</p>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.add_price">
+<code class="descname">add_price</code><span class="sig-paren">(</span><em>future_id</em>, <em>price</em>, <em>volume</em>, <em>high</em>, <em>low</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.add_price" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.connect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.release">
+<code class="descname">release</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.release" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.cancel_order">
+<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.cancel_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_investor_position">
+<code class="descname">get_investor_position</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_investor_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_investor_position_detail">
+<code class="descname">get_investor_position_detail</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_investor_position_detail" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_order">
+<code class="descname">get_order</code><span class="sig-paren">(</span><em>instrument_id=''</em>, <em>exchange_id=''</em>, <em>order_sys_id=''</em>, <em>insert_time_start=''</em>, <em>insert_time_end=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_trade">
+<code class="descname">get_trade</code><span class="sig-paren">(</span><em>future_id=''</em>, <em>exchange_id=''</em>, <em>trade_id=''</em>, <em>trade_time_start=''</em>, <em>trade_time_end=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_trade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_trading_account">
+<code class="descname">get_trading_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_trading_account" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_instrument">
+<code class="descname">get_instrument</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_instrument" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_commission_rate">
+<code class="descname">get_commission_rate</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_commission_rate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_margin_rate">
+<code class="descname">get_margin_rate</code><span class="sig-paren">(</span><em>future_id</em>, <em>hedge_flag</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_order_commission_rate">
+<code class="descname">get_order_commission_rate</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_order_commission_rate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_deep_market_data">
+<code class="descname">get_deep_market_data</code><span class="sig-paren">(</span><em>future_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_deep_market_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_market_order">
+<code class="descname">open_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_market_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_market_order">
+<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_market_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_limit_order">
+<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_limit_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_limit_order">
+<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_limit_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.update_trading_account">
+<code class="descname">update_trading_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.update_trading_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update trading account.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.check_all_pending_orders">
+<code class="descname">check_all_pending_orders</code><span class="sig-paren">(</span><em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.check_all_pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check all pending orders to see if some of them can be executed.
+:param now: datetime, current time stamp.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.check_pending_orders">
+<code class="descname">check_pending_orders</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>market_price</em>, <em>market_volume</em>, <em>now</em>, <em>is_eager=False</em>, <em>open_price=None</em>, <em>high_price=None</em>, <em>low_price=None</em>, <em>close_price=None</em>, <em>order_book=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.check_pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if some of the pending orders can be executed based on the current ohlc bar.
+The parameters open_price, high_price, low_price and close_price are used for limit order simulation.
+:param market_price: float, the current price, from the trades in historical data.
+:param market_volume: int, the current volume, from the trades in historical data.
+:param now: datetime, current time stamp.
+:param is_eager: boolean.
+:param open_price: float, the open price of current bar, if available.
+:param high_price: float, the high price of current bar, if available.
+:param low_price: float, the low price of current bar, if available.
+:param close_price: float, the close price of current bar, if available.
+:param order_book: dict{string: object}, current order book (tick) information.</p>
+<blockquote>
+<div>Only when backtesting with tick data, order_book has value, otherwise, it is None.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.register_response">
+<code class="descname">register_response</code><span class="sig-paren">(</span><em>kind</em>, <em>data</em>, <em>delay_start=0</em>, <em>delay_end=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.register_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a response handler into the response queue.
+:param kind: string, the name of the response callback.
+:param data: dict from string to object, the data.
+:param delay_start: int,
+:param delay_end: int, delay_start and delay_end defines the time range (both inclusive) in milliseconds,</p>
+<blockquote>
+<div>in which the response should occur.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.set_message_random_delay_enabled">
+<code class="descname">set_message_random_delay_enabled</code><span class="sig-paren">(</span><em>enabled</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.set_message_random_delay_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.message_random_delay_enabled to enabled.
+:param enabled: bool, the value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.backtesting_process_message">
+<code class="descname">backtesting_process_message</code><span class="sig-paren">(</span><em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.backtesting_process_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process message. Only used by backtester.
+:param now: datetime, current timestamp.</p>
 </dd></dl>
 
 </dd></dl>
