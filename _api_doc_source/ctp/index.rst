@@ -7,8 +7,8 @@ ctp
    live/index
    factories/index
    context_loaders/index
-   order_executors/index
    code_gen/index
+   trade_executors/index
    logger/index
    execution_drivers/index
    data_producers/index
