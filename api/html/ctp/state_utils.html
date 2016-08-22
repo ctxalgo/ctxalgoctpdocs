@@ -624,6 +624,15 @@ between the current price and the position price.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.margin_rate">
+<code class="descname">margin_rate</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the margin rate for the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param direction: string, not used.
+:return: float, margin rate.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.margin_rate_by_money">
 <code class="descname">margin_rate_by_money</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.margin_rate_by_money" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -637,6 +646,15 @@ between the current price and the position price.</li>
 <dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.max_positions_to_open">
 <code class="descname">max_positions_to_open</code><span class="sig-paren">(</span><em>price</em>, <em>direction</em>, <em>instrument_id=None</em>, <em>available_money=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.max_positions_to_open" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.money_per_tick">
+<code class="descname">money_per_tick</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>with_margin=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.money_per_tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the money for a tick movement of the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param with_margin: bool, If True, the returned value is multiplied by margin rate.
+:return: float, the money for a tick movement of the given instrument.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.name">
@@ -1612,6 +1630,15 @@ between the current price and the position price.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.margin_rate">
+<code class="descname">margin_rate</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the margin rate for the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param direction: string, not used.
+:return: float, margin rate.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.margin_rate_by_money">
 <code class="descname">margin_rate_by_money</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.margin_rate_by_money" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1625,6 +1652,15 @@ between the current price and the position price.</li>
 <dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.max_positions_to_open">
 <code class="descname">max_positions_to_open</code><span class="sig-paren">(</span><em>price</em>, <em>direction</em>, <em>instrument_id=None</em>, <em>available_money=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.max_positions_to_open" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.money_per_tick">
+<code class="descname">money_per_tick</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>with_margin=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.money_per_tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the money for a tick movement of the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param with_margin: bool, If True, the returned value is multiplied by margin rate.
+:return: float, the money for a tick movement of the given instrument.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.name">
@@ -2615,6 +2651,15 @@ between the current price and the position price.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.margin_rate">
+<code class="descname">margin_rate</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the margin rate for the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param direction: string, not used.
+:return: float, margin rate.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.margin_rate_by_money">
 <code class="descname">margin_rate_by_money</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.margin_rate_by_money" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2628,6 +2673,15 @@ between the current price and the position price.</li>
 <dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.max_positions_to_open">
 <code class="descname">max_positions_to_open</code><span class="sig-paren">(</span><em>price</em>, <em>direction</em>, <em>instrument_id=None</em>, <em>available_money=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.max_positions_to_open" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.money_per_tick">
+<code class="descname">money_per_tick</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>with_margin=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.money_per_tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the money for a tick movement of the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param with_margin: bool, If True, the returned value is multiplied by margin rate.
+:return: float, the money for a tick movement of the given instrument.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.name">
@@ -3625,6 +3679,15 @@ between the current price and the position price.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.margin_rate">
+<code class="descname">margin_rate</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the margin rate for the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param direction: string, not used.
+:return: float, margin rate.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.margin_rate_by_money">
 <code class="descname">margin_rate_by_money</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.margin_rate_by_money" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -3638,6 +3701,15 @@ between the current price and the position price.</li>
 <dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.max_positions_to_open">
 <code class="descname">max_positions_to_open</code><span class="sig-paren">(</span><em>price</em>, <em>direction</em>, <em>instrument_id=None</em>, <em>available_money=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.max_positions_to_open" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.money_per_tick">
+<code class="descname">money_per_tick</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>with_margin=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.money_per_tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the money for a tick movement of the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param with_margin: bool, If True, the returned value is multiplied by margin rate.
+:return: float, the money for a tick movement of the given instrument.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.name">
@@ -4625,6 +4697,15 @@ between the current price and the position price.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.margin_rate">
+<code class="descname">margin_rate</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the margin rate for the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param direction: string, not used.
+:return: float, margin rate.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.margin_rate_by_money">
 <code class="descname">margin_rate_by_money</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.margin_rate_by_money" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -4638,6 +4719,15 @@ between the current price and the position price.</li>
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.max_positions_to_open">
 <code class="descname">max_positions_to_open</code><span class="sig-paren">(</span><em>price</em>, <em>direction</em>, <em>instrument_id=None</em>, <em>available_money=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.max_positions_to_open" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.money_per_tick">
+<code class="descname">money_per_tick</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>with_margin=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.money_per_tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the money for a tick movement of the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param with_margin: bool, If True, the returned value is multiplied by margin rate.
+:return: float, the money for a tick movement of the given instrument.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.name">
@@ -5625,6 +5715,15 @@ between the current price and the position price.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.margin_rate">
+<code class="descname">margin_rate</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the margin rate for the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param direction: string, not used.
+:return: float, margin rate.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.margin_rate_by_money">
 <code class="descname">margin_rate_by_money</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.margin_rate_by_money" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -5638,6 +5737,15 @@ between the current price and the position price.</li>
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.max_positions_to_open">
 <code class="descname">max_positions_to_open</code><span class="sig-paren">(</span><em>price</em>, <em>direction</em>, <em>instrument_id=None</em>, <em>available_money=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.max_positions_to_open" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.money_per_tick">
+<code class="descname">money_per_tick</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>with_margin=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.money_per_tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the money for a tick movement of the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param with_margin: bool, If True, the returned value is multiplied by margin rate.
+:return: float, the money for a tick movement of the given instrument.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.name">
@@ -6663,6 +6771,15 @@ between the current price and the position price.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.margin_rate">
+<code class="descname">margin_rate</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the margin rate for the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param direction: string, not used.
+:return: float, margin rate.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.margin_rate_by_money">
 <code class="descname">margin_rate_by_money</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.margin_rate_by_money" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -6676,6 +6793,15 @@ between the current price and the position price.</li>
 <dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.max_positions_to_open">
 <code class="descname">max_positions_to_open</code><span class="sig-paren">(</span><em>price</em>, <em>direction</em>, <em>instrument_id=None</em>, <em>available_money=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.max_positions_to_open" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.money_per_tick">
+<code class="descname">money_per_tick</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>with_margin=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.money_per_tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the money for a tick movement of the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param with_margin: bool, If True, the returned value is multiplied by margin rate.
+:return: float, the money for a tick movement of the given instrument.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.name">
@@ -7684,6 +7810,15 @@ between the current price and the position price.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.margin_rate">
+<code class="descname">margin_rate</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the margin rate for the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param direction: string, not used.
+:return: float, margin rate.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.margin_rate_by_money">
 <code class="descname">margin_rate_by_money</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.margin_rate_by_money" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -7697,6 +7832,15 @@ between the current price and the position price.</li>
 <dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.max_positions_to_open">
 <code class="descname">max_positions_to_open</code><span class="sig-paren">(</span><em>price</em>, <em>direction</em>, <em>instrument_id=None</em>, <em>available_money=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.max_positions_to_open" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.money_per_tick">
+<code class="descname">money_per_tick</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>with_margin=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.money_per_tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the money for a tick movement of the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param with_margin: bool, If True, the returned value is multiplied by margin rate.
+:return: float, the money for a tick movement of the given instrument.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.name">
@@ -8715,6 +8859,15 @@ between the current price and the position price.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.margin_rate">
+<code class="descname">margin_rate</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the margin rate for the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param direction: string, not used.
+:return: float, margin rate.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.margin_rate_by_money">
 <code class="descname">margin_rate_by_money</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.margin_rate_by_money" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -8728,6 +8881,15 @@ between the current price and the position price.</li>
 <dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.max_positions_to_open">
 <code class="descname">max_positions_to_open</code><span class="sig-paren">(</span><em>price</em>, <em>direction</em>, <em>instrument_id=None</em>, <em>available_money=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.max_positions_to_open" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.money_per_tick">
+<code class="descname">money_per_tick</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>with_margin=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.money_per_tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the money for a tick movement of the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param with_margin: bool, If True, the returned value is multiplied by margin rate.
+:return: float, the money for a tick movement of the given instrument.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.name">
@@ -9756,6 +9918,15 @@ between the current price and the position price.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.margin_rate">
+<code class="descname">margin_rate</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the margin rate for the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param direction: string, not used.
+:return: float, margin rate.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.margin_rate_by_money">
 <code class="descname">margin_rate_by_money</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.margin_rate_by_money" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -9769,6 +9940,15 @@ between the current price and the position price.</li>
 <dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.max_positions_to_open">
 <code class="descname">max_positions_to_open</code><span class="sig-paren">(</span><em>price</em>, <em>direction</em>, <em>instrument_id=None</em>, <em>available_money=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.max_positions_to_open" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.money_per_tick">
+<code class="descname">money_per_tick</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>with_margin=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.money_per_tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the money for a tick movement of the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param with_margin: bool, If True, the returned value is multiplied by margin rate.
+:return: float, the money for a tick movement of the given instrument.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.name">

@@ -824,6 +824,15 @@ between the current price and the position price.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.margin_rate">
+<code class="descname">margin_rate</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>direction=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the margin rate for the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param direction: string, not used.
+:return: float, margin rate.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.market_periods">
 <code class="descname">market_periods</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>trading_day=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.market_periods" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the market periods for the given instrument on the given trading day.
@@ -832,6 +841,15 @@ between the current price and the position price.</li>
 :return: [(start_ts, end_ts)], the list of market periods.</p>
 <blockquote>
 <div>start_ts and end_ts are both of type datetime.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.money_per_tick">
+<code class="descname">money_per_tick</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>with_margin=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.money_per_tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the money for a tick movement of the given instrument.
+:param instrument_id: string, instrument id, if None, self.instrument_id() will be used.
+:param with_margin: bool, If True, the returned value is multiplied by margin rate.
+:return: float, the money for a tick movement of the given instrument.</p>
 </dd></dl>
 
 <dl class="method">
