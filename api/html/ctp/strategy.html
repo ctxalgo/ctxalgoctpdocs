@@ -575,6 +575,14 @@ traded_volume, left_volume, reason, order_kind (type OrderKind), status.</div></
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_external_trade">
+<code class="descname">on_external_trade</code><span class="sig-paren">(</span><em>trade_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_external_trade" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when an external trade arrives.
+:param trade_info:
+:return:</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_cancel_order">
 <code class="descname">on_cancel_order</code><span class="sig-paren">(</span><em>order_ref</em>, <em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_cancel_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be invoked when an cancel order request is sent.
@@ -3717,6 +3725,14 @@ Parameters:</p>
 <code class="descname">on_external_order</code><span class="sig-paren">(</span><em>order_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_external_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be invoked when order status change for an order which is not started by current strategy session.
 :param order_info: dict{string: object}, order information.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_external_trade">
+<code class="descname">on_external_trade</code><span class="sig-paren">(</span><em>trade_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_external_trade" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when an external trade arrives.
+:param trade_info:
+:return:</p>
 </dd></dl>
 
 <dl class="method">
