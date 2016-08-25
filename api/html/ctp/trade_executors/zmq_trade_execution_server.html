@@ -169,6 +169,13 @@
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver">
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.</code><code class="descname">TradeRequestReceiver</code><span class="sig-paren">(</span><em>context</em>, <em>address</em>, <em>topics</em>, <em>proxy=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.pub_subs.abstract_data_subscriber.AbstractDataSubscriber</span></code></p>
+<p>This is the class to receive trade requests from strategies. Received trade requests will be handled
+in TradeExecutorServer.</p>
+<p>Initialize current.
+:param context: zmq Context, the zeromq context.
+:param address: string, the zmq queue address to receive trade requests from strategies.
+:param topics: [string], the list of topics as zmq filters.
+:param proxy: bool, if True, requests are received through a proxy.</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver.subscriber_socket">
 <code class="descname">subscriber_socket</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver.subscriber_socket" title="Permalink to this definition">¶</a></dt>
@@ -209,6 +216,11 @@
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender">
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.</code><code class="descname">TradeResponseSender</code><span class="sig-paren">(</span><em>context</em>, <em>address</em>, <em>proxy=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.pub_subs.abstract_data_publisher.AbstractDataPublisher</span></code></p>
+<p>This class sends trade responses back to strategies.</p>
+<p>Initialize current.
+:param context: zmq Context.
+:param address: string, the zmq queue to send responses to strategies.
+:param proxy: bool, if True, send messages to a proxy.</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.publisher_socket">
 <code class="descname">publisher_socket</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.publisher_socket" title="Permalink to this definition">¶</a></dt>
@@ -250,6 +262,10 @@
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor">
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.</code><code class="descname">CallbackProcessor</code><span class="sig-paren">(</span><em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../base.html#ctxalgoctp.ctp.base.CtpCallBacks" title="ctxalgoctp.ctp.base.CtpCallBacks"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.base.CtpCallBacks</span></code></a></p>
+<p>This class receives original CTP callbacks from the trade execution server. More importantly,
+it receives such callbacks before the trade execution server itself.</p>
+<p>Initialize current.
+:param strategy: TradeExecutorServer, the trade execution server.</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_normal_query">
 <code class="descname">on_normal_query</code><span class="sig-paren">(</span><em>n_request_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_normal_query" title="Permalink to this definition">¶</a></dt>
@@ -523,7 +539,13 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.send_response">
 <code class="descname">send_response</code><span class="sig-paren">(</span><em>strategy</em>, <em>response_kind</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.send_response" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Send trade response to the strategy which issued the request.
+:param strategy: string, the strategy name.
+:param response_kind: string, response kind, in form of callback name such as on_trading_connected.
+:param data: dict{string: object}, keys are argument names in the response callback, values are</p>
+<blockquote>
+<div>the values for those arguments.</div></blockquote>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_connect_request">
@@ -608,17 +630,17 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_process_trade_request">
 <code class="descname">on_process_trade_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_process_trade_request" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Action to be invoked to process a trade request from a strategy.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_trade_request_received">
 <code class="descname">on_trade_request_received</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_trade_request_received" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_before_run">
-<code class="descname">on_before_run</code><span class="sig-paren">(</span><em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_before_run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Action that is invoked when a trade request is arrived from some strategy.
+This request will be put into the self._trade_request_queue and will be processed
+by the on_process_trade_request callback.
+:param data: dict{string: object}, keys are topic and content.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.CONNECTED">
@@ -1779,6 +1801,11 @@ bar under each periodicity.</li>
 <dd><p>Return the function pointer for on_bar.
 :return: function pointer.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_before_run">
+<code class="descname">on_before_run</code><span class="sig-paren">(</span><em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_before_run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_cancel_order">
