@@ -1646,7 +1646,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询行情响应。当客户端发出请求查询行情指令后，交易托管系统返回响应时，该方法会被调用。
 :param p_api: c_void_p
 :param depth_market_data: CtxFtdcDepthMarketDataField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -1663,7 +1663,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询手续费响应。
 :param p_api: c_void_p
 :param instrument_commission_rate: CtxFtdcInstrumentCommissionRateField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -1680,7 +1680,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询下单撤单手续费响应。
 :param p_api: c_void_p
 :param instrument_order_comm_rate: CtxFtdcInstrumentOrderCommRateField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -1710,7 +1710,7 @@ This callback will be invoked at most twice for an investor position request.</t
 <dd><p>请求查询投资者持仓明细响应。当客户端发出请求请求查询投资者持仓明细指令后，交易托管系统返回响应时，该方法会被调用。
 :param p_api:c_void_p
 :param investor_position_detail: CtxFtdcInvestorPositionDetailField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -1727,7 +1727,7 @@ This callback will be invoked at most twice for an investor position request.</t
 <dd><p>请求查询成交响应
 :param p_api: c_void_p
 :param trade: CtxFtdcTradeField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>

@@ -286,7 +286,7 @@ bar under each periodicity.</li>
 <code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>dummy</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
 <dd><p>callback on market server disconnected
 :param p_api: c_void_p
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param status: ConnectionStatus int
 :param other_data: dict{string: object}, optional other data.
 :return:</p>
@@ -297,7 +297,7 @@ bar under each periodicity.</li>
 <code class="descname">on_market_rsp_error</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_market_rsp_error" title="Permalink to this definition">¶</a></dt>
 <dd><p>callback on market server when error occurred
 :param p_api: c_void_p
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :param other_data: dict{string: object}, optional other data.
@@ -340,7 +340,7 @@ bar under each periodicity.</li>
 <code class="descname">on_trading_rsp_error</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.base.CtpCallBacks.on_trading_rsp_error" title="Permalink to this definition">¶</a></dt>
 <dd><p>callback on trading server when error occurred
 :param p_api: c_void_p
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :param other_data: dict{string: object}, optional other data.
@@ -353,7 +353,7 @@ bar under each periodicity.</li>
 <dd><p>如果交易所认为撤单错误。由交易托管系统主动通知客户端，该方法会被调用。
 :param p_api: c_void_p
 :param order_action: CtxFtdcOrderActionField
-:param res_info: CtxFtdcRspInfoField:return
+:param res_info: CtxFtdcRspInfoField
 :return:</p>
 </dd></dl>
 
@@ -363,7 +363,7 @@ bar under each periodicity.</li>
 <dd><p>如果交易所认为报单错误。由交易托管系统主动通知客户端，该方法会被调用。
 :param p_api: c_void_p
 :param input_order: CtxFtdcInputOrderField
-:param res_info: CtxFtdcRspInfoField:return
+:param res_info: CtxFtdcRspInfoField
 :return:</p>
 </dd></dl>
 
@@ -373,7 +373,7 @@ bar under each periodicity.</li>
 <dd><p>交易托管系统收到撤单指令，如果没有通过参数校验，拒绝接受撤单指令。用户就会收到此消息，其中包含了错误编码和错误消息
 :param p_api: c_void_p
 :param order_action: CtxFtdcInputOrderActionField
-:param res_info: CtxFtdcRspInfoField:return
+:param res_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -385,7 +385,7 @@ bar under each periodicity.</li>
 <dd><p>交易托管系统收到报单指令，如果没有通过参数校验，拒绝接受报单指令。用户就会收到此消息，其中包含了错误编码和错误消息
 :param p_api: c_void_p
 :param input_order: CtxFtdcInputOrderField
-:param res_info: CtxFtdcRspInfoField:return
+:param res_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -397,7 +397,7 @@ bar under each periodicity.</li>
 <dd><p>请求查询行情响应。当客户端发出请求查询行情指令后，交易托管系统返回响应时，该方法会被调用。
 :param p_api: c_void_p
 :param depth_market_data: CtxFtdcDepthMarketDataField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -409,7 +409,7 @@ bar under each periodicity.</li>
 <dd><p>请求查询合约响应。当客户端发出请求查询合约指令后，交易托管系统返回响应时，该方法会被调用。
 :param p_api: c_void_p
 :param instrument: CtxFtdcInstrumentField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -421,7 +421,7 @@ bar under each periodicity.</li>
 <dd><p>请求查询手续费响应。
 :param p_api: c_void_p
 :param instrument_commission_rate: CtxFtdcInstrumentCommissionRateField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -433,7 +433,7 @@ bar under each periodicity.</li>
 <dd><p>请求查询保证金响应。
 :param p_api: c_void_p
 :param instrument_margin_rate: CtxFtdcInstrumentMarginRateField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -445,7 +445,7 @@ bar under each periodicity.</li>
 <dd><p>请求查询下单撤单手续费响应。
 :param p_api: c_void_p
 :param instrument_order_comm_rate: CtxFtdcInstrumentOrderCommRateField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -457,7 +457,7 @@ bar under each periodicity.</li>
 <dd><p>投资者持仓查询应答。当客户端发出投资者持仓查询指令后，后交易托管系统返回响应时，该方法会被调用。
 :param p_api: c_void_p
 :param investor_position: FtdcInvestorPositionField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -469,7 +469,7 @@ bar under each periodicity.</li>
 <dd><p>请求查询投资者持仓明细响应。当客户端发出请求请求查询投资者持仓明细指令后，交易托管系统返回响应时，该方法会被调用。
 :param p_api:c_void_p
 :param investor_position_detail: CtxFtdcInvestorPositionDetailField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -481,7 +481,7 @@ bar under each periodicity.</li>
 <dd><p>请求查询资金账户响应。当客户端发出请求查询资金账户指令后，交易托管系统返回响应时，该方法会被调用。
 :param p_api: c_void_p
 :param trading_account: CtxFtdcTradingAccountField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -510,7 +510,7 @@ bar under each periodicity.</li>
 <dd><p>请求查询报单响应
 :param p_api: c_void_p
 :param order: CtxFtdcOrderField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -522,7 +522,7 @@ bar under each periodicity.</li>
 <dd><p>请求查询成交响应
 :param p_api: c_void_p
 :param trade: CtxFtdcTradeField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>

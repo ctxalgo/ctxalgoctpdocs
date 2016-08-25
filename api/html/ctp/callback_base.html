@@ -431,7 +431,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>如果交易所认为撤单错误。由交易托管系统主动通知客户端，该方法会被调用。
 :param p_api: c_void_p
 :param order_action: CtxFtdcOrderActionField
-:param res_info: CtxFtdcRspInfoField:return
+:param res_info: CtxFtdcRspInfoField
 :return:</p>
 </dd></dl>
 
@@ -441,7 +441,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>如果交易所认为报单错误。由交易托管系统主动通知客户端，该方法会被调用。
 :param p_api: c_void_p
 :param input_order: CtxFtdcInputOrderField
-:param res_info: CtxFtdcRspInfoField:return
+:param res_info: CtxFtdcRspInfoField
 :return:</p>
 </dd></dl>
 
@@ -451,7 +451,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>交易托管系统收到撤单指令，如果没有通过参数校验，拒绝接受撤单指令。用户就会收到此消息，其中包含了错误编码和错误消息
 :param p_api: c_void_p
 :param order_action: CtxFtdcInputOrderActionField
-:param res_info: CtxFtdcRspInfoField:return
+:param res_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -463,7 +463,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>交易托管系统收到报单指令，如果没有通过参数校验，拒绝接受报单指令。用户就会收到此消息，其中包含了错误编码和错误消息
 :param p_api: c_void_p
 :param input_order: CtxFtdcInputOrderField
-:param res_info: CtxFtdcRspInfoField:return
+:param res_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -475,7 +475,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询行情响应。当客户端发出请求查询行情指令后，交易托管系统返回响应时，该方法会被调用。
 :param p_api: c_void_p
 :param depth_market_data: CtxFtdcDepthMarketDataField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -487,7 +487,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询合约响应。当客户端发出请求查询合约指令后，交易托管系统返回响应时，该方法会被调用。
 :param p_api: c_void_p
 :param instrument: CtxFtdcInstrumentField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -499,7 +499,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询手续费响应。
 :param p_api: c_void_p
 :param instrument_commission_rate: CtxFtdcInstrumentCommissionRateField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -511,7 +511,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询保证金响应。
 :param p_api: c_void_p
 :param instrument_margin_rate: CtxFtdcInstrumentMarginRateField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -523,7 +523,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询下单撤单手续费响应。
 :param p_api: c_void_p
 :param instrument_order_comm_rate: CtxFtdcInstrumentOrderCommRateField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -535,7 +535,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>投资者持仓查询应答。当客户端发出投资者持仓查询指令后，后交易托管系统返回响应时，该方法会被调用。
 :param p_api: c_void_p
 :param investor_position: FtdcInvestorPositionField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -547,7 +547,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询投资者持仓明细响应。当客户端发出请求请求查询投资者持仓明细指令后，交易托管系统返回响应时，该方法会被调用。
 :param p_api:c_void_p
 :param investor_position_detail: CtxFtdcInvestorPositionDetailField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -559,7 +559,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询报单响应
 :param p_api: c_void_p
 :param order: CtxFtdcOrderField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -571,7 +571,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询成交响应
 :param p_api: c_void_p
 :param trade: CtxFtdcTradeField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -583,7 +583,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询资金账户响应。当客户端发出请求查询资金账户指令后，交易托管系统返回响应时，该方法会被调用。
 :param p_api: c_void_p
 :param trading_account: CtxFtdcTradingAccountField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>

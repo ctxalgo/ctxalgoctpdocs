@@ -251,6 +251,11 @@
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.</code><code class="descname">CallbackProcessor</code><span class="sig-paren">(</span><em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../base.html#ctxalgoctp.ctp.base.CtpCallBacks" title="ctxalgoctp.ctp.base.CtpCallBacks"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.base.CtpCallBacks</span></code></a></p>
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_normal_query">
+<code class="descname">on_normal_query</code><span class="sig-paren">(</span><em>n_request_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_normal_query" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rsp_qry_trading_account">
 <code class="descname">on_trading_rsp_qry_trading_account</code><span class="sig-paren">(</span><em>p_api</em>, <em>trading_account</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rsp_qry_trading_account" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -281,6 +286,11 @@
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_order_or_trade_related">
+<code class="descname">on_order_or_trade_related</code><span class="sig-paren">(</span><em>target_order_ref_id</em>, <em>target_request_id</em>, <em>object_name_to_adapt</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_order_or_trade_related" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rtn_order">
 <code class="descname">on_trading_rtn_order</code><span class="sig-paren">(</span><em>p_api</em>, <em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rtn_order" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -288,6 +298,26 @@
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rtn_trade">
 <code class="descname">on_trading_rtn_trade</code><span class="sig-paren">(</span><em>p_api</em>, <em>trade</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rtn_trade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_err_rtn_order_action">
+<code class="descname">on_trading_err_rtn_order_action</code><span class="sig-paren">(</span><em>p_api</em>, <em>order_action</em>, <em>res_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_err_rtn_order_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rsp_order_action">
+<code class="descname">on_trading_rsp_order_action</code><span class="sig-paren">(</span><em>p_api</em>, <em>input_order_action</em>, <em>res_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rsp_order_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rsp_order_insert">
+<code class="descname">on_trading_rsp_order_insert</code><span class="sig-paren">(</span><em>p_api</em>, <em>input_order</em>, <em>res_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rsp_order_insert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_err_rtn_order_insert">
+<code class="descname">on_trading_err_rtn_order_insert</code><span class="sig-paren">(</span><em>p_api</em>, <em>input_order</em>, <em>res_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_err_rtn_order_insert" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -335,7 +365,7 @@ bar under each periodicity.</li>
 <code class="descname">on_market_disconnected</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>status</em>, <em>dummy</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_market_disconnected" title="Permalink to this definition">¶</a></dt>
 <dd><p>callback on market server disconnected
 :param p_api: c_void_p
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param status: ConnectionStatus int
 :param other_data: dict{string: object}, optional other data.
 :return:</p>
@@ -346,7 +376,7 @@ bar under each periodicity.</li>
 <code class="descname">on_market_rsp_error</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_market_rsp_error" title="Permalink to this definition">¶</a></dt>
 <dd><p>callback on market server when error occurred
 :param p_api: c_void_p
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :param other_data: dict{string: object}, optional other data.
@@ -420,58 +450,14 @@ producer, to which current strategy can register relative instruments.</div></bl
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_err_rtn_order_action">
-<code class="descname">on_trading_err_rtn_order_action</code><span class="sig-paren">(</span><em>p_api</em>, <em>order_action</em>, <em>res_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_err_rtn_order_action" title="Permalink to this definition">¶</a></dt>
-<dd><p>如果交易所认为撤单错误。由交易托管系统主动通知客户端，该方法会被调用。
-:param p_api: c_void_p
-:param order_action: CtxFtdcOrderActionField
-:param res_info: CtxFtdcRspInfoField:return
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_err_rtn_order_insert">
-<code class="descname">on_trading_err_rtn_order_insert</code><span class="sig-paren">(</span><em>p_api</em>, <em>input_order</em>, <em>res_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_err_rtn_order_insert" title="Permalink to this definition">¶</a></dt>
-<dd><p>如果交易所认为报单错误。由交易托管系统主动通知客户端，该方法会被调用。
-:param p_api: c_void_p
-:param input_order: CtxFtdcInputOrderField
-:param res_info: CtxFtdcRspInfoField:return
-:return:</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rsp_error">
 <code class="descname">on_trading_rsp_error</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rsp_error" title="Permalink to this definition">¶</a></dt>
 <dd><p>callback on trading server when error occurred
 :param p_api: c_void_p
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :param other_data: dict{string: object}, optional other data.
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rsp_order_action">
-<code class="descname">on_trading_rsp_order_action</code><span class="sig-paren">(</span><em>p_api</em>, <em>input_order_action</em>, <em>res_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rsp_order_action" title="Permalink to this definition">¶</a></dt>
-<dd><p>交易托管系统收到撤单指令，如果没有通过参数校验，拒绝接受撤单指令。用户就会收到此消息，其中包含了错误编码和错误消息
-:param p_api: c_void_p
-:param order_action: CtxFtdcInputOrderActionField
-:param res_info: CtxFtdcRspInfoField:return
-:param n_request_id: int
-:param b_is_last: boolean, True if it is the last response for this request
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rsp_order_insert">
-<code class="descname">on_trading_rsp_order_insert</code><span class="sig-paren">(</span><em>p_api</em>, <em>input_order</em>, <em>res_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor.on_trading_rsp_order_insert" title="Permalink to this definition">¶</a></dt>
-<dd><p>交易托管系统收到报单指令，如果没有通过参数校验，拒绝接受报单指令。用户就会收到此消息，其中包含了错误编码和错误消息
-:param p_api: c_void_p
-:param input_order: CtxFtdcInputOrderField
-:param res_info: CtxFtdcRspInfoField:return
-:param n_request_id: int
-:param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
 </dd></dl>
 
@@ -481,7 +467,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询行情响应。当客户端发出请求查询行情指令后，交易托管系统返回响应时，该方法会被调用。
 :param p_api: c_void_p
 :param depth_market_data: CtxFtdcDepthMarketDataField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -493,7 +479,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询手续费响应。
 :param p_api: c_void_p
 :param instrument_commission_rate: CtxFtdcInstrumentCommissionRateField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -505,7 +491,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询投资者持仓明细响应。当客户端发出请求请求查询投资者持仓明细指令后，交易托管系统返回响应时，该方法会被调用。
 :param p_api:c_void_p
 :param investor_position_detail: CtxFtdcInvestorPositionDetailField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -517,7 +503,7 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd><p>请求查询成交响应
 :param p_api: c_void_p
 :param trade: CtxFtdcTradeField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -541,82 +527,82 @@ producer, to which current strategy can register relative instruments.</div></bl
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_connect_request">
-<code class="descname">process_connect_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_connect_request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_connect_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_connect_request" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_disconnect_request">
-<code class="descname">process_disconnect_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_disconnect_request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_disconnect_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_disconnect_request" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_query_request">
-<code class="descname">process_query_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em>, <em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_query_request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_query_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em>, <em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_query_request" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_order_request">
-<code class="descname">process_order_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em>, <em>action</em>, <em>order_kind</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_order_request" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_open_limit_order_request">
-<code class="descname">process_open_limit_order_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_open_limit_order_request" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_close_limit_order_request">
-<code class="descname">process_close_limit_order_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_close_limit_order_request" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_open_market_order_request">
-<code class="descname">process_open_market_order_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_open_market_order_request" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_close_market_order_request">
-<code class="descname">process_close_market_order_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_close_market_order_request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_order_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em>, <em>action</em>, <em>order_kind</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_order_request" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_cancel_order_request">
-<code class="descname">process_cancel_order_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_cancel_order_request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_cancel_order_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_cancel_order_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_open_limit_order_request">
+<code class="descname">process_open_limit_order_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_open_limit_order_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_close_limit_order_request">
+<code class="descname">process_close_limit_order_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_close_limit_order_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_open_market_order_request">
+<code class="descname">process_open_market_order_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_open_market_order_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_close_market_order_request">
+<code class="descname">process_close_market_order_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_close_market_order_request" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_investor_position_request">
-<code class="descname">process_get_investor_position_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_investor_position_request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_get_investor_position_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_investor_position_request" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_query_order_request">
-<code class="descname">process_query_order_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_query_order_request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_query_order_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_query_order_request" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_trading_account_request">
-<code class="descname">process_get_trading_account_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_trading_account_request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_get_trading_account_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_trading_account_request" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_instrument_request">
-<code class="descname">process_get_instrument_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_instrument_request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_get_instrument_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_instrument_request" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_commission_rate_request">
-<code class="descname">process_get_commission_rate_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_commission_rate_request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_get_commission_rate_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_commission_rate_request" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_margin_rate_request">
-<code class="descname">process_get_margin_rate_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_margin_rate_request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_get_margin_rate_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_margin_rate_request" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_order_commission_rate_request">
-<code class="descname">process_get_order_commission_rate_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>command</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_order_commission_rate_request" title="Permalink to this definition">¶</a></dt>
+<code class="descname">process_get_order_commission_rate_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_get_order_commission_rate_request" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -632,11 +618,6 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_before_run">
 <code class="descname">on_before_run</code><span class="sig-paren">(</span><em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_before_run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_tick">
-<code class="descname">on_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_tick" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1987,6 +1968,19 @@ Parameters:</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_tick">
+<code class="descname">on_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be called when there is some new market data.
+When a tick arrives and this tick can cause the generation of one or more bars, the callback invocation
+order between on_tick and on_bar is decided by self.on_tick_before_on_bar().
+:param instrument_id: string, instrument id.
+:param tick: dict{string: object}, tick data. The object has the following keys (non-exhaustive):</p>
+<blockquote>
+<div>timestamp, last_price, volume, ask_price1, ask_volume1, bid_price1, bid_volume1,
+pre_open_interest, open_interest.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_tick_from_data_producer">
 <code class="descname">on_tick_from_data_producer</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_tick_from_data_producer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be invoked when tick data arrived from the underlying data producer.
@@ -2107,7 +2101,7 @@ order_ref, current_traded_volume, current_traded_price, action, reason, kind, st
 <dd><p>请求查询行情响应。当客户端发出请求查询行情指令后，交易托管系统返回响应时，该方法会被调用。
 :param p_api: c_void_p
 :param depth_market_data: CtxFtdcDepthMarketDataField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -2124,7 +2118,7 @@ order_ref, current_traded_volume, current_traded_price, action, reason, kind, st
 <dd><p>请求查询手续费响应。
 :param p_api: c_void_p
 :param instrument_commission_rate: CtxFtdcInstrumentCommissionRateField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -2141,7 +2135,7 @@ order_ref, current_traded_volume, current_traded_price, action, reason, kind, st
 <dd><p>请求查询下单撤单手续费响应。
 :param p_api: c_void_p
 :param instrument_order_comm_rate: CtxFtdcInstrumentOrderCommRateField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -2171,7 +2165,7 @@ This callback will be invoked at most twice for an investor position request.</t
 <dd><p>请求查询投资者持仓明细响应。当客户端发出请求请求查询投资者持仓明细指令后，交易托管系统返回响应时，该方法会被调用。
 :param p_api:c_void_p
 :param investor_position_detail: CtxFtdcInvestorPositionDetailField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
@@ -2188,7 +2182,7 @@ This callback will be invoked at most twice for an investor position request.</t
 <dd><p>请求查询成交响应
 :param p_api: c_void_p
 :param trade: CtxFtdcTradeField
-:param rsp_info: CtxFtdcRspInfoField:return
+:param rsp_info: CtxFtdcRspInfoField
 :param n_request_id: int
 :param b_is_last: boolean, True if it is the last response for this request
 :return:</p>
