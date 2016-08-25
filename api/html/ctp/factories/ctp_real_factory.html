@@ -176,37 +176,135 @@
 
 <dl class="class">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.factories.ctp_real_factory.</code><code class="descname">CtpRealFactory</code><span class="sig-paren">(</span><em>account</em>, <em>security_company=None</em>, <em>data_feed=None</em>, <em>account_initial_capital=1000000.0</em>, <em>dominant_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.factories.ctp_real_factory.</code><code class="descname">CtpRealFactory</code><span class="sig-paren">(</span><em>trade_executor</em>, <em>data_producer</em>, <em>security_company=None</em>, <em>data_feed=None</em>, <em>initial_capital=1000000.0</em>, <em>dominant_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="abstract_ctp_factory.html#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory" title="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory</span></code></a></p>
 <p>This factory returns real CTP market and trading classes.</p>
 <p>Initialize current.
-:param account: dict{string: object}, information of the trading account.</p>
+:param security_company: string, security company name.
+:param data_feed: AbstractDataFeed, the data feed.
+:param initial_capital: float, the initial capital for the trading account.</p>
 <blockquote>
-<div>The dict must have the following keys: market_server, trading_server, user, password, broker_id.
-market_server: string, the server for market data.
-trading_server: string, the server for trading data.
-user: string, user name.
-password: string, password.
-broker_id: string, broker id.</div></blockquote>
+<div>This is used to make sure the strategy report will use the current initial capital to
+calculate metrics.</div></blockquote>
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_local_data_producer">
+<em class="property">static </em><code class="descname">create_local_data_producer</code><span class="sig-paren">(</span><em>account</em>, <em>dominant_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_local_data_producer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a local data producer. A local data producer connects to CTP market server directly and registers
+instrument depth market data.
+:param account: dict{string: string}, account information. It must have the following keys:</p>
+<blockquote>
+<div>market_server, user, password, broker_id.</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>security_company</strong> &#8211; string, security company name.</li>
-<li><strong>data_feed</strong> &#8211; AbstractDataFeed, the data feed.</li>
-<li><strong>account_initial_capital</strong> &#8211; float, the initial capital for the trading account.
-This is used to make sure the strategy report will use the current initial capital to
-calculate metrics.</li>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dominant_provider</strong> &#8211; AbstractDominantProvider, dominant provider to support trading relative instruments.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">CtpDataProducer, the data producer.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_remote_data_producer">
+<em class="property">static </em><code class="descname">create_remote_data_producer</code><span class="sig-paren">(</span><em>context</em>, <em>bar_queue</em>, <em>tick_queue</em>, <em>is_tick_needed=True</em>, <em>dominant_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_remote_data_producer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create remote data producer. A remote data producer uses zmq to read data from market broker.
+:param context: zmq.Context, zme context.
+:param bar_queue: string, the zmq queue address to receive ohlc bar data.
+:param tick_queue: string, the zmq queue address to receive tick data.
+:param is_tick_needed: bool, if True, register for tick data.
+:param dominant_provider: AbstractDominantProvider. Dominant provider.
+:return: ZmqDataProducer, the data producer.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_local_trade_executor">
+<em class="property">static </em><code class="descname">create_local_trade_executor</code><span class="sig-paren">(</span><em>account</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_local_trade_executor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a local trade executor. A local trade executor connects to CTP trading server directly and perform
+trade directly to the trading server.
+:param account: dict{string: string}, account information. It must have the following keys:</p>
+<blockquote>
+<div>trading_server, user, password, broker_id.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">CtpTradeExecutor, the trade executor.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_remote_trade_executor">
+<em class="property">static </em><code class="descname">create_remote_trade_executor</code><span class="sig-paren">(</span><em>context</em>, <em>queue_to_execution_server=None</em>, <em>queue_from_execution_server=None</em>, <em>proxy=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_remote_trade_executor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a remote trade executor. A remote trade executor perform trading through a remote trade execution server.
+Zeromq is used to do inter-process communication between the strategy and the remote trade execution server.
+:param context: zmq context, the zmq context.
+:param queue_to_execution_server: string, the zmq queue address from strategy to the trade execution server.</p>
+<blockquote>
+<div>If None, a default will be used.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>queue_from_execution_server</strong> &#8211; string, the zmq queue address from execution server to strategy.
+If None, a default will be used.</li>
+<li><strong>proxy</strong> &#8211; bool, if True, communication is through a proxy.</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">ZmqTradeExecutor, the trade executor.</p>
 </td>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create">
+<em class="property">static </em><code class="descname">create</code><span class="sig-paren">(</span><em>trade_executor=None</em>, <em>data_producer=None</em>, <em>security_company=None</em>, <em>data_feed=None</em>, <em>initial_capital=1000000.0</em>, <em>dominant_provider=None</em>, <em>account=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a real factory.
+:param trade_executor: AbstractTradeExecutor, the trade executor. A trade executor performs trading.</p>
+<blockquote>
+<div>If None, create a local trade executor using information from the account parameter.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_producer</strong> &#8211; AbstractDataProducer, the data producer. A data producer produces tick and bar data.
+If None, create a local data producer using information from the account parameter.</li>
+<li><strong>security_company</strong> &#8211; string, security company.</li>
+<li><strong>data_feed</strong> &#8211; AbstractDataFeed, data feed.</li>
+<li><strong>initial_capital</strong> &#8211; float, initial capital, used to generate strategy report.</li>
+<li><strong>dominant_provider</strong> &#8211; AbstractDominantProvider, used to support trading with relative instruments,
+such as IF00, cu01.</li>
+<li><strong>account</strong> &#8211; dict{string: string}, account information.
+Only used when trade_executor or data_producer is None.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">CtpRealFactory, the created factory.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.dominant_provider">
 <code class="descname">dominant_provider</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.dominant_provider" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.c2ctp">
+<code class="descname">c2ctp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.c2ctp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load C2CTP dynamic libraries.
+:return Python ctypes representation of a loaded dynamic library.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_data_producer">
@@ -290,7 +388,7 @@ calculate metrics.</li>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_trading">
-<code class="descname">create_trading</code><span class="sig-paren">(</span><em>message_queue</em>, <em>local_path</em>, <em>resume_type</em>, <em>user_product_info</em>, <em>auth_code</em>, <em>logger</em>, <em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_trading" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_trading</code><span class="sig-paren">(</span><em>message_queue</em>, <em>local_path</em>, <em>resume_type</em>, <em>user_product_info</em>, <em>auth_code</em>, <em>logger</em>, <em>dt</em>, <em>product_name</em>, <em>strategy_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.create_trading" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -319,12 +417,6 @@ calculate metrics.</li>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_trading_account">
-<code class="descname">get_trading_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_trading_account" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the trading account (only used for backtesting).</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_trading_account_id">
 <code class="descname">get_trading_account_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.get_trading_account_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -350,10 +442,39 @@ calculate metrics.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.data_feed">
+<code class="descname">data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.data_feed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.load_historical_ohlcs">
+<code class="descname">load_historical_ohlcs</code><span class="sig-paren">(</span><em>all_periods</em>, <em>max_bars</em>, <em>with_open_interests</em>, <em>dominants</em>, <em>profits</em>, <em>use_mid_ask_bid</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.load_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.poll_subscribed_data">
+<code class="descname">poll_subscribed_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.poll_subscribed_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_signal_handlers">
+<code class="descname">set_signal_handlers</code><span class="sig-paren">(</span><em>sigint_handler</em>, <em>sigterm_handler</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_signal_handlers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup signal handlers.
+:param sigint_handler: function pointer for SIGINT handler.
+:param sigterm_handler: function pointer for SIGTERM handler.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.trigger_callback">
+<code class="descname">trigger_callback</code><span class="sig-paren">(</span><em>name</em>, <em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.trigger_callback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.add_data_subscription">
-<code class="descname">add_data_subscription</code><span class="sig-paren">(</span><em>data_subscription</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.add_data_subscription" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_data_subscription</code><span class="sig-paren">(</span><em>data_subscription</em>, <em>store=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.add_data_subscription" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add data subscription into current.
-:param data_subscription: AbstractDataSubscriber, the data subscription.</p>
+:param data_subscription: AbstractDataSubscriber, the data subscription.
+:param store: dict{zmq socket: AbstractDataSubscription}, if None use self.data_subscriptions.</p>
 </dd></dl>
 
 <dl class="method">
@@ -369,11 +490,6 @@ calculate metrics.</li>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.context_loader">
 <code class="descname">context_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.context_loader" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.data_feed">
-<code class="descname">data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.data_feed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -414,11 +530,21 @@ calculate metrics.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_data_subscription_for_strategy_initializer">
+<code class="descname">has_data_subscription_for_strategy_initializer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_data_subscription_for_strategy_initializer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_mission_control">
 <code class="descname">has_mission_control</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_mission_control" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is the mission control setup?
 :return: boolean.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_trade_request_receiver">
+<code class="descname">has_trade_request_receiver</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_trade_request_receiver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.heartbeat_frequency">
@@ -542,6 +668,11 @@ calculate metrics.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_trade_request_receiver">
+<code class="descname">set_trade_request_receiver</code><span class="sig-paren">(</span><em>receiver</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_trade_request_receiver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.should_get_commission_ratio">
 <code class="descname">should_get_commission_ratio</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.should_get_commission_ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Should we get commission ratio information from CTP?
@@ -575,6 +706,11 @@ This only effect real trading. In real trading some CTP providers does not offer
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.trade_request_receiver">
+<code class="descname">trade_request_receiver</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.trade_request_receiver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.trading_account_loader">
 <code class="descname">trading_account_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.trading_account_loader" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -583,24 +719,6 @@ This only effect real trading. In real trading some CTP providers does not offer
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.trading_days">
 <code class="descname">trading_days</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.trading_days" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.load_historical_ohlcs">
-<code class="descname">load_historical_ohlcs</code><span class="sig-paren">(</span><em>all_periods</em>, <em>max_bars</em>, <em>with_open_interests</em>, <em>dominants</em>, <em>profits</em>, <em>use_mid_ask_bid</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.load_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.poll_subscribed_data">
-<code class="descname">poll_subscribed_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.poll_subscribed_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_signal_handlers">
-<code class="descname">set_signal_handlers</code><span class="sig-paren">(</span><em>sigint_handler</em>, <em>sigterm_handler</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_signal_handlers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Setup signal handlers.
-:param sigint_handler: function pointer for SIGINT handler.
-:param sigterm_handler: function pointer for SIGTERM handler.</p>
-</dd></dl>
 
 </dd></dl>
 
@@ -626,7 +744,7 @@ This only effect real trading. In real trading some CTP providers does not offer
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Aug 23, 2016.
+      Last updated on Aug 25, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

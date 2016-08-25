@@ -85,6 +85,7 @@
 <li class="toctree-l3"><a class="reference internal" href="r108_flat_all_positions.html">r108_flat_all_positions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r107_high_frequency_both_direction_trade.html">r107_high_frequency_both_direction_trade</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r111_mission_controller.html">r111_mission_controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r301_stand_by_strategy_with_remote_trade_executor.html">r301_stand_by_strategy_with_remote_trade_executor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r103_cancel_order_while_pending.html">r103_cancel_order_while_pending</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r101_change_positions.html">r101_change_positions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r105_place_pending_order_and_exit.html">r105_place_pending_order_and_exit</a></li>
@@ -736,6 +737,16 @@ If there is no position, return None.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.get_commission_rate">
+<code class="descname">get_commission_rate</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.get_commission_rate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.get_instrument">
+<code class="descname">get_instrument</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.get_instrument" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.get_investor_position">
 <code class="descname">get_investor_position</code><span class="sig-paren">(</span><em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.get_investor_position" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send a request for investor position for the given future.
@@ -744,6 +755,16 @@ If there is no position, return None.</p>
 <div>positions for all the held instruments.</div></blockquote>
 <p>The returned information will be accessible through the corresponding callback function.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.get_margin_rate">
+<code class="descname">get_margin_rate</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.get_margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.get_order_commission_rate">
+<code class="descname">get_order_commission_rate</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.get_order_commission_rate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.get_order_status">
@@ -1402,6 +1423,11 @@ Parameters:</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_instrument">
+<code class="descname">on_instrument</code><span class="sig-paren">(</span><em>instrument</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_instrument" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_investor_position">
 <code class="descname">on_investor_position</code><span class="sig-paren">(</span><em>investor_position</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_investor_position" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be called when investor position for a particular future arrived,
@@ -1414,6 +1440,11 @@ requested by get_investor_position.
 </dl>
 </div></blockquote>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_margin_rate">
+<code class="descname">on_margin_rate</code><span class="sig-paren">(</span><em>margin_rate</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_margin_rate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_market_connected">
@@ -1623,14 +1654,7 @@ order_ref, current_traded_volume, current_traded_price, action, reason, kind, st
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_trading_rsp_qry_instrument">
 <code class="descname">on_trading_rsp_qry_instrument</code><span class="sig-paren">(</span><em>p_api</em>, <em>instrument</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_trading_rsp_qry_instrument" title="Permalink to this definition">¶</a></dt>
-<dd><p>请求查询合约响应。当客户端发出请求查询合约指令后，交易托管系统返回响应时，该方法会被调用。
-:param p_api: c_void_p
-:param instrument: CtxFtdcInstrumentField
-:param rsp_info: CtxFtdcRspInfoField:return
-:param n_request_id: int
-:param b_is_last: boolean, True if it is the last response for this request
-:return:</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_trading_rsp_qry_instrument_commission_rate">
@@ -1647,14 +1671,7 @@ order_ref, current_traded_volume, current_traded_price, action, reason, kind, st
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_trading_rsp_qry_instrument_margin_rate">
 <code class="descname">on_trading_rsp_qry_instrument_margin_rate</code><span class="sig-paren">(</span><em>p_api</em>, <em>instrument_margin_rate</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_trading_rsp_qry_instrument_margin_rate" title="Permalink to this definition">¶</a></dt>
-<dd><p>请求查询保证金响应。
-:param p_api: c_void_p
-:param instrument_margin_rate: CtxFtdcInstrumentMarginRateField
-:param rsp_info: CtxFtdcRspInfoField:return
-:param n_request_id: int
-:param b_is_last: boolean, True if it is the last response for this request
-:return:</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_trading_rsp_qry_instrument_order_comm_rate">
@@ -2015,28 +2032,13 @@ between the current price and the position price.</li>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.set_all_callbacks">
-<code class="descname">set_all_callbacks</code><span class="sig-paren">(</span><em>all_callbacks</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.set_all_callbacks" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set self.all_callbacks to all_callbacks.
-:param all_callbacks: OrderedDict{string: AbstractStrategyCallbacks},</p>
-<blockquote>
-<div>The set of individual strategy callbacks. Keys are strategy callback names,
-values are callbacks. Note that it is an ordered dict. So when callbacks are invoked,
-they follow the order that is given here. The callback names are useful to find
-corresponding strategy callbacks from outside.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.set_ctp_factory">
 <code class="descname">set_ctp_factory</code><span class="sig-paren">(</span><em>ctp_factory</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.set_ctp_factory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.set_external_ctp_callback">
+<code class="descname">set_external_ctp_callback</code><span class="sig-paren">(</span><em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.set_external_ctp_callback" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2326,13 +2328,6 @@ instrument_id, kind and period to find the ohlc.</li>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.trading_account_id">
-<code class="descname">trading_account_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.trading_account_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Current trading account id.
-:return: string, the trading account id.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.trading_day">
 <code class="descname">trading_day</code><span class="sig-paren">(</span><em>now=None</em>, <em>delta=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.trading_day" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2431,7 +2426,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Aug 23, 2016.
+      Last updated on Aug 25, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

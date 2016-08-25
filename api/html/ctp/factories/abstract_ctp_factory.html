@@ -181,6 +181,21 @@ Return: timestamp</p>
 <dd><p>Abstract class to generate CtpMarket and CtpTrading classes. Used to
 switch between real trading classes and backtesting classes.</p>
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.has_trade_request_receiver">
+<code class="descname">has_trade_request_receiver</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.has_trade_request_receiver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.trade_request_receiver">
+<code class="descname">trade_request_receiver</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.trade_request_receiver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_trade_request_receiver">
+<code class="descname">set_trade_request_receiver</code><span class="sig-paren">(</span><em>receiver</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_trade_request_receiver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.should_heartbeat">
 <code class="descname">should_heartbeat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.should_heartbeat" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -362,7 +377,7 @@ switch between real trading classes and backtesting classes.</p>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.create_trading">
-<code class="descname">create_trading</code><span class="sig-paren">(</span><em>message_queue</em>, <em>local_path</em>, <em>resume_type</em>, <em>user_product_info</em>, <em>auth_code</em>, <em>logger</em>, <em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.create_trading" title="Permalink to this definition">¶</a></dt>
+<code class="descname">create_trading</code><span class="sig-paren">(</span><em>message_queue</em>, <em>local_path</em>, <em>resume_type</em>, <em>user_product_info</em>, <em>auth_code</em>, <em>logger</em>, <em>dt</em>, <em>product_name</em>, <em>strategy_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.create_trading" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -482,12 +497,6 @@ this method is no-operation.
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.get_trading_account">
-<code class="descname">get_trading_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.get_trading_account" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the trading account (only used for backtesting).</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.get_trading_account_id">
 <code class="descname">get_trading_account_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.get_trading_account_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the trading account id.
@@ -523,15 +532,21 @@ This is only used for backtesting, to do early stage strategy research.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.has_data_subscription_for_strategy_initializer">
+<code class="descname">has_data_subscription_for_strategy_initializer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.has_data_subscription_for_strategy_initializer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.add_data_subscriptions">
 <code class="descname">add_data_subscriptions</code><span class="sig-paren">(</span><em>data_subscriptions</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.add_data_subscriptions" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.add_data_subscription">
-<code class="descname">add_data_subscription</code><span class="sig-paren">(</span><em>data_subscription</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.add_data_subscription" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_data_subscription</code><span class="sig-paren">(</span><em>data_subscription</em>, <em>store=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.add_data_subscription" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add data subscription into current.
-:param data_subscription: AbstractDataSubscriber, the data subscription.</p>
+:param data_subscription: AbstractDataSubscriber, the data subscription.
+:param store: dict{zmq socket: AbstractDataSubscription}, if None use self.data_subscriptions.</p>
 </dd></dl>
 
 <dl class="method">
@@ -652,6 +667,14 @@ This only effect real trading. In real trading some CTP providers does not offer
 :param sigterm_handler: function pointer for SIGTERM handler.</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.trigger_callback">
+<code class="descname">trigger_callback</code><span class="sig-paren">(</span><em>name</em>, <em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.trigger_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger the given callback with arguments.
+:param name: string, callback function name.
+:param args: [object], arguments.</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -676,7 +699,7 @@ This only effect real trading. In real trading some CTP providers does not offer
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Aug 23, 2016.
+      Last updated on Aug 25, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

@@ -267,8 +267,18 @@ when order book data is present (in tick level backtesting). They represents the
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.</code><code class="descname">BacktestingTradeExecutor</code><span class="sig-paren">(</span><em>backtester</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="abstract_trade_executor.html#ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor" title="ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor</span></code></a>, <a class="reference internal" href="../data_producers/backtesting_data_producer.html#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils" title="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils</span></code></a></p>
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_trading_account_id">
+<code class="descname">get_trading_account_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_trading_account_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_broker_id">
+<code class="descname">get_broker_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_broker_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.prepare_trade_executor">
-<code class="descname">prepare_trade_executor</code><span class="sig-paren">(</span><em>message_queue</em>, <em>local_path</em>, <em>logger</em>, <em>c2ctp_dll</em>, <em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.prepare_trade_executor" title="Permalink to this definition">¶</a></dt>
+<code class="descname">prepare_trade_executor</code><span class="sig-paren">(</span><em>message_queue</em>, <em>local_path</em>, <em>logger</em>, <em>factory</em>, <em>dt</em>, <em>product_name</em>, <em>strategy_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.prepare_trade_executor" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -353,22 +363,22 @@ when order book data is present (in tick level backtesting). They represents the
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_market_order">
-<code class="descname">open_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_market_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>source_order_ref</em>, <em>kind='Market'</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_market_order" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_market_order">
-<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_market_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>source_order_ref</em>, <em>kind='Market'</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_market_order" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_limit_order">
-<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_limit_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em>, <em>volume</em>, <em>source_order_ref</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_limit_order" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_limit_order">
-<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em>, <em>volume</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_limit_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em>, <em>volume</em>, <em>source_order_ref</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_limit_order" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -404,6 +414,23 @@ The parameters open_price, high_price, low_price and close_price are used for li
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.backtesting_process_message">
+<code class="descname">backtesting_process_message</code><span class="sig-paren">(</span><em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.backtesting_process_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process message. Only used by backtester.
+:param now: datetime, current timestamp.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.subscriber_socket">
+<code class="descname">subscriber_socket</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.subscriber_socket" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.cancel_external_order">
+<code class="descname">cancel_external_order</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>order_ref_id</em>, <em>front_id</em>, <em>session_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.cancel_external_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.register_response">
 <code class="descname">register_response</code><span class="sig-paren">(</span><em>kind</em>, <em>data</em>, <em>delay_start=0</em>, <em>delay_end=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.register_response" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a response handler into the response queue.
@@ -423,11 +450,9 @@ The parameters open_price, high_price, low_price and close_price are used for li
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.backtesting_process_message">
-<code class="descname">backtesting_process_message</code><span class="sig-paren">(</span><em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.backtesting_process_message" title="Permalink to this definition">¶</a></dt>
-<dd><p>Process message. Only used by backtester.
-:param now: datetime, current timestamp.</p>
-</dd></dl>
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.cancel_external_orders">
+<code class="descname">cancel_external_orders</code><span class="sig-paren">(</span><em>orders</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.cancel_external_orders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -453,7 +478,7 @@ The parameters open_price, high_price, low_price and close_price are used for li
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Aug 23, 2016.
+      Last updated on Aug 25, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
