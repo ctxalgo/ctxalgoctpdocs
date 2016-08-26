@@ -548,6 +548,11 @@ Only used when trade_executor or data_producer is None.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_trade_response_sender">
+<code class="descname">has_trade_response_sender</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.has_trade_response_sender" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.heartbeat_frequency">
 <code class="descname">heartbeat_frequency</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.heartbeat_frequency" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -674,6 +679,13 @@ Only used when trade_executor or data_producer is None.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_trade_response_sender">
+<code class="descname">set_trade_response_sender</code><span class="sig-paren">(</span><em>sender</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.set_trade_response_sender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set trade response sender.
+:param sender: TradeResponseSender, the sender to send responses to trade requests back to strategies.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.should_get_commission_ratio">
 <code class="descname">should_get_commission_ratio</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.should_get_commission_ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Should we get commission ratio information from CTP?
@@ -712,6 +724,11 @@ This only effect real trading. In real trading some CTP providers does not offer
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.trade_response_sender">
+<code class="descname">trade_response_sender</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.trade_response_sender" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.trading_account_loader">
 <code class="descname">trading_account_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.trading_account_loader" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -745,7 +762,7 @@ This only effect real trading. In real trading some CTP providers does not offer
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Aug 26, 2016.
+      Last updated on Aug 27, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
