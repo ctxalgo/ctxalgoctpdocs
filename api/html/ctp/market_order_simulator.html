@@ -162,7 +162,7 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.market_order_simulator.AbstractMarketOrderSimulator.get_open_price">
-<code class="descname">get_open_price</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>volume</em>, <em>order_book</em>, <em>tick_size</em>, <em>trading_day</em>, <em>last_price=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_order_simulator.AbstractMarketOrderSimulator.get_open_price" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_open_price</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>volume</em>, <em>order_book</em>, <em>tick_size</em>, <em>trading_day</em>, <em>last_price=None</em>, <em>tick_delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_order_simulator.AbstractMarketOrderSimulator.get_open_price" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get price to open a position.
 :param instrument_id: string, instrument id.
 :param volume: int, the volume to open or close.
@@ -177,6 +177,7 @@
 <li><strong>tick_size</strong> &#8211; float, tick size of the instrument.</li>
 <li><strong>trading_day</strong> &#8211; date, current trading day.</li>
 <li><strong>last_price</strong> &#8211; float, last price.</li>
+<li><strong>tick_delta</strong> &#8211; int, if not None, the tick delta to cross the book.</li>
 </ul>
 </td>
 </tr>
@@ -189,7 +190,7 @@
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.market_order_simulator.AbstractMarketOrderSimulator.get_close_price">
-<code class="descname">get_close_price</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>volume</em>, <em>order_book</em>, <em>tick_size</em>, <em>trading_day</em>, <em>last_price=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_order_simulator.AbstractMarketOrderSimulator.get_close_price" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_close_price</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>volume</em>, <em>order_book</em>, <em>tick_size</em>, <em>trading_day</em>, <em>last_price=None</em>, <em>tick_delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_order_simulator.AbstractMarketOrderSimulator.get_close_price" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the price which crosses the book.
 :param instrument_id: string, instrument id.
 :param volume: int, the volume to open or close.
@@ -204,6 +205,7 @@
 <li><strong>tick_size</strong> &#8211; float, tick size of the instrument.</li>
 <li><strong>trading_day</strong> &#8211; date, current trading day.</li>
 <li><strong>last_price</strong> &#8211; float, last price.</li>
+<li><strong>tick_delta</strong> &#8211; int, if not None, the tick delta to cross the book.</li>
 </ul>
 </td>
 </tr>
@@ -227,12 +229,12 @@
 <div>the limit order to be more likely to fill.</div></blockquote>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.market_order_simulator.CrossBookMarketOrderSimulator.get_open_price">
-<code class="descname">get_open_price</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>volume</em>, <em>order_book</em>, <em>tick_size</em>, <em>trading_day</em>, <em>last_price=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_order_simulator.CrossBookMarketOrderSimulator.get_open_price" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_open_price</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>volume</em>, <em>order_book</em>, <em>tick_size</em>, <em>trading_day</em>, <em>last_price=None</em>, <em>tick_delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_order_simulator.CrossBookMarketOrderSimulator.get_open_price" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.market_order_simulator.CrossBookMarketOrderSimulator.get_close_price">
-<code class="descname">get_close_price</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>volume</em>, <em>order_book</em>, <em>tick_size</em>, <em>trading_day</em>, <em>last_price=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_order_simulator.CrossBookMarketOrderSimulator.get_close_price" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_close_price</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>volume</em>, <em>order_book</em>, <em>tick_size</em>, <em>trading_day</em>, <em>last_price=None</em>, <em>tick_delta=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_order_simulator.CrossBookMarketOrderSimulator.get_close_price" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

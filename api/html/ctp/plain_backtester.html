@@ -885,6 +885,15 @@ instrument_id, kind and period to find the ohlc.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.order_book_height">
+<code class="descname">order_book_height</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>level=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.order_book_height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the height of the order book.
+:param instrument_id: string, instrument id, if None, self.instrument_id() is used.
+:param level: int, the order book level, 0 means the nearest level, 1 means the next level.
+:return: int, the order book height in unit of tick size.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.pending_orders">
 <code class="descname">pending_orders</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.pending_orders" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return pending orders.

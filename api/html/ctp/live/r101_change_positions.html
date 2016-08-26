@@ -85,6 +85,7 @@
 <li class="toctree-l3"><a class="reference internal" href="r108_flat_all_positions.html">r108_flat_all_positions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r107_high_frequency_both_direction_trade.html">r107_high_frequency_both_direction_trade</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r111_mission_controller.html">r111_mission_controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r116_place_order_and_cancel_immediately.html">r116_place_order_and_cancel_immediately</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r301_stand_by_strategy_with_remote_trade_executor.html">r301_stand_by_strategy_with_remote_trade_executor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r103_cancel_order_while_pending.html">r103_cancel_order_while_pending</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">r101_change_positions</a></li>
@@ -480,7 +481,7 @@ This is useful if you want to have a strategy which cancels some pending orders.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.change_position_to">
-<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>new_position</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.change_position_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>new_position</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.change_position_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the position of the given instrument to new_position. If price is given, all underlying orders
 are limit orders at that price, otherwise, market orders.
 :param new_position: int, the new position for the instrument.
@@ -506,6 +507,8 @@ instrument has arrived, so orders can be placed correctly.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tick_delta</strong> &#8211; int, when crossing the book, the number of ticks to cross.
+If None, the default value in self.market_order_simulator will be used.</li>
 <li><strong>reason</strong> &#8211; string, the reason for this operation.</li>
 <li><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id.</li>
 <li><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the cancellation policy for current order.
@@ -531,7 +534,7 @@ order_ref: string, the value is string, the order reference.</p>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.change_positions_to">
-<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>new_positions</em>, <em>prices=None</em>, <em>cross_book=False</em>, <em>reason=''</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.change_positions_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>new_positions</em>, <em>prices=None</em>, <em>cross_book=False</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.change_positions_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change positions of multiple instruments to their new values.
 :param new_positions: dict{string: int}, keys are instrument ids,</p>
 <blockquote>
@@ -545,6 +548,8 @@ order_ref: string, the value is string, the order reference.</p>
 values are prices at which limit orders are placed. If prices is None, all orders are market orders.
 If prices is a dict and for some instrument (through dict keys), the key is missing or the value
 is None, then the orders for that instrument are market orders, otherwise, limit orders.</li>
+<li><strong>tick_delta</strong> &#8211; int, when crossing the book, the number of ticks to cross.
+If None, the default value in self.market_order_simulator will be used.</li>
 <li><strong>reason</strong> &#8211; string, the reason for current order(s).</li>
 <li><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the order cancellation policy used to
 cancel all the placed orders.</li>
@@ -604,7 +609,7 @@ If so, call self.on_timer.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.close_limit_order">
-<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=False</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.close_limit_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=False</em>, <em>tick_delta=None</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.close_limit_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close a limit order at price. Note that for limit orders.
 The strategy is responsible for maintaining positions in a single direction, if desirable.
 :param price: float, the price.
@@ -1767,7 +1772,7 @@ multiple pieces of information, one piece for each currency.</td>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.open_limit_order">
-<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=False</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.open_limit_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=False</em>, <em>tick_delta=None</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.open_limit_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open a limit order at price. Note that for limit orders.
 The strategy is responsible for maintaining positions in a single direction, if desirable.
 :param price: float, the price.
@@ -1826,6 +1831,15 @@ order_ref: string, the value is string, the order reference.</dd>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.order_book_height">
+<code class="descname">order_book_height</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>level=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.order_book_height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the height of the order book.
+:param instrument_id: string, instrument id, if None, self.instrument_id() is used.
+:param level: int, the order book level, 0 means the nearest level, 1 means the next level.
+:return: int, the order book height in unit of tick size.</p>
 </dd></dl>
 
 <dl class="method">
