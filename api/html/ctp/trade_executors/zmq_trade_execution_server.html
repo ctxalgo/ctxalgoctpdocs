@@ -83,6 +83,7 @@
 <li class="toctree-l3"><a class="reference internal" href="ctp_trade_executor.html">ctp_trade_executor</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">zmq_trade_execution_server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="zmq_trade_executor.html">zmq_trade_executor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trade_request_response_utils.html">trade_request_response_utils</a></li>
 <li class="toctree-l3"><a class="reference internal" href="backtesting_trade_executor.html">backtesting_trade_executor</a></li>
 </ul>
 </li>
@@ -96,6 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../exchanges.html">exchanges</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../backtester.html">backtester</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../trading_account.html">trading_account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategy_command_line_utils.html">strategy_command_line_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../report_pdf_generator.html">report_pdf_generator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../optimization.html">optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../offline_optimization.html">offline_optimization</a></li>
@@ -165,99 +167,6 @@
             
   <div class="section" id="module-ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server">
 <span id="zmq-trade-execution-server"></span><h1>zmq_trade_execution_server<a class="headerlink" href="#module-ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.</code><code class="descname">TradeRequestReceiver</code><span class="sig-paren">(</span><em>context</em>, <em>address</em>, <em>topics</em>, <em>proxy=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.pub_subs.abstract_data_subscriber.AbstractDataSubscriber</span></code></p>
-<p>This is the class to receive trade requests from strategies. Received trade requests will be handled
-in TradeExecutorServer.</p>
-<p>Initialize current.
-:param context: zmq Context, the zeromq context.
-:param address: string, the zmq queue address to receive trade requests from strategies.
-:param topics: [string], the list of topics as zmq filters.
-:param proxy: bool, if True, requests are received through a proxy.</p>
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver.subscriber_socket">
-<code class="descname">subscriber_socket</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver.subscriber_socket" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver.dispose">
-<code class="descname">dispose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver.dispose" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver.receive">
-<code class="descname">receive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver.receive" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver.context">
-<code class="descname">context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver.context" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the context used by zeromq sockets.
-:return: zeromq Context.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver.has_disposed">
-<code class="descname">has_disposed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver.has_disposed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver.set_on_data_action">
-<code class="descname">set_on_data_action</code><span class="sig-paren">(</span><em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeRequestReceiver.set_on_data_action" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set self.on_data_action with action.
-:param action: Function pointer with a single parameter.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.</code><code class="descname">TradeResponseSender</code><span class="sig-paren">(</span><em>context</em>, <em>address</em>, <em>proxy=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.pub_subs.abstract_data_publisher.AbstractDataPublisher</span></code></p>
-<p>This class sends trade responses back to strategies.</p>
-<p>Initialize current.
-:param context: zmq Context.
-:param address: string, the zmq queue to send responses to strategies.
-:param proxy: bool, if True, send messages to a proxy.</p>
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.publisher_socket">
-<code class="descname">publisher_socket</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.publisher_socket" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.dispose">
-<code class="descname">dispose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.dispose" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.context">
-<code class="descname">context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.context" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.has_disposed">
-<code class="descname">has_disposed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.has_disposed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.send">
-<code class="descname">send</code><span class="sig-paren">(</span><em>topic</em>, <em>content</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.send" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.sender_thread">
-<code class="descname">sender_thread</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.sender_thread" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.should_send_through_thread">
-<code class="descname">should_send_through_thread</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeResponseSender.should_send_through_thread" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="class">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor">
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.</code><code class="descname">CallbackProcessor</code><span class="sig-paren">(</span><em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.CallbackProcessor" title="Permalink to this definition">¶</a></dt>
@@ -2492,7 +2401,7 @@ between the current price and the position price.</li>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.run">
-<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.run" title="Permalink to this definition">¶</a></dt>
+<code class="descname">run</code><span class="sig-paren">(</span><em>ctp_factory=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.run" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

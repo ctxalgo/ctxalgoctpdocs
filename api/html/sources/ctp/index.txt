@@ -20,6 +20,7 @@ ctp
    exchanges
    backtester
    trading_account
+   strategy_command_line_utils
    report_pdf_generator
    optimization
    offline_optimization

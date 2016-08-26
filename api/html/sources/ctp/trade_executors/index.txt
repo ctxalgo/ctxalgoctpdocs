@@ -8,4 +8,5 @@ trade_executors
    ctp_trade_executor
    zmq_trade_execution_server
    zmq_trade_executor
+   trade_request_response_utils
    backtesting_trade_executor
