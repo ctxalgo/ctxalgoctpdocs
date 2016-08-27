@@ -232,7 +232,7 @@ slow down the backtesting only during the time range of interest.</p>
 
 <dl class="class">
 <dt id="ctxalgoctp.ctp.backtester.CtpBacktester">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.backtester.</code><code class="descname">CtpBacktester</code><span class="sig-paren">(</span><em>data_source</em>, <em>strategy_class</em>, <em>strategy_config</em>, <em>account=None</em>, <em>time_step=None</em>, <em>daily_start_time=None</em>, <em>daily_end_time=None</em>, <em>is_eager_order_execution=False</em>, <em>message_sender=None</em>, <em>initial_capital=1000000.0</em>, <em>on_strategy_object_created=None</em>, <em>user=None</em>, <em>slippage_model=None</em>, <em>has_commission=True</em>, <em>message_random_delay_enabled=False</em>, <em>strategy_callbacks=None</em>, <em>is_extrapolate_data_allowed=True</em>, <em>future_trading_utils=None</em>, <em>report_has_charting_url=False</em>, <em>security_company=None</em>, <em>data_feed=None</em>, <em>dominant_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtester.CtpBacktester" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.backtester.</code><code class="descname">CtpBacktester</code><span class="sig-paren">(</span><em>data_source</em>, <em>strategy_class</em>, <em>strategy_config</em>, <em>account=None</em>, <em>time_step=None</em>, <em>daily_start_time=None</em>, <em>daily_end_time=None</em>, <em>is_eager_order_execution=False</em>, <em>initial_capital=1000000.0</em>, <em>on_strategy_object_created=None</em>, <em>user=None</em>, <em>slippage_model=None</em>, <em>has_commission=True</em>, <em>message_random_delay_enabled=False</em>, <em>strategy_callbacks=None</em>, <em>is_extrapolate_data_allowed=True</em>, <em>future_trading_utils=None</em>, <em>report_has_charting_url=False</em>, <em>security_company=None</em>, <em>data_feed=None</em>, <em>dominant_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtester.CtpBacktester" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.backtester.CtpAbstractBacktester" title="ctxalgoctp.ctp.backtester.CtpAbstractBacktester"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.backtester.CtpAbstractBacktester</span></code></a></p>
 <p>Class to perform backtesting for trading strategies.</p>
 <p>Initialize current CTP backtester.
@@ -264,8 +264,6 @@ the daily simulation should starts and when it should ends. The strategy is usua
 to be executed on a daily bases. Meaning that on a trading day, the strategy starts some time before the
 market starts and it ends some time after the market ends. daily_start_time and daily_end_time is used
 to simulate this period.</li>
-<li><strong>message_sender</strong> &#8211; AbstractMessageSender (from ctxalgolib.messaging). The sender to send messages.
-None means there is no message sender.</li>
 <li><strong>initial_capital</strong> &#8211; double, the initial capital to use in case account is None.</li>
 <li><strong>user</strong> &#8211; string, the trading account id. Usually, you don&#8217;t need to provide
 this trading account id, leaving it as None is fine. In such a case, the backtester will
