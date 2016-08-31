@@ -1,5 +1,5 @@
 ---
-title: 分段先向优化
+title: 分段前向优化
 layout: post
 category: root
 language: zh
