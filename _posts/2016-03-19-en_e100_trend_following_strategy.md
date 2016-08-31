@@ -84,7 +84,7 @@ def main():
         }
     }
     start_time = datetime.now()
-    report, data_source = backtest(TrendFollowingStrategy, config, start_date, end_date)
+    report, data_source = backtest(TrendFollowingStrategy, config, start_date, end_date, perform_backtest=False)
     end_time = datetime.now()
     print('Backtesting duration: ' + str(end_time - start_time))
 

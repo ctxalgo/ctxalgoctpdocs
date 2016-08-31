@@ -492,7 +492,7 @@ This is useful if you want to have a strategy which cancels some pending orders.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.change_position_to">
-<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>new_position</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.change_position_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>new_position</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>market=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.change_position_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the position of the given instrument to new_position. If price is given, all underlying orders
 are limit orders at that price, otherwise, market orders.
 :param new_position: int, the new position for the instrument.
@@ -527,6 +527,7 @@ If None, no cancellation policy is specified.</li>
 <li><strong>cancel_in_time</strong> &#8211; timedelta, the time the order is allowed to be executed before it is cancelled.
 This is a syntax sugar for setting up TimeBasedCancellation. If not None, you should not specify
 cancellation as well.</li>
+<li><strong>market</strong> &#8211; bool, if True, send market orders.</li>
 </ul>
 </td>
 </tr>
@@ -545,7 +546,7 @@ order_ref: string, the value is string, the order reference.</p>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.change_positions_to">
-<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>new_positions</em>, <em>prices=None</em>, <em>cross_book=False</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>cancellation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.change_positions_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>new_positions</em>, <em>prices=None</em>, <em>cross_book=False</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>market=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.change_positions_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change positions of multiple instruments to their new values.
 :param new_positions: dict{string: int}, keys are instrument ids,</p>
 <blockquote>
@@ -570,6 +571,10 @@ an order cross the order book, meaning:</p>
 <div>If open long or close short, the limit order price will be max(price, order_book[&#8216;ask_price1&#8217;].
 If close long or open short, the limit order price will be min(price, order_book[&#8216;bid_price1&#8217;].</div></blockquote>
 </li>
+<li><strong>cancel_in_time</strong> &#8211; timedelta, the time the order is allowed to be executed before it is cancelled.
+This is a syntax sugar for setting up TimeBasedCancellation. If not None, you should not specify
+cancellation as well.</li>
+<li><strong>market</strong> &#8211; bool, if True, send market orders.</li>
 </ul>
 </td>
 </tr>
@@ -2034,6 +2039,11 @@ between the current price and the position price.</li>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.send_message_to_mission_controller">
 <code class="descname">send_message_to_mission_controller</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.send_message_to_mission_controller" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.send_messages_on_termination">
+<code class="descname">send_messages_on_termination</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.send_messages_on_termination" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
