@@ -102,7 +102,7 @@ def main():
     objectives = [lambda net_profit: -net_profit]
 
     # Constraints in form of: constraint_expr <= 0.
-    # If ou don't want any constraints, set cons to an empty list.
+    # If you don't want any constraints, set cons to an empty list.
     cons = [lambda fast_ma_period, slow_ma_period: fast_ma_period - slow_ma_period + 1 <= 0]
 
     # Regularizer: L2 regularizer around the latest parameter values.
