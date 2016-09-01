@@ -562,6 +562,13 @@ pre_open_interest, open_interest.</div></blockquote>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_initialization_failed">
+<code class="descname">on_initialization_failed</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_initialization_failed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be called when strategy initialization failed.
+:param data: dict{string: object}, information about the failure.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_query_order">
 <code class="descname">on_query_order</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_query_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be invoked when some result arrived from self.query_order.
@@ -3787,6 +3794,13 @@ Parameters:</p>
 <code class="descname">on_idle_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_idle_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be invoked when there is no event from the outside.
 :return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_initialization_failed">
+<code class="descname">on_initialization_failed</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_initialization_failed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be called when strategy initialization failed.
+:param data: dict{string: object}, information about the failure.</p>
 </dd></dl>
 
 <dl class="method">
