@@ -619,7 +619,7 @@ This will be passed into the action when it is invoked.</li>
 <code class="descname">add_timer</code><span class="sig-paren">(</span><em>timer=None</em>, <em>trigger_time=None</em>, <em>timedelta=None</em>, <em>action=None</em>, <em>start=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.add_timer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add timer into current strategy.
 :param timer: SimulatedTimer, the timer to add. If None, use trigger_time to create a timer.
-:param trigger_time: datetime or time, or string in form of yyyy-mm-dd or yyyy-mm-dd HH:MM:SS, or</p>
+:param trigger_time: datetime or time, or string in form of HH:MM:SS or yyyy-mm-dd HH:MM:SS, or</p>
 <blockquote>
 <div>a list of the above types. The time(s) used to create a timer .
 If specified, create an alarm timer.</div></blockquote>
