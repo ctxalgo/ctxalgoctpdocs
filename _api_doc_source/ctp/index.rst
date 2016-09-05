@@ -37,6 +37,7 @@ ctp
    callback_base
    market_order_simulator
    plain_backtester
+   live_strategy_utils
    backtesting_utils
    comm
    report_generator

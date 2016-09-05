@@ -32,7 +32,7 @@
   
     <link rel="top" title="ctxalgoctp 0.1 documentation" href="../index.html"/>
         <link rel="up" title="ctp" href="index.html"/>
-        <link rel="next" title="backtesting_utils" href="backtesting_utils.html"/>
+        <link rel="next" title="live_strategy_utils" href="live_strategy_utils.html"/>
         <link rel="prev" title="market_order_simulator" href="market_order_simulator.html"/> 
 
   
@@ -106,6 +106,7 @@
 <li class="toctree-l2"><a class="reference internal" href="callback_base.html">callback_base</a></li>
 <li class="toctree-l2"><a class="reference internal" href="market_order_simulator.html">market_order_simulator</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">plain_backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="live_strategy_utils.html">live_strategy_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="backtesting_utils.html">backtesting_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comm.html">comm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator</a></li>
@@ -309,23 +310,8 @@ ignore price, volume and timestamp parameters.</li>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.strategy_period_kind">
-<code class="descname">strategy_period_kind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.strategy_period_kind" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.strategy_period">
-<code class="descname">strategy_period</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.strategy_period" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.ohlcs">
 <code class="descname">ohlcs</code><span class="sig-paren">(</span><em>kind=None</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.ohlcs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.strategy_ohlc">
-<code class="descname">strategy_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.strategy_ohlc" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -595,6 +581,32 @@ Whether any position can be opened for an instrument id is defined by now &lt;= 
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.default_period">
+<code class="descname">default_period</code><span class="sig-paren">(</span><em>kind=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.default_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the default period for the given ohlc kind.
+:param kind: string, can be OhlcGeneratorConstants.time_based or OhlcGeneratorConstants.volatility_based.</p>
+<blockquote>
+<div>If None, self.default_period_kind() is used.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int or float, default period. Will return None if there are multiple possible values.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.default_period_kind">
+<code class="descname">default_period_kind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.default_period_kind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the default period kind.
+:return: string, can be can be OhlcGeneratorConstants.time_based or OhlcGeneratorConstants.volatility_based,</p>
+<blockquote>
+<div>or None in case where no default is available.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.direction">
 <code class="descname">direction</code><span class="sig-paren">(</span><em>volume</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.direction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return &#8216;long&#8217; or &#8216;short&#8217; as direction.
@@ -681,8 +693,17 @@ If there is no position, return None.</p>
 :param timestamp: datetime, current timestamp, if None, use self.now().
 :param instrument_id: string, instrument id, if None, use self.instrument_id().
 :param trading_day: date, current trading day, if None, use self.trading_day().
-:param delta: timedelta, if not None, checks this delta before a market period ends.
-:return: bool.</p>
+:param delta: timedelta or int or float, if not None, checks this delta before a market period ends.</p>
+<blockquote>
+<div>If type is int or float, it means timedelta(seconds=int).</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -860,14 +881,14 @@ between the current price and the position price.</li>
 :param instrument_id: string, the instrument id. If None, use self.instrument_id().
 :param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
 <blockquote>
-<div>If None, defaults to &#8216;time-based&#8217;.</div></blockquote>
+<div>If None, use self.default_period_kind().</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>period</strong> &#8211; Periodicity, the periodicity of the ohlc to return.
-If None, use self.strategy_period().</li>
+If None, use self.default_period().</li>
 <li><strong>now</strong> &#8211; datetime, an optional timestamp indicating current time, if None,
 use the last timestamp in ohlc as current time.</li>
 <li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
@@ -1127,14 +1148,14 @@ If an instrument has both long and short sided positions, its corresponding valu
 :param instrument_id: string, the instrument id. If None, use self.instrument_id().
 :param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
 <blockquote>
-<div>If None, defaults to &#8216;time-based&#8217;.</div></blockquote>
+<div>If None, use self.default_period_kind().</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>period</strong> &#8211; Periodicity, the periodicity of the ohlc to return.
-If None, use self.strategy_period().</li>
+If None, use self.default_period().</li>
 <li><strong>now</strong> &#8211; datetime, an optional timestamp indicating current time, if None,
 use the last timestamp in ohlc as current time.</li>
 <li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
@@ -1182,14 +1203,14 @@ instrument_id, kind and period to find the ohlc.</li>
 :param instrument_id: string, the instrument id. If None, use self.instrument_id().
 :param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
 <blockquote>
-<div>If None, defaults to &#8216;time-based&#8217;.</div></blockquote>
+<div>If None, use self.default_period_kind().</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>period</strong> &#8211; Periodicity, the periodicity of the ohlc to return.
-If None, use self.strategy_period().</li>
+If None, use self.default_period().</li>
 <li><strong>now</strong> &#8211; datetime, an optional timestamp indicating current time, if None,
 use the last timestamp in ohlc as current time.</li>
 <li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
@@ -1216,7 +1237,7 @@ instrument_id, kind and period to find the ohlc.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="backtesting_utils.html" class="btn btn-neutral float-right" title="backtesting_utils" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="live_strategy_utils.html" class="btn btn-neutral float-right" title="live_strategy_utils" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="market_order_simulator.html" class="btn btn-neutral" title="market_order_simulator" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -1229,7 +1250,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Sep 01, 2016.
+      Last updated on Sep 05, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

@@ -31,7 +31,7 @@ individual_reports = []
 for instrument_id in ['IF99', 'cu99']:
     config = {
         'instrument_ids': [instrument_id],
-        'strategy_period': Periodicity.FIFTEEN_MINUTE,
+        'periods': [Periodicity.FIFTEEN_MINUTE],
         'parameters': {
             'fast_ma_period': 8,   # The parameter for the fast moving average.
             'slow_ma_period': 15,  # The parameter for the slow moving average.
@@ -40,7 +40,7 @@ for instrument_id in ['IF99', 'cu99']:
     }
 
     # Backtest the current strategy, and collect individual reports.
-    report, data_source = backtest(TrendFollowingStrategy, config, start_date, end_date, perform_backtest=False)
+    report, data_source = backtest(TrendFollowingStrategy, config, start_date, end_date)
     individual_reports.append(report)
 
 # Construct a composite backtesting report from individual ones.

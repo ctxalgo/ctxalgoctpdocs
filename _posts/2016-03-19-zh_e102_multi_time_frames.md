@@ -21,7 +21,6 @@ config对象的内容会被用来初始化策略对象。
 ```python
 config = {
     'instrument_ids': ['IF99'],                      # We are trading this future instrument.
-    'strategy_period': Periodicity.FIFTEEN_MINUTE,   # The ohlc bar granularity on which trading happens.
     'periods': [Periodicity.FIFTEEN_MINUTE, Periodicity.THIRTY_MINUTE],
 }
 ```
@@ -31,11 +30,10 @@ config = {
 
 ```python
 class MultiTimeFrameStrategy(AbstractStrategy):
-    def __init__(self, instrument_ids, strategy_period, parameters, base_folder,
+    def __init__(self, instrument_ids, parameters, base_folder,
                  periods=None, description=None, logger=None):
         AbstractStrategy.__init__(
-            self, instrument_ids, parameters, base_folder, strategy_period=strategy_period,
-            periods=periods, description=description, logger=logger)
+            self, instrument_ids, parameters, base_folder, periods=periods, description=description, logger=logger)
 
     def on_bar(self, instrument_id, bars, tick):
         # We do not do trading here, instead, we only print out the arrived ohlc bars.

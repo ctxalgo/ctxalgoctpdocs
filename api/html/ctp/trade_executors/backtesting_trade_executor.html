@@ -114,6 +114,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../callback_base.html">callback_base</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../market_order_simulator.html">market_order_simulator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plain_backtester.html">plain_backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../live_strategy_utils.html">live_strategy_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../backtesting_utils.html">backtesting_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comm.html">comm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../report_generator.html">report_generator</a></li>
@@ -364,6 +365,11 @@ when order book data is present (in tick level backtesting). They represents the
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.start_strategy">
+<code class="descname">start_strategy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.start_strategy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_market_order">
 <code class="descname">open_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>source_order_ref</em>, <em>kind='Market'</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.open_market_order" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -480,7 +486,7 @@ The parameters open_price, high_price, low_price and close_price are used for li
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Sep 01, 2016.
+      Last updated on Sep 05, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

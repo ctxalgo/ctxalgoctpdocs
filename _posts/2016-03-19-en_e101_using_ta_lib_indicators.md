@@ -29,11 +29,10 @@ class TrendFollowingStrategy(AbstractStrategy):
     2. If the fast moving average down-cross the slow moving average, change position to -1.
     That is, the position can be 0, -1 and 1.
     """
-    def __init__(self, instrument_ids, strategy_period, parameters, base_folder,
+    def __init__(self, instrument_ids, parameters, base_folder,
                  periods=None, description=None, logger=None):
         AbstractStrategy.__init__(
-            self, instrument_ids, parameters, base_folder, strategy_period=strategy_period,
-            periods=periods, description=description, logger=logger)
+            self, instrument_ids, parameters, base_folder, periods=periods, description=description, logger=logger)
 
     def on_bar(self, instrument_id, bars, tick):
         # Here, self.slow_ma_period is a syntax shorthand for self.parameters['slow_ma_period'].
@@ -62,7 +61,7 @@ end_date = '2014-12-31'    # Backtesting end date.
 # The values in config will be used to instantiate the strategy objects by the backtest method.
 config = {
     'instrument_ids': ['IF99'],                      # We are trading this future instrument.
-    'strategy_period': Periodicity.FIFTEEN_MINUTE,   # The ohlc bar granularity on which trading happens.
+    'periods': [Periodicity.FIFTEEN_MINUTE],   # The ohlc bar granularity on which trading happens.
     'parameters': {
         'fast_ma_period': 8,   # The parameter for the fast moving average.
         'slow_ma_period': 15,  # The parameter for the slow moving average.

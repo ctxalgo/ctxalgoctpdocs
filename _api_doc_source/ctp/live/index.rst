@@ -10,6 +10,7 @@ live
    r106_cancel_all_pending_orders_from_previous_session
    r110_stand_by_strategy
    r201_change_position_relative_id
+   r117_order_disconnect_and_reconnect
    r114_very_fast_repeated_change_position
    r108_flat_all_positions
    r107_high_frequency_both_direction_trade

@@ -106,6 +106,7 @@
 <li class="toctree-l2"><a class="reference internal" href="callback_base.html">callback_base</a></li>
 <li class="toctree-l2"><a class="reference internal" href="market_order_simulator.html">market_order_simulator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plain_backtester.html">plain_backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="live_strategy_utils.html">live_strategy_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="backtesting_utils.html">backtesting_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comm.html">comm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator</a></li>
@@ -159,27 +160,16 @@
 <span id="strategy"></span><h1>strategy<a class="headerlink" href="#module-ctxalgoctp.ctp.strategy" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.strategy.</code><code class="descname">AbstractStrategy</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>strategy_period=None</em>, <em>strategy_period_kind='time-based'</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em>, <em>strategy_callbacks=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.strategy.</code><code class="descname">AbstractStrategy</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em>, <em>strategy_callbacks=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="callback_base.html#ctxalgoctp.ctp.callback_base.CallbackBase" title="ctxalgoctp.ctp.callback_base.CallbackBase"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.callback_base.CallbackBase</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.trading_utils.strategy_queries.AbstractStrategyQueries</span></code>, <code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.trading_utils.strategy_queries.AbstractStrategyCallbacks</span></code></p>
 <p>Class that serves as a base for all trading strategy callbacks. The strategy is assumed to be single
 future trading strategy. Strategy writes should inherit from this class and redefine different callbacks
 to conduct event-based trading strategy.</p>
 <p>Initialize current.
 :param instrument_ids: [string], the ids of the futures to trade.
-:param strategy_period: Periodicity or int/float, the period that the strategy is running.</p>
+:param parameters: dict from string to objects. This dict defines the list of parameters for the strategy,</p>
 <blockquote>
-<div>If it is not None, then this is the default strategy when accessing queries such as self.ohlc().
-strategy_period can be of type Periodicity in case of time-based ohlc, or int/float in case of
-volatility-based ohlc.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>strategy_period_kind</strong> &#8211; string, the default strategy period kind, can be &#8216;time-based&#8217; or
-&#8216;volatility-based&#8217; from OhlcGeneratorConstants.</li>
-<li><strong>parameters</strong> &#8211; <p>dict from string to objects. This dict defines the list of parameters for the strategy,
-keys are parameter names, and values are the corresponding parameter.
+<div><p>keys are parameter names, and values are the corresponding parameter.
 Some of the predefined parameter names are:</p>
 <blockquote>
 <div><dl class="docutils">
@@ -190,7 +180,12 @@ no need to specify this parameter. No need to provide this in a multi-day strate
 <dd>time, you can place an open order. No need to provide this in a multi-day strategy.</dd>
 </dl>
 </div></blockquote>
-</li>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>base_folder</strong> &#8211; string, the folder to store log files.</li>
 <li><strong>periods</strong> &#8211; [Periodicity], the list of periodicities for which ohlcs are needed.</li>
 <li><strong>description</strong> &#8211; <p>dict from string to string. Keys are description labels, values are the the
@@ -282,11 +277,6 @@ to the existing strategy code without change the code itself.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.strategy_period_kind">
-<code class="descname">strategy_period_kind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.strategy_period_kind" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.trading_day">
 <code class="descname">trading_day</code><span class="sig-paren">(</span><em>now=None</em>, <em>delta=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.trading_day" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -321,9 +311,21 @@ to the existing strategy code without change the code itself.</li>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.strategy_period">
-<code class="descname">strategy_period</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.strategy_period" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.default_period">
+<code class="descname">default_period</code><span class="sig-paren">(</span><em>kind=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.default_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the default period for the given ohlc kind.
+:param kind: string, can be OhlcGeneratorConstants.time_based or OhlcGeneratorConstants.volatility_based.
+:return: int or float, default period. Will return None if there are multiple possible values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.default_period_kind">
+<code class="descname">default_period_kind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.default_period_kind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the default period kind.
+:return: string, can be can be OhlcGeneratorConstants.time_based or OhlcGeneratorConstants.volatility_based,</p>
+<blockquote>
+<div>or None in case where no default is available.</div></blockquote>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.initialize_before_run">
@@ -332,7 +334,7 @@ to the existing strategy code without change the code itself.</li>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.add_timer">
-<code class="descname">add_timer</code><span class="sig-paren">(</span><em>timer=None</em>, <em>trigger_time=None</em>, <em>timedelta=None</em>, <em>action=None</em>, <em>start=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.add_timer" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_timer</code><span class="sig-paren">(</span><em>timer=None</em>, <em>trigger_time=None</em>, <em>countdown=None</em>, <em>action=None</em>, <em>start=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.add_timer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add timer into current strategy.
 :param timer: SimulatedTimer, the timer to add. If None, use trigger_time to create a timer.
 :param trigger_time: datetime or time, or string in form of HH:MM:SS or yyyy-mm-dd HH:MM:SS, or</p>
@@ -344,7 +346,11 @@ If specified, create an alarm timer.</div></blockquote>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>timedelta</strong> &#8211; timedelta, if specified, create a repeated count down timer.</li>
+<li><strong>countdown</strong> &#8211; timedelta/int or (timedelta/int, bool),
+If type is timedelta/int, create a repeated count down timer.
+If type is int, it equals to timedelta(seconds=int)
+If type is (timedelta or int, bool), create a count down timer, and use the bool flag to indicate
+whether the timer is repeated (when True) or not (when False).</li>
 <li><strong>action</strong> &#8211; function pointer whose signature is same as self.on_timer.
 If not None and there is no action set in timer, then set this as the callback for timer.
 If None and there is no action in timer, then set self.on_timer into the timer.</li>
@@ -366,7 +372,7 @@ If None and there is no action in timer, then set self.on_timer into the timer.<
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.add_bar_arrival_action">
-<code class="descname">add_bar_arrival_action</code><span class="sig-paren">(</span><em>action</em>, <em>period=None</em>, <em>instrument_ids=None</em>, <em>ohlc_kind='time-based'</em>, <em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.add_bar_arrival_action" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_bar_arrival_action</code><span class="sig-paren">(</span><em>action</em>, <em>period=None</em>, <em>instrument_ids=None</em>, <em>ohlc_kind=None</em>, <em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.add_bar_arrival_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup an action, which will be called when all required ohlc bars have arrived.
 For example, if period=Periodicity.HOURLY, and instrument_ids are the list of all the traded instruments,
 then action will be called the next time when all hourly bars for the traded instruments have arrived.
@@ -386,13 +392,13 @@ ohlcs: dict{string: OHLC}, the list of ohlcs, keys are instrument ids, values ar
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>period</strong> &#8211; Periodicity in case of time-based ohlc, or int/float as volatility threshold
 in case of volatility-based ohlc. This is the period for the required ohlc bars.
-If None, use self.strategy_period().
+If None, use self.default_period().
 This will be passed into the action when it is invoked.</li>
 <li><strong>instrument_ids</strong> &#8211; [string], the list of instruments whose last ohlc bar of required period must
 arrived before action can be invoked. If None, defaults to self.instrument_ids(), which are
 the full list of traded instruments.</li>
 <li><strong>ohlc_kind</strong> &#8211; string, the ohlc kind, can be &#8216;time-based&#8217;, &#8216;volatility-based&#8217;.
-This will be passed into the action when it is invoked.</li>
+This will be passed into the action when it is invoked. If None ,use self.default_period_kind().</li>
 <li><strong>name</strong> &#8211; string, the bar arrival action name, used to identify different bar arrival requests.
 This will be passed into the action when it is invoked.</li>
 </ul>
@@ -759,11 +765,6 @@ Parameters:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.ohlcs">
 <code class="descname">ohlcs</code><span class="sig-paren">(</span><em>kind=None</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.ohlcs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.strategy_ohlc">
-<code class="descname">strategy_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.strategy_ohlc" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1139,10 +1140,10 @@ order_ref: string, the value is string, the order reference.</dd>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.change_position_to">
-<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>new_position</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>market=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.change_position_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>position</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>market=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.change_position_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the position of the given instrument to new_position. If price is given, all underlying orders
 are limit orders at that price, otherwise, market orders.
-:param new_position: int, the new position for the instrument.
+:param position: int, the new position for the instrument.
 :param price: float, if None, newly placed orders are market orders, otherwise, limit orders.
 :param cross_book: bool, If True, when placing a limit order, and when order_book is given, place</p>
 <blockquote>
@@ -1193,9 +1194,9 @@ order_ref: string, the value is string, the order reference.</p>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.change_positions_to">
-<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>new_positions</em>, <em>prices=None</em>, <em>cross_book=False</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>market=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.change_positions_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>positions</em>, <em>prices=None</em>, <em>cross_book=False</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>market=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.change_positions_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change positions of multiple instruments to their new values.
-:param new_positions: dict{string: int}, keys are instrument ids,</p>
+:param positions: dict{string: int}, keys are instrument ids,</p>
 <blockquote>
 <div>values are the new positions for those instruments.</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1265,11 +1266,27 @@ order_ref: string, the value is string, the order reference.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.cancel_orders">
+<code class="descname">cancel_orders</code><span class="sig-paren">(</span><em>orders</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.cancel_orders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.cancel_order">
-<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order_ref</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.cancel_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.cancel_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cancel order.
-:param order_ref: string, the order reference.
-:param reason: string, the reason for cancelling the order.</p>
+:param order: string or dict..</p>
+<blockquote>
+<div>If the type is string, it is a order ref for an order placement.
+If the type is dict, it should should contains a key &#8216;order_ref&#8217;,
+from which we can get order ref for an order placement.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reason</strong> &#8211; string, the reason for cancelling the order.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -1815,8 +1832,17 @@ If there is no position, return None.</p>
 :param timestamp: datetime, current timestamp, if None, use self.now().
 :param instrument_id: string, instrument id, if None, use self.instrument_id().
 :param trading_day: date, current trading day, if None, use self.trading_day().
-:param delta: timedelta, if not None, checks this delta before a market period ends.
-:return: bool.</p>
+:param delta: timedelta or int or float, if not None, checks this delta before a market period ends.</p>
+<blockquote>
+<div>If type is int or float, it means timedelta(seconds=int).</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -2058,14 +2084,14 @@ between the current price and the position price.</li>
 :param instrument_id: string, the instrument id. If None, use self.instrument_id().
 :param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
 <blockquote>
-<div>If None, defaults to &#8216;time-based&#8217;.</div></blockquote>
+<div>If None, use self.default_period_kind().</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>period</strong> &#8211; Periodicity, the periodicity of the ohlc to return.
-If None, use self.strategy_period().</li>
+If None, use self.default_period().</li>
 <li><strong>now</strong> &#8211; datetime, an optional timestamp indicating current time, if None,
 use the last timestamp in ohlc as current time.</li>
 <li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
@@ -2088,13 +2114,6 @@ instrument_id, kind and period to find the ohlc.</li>
 <code class="descname">on_bar_method</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_bar_method" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the function pointer for on_bar.
 :return: function pointer.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_idle_event">
-<code class="descname">on_idle_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_idle_event" title="Permalink to this definition">¶</a></dt>
-<dd><p>Action to be invoked when there is no event from the outside.
-:return:</p>
 </dd></dl>
 
 <dl class="method">
@@ -2165,6 +2184,11 @@ instrument_id, kind and period to find the ohlc.</li>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_trading_rtn_instrument_status">
 <code class="descname">on_trading_rtn_instrument_status</code><span class="sig-paren">(</span><em>p_api</em>, <em>instrument_status</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_trading_rtn_instrument_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.on_trading_rtn_start">
+<code class="descname">on_trading_rtn_start</code><span class="sig-paren">(</span><em>trade_executor</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.on_trading_rtn_start" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2355,10 +2379,7 @@ If an instrument has both long and short sided positions, its corresponding valu
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.state">
 <code class="descname">state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the name of the current state in stat machine.
-Note: the current state may not be the same as current object.
-:return: string, tne name of the current state in self.state_machine.</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.today_bars">
@@ -2392,14 +2413,14 @@ Note: the current state may not be the same as current object.
 :param instrument_id: string, the instrument id. If None, use self.instrument_id().
 :param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
 <blockquote>
-<div>If None, defaults to &#8216;time-based&#8217;.</div></blockquote>
+<div>If None, use self.default_period_kind().</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>period</strong> &#8211; Periodicity, the periodicity of the ohlc to return.
-If None, use self.strategy_period().</li>
+If None, use self.default_period().</li>
 <li><strong>now</strong> &#8211; datetime, an optional timestamp indicating current time, if None,
 use the last timestamp in ohlc as current time.</li>
 <li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
@@ -2452,14 +2473,14 @@ instrument_id, kind and period to find the ohlc.</li>
 :param instrument_id: string, the instrument id. If None, use self.instrument_id().
 :param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
 <blockquote>
-<div>If None, defaults to &#8216;time-based&#8217;.</div></blockquote>
+<div>If None, use self.default_period_kind().</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>period</strong> &#8211; Periodicity, the periodicity of the ohlc to return.
-If None, use self.strategy_period().</li>
+If None, use self.default_period().</li>
 <li><strong>now</strong> &#8211; datetime, an optional timestamp indicating current time, if None,
 use the last timestamp in ohlc as current time.</li>
 <li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
@@ -2479,12 +2500,11 @@ instrument_id, kind and period to find the ohlc.</li>
 
 <dl class="class">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.strategy.</code><code class="descname">AbstractStateBasedStrategy</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>strategy_period=None</em>, <em>strategy_period_kind='time-based'</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em>, <em>strategy_callbacks=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.strategy.</code><code class="descname">AbstractStateBasedStrategy</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em>, <em>strategy_callbacks=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.strategy.AbstractStrategy" title="ctxalgoctp.ctp.strategy.AbstractStrategy"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.strategy.AbstractStrategy</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.trading_utils.state.StateMachine</span></code></p>
 <p>Class that represent a state-based strategy.</p>
 <p>Initialize current strategy.
 :param instrument_ids: string or [string]. The list of future id(s) to trade.
-:param strategy_period: Periodicity, the period under which the strategy is running.
 :param parameters: dict from string to object. The parameters for the current strategy. Keys are parameter</p>
 <blockquote>
 <div>names, and values are the parameter values.</div></blockquote>
@@ -2543,7 +2563,7 @@ to the existing strategy code without change the code itself.</li>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.add_bar_arrival_action">
-<code class="descname">add_bar_arrival_action</code><span class="sig-paren">(</span><em>action</em>, <em>period=None</em>, <em>instrument_ids=None</em>, <em>ohlc_kind='time-based'</em>, <em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.add_bar_arrival_action" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_bar_arrival_action</code><span class="sig-paren">(</span><em>action</em>, <em>period=None</em>, <em>instrument_ids=None</em>, <em>ohlc_kind=None</em>, <em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.add_bar_arrival_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup an action, which will be called when all required ohlc bars have arrived.
 For example, if period=Periodicity.HOURLY, and instrument_ids are the list of all the traded instruments,
 then action will be called the next time when all hourly bars for the traded instruments have arrived.
@@ -2563,13 +2583,13 @@ ohlcs: dict{string: OHLC}, the list of ohlcs, keys are instrument ids, values ar
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>period</strong> &#8211; Periodicity in case of time-based ohlc, or int/float as volatility threshold
 in case of volatility-based ohlc. This is the period for the required ohlc bars.
-If None, use self.strategy_period().
+If None, use self.default_period().
 This will be passed into the action when it is invoked.</li>
 <li><strong>instrument_ids</strong> &#8211; [string], the list of instruments whose last ohlc bar of required period must
 arrived before action can be invoked. If None, defaults to self.instrument_ids(), which are
 the full list of traded instruments.</li>
 <li><strong>ohlc_kind</strong> &#8211; string, the ohlc kind, can be &#8216;time-based&#8217;, &#8216;volatility-based&#8217;.
-This will be passed into the action when it is invoked.</li>
+This will be passed into the action when it is invoked. If None ,use self.default_period_kind().</li>
 <li><strong>name</strong> &#8211; string, the bar arrival action name, used to identify different bar arrival requests.
 This will be passed into the action when it is invoked.</li>
 </ul>
@@ -2581,7 +2601,7 @@ This will be passed into the action when it is invoked.</li>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.add_timer">
-<code class="descname">add_timer</code><span class="sig-paren">(</span><em>timer=None</em>, <em>trigger_time=None</em>, <em>timedelta=None</em>, <em>action=None</em>, <em>start=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.add_timer" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_timer</code><span class="sig-paren">(</span><em>timer=None</em>, <em>trigger_time=None</em>, <em>countdown=None</em>, <em>action=None</em>, <em>start=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.add_timer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add timer into current strategy.
 :param timer: SimulatedTimer, the timer to add. If None, use trigger_time to create a timer.
 :param trigger_time: datetime or time, or string in form of HH:MM:SS or yyyy-mm-dd HH:MM:SS, or</p>
@@ -2593,7 +2613,11 @@ If specified, create an alarm timer.</div></blockquote>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>timedelta</strong> &#8211; timedelta, if specified, create a repeated count down timer.</li>
+<li><strong>countdown</strong> &#8211; timedelta/int or (timedelta/int, bool),
+If type is timedelta/int, create a repeated count down timer.
+If type is int, it equals to timedelta(seconds=int)
+If type is (timedelta or int, bool), create a count down timer, and use the bool flag to indicate
+whether the timer is repeated (when True) or not (when False).</li>
 <li><strong>action</strong> &#8211; function pointer whose signature is same as self.on_timer.
 If not None and there is no action set in timer, then set this as the callback for timer.
 If None and there is no action in timer, then set self.on_timer into the timer.</li>
@@ -2798,18 +2822,34 @@ This is useful if you want to have a strategy which cancels some pending orders.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.cancel_order">
-<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order_ref</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.cancel_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.cancel_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cancel order.
-:param order_ref: string, the order reference.
-:param reason: string, the reason for cancelling the order.</p>
+:param order: string or dict..</p>
+<blockquote>
+<div>If the type is string, it is a order ref for an order placement.
+If the type is dict, it should should contains a key &#8216;order_ref&#8217;,
+from which we can get order ref for an order placement.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reason</strong> &#8211; string, the reason for cancelling the order.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.cancel_orders">
+<code class="descname">cancel_orders</code><span class="sig-paren">(</span><em>orders</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.cancel_orders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.change_position_to">
-<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>new_position</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>market=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.change_position_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>position</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>market=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.change_position_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the position of the given instrument to new_position. If price is given, all underlying orders
 are limit orders at that price, otherwise, market orders.
-:param new_position: int, the new position for the instrument.
+:param position: int, the new position for the instrument.
 :param price: float, if None, newly placed orders are market orders, otherwise, limit orders.
 :param cross_book: bool, If True, when placing a limit order, and when order_book is given, place</p>
 <blockquote>
@@ -2860,9 +2900,9 @@ order_ref: string, the value is string, the order reference.</p>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.change_positions_to">
-<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>new_positions</em>, <em>prices=None</em>, <em>cross_book=False</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>market=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.change_positions_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>positions</em>, <em>prices=None</em>, <em>cross_book=False</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>market=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.change_positions_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change positions of multiple instruments to their new values.
-:param new_positions: dict{string: int}, keys are instrument ids,</p>
+:param positions: dict{string: int}, keys are instrument ids,</p>
 <blockquote>
 <div>values are the new positions for those instruments.</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
@@ -3019,6 +3059,23 @@ start_state must be an element of all_states as well.</div></blockquote>
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.data_feed">
 <code class="descname">data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.data_feed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.default_period">
+<code class="descname">default_period</code><span class="sig-paren">(</span><em>kind=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.default_period" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the default period for the given ohlc kind.
+:param kind: string, can be OhlcGeneratorConstants.time_based or OhlcGeneratorConstants.volatility_based.
+:return: int or float, default period. Will return None if there are multiple possible values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.default_period_kind">
+<code class="descname">default_period_kind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.default_period_kind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the default period kind.
+:return: string, can be can be OhlcGeneratorConstants.time_based or OhlcGeneratorConstants.volatility_based,</p>
+<blockquote>
+<div>or None in case where no default is available.</div></blockquote>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.direction">
@@ -3221,8 +3278,17 @@ The returned information will be accessible through the corresponding callback f
 :param timestamp: datetime, current timestamp, if None, use self.now().
 :param instrument_id: string, instrument id, if None, use self.instrument_id().
 :param trading_day: date, current trading day, if None, use self.trading_day().
-:param delta: timedelta, if not None, checks this delta before a market period ends.
-:return: bool.</p>
+:param delta: timedelta or int or float, if not None, checks this delta before a market period ends.</p>
+<blockquote>
+<div>If type is int or float, it means timedelta(seconds=int).</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -3643,14 +3709,14 @@ between the current price and the position price.</li>
 :param instrument_id: string, the instrument id. If None, use self.instrument_id().
 :param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
 <blockquote>
-<div>If None, defaults to &#8216;time-based&#8217;.</div></blockquote>
+<div>If None, use self.default_period_kind().</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>period</strong> &#8211; Periodicity, the periodicity of the ohlc to return.
-If None, use self.strategy_period().</li>
+If None, use self.default_period().</li>
 <li><strong>now</strong> &#8211; datetime, an optional timestamp indicating current time, if None,
 use the last timestamp in ohlc as current time.</li>
 <li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
@@ -3786,13 +3852,6 @@ Parameters:</p>
 <code class="descname">on_external_trade</code><span class="sig-paren">(</span><em>trade_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_external_trade" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be invoked when an external trade arrives.
 :param trade_info:
-:return:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_idle_event">
-<code class="descname">on_idle_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_idle_event" title="Permalink to this definition">¶</a></dt>
-<dd><p>Action to be invoked when there is no event from the outside.
 :return:</p>
 </dd></dl>
 
@@ -4177,6 +4236,11 @@ multiple pieces of information, one piece for each currency.</td>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_trading_rtn_order">
 <code class="descname">on_trading_rtn_order</code><span class="sig-paren">(</span><em>p_api</em>, <em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_trading_rtn_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_trading_rtn_start">
+<code class="descname">on_trading_rtn_start</code><span class="sig-paren">(</span><em>trade_executor</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.on_trading_rtn_start" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -4690,21 +4754,6 @@ If an instrument has both long and short sided positions, its corresponding valu
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.strategy_ohlc">
-<code class="descname">strategy_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.strategy_ohlc" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.strategy_period">
-<code class="descname">strategy_period</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.strategy_period" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.strategy_period_kind">
-<code class="descname">strategy_period_kind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.strategy_period_kind" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.tick_size">
 <code class="descname">tick_size</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.tick_size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -4741,14 +4790,14 @@ If an instrument has both long and short sided positions, its corresponding valu
 :param instrument_id: string, the instrument id. If None, use self.instrument_id().
 :param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
 <blockquote>
-<div>If None, defaults to &#8216;time-based&#8217;.</div></blockquote>
+<div>If None, use self.default_period_kind().</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>period</strong> &#8211; Periodicity, the periodicity of the ohlc to return.
-If None, use self.strategy_period().</li>
+If None, use self.default_period().</li>
 <li><strong>now</strong> &#8211; datetime, an optional timestamp indicating current time, if None,
 use the last timestamp in ohlc as current time.</li>
 <li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
@@ -4828,14 +4877,14 @@ Parameters:</p>
 :param instrument_id: string, the instrument id. If None, use self.instrument_id().
 :param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
 <blockquote>
-<div>If None, defaults to &#8216;time-based&#8217;.</div></blockquote>
+<div>If None, use self.default_period_kind().</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>period</strong> &#8211; Periodicity, the periodicity of the ohlc to return.
-If None, use self.strategy_period().</li>
+If None, use self.default_period().</li>
 <li><strong>now</strong> &#8211; datetime, an optional timestamp indicating current time, if None,
 use the last timestamp in ohlc as current time.</li>
 <li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
@@ -4895,7 +4944,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Sep 01, 2016.
+      Last updated on Sep 05, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

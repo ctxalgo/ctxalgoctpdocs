@@ -19,11 +19,9 @@ from ctxalgoctp.ctp.strategy import StrategyUtils
 
 
 class TrendFollowingStrategy(AbstractStrategy):
-    def __init__(self, instrument_ids, strategy_period, parameters, base_folder,
-                 periods=None, description=None, logger=None):
+    def __init__(self, instrument_ids, parameters, base_folder, periods=None, description=None, logger=None):
         AbstractStrategy.__init__(
-            self, instrument_ids, parameters, base_folder, strategy_period=strategy_period,
-            periods=periods, description=description, logger=logger)
+            self, instrument_ids, parameters, base_folder, periods=periods, description=description, logger=logger)
 
         # The last generated open signal.
         self.last_signal = 0
@@ -49,8 +47,8 @@ class TrendFollowingStrategy(AbstractStrategy):
 
     def on_bar(self, instrument_id, bars, tick):
         self.last_signal = 0
-        if self.strategy_ohlc().length > self.parameters['previous_bars']:
-            ohlc = self.strategy_ohlc()
+        if self.ohlc().length > self.parameters['previous_bars']:
+            ohlc = self.ohlc()
             self.last_signal = self.calculate_trend(ohlc)
             if self.last_signal != 0 and not self.has_pending_order(instrument_id=instrument_id):
                 if self.in_market_period(tick['timestamp'], instrument_id=instrument_id, delta=timedelta(minutes=30)):
@@ -67,7 +65,7 @@ def get_strategy_config(base_folder):
     logger = StrategyUtils.get_logger(base_folder, has_console=False, has_file=True)
     config = {
         'instrument_ids': ['IF99'],
-        'strategy_period': Periodicity.FIFTEEN_MINUTE,
+        'periods': [Periodicity.FIFTEEN_MINUTE],
         'base_folder': base_folder,
         'logger': logger,
         'parameters': {

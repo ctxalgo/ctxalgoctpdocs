@@ -1,0 +1,250 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>live_strategy_utils &mdash; ctxalgoctp 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ctxalgoctp 0.1 documentation" href="../index.html"/>
+        <link rel="up" title="ctp" href="index.html"/>
+        <link rel="next" title="backtesting_utils" href="backtesting_utils.html"/>
+        <link rel="prev" title="plain_backtester" href="plain_backtester.html"/> 
+
+  
+  <script src="../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../index.html" class="icon icon-home"> ctxalgoctp
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ctp</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="live/index.html">live</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factories/index.html">factories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="context_loaders/index.html">context_loaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_gen/index.html">code_gen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trade_executors/index.html">trade_executors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logger/index.html">logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution_drivers/index.html">execution_drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_producers/index.html">data_producers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategies/index.html">strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading_account_loaders/index.html">trading_account_loaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slippage_models.html">slippage_models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategy_utils.html">strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exchanges.html">exchanges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backtester.html">backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading_account.html">trading_account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategy_command_line_utils.html">strategy_command_line_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="offline_optimization.html">offline_optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market_data_feed.html">market_data_feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html">base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="order_cancellation.html">order_cancellation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roll.html">roll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_utils.html">state_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constants.html">constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dominant_provider.html">dominant_provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datetime_utils.html">datetime_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strategy.html">strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="callback_base.html">callback_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="market_order_simulator.html">market_order_simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plain_backtester.html">plain_backtester</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">live_strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backtesting_utils.html">backtesting_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comm.html">comm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report_generator.html">report_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="future_info_provider.html">future_info_provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trading_constants.html">trading_constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="report.html">report</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">ctxalgoctp</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">ctp</a> &raquo;</li>
+      
+    <li>live_strategy_utils</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../sources/ctp/live_strategy_utils.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ctxalgoctp.ctp.live_strategy_utils">
+<span id="live-strategy-utils"></span><h1>live_strategy_utils<a class="headerlink" href="#module-ctxalgoctp.ctp.live_strategy_utils" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live_strategy_utils.display_positions">
+<code class="descclassname">ctxalgoctp.ctp.live_strategy_utils.</code><code class="descname">display_positions</code><span class="sig-paren">(</span><em>strategy</em>, <em>label='Positions'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live_strategy_utils.display_positions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live_strategy_utils.run_live">
+<code class="descclassname">ctxalgoctp.ctp.live_strategy_utils.</code><code class="descname">run_live</code><span class="sig-paren">(</span><em>class_name=None</em>, <em>context=None</em>, <em>parameters=None</em>, <em>options=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live_strategy_utils.run_live" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the strategy given by its class name.
+:param class_name: class, strategy class name.
+:param context: zmq context, if needed.
+:param parameters: dict{string: object}, parameters for the strategy.
+:param options: this can be of the following types:</p>
+<blockquote>
+<div>string: it should be some command line options, such as &#8216;&#8211;account simnow_future &#8211;instruments cu1610&#8217;.
+[string]: it is [&#8216;&#8211;account&#8217;, &#8216;simnow_future&#8217;, &#8216;&#8211;instruments&#8217;, &#8216;cu1610&#8217;].
+StrategyCommandLineUtils: it is the strategy command line parser utility.</div></blockquote>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="backtesting_utils.html" class="btn btn-neutral float-right" title="backtesting_utils" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plain_backtester.html" class="btn btn-neutral" title="plain_backtester" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, .
+      Last updated on Sep 05, 2016.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../static/jquery.js"></script>
+      <script type="text/javascript" src="../static/underscore.js"></script>
+      <script type="text/javascript" src="../static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -20,11 +20,9 @@ from ctxalgoctp.ctp.backtesting_utils import *
 
 
 class GetInstrumentMarketPeriod(AbstractStrategy):
-    def __init__(self, instrument_ids, strategy_period, parameters, base_folder,
-                 periods=None, description=None, logger=None):
+    def __init__(self, instrument_ids, parameters, base_folder, periods=None, description=None, logger=None):
         AbstractStrategy.__init__(
-            self, instrument_ids, parameters, base_folder, strategy_period=strategy_period,
-            periods=periods, description=description, logger=logger)
+            self, instrument_ids, parameters, base_folder, periods=periods, description=description, logger=logger)
 
     def on_before_run(self, strategy):
         # Getting the market periods for instruments. There can be multiple market periods during a trading day.
@@ -48,7 +46,7 @@ end_date = '2014-12-31'
 
 config = {
     'instrument_ids': ['IF99', 'cu99'],
-    'strategy_period': Periodicity.FIVE_MINUTE,
+    'periods': [Periodicity.FIVE_MINUTE],
     'parameters': {}
 }
 

@@ -28,10 +28,9 @@ from ctxalgoctp.ctp.backtesting_utils import *
 
 
 class TwoInstrumentStrategy(AbstractStrategy):
-    def __init__(self, instrument_ids, strategy_period, parameters, base_folder, description, logger=None):
-        AbstractStrategy.__init__(
-            self, instrument_ids, parameters, base_folder,
-            strategy_period=strategy_period, description=description, logger=logger)
+    def __init__(self, instrument_ids, parameters, base_folder, periods=None, description=None, logger=None):
+        AbstractStrategy.__init__(self, instrument_ids, parameters, base_folder,
+                                  periods=periods, description=description, logger=logger)
 
         # Setup the the callback so self.on_multiple_bars will be invoked every time
         # when new ohlc bars for all traded instruments arrive.
@@ -56,7 +55,7 @@ def main():
 
     config = {
         'instrument_ids': ['cu99', 'rb99'],  # Specify multiple instrument ids to trade.
-        'strategy_period': Periodicity.FIVE_MINUTE
+        'periods': [Periodicity.FIVE_MINUTE]
     }
 
     backtest(TwoInstrumentStrategy, config, start_date, end_date)

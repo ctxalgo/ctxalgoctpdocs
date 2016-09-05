@@ -26,11 +26,10 @@ class TrendFollowingStrategy(AbstractStrategy):
     2. If the fast moving average down-cross the slow moving average, change position to -1.
     That is, the position can be 0, -1 and 1.
     """
-    def __init__(self, instrument_ids, strategy_period, parameters, base_folder,
+    def __init__(self, instrument_ids, parameters, base_folder,
                  periods=None, description=None, logger=None):
         AbstractStrategy.__init__(
-            self, instrument_ids, parameters, base_folder, strategy_period=strategy_period,
-            periods=periods, description=description, logger=logger)
+            self, instrument_ids, parameters, base_folder, periods=periods, description=description, logger=logger)
 
         # Setup the moving average calculators. This strategy needs two moving averages, a fast one and a slow one.
         # The fast moving average use the fast_ma_period as its parameter, the slow moving average uses slow_ma_period.
@@ -78,7 +77,7 @@ def main():
     # The values in config will be used to instantiate the strategy objects by the backtest method.
     config = {
         'instrument_ids': ['IF99'],                      # We are trading this future instrument.
-        'strategy_period': Periodicity.FIFTEEN_MINUTE,   # The ohlc bar granularity on which trading happens.
+        'periods': [Periodicity.FIFTEEN_MINUTE],
         'parameters': {
             'fast_ma_period': 8,   # The parameter for the fast moving average.
             'slow_ma_period': 15,  # The parameter for the slow moving average.
@@ -92,7 +91,7 @@ def main():
     # Use charting facility to visualize trades.
     c = ChartsWithReport(report, data_source, folder=report.base_folder, open_in_browser=True)
     c.set_instrument(config['instrument_ids'][0])
-    c.period(config['strategy_period'])
+    c.period(config['periods'][0])
 
     c.ohlc()                                        # Draw ohlc bars.
     c.volume()                                      # Draw volumes bars.
