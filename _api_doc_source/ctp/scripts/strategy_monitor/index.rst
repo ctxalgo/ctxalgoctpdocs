@@ -5,3 +5,4 @@ strategy_monitor
    :maxdepth: 2
 
    strategy_monitor
+   strategy_monitor_widget
