@@ -164,17 +164,21 @@
 <dd></dd></dl>
 
 <dl class="function">
+<dt id="ctxalgoctp.ctp.live_strategy_utils.get_command_line_parser">
+<code class="descclassname">ctxalgoctp.ctp.live_strategy_utils.</code><code class="descname">get_command_line_parser</code><span class="sig-paren">(</span><em>strategy_class</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live_strategy_utils.get_command_line_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a command line option parser for live strategies.
+:param strategy_class: class, name of the strategy class.
+:param kwargs: config for named parameters.
+:return: StrategyCommandLineUtils, command line option parser.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="ctxalgoctp.ctp.live_strategy_utils.run_live">
-<code class="descclassname">ctxalgoctp.ctp.live_strategy_utils.</code><code class="descname">run_live</code><span class="sig-paren">(</span><em>class_name=None</em>, <em>context=None</em>, <em>parameters=None</em>, <em>options=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live_strategy_utils.run_live" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ctxalgoctp.ctp.live_strategy_utils.</code><code class="descname">run_live</code><span class="sig-paren">(</span><em>class_name</em>, <em>config</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live_strategy_utils.run_live" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the strategy given by its class name.
 :param class_name: class, strategy class name.
-:param context: zmq context, if needed.
-:param parameters: dict{string: object}, parameters for the strategy.
-:param options: this can be of the following types:</p>
-<blockquote>
-<div>string: it should be some command line options, such as &#8216;&#8211;account simnow_future &#8211;instruments cu1610&#8217;.
-[string]: it is [&#8216;&#8211;account&#8217;, &#8216;simnow_future&#8217;, &#8216;&#8211;instruments&#8217;, &#8216;cu1610&#8217;].
-StrategyCommandLineUtils: it is the strategy command line parser utility.</div></blockquote>
+:param config: dict{string: object}, the parameters used to instantiate the strategy object.
+:param options: StrategyCommandLineUtils, the command line option parser.</p>
 </dd></dl>
 
 </div>
