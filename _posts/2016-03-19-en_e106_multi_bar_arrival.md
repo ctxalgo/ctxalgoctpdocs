@@ -58,7 +58,7 @@ def main():
     end_date = '2015-01-31'
 
     config = {
-        'instrument_ids': ['cu99', 'rb99'],  # Specify multiple instrument ids to trade.
+        'instrument_ids': ['cu00', 'rb00'],  # Specify multiple instrument ids to trade.
         'periods': [Periodicity.FIVE_MINUTE]
     }
 

@@ -26,7 +26,7 @@ from ctxalgoctp.ctp.backtesting_utils import get_data_source, safe_get_base_fold
 
 
 ```python
-instrument_ids = ['cu99']
+instrument_ids = ['cu00']
 start_date = '2014-01-01'  # Backtesting start date.
 end_date = '2014-12-31'    # Backtesting end date.
 base_folder = safe_get_base_folder(folder='iterating_data_source')
@@ -49,7 +49,6 @@ def iterate_over_data(ds, periods):
     :param ds: BacktestingDataSource, the data source containing historical trading data.
     :param periods: [Periodicity], the list of periods that the iterator should generate ohlcs for.
     """
-    factory = FutureInfoCalculatorFactory()
     for instrument_id, bars, all_ohlcs in ds.bars_iterator(periods):
         for period, bar in bars['time-based'].items():
             ohlc = all_ohlcs['time-based'][instrument_id][period]
@@ -70,7 +69,7 @@ iterate_over_data(data_source, ohlc_periods)
 
 
 ```python
-instrument_ids = ['cu99', 'rb99']
+instrument_ids = ['cu00', 'rb00']
 data_source2 = get_data_source(instrument_ids, base_folder, start_date, end_date, data_period)
 
 print('============ Iterate over two instruments\' ohlcs ============')
@@ -85,10 +84,10 @@ iterate_over_data(data_source2, ohlc_periods)
 
 ```python
 print('============ Iterate over multiple bars ============')
-for ohlcs in data_source2.multiple_bars_iterator(period=Periodicity.THIRTY_MINUTE, instrument_ids=['cu99', 'rb99']):
-    ohlc1 = ohlcs['cu99']
-    ohlc2 = ohlcs['rb99']
-    print('{} {}: {}\t{} {}: {}'.format('cu99', ohlc1.length, ohlc1.dates[-1], 'rb99', ohlc2.length, ohlc2.dates[-1]))
+for ohlcs in data_source2.multiple_bars_iterator(period=Periodicity.THIRTY_MINUTE, instrument_ids=['cu00', 'rb00']):
+    ohlc1 = ohlcs['cu00']
+    ohlc2 = ohlcs['rb00']
+    print('{} {}: {}\t{} {}: {}'.format('cu00', ohlc1.length, ohlc1.dates[-1], 'rb00', ohlc2.length, ohlc2.dates[-1]))
 
 ```
 
@@ -101,10 +100,10 @@ for ohlcs in data_source2.multiple_bars_iterator(period=Periodicity.THIRTY_MINUT
 ```python
 print('============ Get whole ohlcs directly ============')
 ohlcs = data_source2.ohlcs(ohlc_periods)
-print('30 minute cu99 ohlc length: {}'.format(ohlcs['time-based']['cu99'][Periodicity.THIRTY_MINUTE].length))
-print('Daily cu99 ohlc length: {}'.format(ohlcs['time-based']['cu99'][Periodicity.DAILY].length))
-print('30 minute rb99 ohlc length: {}'.format(ohlcs['time-based']['rb99'][Periodicity.THIRTY_MINUTE].length))
-print('Daily rb99 ohlc length: {}'.format(ohlcs['time-based']['rb99'][Periodicity.DAILY].length))
+print('30 minute cu00 ohlc length: {}'.format(ohlcs['time-based']['cu00'][Periodicity.THIRTY_MINUTE].length))
+print('Daily cu99 ohlc length: {}'.format(ohlcs['time-based']['cu00'][Periodicity.DAILY].length))
+print('30 minute rb00 ohlc length: {}'.format(ohlcs['time-based']['rb00'][Periodicity.THIRTY_MINUTE].length))
+print('Daily rb99 ohlc length: {}'.format(ohlcs['time-based']['rb00'][Periodicity.DAILY].length))
 
 
 ```

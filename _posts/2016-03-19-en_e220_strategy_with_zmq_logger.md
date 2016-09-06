@@ -48,7 +48,7 @@ class StrategyBacktestingThread(threading.Thread):
 
         base_folder = safe_get_base_folder(TrendFollowingStrategy)
         config = {
-            'instrument_ids': ['IF99'],
+            'instrument_ids': ['IF00'],
             'periods': [Periodicity.FIFTEEN_MINUTE],
             'parameters': {
                 'fast_ma_period': 8,

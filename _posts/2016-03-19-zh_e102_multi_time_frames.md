@@ -20,7 +20,7 @@ config对象的内容会被用来初始化策略对象。
 
 ```python
 config = {
-    'instrument_ids': ['IF99'],                      # We are trading this future instrument.
+    'instrument_ids': ['IF00'],                      # We are trading this future instrument.
     'periods': [Periodicity.FIFTEEN_MINUTE, Periodicity.THIRTY_MINUTE],
 }
 ```

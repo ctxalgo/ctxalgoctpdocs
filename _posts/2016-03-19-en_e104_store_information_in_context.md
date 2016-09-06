@@ -82,7 +82,7 @@ def main():
 
     # The values in config will be used to instantiate the strategy objects by the backtest method.
     config = {
-        'instrument_ids': ['IF99'],                      # We are trading this future instrument.
+        'instrument_ids': ['IF00'],                      # We are trading this future instrument.
         'periods': [Periodicity.FIFTEEN_MINUTE],   # The ohlc bar granularity on which trading happens.
         'parameters': {
             'fast_ma_period': 8,    # The parameter for the fast moving average.

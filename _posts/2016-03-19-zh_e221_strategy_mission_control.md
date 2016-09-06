@@ -51,7 +51,7 @@ class StrategyBacktestingThread(threading.Thread):
 
         base_folder = safe_get_base_folder(StrategyWithMissionControl)
         config = {
-            'instrument_ids': ['IF99'],
+            'instrument_ids': ['IF00'],
             'periods': [Periodicity.ONE_MINUTE],
             'parameters': {
                 'fast_ma_period': 8,

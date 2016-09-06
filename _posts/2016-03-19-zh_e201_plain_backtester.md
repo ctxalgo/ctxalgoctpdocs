@@ -36,7 +36,7 @@ from ctxalgoctp.ctp.slippage_models import VolumeBasedSlippageModel
 
 
 ```python
-instrument_id = 'cu99'
+instrument_id = 'cu00'
 start_date = '2014-01-01'  # Backtesting start date.
 end_date = '2014-12-31'    # Backtesting end date.
 base_folder = safe_get_base_folder(folder='plain_backtester')
@@ -148,7 +148,7 @@ c.show()
 
 
 ```python
-instrument_ids = ['cu99', 'rb99']
+instrument_ids = ['cu00', 'rb00']
 data_source2 = get_data_source(instrument_ids, base_folder, start_date, end_date, data_period)
 
 backtester2 = PlainBacktester(instrument_ids=instrument_ids)
@@ -188,9 +188,9 @@ def parse_ohlc_line(line):
     volume = float(parts[8])
     return ts, open_, high, low, close_, volume, 0
 
-instrument_ids = ['IF99']
+instrument_ids = ['IF00']
 data_paths = {
-    'IF99': os.path.join('..', '..', 'tests', 'data', 'IF99_15m_20140101_20141231.csv')
+    'IF00': os.path.join('..', '..', 'tests', 'data', 'IF00_15m_20140101_20141231.csv')
 }
 
 data_source3 = get_data_source(

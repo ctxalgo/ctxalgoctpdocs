@@ -45,7 +45,7 @@ def main():
     start_date = '2015-01-01'
     end_date = '2015-01-31'
     config = {
-        'instrument_ids': ['cu99', 'rb99'],  # Specify multiple instrument ids to trade.
+        'instrument_ids': ['cu00', 'rb00'],  # Specify multiple instrument ids to trade.
         'periods': [Periodicity.FIVE_MINUTE],
     }
     backtest(TwoInstrumentStrategy, config, start_date, end_date)

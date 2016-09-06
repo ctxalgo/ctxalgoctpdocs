@@ -44,7 +44,7 @@ start_date = '2014-01-01'
 end_date = '2014-12-31'
 
 config = {
-    'instrument_ids': ['IF99', 'cu99'],
+    'instrument_ids': ['IF00', 'cu00'],
     'periods': [Periodicity.FIVE_MINUTE],
     'parameters': {}
 }

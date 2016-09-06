@@ -20,7 +20,7 @@ The config object will be used to initialize a strategy object.
 
 ```python
 config = {
-    'instrument_ids': ['IF99'],                      # We are trading this future instrument.
+    'instrument_ids': ['IF00'],                      # We are trading this future instrument.
     'periods': [Periodicity.FIFTEEN_MINUTE, Periodicity.THIRTY_MINUTE],
 }
 ```

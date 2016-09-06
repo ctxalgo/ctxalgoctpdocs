@@ -71,12 +71,12 @@ class TrendFollowingStrategy(AbstractStrategy):
 
 ```python
 def main():
-    start_date = '2014-01-01'  # Backtesting start date.
-    end_date = '2014-12-31'    # Backtesting end date.
+    start_date = '2010-01-01'  # Backtesting start date.
+    end_date = '2010-12-31'    # Backtesting end date.
 
     # The values in config will be used to instantiate the strategy objects by the backtest method.
     config = {
-        'instrument_ids': ['IF99'],                      # We are trading this future instrument.
+        'instrument_ids': ['IF00'],                      # We are trading this future instrument.
         'periods': [Periodicity.FIFTEEN_MINUTE],
         'parameters': {
             'fast_ma_period': 8,   # The parameter for the fast moving average.

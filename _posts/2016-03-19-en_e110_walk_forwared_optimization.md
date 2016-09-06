@@ -64,7 +64,7 @@ def get_strategy_config(base_folder):
     """
     logger = StrategyUtils.get_logger(base_folder, has_console=False, has_file=True)
     config = {
-        'instrument_ids': ['IF99'],
+        'instrument_ids': ['IF00'],
         'periods': [Periodicity.FIFTEEN_MINUTE],
         'base_folder': base_folder,
         'logger': logger,
