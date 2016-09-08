@@ -70,8 +70,8 @@ HTML page to view all the traded. You can review the trades inside a browser.
 
 ```python
 def main():
-    start_date = '2010-01-01'  # Backtesting start date.
-    end_date = '2010-12-31'    # Backtesting end date.
+    start_date = '2014-01-01'  # Backtesting start date.
+    end_date = '2014-12-31'    # Backtesting end date.
 
     # The values in config will be used to instantiate the strategy objects by the backtest method.
     config = {
