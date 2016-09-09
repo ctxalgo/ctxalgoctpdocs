@@ -183,18 +183,27 @@
             
   <div class="section" id="module-ctxalgoctp.ctp.live.r113_trade_at_timer">
 <span id="r113-trade-at-timer"></span><h1>r113_trade_at_timer<a class="headerlink" href="#module-ctxalgoctp.ctp.live.r113_trade_at_timer" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.get_command_line_parser">
-<code class="descclassname">ctxalgoctp.ctp.live.r113_trade_at_timer.</code><code class="descname">get_command_line_parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.get_command_line_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<p>[en]
+Title: Reach positions at certain times
+This example shows how to reach different positions at a sequence of specified times. The example command line inside
+the <cite>main</cite> method means: to reach 2 long positions for cu1610 at 14:00:00, and reach -2 short positions for SR611
+at 14:00:01.</p>
+<p>[zh]
+Title: 在给定的时间点进入仓位
+本程序展示如何在给定的时间点进入仓位。在`main`方法中的示例命令行的意思是：在14:00:00 进入cu1610的2手多仓，在14:00:01
+进入SR611的2手空仓。</p>
 <dl class="class">
 <dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r113_trade_at_timer.</code><code class="descname">TradeAtTimer</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em>, <em>use_remote_account=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r113_trade_at_timer.</code><code class="descname">TradeAtTimer</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../strategy.html#ctxalgoctp.ctp.strategy.AbstractStrategy" title="ctxalgoctp.ctp.strategy.AbstractStrategy"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.strategy.AbstractStrategy</span></code></a></p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_before_run">
 <code class="descname">on_before_run</code><span class="sig-paren">(</span><em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_before_run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_check_progress">
+<code class="descname">on_check_progress</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>supposed_trigger_time</em>, <em>timer_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_check_progress" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -205,16 +214,6 @@
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_order_dropped">
 <code class="descname">on_order_dropped</code><span class="sig-paren">(</span><em>kind</em>, <em>action</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>reason</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_order_dropped" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_trade">
-<code class="descname">on_trade</code><span class="sig-paren">(</span><em>trade_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_trade" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_tick">
-<code class="descname">on_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_tick" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1609,6 +1608,19 @@ Parameters:</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_tick">
+<code class="descname">on_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_tick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be called when there is some new market data.
+When a tick arrives and this tick can cause the generation of one or more bars, the callback invocation
+order between on_tick and on_bar is decided by self.on_tick_before_on_bar().
+:param instrument_id: string, instrument id.
+:param tick: dict{string: object}, tick data. The object has the following keys (non-exhaustive):</p>
+<blockquote>
+<div>timestamp, last_price, volume, ask_price1, ask_volume1, bid_price1, bid_volume1,
+pre_open_interest, open_interest.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_tick_from_data_producer">
 <code class="descname">on_tick_from_data_producer</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_tick_from_data_producer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be invoked when tick data arrived from the underlying data producer.
@@ -1630,6 +1642,20 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_time_step">
 <code class="descname">on_time_step</code><span class="sig-paren">(</span><em>p_api</em>, <em>time_step</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_time_step" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_trade">
+<code class="descname">on_trade</code><span class="sig-paren">(</span><em>trade_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_trade" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be called when a trade occurs in the exchange. After an order is placed ,
+when (part of) the order is traded, there is a callback to this action.
+An order may be executed through several trades, so there may be several invocation
+of this action for a single order.
+:param trade_info: dict, providing information of the trade.</p>
+<blockquote>
+<div>Keys (non-exhaustively) include:
+instrument_id, slippage, commission, profits, traded_volume, left_volume,
+order_ref, current_traded_volume, current_traded_price, action, reason, kind, status.</div></blockquote>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r113_trade_at_timer.TradeAtTimer.on_trading_account">

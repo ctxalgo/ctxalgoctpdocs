@@ -183,9 +183,20 @@
             
   <div class="section" id="r107-high-frequency-both-direction-trade">
 <h1>r107_high_frequency_both_direction_trade<a class="headerlink" href="#r107-high-frequency-both-direction-trade" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="module-ctxalgoctp.ctp.live.r107_high_frequency_both_direction_trade"></span><dl class="class">
+<span class="target" id="module-ctxalgoctp.ctp.live.r107_high_frequency_both_direction_trade"></span><p>[en]
+Title: A high frequency trading example
+This example implements a strategy which trades the given instruments into long and short positions, hold
+those positions for a few seconds, and switch to the other direction. For example, it trades cu1610 in 2 long positions,
+holds that position for 5 seconds, and switch to -2 short positions.</p>
+<p>This example also shows how to add customized command line options.</p>
+<p>[zh]
+Title: 一个相对高频的交易例子
+本程序展示了一个策略，该策略会交易达到指定品种的指定仓位，在等待几秒钟后，交易反向仓位。比如，该策略会交易达到cu1610的2手
+多仓，等待5秒后，交易达到-2手空仓。</p>
+<p>本程序同时展示了如何在策略的命令行中加入自定义的选项。</p>
+<dl class="class">
 <dt id="ctxalgoctp.ctp.live.r107_high_frequency_both_direction_trade.HighFrequencyBothDirectionTrade">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r107_high_frequency_both_direction_trade.</code><code class="descname">HighFrequencyBothDirectionTrade</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em>, <em>local_bookkeep=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r107_high_frequency_both_direction_trade.HighFrequencyBothDirectionTrade" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r107_high_frequency_both_direction_trade.</code><code class="descname">HighFrequencyBothDirectionTrade</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r107_high_frequency_both_direction_trade.HighFrequencyBothDirectionTrade" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../strategy.html#ctxalgoctp.ctp.strategy.AbstractStrategy" title="ctxalgoctp.ctp.strategy.AbstractStrategy"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.strategy.AbstractStrategy</span></code></a></p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r107_high_frequency_both_direction_trade.HighFrequencyBothDirectionTrade.on_before_run">
@@ -2460,11 +2471,6 @@ instrument_id, kind and period to find the ohlc.</li>
 </dd></dl>
 
 </dd></dl>
-
-<dl class="function">
-<dt id="ctxalgoctp.ctp.live.r107_high_frequency_both_direction_trade.get_command_line_parser">
-<code class="descclassname">ctxalgoctp.ctp.live.r107_high_frequency_both_direction_trade.</code><code class="descname">get_command_line_parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r107_high_frequency_both_direction_trade.get_command_line_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="function">
 <dt id="ctxalgoctp.ctp.live.r107_high_frequency_both_direction_trade.main">
