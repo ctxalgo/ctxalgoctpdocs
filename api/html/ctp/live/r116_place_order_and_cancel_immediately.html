@@ -183,7 +183,16 @@
             
   <div class="section" id="r116-place-order-and-cancel-immediately">
 <h1>r116_place_order_and_cancel_immediately<a class="headerlink" href="#r116-place-order-and-cancel-immediately" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="module-ctxalgoctp.ctp.live.r116_place_order_and_cancel_immediately"></span><dl class="class">
+<span class="target" id="module-ctxalgoctp.ctp.live.r116_place_order_and_cancel_immediately"></span><p>[en]
+Title: Place an order and cancel it immediately after
+This strategy places and order and immediately afterwards, cancel that order. Most likely the order will not be
+fully executed, and the cancellation will cancel the remaining trades. This strategy demonstrates
+how order cancellation works.</p>
+<p>[zh]
+Title: 下单后立刻撤单
+本程序展示如何在下单后立刻撤单。这时候该报单很可能没有被执行完。撤单的操作会取消掉还没有执行的单子。这个例子展示
+如何进行撤单。</p>
+<dl class="class">
 <dt id="ctxalgoctp.ctp.live.r116_place_order_and_cancel_immediately.PlaceOrderAndCancelItImmediately">
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r116_place_order_and_cancel_immediately.</code><code class="descname">PlaceOrderAndCancelItImmediately</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r116_place_order_and_cancel_immediately.PlaceOrderAndCancelItImmediately" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../strategy.html#ctxalgoctp.ctp.strategy.AbstractStrategy" title="ctxalgoctp.ctp.strategy.AbstractStrategy"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.strategy.AbstractStrategy</span></code></a></p>

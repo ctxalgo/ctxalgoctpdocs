@@ -204,7 +204,7 @@ Usage is the same as OptionParser.add_option.</p>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.parse">
-<code class="descname">parse</code><span class="sig-paren">(</span><em>cmd_options=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.parse" title="Permalink to this definition">¶</a></dt>
+<code class="descname">parse</code><span class="sig-paren">(</span><em>cmd_options=None</em>, <em>ignore_argv=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.parse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parse command line options.
 :param cmd_options: string or [string], if not None, use it as command line options,</p>
 <blockquote>
@@ -213,7 +213,11 @@ Usage is the same as OptionParser.add_option.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">parsed options.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ignore_argv</strong> &#8211; bool, if True, do not use actual command line options sys.argv,
+instead, only use cmd_options. If False, use actual command line options sys.argv
+if there is parameters in it, otherwise, use cmd_options.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">parsed options.</td>
 </tr>
 </tbody>
 </table>
