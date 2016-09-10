@@ -1570,6 +1570,18 @@ requested by get_investor_position.
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.on_market_not_ready">
+<code class="descname">on_market_not_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.on_market_not_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when market server becomes unconnected.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.on_market_ready">
+<code class="descname">on_market_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.on_market_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when market server becomes connected.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.on_market_rsp_error">
 <code class="descname">on_market_rsp_error</code><span class="sig-paren">(</span><em>p_api</em>, <em>rsp_info</em>, <em>n_request_id</em>, <em>b_is_last</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.on_market_rsp_error" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1732,8 +1744,7 @@ order_ref, current_traded_volume, current_traded_price, action, reason, kind, st
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.on_trading_not_ready">
 <code class="descname">on_trading_not_ready</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.on_trading_not_ready" title="Permalink to this definition">¶</a></dt>
-<dd><p>Action to be invoked when trading becomes not ready.
-:return:</p>
+<dd><p>Action to be invoked when trading becomes not ready.</p>
 </dd></dl>
 
 <dl class="method">
