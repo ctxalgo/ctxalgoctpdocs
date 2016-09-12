@@ -160,7 +160,7 @@
 <span id="trading-account"></span><h1>trading_account<a class="headerlink" href="#module-ctxalgoctp.ctp.trading_account" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="ctxalgoctp.ctp.trading_account.TradingAccount">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trading_account.</code><code class="descname">TradingAccount</code><span class="sig-paren">(</span><em>security_company</em>, <em>available=1000000.0</em>, <em>has_commission=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trading_account.</code><code class="descname">TradingAccount</code><span class="sig-paren">(</span><em>security_company</em>, <em>available=1000000.0</em>, <em>has_commission=True</em>, <em>future_info_factory=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p>Class that represents a trading account.</p>
 <p>Initialize current.
@@ -532,7 +532,7 @@ L&gt;0             S&lt;0             p2&lt;0, p2==S     close_long(L)</p>
 
 <dl class="staticmethod">
 <dt id="ctxalgoctp.ctp.trading_account.TradingAccount.from_json_file">
-<em class="property">static </em><code class="descname">from_json_file</code><span class="sig-paren">(</span><em>security_company</em>, <em>path</em>, <em>has_commission=True</em>, <em>initial_capital=1000000.0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.from_json_file" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">from_json_file</code><span class="sig-paren">(</span><em>security_company</em>, <em>path</em>, <em>has_commission=True</em>, <em>initial_capital=1000000.0</em>, <em>future_info_factory=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.from_json_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load account information from a JSON file.
 :param security_company: string, security company name, if None, a default will be used.
 :param path: string, the path of the account JSON file.
@@ -543,11 +543,12 @@ L&gt;0             S&lt;0             p2&lt;0, p2==S     close_long(L)</p>
 
 <dl class="staticmethod">
 <dt id="ctxalgoctp.ctp.trading_account.TradingAccount.from_json">
-<em class="property">static </em><code class="descname">from_json</code><span class="sig-paren">(</span><em>security_company</em>, <em>json_str</em>, <em>has_commission=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.from_json" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">from_json</code><span class="sig-paren">(</span><em>security_company</em>, <em>json_str</em>, <em>has_commission=True</em>, <em>future_info_factory=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.from_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parse json_str into TradingAccount.
 :param security_company: string, security company
 :param json_str: string, json string.
 :param has_commission: bool.
+:param future_info_factory: AbstractFutureInfoCalculatorFactory.
 :return: TradingAccount.</p>
 </dd></dl>
 
