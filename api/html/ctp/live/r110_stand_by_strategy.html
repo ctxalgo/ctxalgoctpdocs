@@ -234,7 +234,7 @@
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.add_bar_arrival_action">
-<code class="descname">add_bar_arrival_action</code><span class="sig-paren">(</span><em>action</em>, <em>period=None</em>, <em>instrument_ids=None</em>, <em>ohlc_kind=None</em>, <em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.add_bar_arrival_action" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_bar_arrival_action</code><span class="sig-paren">(</span><em>action</em>, <em>period=None</em>, <em>instrument_ids=None</em>, <em>ohlc_kind=None</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.add_bar_arrival_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup an action, which will be called when all required ohlc bars have arrived.
 For example, if period=Periodicity.HOURLY, and instrument_ids are the list of all the traded instruments,
 then action will be called the next time when all hourly bars for the traded instruments have arrived.
@@ -262,12 +262,13 @@ the full list of traded instruments.</li>
 <li><strong>ohlc_kind</strong> &#8211; string, the ohlc kind, can be &#8216;time-based&#8217;, &#8216;volatility-based&#8217;.
 This will be passed into the action when it is invoked. If None ,use self.default_period_kind().</li>
 <li><strong>name</strong> &#8211; string, the bar arrival action name, used to identify different bar arrival requests.
-This will be passed into the action when it is invoked.</li>
+This will be passed into the action when it is invoked. If None, a default name will be given.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+<p>:return the name for the bar arrival event.</p>
 </dd></dl>
 
 <dl class="method">
@@ -2488,7 +2489,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Sep 10, 2016.
+      Last updated on Sep 12, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
