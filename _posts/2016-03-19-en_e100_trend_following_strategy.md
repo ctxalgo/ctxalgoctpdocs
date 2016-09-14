@@ -50,7 +50,7 @@ class TrendFollowingStrategy(AbstractStrategy):
             # cross_direction return 1 if ma_fast up-crosses ma_slow, -1 if ma_fast down-crosses ma_fast,
             # and 0 otherwise. The strategy uses this signal to change its position of the traded instrument.
             signal = cross_direction(ma_fast, ma_slow)
-            if signal != 0:
+            if signal != 0 and self.in_market_period(delta=timedelta(minutes=20)):
                 # The change_position_to method handles open and close positions for you.
                 # It will maintain one direction positions: either long or short, not both.
                 # As an example, if you start with 0 position, and then do the following sequence:
