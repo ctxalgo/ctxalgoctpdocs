@@ -183,9 +183,17 @@
             
   <div class="section" id="r115-change-position-with-cancel">
 <h1>r115_change_position_with_cancel<a class="headerlink" href="#r115-change-position-with-cancel" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="module-ctxalgoctp.ctp.live.r115_change_position_with_cancel"></span><dl class="class">
+<span class="target" id="module-ctxalgoctp.ctp.live.r115_change_position_with_cancel"></span><p>[en]
+Title: Change positions in fast pace with automatic cancellation
+This example changes positions on every tick. And some times the previous position changing has not finished, and
+the pending orders will be canceled by the next <cite>change_position_to</cite>.</p>
+<p>[zh]
+Title: 快速改变仓位并自动对未成交订单进行撤单。
+本程序展示如何在每一tick到来时改变仓位。当一个tick到来时，上一次`change_position_to`发生的报单不一定已经执行完毕了。
+那些没有执行的报单会被撤单。</p>
+<dl class="class">
 <dt id="ctxalgoctp.ctp.live.r115_change_position_with_cancel.ChangePositionWithCancel">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r115_change_position_with_cancel.</code><code class="descname">ChangePositionWithCancel</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em>, <em>use_remote_account=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r115_change_position_with_cancel.ChangePositionWithCancel" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r115_change_position_with_cancel.</code><code class="descname">ChangePositionWithCancel</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r115_change_position_with_cancel.ChangePositionWithCancel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../strategy.html#ctxalgoctp.ctp.strategy.AbstractStrategy" title="ctxalgoctp.ctp.strategy.AbstractStrategy"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.strategy.AbstractStrategy</span></code></a></p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r115_change_position_with_cancel.ChangePositionWithCancel.sign">
@@ -208,11 +216,6 @@ when calculating volumes from directions.
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r115_change_position_with_cancel.ChangePositionWithCancel.on_before_run">
 <code class="descname">on_before_run</code><span class="sig-paren">(</span><em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r115_change_position_with_cancel.ChangePositionWithCancel.on_before_run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.live.r115_change_position_with_cancel.ChangePositionWithCancel.on_order_dropped">
-<code class="descname">on_order_dropped</code><span class="sig-paren">(</span><em>kind</em>, <em>action</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>reason</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r115_change_position_with_cancel.ChangePositionWithCancel.on_order_dropped" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1587,6 +1590,17 @@ broker_id, investor_id, order_ref, action_flag, volume_change, instrument_id, er
 <dd><p>Action to be invoked when an order has been cancelled successfully.
 :param order_ref: string, order reference.
 :param instrument_id: string, instrument id of the order that is requested to be cancelled.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r115_change_position_with_cancel.ChangePositionWithCancel.on_order_dropped">
+<code class="descname">on_order_dropped</code><span class="sig-paren">(</span><em>kind</em>, <em>action</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>reason</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r115_change_position_with_cancel.ChangePositionWithCancel.on_order_dropped" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be called when an order request is dropped due to lack of order book information.
+:param kind: OrderKind, the order kind.
+:param action: OrderAction, the order action.
+:param instrument_id: string, instrument id, the instrument id.
+:param actual_instrument_id: string, actual instrument id.
+:param reason: string, the reason for the order request.</p>
 </dd></dl>
 
 <dl class="method">
