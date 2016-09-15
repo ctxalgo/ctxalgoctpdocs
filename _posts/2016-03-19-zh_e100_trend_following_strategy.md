@@ -73,8 +73,6 @@ class TrendFollowingStrategy(AbstractStrategy):
                 # But when you are trading multiple instruments, you always need to specify the instrument id.
                 self.change_position_to(position, instrument_id=instrument_id)
 
-    def on_trade(self, trade_info):
-        pass
 ```
 
 现在我们对以上交易策略进行历史数据的回测。回测之后，我们生成一个网页，包括所有产生的交易记录。

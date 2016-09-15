@@ -73,8 +73,6 @@ class TrendFollowingStrategy(AbstractStrategy):
                 # But when you are trading multiple instruments, you always need to specify the instrument id.
                 self.change_position_to(position, instrument_id=instrument_id)
 
-    def on_trade(self, trade_info):
-        pass
 ```
 
 Now, we create configurations for backtesting the strategy. After backtesting, we generate a chart in form of
