@@ -70,7 +70,7 @@ class TrendFollowingStrategy(AbstractStrategy):
                 # So at the end, you have 1 long position.
                 position = 1 * signal
                 # You can omit the instrument_id=... part in current strategy,
-                # But when you are trading multiple instruments, you always need to specify the instrument id.
+                # but when you are trading multiple instruments, you always need to specify instrument id.
                 self.change_position_to(position, instrument_id=instrument_id)
 
 ```

@@ -5,6 +5,7 @@ live
    :maxdepth: 2
 
    r102_cancel_order_after_fully_executed
+   r501_fake_market_broker
    r104_automatic_order_cancellation
    r112_strategy_log_printer
    r106_cancel_all_pending_orders_from_previous_session

@@ -178,7 +178,10 @@
 <dd><p>Run the strategy given by its class name.
 :param class_name: class, strategy class name.
 :param config: dict{string: object}, the parameters used to instantiate the strategy object.
-:param options: StrategyCommandLineUtils, the command line option parser.</p>
+:param options: StrategyCommandLineUtils, the command line option parser.
+:return AbstractStrategy, the strategy object.</p>
+<blockquote>
+<div>If you want to access to all the things from the strategy after it terminates, use this return value.</div></blockquote>
 </dd></dl>
 
 </div>
