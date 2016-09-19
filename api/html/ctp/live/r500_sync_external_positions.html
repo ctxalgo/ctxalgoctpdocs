@@ -202,6 +202,8 @@ Title: 同步外部交易带来的持仓
 <dt id="ctxalgoctp.ctp.live.r500_sync_external_positions.SynchronizeExternalPositions">
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">SynchronizeExternalPositions</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em>, <em>strategy_callbacks=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.SynchronizeExternalPositions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../strategy.html#ctxalgoctp.ctp.strategy.AbstractStrategy" title="ctxalgoctp.ctp.strategy.AbstractStrategy"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.strategy.AbstractStrategy</span></code></a></p>
+<p>This strategy&#8217;s sole purpose is to get the account&#8217;s positions. Those position information is ready after
+strategy initialization, so we can set the strategy to terminate in the on_before_run method.</p>
 <p>Initialize current.
 :param instrument_ids: [string], the ids of the futures to trade.
 :param parameters: dict from string to objects. This dict defines the list of parameters for the strategy,</p>
@@ -2550,52 +2552,100 @@ instrument_id, kind and period to find the ohlc.</li>
 <dl class="function">
 <dt id="ctxalgoctp.ctp.live.r500_sync_external_positions.parse_strategies">
 <code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">parse_strategies</code><span class="sig-paren">(</span><em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.parse_strategies" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Parse strategies specs from command line options.
+:param options: Command line options.
+:return: dict{string: string}, meaning dict{strategy_name: base_folder}.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="ctxalgoctp.ctp.live.r500_sync_external_positions.parse_quota">
 <code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">parse_quota</code><span class="sig-paren">(</span><em>options</em>, <em>strategies</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.parse_quota" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Parse position quota specs.
+:param options: Command line options.
+:param strategies: [string], the list of strategy names.
+:return: dict{string: dict{string: dict{string: int}}}, meaning</p>
+<blockquote>
+<div>dict{strategy_name: dict{actual_instrument_id: dict{direction: volume}}}.</div></blockquote>
+</dd></dl>
 
 <dl class="function">
 <dt id="ctxalgoctp.ctp.live.r500_sync_external_positions.parse_initial_capital">
 <code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">parse_initial_capital</code><span class="sig-paren">(</span><em>options</em>, <em>strategies</em>, <em>default_capital=1000000.0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.parse_initial_capital" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Parse strategy initial capital from command line options.
+:param options: command line options.
+:param strategies: [string], the list of strategy names.
+:param default_capital: float, default initial capital for a strategy.
+:return: dict{string: float}, meaning dict{strategy_name: inital_capital}.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="ctxalgoctp.ctp.live.r500_sync_external_positions.load_strategy_accounts">
 <code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">load_strategy_accounts</code><span class="sig-paren">(</span><em>strategies</em>, <em>initial_capitals</em>, <em>ctp_factory</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.load_strategy_accounts" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Load strategy account position information.
+:param strategies: dict{string: string}, meaning dict{strategy_name: base_folder}.
+:param initial_capitals: dict{string: float}, meaning dict{string_name: initial capital}.
+:param ctp_factory: CtpRealFactory, ctp factory.
+:return: dict{string: TradingAccount}, keys are strategy names. Values are loaded accounts.</p>
+<blockquote>
+<div>If the account information for a strategy is not available, create a default account, which contains
+no positions, and whose initial capital is from initial_capitals.</div></blockquote>
+</dd></dl>
 
 <dl class="function">
 <dt id="ctxalgoctp.ctp.live.r500_sync_external_positions.calculate_strategy_positions">
 <code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">calculate_strategy_positions</code><span class="sig-paren">(</span><em>accounts</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.calculate_strategy_positions" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="ctxalgoctp.ctp.live.r500_sync_external_positions.calculate_dangling_positions">
-<code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">calculate_dangling_positions</code><span class="sig-paren">(</span><em>strategy_positions</em>, <em>account_positions</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.calculate_dangling_positions" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dd><p>Calculate the positions from the loaded strategies.
+:param accounts: dict{string: TradingAccount}, meaning dict{strategy_name: TradingAccont}, this is the result</p>
+<blockquote>
+<div>from load_strategy_accounts.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>strategy_positions</strong> &#8211; Return value from calculate_strategy_positions.</li>
-<li><strong>account_positions</strong> &#8211; </li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>trading_day</strong> &#8211; date, current trading day.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict{string: dict{string: dict{string: dict{string: dict{string: int}}}}}, meaning
+dict{string_name: dict{instrument_id: dict{actual_instrument_id: dict{direction: dict{historical_or_today: volume}}}}}.</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="function">
+<dt id="ctxalgoctp.ctp.live.r500_sync_external_positions.calculate_dangling_positions">
+<code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">calculate_dangling_positions</code><span class="sig-paren">(</span><em>strategy_positions</em>, <em>account_positions</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.calculate_dangling_positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the dangling positions from the account. Also need position information from strategies to
+calculate dangling positions.
+:param strategy_positions: Return value from calculate_strategy_positions.
+:param account_positions: This is the account position information from the trading account.
+:return: dict{string: dict{string: dict{string: int}}},</p>
+<blockquote>
+<div>meaning dict{actual_instrument_id: dict{direction: dict{historical_or_today: volume}}}.</div></blockquote>
+</dd></dl>
+
+<dl class="function">
 <dt id="ctxalgoctp.ctp.live.r500_sync_external_positions.update_accounts">
 <code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">update_accounts</code><span class="sig-paren">(</span><em>strategies</em>, <em>accounts</em>, <em>quota</em>, <em>dangling_positions</em>, <em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.update_accounts" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Trade dangling position information into the strategies.
+:param strategies: dict{string: string}, meaning dict{strategy_name: base_folder}.
+:param accounts: dict{string: TradingAccount}, keys are strategy names.
+:param quota: dict{string: dict{string: dict{string: int}}}, meaning</p>
+<blockquote>
+<div>dict{strategy_name: dict{actual_instrument_id: dict{direction: volume}}}.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dangling_positions</strong> &#8211; dict{string: dict{string: dict{string: int}}},
+meaning dict{actual_instrument_id: dict{direction: dict{historical_or_today: volume}}}.</li>
+<li><strong>strategy</strong> &#8211; AbstractStrategy, the trading strategy.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="ctxalgoctp.ctp.live.r500_sync_external_positions.setup_command_line_parser">
