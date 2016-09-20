@@ -89,7 +89,6 @@
 <li class="toctree-l3"><a class="reference internal" href="r107_high_frequency_both_direction_trade.html">r107_high_frequency_both_direction_trade</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r111_mission_controller.html">r111_mission_controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r116_place_order_and_cancel_immediately.html">r116_place_order_and_cancel_immediately</a></li>
-<li class="toctree-l3"><a class="reference internal" href="r301_stand_by_strategy_with_remote_trade_executor.html">r301_stand_by_strategy_with_remote_trade_executor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r103_cancel_order_while_pending.html">r103_cancel_order_while_pending</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r101_change_positions.html">r101_change_positions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r105_place_pending_order_and_exit.html">r105_place_pending_order_and_exit</a></li>
@@ -187,7 +186,7 @@
 <span id="r110-stand-by-strategy"></span><h1>r110_stand_by_strategy<a class="headerlink" href="#module-ctxalgoctp.ctp.live.r110_stand_by_strategy" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r110_stand_by_strategy.</code><code class="descname">StandByStrategy</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em>, <em>local_bookkeep=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r110_stand_by_strategy.</code><code class="descname">StandByStrategy</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../strategy.html#ctxalgoctp.ctp.strategy.AbstractStrategy" title="ctxalgoctp.ctp.strategy.AbstractStrategy"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.strategy.AbstractStrategy</span></code></a></p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_message_from_mission_controller">
@@ -202,11 +201,6 @@
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_timer">
 <code class="descname">on_timer</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>supposed_trigger_time</em>, <em>timer_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_timer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_investor_position">
-<code class="descname">on_investor_position</code><span class="sig-paren">(</span><em>investor_position</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_investor_position" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1495,6 +1489,20 @@ Parameters:</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_investor_position">
+<code class="descname">on_investor_position</code><span class="sig-paren">(</span><em>investor_position</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_investor_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be called when investor position for a particular future arrived,
+requested by get_investor_position.
+:param investor_position: dict{string: object}</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Keys (non-exhaustively) include:</dt>
+<dd>instrument_id, volume, direction.</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_margin_rate">
 <code class="descname">on_margin_rate</code><span class="sig-paren">(</span><em>margin_rate</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.StandByStrategy.on_margin_rate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2458,11 +2466,6 @@ instrument_id, kind and period to find the ohlc.</li>
 </dd></dl>
 
 </dd></dl>
-
-<dl class="function">
-<dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.get_command_line_parser">
-<code class="descclassname">ctxalgoctp.ctp.live.r110_stand_by_strategy.</code><code class="descname">get_command_line_parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r110_stand_by_strategy.get_command_line_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="function">
 <dt id="ctxalgoctp.ctp.live.r110_stand_by_strategy.main">
