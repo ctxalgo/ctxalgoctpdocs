@@ -179,7 +179,9 @@
 <li><strong>local_bookkeep</strong> &#8211; bool, whether the local_bookkeep option is included.</li>
 <li><strong>start_order_ref</strong> &#8211; bool, whether the start_order_ref option is included.</li>
 <li><strong>trade_execution_server</strong> &#8211; bool, whether options related to trade execution server are included.</li>
-<li><strong>context</strong> &#8211; zmq Context, need to be provided if some of the command line options need zmq.</li>
+<li><strong>context</strong> &#8211; zmq Context, need to be provided if some of the command line options need zmq.
+If None, and a zmq context is needed, an internal context will be created. If an internal context
+is created, you need to call dispose_context to dispose it.</li>
 <li><strong>strategy_class</strong> &#8211; class, the class of the strategy class.</li>
 <li><strong>auto_parse</strong> &#8211; bool, if True, parse the command line options inside __init__, otherwise, you need to
 call self.parse() to get command line options parsed. If you need to add additional options, you
@@ -195,6 +197,21 @@ If type is [string], then it is something like [&#8216;&#8211;account&#8217;, &#
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.context">
+<code class="descname">context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a zmq Context. If a context is provided through __init__, return that context, otherwise,
+create an internal context. If an internal context is created. You need to call dispose_context to
+dispose it.
+:return: zmq Context.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.dispose_context">
+<code class="descname">dispose_context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.dispose_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dispose self._context if it is created internally.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.add_option">
 <code class="descname">add_option</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.add_option" title="Permalink to this definition">¶</a></dt>
