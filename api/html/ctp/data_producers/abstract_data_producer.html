@@ -215,7 +215,7 @@ register for tick data. For those data producers, you will have a set_should_enf
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_ohlcs">
-<code class="descname">subscribe_ohlcs</code><span class="sig-paren">(</span><em>periods</em>, <em>historical_ohlcs</em>, <em>market_periods</em>, <em>trading_day</em>, <em>order_book_level=1</em>, <em>with_open_interest=False</em>, <em>profits=False</em>, <em>use_mid_ask_bid=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_ohlcs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">subscribe_ohlcs</code><span class="sig-paren">(</span><em>periods</em>, <em>historical_ohlcs</em>, <em>market_periods</em>, <em>trading_day</em>, <em>order_book_level=1</em>, <em>with_open_interest=False</em>, <em>profits=False</em>, <em>use_mid_ask_bid=False</em>, <em>dominants=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_ohlcs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subscribe ohlcs so a strategy can use those subscribed ohlcs.
 :param periods: dict{string: dict{string: [Periodicity or float/int]}}, meaning</p>
 <blockquote>
@@ -229,6 +229,7 @@ register for tick data. For those data producers, you will have a set_should_enf
 dict{ohlc_kind: dict{instrument_id: dict{Periodicity or float/int: OHLC}}}. Historical ohlcs.</li>
 <li><strong>market_periods</strong> &#8211; dict{string: [(start_time, end_time)], meaning dict{instrument_id: market_periods},
 Market periods for all instruments appearing in periods.</li>
+<li><strong>trading_day</strong> &#8211; date, the current trading day.</li>
 <li><strong>order_book_level</strong> &#8211; int, order book level.</li>
 <li><strong>with_open_interest</strong> &#8211; bool, whether the generated ohlcs contain the open_interest column.</li>
 <li><strong>profits</strong> &#8211; bool, whether the generated ohlcs contain the profits column.</li>
@@ -376,7 +377,7 @@ The market message queue is maintained only in the backtesting market object.
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Oct 03, 2016.
+      Last updated on Oct 04, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

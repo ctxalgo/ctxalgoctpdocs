@@ -159,28 +159,6 @@
   <div class="section" id="module-ctxalgoctp.ctp.backtester">
 <span id="backtester"></span><h1>backtester<a class="headerlink" href="#module-ctxalgoctp.ctp.backtester" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="ctxalgoctp.ctp.backtester.OhlcFileGeneratorFromDataSource">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.backtester.</code><code class="descname">OhlcFileGeneratorFromDataSource</code><a class="headerlink" href="#ctxalgoctp.ctp.backtester.OhlcFileGeneratorFromDataSource" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<p>Class that generates OHLC files (usually for database import) from data source.</p>
-<dl class="method">
-<dt id="ctxalgoctp.ctp.backtester.OhlcFileGeneratorFromDataSource.generate">
-<code class="descname">generate</code><span class="sig-paren">(</span><em>data_source</em>, <em>output_files</em>, <em>market_periods</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtester.OhlcFileGeneratorFromDataSource.generate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate various ohlc bars from data_source.
-:param data_source: CtpDataSource. The data source of trading data.
-:param output_files: dict from Periodicity to string. Keys are the periods of the output ohlcs.</p>
-<blockquote>
-<div>Values are the files to store those generated ohlc bars.</div></blockquote>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.backtester.OhlcFileGeneratorFromDataSource.append_ohlc_to_file">
-<code class="descname">append_ohlc_to_file</code><span class="sig-paren">(</span><em>f</em>, <em>ohlc</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtester.OhlcFileGeneratorFromDataSource.append_ohlc_to_file" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
 <dt id="ctxalgoctp.ctp.backtester.CtpAbstractBacktester">
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.backtester.</code><code class="descname">CtpAbstractBacktester</code><a class="headerlink" href="#ctxalgoctp.ctp.backtester.CtpAbstractBacktester" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
@@ -642,7 +620,7 @@ we process all trading-related messages properly before we terminate the strateg
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Oct 03, 2016.
+      Last updated on Oct 04, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

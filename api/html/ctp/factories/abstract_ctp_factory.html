@@ -361,6 +361,46 @@ switch between real trading classes and backtesting classes.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.with_open_interest">
+<code class="descname">with_open_interest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.with_open_interest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_with_open_interest">
+<code class="descname">set_with_open_interest</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_with_open_interest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.dominants">
+<code class="descname">dominants</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.dominants" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_dominants">
+<code class="descname">set_dominants</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_dominants" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.profits">
+<code class="descname">profits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.profits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_profits">
+<code class="descname">set_profits</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_profits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.use_mid_ask_bid">
+<code class="descname">use_mid_ask_bid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.use_mid_ask_bid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_use_mid_ask_bid">
+<code class="descname">set_use_mid_ask_bid</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.set_use_mid_ask_bid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.data_producer">
 <code class="descname">data_producer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.data_producer" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -498,7 +538,7 @@ dict{period or volatility threshold: OHLC}.</td>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.load_historical_ohlcs">
-<code class="descname">load_historical_ohlcs</code><span class="sig-paren">(</span><em>all_periods</em>, <em>max_bars</em>, <em>with_open_interests</em>, <em>dominants</em>, <em>profits</em>, <em>use_mid_ask_bid</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.load_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load_historical_ohlcs</code><span class="sig-paren">(</span><em>all_periods</em>, <em>max_bars</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.load_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load all historical ohlcs.
 :param all_periods: dict{string: dict{string: [Periodicity or int/float]}}, meaning</p>
 <blockquote>
@@ -507,19 +547,11 @@ dict{period or volatility threshold: OHLC}.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>max_bars</strong> &#8211; int, the max number of bars to load for ohlcs.
-If zero, load all bars.</li>
-<li><strong>with_open_interests</strong> &#8211; bool, if True, include open_interests field in ohlcs.</li>
-<li><strong>dominants</strong> &#8211; bool, if True, include the dominants field in ohlcs.</li>
-<li><strong>profits</strong> &#8211; bool, if True, include the profits field in ohlcs.</li>
-<li><strong>use_mid_ask_bid</strong> &#8211; bool, if True, load bars generated using mid ask bids.</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>max_bars</strong> &#8211; int, the max number of bars to load for ohlcs.
+If zero, load all bars.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict{string: dict{string: dict{Periodicity or int/float: OHLC}}}, meaning
-dict{ohlc_kind: dict{instrument_id: dict{period or volatility threshold: OHLC}}}.</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict{string: dict{string: dict{Periodicity or int/float: OHLC}}}, meaning
+dict{ohlc_kind: dict{instrument_id: dict{period or volatility threshold: OHLC}}}.</td>
 </tr>
 </tbody>
 </table>
@@ -787,7 +819,7 @@ This only effect real trading. In real trading some CTP providers does not offer
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Oct 03, 2016.
+      Last updated on Oct 04, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

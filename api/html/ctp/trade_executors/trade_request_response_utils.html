@@ -250,6 +250,15 @@ in TradeExecutorServer.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.trade_request_response_utils.TradeResponseSender.send_general_exception">
+<code class="descname">send_general_exception</code><span class="sig-paren">(</span><em>source</em>, <em>message</em>, <em>trace</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.trade_request_response_utils.TradeResponseSender.send_general_exception" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a general exception to the zeromq queue.
+:param source: string, the source of the exception, for example, &#8216;market broker&#8217;, &#8216;market data processor&#8217;.
+:param message: string, the exception message.
+:param trace: string, the trace of the exception.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.trade_request_response_utils.TradeResponseSender.sender_thread">
 <code class="descname">sender_thread</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.trade_request_response_utils.TradeResponseSender.sender_thread" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -283,7 +292,7 @@ in TradeExecutorServer.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Oct 03, 2016.
+      Last updated on Oct 04, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
