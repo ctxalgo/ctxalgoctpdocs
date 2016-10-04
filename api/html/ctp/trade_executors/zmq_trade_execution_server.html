@@ -445,6 +445,16 @@ producer, to which current strategy can register relative instruments.</div></bl
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.</code><code class="descname">TradeExecutorServer</code><span class="sig-paren">(</span><em>parameters</em>, <em>base_folder</em>, <em>description=None</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../strategy.html#ctxalgoctp.ctp.strategy.AbstractStrategy" title="ctxalgoctp.ctp.strategy.AbstractStrategy"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.strategy.AbstractStrategy</span></code></a></p>
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_before_run">
+<code class="descname">on_before_run</code><span class="sig-paren">(</span><em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_before_run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_timer">
+<code class="descname">on_timer</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>supposed_trigger_time</em>, <em>timer_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_timer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.send_response">
 <code class="descname">send_response</code><span class="sig-paren">(</span><em>strategy</em>, <em>response_kind</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.send_response" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send trade response to the strategy which issued the request.
@@ -1766,11 +1776,6 @@ bar under each periodicity.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_before_run">
-<code class="descname">on_before_run</code><span class="sig-paren">(</span><em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_before_run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_cancel_order">
 <code class="descname">on_cancel_order</code><span class="sig-paren">(</span><em>order_ref</em>, <em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_cancel_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be invoked when an cancel order request is sent.
@@ -1999,27 +2004,6 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_time_step">
 <code class="descname">on_time_step</code><span class="sig-paren">(</span><em>p_api</em>, <em>time_step</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_time_step" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_timer">
-<code class="descname">on_timer</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>supposed_trigger_time</em>, <em>timer_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_timer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Action to be invoked when some timer is triggered.
-:param trigger_time: datetime, the time when the timer is actually triggered.</p>
-<blockquote>
-<div>trigger_time and supposed_trigger_time may be different because the timer may be a simulated timer.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>supposed_trigger_time</strong> &#8211; datetime, the time when the timer is supposed to be triggered.</li>
-<li><strong>timer_name</strong> &#8211; string, the name of the triggered timer.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_trade">
@@ -2841,6 +2825,11 @@ instrument_id, kind and period to find the ohlc.</li>
 </dd></dl>
 
 </dd></dl>
+
+<dl class="function">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.get_proxy_threads">
+<code class="descclassname">ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.</code><code class="descname">get_proxy_threads</code><span class="sig-paren">(</span><em>context</em>, <em>ip=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.get_proxy_threads" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="function">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.main">
