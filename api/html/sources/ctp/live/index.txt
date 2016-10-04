@@ -11,6 +11,7 @@ live
    r112_strategy_log_printer
    r106_cancel_all_pending_orders_from_previous_session
    r110_stand_by_strategy
+   r118_strategy_that_needs_historical_ohlcs
    r201_change_position_relative_id
    r117_order_disconnect_and_reconnect
    r114_very_fast_repeated_change_position

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>r111_mission_controller &mdash; ctxalgoctp 0.1 documentation</title>
+  <title>r118_strategy_that_needs_historical_ohlcs &mdash; ctxalgoctp 0.1 documentation</title>
   
 
   
@@ -32,8 +32,8 @@
   
     <link rel="top" title="ctxalgoctp 0.1 documentation" href="../../index.html"/>
         <link rel="up" title="live" href="index.html"/>
-        <link rel="next" title="r116_place_order_and_cancel_immediately" href="r116_place_order_and_cancel_immediately.html"/>
-        <link rel="prev" title="r107_high_frequency_both_direction_trade" href="r107_high_frequency_both_direction_trade.html"/> 
+        <link rel="next" title="r201_change_position_relative_id" href="r201_change_position_relative_id.html"/>
+        <link rel="prev" title="r110_stand_by_strategy" href="r110_stand_by_strategy.html"/> 
 
   
   <script src="../../static/js/modernizr.min.js"></script>
@@ -82,13 +82,13 @@
 <li class="toctree-l3"><a class="reference internal" href="r112_strategy_log_printer.html">r112_strategy_log_printer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r106_cancel_all_pending_orders_from_previous_session.html">r106_cancel_all_pending_orders_from_previous_session</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r110_stand_by_strategy.html">r110_stand_by_strategy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="r118_strategy_that_needs_historical_ohlcs.html">r118_strategy_that_needs_historical_ohlcs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">r118_strategy_that_needs_historical_ohlcs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r201_change_position_relative_id.html">r201_change_position_relative_id</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r117_order_disconnect_and_reconnect.html">r117_order_disconnect_and_reconnect</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r114_very_fast_repeated_change_position.html">r114_very_fast_repeated_change_position</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r108_flat_all_positions.html">r108_flat_all_positions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r107_high_frequency_both_direction_trade.html">r107_high_frequency_both_direction_trade</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">r111_mission_controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r111_mission_controller.html">r111_mission_controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r116_place_order_and_cancel_immediately.html">r116_place_order_and_cancel_immediately</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r103_cancel_order_while_pending.html">r103_cancel_order_while_pending</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r101_change_positions.html">r101_change_positions</a></li>
@@ -169,11 +169,11 @@
       
           <li><a href="index.html">live</a> &raquo;</li>
       
-    <li>r111_mission_controller</li>
+    <li>r118_strategy_that_needs_historical_ohlcs</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../sources/ctp/live/r111_mission_controller.txt" rel="nofollow"> View page source</a>
+            <a href="../../sources/ctp/live/r118_strategy_that_needs_historical_ohlcs.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -183,20 +183,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ctxalgoctp.ctp.live.r111_mission_controller">
-<span id="r111-mission-controller"></span><h1>r111_mission_controller<a class="headerlink" href="#module-ctxalgoctp.ctp.live.r111_mission_controller" title="Permalink to this headline">¶</a></h1>
-<p>[en]
-Title: Mission controller which communicate with strategies.</p>
+  <div class="section" id="r118-strategy-that-needs-historical-ohlcs">
+<h1>r118_strategy_that_needs_historical_ohlcs<a class="headerlink" href="#r118-strategy-that-needs-historical-ohlcs" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-ctxalgoctp.ctp.live.r118_strategy_that_needs_historical_ohlcs"></span><p>[en]
+Title: Setup historical ohlc bars in live trading.
+When a strategy needs historical ohlc bars, you need to setup the bar requirement so historical ohlcs will be
+downloaded and prepared for you. Use the command line option &#8211;historical-ohlc-length to specify the maximum
+number of bars you need for all kinds of ohlcs. And use &#8211;ohlc-fields to indicate which fields you need, besides
+the usual open, high, low, close, volumes.</p>
 <p>[zh]
-Title: 用来和策略进行通讯的任务控制器</p>
+Title: 在实盘策略中配置历史K线
+如果策略需要历史K线，你需要使用&#8211;historical-ohlc-length来指定这些K线的长度，同时使用&#8211;ohlc-fields来指定这些K线需要包括
+哪些字段。</p>
 <dl class="function">
-<dt id="ctxalgoctp.ctp.live.r111_mission_controller.get_command_line_parser">
-<code class="descclassname">ctxalgoctp.ctp.live.r111_mission_controller.</code><code class="descname">get_command_line_parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r111_mission_controller.get_command_line_parser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="ctxalgoctp.ctp.live.r111_mission_controller.main">
-<code class="descclassname">ctxalgoctp.ctp.live.r111_mission_controller.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r111_mission_controller.main" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.live.r118_strategy_that_needs_historical_ohlcs.main">
+<code class="descclassname">ctxalgoctp.ctp.live.r118_strategy_that_needs_historical_ohlcs.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r118_strategy_that_needs_historical_ohlcs.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -208,10 +209,10 @@ Title: 用来和策略进行通讯的任务控制器</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="r116_place_order_and_cancel_immediately.html" class="btn btn-neutral float-right" title="r116_place_order_and_cancel_immediately" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="r201_change_position_relative_id.html" class="btn btn-neutral float-right" title="r201_change_position_relative_id" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="r107_high_frequency_both_direction_trade.html" class="btn btn-neutral" title="r107_high_frequency_both_direction_trade" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="r110_stand_by_strategy.html" class="btn btn-neutral" title="r110_stand_by_strategy" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

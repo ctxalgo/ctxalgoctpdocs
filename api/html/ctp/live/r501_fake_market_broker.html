@@ -82,6 +82,7 @@
 <li class="toctree-l3"><a class="reference internal" href="r112_strategy_log_printer.html">r112_strategy_log_printer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r106_cancel_all_pending_orders_from_previous_session.html">r106_cancel_all_pending_orders_from_previous_session</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r110_stand_by_strategy.html">r110_stand_by_strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r118_strategy_that_needs_historical_ohlcs.html">r118_strategy_that_needs_historical_ohlcs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r201_change_position_relative_id.html">r201_change_position_relative_id</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r117_order_disconnect_and_reconnect.html">r117_order_disconnect_and_reconnect</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r114_very_fast_repeated_change_position.html">r114_very_fast_repeated_change_position</a></li>
@@ -716,11 +717,6 @@ order_ref: string, the value is string, the order reference.</dd>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.live.r501_fake_market_broker.FakeMarketBroker.data_feed">
-<code class="descname">data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r501_fake_market_broker.FakeMarketBroker.data_feed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r501_fake_market_broker.FakeMarketBroker.default_period">
 <code class="descname">default_period</code><span class="sig-paren">(</span><em>kind=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r501_fake_market_broker.FakeMarketBroker.default_period" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the default period for the given ohlc kind.
@@ -850,13 +846,6 @@ If there is no position, return None.</p>
 <code class="descname">get_trading_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r501_fake_market_broker.FakeMarketBroker.get_trading_account" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send a request for trading account information.
 The returned information will be accessible through the corresponding callback function.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.live.r501_fake_market_broker.FakeMarketBroker.has_data_feed">
-<code class="descname">has_data_feed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r501_fake_market_broker.FakeMarketBroker.has_data_feed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Is data feed set?
-:return: boolean.</p>
 </dd></dl>
 
 <dl class="method">

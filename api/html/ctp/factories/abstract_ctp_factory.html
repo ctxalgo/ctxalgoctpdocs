@@ -538,7 +538,7 @@ dict{period or volatility threshold: OHLC}.</td>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.load_historical_ohlcs">
-<code class="descname">load_historical_ohlcs</code><span class="sig-paren">(</span><em>all_periods</em>, <em>max_bars</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.load_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load_historical_ohlcs</code><span class="sig-paren">(</span><em>all_periods</em>, <em>max_bars</em>, <em>base_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.abstract_ctp_factory.AbstractCtpFactory.load_historical_ohlcs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load all historical ohlcs.
 :param all_periods: dict{string: dict{string: [Periodicity or int/float]}}, meaning</p>
 <blockquote>
@@ -547,11 +547,16 @@ dict{period or volatility threshold: OHLC}.</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>max_bars</strong> &#8211; int, the max number of bars to load for ohlcs.
-If zero, load all bars.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>max_bars</strong> &#8211; int, the max number of bars to load for ohlcs.
+If zero, load all bars.</li>
+<li><strong>base_folder</strong> &#8211; string, base folder of the strategy.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict{string: dict{string: dict{Periodicity or int/float: OHLC}}}, meaning
-dict{ohlc_kind: dict{instrument_id: dict{period or volatility threshold: OHLC}}}.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict{string: dict{string: dict{Periodicity or int/float: OHLC}}}, meaning
+dict{ohlc_kind: dict{instrument_id: dict{period or volatility threshold: OHLC}}}.</p>
+</td>
 </tr>
 </tbody>
 </table>
