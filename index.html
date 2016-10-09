@@ -2,8 +2,11 @@
 layout: default
 title: Pages
 ---
+{% assign file_name = "index" %}
 <div>
-    <h2>Pages</h2>
+    <h2>{{ site.data.page.list[file_name].zh.title }}</h2>
+    <p>{{ site.data.page.list[file_name].zh.desc }}</p>
+    <br>
     <ul id="archive">
         {% for cate in site.categories %}
             {% if cate[0] == 'root' %}

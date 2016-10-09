@@ -1,7 +1,7 @@
 ---
 title: Run strategy in ipython notebook
 layout: post
-category: ipython
+category: starterkit_ipython
 language: zh
 ---
 

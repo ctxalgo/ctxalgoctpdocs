@@ -1,11 +1,15 @@
 ---
 layout: default
-title: ipython
+title: starterkit_ipython
 ---
+{% assign file_name = "starterkit_ipython" %}
 <div>
+    <h2>{{ site.data.page.list[file_name].zh.title }}</h2>
+    <p>{{ site.data.page.list[file_name].zh.desc }}</p>
+    <br>
     <ul>
         {% for cate in site.categories %}
-            {% if cate[0] == 'ipython' %}
+            {% if cate[0] == 'starterkit_ipython' %}
                 {% for post in cate[1] %}
                     {% if post.language == 'zh' %}
                         <li>
