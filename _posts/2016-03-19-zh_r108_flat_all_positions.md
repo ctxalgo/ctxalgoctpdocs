@@ -27,13 +27,15 @@ class FlatAllPositions(AbstractStrategy):
         self.set_should_exit(not self.has_pending_order() and not self.has_position())
 
     def on_tick(self, instrument_id, tick):
-        if self.has_position(instrument_id) and instrument_id not in self.context.has_traded:
-            self.change_position_to(0, instrument_id=instrument_id)
-            self.context.has_traded[instrument_id] = True
+        ts = tick['timestamp']
+        if self.in_market_period(ts, instrument_id=instrument_id):
+            if self.has_position(instrument_id) and instrument_id not in self.context.has_traded:
+                self.change_position_to(0, instrument_id=instrument_id)
+                self.context.has_traded[instrument_id] = True
 
 
 def main():
-    cmd_options = '--account simnow_future4 --name test.s1'
+    cmd_options = '--account simnow_future --name test.s1'
     parser = get_command_line_parser(strategy_class=FlatAllPositions, cmd_options=cmd_options)
     options = parser.parse()
     print(options.get_base_folder())

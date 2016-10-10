@@ -39,7 +39,7 @@ class ChangePosition(AbstractStrategy):
 
 
 def main():
-    cmd_options = '--account simnow_future4 --name test.s1 --positions cu1610:-1'
+    cmd_options = '--account simnow_future3 --name test.s1 --positions cu1611:0'
     parser = get_command_line_parser(strategy_class=ChangePosition, cmd_options=cmd_options)
     options = parser.parse()
     config = {
