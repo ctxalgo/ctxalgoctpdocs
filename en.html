@@ -34,3 +34,28 @@ title: English
         {% endfor %}
     </ul>
 </div>
+
+{% for append_f in site.data.page.append_folders %}
+<div>
+    <h2>{{ site.data.page.list[append_f].en.title }}</h2>
+    <p>{{ site.data.page.list[append_f].en.desc }}</p>
+    <br>
+    <ul id="archive">
+        {% for cate in site.categories %}
+            {% if cate[0] == append_f %}
+        
+                {% for post in cate[1] reversed %}
+                    {% if post.language == 'en' %}
+                        <li>
+                            <h4>
+                                <a href="{{ post.url }}">{{ post.title }}</a>
+                            </h4>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}

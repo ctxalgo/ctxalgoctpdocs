@@ -2,8 +2,9 @@
 layout: default
 title: Pages
 ---
-{% assign file_name = "index" %}
+
 <div>
+    {% assign file_name = "index" %}
     <h2>{{ site.data.page.list[file_name].zh.title }}</h2>
     <p>{{ site.data.page.list[file_name].zh.desc }}</p>
     <br>
@@ -34,3 +35,28 @@ title: Pages
         {% endfor %}
     </ul>
 </div>
+
+{% for append_f in site.data.page.append_folders %}
+<div>
+    <h2>{{ site.data.page.list[append_f].zh.title }}</h2>
+    <p>{{ site.data.page.list[append_f].zh.desc }}</p>
+    <br>
+    <ul id="archive">
+        {% for cate in site.categories %}
+            {% if cate[0] == append_f %}
+        
+                {% for post in cate[1] reversed %}
+                    {% if post.language == 'zh' %}
+                        <li>
+                            <h4>
+                                <a href="{{ post.url }}">{{ post.title }}</a>
+                            </h4>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}
