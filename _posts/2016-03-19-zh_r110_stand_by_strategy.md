@@ -101,6 +101,9 @@ def main():
     # TODO: Specify the instruments to trade.
     instruments = '--instruments cu1611'
 
+    # TODO: Set strategy name
+    strategy_name = 'test.s1'
+
     # local_bookkeep = '--local-bookkeep'
     local_bookkeep = ''
 
@@ -115,8 +118,8 @@ def main():
     logger = '--loggers console,file,' + message_proxy_address
     mission_control = '--mission-control ' + message_proxy_address
 
-    cmd_options = '--name test.s1 {} {} {} {} {} {}'.format(
-        account, instruments, logger, mission_control, trade_executor, local_bookkeep)
+    cmd_options = '--name {} {} {} {} {} {} {}'.format(
+        strategy_name, account, instruments, logger, mission_control, trade_executor, local_bookkeep)
     cmd_options = cmd_options.strip()
     context = zmq.Context()
     parser = get_command_line_parser(strategy_class=StandByStrategy, cmd_options=cmd_options, context=context)
