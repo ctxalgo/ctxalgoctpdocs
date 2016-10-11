@@ -86,19 +86,20 @@ class StandByStrategy(AbstractStrategy):
 
 
 def main():
-    # TODO: To view logs from the website, set the messge_proxy_address to ChoreServerConfig().tcp_address().
-    message_proxy_address = 'tcp://127.0.0.1'
+    # TODO: To view logs from the website, set the message_proxy_address to ChoreServerConfig().tcp_address().
+    # message_proxy_address = 'tcp://127.0.0.1'
+    message_proxy_address = 'tcp://139.196.234.169'
 
     # TODO: To use an external trade execution server, set external_trade_executor to True.
     # TODO: Of course, you have to start that trade execution server, which is at
     # TODO: ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.
-    external_trade_executor = True
+    external_trade_executor = False
 
     # TODO: If you trade locally, you have to specify the trading account.
     account = '--account simnow_future4'
 
     # TODO: Specify the instruments to trade.
-    instruments = '--instruments cu1610,SR611'
+    instruments = '--instruments cu1611'
 
     # local_bookkeep = '--local-bookkeep'
     local_bookkeep = ''
@@ -106,15 +107,15 @@ def main():
     if external_trade_executor:
         # The trade executor server is assumed to be at the same machine as current strategy.
         trader_address = 'tcp://127.0.0.1'
-        trade_executor = '--trade-executor remote-proxy --trade-executor-address ' + trader_address
+        trade_executor = '--trade-executor ' + trader_address
         # account = ''
     else:
         trade_executor = ''
 
-    logger = '--loggers console,file,remote-proxy --logger-address ' + message_proxy_address
-    mission_control = '--mission-control remote-proxy --mc-address ' + message_proxy_address
+    logger = '--loggers console,file,' + message_proxy_address
+    mission_control = '--mission-control ' + message_proxy_address
 
-    cmd_options = '--name test.s1 --base-folder c:\\tmp\\s1 {} {} {} {} {} {}'.format(
+    cmd_options = '--name test.s1 {} {} {} {} {} {}'.format(
         account, instruments, logger, mission_control, trade_executor, local_bookkeep)
     cmd_options = cmd_options.strip()
     context = zmq.Context()
