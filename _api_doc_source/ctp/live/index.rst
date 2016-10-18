@@ -5,15 +5,16 @@ live
    :maxdepth: 2
 
    r102_cancel_order_after_fully_executed
-   r501_fake_market_broker
    r500_sync_external_positions
    r104_automatic_order_cancellation
    r112_strategy_log_printer
    r106_cancel_all_pending_orders_from_previous_session
    r110_stand_by_strategy
+   r501_set_strategy_positions
    r118_strategy_that_needs_historical_ohlcs
    r201_change_position_relative_id
    r117_order_disconnect_and_reconnect
+   r600_fake_market_broker
    r114_very_fast_repeated_change_position
    r108_flat_all_positions
    r107_high_frequency_both_direction_trade
