@@ -1268,6 +1268,14 @@ order_ref: string, the value is string, the order reference.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.log">
+<code class="descname">log</code><span class="sig-paren">(</span><em>tag</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log data with tag.
+:param tag: string, the log message tag indicating the kind of the message, for example, BAR, ORDER, ACCOUNT.
+:param data: dict{string: object}, the data to be logged. Keys are data item names, values are data items.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.cancel_orders">
 <code class="descname">cancel_orders</code><span class="sig-paren">(</span><em>orders</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.cancel_orders" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -3399,6 +3407,14 @@ Meaning either long or short positions, but not both.
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log">
+<code class="descname">log</code><span class="sig-paren">(</span><em>tag</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log data with tag.
+:param tag: string, the log message tag indicating the kind of the message, for example, BAR, ORDER, ACCOUNT.
+:param data: dict{string: object}, the data to be logged. Keys are data item names, values are data items.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_cancel_order">
 <code class="descname">log_cancel_order</code><span class="sig-paren">(</span><em>order_ref_id</em>, <em>order_ref</em>, <em>reason</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.log_cancel_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log cancel order.
@@ -4934,7 +4950,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Oct 18, 2016.
+      Last updated on Oct 20, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
