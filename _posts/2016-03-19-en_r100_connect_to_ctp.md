@@ -16,6 +16,11 @@ from ctxalgoctp.ctp.live_strategy_utils import *
 
 
 class JustConnect(AbstractStrategy):
+    def __init__(self, instrument_ids, parameters, base_folder, periods=None, description=None, logger=None):
+        AbstractStrategy.__init__(
+            self, instrument_ids, parameters, base_folder, periods=periods, description=description, logger=logger)
+        self.set_should_use_remote_account_and_position(not self.parameters.local_bookkeep)
+
     def on_before_run(self, strategy):
         # Display current holding positions in connected trading account.
         display_positions(self)
@@ -40,7 +45,8 @@ def main():
         'base_folder': options.get_base_folder(),
         'instrument_ids': options.get_instruments(),
         'parameters': {
-            'exit_in_second': 10
+            'exit_in_second': 10,
+            'local_bookkeep': options.local_bookkeep,
         },
         'description': options.get_description(),
         'logger': options.get_logger()
