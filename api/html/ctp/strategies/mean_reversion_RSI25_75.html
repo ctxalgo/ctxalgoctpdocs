@@ -1026,12 +1026,12 @@ Meaning either long or short positions, but not both.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_err_order_action">
-<code class="descname">log_err_order_action</code><span class="sig-paren">(</span><em>order_ref</em>, <em>order_action</em>, <em>rsp_info</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_err_order_action" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_err_order_action</code><span class="sig-paren">(</span><em>order_ref</em>, <em>order_info</em>, <em>order_action</em>, <em>rsp_info</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_err_order_action" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_err_order_insert">
-<code class="descname">log_err_order_insert</code><span class="sig-paren">(</span><em>order_ref</em>, <em>input_order</em>, <em>rsp_info</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_err_order_insert" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_err_order_insert</code><span class="sig-paren">(</span><em>order_ref</em>, <em>order_info</em>, <em>input_order</em>, <em>rsp_info</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_err_order_insert" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1101,7 +1101,7 @@ Inner keys are Periodicity or volatility thresholds, inner values are the genera
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_order_action">
-<code class="descname">log_order_action</code><span class="sig-paren">(</span><em>order_ref</em>, <em>order_action</em>, <em>rsp_info</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_order_action" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_order_action</code><span class="sig-paren">(</span><em>order_ref</em>, <em>order_info</em>, <em>order_action</em>, <em>rsp_info</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_order_action" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1111,7 +1111,7 @@ Inner keys are Periodicity or volatility thresholds, inner values are the genera
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_order_insert">
-<code class="descname">log_order_insert</code><span class="sig-paren">(</span><em>order_ref</em>, <em>input_order</em>, <em>rsp_info</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_order_insert" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_order_insert</code><span class="sig-paren">(</span><em>order_ref</em>, <em>order_info</em>, <em>input_order</em>, <em>rsp_info</em>, <em>other_data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_order_insert" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2110,6 +2110,11 @@ between the current price and the position price.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.set_local_bookkeep">
+<code class="descname">set_local_bookkeep</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.set_local_bookkeep" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.set_market_order_simulator">
 <code class="descname">set_market_order_simulator</code><span class="sig-paren">(</span><em>simulator</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.set_market_order_simulator" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2466,7 +2471,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Oct 25, 2016.
+      Last updated on Oct 31, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

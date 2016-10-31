@@ -15,7 +15,7 @@ class StandByStrategy(AbstractStrategy):
     def __init__(self, instrument_ids, parameters, base_folder, periods=None, description=None, logger=None):
         AbstractStrategy.__init__(
             self, instrument_ids, parameters, base_folder, periods=periods, description=description, logger=logger)
-        self.set_should_use_remote_account_and_position(not self.parameters.local_bookkeep)
+        self.set_local_bookkeep(self.parameters.local_bookkeep)
         self.order_count = 0
         self.last_trade_times = {}
         self.signs = {}
@@ -87,8 +87,7 @@ class StandByStrategy(AbstractStrategy):
 
 def main():
     # TODO: To view logs from the website, set the message_proxy_address to ChoreServerConfig().tcp_address().
-    # message_proxy_address = 'tcp://127.0.0.1'
-    message_proxy_address = 'tcp://139.196.234.169'
+    message_proxy_address = 'tcp://127.0.0.1'
 
     # TODO: To use an external trade execution server, set external_trade_executor to True.
     # TODO: Of course, you have to start that trade execution server, which is at

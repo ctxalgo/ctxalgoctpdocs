@@ -17,8 +17,8 @@ from ctxalgoctp.ctp.live_strategy_utils import *
 
 def main():
     context = zmq.Context()
-    cmd_options = '--account simnow_future4 name test.s1 --data-producer tcp://139.196.203.113 ' \
-                  '--instruments cu1610,SR611'
+    cmd_options = '--account simnow_future4 --name test.s1 --data-producer tcp://139.196.203.113 ' \
+                  '--instruments cu1611,SR701'
     parser = get_command_line_parser(JustConnect, context=context, cmd_options=cmd_options)
     options = parser.parse()
     config = {
@@ -26,7 +26,7 @@ def main():
         'instrument_ids': options.get_instruments(),
         'periods': [Periodicity.ONE_MINUTE, Periodicity.FIVE_MINUTE],
         'parameters': {
-            'exit_in_time': 600
+            'exit_in_second': 600
         },
         'logger': options.get_logger()
     }

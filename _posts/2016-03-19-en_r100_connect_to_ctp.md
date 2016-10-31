@@ -19,7 +19,7 @@ class JustConnect(AbstractStrategy):
     def __init__(self, instrument_ids, parameters, base_folder, periods=None, description=None, logger=None):
         AbstractStrategy.__init__(
             self, instrument_ids, parameters, base_folder, periods=periods, description=description, logger=logger)
-        self.set_should_use_remote_account_and_position(not self.parameters.local_bookkeep)
+        self.set_local_bookkeep(not self.parameters.local_bookkeep)
 
     def on_before_run(self, strategy):
         # Display current holding positions in connected trading account.

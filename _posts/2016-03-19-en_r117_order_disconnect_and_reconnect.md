@@ -25,7 +25,7 @@ class PlaceOrderDisconnectAndReconnect(AbstractStrategy):
         AbstractStrategy.__init__(
             self, instrument_ids, parameters, base_folder, periods=periods, description=description, logger=logger)
 
-        self.set_should_use_remote_account_and_position(True)
+        self.set_local_bookkeep(False)
         self.has_traded = False
         self.reconnected = False
         self.disconnect_time = None

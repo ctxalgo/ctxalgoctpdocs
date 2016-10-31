@@ -35,7 +35,7 @@ class FlatAllPositions(AbstractStrategy):
 
 
 def main():
-    cmd_options = '--account simnow_future --name test.s1'
+    cmd_options = '--account simnow_future4 --name test.s1'
     parser = get_command_line_parser(strategy_class=FlatAllPositions, cmd_options=cmd_options)
     options = parser.parse()
     print(options.get_base_folder())

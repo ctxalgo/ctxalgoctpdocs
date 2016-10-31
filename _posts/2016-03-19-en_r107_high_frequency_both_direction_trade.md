@@ -21,7 +21,7 @@ class HighFrequencyBothDirectionTrade(AbstractStrategy):
                  periods=None, description=None, logger=None):
         AbstractStrategy.__init__(
             self, instrument_ids, parameters, base_folder, periods=periods, description=description, logger=logger)
-        self.set_should_use_remote_account_and_position(not self.parameters.local_bookkeep)
+        self.set_local_bookkeep(self.parameters.local_bookkeep)
         self.order_count = 0
         self.last_trade_times = {}
         self.signs = {}
