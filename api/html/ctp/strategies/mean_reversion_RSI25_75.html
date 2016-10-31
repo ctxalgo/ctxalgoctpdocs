@@ -475,15 +475,20 @@ from which we can get order ref for an order placement.</div></blockquote>
 <code class="descname">change_position_to</code><span class="sig-paren">(</span><em>position</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>market=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.change_position_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the position of the given instrument to new_position. If price is given, all underlying orders
 are limit orders at that price, otherwise, market orders.
-:param position: int, the new position for the instrument.
-:param price: float, if None, newly placed orders are market orders, otherwise, limit orders.
-:param cross_book: bool, If True, when placing a limit order, and when order_book is given, place</p>
+:param position: int, the new position for the instrument.</p>
 <blockquote>
-<div><dl class="docutils">
-<dt>an order cross the order book, meaning:</dt>
-<dd>If open long or close short, the limit order price will be max(price, order_book[&#8216;ask_price1&#8217;].
-If close long or open short, the limit order price will be min(price, order_book[&#8216;bid_price1&#8217;].</dd>
-</dl>
+<div>A positive integer means long positions, a negative integer means short positions.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>price</strong> &#8211; float, if None, newly placed orders are market orders, otherwise, limit orders.</li>
+<li><strong>cross_book</strong> &#8211; <p>bool, If True, when placing a limit order, and when order_book is given, place
+an order cross the order book, meaning:</p>
+<blockquote>
+<div>If open long or close short, the limit order price will be max(price, order_book[&#8216;ask_price1&#8217;].
+If close long or open short, the limit order price will be min(price, order_book[&#8216;bid_price1&#8217;].</div></blockquote>
 <p>If price is None and cross_book is False, then place market order(s). If the instrument does not support
 market order, self.market_order_simulator is used to simulate a market order.</p>
 <p>Note that limit orders crossing order book and simulated market orders need to have order book information.
@@ -492,12 +497,7 @@ be ignored. In such as case, the result is that some requests are ignored. Later
 your holding position with your expectation, you will notice the difference. Then you can use another
 change_position_to to place orders again, hoping that between then and now, some tick data for the
 instrument has arrived, so orders can be placed correctly.</p>
-</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+</li>
 <li><strong>tick_delta</strong> &#8211; int, when crossing the book, the number of ticks to cross.
 If None, the default value in self.market_order_simulator will be used.</li>
 <li><strong>reason</strong> &#8211; string, the reason for this operation.</li>
@@ -517,6 +517,8 @@ cancellation as well.</li>
 order_ref: string, the value is string, the order reference.</p>
 </dd>
 </dl>
+<p>The results are handles to the placed orders, and you can pass one or more of them to self.cancel_orders
+to cancel those orders.</p>
 </p>
 </td>
 </tr>
@@ -530,7 +532,8 @@ order_ref: string, the value is string, the order reference.</p>
 <dd><p>Change positions of multiple instruments to their new values.
 :param positions: dict{string: int}, keys are instrument ids,</p>
 <blockquote>
-<div>values are the new positions for those instruments.</div></blockquote>
+<div>values are the new positions for those instruments. For each volume, a positive integer
+means long position, a negative integer means short positions.</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -564,6 +567,8 @@ cancellation as well.</li>
 order_ref: string, the value is string, the order reference.</p>
 </dd>
 </dl>
+<p>The results are handles to the placed orders, and you can pass one or more of them to self.cancel_orders
+to cancel those orders.</p>
 </p>
 </td>
 </tr>
@@ -627,6 +632,8 @@ cancellation as well.</div></blockquote>
 <dd>Each element is a dict containing the following keys:
 order_ref: string, the value is string, the order reference.</dd>
 </dl>
+<p>The results are handles to the placed orders, and you can pass one or more of them to self.cancel_orders
+to cancel those orders.</p>
 </td>
 </tr>
 </tbody>
@@ -655,6 +662,8 @@ cancellation as well.</div></blockquote>
 <dd>Each element is a dict containing the following keys:
 order_ref: string, the value is string, the order reference.</dd>
 </dl>
+<p>The results are handles to the placed orders, and you can pass one or more of them to self.cancel_orders
+to cancel those orders.</p>
 </td>
 </tr>
 </tbody>
@@ -1844,6 +1853,8 @@ cancellation as well.</td>
 <dd>Each element is a dict containing the following keys:
 order_ref: string, the value is string, the order reference.</dd>
 </dl>
+<p>The results are handles to the placed orders, and you can pass one or more of them to self.cancel_orders
+to cancel those orders.</p>
 </td>
 </tr>
 </tbody>
@@ -1875,6 +1886,8 @@ cancellation as well.</td>
 <dd>Each element is a dict containing the following keys:
 order_ref: string, the value is string, the order reference.</dd>
 </dl>
+<p>The results are handles to the placed orders, and you can pass one or more of them to self.cancel_orders
+to cancel those orders.</p>
 </td>
 </tr>
 </tbody>
@@ -2471,7 +2484,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Oct 31, 2016.
+      Last updated on Nov 01, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

@@ -248,10 +248,21 @@ ignore price, volume and timestamp parameters.</li>
 <code class="descname">change_position_to</code><span class="sig-paren">(</span><em>price</em>, <em>new_position</em>, <em>timestamp</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.change_position_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the position of the given instrument to new_position.
 :param price: float, if None, newly placed orders are market orders, otherwise, limit orders.
-:param price: float, the instrument price.
-:param new_position: int, the new position for the instrument.
-:param timestamp: datetime, current timestamp.
-:param instrument_id: string, instrument id. If None, use self.instrument_id().</p>
+:param new_position: int, the new position for the instrument.</p>
+<blockquote>
+<div>A positive integer means long positions, a negative integer means short positions.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>timestamp</strong> &#8211; datetime, current timestamp.</li>
+<li><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id().</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -1238,7 +1249,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Oct 31, 2016.
+      Last updated on Nov 01, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
