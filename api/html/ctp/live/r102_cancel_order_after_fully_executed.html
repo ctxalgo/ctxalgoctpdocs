@@ -488,7 +488,7 @@ This is useful if you want to have a strategy which cancels some pending orders.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.cancel_order">
-<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.cancel_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order</em>, <em>reason=''</em>, <em>source=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.cancel_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cancel order.
 :param order: string or dict..</p>
 <blockquote>
@@ -507,7 +507,7 @@ from which we can get order ref for an order placement.</div></blockquote>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.cancel_orders">
-<code class="descname">cancel_orders</code><span class="sig-paren">(</span><em>orders</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.cancel_orders" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cancel_orders</code><span class="sig-paren">(</span><em>orders</em>, <em>reason=''</em>, <em>source=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.cancel_orders" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -846,6 +846,11 @@ If there is no position, return None.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.get_source_summary">
+<code class="descname">get_source_summary</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.get_source_summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.get_trading_account">
 <code class="descname">get_trading_account</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.get_trading_account" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send a request for trading account information.
@@ -1058,7 +1063,7 @@ Meaning either long or short positions, but not both.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.log_cancel_order">
-<code class="descname">log_cancel_order</code><span class="sig-paren">(</span><em>order_ref_id</em>, <em>order_ref</em>, <em>reason</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.log_cancel_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_cancel_order</code><span class="sig-paren">(</span><em>order_ref_id</em>, <em>order_ref</em>, <em>reason</em>, <em>source=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.log_cancel_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log cancel order.
 :param order_ref: string, order reference.
 :param reason: string, the reason for order.</p>
@@ -1128,7 +1133,7 @@ Inner keys are Periodicity or volatility thresholds, inner values are the genera
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.log_order">
-<code class="descname">log_order</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>actual_instrument_id</em>, <em>action</em>, <em>volume</em>, <em>order_ref</em>, <em>reason</em>, <em>offset_flag</em>, <em>order_kind='Market'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.log_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_order</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>actual_instrument_id</em>, <em>action</em>, <em>volume</em>, <em>order_ref</em>, <em>reason</em>, <em>offset_flag</em>, <em>order_kind='Market'</em>, <em>source=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r102_cancel_order_after_fully_executed.CancelOrderAfterFullyExecuted.log_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log order.
 :param instrument_id: string, the instrument id.
 :param action: OrderAction, the action of this order.
@@ -2510,7 +2515,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Nov 01, 2016.
+      Last updated on Nov 02, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
