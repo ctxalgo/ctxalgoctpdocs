@@ -445,6 +445,11 @@ producer, to which current strategy can register relative instruments.</div></bl
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.</code><code class="descname">TradeExecutorServer</code><span class="sig-paren">(</span><em>parameters</em>, <em>base_folder</em>, <em>description=None</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../strategy.html#ctxalgoctp.ctp.strategy.AbstractStrategy" title="ctxalgoctp.ctp.strategy.AbstractStrategy"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.strategy.AbstractStrategy</span></code></a></p>
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.get_source_from_request_id">
+<code class="descname">get_source_from_request_id</code><span class="sig-paren">(</span><em>request_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.get_source_from_request_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_before_run">
 <code class="descname">on_before_run</code><span class="sig-paren">(</span><em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_before_run" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1466,7 +1471,7 @@ Meaning either long or short positions, but not both.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.log_investor_position">
-<code class="descname">log_investor_position</code><span class="sig-paren">(</span><em>investor_position</em>, <em>timestamp</em>, <em>product_and_strategy_info</em>, <em>is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.log_investor_position" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_investor_position</code><span class="sig-paren">(</span><em>investor_position</em>, <em>timestamp</em>, <em>product_and_strategy_info</em>, <em>is_last</em>, <em>request_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.log_investor_position" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log investor position.
 :param investor_position: The investor position object.
 :param is_last: boolean, is the result the last batch.</p>
@@ -1572,7 +1577,7 @@ Inner keys are Periodicity or volatility thresholds, inner values are the genera
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.log_trading_account">
-<code class="descname">log_trading_account</code><span class="sig-paren">(</span><em>account</em>, <em>is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.log_trading_account" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_trading_account</code><span class="sig-paren">(</span><em>account</em>, <em>is_last</em>, <em>request_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.log_trading_account" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log trading account.
 :param account, the trading account object.
 :param is_last: boolean, is the result the last batch.</p>

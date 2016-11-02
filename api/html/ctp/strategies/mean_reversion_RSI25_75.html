@@ -806,6 +806,17 @@ If there is no position, return None.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.get_source_from_request_id">
+<code class="descname">get_source_from_request_id</code><span class="sig-paren">(</span><em>request_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.get_source_from_request_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the source strategy information from the given request_id.
+This is used internally by trade executor.
+:param request_id: int, request id.
+:return: dict{string: object}, the source strategy information, which should have the key: source.</p>
+<blockquote>
+<div>If there is no source strategy associated with the given request id, return None.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.get_source_summary">
 <code class="descname">get_source_summary</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.get_source_summary" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1069,7 +1080,7 @@ Meaning either long or short positions, but not both.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_investor_position">
-<code class="descname">log_investor_position</code><span class="sig-paren">(</span><em>investor_position</em>, <em>timestamp</em>, <em>product_and_strategy_info</em>, <em>is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_investor_position" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_investor_position</code><span class="sig-paren">(</span><em>investor_position</em>, <em>timestamp</em>, <em>product_and_strategy_info</em>, <em>is_last</em>, <em>request_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_investor_position" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log investor position.
 :param investor_position: The investor position object.
 :param is_last: boolean, is the result the last batch.</p>
@@ -1175,7 +1186,7 @@ Inner keys are Periodicity or volatility thresholds, inner values are the genera
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_trading_account">
-<code class="descname">log_trading_account</code><span class="sig-paren">(</span><em>account</em>, <em>is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_trading_account" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_trading_account</code><span class="sig-paren">(</span><em>account</em>, <em>is_last</em>, <em>request_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.log_trading_account" title="Permalink to this definition">¶</a></dt>
 <dd><p>Log trading account.
 :param account, the trading account object.
 :param is_last: boolean, is the result the last batch.</p>
