@@ -92,7 +92,9 @@ def parse_quota(options, strategies):
                     assert False, 'Position cannot be zero: {}'.format(instrument_id)
         if strategy_name not in result:
             result[strategy_name] = {}
-        result[strategy_name][action] = pos_dict
+        if action not in result[strategy_name]:
+            result[strategy_name][action] = []
+        result[strategy_name][action].append(pos_dict)
 
     for s in strategies:
         if s not in result:
@@ -270,53 +272,45 @@ def update_accounts(strategies, accounts, quota, dangling_positions, strategy):
         account = accounts[strategy_name]
         trade_ids[strategy_name] = -1
         for action, ps in quota_pos.items():
-            for actual_sid, poses in ps.items():
-                for direction, volume in poses.items():
-                    if volume is not None:
-                        sign = 1 if direction == 'long' else -1
-                        volume_to_trade_abs = abs(volume)
-                        dangling_historical_abs = abs(dangling[actual_sid][direction]['historical'])
-                        dangling_today_abs = abs(dangling[actual_sid][direction]['today'])
+            for p3 in ps:
+                for actual_sid, poses in p3.items():
+                    for direction, volume in poses.items():
+                        if volume is not None:
+                            sign = 1 if direction == 'long' else -1
+                            volume_to_trade_abs = abs(volume)
+                            dangling_historical_abs = abs(dangling[actual_sid][direction]['historical'])
+                            dangling_today_abs = abs(dangling[actual_sid][direction]['today'])
 
-                        if dangling_historical_abs > 0 and action in ['open_yesterday', 'close_yesterday']:
-                            price = prices[actual_sid][direction]['historical']
-                            trade_pos = min(dangling_historical_abs, volume_to_trade_abs)
-                            if action == 'open_yesterday':
-                                dangling[actual_sid][direction]['historical'] -= sign * trade_pos
-                                # volume_to_trade_abs -= trade_pos
-                                loader.open_positions(account, actual_sid, trade_pos * sign, price, True, strategy, trade_ids[strategy_name])
-                            else:
-                                dangling[actual_sid][direction]['historical'] += sign * trade_pos
-                                # volume_to_trade_abs += trade_pos
-                                loader.close_positions(account, actual_sid, trade_pos * sign, price, True, strategy, trade_ids[strategy_name])
-                            trade_ids[strategy_name] -= 1
-
-                        if dangling_today_abs > 0 and action in ['open_today', 'close_today']:
-                            if action == 'open_today':
-                                assert dangling_today_abs >= volume_to_trade_abs
-                                trade_pos = min(dangling_today_abs, volume_to_trade_abs)
-                                dangling[actual_sid][direction]['today'] -= sign * trade_pos
-                                volume_to_trade_abs -= trade_pos
-                                price = prices[actual_sid][direction]['today']
-                                loader.open_positions(account, actual_sid, trade_pos * sign, price, False, strategy, trade_ids[strategy_name])
-                                trade_ids[strategy_name] -= 1
-                            else:
-                                assert dangling_today_abs >= volume_to_trade_abs
-                                trade_pos = min(dangling_today_abs, volume_to_trade_abs)
-                                dangling[actual_sid][direction]['today'] += sign * trade_pos
-                                volume_to_trade_abs += trade_pos
-                                price = prices[actual_sid][direction]['today']
-                                loader.close_positions(account, actual_sid, trade_pos * sign, price, False, strategy, trade_ids[strategy_name])
+                            if dangling_historical_abs > 0 and action in ['open_yesterday', 'close_yesterday']:
+                                price = prices[actual_sid][direction]['historical']
+                                trade_pos = min(dangling_historical_abs, volume_to_trade_abs)
+                                if action == 'open_yesterday':
+                                    dangling[actual_sid][direction]['historical'] -= sign * trade_pos
+                                    # volume_to_trade_abs -= trade_pos
+                                    loader.open_positions(account, actual_sid, trade_pos * sign, price, True, strategy, trade_ids[strategy_name])
+                                else:
+                                    dangling[actual_sid][direction]['historical'] += sign * trade_pos
+                                    # volume_to_trade_abs += trade_pos
+                                    loader.close_positions(account, actual_sid, trade_pos * sign, price, True, strategy, trade_ids[strategy_name])
                                 trade_ids[strategy_name] -= 1
 
-                        # if volume_to_trade_abs > 0:
-                        #     assert dangling_today_abs >= volume_to_trade_abs
-                        #     trade_pos = min(dangling_today_abs, volume_to_trade_abs)
-                        #     dangling[actual_sid][direction]['today'] -= sign * trade_pos
-                        #     volume_to_trade_abs -= trade_pos
-                        #     price = prices[actual_sid][direction]['today']
-                        #     loader.open_positions(account, actual_sid, trade_pos * sign, price, False, strategy, trade_ids[strategy_name])
-                        #     trade_ids[strategy_name] -= 1
+                            if dangling_today_abs > 0 and action in ['open_today', 'close_today']:
+                                if action == 'open_today':
+                                    assert dangling_today_abs >= volume_to_trade_abs
+                                    trade_pos = min(dangling_today_abs, volume_to_trade_abs)
+                                    dangling[actual_sid][direction]['today'] -= sign * trade_pos
+                                    volume_to_trade_abs -= trade_pos
+                                    price = prices[actual_sid][direction]['today']
+                                    loader.open_positions(account, actual_sid, trade_pos * sign, price, False, strategy, trade_ids[strategy_name])
+                                    trade_ids[strategy_name] -= 1
+                                else:
+                                    assert dangling_today_abs >= volume_to_trade_abs
+                                    trade_pos = min(dangling_today_abs, volume_to_trade_abs)
+                                    dangling[actual_sid][direction]['today'] += sign * trade_pos
+                                    volume_to_trade_abs += trade_pos
+                                    price = prices[actual_sid][direction]['today']
+                                    loader.close_positions(account, actual_sid, trade_pos * sign, price, False, strategy, trade_ids[strategy_name])
+                                    trade_ids[strategy_name] -= 1
 
     for strategy_name, account in accounts.items():
         loader.save(account, strategy.ctp_factory, strategies[strategy_name], trading_day=strategy.trading_day())
@@ -473,7 +467,7 @@ def main():
     # The following cmd_options is used for testing purpose, it will be used only when
     # there is no command line options provided in sys.argv.
     cmd_options = '--account simnow_future3 --name test.syn_position ' \
-                  '--strategy s1:c:\\jasonw\\mean_reversion --strategy s2:c:\\jasonw\\value --view-only'
+                  '--strategy s1:/tmp/mean_reversion --strategy s2:/tmp/value --view-only'
     parser = setup_command_line_parser(cmd_options)
     options = parser.parse()
     assert options.strategies is not None, 'Strategies must be specified.'
