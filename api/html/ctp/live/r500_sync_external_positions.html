@@ -2621,7 +2621,7 @@ instrument_id, kind and period to find the ohlc.</li>
 
 <dl class="function">
 <dt id="ctxalgoctp.ctp.live.r500_sync_external_positions.load_strategy_accounts">
-<code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">load_strategy_accounts</code><span class="sig-paren">(</span><em>strategies</em>, <em>initial_capitals</em>, <em>ctp_factory</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.load_strategy_accounts" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">load_strategy_accounts</code><span class="sig-paren">(</span><em>strategies</em>, <em>initial_capitals</em>, <em>ctp_factory</em>, <em>view_only</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.load_strategy_accounts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load strategy account position information.
 :param strategies: dict{string: string}, meaning dict{strategy_name: base_folder}.
 :param initial_capitals: dict{string: float}, meaning dict{string_name: initial capital}.
@@ -2694,8 +2694,18 @@ meaning dict{actual_instrument_id: dict{direction: dict{historical_or_today: vol
 <dd></dd></dl>
 
 <dl class="function">
+<dt id="ctxalgoctp.ctp.live.r500_sync_external_positions.find_close_candidates">
+<code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">find_close_candidates</code><span class="sig-paren">(</span><em>actual_sid</em>, <em>direction</em>, <em>strategy_positions</em>, <em>historical</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.find_close_candidates" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live.r500_sync_external_positions.get_action">
+<code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">get_action</code><span class="sig-paren">(</span><em>actual_sid</em>, <em>dangling_position</em>, <em>direction</em>, <em>strategy_positions</em>, <em>historical</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.get_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
 <dt id="ctxalgoctp.ctp.live.r500_sync_external_positions.get_table">
-<code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">get_table</code><span class="sig-paren">(</span><em>positions</em>, <em>max_width=120</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.get_table" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">get_table</code><span class="sig-paren">(</span><em>positions</em>, <em>max_width=120</em>, <em>action=False</em>, <em>strategy_positions=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.get_table" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -2705,7 +2715,7 @@ meaning dict{actual_instrument_id: dict{direction: dict{historical_or_today: vol
 
 <dl class="function">
 <dt id="ctxalgoctp.ctp.live.r500_sync_external_positions.print_dangling_positions">
-<code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">print_dangling_positions</code><span class="sig-paren">(</span><em>dangling_positions</em>, <em>max_width=120</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.print_dangling_positions" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ctxalgoctp.ctp.live.r500_sync_external_positions.</code><code class="descname">print_dangling_positions</code><span class="sig-paren">(</span><em>dangling_positions</em>, <em>strategy_positions</em>, <em>max_width=120</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r500_sync_external_positions.print_dangling_positions" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">

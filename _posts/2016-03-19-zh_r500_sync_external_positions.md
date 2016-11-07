@@ -13,6 +13,7 @@ language: zh
 
 
 ```python
+import shutil
 from ctxalgolib.output.texttable import Texttable
 from ctxalgoctp.ctp.live_strategy_utils import *
 from ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader import LocalTradingAccountLoader
@@ -53,7 +54,25 @@ def parse_quota(options, strategies):
         dict{strategy_name: dict{actual_instrument_id: dict{direction: volume}}}.
     """
     result = {}
-    for q in options.quota:
+    quota = []
+    actions = []
+    if options.open_yesterday is not None:
+        quota += options.open_yesterday
+        actions.extend(['open_yesterday'] * len(options.open_yesterday))
+
+    if options.close_yesterday is not None:
+        quota += options.close_yesterday
+        actions.extend(['close_yesterday'] * len(options.close_yesterday))
+
+    if options.open_today is not None:
+        quota += options.open_today
+        actions.extend(['open_today'] * len(options.open_today))
+
+    if options.close_today is not None:
+        quota += options.close_today
+        actions.extend(['close_today'] * len(options.close_today))
+
+    for action, q in zip(actions, quota):
         strategy_name = q[:q.find(':')]
         remaining = q[q.find(':')+1:]
         instrument_parts = remaining.split(',')
@@ -71,7 +90,9 @@ def parse_quota(options, strategies):
                     pos_dict[instrument_id]['short'] = volume
                 else:
                     assert False, 'Position cannot be zero: {}'.format(instrument_id)
-        result[strategy_name] = pos_dict
+        if strategy_name not in result:
+            result[strategy_name] = {}
+        result[strategy_name][action] = pos_dict
 
     for s in strategies:
         if s not in result:
@@ -103,7 +124,7 @@ def parse_initial_capital(options, strategies, default_capital=1000000.0):
     return result
 
 
-def load_strategy_accounts(strategies, initial_capitals, ctp_factory):
+def load_strategy_accounts(strategies, initial_capitals, ctp_factory, view_only):
     """
     Load strategy account position information.
     :param strategies: dict{string: string}, meaning dict{strategy_name: base_folder}.
@@ -116,6 +137,17 @@ def load_strategy_accounts(strategies, initial_capitals, ctp_factory):
     loader = LocalTradingAccountLoader(ctp_factory.future_info_factory())
     result = {}
     for strategy_name, base_folder in strategies.items():
+        if not view_only:
+            # Backup account file.
+            account_file = os.path.join(base_folder, Constants.account_file_name)
+            if os.path.exists(account_file):
+                i = 1
+                while True:
+                    backup_file = os.path.join(base_folder, 'account_backup_{}.txt'.format(i))
+                    if not os.path.exists(backup_file):
+                        shutil.copyfile(account_file, backup_file)
+                        break
+                    i += 1
         account = loader.load(ctp_factory, base_folder, initial_capital=initial_capitals[strategy_name])
         result[strategy_name] = account
     return result
@@ -237,32 +269,57 @@ def update_accounts(strategies, accounts, quota, dangling_positions, strategy):
     for strategy_name, quota_pos in quota.items():
         account = accounts[strategy_name]
         trade_ids[strategy_name] = -1
-        for actual_sid, poses in quota_pos.items():
-            for direction, volume in poses.items():
-                if volume is not None:
-                    sign = 1 if direction == 'long' else -1
-                    volume_to_trade_abs = abs(volume)
-                    dangling_historical_abs = abs(dangling[actual_sid][direction]['historical'])
-                    dangling_today_abs = abs(dangling[actual_sid][direction]['today'])
-                    if dangling_historical_abs > 0:
-                        trade_pos = min(dangling_historical_abs, volume_to_trade_abs)
-                        dangling[actual_sid][direction]['historical'] -= sign * trade_pos
-                        volume_to_trade_abs -= trade_pos
-                        price = prices[actual_sid][direction]['historical']
-                        loader.open_positions(account, actual_sid, trade_pos * sign, price, True, strategy, trade_ids[strategy_name])
-                        trade_ids[strategy_name] -= 1
-                    if volume_to_trade_abs > 0:
-                        assert dangling_today_abs >= volume_to_trade_abs
-                        trade_pos = min(dangling_today_abs, volume_to_trade_abs)
-                        dangling[actual_sid][direction]['today'] -= sign * trade_pos
-                        volume_to_trade_abs -= trade_pos
-                        price = prices[actual_sid][direction]['today']
-                        loader.open_positions(account, actual_sid, trade_pos * sign, price, False, strategy, trade_ids[strategy_name])
-                        trade_ids[strategy_name] -= 1
+        for action, ps in quota_pos.items():
+            for actual_sid, poses in ps.items():
+                for direction, volume in poses.items():
+                    if volume is not None:
+                        sign = 1 if direction == 'long' else -1
+                        volume_to_trade_abs = abs(volume)
+                        dangling_historical_abs = abs(dangling[actual_sid][direction]['historical'])
+                        dangling_today_abs = abs(dangling[actual_sid][direction]['today'])
+
+                        if dangling_historical_abs > 0 and action in ['open_yesterday', 'close_yesterday']:
+                            price = prices[actual_sid][direction]['historical']
+                            trade_pos = min(dangling_historical_abs, volume_to_trade_abs)
+                            if action == 'open_yesterday':
+                                dangling[actual_sid][direction]['historical'] -= sign * trade_pos
+                                # volume_to_trade_abs -= trade_pos
+                                loader.open_positions(account, actual_sid, trade_pos * sign, price, True, strategy, trade_ids[strategy_name])
+                            else:
+                                dangling[actual_sid][direction]['historical'] += sign * trade_pos
+                                # volume_to_trade_abs += trade_pos
+                                loader.close_positions(account, actual_sid, trade_pos * sign, price, True, strategy, trade_ids[strategy_name])
+                            trade_ids[strategy_name] -= 1
+
+                        if dangling_today_abs > 0 and action in ['open_today', 'close_today']:
+                            if action == 'open_today':
+                                assert dangling_today_abs >= volume_to_trade_abs
+                                trade_pos = min(dangling_today_abs, volume_to_trade_abs)
+                                dangling[actual_sid][direction]['today'] -= sign * trade_pos
+                                volume_to_trade_abs -= trade_pos
+                                price = prices[actual_sid][direction]['today']
+                                loader.open_positions(account, actual_sid, trade_pos * sign, price, False, strategy, trade_ids[strategy_name])
+                                trade_ids[strategy_name] -= 1
+                            else:
+                                assert dangling_today_abs >= volume_to_trade_abs
+                                trade_pos = min(dangling_today_abs, volume_to_trade_abs)
+                                dangling[actual_sid][direction]['today'] += sign * trade_pos
+                                volume_to_trade_abs += trade_pos
+                                price = prices[actual_sid][direction]['today']
+                                loader.close_positions(account, actual_sid, trade_pos * sign, price, False, strategy, trade_ids[strategy_name])
+                                trade_ids[strategy_name] -= 1
+
+                        # if volume_to_trade_abs > 0:
+                        #     assert dangling_today_abs >= volume_to_trade_abs
+                        #     trade_pos = min(dangling_today_abs, volume_to_trade_abs)
+                        #     dangling[actual_sid][direction]['today'] -= sign * trade_pos
+                        #     volume_to_trade_abs -= trade_pos
+                        #     price = prices[actual_sid][direction]['today']
+                        #     loader.open_positions(account, actual_sid, trade_pos * sign, price, False, strategy, trade_ids[strategy_name])
+                        #     trade_ids[strategy_name] -= 1
 
     for strategy_name, account in accounts.items():
         loader.save(account, strategy.ctp_factory, strategies[strategy_name], trading_day=strategy.trading_day())
-
 
 def setup_command_line_parser(cmd_options):
     parser = get_command_line_parser(strategy_class=SynchronizeExternalPositions, cmd_options=cmd_options)
@@ -276,7 +333,7 @@ def setup_command_line_parser(cmd_options):
               "anything, the names are used as references in other command line options, --quota and "
               "--strategy-initial-capital."))
     parser.add_option(
-        '--quota', type='string', action='append', dest='quota',
+        '--open-yesterday', type='string', action='append', dest='open_yesterday',
         help=("Specify how many positions from the trading account should be traded into the strategies. "
               "Format --quota [name:instrument:long_position,short_position]+. For example,"
               "--quota s1:IF1609:1:-2,cu1610:-3 --quota s2:SR611:5 means that 1 long dangling IF1609 position "
@@ -284,6 +341,34 @@ def setup_command_line_parser(cmd_options):
               "s1, and -3 short position of cu1610 should be traded into s1. And 5 long position of SR611 should "
               "be traded into the strategy s2. Dangling position means that those positions from the trading account "
               "do not belong to any of the positions."))
+    parser.add_option(
+        '--close-yesterday', type='string', action='append', dest='close_yesterday',
+        help=("Specify how many positions from the trading account should be traded into the strategies. "
+              "Format --quota [name:instrument:long_position,short_position]+. For example,"
+              "--quota s1:IF1609:1:-2,cu1610:-3 --quota s2:SR611:5 means that 1 long dangling IF1609 position "
+              "should be traded into strategy s1, and -2 short dangling IF1609 position should be traded into "
+              "s1, and -3 short position of cu1610 should be traded into s1. And 5 long position of SR611 should "
+              "be traded into the strategy s2. Dangling position means that those positions from the trading account "
+              "do not belong to any of the positions."))
+    parser.add_option(
+        '--open-today', type='string', action='append', dest='open_today',
+        help=("Specify how many positions from the trading account should be traded into the strategies. "
+              "Format --quota [name:instrument:long_position,short_position]+. For example,"
+              "--quota s1:IF1609:1:-2,cu1610:-3 --quota s2:SR611:5 means that 1 long dangling IF1609 position "
+              "should be traded into strategy s1, and -2 short dangling IF1609 position should be traded into "
+              "s1, and -3 short position of cu1610 should be traded into s1. And 5 long position of SR611 should "
+              "be traded into the strategy s2. Dangling position means that those positions from the trading account "
+              "do not belong to any of the positions."))
+    parser.add_option(
+        '--close-today', type='string', action='append', dest='close_today',
+        help=("Specify how many positions from the trading account should be traded into the strategies. "
+              "Format --quota [name:instrument:long_position,short_position]+. For example,"
+              "--quota s1:IF1609:1:-2,cu1610:-3 --quota s2:SR611:5 means that 1 long dangling IF1609 position "
+              "should be traded into strategy s1, and -2 short dangling IF1609 position should be traded into "
+              "s1, and -3 short position of cu1610 should be traded into s1. And 5 long position of SR611 should "
+              "be traded into the strategy s2. Dangling position means that those positions from the trading account "
+              "do not belong to any of the positions."))
+
     parser.add_option(
         '--strategy-initial-capital', type='string', action='append', dest='strategy_initial_capitals',
         help=("Specify the initial capital for strategies. Format --strategy-initial-capital name:capital."
@@ -295,17 +380,63 @@ def setup_command_line_parser(cmd_options):
     return parser
 
 
-def get_table(positions, max_width=120):
+def find_close_candidates(actual_sid, direction, strategy_positions, historical):
+    result = []
+    for strategy, pos in strategy_positions.items():
+        for sid, pos2 in pos.items():
+            for a_sid, pos3 in pos2.items():
+                if a_sid == actual_sid:
+                    for p_direction, pos4 in pos3.items():
+                        if p_direction == direction:
+                            if historical:
+                                if pos4['historical'] != 0:
+                                    result.append(strategy + ':' + str(pos4['historical']))
+                            else:
+                                if pos4['today'] != 0:
+                                    result.append(strategy + ':' + str(pos4['today']))
+    return ','.join(result)
+
+def get_action(actual_sid, dangling_position, direction, strategy_positions, historical):
+
+    if direction == 'long':
+        if dangling_position > 0:
+            result = 'open ' + str(dangling_position) + ' long ' + 'yesterday ' if historical else 'today '
+        else:
+            result = 'close ' + str(-dangling_position) + ' long ' + 'yesterday ' if historical else 'today '
+            result += '(' + find_close_candidates(actual_sid, direction, strategy_positions, historical) + ')'
+    else:
+        if dangling_position > 0:
+            result = 'close ' + str(-dangling_position)  + ' short ' + 'yesterday ' if historical else 'today '
+            result += '(' + find_close_candidates(actual_sid, direction, strategy_positions, historical) + ')'
+        else:
+            result = 'open ' + str(dangling_position) + ' short ' + 'yesterday ' if historical else 'today '
+    return result
+
+
+def get_table(positions, max_width=120, action=False, strategy_positions=None):
     table = Texttable(max_width=max_width)
     table.set_deco(Texttable.HEADER)
-    columns = ['SID', 'Direction', 'Yesterday', 'Today', 'All']
+    if action:
+        columns = ['SID', 'Direction', 'Yesterday', 'Today', 'Action']
+    else:
+        columns = ['SID', 'Direction', 'Yesterday', 'Today']
     table.set_cols_align(['r'] * len(columns))
     rows = [columns]
 
     for actual_sid, direction_pos in positions.items():
         for direction, pos in direction_pos.items():
-            if pos['historical'] + pos['today'] != 0:
-                rows.append([actual_sid, direction, pos['historical'], pos['today'], pos['historical'] + pos['today']])
+            if pos['historical'] != 0 or pos['today'] != 0:
+                if action:
+                    action_str = ''
+                    if pos['historical'] != 0:
+                        action_str += get_action(actual_sid, pos['historical'], direction, strategy_positions, True)
+                    if pos['today'] != 0:
+                        action_str += get_action(actual_sid, pos['today'], direction, strategy_positions, False) + ','
+                    if action_str.endswith(','):
+                        action_str = action_str[:-1]
+                    rows.append([actual_sid, direction, pos['historical'], pos['today'], action_str])
+                else:
+                    rows.append([actual_sid, direction, pos['historical'], pos['today']])
     table.add_rows(rows)
     return table.draw()
 
@@ -332,18 +463,17 @@ def print_strategy_positions(strategies, strategy_positions, max_width=120):
         print('\n')
 
 
-def print_dangling_positions(dangling_positions, max_width=120):
+def print_dangling_positions(dangling_positions, strategy_positions, max_width=120):
     print('Dangling positions:')
-    print(get_table(dangling_positions, max_width=max_width))
+    print(get_table(dangling_positions, max_width=400, action=True, strategy_positions=strategy_positions))
     print('\n')
 
 
 def main():
     # The following cmd_options is used for testing purpose, it will be used only when
     # there is no command line options provided in sys.argv.
-    cmd_options = '--account simnow_future4 --name test.syn_position ' \
-                  '--strategy s1:c:\\tmp\\s1 --strategy s2:c:\\tmp\\s2 ' \
-                  '--quota s1:cu1610:2,SR611:-2 --quota s2:cu1610:1,SR611:-3'
+    cmd_options = '--account simnow_future3 --name test.syn_position ' \
+                  '--strategy s1:c:\\jasonw\\mean_reversion --strategy s2:c:\\jasonw\\value --view-only'
     parser = setup_command_line_parser(cmd_options)
     options = parser.parse()
     assert options.strategies is not None, 'Strategies must be specified.'
@@ -360,12 +490,12 @@ def main():
 
     strategies = parse_strategies(options)
     initial_capitals = parse_initial_capital(options, strategies.keys())
-    accounts = load_strategy_accounts(strategies, initial_capitals, strategy.ctp_factory)
+    accounts = load_strategy_accounts(strategies, initial_capitals, strategy.ctp_factory, options.view_only)
     strategy_positions = calculate_strategy_positions(accounts, strategy.trading_day())
     dangling_positions = calculate_dangling_positions(strategy_positions, strategy.info['account_position_details'])
 
     print_strategy_positions(strategies, strategy_positions)
-    print_dangling_positions(dangling_positions)
+    print_dangling_positions(dangling_positions, strategy_positions)
 
     # Perform position update into strategies.
     if not options.view_only:
