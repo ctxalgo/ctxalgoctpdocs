@@ -396,7 +396,7 @@ trading_day, open_commission, order_ref, margin.</p>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trading_account.TradingAccount.close_positions">
-<code class="descname">close_positions</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>price</em>, <em>volume</em>, <em>timestamp</em>, <em>trading_day</em>, <em>actual_instrument_id</em>, <em>open_today=None</em>, <em>close_yesterday=None</em>, <em>close_today=None</em>, <em>additional_info=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.close_positions" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_positions</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>price</em>, <em>volume</em>, <em>timestamp</em>, <em>trading_day</em>, <em>actual_instrument_id</em>, <em>open_today=None</em>, <em>close_yesterday=None</em>, <em>close_today=None</em>, <em>close_today_only=False</em>, <em>additional_info=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.close_positions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close positions.
 :param instrument_id, string, the instrument id.
 :param price: float, the price at which the positions are closed.
@@ -552,6 +552,16 @@ L&gt;0             S&lt;0             p2&lt;0, p2==S     close_long(L)</p>
 :return: TradingAccount.</p>
 </dd></dl>
 
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trading_account.TradingAccount.parse_order_ref">
+<em class="property">static </em><code class="descname">parse_order_ref</code><span class="sig-paren">(</span><em>order_ref_str</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.parse_order_ref" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trading_account.TradingAccount.get_latest_position_time_and_order_ref_id">
+<code class="descname">get_latest_position_time_and_order_ref_id</code><span class="sig-paren">(</span><em>trading_day</em>, <em>yesterday</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.get_latest_position_time_and_order_ref_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>
@@ -576,7 +586,7 @@ L&gt;0             S&lt;0             p2&lt;0, p2==S     close_long(L)</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Nov 09, 2016.
+      Last updated on Nov 10, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

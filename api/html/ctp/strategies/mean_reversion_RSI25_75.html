@@ -610,7 +610,7 @@ If so, call self.on_timer.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.close_limit_order">
-<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=False</em>, <em>tick_delta=None</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.close_limit_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=False</em>, <em>tick_delta=None</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>close_kind=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.close_limit_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close a limit order at price. Note that for limit orders.
 The strategy is responsible for maintaining positions in a single direction, if desirable.
 :param price: float, the price.
@@ -642,7 +642,7 @@ to cancel those orders.</p>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.close_market_order">
-<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>volume</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.close_market_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_market_order</code><span class="sig-paren">(</span><em>volume</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>close_kind=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategies.mean_reversion_RSI25_75.MeanReversionRSI2575Strategy.close_market_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close market order for future_id. If there is only one future in current strategy, you don&#8217;t need to
 provide future_id, self.future_id will be used implicitly.
 :param volume: int, the volume to close. Positive volume means open close; Negative volume means close short.
@@ -2525,7 +2525,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Nov 09, 2016.
+      Last updated on Nov 10, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
