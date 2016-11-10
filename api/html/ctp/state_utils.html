@@ -1153,6 +1153,15 @@ instrument_id, kind and period to find the ohlc.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.trading_days_between">
+<code class="descname">trading_days_between</code><span class="sig-paren">(</span><em>start_date</em>, <em>end_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.trading_days_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trading days between start_date and end_date.
+:param start_date: date, start date, inclusive.
+:param end_date: date, end date, inclusive. If None, defaults to self.trading_day().
+:return: [date], the trading days between the specified range.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.transaction_id_from_order_ref">
 <code class="descname">transaction_id_from_order_ref</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.transaction_id_from_order_ref" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2230,6 +2239,15 @@ instrument_id, kind and period to find the ohlc.</li>
 <dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.trading_day">
 <code class="descname">trading_day</code><span class="sig-paren">(</span><em>now=None</em>, <em>delta=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.trading_day" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.trading_days_between">
+<code class="descname">trading_days_between</code><span class="sig-paren">(</span><em>start_date</em>, <em>end_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.trading_days_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trading days between start_date and end_date.
+:param start_date: date, start date, inclusive.
+:param end_date: date, end date, inclusive. If None, defaults to self.trading_day().
+:return: [date], the trading days between the specified range.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.transaction_id_from_order_ref">
@@ -3311,6 +3329,15 @@ instrument_id, kind and period to find the ohlc.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.trading_days_between">
+<code class="descname">trading_days_between</code><span class="sig-paren">(</span><em>start_date</em>, <em>end_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.trading_days_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trading days between start_date and end_date.
+:param start_date: date, start date, inclusive.
+:param end_date: date, end date, inclusive. If None, defaults to self.trading_day().
+:return: [date], the trading days between the specified range.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.transaction_id_from_order_ref">
 <code class="descname">transaction_id_from_order_ref</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.transaction_id_from_order_ref" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -4389,6 +4416,15 @@ instrument_id, kind and period to find the ohlc.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.trading_days_between">
+<code class="descname">trading_days_between</code><span class="sig-paren">(</span><em>start_date</em>, <em>end_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.trading_days_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trading days between start_date and end_date.
+:param start_date: date, start date, inclusive.
+:param end_date: date, end date, inclusive. If None, defaults to self.trading_day().
+:return: [date], the trading days between the specified range.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.transaction_id_from_order_ref">
 <code class="descname">transaction_id_from_order_ref</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.transaction_id_from_order_ref" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -5465,6 +5501,15 @@ instrument_id, kind and period to find the ohlc.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.trading_days_between">
+<code class="descname">trading_days_between</code><span class="sig-paren">(</span><em>start_date</em>, <em>end_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.trading_days_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trading days between start_date and end_date.
+:param start_date: date, start date, inclusive.
+:param end_date: date, end date, inclusive. If None, defaults to self.trading_day().
+:return: [date], the trading days between the specified range.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.transaction_id_from_order_ref">
 <code class="descname">transaction_id_from_order_ref</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.transaction_id_from_order_ref" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -6539,6 +6584,15 @@ instrument_id, kind and period to find the ohlc.</li>
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.trading_day">
 <code class="descname">trading_day</code><span class="sig-paren">(</span><em>now=None</em>, <em>delta=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.trading_day" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.trading_days_between">
+<code class="descname">trading_days_between</code><span class="sig-paren">(</span><em>start_date</em>, <em>end_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.trading_days_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trading days between start_date and end_date.
+:param start_date: date, start date, inclusive.
+:param end_date: date, end date, inclusive. If None, defaults to self.trading_day().
+:return: [date], the trading days between the specified range.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.transaction_id_from_order_ref">
@@ -7648,6 +7702,15 @@ instrument_id, kind and period to find the ohlc.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.trading_days_between">
+<code class="descname">trading_days_between</code><span class="sig-paren">(</span><em>start_date</em>, <em>end_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.trading_days_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trading days between start_date and end_date.
+:param start_date: date, start date, inclusive.
+:param end_date: date, end date, inclusive. If None, defaults to self.trading_day().
+:return: [date], the trading days between the specified range.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.transaction_id_from_order_ref">
 <code class="descname">transaction_id_from_order_ref</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.transaction_id_from_order_ref" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -8755,6 +8818,15 @@ instrument_id, kind and period to find the ohlc.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.trading_days_between">
+<code class="descname">trading_days_between</code><span class="sig-paren">(</span><em>start_date</em>, <em>end_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.trading_days_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trading days between start_date and end_date.
+:param start_date: date, start date, inclusive.
+:param end_date: date, end date, inclusive. If None, defaults to self.trading_day().
+:return: [date], the trading days between the specified range.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.transaction_id_from_order_ref">
 <code class="descname">transaction_id_from_order_ref</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.transaction_id_from_order_ref" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -9860,6 +9932,15 @@ instrument_id, kind and period to find the ohlc.</li>
 <dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.trading_day">
 <code class="descname">trading_day</code><span class="sig-paren">(</span><em>now=None</em>, <em>delta=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.trading_day" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.trading_days_between">
+<code class="descname">trading_days_between</code><span class="sig-paren">(</span><em>start_date</em>, <em>end_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.trading_days_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trading days between start_date and end_date.
+:param start_date: date, start date, inclusive.
+:param end_date: date, end date, inclusive. If None, defaults to self.trading_day().
+:return: [date], the trading days between the specified range.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.transaction_id_from_order_ref">
@@ -10977,6 +11058,15 @@ instrument_id, kind and period to find the ohlc.</li>
 <dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.trading_day">
 <code class="descname">trading_day</code><span class="sig-paren">(</span><em>now=None</em>, <em>delta=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.trading_day" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.trading_days_between">
+<code class="descname">trading_days_between</code><span class="sig-paren">(</span><em>start_date</em>, <em>end_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.trading_days_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trading days between start_date and end_date.
+:param start_date: date, start date, inclusive.
+:param end_date: date, end date, inclusive. If None, defaults to self.trading_day().
+:return: [date], the trading days between the specified range.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.transaction_id_from_order_ref">

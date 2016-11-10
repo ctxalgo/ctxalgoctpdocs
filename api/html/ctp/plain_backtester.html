@@ -1212,6 +1212,15 @@ instrument_id, kind and period to find the ohlc.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.trading_days_between">
+<code class="descname">trading_days_between</code><span class="sig-paren">(</span><em>start_date</em>, <em>end_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.trading_days_between" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the trading days between start_date and end_date.
+:param start_date: date, start date, inclusive.
+:param end_date: date, end date, inclusive. If None, defaults to self.trading_day().
+:return: [date], the trading days between the specified range.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.yesterday_bars">
 <code class="descname">yesterday_bars</code><span class="sig-paren">(</span><em>ohlc</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.yesterday_bars" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the bar slice in ohlc, which covers all bars from yesterday.
