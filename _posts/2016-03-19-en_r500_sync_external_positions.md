@@ -268,6 +268,9 @@ def update_accounts(strategies, accounts, quota, dangling_positions, strategy):
     loader = LocalTradingAccountLoader(strategy.ctp_factory.future_info_factory())
     prices = loader.position_price(strategy.info)
     trade_ids = {}
+    now = strategy.now()
+    trading_day = strategy.trading_day()
+    dominant_provider = strategy.ctp_factory.dominant_provier()
     for strategy_name, quota_pos in quota.items():
         account = accounts[strategy_name]
         trade_ids[strategy_name] = -1
@@ -286,12 +289,13 @@ def update_accounts(strategies, accounts, quota, dangling_positions, strategy):
                                 trade_pos = min(dangling_historical_abs, volume_to_trade_abs)
                                 if action == 'open_yesterday':
                                     dangling[actual_sid][direction]['historical'] -= sign * trade_pos
-                                    # volume_to_trade_abs -= trade_pos
-                                    loader.open_positions(account, actual_sid, trade_pos * sign, price, True, strategy, trade_ids[strategy_name])
+                                    loader.open_positions(
+                                        account, now, actual_sid, trade_pos * sign, price, True,
+                                        dominant_provider, trade_ids[strategy_name])
                                 else:
                                     dangling[actual_sid][direction]['historical'] += sign * trade_pos
-                                    # volume_to_trade_abs += trade_pos
-                                    loader.close_positions(account, actual_sid, trade_pos * sign, price, True, strategy, trade_ids[strategy_name])
+                                    loader.close_positions(
+                                        account, now, actual_sid, trade_pos * sign, price, True, dominant_provider)
                                 trade_ids[strategy_name] -= 1
 
                             if dangling_today_abs > 0 and action in ['open_today', 'close_today']:
@@ -301,7 +305,9 @@ def update_accounts(strategies, accounts, quota, dangling_positions, strategy):
                                     dangling[actual_sid][direction]['today'] -= sign * trade_pos
                                     volume_to_trade_abs -= trade_pos
                                     price = prices[actual_sid][direction]['today']
-                                    loader.open_positions(account, actual_sid, trade_pos * sign, price, False, strategy, trade_ids[strategy_name])
+                                    loader.open_positions(
+                                        account, now, actual_sid, trade_pos * sign, price, False,
+                                        dominant_provider, trade_ids[strategy_name])
                                     trade_ids[strategy_name] -= 1
                                 else:
                                     assert dangling_today_abs >= volume_to_trade_abs
@@ -309,11 +315,13 @@ def update_accounts(strategies, accounts, quota, dangling_positions, strategy):
                                     dangling[actual_sid][direction]['today'] += sign * trade_pos
                                     volume_to_trade_abs += trade_pos
                                     price = prices[actual_sid][direction]['today']
-                                    loader.close_positions(account, actual_sid, trade_pos * sign, price, False, strategy, trade_ids[strategy_name])
+                                    loader.close_positions(
+                                        account, now, actual_sid, trade_pos * sign, price, False, dominant_provider)
                                     trade_ids[strategy_name] -= 1
 
     for strategy_name, account in accounts.items():
-        loader.save(account, strategy.ctp_factory, strategies[strategy_name], trading_day=strategy.trading_day())
+        loader.save(account, strategy.ctp_factory, strategies[strategy_name], trading_day=trading_day)
+
 
 def setup_command_line_parser(cmd_options):
     parser = get_command_line_parser(strategy_class=SynchronizeExternalPositions, cmd_options=cmd_options)
