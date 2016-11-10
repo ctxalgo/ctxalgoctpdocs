@@ -281,6 +281,24 @@ Whether any position can be opened for an instrument id is defined by now &lt;= 
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.contract_multiplier">
+<code class="descname">contract_multiplier</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.contract_multiplier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get multiplier of the given instrument.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:return: int. The volume multiple.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.contract_value">
+<code class="descname">contract_value</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.contract_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the contract value.
+:param price: float, price of the instrument.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, contract value.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.current_transaction_id">
 <code class="descname">current_transaction_id</code><span class="sig-paren">(</span><em>direction</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.current_transaction_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -920,6 +938,11 @@ Process preconditions in the following way:</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.required_contract_margin">
+<code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.set_data">
 <code class="descname">set_data</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set data.
@@ -1314,6 +1337,24 @@ Whether any position can be opened for an instrument id is defined by now &lt;= 
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.contract_multiplier">
+<code class="descname">contract_multiplier</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.contract_multiplier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get multiplier of the given instrument.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:return: int. The volume multiple.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.contract_value">
+<code class="descname">contract_value</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.contract_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the contract value.
+:param price: float, price of the instrument.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, contract value.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1966,6 +2007,11 @@ Process preconditions in the following way:</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.required_contract_margin">
+<code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.set_data">
 <code class="descname">set_data</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set data.
@@ -2365,6 +2411,24 @@ Whether any position can be opened for an instrument id is defined by now &lt;= 
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.contract_multiplier">
+<code class="descname">contract_multiplier</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.contract_multiplier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get multiplier of the given instrument.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:return: int. The volume multiple.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.contract_value">
+<code class="descname">contract_value</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.contract_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the contract value.
+:param price: float, price of the instrument.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, contract value.</p>
 </dd></dl>
 
 <dl class="method">
@@ -3017,6 +3081,11 @@ Process preconditions in the following way:</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.required_contract_margin">
+<code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.set_data">
 <code class="descname">set_data</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set data.
@@ -3423,6 +3492,24 @@ Whether any position can be opened for an instrument id is defined by now &lt;= 
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.contract_multiplier">
+<code class="descname">contract_multiplier</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.contract_multiplier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get multiplier of the given instrument.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:return: int. The volume multiple.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.contract_value">
+<code class="descname">contract_value</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.contract_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the contract value.
+:param price: float, price of the instrument.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, contract value.</p>
 </dd></dl>
 
 <dl class="method">
@@ -4072,6 +4159,11 @@ Process preconditions in the following way:</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.required_contract_margin">
+<code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.set_data">
 <code class="descname">set_data</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set data.
@@ -4471,6 +4563,24 @@ Whether any position can be opened for an instrument id is defined by now &lt;= 
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.contract_multiplier">
+<code class="descname">contract_multiplier</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.contract_multiplier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get multiplier of the given instrument.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:return: int. The volume multiple.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.contract_value">
+<code class="descname">contract_value</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.contract_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the contract value.
+:param price: float, price of the instrument.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, contract value.</p>
 </dd></dl>
 
 <dl class="method">
@@ -5120,6 +5230,11 @@ Process preconditions in the following way:</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.required_contract_margin">
+<code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.set_data">
 <code class="descname">set_data</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set data.
@@ -5519,6 +5634,24 @@ Whether any position can be opened for an instrument id is defined by now &lt;= 
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.contract_multiplier">
+<code class="descname">contract_multiplier</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.contract_multiplier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get multiplier of the given instrument.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:return: int. The volume multiple.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.contract_value">
+<code class="descname">contract_value</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.contract_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the contract value.
+:param price: float, price of the instrument.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, contract value.</p>
 </dd></dl>
 
 <dl class="method">
@@ -6168,6 +6301,11 @@ Process preconditions in the following way:</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.required_contract_margin">
+<code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.required_contract_margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.set_data">
 <code class="descname">set_data</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set data.
@@ -6605,6 +6743,24 @@ Whether any position can be opened for an instrument id is defined by now &lt;= 
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.contract_multiplier">
+<code class="descname">contract_multiplier</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.contract_multiplier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get multiplier of the given instrument.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:return: int. The volume multiple.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.contract_value">
+<code class="descname">contract_value</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.contract_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the contract value.
+:param price: float, price of the instrument.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, contract value.</p>
 </dd></dl>
 
 <dl class="method">
@@ -7247,6 +7403,11 @@ Process preconditions in the following way:</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.required_contract_margin">
+<code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.set_data">
 <code class="descname">set_data</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set data.
@@ -7646,6 +7807,24 @@ Whether any position can be opened for an instrument id is defined by now &lt;= 
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.contract_multiplier">
+<code class="descname">contract_multiplier</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.contract_multiplier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get multiplier of the given instrument.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:return: int. The volume multiple.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.contract_value">
+<code class="descname">contract_value</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.contract_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the contract value.
+:param price: float, price of the instrument.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, contract value.</p>
 </dd></dl>
 
 <dl class="method">
@@ -8326,6 +8505,11 @@ Process preconditions in the following way:</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.required_contract_margin">
+<code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.set_data">
 <code class="descname">set_data</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set data.
@@ -8725,6 +8909,24 @@ Whether any position can be opened for an instrument id is defined by now &lt;= 
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.contract_multiplier">
+<code class="descname">contract_multiplier</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.contract_multiplier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get multiplier of the given instrument.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:return: int. The volume multiple.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.contract_value">
+<code class="descname">contract_value</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.contract_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the contract value.
+:param price: float, price of the instrument.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, contract value.</p>
 </dd></dl>
 
 <dl class="method">
@@ -9405,6 +9607,11 @@ Process preconditions in the following way:</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.required_contract_margin">
+<code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.set_data">
 <code class="descname">set_data</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.set_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set data.
@@ -9814,6 +10021,24 @@ Whether any position can be opened for an instrument id is defined by now &lt;= 
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.contract_multiplier">
+<code class="descname">contract_multiplier</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.contract_multiplier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get multiplier of the given instrument.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:return: int. The volume multiple.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.contract_value">
+<code class="descname">contract_value</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.contract_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the contract value.
+:param price: float, price of the instrument.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, contract value.</p>
 </dd></dl>
 
 <dl class="method">
@@ -10491,6 +10716,11 @@ Process preconditions in the following way:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.profit">
 <code class="descname">profit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.profit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.required_contract_margin">
+<code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

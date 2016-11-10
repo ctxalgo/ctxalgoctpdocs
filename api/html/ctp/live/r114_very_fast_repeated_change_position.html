@@ -735,6 +735,24 @@ to cancel those orders.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r114_very_fast_repeated_change_position.VeryFastRepeatedChangePosition.contract_multiplier">
+<code class="descname">contract_multiplier</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r114_very_fast_repeated_change_position.VeryFastRepeatedChangePosition.contract_multiplier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get multiplier of the given instrument.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:return: int. The volume multiple.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r114_very_fast_repeated_change_position.VeryFastRepeatedChangePosition.contract_value">
+<code class="descname">contract_value</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r114_very_fast_repeated_change_position.VeryFastRepeatedChangePosition.contract_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the contract value.
+:param price: float, price of the instrument.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, contract value.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r114_very_fast_repeated_change_position.VeryFastRepeatedChangePosition.default_period">
 <code class="descname">default_period</code><span class="sig-paren">(</span><em>kind=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r114_very_fast_repeated_change_position.VeryFastRepeatedChangePosition.default_period" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the default period for the given ohlc kind.
@@ -1500,9 +1518,9 @@ instrument_id, order_ref, traded_volume, left_volume, status, error_id, error_me
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r114_very_fast_repeated_change_position.VeryFastRepeatedChangePosition.on_error_order_action">
-<code class="descname">on_error_order_action</code><span class="sig-paren">(</span><em>order_action_error</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r114_very_fast_repeated_change_position.VeryFastRepeatedChangePosition.on_error_order_action" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_error_order_action</code><span class="sig-paren">(</span><em>order_action_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r114_very_fast_repeated_change_position.VeryFastRepeatedChangePosition.on_error_order_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be invoked when cancel order is considered to be invalid by the exchange.
-:param order_action_error: dict{string: object}. Information about the order action error.</p>
+:param order_action_info: dict{string: object}. Information about the order action error.</p>
 <blockquote>
 <div>Keys (non-exhausively) include: instrument_id, order_ref, error_id, error_message, status_message.</div></blockquote>
 </dd></dl>
@@ -2175,6 +2193,11 @@ between the current price and the position price.</li>
 <dd><p>Remove the timer with name.
 :param name: string, the timer name.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r114_very_fast_repeated_change_position.VeryFastRepeatedChangePosition.required_contract_margin">
+<code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r114_very_fast_repeated_change_position.VeryFastRepeatedChangePosition.required_contract_margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r114_very_fast_repeated_change_position.VeryFastRepeatedChangePosition.run">

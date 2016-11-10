@@ -582,6 +582,24 @@ Whether any position can be opened for an instrument id is defined by now &lt;= 
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.contract_multiplier">
+<code class="descname">contract_multiplier</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.contract_multiplier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get multiplier of the given instrument.
+:param instrument_id: string, the instrument id. If None, use self.instrument_id().
+:return: int. The volume multiple.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.contract_value">
+<code class="descname">contract_value</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.contract_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the contract value.
+:param price: float, price of the instrument.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, contract value.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.default_period">
 <code class="descname">default_period</code><span class="sig-paren">(</span><em>kind=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.default_period" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the default period for the given ohlc kind.
@@ -1015,6 +1033,11 @@ between the current price and the position price.</li>
 :param instrument_id: string, the instrument id. If None, use self.instrument_id().
 :return float, the last known price, None if no price is known for the given instrument.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.required_contract_margin">
+<code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.required_contract_margin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.short_position_profit">
