@@ -940,7 +940,12 @@ Process preconditions in the following way:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.required_contract_margin">
 <code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.LimitOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the required margin to trade the instrument at price and volume.
+:param price: float, instrument price.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, required margin.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.LimitOrderState.set_data">
@@ -2009,7 +2014,12 @@ Process preconditions in the following way:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.required_contract_margin">
 <code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenLimitOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the required margin to trade the instrument at price and volume.
+:param price: float, instrument price.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, required margin.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenLimitOrderState.set_data">
@@ -3083,7 +3093,12 @@ Process preconditions in the following way:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.required_contract_margin">
 <code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseLimitOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the required margin to trade the instrument at price and volume.
+:param price: float, instrument price.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, required margin.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseLimitOrderState.set_data">
@@ -4161,7 +4176,12 @@ Process preconditions in the following way:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.required_contract_margin">
 <code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the required margin to trade the instrument at price and volume.
+:param price: float, instrument price.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, required margin.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractCancelOrderState.set_data">
@@ -5232,7 +5252,12 @@ Process preconditions in the following way:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.required_contract_margin">
 <code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the required margin to trade the instrument at price and volume.
+:param price: float, instrument price.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, required margin.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState.set_data">
@@ -6303,7 +6328,12 @@ Process preconditions in the following way:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.required_contract_margin">
 <code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CancelOrderState2.required_contract_margin" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the required margin to trade the instrument at price and volume.
+:param price: float, instrument price.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, required margin.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CancelOrderState2.set_data">
@@ -7405,7 +7435,12 @@ Process preconditions in the following way:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.required_contract_margin">
 <code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the required margin to trade the instrument at price and volume.
+:param price: float, instrument price.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, required margin.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.AbstractMarketOrderState.set_data">
@@ -8507,7 +8542,12 @@ Process preconditions in the following way:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.required_contract_margin">
 <code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.OpenMarketOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the required margin to trade the instrument at price and volume.
+:param price: float, instrument price.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, required margin.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.OpenMarketOrderState.set_data">
@@ -9609,7 +9649,12 @@ Process preconditions in the following way:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.required_contract_margin">
 <code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.CloseMarketOrderState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the required margin to trade the instrument at price and volume.
+:param price: float, instrument price.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, required margin.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.CloseMarketOrderState.set_data">
@@ -10721,7 +10766,12 @@ Process preconditions in the following way:</p>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.required_contract_margin">
 <code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.required_contract_margin" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the required margin to trade the instrument at price and volume.
+:param price: float, instrument price.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, required margin.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.state_utils.PlaceMarketOrdersState.set_data">

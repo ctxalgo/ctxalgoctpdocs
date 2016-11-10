@@ -2522,7 +2522,12 @@ between the current price and the position price.</li>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.required_contract_margin">
 <code class="descname">required_contract_margin</code><span class="sig-paren">(</span><em>price</em>, <em>volume</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.required_contract_margin" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the required margin to trade the instrument at price and volume.
+:param price: float, instrument price.
+:param volume: int, the volume, positive number means long position, negative number means short position.
+:param instrument_id: string, instrument id. If None, use self.instrument_id().
+:return: float, required margin.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.run">
