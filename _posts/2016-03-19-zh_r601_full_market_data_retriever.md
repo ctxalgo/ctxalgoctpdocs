@@ -30,7 +30,6 @@ class FullMarketTickRetriever(AbstractStrategy):
 
     def on_tick(self, instrument_id, tick):
         self.file.write(str(self.now()) + '\t' + instrument_id + '\t' + str(tick) + '\n')
-        self.file.flush()
 
 
 def main():
