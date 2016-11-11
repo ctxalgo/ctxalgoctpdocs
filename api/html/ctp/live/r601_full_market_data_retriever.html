@@ -203,18 +203,13 @@ Title: 接收全市场tick数据
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_tick">
-<code class="descname">on_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_tick" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_timer">
-<code class="descname">on_timer</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>supposed_trigger_time</em>, <em>timer_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_timer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_after_run">
 <code class="descname">on_after_run</code><span class="sig-paren">(</span><em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_after_run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_tick">
+<code class="descname">on_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_tick" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1721,6 +1716,27 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_timer">
+<code class="descname">on_timer</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>supposed_trigger_time</em>, <em>timer_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Action to be invoked when some timer is triggered.
+:param trigger_time: datetime, the time when the timer is actually triggered.</p>
+<blockquote>
+<div>trigger_time and supposed_trigger_time may be different because the timer may be a simulated timer.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>supposed_trigger_time</strong> &#8211; datetime, the time when the timer is supposed to be triggered.</li>
+<li><strong>timer_name</strong> &#8211; string, the name of the triggered timer.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_trade">
 <code class="descname">on_trade</code><span class="sig-paren">(</span><em>trade_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_trade" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be called when a trade occurs in the exchange. After an order is placed ,
@@ -2221,6 +2237,11 @@ between the current price and the position price.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.set_exit_time">
+<code class="descname">set_exit_time</code><span class="sig-paren">(</span><em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.set_exit_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.set_external_ctp_callback">
 <code class="descname">set_external_ctp_callback</code><span class="sig-paren">(</span><em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.set_external_ctp_callback" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2571,11 +2592,6 @@ instrument_id, kind and period to find the ohlc.</li>
 </dd></dl>
 
 <dl class="function">
-<dt id="ctxalgoctp.ctp.live.r601_full_market_data_retriever.get_instrument_ids">
-<code class="descclassname">ctxalgoctp.ctp.live.r601_full_market_data_retriever.</code><code class="descname">get_instrument_ids</code><span class="sig-paren">(</span><em>trading_day</em>, <em>fu</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r601_full_market_data_retriever.get_instrument_ids" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
 <dt id="ctxalgoctp.ctp.live.r601_full_market_data_retriever.main">
 <code class="descclassname">ctxalgoctp.ctp.live.r601_full_market_data_retriever.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r601_full_market_data_retriever.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2602,7 +2618,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Nov 11, 2016.
+      Last updated on Nov 12, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

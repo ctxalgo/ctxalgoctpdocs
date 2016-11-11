@@ -18,37 +18,19 @@ class FullMarketTickRetriever(AbstractStrategy):
         AbstractStrategy.__init__(
             self, instrument_ids, parameters, base_folder, periods=periods, description=description, logger=logger)
         self.set_should_terminate_after_market_close(False)
-        self.file = open(self.parameters.output, 'w')
+        self.file = None
 
     def on_before_run(self, strategy):
         # Strategy will terminates at 16:00:00 of the trading day.
-        self.add_timer(trigger_time=datetime.combine(self.trading_day(), time(16, 0, 0)), action=self.on_timer)
-
-    def on_tick(self, instrument_id, tick):
-        self.file.write(str(self.now()) + '\t' + instrument_id + '\t' + str(tick) + '\n')
-        self.file.flush()
-
-    def on_timer(self, trigger_time, supposed_trigger_time, timer_name):
-        self.set_should_exit(True)
+        self.set_exit_time(datetime.combine(self.trading_day(), time(16, 0, 0)))
+        self.file = open(self.parameters.output, 'w')
 
     def on_after_run(self, strategy):
         self.file.close()
 
-
-def get_instrument_ids(trading_day, fu):
-    instrument_ids = WebMongoDataFeed().instruments(datetime.combine(trading_day, time(0, 0, 0)))
-    valid_sids = []
-    # Filter invalid instrument ids.
-    p = FutureNameParser()
-    all_futures = fu.futures()
-    for sid in instrument_ids:
-        try:
-            prefix = p.parse(sid)[0]
-            if prefix in all_futures:
-                valid_sids.append(sid)
-        except Exception as e:
-            pass
-    return valid_sids
+    def on_tick(self, instrument_id, tick):
+        self.file.write(str(self.now()) + '\t' + instrument_id + '\t' + str(tick) + '\n')
+        self.file.flush()
 
 
 def main():
@@ -62,7 +44,7 @@ def main():
         options = parser.parse()
         config = {
             'base_folder': options.get_base_folder(),
-            'instrument_ids': get_instrument_ids(trading_day, fu),
+            'instrument_ids': WebMongoDataFeed().instruments(datetime.combine(trading_day, time(0, 0, 0))),
             'parameters': {
                 'output': os.path.join(options.output, trading_day.strftime('%Y%m%d') + '.txt')
             },
