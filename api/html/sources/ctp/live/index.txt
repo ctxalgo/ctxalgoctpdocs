@@ -22,6 +22,7 @@ live
    r116_place_order_and_cancel_immediately
    r103_cancel_order_while_pending
    r101_change_positions
+   r601_full_market_data_retriever
    r105_place_pending_order_and_exit
    r300_use_zmq_data_producer
    r113_trade_at_timer
