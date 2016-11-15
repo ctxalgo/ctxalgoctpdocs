@@ -217,7 +217,7 @@ when order book data is present (in tick level backtesting). They represents the
 
 <dl class="class">
 <dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.Order">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.</code><code class="descname">Order</code><span class="sig-paren">(</span><em>id_</em>, <em>future_id</em>, <em>actual_future_id</em>, <em>is_open</em>, <em>price</em>, <em>traded_volume</em>, <em>left_volume</em>, <em>order_ref</em>, <em>timestamp</em>, <em>reason</em>, <em>kind</em>, <em>canceled</em>, <em>offset_flag</em>, <em>order_sys_id</em>, <em>request_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.Order" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.</code><code class="descname">Order</code><span class="sig-paren">(</span><em>id_</em>, <em>future_id</em>, <em>actual_future_id</em>, <em>is_open</em>, <em>price</em>, <em>traded_volume</em>, <em>left_volume</em>, <em>order_ref</em>, <em>timestamp</em>, <em>reason</em>, <em>kind</em>, <em>canceled</em>, <em>offset_flag</em>, <em>order_sys_id</em>, <em>request_id</em>, <em>exchange</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.Order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class that represent an order.</p>
 <p>Initialize current.
 :param <a href="#id1"><span class="problematic" id="id2">id_</span></a>: int, id of the order, will be increasing in the same trading day.</p>
@@ -311,7 +311,7 @@ when order book data is present (in tick level backtesting). They represents the
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.cancel_order">
-<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.cancel_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order</em>, <em>exchange=None</em>, <em>order_sys_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.cancel_order" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -387,6 +387,11 @@ when order book data is present (in tick level backtesting). They represents the
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_limit_order">
 <code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>price</em>, <em>volume</em>, <em>source_order_ref</em>, <em>kind='Normal'</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('1')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.close_limit_order" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.enough_position_for_close">
+<code class="descname">enough_position_for_close</code><span class="sig-paren">(</span><em>account</em>, <em>instrument_id</em>, <em>volume</em>, <em>trading_day</em>, <em>only_today</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.enough_position_for_close" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -486,7 +491,7 @@ The parameters open_price, high_price, low_price and close_price are used for li
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Nov 12, 2016.
+      Last updated on Nov 15, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
