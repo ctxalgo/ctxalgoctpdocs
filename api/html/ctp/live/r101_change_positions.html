@@ -556,7 +556,7 @@ instrument has arrived, so orders can be placed correctly.</p>
 <li><strong>tick_delta</strong> &#8211; int, when crossing the book, the number of ticks to cross.
 If None, the default value in self.market_order_simulator will be used.</li>
 <li><strong>reason</strong> &#8211; string, the reason for this operation.</li>
-<li><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id.</li>
+<li><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id().</li>
 <li><strong>cancellation</strong> &#8211; AbstractOrderCancellation, the cancellation policy for current order.
 If None, no cancellation policy is specified.</li>
 <li><strong>cancel_in_time</strong> &#8211; timedelta, the time the order is allowed to be executed before it is cancelled.
@@ -1090,6 +1090,11 @@ Meaning either long or short positions, but not both.
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.is_trading_disconnected">
 <code class="descname">is_trading_disconnected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.is_trading_disconnected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.is_trading_enabled">
+<code class="descname">is_trading_enabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.is_trading_enabled" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2140,6 +2145,55 @@ between the current price and the position price.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.reach_position">
+<code class="descname">reach_position</code><span class="sig-paren">(</span><em>position</em>, <em>open_spec=None</em>, <em>close_spec=None</em>, <em>instrument_id=None</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.reach_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reach to given position for the instrument.
+:param position: int, the position to reach.
+:param open_spec: dict{string: object}, specifies how to place open orders. It can have the following keys:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>kind: OrderKind, can be OrderKind.NormalLimit, OrderKind.Market.</dt>
+<dd>If not present, defaults to OrderKind.NormalLimit.</dd>
+<dt>price: float, the price for the order. Only have effect for limit orders which are not crossing the book.</dt>
+<dd>If not present, defaults to None.</dd>
+<dt>cross_book: bool, if True, when placing a limit order, do not use the given price, instead, find the</dt>
+<dd>current order book of the instrument, and place the order at a price which crosses the order book.</dd>
+<dt>tick_delta: int, specifies how to cross the order book, only have effect when placing a limit order and</dt>
+<dd>cross_book is True. The amount is the number of tick sizes to cross the book.
+For example, tick_delta=2 means to cross the book by 2 tick sizes (if short, -2 tick sizes).
+A positive number makes the order easier to execute. A negative number makes the order harder
+to execute, because a negative number crosses the book in the opposite direction.
+If not present, defaults to 0, meaning to place the order at the top of the order book.</dd>
+</dl>
+<p>cancellation: int or TimeBasedOrderCancellation. If int, it means TimeBasedOrderCancellation(int).</p>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>close_spec</strong> &#8211; same as open_spec.</li>
+<li><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id().</li>
+<li><strong>reason</strong> &#8211; string, the reason for this operation.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><dl class="docutils">
+<dt>[dict{string:object}], the list of orders.</dt>
+<dd><p class="first last">Each element is a dict containing the following keys:
+order_ref: string, the value is string, the order reference.</p>
+</dd>
+</dl>
+<p>The results are handles to the placed orders, and you can pass one or more of them to self.cancel_orders
+to cancel those orders.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.relevant_instrument_ids">
 <code class="descname">relevant_instrument_ids</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.relevant_instrument_ids" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the relevant instrument ids. All the returned instrument ids are actual instrument ids.
@@ -2244,6 +2298,11 @@ between the current price and the position price.</li>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.set_is_market_enabled">
 <code class="descname">set_is_market_enabled</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.set_is_market_enabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.set_is_trading_enabled">
+<code class="descname">set_is_trading_enabled</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r101_change_positions.ChangePosition.set_is_trading_enabled" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
