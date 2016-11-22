@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>position_recovery &mdash; ctxalgoctp 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ctxalgoctp 0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="trade_executors" href="index.html"/>
+        <link rel="next" title="zmq_trade_execution_server" href="zmq_trade_execution_server.html"/>
+        <link rel="prev" title="ctp_trade_executor" href="ctp_trade_executor.html"/> 
+
+  
+  <script src="../../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> ctxalgoctp
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ctp</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../live/index.html">live</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../factories/index.html">factories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../context_loaders/index.html">context_loaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_gen/index.html">code_gen</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">trade_executors</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="abstract_trade_executor.html">abstract_trade_executor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ctp_trade_executor.html">ctp_trade_executor</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">position_recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zmq_trade_execution_server.html">zmq_trade_execution_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zmq_trade_executor.html">zmq_trade_executor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trade_request_response_utils.html">trade_request_response_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backtesting_trade_executor.html">backtesting_trade_executor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../logger/index.html">logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../execution_drivers/index.html">execution_drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_producers/index.html">data_producers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategies/index.html">strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_account_loaders/index.html">trading_account_loaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../slippage_models.html">slippage_models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategy_utils.html">strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exchanges.html">exchanges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtester.html">backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_account.html">trading_account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategy_command_line_utils.html">strategy_command_line_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../offline_optimization.html">offline_optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../market_data_feed.html">market_data_feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base.html">base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../order_cancellation.html">order_cancellation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roll.html">roll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../state_utils.html">state_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constants.html">constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dominant_provider.html">dominant_provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datetime_utils.html">datetime_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategy.html">strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callback_base.html">callback_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../market_order_simulator.html">market_order_simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plain_backtester.html">plain_backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../live_strategy_utils.html">live_strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtesting_utils.html">backtesting_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comm.html">comm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report_generator.html">report_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils.html">utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../future_info_provider.html">future_info_provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_constants.html">trading_constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report.html">report</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ctxalgoctp</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">ctp</a> &raquo;</li>
+      
+          <li><a href="index.html">trade_executors</a> &raquo;</li>
+      
+    <li>position_recovery</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../sources/ctp/trade_executors/position_recovery.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ctxalgoctp.ctp.trade_executors.position_recovery">
+<span id="position-recovery"></span><h1>position_recovery<a class="headerlink" href="#module-ctxalgoctp.ctp.trade_executors.position_recovery" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.position_recovery.</code><code class="descname">PositionRecovery</code><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class assumes the following setting:
+1. A source strategy performs trading through a zmq trade executor.
+2. The source strategy has backed up its account information before any trading.
+3. The source strategy crashes during execution.
+4. The zmq trade executor does not crash and has the full log of all the trades.</p>
+<p>And the position recovery for the source strategy works:
+1. Get the source strategy account backup.
+2. From the log of the zmq trade executor, find all the trades related to the source strategy.
+3. Apply the trades on the source strategy&#8217;s account.</p>
+<p>Note: The position recovery process does not handle orders that are still pending inside the zmq trade executor.
+It assumes that there is no pending orders belonging to the source strategy inside the zmq trade executor.</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.instrument_exchange">
+<code class="descname">instrument_exchange</code><span class="sig-paren">(</span><em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.instrument_exchange" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.apply_trades">
+<code class="descname">apply_trades</code><span class="sig-paren">(</span><em>trades</em>, <em>account</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.apply_trades" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply trades into account. By applying trades into the account, we recover the account&#8217;s position information.
+:param trades: [dict{string: object}], the list of trades.
+:param account: TradingAccount, the trading account.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.extract_trades">
+<code class="descname">extract_trades</code><span class="sig-paren">(</span><em>trader_log_file</em>, <em>source_strategy</em>, <em>source_uuid=None</em>, <em>text=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.extract_trades" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract TRADED records related to given strategy from a zmq trade executor&#8217;s log file.
+:param trader_log_file: string, path to the zmq trade executor log file.
+:param source_strategy: string, name of the source strategy (the strategy whose account position</p>
+<blockquote>
+<div>needs to be recovered), in form of product.strategy.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>source_uuid</strong> &#8211; string, optional, if not None, the uuid of the source strategy execution.
+If None, extract trades from the last execution of the strategy with given source_strategy name.</li>
+<li><strong>text</strong> &#8211; bool, if True, the trader_log_file is assumed to be in text format, otherwise binary format.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">[LogRecord], the list of extracted trades. Return None if no trades are extracted.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.recover">
+<code class="descname">recover</code><span class="sig-paren">(</span><em>source_strategy</em>, <em>source_strategy_account_path</em>, <em>trade_executor_log_path</em>, <em>source_uuid=None</em>, <em>initial_capital=1000000.0</em>, <em>security_company=None</em>, <em>trade_executor_log_text=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.recover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recover source strategy position from zmq trade executor log.
+:param source_strategy: string, name of the source strategy, in form of product.strategy.
+:param source_strategy_account_path: string, path to the account file of the source strategy.
+:param trade_executor_log_path: string, path to the log file of the trade executor.
+:param source_uuid: string, optional, if not None, the uuid of the source strategy execution.</p>
+<blockquote>
+<div>If None, extract trades from the last execution of the strategy with given source_strategy name.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>initial_capital</strong> &#8211; float, initial capital for the account.</li>
+<li><strong>security_company</strong> &#8211; string, security company.</li>
+<li><strong>trade_executor_log_text</strong> &#8211; bool,
+the trade_executor_log_path is assumed to be in text format, otherwise binary format.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">TradingAccount, the recovered trading account.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="zmq_trade_execution_server.html" class="btn btn-neutral float-right" title="zmq_trade_execution_server" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ctp_trade_executor.html" class="btn btn-neutral" title="ctp_trade_executor" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, .
+      Last updated on Nov 22, 2016.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../static/jquery.js"></script>
+      <script type="text/javascript" src="../../static/underscore.js"></script>
+      <script type="text/javascript" src="../../static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

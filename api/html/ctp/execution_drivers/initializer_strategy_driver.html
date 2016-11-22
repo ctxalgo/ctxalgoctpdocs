@@ -283,6 +283,16 @@ This is used internally by trade executor.
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.get_source_order">
+<code class="descname">get_source_order</code><span class="sig-paren">(</span><em>target_order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.get_source_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get source order information.
+:param target_order_ref: string, full string representation of the target order ref.
+:return: dict{string: object}, source order information. If no source order information is found,</p>
+<blockquote>
+<div>return None.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.get_source_summary">
 <code class="descname">get_source_summary</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.get_source_summary" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -370,7 +380,7 @@ This is used internally by trade executor.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.log_trade">
-<code class="descname">log_trade</code><span class="sig-paren">(</span><em>trade</em>, <em>extra_info</em>, <em>is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.log_trade" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_trade</code><span class="sig-paren">(</span><em>trading_day</em>, <em>trade</em>, <em>extra_info</em>, <em>is_last</em>, <em>source=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.execution_drivers.initializer_strategy_driver.StrategyInitializerCallbacks.log_trade" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -683,7 +693,7 @@ Information include: future delivery date, investor position for that future.</p
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Nov 21, 2016.
+      Last updated on Nov 22, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

@@ -15,6 +15,7 @@ live
    r201_change_position_relative_id
    r117_order_disconnect_and_reconnect
    r600_fake_market_broker
+   r502_sync_position_from_trade_executor
    r114_very_fast_repeated_change_position
    r108_flat_all_positions
    r107_high_frequency_both_direction_trade

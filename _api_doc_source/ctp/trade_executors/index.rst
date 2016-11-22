@@ -6,6 +6,7 @@ trade_executors
 
    abstract_trade_executor
    ctp_trade_executor
+   position_recovery
    zmq_trade_execution_server
    zmq_trade_executor
    trade_request_response_utils

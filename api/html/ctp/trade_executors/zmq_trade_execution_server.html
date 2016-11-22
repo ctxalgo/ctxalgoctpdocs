@@ -33,7 +33,7 @@
     <link rel="top" title="ctxalgoctp 0.1 documentation" href="../../index.html"/>
         <link rel="up" title="trade_executors" href="index.html"/>
         <link rel="next" title="zmq_trade_executor" href="zmq_trade_executor.html"/>
-        <link rel="prev" title="ctp_trade_executor" href="ctp_trade_executor.html"/> 
+        <link rel="prev" title="position_recovery" href="position_recovery.html"/> 
 
   
   <script src="../../static/js/modernizr.min.js"></script>
@@ -81,6 +81,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">trade_executors</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="abstract_trade_executor.html">abstract_trade_executor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ctp_trade_executor.html">ctp_trade_executor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="position_recovery.html">position_recovery</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">zmq_trade_execution_server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="zmq_trade_executor.html">zmq_trade_executor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trade_request_response_utils.html">trade_request_response_utils</a></li>
@@ -495,6 +496,16 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_order_request">
 <code class="descname">process_order_request</code><span class="sig-paren">(</span><em>strategy</em>, <em>data</em>, <em>action</em>, <em>order_kind</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_order_request" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.get_source_order">
+<code class="descname">get_source_order</code><span class="sig-paren">(</span><em>target_order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.get_source_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get source order information.
+:param traget_order_ref: string, full string representation of the target order ref.
+:return: dict{string: object}, source order information. If no source order information is found,</p>
+<blockquote>
+<div>return None.</div></blockquote>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.process_cancel_order_request">
@@ -1601,7 +1612,7 @@ Inner keys are Periodicity or volatility thresholds, inner values are the genera
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.log_trade">
-<code class="descname">log_trade</code><span class="sig-paren">(</span><em>trade</em>, <em>extra_info</em>, <em>is_last</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.log_trade" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_trade</code><span class="sig-paren">(</span><em>trading_day</em>, <em>trade</em>, <em>extra_info</em>, <em>is_last</em>, <em>source=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.log_trade" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2929,6 +2940,14 @@ instrument_id, kind and period to find the ohlc.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.uuid">
+<code class="descname">uuid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.uuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the UUID of current strategy execution. Every time when the strategy executes,
+the UUID changes.
+:return: string, strategy uuid.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.volume_multiple">
 <code class="descname">volume_multiple</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.volume_multiple" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -3012,7 +3031,7 @@ instrument_id, kind and period to find the ohlc.</li>
         <a href="zmq_trade_executor.html" class="btn btn-neutral float-right" title="zmq_trade_executor" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ctp_trade_executor.html" class="btn btn-neutral" title="ctp_trade_executor" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="position_recovery.html" class="btn btn-neutral" title="position_recovery" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -3022,7 +3041,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Nov 21, 2016.
+      Last updated on Nov 22, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
