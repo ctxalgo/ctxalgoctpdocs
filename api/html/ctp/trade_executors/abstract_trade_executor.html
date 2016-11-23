@@ -237,6 +237,15 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor.report_exception">
+<code class="descname">report_exception</code><span class="sig-paren">(</span><em>e</em>, <em>trace</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor.report_exception" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report that an exception happens in current strategy. This is only used by a source strategy to tell
+its associated trade executor that it has exception.
+:param e: Exception
+:param trace: string, the traceback.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor.open_market_order">
 <code class="descname">open_market_order</code><span class="sig-paren">(</span><em>exchange_id</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>volume</em>, <em>source_order_ref</em>, <em>kind='Market'</em>, <em>order_ref=-1</em>, <em>reason=''</em>, <em>offset_flag=c_char('0')</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor.open_market_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send an order to open a trade at market price.
