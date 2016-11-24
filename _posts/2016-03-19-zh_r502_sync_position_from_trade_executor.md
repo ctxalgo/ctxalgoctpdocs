@@ -45,7 +45,9 @@ def main():
     base_folder = options.base_folder
 
     recovery = PositionRecovery()
-    source_account_path = os.path.join(base_folder, C.old_account_file_name)
+    assert options.uuid is not None
+    source_account_path = os.path.join(
+        base_folder, C.account_backup_folder_name, C.account_file_with_trading_day(trading_day, options.uuid))
     trade_executor_path = os.path.join(options.trade_executor_base_folder, C.output_file(trading_day, text=True))
     account = recovery.recover(source_strategy, source_account_path, trade_executor_path, source_uuid=options.uuid,
                                initial_capital=options.initial_capital, security_company=options.security_company,

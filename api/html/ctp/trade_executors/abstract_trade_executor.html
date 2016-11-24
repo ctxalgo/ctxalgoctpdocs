@@ -238,11 +238,12 @@
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor.report_exception">
-<code class="descname">report_exception</code><span class="sig-paren">(</span><em>e</em>, <em>trace</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor.report_exception" title="Permalink to this definition">¶</a></dt>
+<code class="descname">report_exception</code><span class="sig-paren">(</span><em>e</em>, <em>trace</em>, <em>action=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor.report_exception" title="Permalink to this definition">¶</a></dt>
 <dd><p>Report that an exception happens in current strategy. This is only used by a source strategy to tell
 its associated trade executor that it has exception.
 :param e: Exception
-:param trace: string, the traceback.</p>
+:param trace: string, the traceback.
+:param action: some arbitrary data to indicate the trade executor what to do.</p>
 </dd></dl>
 
 <dl class="method">
@@ -492,7 +493,7 @@ This is useful if you want to have a strategy which cancels some pending orders.
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Nov 23, 2016.
+      Last updated on Nov 25, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

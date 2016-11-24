@@ -461,6 +461,11 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_message_from_mission_controller">
+<code class="descname">on_message_from_mission_controller</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_message_from_mission_controller" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.send_response">
 <code class="descname">send_response</code><span class="sig-paren">(</span><em>strategy</em>, <em>response_kind</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.send_response" title="Permalink to this definition">¶</a></dt>
 <dd><p>Send trade response to the strategy which issued the request.
@@ -514,6 +519,21 @@ producer, to which current strategy can register relative instruments.</div></bl
 :return: dict{string: object}, source order information. If no source order information is found,</p>
 <blockquote>
 <div>return None.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.cancel_source_orders">
+<code class="descname">cancel_source_orders</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.cancel_source_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancel all pending orders from given source strategy.
+:param source: string, source strategy signature with uuid.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.source_has_pending_order">
+<code class="descname">source_has_pending_order</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.source_has_pending_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is there any pending order by the given source strategy?
+:param source: string, source strategy signature with uuid.
+:return: bool</p>
 </dd></dl>
 
 <dl class="method">
@@ -590,11 +610,6 @@ This request will be put into the self._trade_request_queue and will be processe
 by the on_process_trade_request callback.
 :param data: dict{string: object}, keys are topic and content.</p>
 </dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_message_from_mission_controller">
-<code class="descname">on_message_from_mission_controller</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_message_from_mission_controller" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.CONNECTED">
@@ -871,7 +886,7 @@ This is useful if you want to have a strategy which cancels some pending orders.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.cancel_order">
-<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order</em>, <em>reason=''</em>, <em>source=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.cancel_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cancel_order</code><span class="sig-paren">(</span><em>order</em>, <em>reason=''</em>, <em>source=None</em>, <em>force=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.cancel_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cancel order.
 :param order: string or dict..</p>
 <blockquote>
@@ -886,6 +901,7 @@ from which we can get order ref for an order placement.</div></blockquote>
 </tr>
 </tbody>
 </table>
+<p>:return CtxReturnAndRequestID, if no order to be canceled, None.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1033,7 +1049,7 @@ If so, call self.on_timer.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.close_limit_order">
-<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=False</em>, <em>tick_delta=None</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>close_kind=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.close_limit_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>tick_delta=None</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>close_kind=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.close_limit_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close a limit order at price. Note that for limit orders.
 The strategy is responsible for maintaining positions in a single direction, if desirable.
 :param price: float, the price.
@@ -1050,7 +1066,10 @@ cancellation as well.</div></blockquote>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>close_kind</strong> &#8211; string, if not None can be &#8216;today&#8217; or &#8216;yesterday&#8217;. It only has effect for a sc exchange
+instrument. For other instruments, this parameter is ignored.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
 <dt>[dict{string:object}], the list of orders.</dt>
 <dd>Each element is a dict containing the following keys:
 order_ref: string, the value is string, the order reference.</dd>
@@ -1384,6 +1403,18 @@ The returned information will be accessible through the corresponding callback f
 <dd><p>Is the given timestamp in night trading period?
 :param timestamp: datetime, the given timestamp. If None, use self.now().
 :return: boolean.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.is_order_finished">
+<code class="descname">is_order_finished</code><span class="sig-paren">(</span><em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.is_order_finished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if an order has been finished (either fully traded or cancelled, or rejected).
+:param order: string or dict..</p>
+<blockquote>
+<div>If the type is string, it is a order ref for an order placement.
+If the type is dict, it should should contains a key &#8216;order_ref&#8217;,
+from which we can get order ref for an order placement.</div></blockquote>
+<p>:return bool.</p>
 </dd></dl>
 
 <dl class="method">
@@ -2303,7 +2334,7 @@ multiple pieces of information, one piece for each currency.</td>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.open_limit_order">
-<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=False</em>, <em>tick_delta=None</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.open_limit_order" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>tick_delta=None</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.open_limit_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open a limit order at price. Note that for limit orders.
 The strategy is responsible for maintaining positions in a single direction, if desirable.
 :param price: float, the price.
@@ -2874,6 +2905,20 @@ If an instrument has both long and short sided positions, its corresponding valu
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.strategy_signature">
+<code class="descname">strategy_signature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.strategy_signature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.strategy_signature_with_uuid">
+<code class="descname">strategy_signature_with_uuid</code><span class="sig-paren">(</span><em>signature</em>, <em>strategy_uuid</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.strategy_signature_with_uuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the strategy signature with uuid.
+:param signature: string, strategy name in form of product.strategy.
+:param strategy_uuid: string, uuid.
+:return: string, the signature.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.tick_size">
 <code class="descname">tick_size</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.tick_size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -3050,7 +3095,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Nov 23, 2016.
+      Last updated on Nov 25, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
