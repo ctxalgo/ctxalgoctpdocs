@@ -569,6 +569,59 @@ L&gt;0             S&lt;0             p2&lt;0, p2==S     close_long(L)</p>
 :param path: string, the path to save.</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trading_account.TradingAccount.position_summary">
+<code class="descname">position_summary</code><span class="sig-paren">(</span><em>trading_day=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.position_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return position summary.
+:param trading_day: date, trading day.
+:return: dict{string: dict{string: dict{string: dict{string: value}}}}.</p>
+<blockquote>
+<div>Meaning dict{instrument_id: dict{actual_instrument_id: dict{direction: dict{metrics: value}}}}.
+metrics have the following keys: volume, yesterday_volume, today_volume.
+yesterday_volume and today_volume only have meaning when trading_day is not None.</div></blockquote>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trading_account.TradingAccount.add_position_summary">
+<em class="property">static </em><code class="descname">add_position_summary</code><span class="sig-paren">(</span><em>s1</em>, <em>s2</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.add_position_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add two position summary together.
+:param s1: dict{string: dict{string: dict{string: dict{string: value}}}}.</p>
+<blockquote>
+<div>See the comment of the return type of the position_summary method.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>s2</strong> &#8211; dict{string: dict{string: dict{string: dict{string: value}}}}.
+See the comment of the return type of the position_summary method.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict{string: dict{string: dict{string: dict{string: value}}}}.
+See the comment of the return type of the position_summary method.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trading_account.TradingAccount.is_position_summary_equal">
+<em class="property">static </em><code class="descname">is_position_summary_equal</code><span class="sig-paren">(</span><em>s1</em>, <em>s2</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.is_position_summary_equal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is position summary s1 and s2 equal?
+:param s1: dict{string: dict{string: dict{string: dict{string: value}}}}.</p>
+<blockquote>
+<div>See the comment of the return type of the position_summary method.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>s2</strong> &#8211; dict{string: dict{string: dict{string: dict{string: value}}}}.
+See the comment of the return type of the position_summary method.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 </div>

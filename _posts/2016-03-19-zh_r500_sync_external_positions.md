@@ -320,7 +320,7 @@ def update_accounts(strategies, accounts, quota, dangling_positions, strategy):
                                     trade_ids[strategy_name] -= 1
 
     for strategy_name, account in accounts.items():
-        loader.save(account, strategy.ctp_factory, strategies[strategy_name], trading_day=trading_day)
+        loader.save(account, strategy.ctp_factory, strategies[strategy_name])
 
 
 def setup_command_line_parser(cmd_options):

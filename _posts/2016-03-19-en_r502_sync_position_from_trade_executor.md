@@ -10,18 +10,23 @@ This script synchronizes a strategy's position from log file of the associated t
 ```python
 import os
 from optparse import OptionParser
-from datetime import datetime
+from datetime import datetime, date
 from ctxalgoctp.ctp.trade_executors.position_recovery import PositionRecovery
 from ctxalgoctp.ctp.constants import Constants as C
 
 
 def main():
     parser = OptionParser()
-    parser.add_option('--name', type='string', dest='name',
+    parser.add_option('--strategy-name', type='string', dest='name',
                       help='Name of the strategy whose position needs to be synced. In form of product.strategy.')
-    parser.add_option('--base-folder', type='string', dest='base_folder',
+    parser.add_option('--strategy-base-folder', type='string', dest='base_folder',
                       help='The base folder for the strategy whose position needs to be synced.')
-    parser.add_option('--trade-executor', type='string', dest='trade_executor_base_folder',
+    parser.add_option('--strategy-account-file', type='string', dest='strategy_account_file',
+                      help='The name of the account file which contains the snapshot of the positions as position '
+                           'recovery starting point. It is the latest account backup file before the crashed strategy '
+                           'execution session. The files are located under the {} folder in the strategy '
+                           'base folder.'.format(C.account_backup_folder_name))
+    parser.add_option('--trade-executor-base-folder', type='string', dest='trade_executor_base_folder',
                       help='The base folder of the trade executor strategy.')
     parser.add_option('--trading-day', type='string', dest='trading_day',
                       help='The trading day in form of yyyymmdd of those positions.')
@@ -45,8 +50,7 @@ def main():
 
     recovery = PositionRecovery()
     assert options.uuid is not None
-    source_account_path = os.path.join(
-        base_folder, C.account_backup_folder_name, C.account_file_with_trading_day(trading_day, options.uuid))
+    source_account_path = os.path.join(base_folder, C.account_backup_folder_name, options.strategy_account_file)
     trade_executor_path = os.path.join(options.trade_executor_base_folder, C.output_file(trading_day, text=True))
     account = recovery.recover(source_strategy, source_account_path, trade_executor_path, source_uuid=options.uuid,
                                initial_capital=options.initial_capital, security_company=options.security_company,
@@ -59,11 +63,14 @@ def main():
 
     if options.backup:
         backup_path = os.path.join(
-            base_folder, C.account_backup_folder_name, C.account_file_with_trading_day(trading_day))
+            base_folder, C.account_backup_folder_name,
+            C.account_file_with_trading_day(trading_day, uuid=options.uuid, now=datetime.now()))
         account.save_to_file(backup_path)
 
 
 if __name__ == '__main__':
     main()
+
+
 
 ```

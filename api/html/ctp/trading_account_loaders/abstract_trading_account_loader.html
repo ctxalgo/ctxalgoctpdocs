@@ -179,12 +179,24 @@
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trading_account_loaders.abstract_trading_account_loader.AbstractTradingAccountLoader.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>account</em>, <em>ctp_factory</em>, <em>base_folder</em>, <em>trading_day=None</em>, <em>uuid=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.abstract_trading_account_loader.AbstractTradingAccountLoader.save" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save</code><span class="sig-paren">(</span><em>account</em>, <em>ctp_factory</em>, <em>base_folder</em>, <em>trading_day=None</em>, <em>uuid=None</em>, <em>include_time=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.abstract_trading_account_loader.AbstractTradingAccountLoader.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save the given account.
 :param account: TradingAccount, the account to save.
 :param ctp_factory: AbstractCtpFactory, the ctp factory.
 :param base_folder: string, base folder for the strategy.
-:param trading_day: date, current trading day.</p>
+:param trading_day: date, current trading day.
+:param uuid: string, if not None, uuid is included in the account file name.</p>
+<blockquote>
+<div>Only have effect when trading_day is not None.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>include_time</strong> &#8211; bool, if True, current system timestamp is included in the account file name.
+Only have effect when trading_day is not None.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
