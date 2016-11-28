@@ -2013,6 +2013,16 @@ multiple pieces of information, one piece for each currency.</td>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.on_trading_session_begin">
+<code class="descname">on_trading_session_begin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.on_trading_session_begin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.on_trading_session_end">
+<code class="descname">on_trading_session_end</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.on_trading_session_end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.open_limit_order">
 <code class="descname">open_limit_order</code><span class="sig-paren">(</span><em>volume</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>tick_delta=None</em>, <em>kind='Normal'</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>actual_instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.open_limit_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open a limit order at price. Note that for limit orders.
@@ -2402,6 +2412,16 @@ to cancel those orders.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.set_should_auto_market_connect_disconnect">
+<code class="descname">set_should_auto_market_connect_disconnect</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.set_should_auto_market_connect_disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.set_should_auto_trading_connect_disconnect">
+<code class="descname">set_should_auto_trading_connect_disconnect</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.set_should_auto_trading_connect_disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.set_should_exit">
 <code class="descname">set_should_exit</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.set_should_exit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set self._should_exit to the given boolean.
@@ -2492,8 +2512,13 @@ between the current price and the position price.</li>
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.should_auto_connect_disconnect">
-<code class="descname">should_auto_connect_disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.should_auto_connect_disconnect" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.should_auto_market_connect_disconnect">
+<code class="descname">should_auto_market_connect_disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.should_auto_market_connect_disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.should_auto_trading_connect_disconnect">
+<code class="descname">should_auto_trading_connect_disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.should_auto_trading_connect_disconnect" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2770,7 +2795,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Nov 26, 2016.
+      Last updated on Nov 28, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

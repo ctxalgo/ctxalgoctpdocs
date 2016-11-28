@@ -18,12 +18,19 @@ class FullMarketTickRetriever(AbstractStrategy):
         AbstractStrategy.__init__(
             self, instrument_ids, parameters, base_folder, periods=periods, description=description, logger=logger)
         self.set_should_terminate_after_market_close(False)
+        self.set_is_trading_enabled(False)
+        self.set_should_auto_market_connect_disconnect(False)
         self.file = None
 
     def on_before_run(self, strategy):
         # Strategy will terminates at 16:00:00 of the trading day.
         self.set_exit_time(datetime.combine(self.trading_day(), time(16, 0, 0)))
         self.file = open(self.parameters.output, 'w')
+        trading_day = self.trading_day()
+        close_market_time = datetime.combine(trading_day, time(8, 30, 0))
+        open_market_time = datetime.combine(trading_day, time(8, 35, 0))
+        self.add_timer(trigger_time=close_market_time, action=lambda a, b, c: self.disconnect_market())
+        self.add_timer(trigger_time=open_market_time, action=lambda a, b, c: self.connect_market())
 
     def on_after_run(self, strategy):
         self.file.close()
