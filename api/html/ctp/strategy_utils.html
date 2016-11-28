@@ -228,6 +228,21 @@ Note: Only sup
 :param base_folder: folder to store transformed data.</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.ctp_subfolder_name">
+<code class="descname">ctp_subfolder_name</code><em class="property"> = 'ctp'</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.ctp_subfolder_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.log_subfolder_name">
+<code class="descname">log_subfolder_name</code><em class="property"> = 'log'</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.log_subfolder_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.ohlc_subfolder_name">
+<code class="descname">ohlc_subfolder_name</code><em class="property"> = 'ohlc'</em><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.ohlc_subfolder_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="staticmethod">
 <dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.get_subfolders">
 <em class="property">static </em><code class="descname">get_subfolders</code><span class="sig-paren">(</span><em>base_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.get_subfolders" title="Permalink to this definition">¶</a></dt>
@@ -312,6 +327,22 @@ because normalization is expensive.</div></blockquote>
 <em class="property">static </em><code class="descname">get_investor_position_fields</code><span class="sig-paren">(</span><em>future_id</em>, <em>direction</em>, <em>yesterday_volume</em>, <em>today_volume</em>, <em>profit</em>, <em>ctp_factory</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.get_investor_position_fields" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.base_folder_from_account_backup_file">
+<em class="property">static </em><code class="descname">base_folder_from_account_backup_file</code><span class="sig-paren">(</span><em>account_path</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.base_folder_from_account_backup_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the base folder path from an account backup file path.
+:param account_path: string, the absolute or relative path to an account backup file.
+:return: string, the absolute or relative path to the strategy&#8217;s base folder.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.base_folder_from_log_file">
+<em class="property">static </em><code class="descname">base_folder_from_log_file</code><span class="sig-paren">(</span><em>log_file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.base_folder_from_log_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the base folder path from a strategy&#8217;s log file.
+:param log_file_path: string, the absolute or relative path to a log file.
+:return: string, the absolute or relative path to the strategy&#8217;s base folder.</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -336,7 +367,7 @@ because normalization is expensive.</div></blockquote>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Nov 28, 2016.
+      Last updated on Nov 29, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

@@ -287,6 +287,11 @@
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="ctxalgoctp.ctp.constants.Constants.product">
+<code class="descname">product</code><em class="property"> = 'product'</em><a class="headerlink" href="#ctxalgoctp.ctp.constants.Constants.product" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="ctxalgoctp.ctp.constants.Constants.strategy">
 <code class="descname">strategy</code><em class="property"> = 'strategy'</em><a class="headerlink" href="#ctxalgoctp.ctp.constants.Constants.strategy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -371,6 +376,26 @@
 <em class="property">static </em><code class="descname">account_file_with_trading_day</code><span class="sig-paren">(</span><em>trading_day</em>, <em>uuid=None</em>, <em>now=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.constants.Constants.account_file_with_trading_day" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.constants.Constants.parse_account_file_name">
+<em class="property">static </em><code class="descname">parse_account_file_name</code><span class="sig-paren">(</span><em>account_file_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.constants.Constants.parse_account_file_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse an account backup file name into parts.
+:param account_file_name: string, the account backup file name, do not include folders.
+:return: (trading_day, timestamp, uuid)</p>
+<blockquote>
+<div>trading_day: date, the trading day,
+timestamp: datetime, the timestamp when the account backup file is written.
+uuid: string, the uuid of the strategy execution.</div></blockquote>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.constants.Constants.parse_log_file">
+<em class="property">static </em><code class="descname">parse_log_file</code><span class="sig-paren">(</span><em>log_file_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.constants.Constants.parse_log_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the log file name to find out its trading day.
+:param log_file_name: string, the strategy log file name, do not include folders.
+:return: date, the trading day.</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -395,7 +420,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Nov 28, 2016.
+      Last updated on Nov 29, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
