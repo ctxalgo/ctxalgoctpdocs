@@ -224,31 +224,51 @@ If None, extract trades from the last execution of the strategy with given sourc
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.recover">
-<code class="descname">recover</code><span class="sig-paren">(</span><em>source_strategy</em>, <em>source_strategy_account_path</em>, <em>trade_executor_log_path</em>, <em>source_uuid=None</em>, <em>initial_capital=1000000.0</em>, <em>security_company=None</em>, <em>trade_executor_log_text=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.recover" title="Permalink to this definition">¶</a></dt>
+<code class="descname">recover</code><span class="sig-paren">(</span><em>source_strategy</em>, <em>source_strategy_account_path</em>, <em>trade_executor_log_path</em>, <em>crashed_source_uuid=None</em>, <em>initial_capital=1000000.0</em>, <em>security_company=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.recover" title="Permalink to this definition">¶</a></dt>
 <dd><p>Recover source strategy position from zmq trade executor log.
 :param source_strategy: string, name of the source strategy, in form of product.strategy.
 :param source_strategy_account_path: string, path to the account file of the source strategy.
 :param trade_executor_log_path: string, path to the log file of the trade executor.
-:param source_uuid: string, optional, if not None, the uuid of the source strategy execution.</p>
+:param crashed_source_uuid: string, the uuid of the crashed source strategy execution.
+:param initial_capital: float, initial capital for the account.
+:param security_company: string, security company.
+:return: TradingAccount, the recovered trading account.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.find_strategy_name">
+<em class="property">static </em><code class="descname">find_strategy_name</code><span class="sig-paren">(</span><em>base_folder</em>, <em>uuid</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.find_strategy_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find strategy name associated with the given crashed strategy uuid.
+:param uuid: string, strategy uuid.
+:return: string, strategy name in form of product.strategy. None if no such strategy is found.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.find_last_two_execution_uuids">
+<em class="property">static </em><code class="descname">find_last_two_execution_uuids</code><span class="sig-paren">(</span><em>base_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.find_last_two_execution_uuids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the uuid of the last two strategy execution.
+:param base_folder: string, base folder of a strategy.
+:return: [string], the last two uuids.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.find_account_backup_file">
+<em class="property">static </em><code class="descname">find_account_backup_file</code><span class="sig-paren">(</span><em>base_folder</em>, <em>uuid</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.find_account_backup_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the account backup file with the given uuid.
+:param base_folder: string, strategy base folder.
+:param uuid: string, the uuid.
+:return: string, the path of the account file with that uuid. None if no such file is found.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.find_trader_strategy_log_with_source_uuid">
+<em class="property">static </em><code class="descname">find_trader_strategy_log_with_source_uuid</code><span class="sig-paren">(</span><em>base_folder</em>, <em>uuid</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.find_trader_strategy_log_with_source_uuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the trade executor strategy log which contains the source strategy session with uuid.
+:param base_folder: string, base folder of the trade execution strategy.
+:param uuid: string, uuid of the source strategy.
+:return: string, path of the log file containing the source strategy execution.</p>
 <blockquote>
-<div>If None, extract trades from the last execution of the strategy with given source_strategy name.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>initial_capital</strong> &#8211; float, initial capital for the account.</li>
-<li><strong>security_company</strong> &#8211; string, security company.</li>
-<li><strong>trade_executor_log_text</strong> &#8211; bool,
-the trade_executor_log_path is assumed to be in text format, otherwise binary format.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">TradingAccount, the recovered trading account.</p>
-</td>
-</tr>
-</tbody>
-</table>
+<div>None if no such log file is found.</div></blockquote>
 </dd></dl>
 
 </dd></dl>
