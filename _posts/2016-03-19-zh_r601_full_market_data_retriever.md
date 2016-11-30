@@ -22,6 +22,11 @@ class FullMarketTickRetriever(AbstractStrategy):
         self.set_should_auto_market_connect_disconnect(False)
         self.file = None
 
+    def on_message_from_mission_controller(self, message):
+        self.send_message_to_mission_controller('Received message: ' + message)
+        if message == 'flush':
+            self.logger.flush()
+
     def on_before_run(self, strategy):
         # Strategy will terminates at 16:00:00 of the trading day.
         self.set_exit_time(datetime.combine(self.trading_day(), time(16, 0, 0)))

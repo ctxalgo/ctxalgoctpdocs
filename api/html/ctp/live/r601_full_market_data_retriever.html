@@ -199,6 +199,11 @@ Title: 接收全市场tick数据
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r601_full_market_data_retriever.</code><code class="descname">FullMarketTickRetriever</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../strategy.html#ctxalgoctp.ctp.strategy.AbstractStrategy" title="ctxalgoctp.ctp.strategy.AbstractStrategy"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.strategy.AbstractStrategy</span></code></a></p>
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_message_from_mission_controller">
+<code class="descname">on_message_from_mission_controller</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_message_from_mission_controller" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_before_run">
 <code class="descname">on_before_run</code><span class="sig-paren">(</span><em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_before_run" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1641,11 +1646,6 @@ requested by get_investor_position.
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_message_from_mission_controller">
-<code class="descname">on_message_from_mission_controller</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_message_from_mission_controller" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_mission_control">
 <code class="descname">on_mission_control</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r601_full_market_data_retriever.FullMarketTickRetriever.on_mission_control" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2751,7 +2751,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Nov 29, 2016.
+      Last updated on Dec 01, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
