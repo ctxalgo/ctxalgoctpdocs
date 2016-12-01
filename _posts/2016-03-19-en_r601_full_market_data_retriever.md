@@ -29,6 +29,12 @@ class FullMarketTickRetriever(AbstractStrategy):
         elif message == 'exit':
             self.set_should_exit(True)
 
+    def on_market_session_begin(self):
+        self.log('MARKET_SESSION_BEGIN', {})
+
+    def on_market_session_end(self):
+        self.log('MARKET_SESSION_END', {})
+
     def on_before_run(self, strategy):
         # Strategy will terminates at 16:00:00 of the trading day.
         self.set_exit_time(datetime.combine(self.trading_day(), time(16, 0, 0)))
