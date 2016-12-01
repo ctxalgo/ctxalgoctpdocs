@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>roll &mdash; ctxalgoctp 0.1 documentation</title>
+  <title>position_rebalancer &mdash; ctxalgoctp 0.1 documentation</title>
   
 
   
@@ -32,8 +32,7 @@
   
     <link rel="top" title="ctxalgoctp 0.1 documentation" href="../index.html"/>
         <link rel="up" title="ctp" href="index.html"/>
-        <link rel="next" title="state_utils" href="state_utils.html"/>
-        <link rel="prev" title="order_cancellation" href="order_cancellation.html"/> 
+        <link rel="prev" title="report" href="report.html"/> 
 
   
   <script src="../static/js/modernizr.min.js"></script>
@@ -97,7 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="market_data_feed.html">market_data_feed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="base.html">base</a></li>
 <li class="toctree-l2"><a class="reference internal" href="order_cancellation.html">order_cancellation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">roll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roll.html">roll</a></li>
 <li class="toctree-l2"><a class="reference internal" href="state_utils.html">state_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="constants.html">constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dominant_provider.html">dominant_provider</a></li>
@@ -114,7 +113,7 @@
 <li class="toctree-l2"><a class="reference internal" href="future_info_provider.html">future_info_provider</a></li>
 <li class="toctree-l2"><a class="reference internal" href="trading_constants.html">trading_constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="report.html">report</a></li>
-<li class="toctree-l2"><a class="reference internal" href="position_rebalancer.html">position_rebalancer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">position_rebalancer</a></li>
 </ul>
 </li>
 </ul>
@@ -143,11 +142,11 @@
       
           <li><a href="index.html">ctp</a> &raquo;</li>
       
-    <li>roll</li>
+    <li>position_rebalancer</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../sources/ctp/roll.txt" rel="nofollow"> View page source</a>
+            <a href="../sources/ctp/position_rebalancer.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -157,48 +156,82 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ctxalgoctp.ctp.roll">
-<span id="roll"></span><h1>roll<a class="headerlink" href="#module-ctxalgoctp.ctp.roll" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.position_rebalancer">
+<span id="position-rebalancer"></span><h1>position_rebalancer<a class="headerlink" href="#module-ctxalgoctp.ctp.position_rebalancer" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="ctxalgoctp.ctp.roll.AbstractRollPocily">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.roll.</code><code class="descname">AbstractRollPocily</code><a class="headerlink" href="#ctxalgoctp.ctp.roll.AbstractRollPocily" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.position_rebalancer.Position">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.position_rebalancer.</code><code class="descname">Position</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>historical_volume</em>, <em>today_volume</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.position_rebalancer.Position" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<dl class="method">
-<dt id="ctxalgoctp.ctp.roll.AbstractRollPocily.name">
-<code class="descname">name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.roll.AbstractRollPocily.name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.roll.AbstractRollPocily.is_roll_on_first_position_change">
-<code class="descname">is_roll_on_first_position_change</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.roll.AbstractRollPocily.is_roll_on_first_position_change" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="class">
-<dt id="ctxalgoctp.ctp.roll.RollOnFirstPositionChangePolicy">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.roll.</code><code class="descname">RollOnFirstPositionChangePolicy</code><a class="headerlink" href="#ctxalgoctp.ctp.roll.RollOnFirstPositionChangePolicy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.roll.AbstractRollPocily" title="ctxalgoctp.ctp.roll.AbstractRollPocily"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.roll.AbstractRollPocily</span></code></a></p>
-<dl class="method">
-<dt id="ctxalgoctp.ctp.roll.RollOnFirstPositionChangePolicy.is_roll_on_first_position_change">
-<code class="descname">is_roll_on_first_position_change</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.roll.RollOnFirstPositionChangePolicy.is_roll_on_first_position_change" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.roll.RollOnFirstPositionChangePolicy.name">
-<code class="descname">name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.roll.RollOnFirstPositionChangePolicy.name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="ctxalgoctp.ctp.roll.RollPolicyFactory">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.roll.</code><code class="descname">RollPolicyFactory</code><a class="headerlink" href="#ctxalgoctp.ctp.roll.RollPolicyFactory" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.position_rebalancer.PositionRebalancer">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.position_rebalancer.</code><code class="descname">PositionRebalancer</code><a class="headerlink" href="#ctxalgoctp.ctp.position_rebalancer.PositionRebalancer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<dl class="staticmethod">
-<dt id="ctxalgoctp.ctp.roll.RollPolicyFactory.roll_on_first_position_change">
-<em class="property">static </em><code class="descname">roll_on_first_position_change</code><span class="sig-paren">(</span><em>params={}</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.roll.RollPolicyFactory.roll_on_first_position_change" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.position_rebalancer.PositionRebalancer.rebalance">
+<code class="descname">rebalance</code><span class="sig-paren">(</span><em>account_positions</em>, <em>current_strategy_positions</em>, <em>expected_positions</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.position_rebalancer.PositionRebalancer.rebalance" title="Permalink to this definition">¶</a></dt>
+<dd><p>The position rebalance is defined as:</p>
+<p>Let P(s, i, d) be the re-balanced position for instrument i of strategy s, on d, where i indexes instruments,
+such as cu1601, cu1602, s indexes the list of strategies, and d indexes historical or today. In other words,
+s in set of strategies {s1, s2, s3},
+i in set of possible instruments in the account.
+d in set of {historical, today}.</p>
+<p>Let A(i, d) be the position from the account. Data is from account_positions.</p>
+<p>Let C(s, i, d) be the current positions for instrument i in strategy s on day d.
+Data is from current_strategy_positions.</p>
+<p>Let E(s, i) be the expected positions for instrument i in strategy s. Note that expected positions does not
+distinguish between historical or today. Data is from expected_positions.</p>
+<p>The position rebalance is a minimization problem which tries to find an assignment for P(s, i, d) to minimize</p>
+<p>sum_over_s_i_d (C(s,i,d) - P(s,i,d))^2    +    sum_over_s_i (E(s,i) - P(s,i,d=historical) - P(s,i,d=today))^2</p>
+<blockquote>
+<div>close to current                          close to expected positions
+strategy positions</div></blockquote>
+<p>subject to:
+constraint 1:  forall i . A(i, d=today) == sum_over_s (P(s, i, d=today))
+constraint 2:  forall i . A(i, d=yesterday) == sum_over_s (P(s, i, d=yesterday))</p>
+<p>For example, if an account has the following positions:
+{   &#8216;cu&#8217;: {&#8216;historical_volume&#8217;: 5,  &#8216;today&#8217;: 7},</p>
+<blockquote>
+<div>&#8216;rb&#8217;: {&#8216;historical_volume&#8217;: 3,  &#8216;today_volume&#8217;: 2} }</div></blockquote>
+<p>And there are two strategies s1 and s2, and their current positions are:
+s1: {  &#8216;cu&#8217;: {&#8216;historical_volume&#8217;: 6,  &#8216;today_volume&#8217;: 1}  }</p>
+<dl class="docutils">
+<dt>s2: {  &#8216;cu&#8217;: {&#8216;historical_volume&#8217;: 4,  &#8216;today_volume&#8217;: 2},</dt>
+<dd>&#8216;rb&#8217;: {&#8216;historical_volume&#8217;: 4,&#8217;today_volume&#8217;: 1} }</dd>
+</dl>
+<p>And expected positions for s1 and s2 are:
+s1: {&#8216;cu&#8217;: 3, &#8216;rb&#8217;: 2}
+s2: {&#8216;cu&#8217;: 10, &#8216;rb&#8217;: 6}</p>
+<p>Then the following is a possible assignment for position rebalance (may not necessarily the optimal):
+s1: {  &#8216;cu&#8217;: {&#8216;historical_volume&#8217;: 2,  &#8216;today_volume&#8217;: 1},</p>
+<blockquote>
+<div>&#8216;rb&#8217;: {&#8216;historical_volume&#8217;: 1,  &#8216;today_volume&#8217;: 0} }</div></blockquote>
+<dl class="docutils">
+<dt>s2: {  &#8216;cu&#8217;: {&#8216;historical_volume&#8217;: 3,  &#8216;today_volume&#8217;: 6},</dt>
+<dd>&#8216;rb&#8217;: {&#8216;historical_volume&#8217;: 2,  &#8216;today_volume&#8217;: 2} }</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>account_positions</strong> &#8211; dict{string: Position}, meaning dict{instrument_id: Position}.
+Keys are instrument ids, values are the positions for those instruments.</li>
+<li><strong>current_strategy_positions</strong> &#8211; dict{string: dict{string: Position}}, meaning
+dict{strategy_name: dict{instrument_id: Position}. The list of strategies and their positions.</li>
+<li><strong>expected_positions</strong> &#8211; dict{string: dict{string: int}}, meaning
+dict{strategy_name: dict{instrument_id: position volume}}. Note that expected positions do not distinguish
+between yesterday and today positions.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict{string: dict{string: Position}}, meaning dict{strategy_name: dict{instrument_id: Position}}.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
@@ -211,10 +244,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="state_utils.html" class="btn btn-neutral float-right" title="state_utils" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="order_cancellation.html" class="btn btn-neutral" title="order_cancellation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="report.html" class="btn btn-neutral" title="report" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
