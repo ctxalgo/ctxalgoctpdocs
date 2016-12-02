@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>r112_strategy_log_printer &mdash; ctxalgoctp 0.1 documentation</title>
+  <title>r503_compare_position_against_trade_executor &mdash; ctxalgoctp 0.1 documentation</title>
   
 
   
@@ -32,8 +32,8 @@
   
     <link rel="top" title="ctxalgoctp 0.1 documentation" href="../../index.html"/>
         <link rel="up" title="live" href="index.html"/>
-        <link rel="next" title="r106_cancel_all_pending_orders_from_previous_session" href="r106_cancel_all_pending_orders_from_previous_session.html"/>
-        <link rel="prev" title="r104_automatic_order_cancellation" href="r104_automatic_order_cancellation.html"/> 
+        <link rel="next" title="r500_sync_external_positions" href="r500_sync_external_positions.html"/>
+        <link rel="prev" title="r102_cancel_order_after_fully_executed" href="r102_cancel_order_after_fully_executed.html"/> 
 
   
   <script src="../../static/js/modernizr.min.js"></script>
@@ -76,10 +76,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">ctp</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">live</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="r102_cancel_order_after_fully_executed.html">r102_cancel_order_after_fully_executed</a></li>
-<li class="toctree-l3"><a class="reference internal" href="r503_compare_position_against_trade_executor.html">r503_compare_position_against_trade_executor</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">r503_compare_position_against_trade_executor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r500_sync_external_positions.html">r500_sync_external_positions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r104_automatic_order_cancellation.html">r104_automatic_order_cancellation</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">r112_strategy_log_printer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r112_strategy_log_printer.html">r112_strategy_log_printer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r106_cancel_all_pending_orders_from_previous_session.html">r106_cancel_all_pending_orders_from_previous_session</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r110_stand_by_strategy.html">r110_stand_by_strategy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="r501_set_strategy_positions.html">r501_set_strategy_positions</a></li>
@@ -174,11 +174,11 @@
       
           <li><a href="index.html">live</a> &raquo;</li>
       
-    <li>r112_strategy_log_printer</li>
+    <li>r503_compare_position_against_trade_executor</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../sources/ctp/live/r112_strategy_log_printer.txt" rel="nofollow"> View page source</a>
+            <a href="../../sources/ctp/live/r503_compare_position_against_trade_executor.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -188,22 +188,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ctxalgoctp.ctp.live.r112_strategy_log_printer">
-<span id="r112-strategy-log-printer"></span><h1>r112_strategy_log_printer<a class="headerlink" href="#module-ctxalgoctp.ctp.live.r112_strategy_log_printer" title="Permalink to this headline">¶</a></h1>
-<p>[en]
-Title: Strategy log printer
-This example prints all the strategy logs received from a zmq queue.
+  <div class="section" id="r503-compare-position-against-trade-executor">
+<h1>r503_compare_position_against_trade_executor<a class="headerlink" href="#r503-compare-position-against-trade-executor" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-ctxalgoctp.ctp.live.r503_compare_position_against_trade_executor"></span><p>[en]
+Title: Compare positions between trade executor and associated individual strategies
+This script compares positions between a trade executor and its associated individual strategies.
 [zh]
-Title: 策略日志打印
-本程序打印出来自zeromq的一个或多个策略的策略日志。</p>
+Title: 比较订单执行器中的仓位和与其关联的策略的仓位
+本程序比较订单执行器中的仓位和与其关联的策略的仓位。</p>
 <dl class="function">
-<dt id="ctxalgoctp.ctp.live.r112_strategy_log_printer.get_command_line_parser">
-<code class="descclassname">ctxalgoctp.ctp.live.r112_strategy_log_printer.</code><code class="descname">get_command_line_parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r112_strategy_log_printer.get_command_line_parser" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.live.r503_compare_position_against_trade_executor.get_account_from_path">
+<code class="descclassname">ctxalgoctp.ctp.live.r503_compare_position_against_trade_executor.</code><code class="descname">get_account_from_path</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r503_compare_position_against_trade_executor.get_account_from_path" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
-<dt id="ctxalgoctp.ctp.live.r112_strategy_log_printer.main">
-<code class="descclassname">ctxalgoctp.ctp.live.r112_strategy_log_printer.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r112_strategy_log_printer.main" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.live.r503_compare_position_against_trade_executor.save_position">
+<code class="descclassname">ctxalgoctp.ctp.live.r503_compare_position_against_trade_executor.</code><code class="descname">save_position</code><span class="sig-paren">(</span><em>positions</em>, <em>sid</em>, <em>actual_sid</em>, <em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r503_compare_position_against_trade_executor.save_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live.r503_compare_position_against_trade_executor.get_table">
+<code class="descclassname">ctxalgoctp.ctp.live.r503_compare_position_against_trade_executor.</code><code class="descname">get_table</code><span class="sig-paren">(</span><em>header</em>, <em>content</em>, <em>max_width=120</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r503_compare_position_against_trade_executor.get_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live.r503_compare_position_against_trade_executor.main">
+<code class="descclassname">ctxalgoctp.ctp.live.r503_compare_position_against_trade_executor.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r503_compare_position_against_trade_executor.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -215,10 +225,10 @@ Title: 策略日志打印
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="r106_cancel_all_pending_orders_from_previous_session.html" class="btn btn-neutral float-right" title="r106_cancel_all_pending_orders_from_previous_session" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="r500_sync_external_positions.html" class="btn btn-neutral float-right" title="r500_sync_external_positions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="r104_automatic_order_cancellation.html" class="btn btn-neutral" title="r104_automatic_order_cancellation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="r102_cancel_order_after_fully_executed.html" class="btn btn-neutral" title="r102_cancel_order_after_fully_executed" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
