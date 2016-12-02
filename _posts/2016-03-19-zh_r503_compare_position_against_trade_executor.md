@@ -10,6 +10,7 @@ language: zh
 
 ```python
 import os
+import sys
 from ctxalgolib.output.texttable import Texttable
 from optparse import OptionParser
 from datetime import datetime
@@ -115,6 +116,9 @@ def main():
         else:
             for row in differences:
                 print(u','.join([str(v) for v in row]))
+        sys.exit(-1)
+    else:
+        sys.exit(0)
 
 
 if __name__ == '__main__':
