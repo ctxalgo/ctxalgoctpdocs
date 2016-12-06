@@ -526,7 +526,8 @@ producer, to which current strategy can register relative instruments.</div></bl
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.cancel_source_orders">
 <code class="descname">cancel_source_orders</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.cancel_source_orders" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cancel all pending orders from given source strategy.
-:param source: string, source strategy signature with uuid.</p>
+:param source: string, source strategy signature with uuid.
+:return int, the number of canceled orders.</p>
 </dd></dl>
 
 <dl class="method">
@@ -3126,7 +3127,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Dec 02, 2016.
+      Last updated on Dec 06, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

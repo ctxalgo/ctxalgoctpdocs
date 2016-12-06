@@ -197,6 +197,36 @@ This script synchronizes a strategy&#8217;s position from log file of the associ
 Title: 从订单执行器日志同步策略的仓位
 本程序从订单执行器的日志文件中同步策略的仓位。</p>
 <dl class="function">
+<dt id="ctxalgoctp.ctp.live.r502_sync_position_from_trade_executor.communicate">
+<code class="descclassname">ctxalgoctp.ctp.live.r502_sync_position_from_trade_executor.</code><code class="descname">communicate</code><span class="sig-paren">(</span><em>mission_controller</em>, <em>trade_executor</em>, <em>source_with_uuid</em>, <em>info</em>, <em>max_tries=1</em>, <em>wait=5</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r502_sync_position_from_trade_executor.communicate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Communicate with the trade executor.
+:param mission_controller: MissionController, the mission controller.
+:param trade_executor: string, name of the trade executor strategy, in form of product.strategy.
+:param source_with_uuid: string, the full signature of the crashed strategy, in form of product.strategy#uuid.
+:param info: string, the message kind.
+:param max_tries: int, the max number of tries to send message to trade executor.
+:param wait: int, the max number of seconds to wait for a message to be replied.
+:return: dict{string: object}, the reply of the message, None if no reply has been received before tiemout.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live.r502_sync_position_from_trade_executor.check_trade_executor_status">
+<code class="descclassname">ctxalgoctp.ctp.live.r502_sync_position_from_trade_executor.</code><code class="descname">check_trade_executor_status</code><span class="sig-paren">(</span><em>mission_control</em>, <em>trader_name</em>, <em>source_with_uuid</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r502_sync_position_from_trade_executor.check_trade_executor_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Confirm communication with the trade executor strategy (if it is still running).
+:param mission_control: string, the mission control queue address prefix (without port).
+:param trader_name: string, in form of product.strategy, the name of the trade executor strategy.
+:param source_with_uuid: string, the full signature of the crashed strategy, in form of product.strategy#uuid.
+:return: int, if -1 meaning that there are still pending orders of the crashed strategy, no position sync</p>
+<blockquote>
+<div>should be carried on. Otherwise, return 0.</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live.r502_sync_position_from_trade_executor.get_cmd_parser">
+<code class="descclassname">ctxalgoctp.ctp.live.r502_sync_position_from_trade_executor.</code><code class="descname">get_cmd_parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r502_sync_position_from_trade_executor.get_cmd_parser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
 <dt id="ctxalgoctp.ctp.live.r502_sync_position_from_trade_executor.main">
 <code class="descclassname">ctxalgoctp.ctp.live.r502_sync_position_from_trade_executor.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r502_sync_position_from_trade_executor.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -223,7 +253,7 @@ Title: 从订单执行器日志同步策略的仓位
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Dec 02, 2016.
+      Last updated on Dec 06, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

@@ -233,7 +233,7 @@ If None, extract trades from the last execution of the strategy with given sourc
 :param crashed_source_uuid: string, the uuid of the crashed source strategy execution.
 :param initial_capital: float, initial capital for the account.
 :param security_company: string, security company.
-:return: TradingAccount, the recovered trading account.</p>
+:return: TradingAccount, [trade] the recovered trading account.</p>
 </dd></dl>
 
 <dl class="staticmethod">
@@ -267,10 +267,20 @@ If None, extract trades from the last execution of the strategy with given sourc
 <dd><p>Find the trade executor strategy log which contains the source strategy session with uuid.
 :param base_folder: string, base folder of the trade execution strategy.
 :param uuid: string, uuid of the source strategy.
-:return: string, path of the log file containing the source strategy execution.</p>
+:return: (log_path, trader_name)</p>
 <blockquote>
-<div>None if no such log file is found.</div></blockquote>
+<div><dl class="docutils">
+<dt>log_path: string, path of the log file containing the source strategy execution.</dt>
+<dd>None if no such log file is found.</dd>
+</dl>
+<p>trader_name: string, the signature of the trader strategy. None if no name is found.</p>
+</div></blockquote>
 </dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.find_trade_executor_name">
+<em class="property">static </em><code class="descname">find_trade_executor_name</code><span class="sig-paren">(</span><em>log_file</em>, <em>uuid</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.find_trade_executor_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -296,7 +306,7 @@ If None, extract trades from the last execution of the strategy with given sourc
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Dec 02, 2016.
+      Last updated on Dec 06, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

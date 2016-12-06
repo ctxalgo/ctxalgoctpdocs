@@ -39,13 +39,29 @@ class StandByStrategy(AbstractStrategy):
         elif message == 'get_investor_position':
             self.get_investor_position('')
             display_positions(self)
-        elif message.startswith('change_position_to'):
+        elif message.startswith('change_position_to:'):
             parts = message.split(':')
             positions = StrategyCommandLineUtils.parse_positions(':'.join(parts[1:]))
             for sid, position_info in positions.items():
                 if not self.has_pending_order(instrument_id=sid):
-                    self.change_position_to(**position_info)
-
+                    tick_delta = int(position_info['tick_delta']) if 'tick_delta' in position_info else None
+                    self.change_position_to(position_info['position'], instrument_id=sid, tick_delta=tick_delta)
+        elif message.startswith('change_position_to_and_exception:'):
+            parts = message.split(':')
+            positions = StrategyCommandLineUtils.parse_positions(':'.join(parts[1:]))
+            for sid, position_info in positions.items():
+                if not self.has_pending_order(instrument_id=sid):
+                    tick_delta = int(position_info['tick_delta']) if 'tick_delta' in position_info else None
+                    self.change_position_to(position_info['position'], instrument_id=sid, tick_delta=tick_delta)
+                    raise Exception('exception')
+        elif message.startswith('cancel:'):
+            parts = message.split(':')
+            order_ref = parts[1]
+            self.cancel_order(order_ref)
+        elif message.startswith('force_cancel:'):
+            parts = message.split(':')
+            order_ref = parts[1]
+            self.cancel_order(order_ref, force=True)
         elif message.startswith('get_instrument'):
             parts = message.split(':')
             sid = parts[1]
@@ -87,28 +103,28 @@ class StandByStrategy(AbstractStrategy):
 
 def main():
     # TODO: To view logs from the website, set the message_proxy_address to ChoreServerConfig().tcp_address().
-    message_proxy_address = 'tcp://127.0.0.1'
+    message_proxy_address = 'tcp://139.196.234.169'
 
     # TODO: To use an external trade execution server, set external_trade_executor to True.
     # TODO: Of course, you have to start that trade execution server, which is at
     # TODO: ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.
-    external_trade_executor = False
+    external_trade_executor = True
 
     # TODO: If you trade locally, you have to specify the trading account.
     account = '--account simnow_future4'
 
     # TODO: Specify the instruments to trade.
-    instruments = '--instruments cu1611'
+    instruments = '--instruments cu1612,a1701'
 
     # TODO: Set strategy name
     strategy_name = 'test.s1'
 
-    # local_bookkeep = '--local-bookkeep'
-    local_bookkeep = ''
+    local_bookkeep = '--local-bookkeep'
+    # local_bookkeep = ''
 
     if external_trade_executor:
         # The trade executor server is assumed to be at the same machine as current strategy.
-        trader_address = 'tcp://127.0.0.1'
+        trader_address = 'test.trade_executor@tcp://127.0.0.1:3000'
         trade_executor = '--trade-executor ' + trader_address
         # account = ''
     else:
