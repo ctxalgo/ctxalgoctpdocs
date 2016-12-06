@@ -7,6 +7,22 @@ language: en
 
 This script synchronizes a strategy's position from log file of the associated trade executor.
 
+Usually, several strategies perform trading through a trade executor strategy. This script is used when a strategy
+crashed but its associated trade executor does not. And we want to sync the crashed strategy's position with the
+information logged in the trade executor.
+
+Assume that the strategy's base folder is /strategy, the trade executor's base folder is /trader, then to sync the
+crashed strategy's position with the trade executor, invoke current script:
+
+r502_sync_position_from_trade_executor --strategy /strategy --trade-executor /trader --mission-control tcp://mc_ip --overwrite
+
+If the trade executor strategy is till running, you should provide the mission control ip address so current script can
+talk to the trade executor to make sure there is no pending orders from the crashed strategy, and if there is, cancel
+those pending orders.
+
+After the script terminates, the crashed strategy's position is synced with the associated trade executor.
+
+
 ```python
 import os
 from optparse import OptionParser
