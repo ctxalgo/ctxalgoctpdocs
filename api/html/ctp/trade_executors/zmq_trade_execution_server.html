@@ -1609,7 +1609,7 @@ Inner keys are Periodicity or volatility thresholds, inner values are the genera
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.log_order_dropped">
-<code class="descname">log_order_dropped</code><span class="sig-paren">(</span><em>kind</em>, <em>action</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>reason</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.log_order_dropped" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_order_dropped</code><span class="sig-paren">(</span><em>kind</em>, <em>action</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>reason</em>, <em>drop_reason</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.log_order_dropped" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2054,13 +2054,14 @@ broker_id, investor_id, order_ref, action_flag, volume_change, instrument_id, er
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_order_dropped">
-<code class="descname">on_order_dropped</code><span class="sig-paren">(</span><em>kind</em>, <em>action</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>reason</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_order_dropped" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_order_dropped</code><span class="sig-paren">(</span><em>kind</em>, <em>action</em>, <em>instrument_id</em>, <em>actual_instrument_id</em>, <em>reason</em>, <em>drop_reason</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.on_order_dropped" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action to be called when an order request is dropped due to lack of order book information.
 :param kind: OrderKind, the order kind.
 :param action: OrderAction, the order action.
 :param instrument_id: string, instrument id, the instrument id.
 :param actual_instrument_id: string, actual instrument id.
-:param reason: string, the reason for the order request.</p>
+:param reason: string, the reason for the order request.
+:param drop_reason: string, the reason why the order is dropped.</p>
 </dd></dl>
 
 <dl class="method">
@@ -3127,7 +3128,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Dec 07, 2016.
+      Last updated on Dec 09, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

@@ -44,7 +44,7 @@ class TradeAtTimer(AbstractStrategy):
         self.change_position_to(position, instrument_id=instrument_id)
         self.trade_count += 1
 
-    def on_order_dropped(self, kind, action, instrument_id, actual_instrument_id, reason):
+    def on_order_dropped(self, kind, action, instrument_id, actual_instrument_id, reason, drop_reason):
         print('Order dropped: kind: {}, action: {}, instrument: {}, actual instrument: {}, reason: {}'.format(
             kind, action, instrument_id, actual_instrument_id, reason))
 
