@@ -169,19 +169,40 @@
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.position_rebalancer.</code><code class="descname">PositionRebalancer</code><a class="headerlink" href="#ctxalgoctp.ctp.position_rebalancer.PositionRebalancer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <dl class="staticmethod">
-<dt id="ctxalgoctp.ctp.position_rebalancer.PositionRebalancer.projected_positions_by_direction">
-<em class="property">static </em><code class="descname">projected_positions_by_direction</code><span class="sig-paren">(</span><em>positions</em>, <em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.position_rebalancer.PositionRebalancer.projected_positions_by_direction" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="staticmethod">
-<dt id="ctxalgoctp.ctp.position_rebalancer.PositionRebalancer.projected_expected_positions_by_direction">
-<em class="property">static </em><code class="descname">projected_expected_positions_by_direction</code><span class="sig-paren">(</span><em>positions</em>, <em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.position_rebalancer.PositionRebalancer.projected_expected_positions_by_direction" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="staticmethod">
 <dt id="ctxalgoctp.ctp.position_rebalancer.PositionRebalancer.rebalance_strategies">
 <em class="property">static </em><code class="descname">rebalance_strategies</code><span class="sig-paren">(</span><em>account_positions</em>, <em>current_strategy_positions</em>, <em>expected_positions</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.position_rebalancer.PositionRebalancer.rebalance_strategies" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Rebalance positions in strategies.
+:param account_positions: dict{string: dict{string: Position}}, meaning</p>
+<blockquote>
+<div>dict{actual_instrument_id: dict{direction: Position}}, where direction can be &#8216;long&#8217; or &#8216;short&#8217;.
+The positions in a trading account.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>current_strategy_positions</strong> &#8211; dict{string: dict{dict{string: dict{string: Position}}}, meaning
+dict{string_name: dict{actual_instrument_id: dict{direction: Position}}}, where direction can
+be &#8216;long&#8217; or &#8216;short&#8217;.
+The individual strategies which trade in the same trading account. Note that these strategies should not
+include trade executor strategy.</li>
+<li><strong>expected_positions</strong> &#8211; dict{string: dict{string: dict{string: int}}}, meaning
+dict{strategy_name: dict{actual_instrument_id: dict{direction: volume}}}. Where direction can be
+&#8216;long&#8217; or &#8216;short&#8217;.
+This is the expected positions for each strategy. Note that expected positions does not distinguish
+between historical position and today position.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">dict{string: dict{dict{string: dict{string: Position}}}, meaning
+dict{string_name: dict{actual_instrument_id: dict{direction: Position}}}, where direction can
+be &#8216;long&#8217; or &#8216;short&#8217;.
+The rebalanced positions for all the given strategies.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="staticmethod">
 <dt id="ctxalgoctp.ctp.position_rebalancer.PositionRebalancer.rebalance">
@@ -288,6 +309,35 @@ if x &gt; 0, y &lt; 0, then x = C, y=0
 :param current_today_position: int, the current today position
 :param expected_position: the expected position
 :return: (int, int), (historical rebalanced position, today rebalanced position)</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.position_rebalancer.PositionRebalancer.projected_positions_by_direction">
+<em class="property">static </em><code class="descname">projected_positions_by_direction</code><span class="sig-paren">(</span><em>positions</em>, <em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.position_rebalancer.PositionRebalancer.projected_positions_by_direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract positions for the given direction. Also turn all the positions into non-negative values.
+:param positions: dict{string: dict{string: Position}}, meaning</p>
+<blockquote>
+<div>dict{actual_instrument_id: dict{direction: Position}}, where direction can be &#8216;long&#8217; or &#8216;short&#8217;.
+The positions in a trading account.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>direction</strong> &#8211; string, can be &#8216;long&#8217; or &#8216;short&#8217;.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dict{string: Position}, meaning dict{actual_instrument_id: Position}.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.position_rebalancer.PositionRebalancer.projected_expected_positions_by_direction">
+<em class="property">static </em><code class="descname">projected_expected_positions_by_direction</code><span class="sig-paren">(</span><em>positions</em>, <em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.position_rebalancer.PositionRebalancer.projected_expected_positions_by_direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract positions for the given direction. Also turn all the positions into non-negative values.
+:param positions: dict{string: dict{string: int}}, meaning dict{actual_instrument_id: dict{direction: volume}}.
+:param direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;.
+:return: dict{string: int}, meaning dict{actual_instrument_id: volume}}.</p>
 </dd></dl>
 
 </dd></dl>
