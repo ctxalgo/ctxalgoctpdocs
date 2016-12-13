@@ -91,6 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="trading_account.html">trading_account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strategy_command_line_utils.html">strategy_command_line_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="position_utils.html">position_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="optimization.html">optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="offline_optimization.html">offline_optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
@@ -271,6 +272,52 @@ dominant instrument id, otherwise, return actual_instrument_id.
 <dl class="method">
 <dt id="ctxalgoctp.ctp.dominant_provider.DummyDominantProvider.has_dominant_instrument_id">
 <code class="descname">has_dominant_instrument_id</code><span class="sig-paren">(</span><em>dominant_instrument_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DummyDominantProvider.has_dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.dominant_provider.DominantProviderWithOverwrites">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.dominant_provider.</code><code class="descname">DominantProviderWithOverwrites</code><span class="sig-paren">(</span><em>provider</em>, <em>actual_to_dominant_overwrites=None</em>, <em>dominant_to_actual_overwrites=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProviderWithOverwrites" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider" title="ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.dominant_provider.AbstractDominantProvider</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>provider</strong> &#8211; AbstractDominantProvider, the underlying dominant provider.</li>
+<li><strong>actual_to_dominant_overwrites</strong> &#8211; dict{string: string}, keys are actual instrument ids, values are
+dominant instrument ids.</li>
+<li><strong>dominant_to_actual_overwrites</strong> &#8211; dict{string: string}, keys are dominant instrument ids, values are
+actual_instrument ids.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.dominant_provider.DominantProviderWithOverwrites.actual_instrument_id">
+<code class="descname">actual_instrument_id</code><span class="sig-paren">(</span><em>dominant_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProviderWithOverwrites.actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.dominant_provider.DominantProviderWithOverwrites.dominant_instrument_id">
+<code class="descname">dominant_instrument_id</code><span class="sig-paren">(</span><em>actual_instrument_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProviderWithOverwrites.dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.dominant_provider.DominantProviderWithOverwrites.dominant_instrument_id_or_self">
+<code class="descname">dominant_instrument_id_or_self</code><span class="sig-paren">(</span><em>actual_instrument_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProviderWithOverwrites.dominant_instrument_id_or_self" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.dominant_provider.DominantProviderWithOverwrites.relaxed_dominant_instrument_id">
+<code class="descname">relaxed_dominant_instrument_id</code><span class="sig-paren">(</span><em>actual_instrument_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProviderWithOverwrites.relaxed_dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.dominant_provider.DominantProviderWithOverwrites.has_dominant_instrument_id">
+<code class="descname">has_dominant_instrument_id</code><span class="sig-paren">(</span><em>dominant_instrument_id</em>, <em>trading_day</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.dominant_provider.DominantProviderWithOverwrites.has_dominant_instrument_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

@@ -97,6 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../trading_account.html">trading_account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../strategy_command_line_utils.html">strategy_command_line_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../position_utils.html">position_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../optimization.html">optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../offline_optimization.html">offline_optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
@@ -182,19 +183,29 @@
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader.LocalTradingAccountLoader.change_positions">
+<code class="descname">change_positions</code><span class="sig-paren">(</span><em>account</em>, <em>new_compact_positions</em>, <em>now</em>, <em>dominant_provider</em>, <em>position_prices</em>, <em>trading_day_as_now=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader.LocalTradingAccountLoader.change_positions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader.LocalTradingAccountLoader.close_positions">
-<code class="descname">close_positions</code><span class="sig-paren">(</span><em>account</em>, <em>now</em>, <em>actual_sid</em>, <em>volume</em>, <em>price</em>, <em>historical</em>, <em>dominant_provider</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader.LocalTradingAccountLoader.close_positions" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_positions</code><span class="sig-paren">(</span><em>account</em>, <em>now</em>, <em>actual_sid</em>, <em>volume</em>, <em>price</em>, <em>historical</em>, <em>dominant_provider</em>, <em>sid=None</em>, <em>trading_day=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader.LocalTradingAccountLoader.close_positions" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader.LocalTradingAccountLoader.open_positions">
-<code class="descname">open_positions</code><span class="sig-paren">(</span><em>account</em>, <em>now</em>, <em>actual_sid</em>, <em>volume</em>, <em>price</em>, <em>historical</em>, <em>dominant_provider</em>, <em>trade_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader.LocalTradingAccountLoader.open_positions" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open_positions</code><span class="sig-paren">(</span><em>account</em>, <em>now</em>, <em>actual_sid</em>, <em>volume</em>, <em>price</em>, <em>historical</em>, <em>dominant_provider</em>, <em>trade_id</em>, <em>sid=None</em>, <em>trading_day=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader.LocalTradingAccountLoader.open_positions" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader.LocalTradingAccountLoader.position_price">
-<code class="descname">position_price</code><span class="sig-paren">(</span><em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader.LocalTradingAccountLoader.position_price" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader.LocalTradingAccountLoader.position_price_from_future_info">
+<code class="descname">position_price_from_future_info</code><span class="sig-paren">(</span><em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader.LocalTradingAccountLoader.position_price_from_future_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return instrument price information from future info.
+:param info: FutureInfo, the future info retrieved by connecting to a CTP trading account.
+:return: dict{string: dict{string: dict{string: int}}}, meaning</p>
+<blockquote>
+<div>dict{actual_instrument_id: dict{direction: dict{day: volume}}}, where day can be &#8216;historical&#8217; or &#8216;today&#8217;.</div></blockquote>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader.LocalTradingAccountLoader.synchronize">

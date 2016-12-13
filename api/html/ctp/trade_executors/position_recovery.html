@@ -100,6 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../trading_account.html">trading_account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../strategy_command_line_utils.html">strategy_command_line_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../position_utils.html">position_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../optimization.html">optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../offline_optimization.html">offline_optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
@@ -245,10 +246,11 @@ If None, extract trades from the last execution of the strategy with given sourc
 </dd></dl>
 
 <dl class="staticmethod">
-<dt id="ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.find_last_two_execution_uuids">
-<em class="property">static </em><code class="descname">find_last_two_execution_uuids</code><span class="sig-paren">(</span><em>base_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.find_last_two_execution_uuids" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.find_last_execution_uuids">
+<em class="property">static </em><code class="descname">find_last_execution_uuids</code><span class="sig-paren">(</span><em>base_folder</em>, <em>uuid_count</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.position_recovery.PositionRecovery.find_last_execution_uuids" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the uuid of the last two strategy execution.
 :param base_folder: string, base folder of a strategy.
+:param uuid_count: int, the number of uuid to find.
 :return: [string], the last two uuids.</p>
 </dd></dl>
 

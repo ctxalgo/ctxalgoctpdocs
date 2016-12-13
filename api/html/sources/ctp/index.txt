@@ -22,6 +22,7 @@ ctp
    trading_account
    strategy_command_line_utils
    report_pdf_generator
+   position_utils
    optimization
    offline_optimization
    tick_and_bar_publisher

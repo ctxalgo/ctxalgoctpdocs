@@ -26,7 +26,6 @@ After the script terminates, the crashed strategy's position is synced with the 
 ```python
 import os
 from optparse import OptionParser
-from datetime import datetime
 import zmq
 from time import sleep
 import json
@@ -38,6 +37,7 @@ from ctxalgolib.mission_control.mission_control import MissionController
 from ctxalgoctp.ctp.trade_executors.position_recovery import PositionRecovery
 from ctxalgoctp.ctp.constants import Constants as C
 from ctxalgoctp.ctp.strategy_utils import StrategyUtils
+from ctxalgoctp.ctp.position_utils import PositionUtils
 
 
 def communicate(mission_controller, trade_executor, source_with_uuid, info, max_tries=1, wait=5):
@@ -173,7 +173,7 @@ def main():
     recovery = PositionRecovery()
     if os.path.isdir(options.strategy):
         base_folder = options.strategy
-        uuids = recovery.find_last_two_execution_uuids(base_folder)
+        uuids = recovery.find_last_execution_uuids(base_folder, 2)
         if len(uuids) == 0:
             print('No execution session of the strategy is found. Do nothing and exit.')
             sys.exit(0)
@@ -237,25 +237,17 @@ def main():
             source_strategy, account_backup_file, trade_executor_log_file, crashed_source_uuid=crashed_uuid,
             initial_capital=options.initial_capital, security_company=options.security_company)
 
-        # Save the sync position in base folder.
         account_file_name = C.account_file_name if options.overwrite else C.synced_account_file_name
         account_path = os.path.join(base_folder, account_file_name)
-        account.save_to_file(account_path)
 
         print('Applied {} trades, new account file saved at {}'.format(len(applied_trades), account_path))
         if not options.overwrite:
             print('Note: the synced position file is stored as {}, to make it have effect, you need to run current '
                   'script with the --overwrite command line option.'.format(C.synced_account_file_name))
 
-        # Save the synced position file in account backup folder, with the crashed uuid. This way, in later crash
-        # syncs, this new account file can be used as starting point.
-        backup_folder = os.path.join(base_folder, C.account_backup_folder_name)
-        if not os.path.exists(backup_folder):
-            os.makedirs(backup_folder)
-        backup_path = os.path.join(
-            base_folder, C.account_backup_folder_name,
-            C.account_file_with_trading_day(crashed_trading_day, uuid=crashed_uuid, now=datetime.now()))
-        account.save_to_file(backup_path)
+        # Save the sync position in base folder, and save the synced position file in account backup folder,
+        # with the crashed uuid. This way, in later crash syncs, this new account file can be used as starting point.
+        PositionUtils.save_account(account, crashed_uuid, base_folder, crashed_trading_day, options.overwrite)
 
 
 if __name__ == '__main__':

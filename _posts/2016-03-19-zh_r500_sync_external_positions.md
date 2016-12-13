@@ -16,6 +16,7 @@ language: zh
 import shutil
 from ctxalgolib.output.texttable import Texttable
 from ctxalgoctp.ctp.live_strategy_utils import *
+from ctxalgoctp.ctp.trading_account_loaders.abstract_trading_account_loader import AbstractTradingAccountLoader
 from ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader import LocalTradingAccountLoader
 
 
@@ -266,7 +267,7 @@ def update_accounts(strategies, accounts, quota, dangling_positions, strategy):
     """
     dangling = dangling_positions
     loader = LocalTradingAccountLoader(strategy.ctp_factory.future_info_factory())
-    prices = loader.position_price(strategy.info)
+    prices = TradingAccount.position_price_from_future_info(strategy.info)
     trade_ids = {}
     now = strategy.now()
     trading_day = strategy.trading_day()

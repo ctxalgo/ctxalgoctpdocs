@@ -22,6 +22,7 @@ live
    r107_high_frequency_both_direction_trade
    r111_mission_controller
    r116_place_order_and_cancel_immediately
+   r504_rebalance_positions
    r103_cancel_order_while_pending
    r101_change_positions
    r601_full_market_data_retriever

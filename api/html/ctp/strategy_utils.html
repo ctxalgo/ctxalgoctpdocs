@@ -91,6 +91,7 @@
 <li class="toctree-l2"><a class="reference internal" href="trading_account.html">trading_account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strategy_command_line_utils.html">strategy_command_line_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="position_utils.html">position_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="optimization.html">optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="offline_optimization.html">offline_optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
@@ -342,6 +343,16 @@ because normalization is expensive.</div></blockquote>
 <dd><p>Find the base folder path from a strategy&#8217;s log file.
 :param log_file_path: string, the absolute or relative path to a log file.
 :return: string, the absolute or relative path to the strategy&#8217;s base folder.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.strategy_utils.StrategyUtils.find_last_execution_strategy_signature_and_uuid">
+<em class="property">static </em><code class="descname">find_last_execution_strategy_signature_and_uuid</code><span class="sig-paren">(</span><em>base_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_utils.StrategyUtils.find_last_execution_strategy_signature_and_uuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a strategy&#8217;s base folder, find the strategy signature and uuid of the last execution
+:return: (strategy_signature, uuid), if no information is found, return None</p>
+<blockquote>
+<div>strategy_signature: string, in form of product.strategy.
+uuid: string, execution uuid.</div></blockquote>
 </dd></dl>
 
 </dd></dl>

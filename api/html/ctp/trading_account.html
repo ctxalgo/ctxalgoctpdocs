@@ -91,6 +91,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">trading_account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strategy_command_line_utils.html">strategy_command_line_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="position_utils.html">position_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="optimization.html">optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="offline_optimization.html">offline_optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
@@ -355,7 +356,7 @@ there is no position in that direction. Each list has maximal two elements.</td>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trading_account.TradingAccount.open_positions">
-<code class="descname">open_positions</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>price</em>, <em>volume</em>, <em>trade_id</em>, <em>order_ref</em>, <em>timestamp</em>, <em>reason</em>, <em>trading_day</em>, <em>actual_instrument_id</em>, <em>volume_multiple=None</em>, <em>margin_rate=None</em>, <em>open_today=None</em>, <em>close_yesterday=None</em>, <em>close_today=None</em>, <em>check_available=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.open_positions" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open_positions</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>price</em>, <em>volume</em>, <em>trade_id</em>, <em>order_ref</em>, <em>timestamp</em>, <em>reason</em>, <em>trading_day</em>, <em>actual_instrument_id</em>, <em>volume_multiple=None</em>, <em>margin_rate=None</em>, <em>open_today=None</em>, <em>close_yesterday=None</em>, <em>close_today=None</em>, <em>check_available=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.open_positions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open positions.
 :param instrument_id, string, the instrument id.
 :param price: float, the price at which the positions are open.
@@ -604,6 +605,51 @@ See the comment of the return type of the position_summary method.</td>
 </dd></dl>
 
 <dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trading_account.TradingAccount.compact_position_summary">
+<em class="property">static </em><code class="descname">compact_position_summary</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.compact_position_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given position summary (from TradingAccount.position_summary), remove the instrument_id layer, leaving
+only the actual_instrument_id layer, called compact position summary.
+:param s: Same as result of TradingAccount.position_summary.
+:return: dict{string: dict{string: dict{string: int}}}, meaning</p>
+<blockquote>
+<div>dict{actual_instrument_id: dict{direction: dict{metric: volume}}}.
+actual_instrument_id: string, actual instrument id.
+direction: string, can be &#8216;long&#8217; or &#8216;short&#8217;.
+metric: string, can be &#8216;yesterday_volume&#8217;, &#8216;today_volume&#8217; and &#8216;volume&#8217;.</div></blockquote>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trading_account.TradingAccount.subtract_compact_position_summary">
+<em class="property">static </em><code class="descname">subtract_compact_position_summary</code><span class="sig-paren">(</span><em>cs1</em>, <em>cs2</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.subtract_compact_position_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subtract compact position summary s2 from s1.
+:param cs1: Same as the result of TradingAccount.compact_position_summary.
+:param cs2: Same as the result of TradingAccount.compact_position_summary.
+:return: Same as the result of TradingAccount.compact_position_summary.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trading_account.TradingAccount.add_compact_position_summary">
+<em class="property">static </em><code class="descname">add_compact_position_summary</code><span class="sig-paren">(</span><em>cs1</em>, <em>cs2</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.add_compact_position_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add compact position summary cs2 into cs1.
+:param cs1: Same as the result of TradingAccount.compact_position_summary.
+:param cs2: Same as the result of TradingAccount.compact_position_summary.
+:return: Same as the result of TradingAccount.compact_position_summary.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trading_account.TradingAccount.is_compact_position_summary_equal">
+<em class="property">static </em><code class="descname">is_compact_position_summary_equal</code><span class="sig-paren">(</span><em>cs1</em>, <em>cs2</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.is_compact_position_summary_equal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trading_account.TradingAccount.get_dominant_mapping">
+<em class="property">static </em><code class="descname">get_dominant_mapping</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.get_dominant_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a position summary, return the mapping from actual instrument id to instrument id.
+:param s: Same as TradingAccount.position_summary.
+:return: dict{string: string}, meaning dict{actual_instrument_id: instrument_id}.</p>
+</dd></dl>
+
+<dl class="staticmethod">
 <dt id="ctxalgoctp.ctp.trading_account.TradingAccount.is_position_summary_equal">
 <em class="property">static </em><code class="descname">is_position_summary_equal</code><span class="sig-paren">(</span><em>s1</em>, <em>s2</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.is_position_summary_equal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Is position summary s1 and s2 equal?
@@ -621,6 +667,26 @@ See the comment of the return type of the position_summary method.</td>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trading_account.TradingAccount.position_price_from_account">
+<em class="property">static </em><code class="descname">position_price_from_account</code><span class="sig-paren">(</span><em>account</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.position_price_from_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return instrument price information from
+:param account: TradingAccount, trading account.
+:return: dict{string: dict{string: dict{string: float}}}, meaning</p>
+<blockquote>
+<div>dict{actual_instrument_id: dict{direction: dict{day: price}}}, where day can be &#8216;historical&#8217; or &#8216;today&#8217;.</div></blockquote>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.trading_account.TradingAccount.position_price_from_future_info">
+<em class="property">static </em><code class="descname">position_price_from_future_info</code><span class="sig-paren">(</span><em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.position_price_from_future_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return instrument price information from future info.
+:param info: FutureInfo, the future info retrieved by connecting to a CTP trading account.
+:return: dict{string: dict{string: dict{string: float}}}, meaning</p>
+<blockquote>
+<div>dict{actual_instrument_id: dict{direction: dict{day: price}}}, where day can be &#8216;historical&#8217; or &#8216;today&#8217;.</div></blockquote>
 </dd></dl>
 
 </dd></dl>
