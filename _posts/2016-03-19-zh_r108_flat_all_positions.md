@@ -34,18 +34,14 @@ class FlatAllPositions(AbstractStrategy):
         ts = tick['timestamp']
         if self.in_market_period(ts, instrument_id=sid) and tick['ask_price1'] > 0 and tick['bid_price1'] > 0:
             if self.has_position(sid) and sid not in self.has_traded:
-                if self.parameters.market:
-                    self.change_position_to(
-                        0, instrument_id=sid, market=True, cancel_in_time=self.parameters.order_timeout)
-                else:
-                    self.change_position_to(
-                        0, instrument_id=sid, tick_delta=self.parameters.tick_delta,
-                        cancel_in_time=self.parameters.order_timeout)
+                self.change_position_to(
+                    0, instrument_id=sid, market=self.parameters.market,
+                    tick_delta=self.parameters.tick_delta, cancel_in_time=self.parameters.order_timeout)
                 self.has_traded.add(sid)
 
 
 def main():
-    cmd_options = '--account simnow_future4 --name test.flat_all_positions --order-timeout 10'
+    cmd_options = '--account simnow_future4 --name test.flat_all_positions --order-timeout 10 --order-kind market'
     parser = get_command_line_parser(strategy_class=FlatAllPositions, cmd_options=cmd_options)
     parser.add_option(
         '--order-kind', type=str, dest='order_kind', default='limit',
