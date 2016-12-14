@@ -207,50 +207,8 @@ Title: 平掉交易账户里的所有仓位
 下单平仓了。</p>
 <dl class="class">
 <dt id="ctxalgoctp.ctp.live.r108_flat_all_positions.FlatAllPositions">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r108_flat_all_positions.</code><code class="descname">FlatAllPositions</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em>, <em>strategy_callbacks=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r108_flat_all_positions.FlatAllPositions" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.live.r108_flat_all_positions.</code><code class="descname">FlatAllPositions</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>description=None</em>, <em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r108_flat_all_positions.FlatAllPositions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../strategy.html#ctxalgoctp.ctp.strategy.AbstractStrategy" title="ctxalgoctp.ctp.strategy.AbstractStrategy"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.strategy.AbstractStrategy</span></code></a></p>
-<p>Initialize current.
-:param instrument_ids: [string], the ids of the futures to trade.
-:param parameters: dict from string to objects. This dict defines the list of parameters for the strategy,</p>
-<blockquote>
-<div><p>keys are parameter names, and values are the corresponding parameter.
-Some of the predefined parameter names are:</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>close_position_time_delta: int, the number of minutes before market close, used to close all</dt>
-<dd>open positions for an intraday trading strategy. For a non-intraday trading strategy,
-no need to specify this parameter. No need to provide this in a multi-day strategy.</dd>
-<dt>open_position_time_delta: int, the number of minutes before market close, only before this</dt>
-<dd>time, you can place an open order. No need to provide this in a multi-day strategy.</dd>
-</dl>
-</div></blockquote>
-</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>base_folder</strong> &#8211; string, the folder to store log files.</li>
-<li><strong>periods</strong> &#8211; [Periodicity], the list of periodicities for which ohlcs are needed.</li>
-<li><strong>description</strong> &#8211; <p>dict from string to string. Keys are description labels, values are the the
-content of those description labels. There should be three labels:</p>
-<blockquote>
-<div>&#8216;name&#8217;: name of the strategy. The strategy names should be unique per CTX deployment.
-&#8216;product&#8217;: name of the product.
-&#8216;description&#8217;: the description of the strategy.
-&#8216;url_indicators&#8217;: the indicator used to construct urls for strategy debugging.</div></blockquote>
-</li>
-<li><strong>logger</strong> &#8211; LoggerHandler (from ctxalgolib.loggers.logger_handlers). Logger to record strategy
-execution information. This can be a CompositeLoggerHandler, which contains multiple
-loggers. For example, a console logger, a file logger and a zeromq logger.</li>
-<li><strong>strategy_callbacks</strong> &#8211; AbstractStrategyCallbacks, if not None, provides external strategy callbacks
-which will be invoked when strategy level callbacks happen. It is useful to attach new behavior
-to the existing strategy code without change the code itself.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r108_flat_all_positions.FlatAllPositions.on_before_run">
 <code class="descname">on_before_run</code><span class="sig-paren">(</span><em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r108_flat_all_positions.FlatAllPositions.on_before_run" title="Permalink to this definition">¶</a></dt>
