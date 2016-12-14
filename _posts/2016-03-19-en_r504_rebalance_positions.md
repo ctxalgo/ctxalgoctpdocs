@@ -9,6 +9,7 @@ This script re-balance strategy positions from trading account and expected posi
 
 ```python
 import sys
+import math
 from optparse import OptionParser
 from ctxalgoctp.ctp.live_strategy_utils import *
 from ctxalgoctp.ctp.constants import Constants as C
@@ -178,6 +179,22 @@ def compare_position_differences(account_position, strategy_positions, trader_po
         return -1
 
 
+def position_distance(strategy_positions, expected_positions):
+    result = 0.0
+    instrument_count = 0
+    for s, pos in strategy_positions.items():
+        instrument_count = float(len(pos.keys()))
+        for sid, pos2 in pos.items():
+            for direction, pos3 in pos2.items():
+                d = float(expected_positions[s][sid][direction] - (pos3['yesterday_volume'] + pos3['today_volume']))
+                d *= d
+                result += d
+
+    if result > 0:
+        result = math.sqrt(result) / instrument_count
+    return result
+
+
 def main():
     options, args = get_cmd_parser().parse_args()
 
@@ -265,9 +282,15 @@ def main():
             print('Position is not re-balanced because script is run with --view-only mode.')
             sys.exit(0)
 
+        print('Position distance before re-balancing: {}'.format(
+            position_distance(strategy_positions, expected_positions)))
+
         # Re-balance positions.
         new_positions = PositionRebalancer.rebalance_strategies(
             account_positions, strategy_positions, expected_positions)
+
+        print('Position distance after re-balancing: {}'.format(position_distance(new_positions, expected_positions)))
+        print('')
 
         # Construct strategies' positions from rebalanced positions.
         now = datetime.now()
