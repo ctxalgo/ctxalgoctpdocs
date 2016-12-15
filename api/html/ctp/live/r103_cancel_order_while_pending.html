@@ -290,6 +290,23 @@ to the existing strategy code without change the code itself.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.add_alarm_timer">
+<code class="descname">add_alarm_timer</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.add_alarm_timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an alarm timer.
+:param trigger_time: datetime or time, or string in form of HH:MM:SS or yyyy-mm-dd HH:MM:SS, or</p>
+<blockquote>
+<div>a list of the above types. The time(s) used to create a timer .</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> &#8211; string, name of the timer, if None, a default name will be assigned.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.add_bar_arrival_action">
 <code class="descname">add_bar_arrival_action</code><span class="sig-paren">(</span><em>action</em>, <em>period=None</em>, <em>instrument_ids=None</em>, <em>ohlc_kind=None</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.add_bar_arrival_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup an action, which will be called when all required ohlc bars have arrived.
@@ -326,6 +343,16 @@ This will be passed into the action when it is invoked. If None, a default name 
 </tbody>
 </table>
 <p>:return the name for the bar arrival event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.add_countdown_timer">
+<code class="descname">add_countdown_timer</code><span class="sig-paren">(</span><em>interval</em>, <em>repeated=True</em>, <em>start_time=None</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r103_cancel_order_while_pending.CancelOrderWhilePending.add_countdown_timer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a count down timer.
+:param interval: int, or timedelta, the number of seconds or the time delta for the timer to countdown.
+:param repeated: bool, if True, the timer will be repeated, otherwise, only once.
+:param start_time: datetime, if not None, the starting point for the timer to start.
+:param name: string, name of the timer, if None, a default name will be assigned.</p>
 </dd></dl>
 
 <dl class="method">
@@ -2797,7 +2824,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Dec 15, 2016.
+      Last updated on Dec 16, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
