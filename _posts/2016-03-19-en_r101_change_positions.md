@@ -47,6 +47,9 @@ class ChangePosition(AbstractStrategy):
         if not self.position_difference(self.parameters.target_positions):
             self.set_should_exit(True)
 
+    def on_order_insert(self, order_info):
+        self.log_warning(message=order_info['error_message'], data=order_info)
+
     def on_tick(self, instrument_id, tick):
         if self.context.trade_started:
             sid = instrument_id
@@ -56,7 +59,7 @@ class ChangePosition(AbstractStrategy):
 
 
 def main():
-    cmd_options = '--account simnow_future4 --name test.s1 --positions cu1612:1 --trade-time 091000'
+    cmd_options = '--account simnow_future4 --name test.s1 --positions a1701:1'
     parser = get_command_line_parser(strategy_class=ChangePosition, cmd_options=cmd_options)
     parser.add_option(
         '--trade-time', type='string', dest='trade_time', default=None,
