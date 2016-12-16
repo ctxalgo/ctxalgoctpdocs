@@ -259,7 +259,8 @@ Keys are instrument ids, values are the positions for those instruments.</li>
 dict{strategy_name: dict{instrument_id: Position}. The list of strategies and their positions.</li>
 <li><strong>expected_positions</strong> &#8211; dict{string: dict{string: int}}, meaning
 dict{strategy_name: dict{instrument_id: position volume}}. Note that expected positions do not distinguish
-between yesterday and today positions.</li>
+between yesterday and today positions. If None, no expected positions are considered, strategy posisions
+are only re-balanced according to account positions.</li>
 </ul>
 </td>
 </tr>

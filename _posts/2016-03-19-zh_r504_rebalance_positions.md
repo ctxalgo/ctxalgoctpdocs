@@ -34,8 +34,9 @@ def get_cmd_parser():
              'trading account positions from the given file. ')
 
     parser.add_option(
-         '--security-company', type='string', dest='security_company', default=None,
-          help='Security company, use default None is ok.')
+        '--security-company', type='string', dest='security_company', default=None,
+        help='Security company, use default None is ok.')
+
     parser.add_option(
         '--trading-day', type='string', dest='trading_day', default=None,
         help='If --position-file is given, use this trading day in form of yyyymmdd. If None, use current system time, '
@@ -62,16 +63,16 @@ def get_cmd_parser():
              'simulation.good_morning_095500,good_morning,9:55,0.1\n')
 
     parser.add_option(
-         '--expected-position', type='string', dest='expected_positions', default=None,
-          help='Path to expected position file.')
+        '--expected-position', type='string', dest='expected_positions', default=None,
+        help='Path to expected position file.')
 
     parser.add_option(
-         '--external-position', type='string', dest='external_position', default=None,
-          help='Path to external position file.')
+        '--external-position', type='string', dest='external_position', default=None,
+        help='Path to external position file.')
 
     parser.add_option(
-         '--port-weights', type='string', dest='port_weights', default=None,
-          help='Path to port weights file.')
+        '--port-weights', type='string', dest='port_weights', default=None,
+        help='Path to port weights file.')
 
     parser.add_option(
         '--scaling-factor', type='float', dest='scaling_factor', default=0.1,
@@ -222,7 +223,10 @@ def main():
             options.strategy_map, default_scaling_factor=options.scaling_factor)
 
         # Load expected positions. Expected positions are the positions that the strategies are expected to have.
-        expected_position = PositionUtils.parse_expected_positions(options.expected_positions)
+        if options.expected_positions is None:
+            expected_position = {}
+        else:
+            expected_position = PositionUtils.parse_expected_positions(options.expected_positions)
 
         # Retrieve positions from the given strategies.
         # Type: dict{string: dict}, keys are base folders for strategies, values are information about those strategies.
@@ -257,16 +261,19 @@ def main():
             expected_name = strategy_map[strategy_signature]['expected_name']
             scaling_factor = strategy_map[strategy_signature]['scaling_factor']
 
-            assert expected_name in expected_position, '{} not in expected_positions.'.format(expected_name)
-            assert entry_time in expected_position[expected_name], '{} not in {}'.format(entry_time, expected_name)
-            port_weight = port_weights[expected_name] if expected_name in port_weights else 1.0
+            if options.expected_positions is None:
+                expected_positions[base_folder] = None
+            else:
+                assert expected_name in expected_position, '{} not in expected_positions.'.format(expected_name)
+                assert entry_time in expected_position[expected_name], '{} not in {}'.format(entry_time, expected_name)
+                port_weight = port_weights[expected_name] if expected_name in port_weights else 1.0
+                expected_positions[base_folder] = PositionUtils.padded_expected_positions(
+                    instruments, PositionUtils.adjusted_positions(
+                        expected_position[expected_name][entry_time], port_weight, scaling_factor))
 
             # Pad strategy positions and expected positions with instruments in account.
             strategy_positions[base_folder] = PositionUtils.padded_positions(
                 instruments, TradingAccount.compact_position_summary(data['position_summary']))
-            expected_positions[base_folder] = PositionUtils.padded_expected_positions(
-                instruments, PositionUtils.adjusted_positions(
-                    expected_position[expected_name][entry_time], port_weight, scaling_factor))
 
             assert set(strategy_positions[base_folder].keys()) == set(expected_positions[base_folder].keys())
             assert set(strategy_positions[base_folder].keys()) == instruments
