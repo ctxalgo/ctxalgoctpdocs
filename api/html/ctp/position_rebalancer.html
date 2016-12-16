@@ -300,12 +300,15 @@ Let C(instrument, strategy, d=historical)=A, C(instrument, strategy, d=today)=B,
 E(instrument, strategy)=C.
 f(x, y) = (x-A)^2 + (y-B)^2 + (x+y-C)^2
 Find x and y that minimize f(x, y). x &gt;= 0, y &gt;= 0</p>
-<p>sqrt((x-A)^2 + (y-B)^2) is the distance between (x, y) and (A, B),
+<p>case 1: expected_position is not None
+sqrt((x-A)^2 + (y-B)^2) is the distance between (x, y) and (A, B),
 sqrt((x+y-C)^2 / 2) is the distance from (x, y) to the line x+y=C
 So the vertical point from point (A, B) to line x+y=C is the answer.
 x = (C + A - B) / 2, y = (C-A+B)/2
 if x &lt; 0, y &gt; 0, then x = 0, y=C
 if x &gt; 0, y &lt; 0, then x = C, y=0
+case 2: expected_position is None
+x = A, y = B
 :param current_historical_position: int, the current historical position
 :param current_today_position: int, the current today position
 :param expected_position: the expected position
@@ -363,7 +366,7 @@ The positions in a trading account.</div></blockquote>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Dec 16, 2016.
+      Last updated on Dec 17, 2016.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
