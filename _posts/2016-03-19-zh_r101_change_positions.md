@@ -41,6 +41,11 @@ class ChangePosition(AbstractStrategy):
             self.add_timer(trigger_time=tt, action=self.on_trade_start)
 
     def on_trade_start(self, trigger_time, supposed_trigger_time, timer_name):
+        self.log('TIMER_TRIGGERED', {
+            'trigger_time': str(trigger_time),
+            'supposed_trigger_time': str(supposed_trigger_time),
+            'timer_name': timer_name
+        })
         self.context.trade_started = True
 
     def on_timer(self, trigger_time, supposed_trigger_time, timer_name):
