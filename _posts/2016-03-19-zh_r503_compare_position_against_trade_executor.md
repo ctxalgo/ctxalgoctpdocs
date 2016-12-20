@@ -12,6 +12,7 @@ language: zh
 import os
 import sys
 from optparse import OptionParser
+from ctxalgolib.data_feed.zeromq_feed_utils import ZeromqFeedUtils as Topics
 from ctxalgoctp.ctp.constants import Constants as C
 from ctxalgoctp.ctp.trading_account import TradingAccount
 from ctxalgoctp.ctp.position_utils import PositionUtils
@@ -37,10 +38,11 @@ def main():
         '--strategy', type='string', action='append', dest='strategies',
         help='Path to the base-folder or an account file of a strategy. You can provide multiple strategies by '
              'writing multiple --strategy sections. The first provided strategy will be named s1, the second s2, '
-             'and so on.')
+             'and so on. You can use one or more --strategy to specify individual strategies, or you can use '
+             '--log-folder and --strategy-map to specify those strategies.')
 
     parser.add_option(
-        '--trade-executor', type='string', dest='trade_executor',
+        '--trade-executor', type='string', dest='trade_executor', default=None,
         help='Path to the base-folder or an account file of the trade executor associated with the strategies '
              'provided by --strategy sections.')
 
@@ -52,23 +54,73 @@ def main():
         '--table', action='store_true', dest='table', default=False,
         help='If present, print result in nicer ASCII table, otherwise, simple csv format.')
 
+    parser.add_option(
+        '--strategy-log-folder', type='string', dest='strategy_log_folder', default=None,
+        help='Path to a folder that contains base folders of all the relevant strategies and their corresponding '
+             'trade executors. ')
+
+    parser.add_option(
+        '--strategy-map', type='string', dest='strategy_map', default=None,
+        help='Path to a strategy map file. If there is no --strategy provided, current script will use --strategy-map '
+             'to find the strategy names and use --log-folder to find the folder that contains base folders of those '
+             'strategies and the corresponding trade executor. The file is in csv format, with row structure: '
+             'CTX strategy name, expected position strategy name, entry time, (optional) scaling factor. '
+             'If the fourth column, the scaling factor column, is missing, default_scaling_factor is used.\n'
+             'For example:\n'
+             'simulation.sa_trend_1445,sa_trend,14:45,0.1\n'
+             'simulation.good_morning_095500,good_morning,9:55,0.1\n')
+
+    parser.add_option(
+        '--trade-executor-name', type='string', dest='trade_executor_name', default='trader',
+        help='The default trade executor strategy name.')
+
     options, args = parser.parse_args()
     trading_day = PositionUtils.trading_day_from_now(options.trading_day)
     print_table = options.table
 
-    # Load positions from trade executor and all individual strategies.
-    trade_executor_positions = get_account_from_path(options.trade_executor).position_summary(trading_day=trading_day)
-    positions = {'trader': trade_executor_positions}
+    positions = {}
     strategy_positions = {}
     strategies = []
     strategy_map = {}
-    for id_, s in enumerate(options.strategies):
-        name = 's{}'.format(id_+1)
-        strategy_map[name] = s
+    product = None
+    if options.strategies is not None and len(options.strategies) > 0:
+        # Individual strategies are given by --strategy command line.
+        for id_, s in enumerate(options.strategies):
+            name = 's{}'.format(id_+1)
+            strategy_map[name] = s
+            strategies.append(name)
+            position = get_account_from_path(s).position_summary(trading_day=trading_day)
+            strategy_positions[name] = position
+            positions[name] = position
+    else:
+        # Individual strategies are given by strategy map file.
+        assert options.strategy_map is not None
+        assert options.strategy_log_folder is not None
+        for id_, s_name in enumerate(PositionUtils.load_strategy_map(options.strategy_map).keys()):
+            name = 's{}'.format(id_ + 1)
+            base_folder = os.path.join(options.strategy_log_folder, s_name)
+            product = s_name.split(Topics.strategy_signature_separator())[0]
+            strategy_map[name] = base_folder
+
+    for name, base_folder in strategy_map.items():
         strategies.append(name)
-        position = get_account_from_path(s).position_summary(trading_day=trading_day)
+        position = get_account_from_path(base_folder).position_summary(trading_day=trading_day)
         strategy_positions[name] = position
         positions[name] = position
+
+    # Load positions from trade executor and all individual strategies.
+    if options.trade_executor is not None and os.path.isdir(options.trade_executor):
+        trade_executor_positions = get_account_from_path(options.trade_executor).position_summary(trading_day=trading_day)
+        positions['trader'] = trade_executor_positions
+        trader_base_folder = options.trade_executor
+    else:
+        assert options.strategy_map is not None
+        assert options.strategy_log_folder is not None
+        assert product is not None
+        trader_signature = Topics.strategy_signature(product, options.trade_executor_name)
+        trader_base_folder = os.path.join(options.strategy_log_folder, trader_signature)
+        trade_executor_positions = get_account_from_path(trader_base_folder).position_summary(trading_day=trading_day)
+        positions['trader'] = trade_executor_positions
 
     # Get the full list of instruments from trade executor and all individual strategies.
     instruments = set([])
@@ -101,6 +153,7 @@ def main():
         print('Strategies')
         for s in sorted(strategy_map.keys()):
             print('{}: {}'.format(s, strategy_map[s]))
+        print('trader: {}'.format(trader_base_folder))
         print('')
 
         print('Position differences')

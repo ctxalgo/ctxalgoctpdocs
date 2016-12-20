@@ -29,7 +29,7 @@ def get_cmd_parser():
              'defined in CTX.')
 
     parser.add_option(
-        '--position-file', type='string', dest='position_file', default=None,
+        '--account-position-file', type='string', dest='account_position_file', default=None,
         help='Path to strategy position file. If this is given, --account will be ignored and current script will load '
              'trading account positions from the given file. ')
 
@@ -93,11 +93,16 @@ def get_cmd_parser():
         help='If present, only display position differences among trading account, strategies and trade executor, '
              'if given, and do not perform position re-balance.')
 
+    parser.add_option(
+        '--strategy-log-folder', type='string', dest='strategy_log_folder', default=None,
+        help='Path to a folder that contains base folders of all the relevant strategies and their corresponding '
+             'trade executors. ')
+
     return parser
 
 
 def get_account_info(options):
-    if options.position_file is None:
+    if options.account_position_file is None:
         # FIXME: handle the case when retrieving account position fails.
         assert options.account is not None
         retrieve = PositionUtils.get_account_positions_through_strategy
@@ -106,7 +111,7 @@ def get_account_info(options):
     else:
         retrieve = PositionUtils.get_account_positions_through_file
         account_positions, trading_day, future_info_fac, position_prices = retrieve(
-            options.position_file, options.security_company, PositionUtils.trading_day_from_now(options.trading_day))
+            options.account_position_file, options.security_company, PositionUtils.trading_day_from_now(options.trading_day))
     return account_positions, trading_day, future_info_fac, position_prices
 
 
@@ -232,12 +237,23 @@ def main():
         # Type: dict{string: dict}, keys are base folders for strategies, values are information about those strategies.
         strategy_infos = {}
         strategy_short_names = {}
-        for id_, s in enumerate(options.strategies):
-            short_name = 's{}'.format(id_ + 1)
-            info = PositionUtils.get_account_from_strategy(s, trading_day)
-            base_folder = info['base_folder']
-            strategy_infos[base_folder] = info
-            strategy_short_names[short_name] = base_folder
+        if options.strategies is not None and len(options.strategies) > 0:
+            for id_, s in enumerate(options.strategies):
+                short_name = 's{}'.format(id_ + 1)
+                info = PositionUtils.get_account_from_strategy(s, trading_day)
+                base_folder = info['base_folder']
+                strategy_infos[base_folder] = info
+                strategy_short_names[short_name] = base_folder
+
+        else:
+            assert options.strategy_log_folder is not None
+            for id_, s_name in enumerate(strategy_map.keys()):
+                short_name = 's{}'.format(id_ + 1)
+                base_folder = os.path.join(options.strategy_log_folder, s_name)
+                info = PositionUtils.get_account_from_strategy(base_folder, trading_day)
+                base_folder = info['base_folder']
+                strategy_infos[base_folder] = info
+                strategy_short_names[short_name] = base_folder
         assert all([v is not None for v in strategy_infos.values()])
 
         # Retrieve position from trade executor if given.
@@ -275,7 +291,8 @@ def main():
             strategy_positions[base_folder] = PositionUtils.padded_positions(
                 instruments, TradingAccount.compact_position_summary(data['position_summary']))
 
-            assert set(strategy_positions[base_folder].keys()) == set(expected_positions[base_folder].keys())
+            if expected_positions[base_folder] is not None:
+                assert set(strategy_positions[base_folder].keys()) == set(expected_positions[base_folder].keys())
             assert set(strategy_positions[base_folder].keys()) == instruments
 
         pos_diff = compare_position_differences(
@@ -288,7 +305,10 @@ def main():
 
         if options.view_only:
             print('Position is not re-balanced because script is run with --view-only mode.')
-            sys.exit(0)
+            if pos_diff == 0:
+                sys.exit(0)
+            else:
+                sys.exit(-1)
 
         print('Position distance before re-balancing: {}'.format(
             position_distance(strategy_positions, expected_positions)))
