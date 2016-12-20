@@ -87,6 +87,8 @@ class StandByStrategy(AbstractStrategy):
                 raise Exception(parts[1])
         elif message == 'exit':
             self.exit_requested = True
+        elif message.startswith('info:'):
+            self.send_message_to_mission_controller('Reply to info.')
 
     def on_before_run(self, strategy):
         self.add_timer(countdown=timedelta(seconds=1), action=self.on_timer)
@@ -108,7 +110,7 @@ def main():
     # TODO: To use an external trade execution server, set external_trade_executor to True.
     # TODO: Of course, you have to start that trade execution server, which is at
     # TODO: ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.
-    external_trade_executor = True
+    external_trade_executor = False
 
     # TODO: If you trade locally, you have to specify the trading account.
     account = '--account simnow_future4'
