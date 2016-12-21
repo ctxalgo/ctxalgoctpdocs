@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>backtesting_trading_account_loader &mdash; ctxalgoctp 0.1 documentation</title>
+  <title>r602_send_message_to_strategy &mdash; ctxalgoctp 0.1 documentation</title>
   
 
   
@@ -31,9 +31,9 @@
 
   
     <link rel="top" title="ctxalgoctp 0.1 documentation" href="../../index.html"/>
-        <link rel="up" title="trading_account_loaders" href="index.html"/>
-        <link rel="next" title="local_trading_account_loader" href="local_trading_account_loader.html"/>
-        <link rel="prev" title="abstract_trading_account_loader" href="abstract_trading_account_loader.html"/> 
+        <link rel="up" title="live" href="index.html"/>
+        <link rel="next" title="r116_place_order_and_cancel_immediately" href="r116_place_order_and_cancel_immediately.html"/>
+        <link rel="prev" title="r111_mission_controller" href="r111_mission_controller.html"/> 
 
   
   <script src="../../static/js/modernizr.min.js"></script>
@@ -74,7 +74,38 @@
           
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">ctp</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../live/index.html">live</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">live</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="r102_cancel_order_after_fully_executed.html">r102_cancel_order_after_fully_executed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r503_compare_position_against_trade_executor.html">r503_compare_position_against_trade_executor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r500_sync_external_positions.html">r500_sync_external_positions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r104_automatic_order_cancellation.html">r104_automatic_order_cancellation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r112_strategy_log_printer.html">r112_strategy_log_printer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r106_cancel_all_pending_orders_from_previous_session.html">r106_cancel_all_pending_orders_from_previous_session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r110_stand_by_strategy.html">r110_stand_by_strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r501_set_strategy_positions.html">r501_set_strategy_positions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r118_strategy_that_needs_historical_ohlcs.html">r118_strategy_that_needs_historical_ohlcs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r201_change_position_relative_id.html">r201_change_position_relative_id</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r117_order_disconnect_and_reconnect.html">r117_order_disconnect_and_reconnect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r600_fake_market_broker.html">r600_fake_market_broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r502_sync_position_from_trade_executor.html">r502_sync_position_from_trade_executor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r114_very_fast_repeated_change_position.html">r114_very_fast_repeated_change_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r108_flat_all_positions.html">r108_flat_all_positions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r107_high_frequency_both_direction_trade.html">r107_high_frequency_both_direction_trade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r111_mission_controller.html">r111_mission_controller</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">r602_send_message_to_strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r116_place_order_and_cancel_immediately.html">r116_place_order_and_cancel_immediately</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r504_rebalance_positions.html">r504_rebalance_positions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r103_cancel_order_while_pending.html">r103_cancel_order_while_pending</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r101_change_positions.html">r101_change_positions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r601_full_market_data_retriever.html">r601_full_market_data_retriever</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r105_place_pending_order_and_exit.html">r105_place_pending_order_and_exit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r300_use_zmq_data_producer.html">r300_use_zmq_data_producer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r113_trade_at_timer.html">r113_trade_at_timer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r100_connect_to_ctp.html">r100_connect_to_ctp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r200_connect_to_ctp_relative_id.html">r200_connect_to_ctp_relative_id</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r115_change_position_with_cancel.html">r115_change_position_with_cancel</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../factories/index.html">factories</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../context_loaders/index.html">context_loaders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../code_gen/index.html">code_gen</a></li>
@@ -83,13 +114,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../execution_drivers/index.html">execution_drivers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../data_producers/index.html">data_producers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../strategies/index.html">strategies</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">trading_account_loaders</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="abstract_trading_account_loader.html">abstract_trading_account_loader</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">backtesting_trading_account_loader</a></li>
-<li class="toctree-l3"><a class="reference internal" href="local_trading_account_loader.html">local_trading_account_loader</a></li>
-<li class="toctree-l3"><a class="reference internal" href="remote_trading_account_loader.html">remote_trading_account_loader</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_account_loaders/index.html">trading_account_loaders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../slippage_models.html">slippage_models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../strategy_utils.html">strategy_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exchanges.html">exchanges</a></li>
@@ -150,13 +175,13 @@
       
           <li><a href="../index.html">ctp</a> &raquo;</li>
       
-          <li><a href="index.html">trading_account_loaders</a> &raquo;</li>
+          <li><a href="index.html">live</a> &raquo;</li>
       
-    <li>backtesting_trading_account_loader</li>
+    <li>r602_send_message_to_strategy</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../sources/ctp/trading_account_loaders/backtesting_trading_account_loader.txt" rel="nofollow"> View page source</a>
+            <a href="../../sources/ctp/live/r602_send_message_to_strategy.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -166,54 +191,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="backtesting-trading-account-loader">
-<h1>backtesting_trading_account_loader<a class="headerlink" href="#backtesting-trading-account-loader" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="module-ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader"></span><dl class="class">
-<dt id="ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.</code><code class="descname">BacktestingTradingAccountLoader</code><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="abstract_trading_account_loader.html#ctxalgoctp.ctp.trading_account_loaders.abstract_trading_account_loader.AbstractTradingAccountLoader" title="ctxalgoctp.ctp.trading_account_loaders.abstract_trading_account_loader.AbstractTradingAccountLoader"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.trading_account_loaders.abstract_trading_account_loader.AbstractTradingAccountLoader</span></code></a></p>
-<p>Initialize current.</p>
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader.load">
-<code class="descname">load</code><span class="sig-paren">(</span><em>ctp_factory</em>, <em>base_folder</em>, <em>initial_capital=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader.load" title="Permalink to this definition">¶</a></dt>
+  <div class="section" id="r602-send-message-to-strategy">
+<h1>r602_send_message_to_strategy<a class="headerlink" href="#r602-send-message-to-strategy" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-ctxalgoctp.ctp.live.r602_send_message_to_strategy"></span><p>[en]
+Title: Send messages to strategy repeatedly
+This script sends messages to a running strategy repeatedly. Used for debugging message communication.
+[zh]
+Title: 向策略反复发送消息
+本程序向一个正在运行的策略向策略反复发送消息。用于调试策略消息通讯。</p>
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live.r602_send_message_to_strategy.get_cmd_parser">
+<code class="descclassname">ctxalgoctp.ctp.live.r602_send_message_to_strategy.</code><code class="descname">get_cmd_parser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r602_send_message_to_strategy.get_cmd_parser" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader.save">
-<code class="descname">save</code><span class="sig-paren">(</span><em>account</em>, <em>ctp_factory</em>, <em>base_folder</em>, <em>trading_day=None</em>, <em>uuid=None</em>, <em>include_time=False</em>, <em>old=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader.save" title="Permalink to this definition">¶</a></dt>
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live.r602_send_message_to_strategy.main">
+<code class="descclassname">ctxalgoctp.ctp.live.r602_send_message_to_strategy.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r602_send_message_to_strategy.main" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader.synchronize">
-<code class="descname">synchronize</code><span class="sig-paren">(</span><em>account</em>, <em>info</em>, <em>strategy</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader.synchronize" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader.change_positions">
-<code class="descname">change_positions</code><span class="sig-paren">(</span><em>account</em>, <em>new_compact_positions</em>, <em>now</em>, <em>dominant_provider</em>, <em>position_prices</em>, <em>trading_day_as_now=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader.change_positions" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader.close_positions">
-<code class="descname">close_positions</code><span class="sig-paren">(</span><em>account</em>, <em>now</em>, <em>actual_sid</em>, <em>volume</em>, <em>price</em>, <em>historical</em>, <em>dominant_provider</em>, <em>sid=None</em>, <em>trading_day=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader.close_positions" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader.open_positions">
-<code class="descname">open_positions</code><span class="sig-paren">(</span><em>account</em>, <em>now</em>, <em>actual_sid</em>, <em>volume</em>, <em>price</em>, <em>historical</em>, <em>dominant_provider</em>, <em>trade_id</em>, <em>sid=None</em>, <em>trading_day=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader.open_positions" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader.position_price_from_future_info">
-<code class="descname">position_price_from_future_info</code><span class="sig-paren">(</span><em>info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account_loaders.backtesting_trading_account_loader.BacktestingTradingAccountLoader.position_price_from_future_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return instrument price information from future info.
-:param info: FutureInfo, the future info retrieved by connecting to a CTP trading account.
-:return: dict{string: dict{string: dict{string: int}}}, meaning</p>
-<blockquote>
-<div>dict{actual_instrument_id: dict{direction: dict{day: volume}}}, where day can be &#8216;historical&#8217; or &#8216;today&#8217;.</div></blockquote>
-</dd></dl>
-
-</dd></dl>
 
 </div>
 
@@ -224,10 +218,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="local_trading_account_loader.html" class="btn btn-neutral float-right" title="local_trading_account_loader" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="r116_place_order_and_cancel_immediately.html" class="btn btn-neutral float-right" title="r116_place_order_and_cancel_immediately" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="abstract_trading_account_loader.html" class="btn btn-neutral" title="abstract_trading_account_loader" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="r111_mission_controller.html" class="btn btn-neutral" title="r111_mission_controller" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

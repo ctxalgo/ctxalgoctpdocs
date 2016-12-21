@@ -21,6 +21,7 @@ live
    r108_flat_all_positions
    r107_high_frequency_both_direction_trade
    r111_mission_controller
+   r602_send_message_to_strategy
    r116_place_order_and_cancel_immediately
    r504_rebalance_positions
    r103_cancel_order_while_pending

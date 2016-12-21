@@ -88,7 +88,7 @@ class StandByStrategy(AbstractStrategy):
         elif message == 'exit':
             self.exit_requested = True
         elif message.startswith('info:'):
-            self.send_message_to_mission_controller('Reply to info.')
+            self.send_message_to_mission_controller('Reply to: ' + message)
 
     def on_before_run(self, strategy):
         self.add_timer(countdown=timedelta(seconds=1), action=self.on_timer)
@@ -119,7 +119,7 @@ def main():
     instruments = '--instruments cu1612,a1701'
 
     # TODO: Set strategy name
-    strategy_name = 'test.s1'
+    strategy_name = 'test.stand_by_strategy'
 
     local_bookkeep = '--local-bookkeep'
     # local_bookkeep = ''
