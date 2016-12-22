@@ -270,8 +270,21 @@ when order book data is present (in tick level backtesting). They represents the
 
 <dl class="class">
 <dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.</code><code class="descname">BacktestingTradeExecutor</code><span class="sig-paren">(</span><em>backtester</em>, <em>future_info_factory</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.</code><code class="descname">BacktestingTradeExecutor</code><span class="sig-paren">(</span><em>backtester</em>, <em>future_info_factory</em>, <em>sanity_check=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="abstract_trade_executor.html#ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor" title="ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.trade_executors.abstract_trade_executor.AbstractTradeExecutor</span></code></a>, <a class="reference internal" href="../data_producers/backtesting_data_producer.html#ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils" title="ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.data_producers.backtesting_data_producer.CtpBacktestingUtils</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>backtester</strong> &#8211; CtpBacktester, the backtester.</li>
+<li><strong>future_info_factory</strong> &#8211; </li>
+<li><strong>sanity_check</strong> &#8211; bool, if True, perform sanity check on backtester money and strategy money.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_trading_account_id">
 <code class="descname">get_trading_account_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.backtesting_trade_executor.BacktestingTradeExecutor.get_trading_account_id" title="Permalink to this definition">¶</a></dt>

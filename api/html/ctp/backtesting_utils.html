@@ -250,7 +250,7 @@ If not None, use this reader to load ohlc data from file, and line_parser will n
 
 <dl class="function">
 <dt id="ctxalgoctp.ctp.backtesting_utils.backtest">
-<code class="descclassname">ctxalgoctp.ctp.backtesting_utils.</code><code class="descname">backtest</code><span class="sig-paren">(</span><em>strategy_class</em>, <em>config_getter</em>, <em>start_date</em>, <em>end_date</em>, <em>backtest_data_period=None</em>, <em>initial_capital=1000000.0</em>, <em>data_paths=None</em>, <em>line_parser=None</em>, <em>daily_start_time=None</em>, <em>daily_end_time=None</em>, <em>user=None</em>, <em>slippage_model=None</em>, <em>is_eager_order_execution=True</em>, <em>should_profile=False</em>, <em>has_commission=True</em>, <em>message_random_delay_enabled=False</em>, <em>should_print=True</em>, <em>slow_motion=None</em>, <em>strategy_callbacks=None</em>, <em>is_extrapolate_data_allowed=True</em>, <em>report_has_charting_url=True</em>, <em>perform_backtest=True</em>, <em>ohlc_reader=None</em>, <em>security_company=None</em>, <em>data_feed=None</em>, <em>log_in_console=False</em>, <em>dominant_provider=None</em>, <em>mission_control=None</em>, <em>data_source=None</em>, <em>should_report_warning=True</em>, <em>with_open_interests=False</em>, <em>order_book_level=0</em>, <em>dominants=False</em>, <em>profits=False</em>, <em>use_mid_ask_bid=False</em>, <em>data_start_date=None</em>, <em>data_end_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtesting_utils.backtest" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ctxalgoctp.ctp.backtesting_utils.</code><code class="descname">backtest</code><span class="sig-paren">(</span><em>strategy_class</em>, <em>config_getter</em>, <em>start_date</em>, <em>end_date</em>, <em>backtest_data_period=None</em>, <em>initial_capital=1000000.0</em>, <em>data_paths=None</em>, <em>line_parser=None</em>, <em>daily_start_time=None</em>, <em>daily_end_time=None</em>, <em>user=None</em>, <em>slippage_model=None</em>, <em>is_eager_order_execution=True</em>, <em>should_profile=False</em>, <em>has_commission=True</em>, <em>message_random_delay_enabled=False</em>, <em>should_print=True</em>, <em>slow_motion=None</em>, <em>strategy_callbacks=None</em>, <em>is_extrapolate_data_allowed=True</em>, <em>report_has_charting_url=True</em>, <em>perform_backtest=True</em>, <em>ohlc_reader=None</em>, <em>security_company=None</em>, <em>data_feed=None</em>, <em>log_in_console=False</em>, <em>dominant_provider=None</em>, <em>mission_control=None</em>, <em>data_source=None</em>, <em>should_report_warning=True</em>, <em>with_open_interests=False</em>, <em>order_book_level=0</em>, <em>dominants=False</em>, <em>profits=False</em>, <em>use_mid_ask_bid=False</em>, <em>data_start_date=None</em>, <em>data_end_date=None</em>, <em>account=None</em>, <em>context=None</em>, <em>save_account_and_context_to_file=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtesting_utils.backtest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Backtest your strategy.
 :param strategy_class: class, the class of the strategy.
 :param config_getter: A function pointer to return config to run strategy. Or a dict{string: object}, keys are</p>
@@ -343,6 +343,18 @@ create a default logger which prints logs into console.</li>
 data for backtesting. If None, defaults to start_date.</li>
 <li><strong>data_end_date</strong> &#8211; date or string in form of yyyy-mm-dd, the end date (inclusive) to download historical
 data for backtesting. If None, defaults to end_date.</li>
+<li><strong>account</strong> &#8211; string, or TradingAccount, the existing trading account, if any.
+If a string, and it points to an existing file, load trading account from that file.
+If a string, and it does not point to an existing file, treat the string as a JSON string and load trading
+account from that string.
+If a TradingAccount, use it directly.</li>
+<li><strong>context</strong> &#8211; string or dict, existing context, if any.
+If a string, and it points to an existing file, load the context from that file.
+If a string, and it does not point to an existing file, treat the string as a JSON string and load context
+from that string.
+If dict, use the content as context.</li>
+<li><strong>save_account_and_context_to_file</strong> &#8211; bool, if True, save account and context information into file.
+Will slow down backtesting.</li>
 </ul>
 </td>
 </tr>
@@ -356,7 +368,7 @@ data for backtesting. If None, defaults to end_date.</li>
 
 <dl class="function">
 <dt id="ctxalgoctp.ctp.backtesting_utils.walk_forward_optimize">
-<code class="descclassname">ctxalgoctp.ctp.backtesting_utils.</code><code class="descname">walk_forward_optimize</code><span class="sig-paren">(</span><em>strategy_class</em>, <em>config_getter</em>, <em>base_folder</em>, <em>start_date</em>, <em>end_date</em>, <em>optimizer</em>, <em>param_specs</em>, <em>objectives</em>, <em>training_window</em>, <em>testing_window</em>, <em>constraints=None</em>, <em>regularizers=None</em>, <em>testing_start_day=None</em>, <em>backtest_data_period=None</em>, <em>initial_capital=1000000.0</em>, <em>data_paths=None</em>, <em>line_parser=None</em>, <em>is_eager_order_execution=True</em>, <em>slippage_model=None</em>, <em>has_commission=True</em>, <em>strategy_callbacks=None</em>, <em>is_extrapolate_data_allowed=True</em>, <em>should_print=True</em>, <em>report_has_charting_url=True</em>, <em>progress_logger=None</em>, <em>ohlc_reader=None</em>, <em>security_company=None</em>, <em>data_feed=None</em>, <em>data_source=None</em>, <em>should_report_warning=True</em>, <em>with_open_interests=False</em>, <em>order_book_level=0</em>, <em>dominants=False</em>, <em>profits=False</em>, <em>use_mid_ask_bid=False</em>, <em>data_start_date=None</em>, <em>data_end_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtesting_utils.walk_forward_optimize" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ctxalgoctp.ctp.backtesting_utils.</code><code class="descname">walk_forward_optimize</code><span class="sig-paren">(</span><em>strategy_class</em>, <em>config_getter</em>, <em>base_folder</em>, <em>start_date</em>, <em>end_date</em>, <em>optimizer</em>, <em>param_specs</em>, <em>objectives</em>, <em>training_window</em>, <em>testing_window</em>, <em>constraints=None</em>, <em>regularizers=None</em>, <em>testing_start_day=None</em>, <em>backtest_data_period=None</em>, <em>initial_capital=1000000.0</em>, <em>data_paths=None</em>, <em>line_parser=None</em>, <em>is_eager_order_execution=True</em>, <em>slippage_model=None</em>, <em>has_commission=True</em>, <em>strategy_callbacks=None</em>, <em>is_extrapolate_data_allowed=True</em>, <em>should_print=True</em>, <em>report_has_charting_url=True</em>, <em>progress_logger=None</em>, <em>ohlc_reader=None</em>, <em>security_company=None</em>, <em>data_feed=None</em>, <em>data_source=None</em>, <em>should_report_warning=True</em>, <em>with_open_interests=False</em>, <em>order_book_level=0</em>, <em>dominants=False</em>, <em>profits=False</em>, <em>use_mid_ask_bid=False</em>, <em>data_start_date=None</em>, <em>data_end_date=None</em>, <em>account=None</em>, <em>context=None</em>, <em>save_account_and_context_to_file=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.backtesting_utils.walk_forward_optimize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform walk-forward optimization.
 :param strategy_class: Python class name, the class name for the strategy.
 :param config_getter: A function to return config to run strategy. Or a dict{string: object}, keys are</p>
@@ -432,6 +444,18 @@ f None, use a default company.</li>
 data for backtesting. If None, defaults to start_date.</li>
 <li><strong>data_end_date</strong> &#8211; date or string in form of yyyy-mm-dd, the end date (inclusive) to download historical
 data for backtesting. If None, defaults to end_date.</li>
+<li><strong>account</strong> &#8211; string, or TradingAccount, the existing trading account, if any.
+If a string, and it points to an existing file, load trading account from that file.
+If a string, and it does not point to an existing file, treat the string as a JSON string and load trading
+account from that string.
+If a TradingAccount, use it directly.</li>
+<li><strong>context</strong> &#8211; string or dict, existing context, if any.
+If a string, and it points to an existing file, load the context from that file.
+If a string, and it does not point to an existing file, treat the string as a JSON string and load context
+from that string.
+If dict, use the content as context.</li>
+<li><strong>save_account_and_context_to_file</strong> &#8211; bool, if True, save account and context information into file.
+Will slow down backtesting.</li>
 </ul>
 </td>
 </tr>

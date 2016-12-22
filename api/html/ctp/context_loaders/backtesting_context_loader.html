@@ -169,8 +169,23 @@
 <span id="backtesting-context-loader"></span><h1>backtesting_context_loader<a class="headerlink" href="#module-ctxalgoctp.ctp.context_loaders.backtesting_context_loader" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="ctxalgoctp.ctp.context_loaders.backtesting_context_loader.BacktestingContextLoader">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.context_loaders.backtesting_context_loader.</code><code class="descname">BacktestingContextLoader</code><a class="headerlink" href="#ctxalgoctp.ctp.context_loaders.backtesting_context_loader.BacktestingContextLoader" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.context_loaders.backtesting_context_loader.</code><code class="descname">BacktestingContextLoader</code><span class="sig-paren">(</span><em>context=None</em>, <em>save_to_file=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.context_loaders.backtesting_context_loader.BacktestingContextLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="abstract_context_loader.html#ctxalgoctp.ctp.context_loaders.abstract_context_loader.AbstractContextLoader" title="ctxalgoctp.ctp.context_loaders.abstract_context_loader.AbstractContextLoader"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.context_loaders.abstract_context_loader.AbstractContextLoader</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>context</strong> &#8211; string, or dict, the existing context, if any.
+If a string and it points to an existing file location, load the context from that file.
+If a string and it does not point to an existing file, treat the string as JSON object containing
+the context data and load it.</li>
+<li><strong>save_to_file</strong> &#8211; bool, if True, save the context into a file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.context_loaders.backtesting_context_loader.BacktestingContextLoader.load">
 <code class="descname">load</code><span class="sig-paren">(</span><em>base_folder</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.context_loaders.backtesting_context_loader.BacktestingContextLoader.load" title="Permalink to this definition">¶</a></dt>
