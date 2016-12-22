@@ -8,9 +8,12 @@ language: en
 This script re-balance strategy positions from trading account and expected positions.
 
 ```python
+import zmq
 import sys
 import math
 from optparse import OptionParser
+from ctxalgolib.rule_checking.rule_checker_message_sender import RuleCheckerMessageSender
+from ctxalgolib.rule_checking.error_codes import ErrorCodes
 from ctxalgoctp.ctp.live_strategy_utils import *
 from ctxalgoctp.ctp.constants import Constants as C
 from ctxalgoctp.ctp.position_utils import PositionUtils
@@ -104,6 +107,9 @@ def get_cmd_parser():
              'either product.strategy, or just strategy. If the former, the product part must match the product '
              'defined in --strategy-map.')
 
+    parser.add_option('--rule-checker', type='string', dest='rule_checker', default=None,
+                      help="Zeromq address, with port to rule checker input.")
+
     return parser
 
 
@@ -132,7 +138,7 @@ def compare_position_differences(account_position, strategy_positions, trader_po
         pos_equal = TradingAccount.is_compact_position_summary_equal(strategy_sum, trader_position)
 
     if pos_equal:
-        return 0
+        return 0, ''
 
     columns = ['actual sid', 'direction', 'date', 'account'] + sorted(strategy_short_names.keys())
     if trader_position is not None:
@@ -176,20 +182,20 @@ def compare_position_differences(account_position, strategy_positions, trader_po
                             rows.append(row)
 
     if len(rows) > 0:
-        print('Strategies:')
+        output = 'Strategies:\n'
         for s in sorted(strategy_short_names.keys()):
-            print('{}: {}'.format(s, strategy_short_names[s]))
-        print('')
+            output += '{}: {}\n'.format(s, strategy_short_names[s])
+        output += '\nPosition differences\n'
 
-        print('Position differences')
         if table:
-            print(PositionUtils.get_table(columns, rows))
+            output += PositionUtils.get_table(columns, rows) + '\n'
         else:
-            print(','.join(columns))
+            output += ','.join(columns) + '\n'
             for row in rows:
-                print(','.join([str(c) for c in row]))
-        print('')
-        return -1
+                output += ','.join([str(c) for c in row]) + '\n'
+        output += '\n'
+        print(output)
+        return -1, output
 
 
 def position_distance(strategy_positions, expected_positions):
@@ -206,6 +212,15 @@ def position_distance(strategy_positions, expected_positions):
     if result > 0:
         result = math.sqrt(result) / instrument_count
     return result
+
+
+def send_exception_to_rule_checker(source, title, content, rule_checker, error_code):
+    if rule_checker is not None:
+        context = zmq.Context()
+        p = RuleCheckerMessageSender(context, address=rule_checker, sleep_second=5)
+        p.send_general_exception(source, title, content, error_code=error_code)
+        p.dispose()
+        context.term()
 
 
 def main():
@@ -314,7 +329,7 @@ def main():
                 assert set(strategy_positions[base_folder].keys()) == set(expected_positions[base_folder].keys())
             assert set(strategy_positions[base_folder].keys()) == instruments
 
-        pos_diff = compare_position_differences(
+        pos_diff, output = compare_position_differences(
             account_positions, strategy_positions, compact_trade_executor_positions, strategy_short_names,
             table=options.table)
 
@@ -327,6 +342,12 @@ def main():
             if pos_diff == 0:
                 sys.exit(0)
             else:
+                if options.rule_checker is not None:
+                    # Send positions difference to rule checker.
+                    source = 'Strategy position checker'
+                    title = 'Strategy positions in product {} mismatch against trader or account.'.format(product)
+                    send_exception_to_rule_checker(
+                        source, title, output, options.rule_checker, error_code=ErrorCodes.s0002)
                 sys.exit(-1)
 
         print('Position distance before re-balancing: {}'.format(
@@ -364,8 +385,13 @@ def main():
                   'script with the --overwrite command line option.'.format(C.synced_account_file_name))
 
     except Exception as e:
-        print(traceback.print_exc())
-        raise
+        content = traceback.format_exc()
+        print(content)
+        if options.rule_checker is not None:
+            source = 'Strategy position checker'
+            title = e.message
+            send_exception_to_rule_checker(source, title, content, options.rule_checker, ErrorCodes.r0006)
+            sys.exit(-1)
 
 
 if __name__ == '__main__':

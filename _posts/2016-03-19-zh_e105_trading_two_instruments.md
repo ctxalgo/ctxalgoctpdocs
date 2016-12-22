@@ -10,6 +10,8 @@ language: zh
 1. 在策略的`__init__`方法的`instrument_ids`参数中指定要交易的所有的品种的ID。
 2. 在使用`has_position`，`has_pending_order`和`change_position_to`等API时，通过`instrument_id`参数来指定要操作的品种。
 
+本示例还展示了如何通过设置`backtest`方法中的`profits`和`actual_instrument_ids`参数来在回测的历史数据中获取额外的字段。
+
 
 ```python
 import talib
@@ -28,6 +30,9 @@ class TwoInstrumentStrategy(AbstractStrategy):
         # has_pending_order, has_position and change_position_to to specify the instrument you want to operate.
         if not self.has_pending_order(instrument_id=instrument_id) and self.in_market_period(instrument_id=instrument_id, delta=timedelta(minutes=20)):
             ohlc = self.ohlc(instrument_id=instrument_id)
+            # You can now access to the profits and actual instrument ids.
+            profit = ohlc.profits[-1]
+            actual_instrument_id = ohlc.actual_instrument_ids[-1]
             if ohlc.length >= self.parameters.slow_ma_period:
                 closes = np.array(ohlc.closes)
                 ma_fast = talib.SMA(closes, timeperiod=self.parameters.fast_ma_period)
@@ -50,7 +55,8 @@ def main():
 
         }
     }
-    report, data_source = backtest(TwoInstrumentStrategy, config, start_date, end_date)
+    report, data_source = backtest(
+        TwoInstrumentStrategy, config, start_date, end_date, profits=True, actual_instrument_ids=True)
     print(report)
 
 
