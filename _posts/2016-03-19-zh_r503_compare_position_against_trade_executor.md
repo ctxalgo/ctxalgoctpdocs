@@ -71,8 +71,11 @@ def main():
              'simulation.good_morning_095500,good_morning,9:55,0.1\n')
 
     parser.add_option(
-        '--trade-executor-name', type='string', dest='trade_executor_name', default='trader',
-        help='The default trade executor strategy name.')
+        '--trade-executor-name', type='string', dest='trade_executor_name', default=None,
+        help='The trade executor strategy name. This is used when --trade-executor is not given. Together with '
+             '--strategy-log-folder, it defines the base folder of the trade executor. It can be in form of '
+             'either product.strategy, or just strategy. If the former, the product part must match the product '
+             'defined in --strategy-map.')
 
     options, args = parser.parse_args()
     trading_day = PositionUtils.trading_day_from_now(options.trading_day)
@@ -117,7 +120,14 @@ def main():
         assert options.strategy_map is not None
         assert options.strategy_log_folder is not None
         assert product is not None
-        trader_signature = Topics.strategy_signature(product, options.trade_executor_name)
+        assert options.trade_executor_name is not None
+        trader = options.trade_executor_name
+        sep_pos = trader.find(Topics.strategy_signature_separator())
+        if sep_pos >= 0:
+            p = trader[:sep_pos]
+            assert p == product
+            trader = trader[sep_pos+1:]
+        trader_signature = Topics.strategy_signature(product, trader)
         trader_base_folder = os.path.join(options.strategy_log_folder, trader_signature)
         trade_executor_positions = get_account_from_path(trader_base_folder).position_summary(trading_day=trading_day)
         positions['trader'] = trade_executor_positions

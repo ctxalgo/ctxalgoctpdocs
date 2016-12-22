@@ -11,7 +11,7 @@ This script sends messages to a running strategy repeatedly. Used for debugging 
 from optparse import OptionParser
 import zmq
 from time import sleep
-from datetime import datetime
+from datetime import datetime, timedelta
 from ctxalgolib.mission_control.mission_control import MissionController
 
 
@@ -28,8 +28,8 @@ def get_cmd_parser():
         help='Name of the strategy to send messages to, in form of product.strategy.')
 
     parser.add_option(
-        '--exit-time', type='string', dest='exit_time',
-        help='Exit time of current message sending script, in form of YYYYMMDDHHMMSS.')
+        '--exit-time', type='string', dest='exit_time', default=None,
+        help='Exit time of current message sending script, in form of YYYYMMDDHHMMSS. If None, in 24 hours.')
 
     parser.add_option(
         '--frequency', type='int', dest='frequency', default=60,
@@ -42,8 +42,10 @@ def main():
     parser = get_cmd_parser()
     options, args = parser.parse_args()
     strategy = options.strategy
-    exit_time = datetime.strptime(options.exit_time, '%Y%m%d%H%M%S')
-
+    if options.exit_time is None:
+        exit_time = datetime.now() + timedelta(hours=24)
+    else:
+        exit_time = datetime.strptime(options.exit_time, '%Y%m%d%H%M%S')
     context = zmq.Context()
     mc = MissionController(context, proxy=True, strategy_name=strategy, proxy_ip=options.chore)
 

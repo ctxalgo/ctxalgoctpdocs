@@ -98,6 +98,13 @@ def get_cmd_parser():
         help='Path to a folder that contains base folders of all the relevant strategies and their corresponding '
              'trade executors. ')
 
+    parser.add_option(
+        '--trade-executor-name', type='string', dest='trade_executor_name', default=None,
+        help='The trade executor strategy name. This is used when --trade-executor is not given. Together with '
+             '--strategy-log-folder, it defines the base folder of the trade executor. It can be in form of '
+             'either product.strategy, or just strategy. If the former, the product part must match the product '
+             'defined in --strategy-map.')
+
     return parser
 
 
@@ -224,8 +231,11 @@ def main():
 
         # Load strategy map. Strategy map connects the CTX strategy positions to strategies defined in
         # the expected positions file.
+        product = None
         strategy_map = PositionUtils.load_strategy_map(
             options.strategy_map, default_scaling_factor=options.scaling_factor)
+        if len(strategy_map) > 0:
+            product = strategy_map.keys()[0].split(Topics.strategy_signature_separator())[0]
 
         # Load expected positions. Expected positions are the positions that the strategies are expected to have.
         if options.expected_positions is None:
@@ -258,10 +268,20 @@ def main():
 
         # Retrieve position from trade executor if given.
         trade_executor_base_folder = options.trade_executor
+        trade_executor_info = None
+        compact_trade_executor_positions = None
         if trade_executor_base_folder is None or not os.path.exists(trade_executor_base_folder):
-            trade_executor_info = None
-            compact_trade_executor_positions = None
-        else:
+            trader = options.trade_executor_name
+            if options.strategy_log_folder is not None and trader is not None and product is not None:
+                sep_pos = trader.find(Topics.strategy_signature_separator())
+                if sep_pos >= 0:
+                    p = trader[:sep_pos]
+                    assert p == product
+                    trader = trader[sep_pos + 1:]
+                trader_signature = Topics.strategy_signature(product, trader)
+                trade_executor_base_folder = os.path.join(options.strategy_log_folder, trader_signature)
+
+        if trade_executor_base_folder is None or not os.path.exists(trade_executor_base_folder):
             trade_executor_info = PositionUtils.get_account_from_strategy(trade_executor_base_folder, trading_day)
             trade_executor_base_folder = trade_executor_info['base_folder']
             compact_trade_executor_positions = PositionUtils.padded_positions(
