@@ -358,7 +358,7 @@ def main():
                     source = 'Strategy position checker'
                     title = 'Strategy positions in product {} mismatch against trader or account.'.format(product)
                     send_exception_to_rule_checker(
-                        source, title, output, options.rule_checker, error_code=ErrorCodes.s0002)
+                        source, title, output, options.rule_checker, error_code=ErrorCodes.s0003)
                 sys.exit(-1)
 
         print('Position distance before re-balancing: {}'.format(
