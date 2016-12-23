@@ -111,6 +111,10 @@ def get_cmd_parser():
     parser.add_option('--rule-checker', type='string', dest='rule_checker', default=None,
                       help="Zeromq address, with port to rule checker input.")
 
+    parser.add_option(
+        '--only-trading-day', action='store_true', dest='only_trading_day', default=False,
+        help='If present, only perform checking/position re-balancing on trading day. If not on a trading day, '
+             'do nothing and terminate.')
     return parser
 
 
@@ -226,6 +230,12 @@ def send_exception_to_rule_checker(source, title, content, rule_checker, error_c
 
 def main():
     options, args = get_cmd_parser().parse_args()
+
+    if options.only_trading_day:
+        now = datetime.now().date()
+        if not TradingDays().is_trading_day(now):
+            print('{} is not a trading day, and --only-on-trading-day is present, do nothing and terminate.')
+            sys.exit(0)
 
     try:
         # Retrieve positions from the given trading account.
