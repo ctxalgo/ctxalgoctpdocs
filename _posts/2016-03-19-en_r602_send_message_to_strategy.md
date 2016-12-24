@@ -35,6 +35,10 @@ def get_cmd_parser():
         '--frequency', type='int', dest='frequency', default=60,
         help='Frequency in seconds of the message sending. For example, 60 means sending a message every 60 seconds.')
 
+    parser.add_option(
+        '--proxy', action='store_true', dest='proxy', default=False,
+        help='Indicate to use zmq proxy.')
+
     return parser
 
 
@@ -47,7 +51,7 @@ def main():
     else:
         exit_time = datetime.strptime(options.exit_time, '%Y%m%d%H%M%S')
     context = zmq.Context()
-    mc = MissionController(context, proxy=True, strategy_name=strategy, proxy_ip=options.chore)
+    mc = MissionController(context, strategy_name=strategy, proxy_ip=options.chore, proxy=options.proxy)
 
     # Sleep for a few seconds to reduce the problem of zmq slow-joiner.
     sleep(5)
