@@ -12,6 +12,7 @@ language: zh
 import zmq
 import sys
 import math
+from time import sleep
 from optparse import OptionParser
 from ctxalgolib.rule_checking.rule_checker_message_sender import RuleCheckerMessageSender
 from ctxalgolib.rule_checking.error_codes import ErrorCodes
@@ -224,6 +225,7 @@ def send_exception_to_rule_checker(source, title, content, rule_checker, error_c
         context = zmq.Context()
         p = RuleCheckerMessageSender(context, address=rule_checker, sleep_second=5)
         p.send_general_exception(source, title, content, error_code=error_code)
+        sleep(5)
         p.dispose()
         context.term()
 
