@@ -211,7 +211,10 @@ def position_distance(strategy_positions, expected_positions):
         instrument_count = float(len(pos.keys()))
         for sid, pos2 in pos.items():
             for direction, pos3 in pos2.items():
-                d = float(expected_positions[s][sid][direction] - (pos3['yesterday_volume'] + pos3['today_volume']))
+                if s not in expected_positions or expected_positions[s] is None:
+                    d = 0
+                else:
+                    d = float(expected_positions[s][sid][direction] - (pos3['yesterday_volume'] + pos3['today_volume']))
                 d *= d
                 result += d
 
@@ -308,7 +311,7 @@ def main():
                 trader_signature = Topics.strategy_signature(product, trader)
                 trade_executor_base_folder = os.path.join(options.strategy_log_folder, trader_signature)
 
-        if trade_executor_base_folder is None or not os.path.exists(trade_executor_base_folder):
+        if trade_executor_base_folder is not None and os.path.exists(trade_executor_base_folder):
             trade_executor_info = PositionUtils.get_account_from_strategy(trade_executor_base_folder, trading_day)
             trade_executor_base_folder = trade_executor_info['base_folder']
             compact_trade_executor_positions = PositionUtils.padded_positions(
