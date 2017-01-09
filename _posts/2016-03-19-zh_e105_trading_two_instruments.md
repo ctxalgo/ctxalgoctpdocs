@@ -44,8 +44,8 @@ class TwoInstrumentStrategy(AbstractStrategy):
 
 
 def main():
-    start_date = '2015-01-01'
-    end_date = '2015-12-31'
+    start_date = '2016-01-01'
+    end_date = '2016-12-31'
     config = {
         'instrument_ids': ['cu00', 'rb00'],  # Specify multiple instrument ids to trade.
         'periods': [Periodicity.FIFTEEN_MINUTE],
@@ -57,8 +57,6 @@ def main():
     }
     report, data_source = backtest(
         TwoInstrumentStrategy, config, start_date, end_date, profits=True, actual_instrument_ids=True)
-    print(report)
-
 
 if __name__ == '__main__':
     main()
