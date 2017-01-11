@@ -11,7 +11,8 @@ import os
 from termcolor import colored
 from ctxalgolib.ohlc.periodicity import Periodicity
 from ctxalgoctp.ctp.live.r101_change_positions import ChangePosition
-from ctxalgoctp.ctp.dominant_provider import DominantProvider, DummyDominantProvider
+from ctxalgoctp.ctp.dominant_providers.dominant_provider import DominantProvider
+from ctxalgoctp.ctp.dominant_providers.dummy_dominant_provider import DummyDominantProvider
 from ctxalgoctp.ctp.strategy_utils import StrategyUtils
 from ctxalgoctp.ctp.tests.simulation_accounts import CtpSimulationAccounts
 from ctxalgoctp.ctp.factories.ctp_real_factory import CtpRealFactory

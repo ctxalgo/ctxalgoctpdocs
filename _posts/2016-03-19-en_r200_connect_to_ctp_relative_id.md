@@ -11,7 +11,7 @@ import os
 from termcolor import colored
 from ctxalgolib.ohlc.periodicity import Periodicity
 from ctxalgoctp.ctp.live.r100_connect_to_ctp import JustConnect
-from ctxalgoctp.ctp.dominant_provider import DominantProvider
+from ctxalgoctp.ctp.dominant_providers.dominant_provider import DominantProvider
 from ctxalgoctp.ctp.strategy_utils import StrategyUtils
 from ctxalgoctp.ctp.tests.simulation_accounts import CtpSimulationAccounts
 from ctxalgoctp.ctp.factories.ctp_real_factory import CtpRealFactory

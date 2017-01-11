@@ -13,6 +13,7 @@ ctp
    execution_drivers/index
    data_producers/index
    strategies/index
+   dominant_providers/index
    trading_account_loaders/index
    scripts/index
    slippage_models
@@ -32,7 +33,6 @@ ctp
    roll
    state_utils
    constants
-   dominant_provider
    datetime_utils
    strategy
    callback_base
