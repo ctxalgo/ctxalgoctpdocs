@@ -20,6 +20,7 @@ class JustConnect(AbstractStrategy):
         AbstractStrategy.__init__(
             self, instrument_ids, parameters, base_folder, periods=periods, description=description, logger=logger)
         self.set_local_bookkeep(self.parameters.local_bookkeep)
+        self.set_should_terminate_after_market_close(False)
 
     def on_before_run(self, strategy):
         # Display current holding positions in connected trading account.
@@ -38,7 +39,7 @@ class JustConnect(AbstractStrategy):
 def main():
     # Pass the following command line options to the strategy.
     # You need to change the account information and the instrument ids.
-    cmd_options = '--account simnow_future4 --name test.s1 --instruments cu1610,SR611'
+    cmd_options = '--account simnow_future4 --name test.s1 --instruments cu1703'
     parser = get_command_line_parser(strategy_class=JustConnect, cmd_options=cmd_options)
     options = parser.parse()
     config = {
