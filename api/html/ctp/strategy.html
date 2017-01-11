@@ -107,6 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="callback_base.html">callback_base</a></li>
 <li class="toctree-l2"><a class="reference internal" href="market_order_simulator.html">market_order_simulator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plain_backtester.html">plain_backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_utils.html">basic_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="live_strategy_utils.html">live_strategy_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="backtesting_utils.html">backtesting_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comm.html">comm</a></li>
@@ -2836,7 +2837,7 @@ instrument_id, kind and period to find the ohlc.</li>
 <dl class="class">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy">
 <em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.strategy.</code><code class="descname">AbstractStateBasedStrategy</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>parameters</em>, <em>base_folder</em>, <em>periods=None</em>, <em>description=None</em>, <em>logger=None</em>, <em>strategy_callbacks=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.strategy.AbstractStrategy" title="ctxalgoctp.ctp.strategy.AbstractStrategy"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.strategy.AbstractStrategy</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.trading_utils.state.StateMachine</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.strategy.AbstractStrategy" title="ctxalgoctp.ctp.strategy.AbstractStrategy"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.strategy.AbstractStrategy</span></code></a></p>
 <p>Class that represent a state-based strategy.</p>
 <p>Initialize current strategy.
 :param instrument_ids: string or [string]. The list of future id(s) to trade.
@@ -3050,14 +3051,6 @@ For example:
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.all_positions_with_actual_instrument_id">
 <code class="descname">all_positions_with_actual_instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.all_positions_with_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.at">
-<code class="descname">at</code><span class="sig-paren">(</span><em>state_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.at" title="Permalink to this definition">¶</a></dt>
-<dd><p>Is current state machien at the state given by name?
-:param state_name: string, the name of the state.
-:return bool, True if state machine is at that state.</p>
-</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.available_money">
@@ -3441,16 +3434,6 @@ to cancel those orders.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.create_states">
-<code class="descname">create_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.create_states" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the list of states used in current strategy and indicates which is the start state.
-:return: (start_state, all_states), start_state is of type AbstractState, it is the start state.</p>
-<blockquote>
-<div>all_states is of type [AbstractState], it is the full list of states used in current strategy.
-start_state must be an element of all_states as well.</div></blockquote>
-</dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.default_period">
 <code class="descname">default_period</code><span class="sig-paren">(</span><em>kind=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.default_period" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the default period for the given ohlc kind.
@@ -3488,29 +3471,6 @@ start_state must be an element of all_states as well.</div></blockquote>
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.dump_json">
 <code class="descname">dump_json</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.dump_json" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.enable_contract">
-<code class="descname">enable_contract</code><span class="sig-paren">(</span><em>precondition=True</em>, <em>postcondition=True</em>, <em>invariant=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.enable_contract" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enable or disable contract evaluation.
-:param precondition: boolean, whether to enable or disable precondition evaluation.</p>
-<blockquote>
-<div>None means do not change current precondition evaluation setting.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>postcondition</strong> &#8211; boolean, whether to enable or disable postcondition evaluation.
-None means do not change current postcondition evaluation setting.</li>
-<li><strong>invariant</strong> &#8211; boolean, whether to enable or disable invariant evaluation.
-None means do not change current invariant evaluation setting.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.filtered_position">
@@ -3725,12 +3685,6 @@ The returned information will be accessible through the corresponding callback f
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.initialize_before_run">
 <code class="descname">initialize_before_run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.initialize_before_run" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.initialize_states">
-<code class="descname">initialize_states</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.initialize_states" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initialize the states used in current strategy.</p>
-</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.instrument_id">
@@ -5109,30 +5063,9 @@ to cancel those orders.</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.set_is_invariant_enabled">
-<code class="descname">set_is_invariant_enabled</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.set_is_invariant_enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enable or display invariant evaluation.
-:param b: boolean, True means enable, False means disable.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.set_is_market_enabled">
 <code class="descname">set_is_market_enabled</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.set_is_market_enabled" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.set_is_postcondition_enabled">
-<code class="descname">set_is_postcondition_enabled</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.set_is_postcondition_enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enable or display postcondition evaluation.
-:param b: boolean, True means enable, False means disable.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.set_is_precondition_enabled">
-<code class="descname">set_is_precondition_enabled</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.set_is_precondition_enabled" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enable or display precondition evaluation.
-:param b: boolean, True means enable, False means disable.</p>
-</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.set_is_trading_enabled">
@@ -5447,23 +5380,6 @@ instrument_id, kind and period to find the ohlc.</li>
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.trading_days_between">
 <code class="descname">trading_days_between</code><span class="sig-paren">(</span><em>start_date</em>, <em>end_date=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.trading_days_between" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.transit_state">
-<code class="descname">transit_state</code><span class="sig-paren">(</span><em>state_inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.transit_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply state_inputs to self._state. This will possibly trigger state transition.
-If no state transition occurs, self._state stays the same.
-:param state_inputs: Arbitrary data as state transition inputs.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.transit_to_start_state">
-<code class="descname">transit_to_start_state</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.transit_to_start_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transit current state machine to the start_state.
-Parameters:</p>
-<blockquote>
-<div>data: dict from string to objects.</div></blockquote>
-</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.uuid">
