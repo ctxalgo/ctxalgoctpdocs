@@ -21,6 +21,8 @@ class JustConnect(AbstractStrategy):
             self, instrument_ids, parameters, base_folder, periods=periods, description=description, logger=logger)
         self.set_local_bookkeep(self.parameters.local_bookkeep)
         self.set_should_terminate_after_market_close(False)
+        self.set_is_trading_enabled(self.parameters.trading_enabled)
+        self.set_is_market_enabled(self.parameters.market_enabled)
 
     def on_before_run(self, strategy):
         # Display current holding positions in connected trading account.
@@ -41,12 +43,24 @@ def main():
     # You need to change the account information and the instrument ids.
     cmd_options = '--account simnow_future4 --name test.s1 --instruments cu1703'
     parser = get_command_line_parser(strategy_class=JustConnect, cmd_options=cmd_options)
+    parser.add_option(
+        '--exit', type='int', dest='exit', default=10,
+        help='Exit strategy in the given seconds. ')
+    parser.add_option(
+        '--no-trading', action='store_false', dest='trading_enabled', default=True,
+        help='Should trading be enabled.')
+    parser.add_option(
+        '--no-market', action='store_false', dest='market_enabled', default=True,
+        help='Should market be enabled.')
+
     options = parser.parse()
     config = {
         'base_folder': options.get_base_folder(),
         'instrument_ids': options.get_instruments(),
         'parameters': {
-            'exit_in_second': 10,
+            'exit_in_second': options.exit,
+            'trading_enabled': options.trading_enabled,
+            'market_enabled': options.market_enabled,
             'local_bookkeep': options.local_bookkeep,
         },
         'description': options.get_description(),
