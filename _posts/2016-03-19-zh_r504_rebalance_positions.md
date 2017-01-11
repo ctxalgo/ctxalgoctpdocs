@@ -16,11 +16,14 @@ from time import sleep
 from optparse import OptionParser
 from ctxalgolib.rule_checking.rule_checker_message_sender import RuleCheckerMessageSender
 from ctxalgolib.rule_checking.error_codes import ErrorCodes
+from ctxalgolib.ohlc.trading_days import TradingDays
+from ctxalgolib.data_feed.zeromq_feed_utils import ZeromqFeedUtils as Topics
 from ctxalgoctp.ctp.live_strategy_utils import *
 from ctxalgoctp.ctp.constants import Constants as C
 from ctxalgoctp.ctp.position_utils import PositionUtils
 from ctxalgoctp.ctp.position_rebalancer import PositionRebalancer
 from ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader import LocalTradingAccountLoader
+from ctxalgoctp.ctp.trading_account import TradingAccount
 
 
 def get_cmd_parser():
