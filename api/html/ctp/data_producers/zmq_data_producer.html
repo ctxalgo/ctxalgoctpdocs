@@ -168,8 +168,203 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="zmq-data-producer">
-<h1>zmq_data_producer<a class="headerlink" href="#zmq-data-producer" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.data_producers.zmq_data_producer">
+<span id="zmq-data-producer"></span><h1>zmq_data_producer<a class="headerlink" href="#module-ctxalgoctp.ctp.data_producers.zmq_data_producer" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.data_producers.zmq_data_producer.</code><code class="descname">MarketDataSubscriber</code><span class="sig-paren">(</span><em>context</em>, <em>queue</em>, <em>kind</em>, <em>topics</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">ctxalgolib.pub_subs.abstract_data_subscriber.AbstractDataSubscriber</span></code></p>
+<p>Data subscriber to read tick and bar data from zmq.</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.subscriber_socket">
+<code class="descname">subscriber_socket</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.subscriber_socket" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.receive">
+<code class="descname">receive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.receive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.dispose">
+<code class="descname">dispose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.dispose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.context">
+<code class="descname">context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the context used by zeromq sockets.
+:return: zeromq Context.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.has_disposed">
+<code class="descname">has_disposed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.has_disposed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.set_on_data_action">
+<code class="descname">set_on_data_action</code><span class="sig-paren">(</span><em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.set_on_data_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set self.on_data_action with action.
+:param action: Function pointer with a single parameter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.set_options">
+<code class="descname">set_options</code><span class="sig-paren">(</span><em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.set_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.set_subscriber_socket_with_options">
+<code class="descname">set_subscriber_socket_with_options</code><span class="sig-paren">(</span><em>sock</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.MarketDataSubscriber.set_subscriber_socket_with_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.data_producers.zmq_data_producer.</code><code class="descname">ZmqDataProducer</code><span class="sig-paren">(</span><em>context</em>, <em>bar_queue</em>, <em>tick_queue</em>, <em>is_tick_needed=True</em>, <em>dominant_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="abstract_data_producer.html#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer" title="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer</span></code></a></p>
+<p>Initialize current.
+:param context: zmq.Context, zme context.
+:param bar_queue: string, the zmq queue address to receive ohlc bar data.
+:param tick_queue: string, the zmq queue address to receive tick data.
+:param is_tick_needed: bool, if True, register for tick data.
+:param dominant_provider: AbstractDominantProvider. Dominant provider.</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.is_connected">
+<code class="descname">is_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.is_connected" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.is_tick_needed">
+<code class="descname">is_tick_needed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.is_tick_needed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Since in ZmqDataProducer, tick and bar data comes independently, we don&#8217;t need tick data if we
+only want to have bar data (which is different from CtpDataProducer, which requires tick data
+from CTP to generate bar data). We can set_is_tick_needed with False to reduce network traffic.
+:return: bool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.set_is_tick_needed">
+<code class="descname">set_is_tick_needed</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.set_is_tick_needed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.subscribe_tick">
+<code class="descname">subscribe_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>market_enabled=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.subscribe_tick" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.subscribe_ohlcs">
+<code class="descname">subscribe_ohlcs</code><span class="sig-paren">(</span><em>periods</em>, <em>historical_ohlcs</em>, <em>market_periods</em>, <em>trading_day</em>, <em>order_book_level=1</em>, <em>with_open_interest=False</em>, <em>profits=False</em>, <em>use_mid_ask_bid=False</em>, <em>dominants=False</em>, <em>market_enabled=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.subscribe_ohlcs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.prepare_before_run">
+<code class="descname">prepare_before_run</code><span class="sig-paren">(</span><em>message_queue</em>, <em>all_event_queue</em>, <em>strategy</em>, <em>ctp_folder</em>, <em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.prepare_before_run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.connect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.initialize">
+<code class="descname">initialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.initialize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.reset">
+<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.dispose">
+<code class="descname">dispose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.dispose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.ohlcs">
+<code class="descname">ohlcs</code><span class="sig-paren">(</span><em>kind</em>, <em>instrument_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.ohlcs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.ohlc">
+<code class="descname">ohlc</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>kind</em>, <em>period</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.ohlc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.on_market_rtn_depth_market_data">
+<code class="descname">on_market_rtn_depth_market_data</code><span class="sig-paren">(</span><em>depth_market_data</em>, <em>trading_day</em>, <em>timestamp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.on_market_rtn_depth_market_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.on_tick_from_market_broker">
+<code class="descname">on_tick_from_market_broker</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.on_tick_from_market_broker" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.on_bar_from_market_broker">
+<code class="descname">on_bar_from_market_broker</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.on_bar_from_market_broker" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.data_subscriptions">
+<code class="descname">data_subscriptions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.data_subscriptions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.on_tick">
+<code class="descname">on_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.on_tick" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.on_bar">
+<code class="descname">on_bar</code><span class="sig-paren">(</span><em>kind</em>, <em>bars</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.on_bar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.backtesting_register_market_data">
+<code class="descname">backtesting_register_market_data</code><span class="sig-paren">(</span><em>tick</em>, <em>dt</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.backtesting_register_market_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register market data (used internally by backtester).
+:param tick: dict{string: value}, tick data.
+:param dt: datetime, current timestamp.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.backtesting_process_message">
+<code class="descname">backtesting_process_message</code><span class="sig-paren">(</span><em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.backtesting_process_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.all_event_queue">
+<code class="descname">all_event_queue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.all_event_queue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.set_all_event_queue">
+<code class="descname">set_all_event_queue</code><span class="sig-paren">(</span><em>queue</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.set_all_event_queue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.set_dominant_provider">
+<code class="descname">set_dominant_provider</code><span class="sig-paren">(</span><em>provider</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.set_dominant_provider" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.subscribe_ticks">
+<code class="descname">subscribe_ticks</code><span class="sig-paren">(</span><em>periods</em>, <em>market_enabled=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.zmq_data_producer.ZmqDataProducer.subscribe_ticks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 
 

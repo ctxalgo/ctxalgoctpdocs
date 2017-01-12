@@ -159,8 +159,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="live-strategy-utils">
-<h1>live_strategy_utils<a class="headerlink" href="#live-strategy-utils" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.live_strategy_utils">
+<span id="live-strategy-utils"></span><h1>live_strategy_utils<a class="headerlink" href="#module-ctxalgoctp.ctp.live_strategy_utils" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live_strategy_utils.display_positions">
+<code class="descclassname">ctxalgoctp.ctp.live_strategy_utils.</code><code class="descname">display_positions</code><span class="sig-paren">(</span><em>strategy</em>, <em>label='Positions'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live_strategy_utils.display_positions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live_strategy_utils.get_command_line_parser">
+<code class="descclassname">ctxalgoctp.ctp.live_strategy_utils.</code><code class="descname">get_command_line_parser</code><span class="sig-paren">(</span><em>strategy_class</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live_strategy_utils.get_command_line_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a command line option parser for live strategies.
+:param strategy_class: class, name of the strategy class.
+:param kwargs: config for named parameters.
+:return: StrategyCommandLineUtils, command line option parser.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live_strategy_utils.decide_exit_time">
+<code class="descclassname">ctxalgoctp.ctp.live_strategy_utils.</code><code class="descname">decide_exit_time</code><span class="sig-paren">(</span><em>time_str</em>, <em>now=None</em>, <em>trading_utils=None</em>, <em>delta=datetime.timedelta(0</em>, <em>1800)</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live_strategy_utils.decide_exit_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live_strategy_utils.check_should_trade">
+<code class="descclassname">ctxalgoctp.ctp.live_strategy_utils.</code><code class="descname">check_should_trade</code><span class="sig-paren">(</span><em>now=None</em>, <em>handle_only_day_trading_days=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live_strategy_utils.check_should_trade" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an entry_time, decide if we are going to trade.
+:param now: timestamp, current timestamp, if None, datetime.now() will be used.
+:return: bool</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ctxalgoctp.ctp.live_strategy_utils.run_live">
+<code class="descclassname">ctxalgoctp.ctp.live_strategy_utils.</code><code class="descname">run_live</code><span class="sig-paren">(</span><em>class_name</em>, <em>config</em>, <em>options</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live_strategy_utils.run_live" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the strategy given by its class name.
+:param class_name: class, strategy class name.
+:param config: dict{string: object}, the parameters used to instantiate the strategy object.
+:param options: StrategyCommandLineUtils, the command line option parser.
+:return AbstractStrategy, the strategy object.</p>
+<blockquote>
+<div>If you want to access to all the things from the strategy after it terminates, use this return value.</div></blockquote>
+</dd></dl>
+
 </div>
 
 
