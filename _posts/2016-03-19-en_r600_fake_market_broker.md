@@ -14,6 +14,7 @@ import zmq
 from threading import Thread
 from Queue import Queue, Empty
 from ctxalgolib.data_feed.zeromq_feed_utils import ZeromqFeedUtils as Topics
+from ctxalgolib.pub_subs.pub_sub_constants import PubSubConstants
 from ctxalgoctp.ctp.live_strategy_utils import *
 
 
@@ -79,7 +80,7 @@ class ZmqDataSenderThread(Thread):
             except Exception:
                 raise
 
-        socket.setsockopt(zmq.LINGER, 0)
+        socket.setsockopt(zmq.LINGER, PubSubConstants.linger)
         socket.close()
 
 

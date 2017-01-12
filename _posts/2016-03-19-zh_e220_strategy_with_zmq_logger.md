@@ -17,6 +17,7 @@ language: zh
 ```python
 import threading
 import zmq
+from ctxalgolib.pub_subs.pub_sub_constants import PubSubConstants
 from ctxalgoctp.ctp.docs.starterkit.e100_trend_following_strategy import TrendFollowingStrategy
 from ctxalgoctp.ctp.backtesting_utils import *
 ```
@@ -83,7 +84,7 @@ def main():
             pass
     backtester.join()
 
-    subscriber.setsockopt(zmq.LINGER, 0)
+    subscriber.setsockopt(zmq.LINGER, PubSubConstants.linger)
     subscriber.close()
     context.term()
 

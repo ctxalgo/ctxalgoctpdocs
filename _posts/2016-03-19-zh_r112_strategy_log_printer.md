@@ -13,6 +13,7 @@ import zmq
 from optparse import OptionParser
 from ctxalgolib.rule_checking.configs import RuleCheckingConfigs
 from ctxalgolib.scripts.gracefull_killer import GracefulKiller
+from ctxalgolib.pub_subs.pub_sub_constants import PubSubConstants
 
 
 def get_command_line_parser():
@@ -55,7 +56,7 @@ def main():
                 print('{}\t{}'.format(message_topic, content))
 
     for s in sockets:
-        s.setsockopt(zmq.LINGER, 0)
+        s.setsockopt(zmq.LINGER, PubSubConstants.linger)
         s.close()
     context.term()
 
