@@ -11,6 +11,7 @@ ctp
    trade_executors/index
    logger/index
    execution_drivers/index
+   stress_testing/index
    data_producers/index
    strategies/index
    dominant_providers/index
