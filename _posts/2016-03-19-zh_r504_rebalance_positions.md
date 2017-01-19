@@ -278,7 +278,8 @@ def main():
         if options.strategies is not None and len(options.strategies) > 0:
             for id_, s in enumerate(options.strategies):
                 short_name = 's{}'.format(id_ + 1)
-                info = PositionUtils.get_account_from_strategy(s, trading_day)
+                info = PositionUtils.get_account_from_strategy(
+                    s, trading_day, strategy_map=strategy_map)
                 base_folder = info['base_folder']
                 strategy_infos[base_folder] = info
                 strategy_short_names[short_name] = base_folder
@@ -288,7 +289,8 @@ def main():
             for id_, s_name in enumerate(strategy_map.keys()):
                 short_name = 's{}'.format(id_ + 1)
                 base_folder = os.path.join(options.strategy_log_folder, s_name)
-                info = PositionUtils.get_account_from_strategy(base_folder, trading_day)
+                info = PositionUtils.get_account_from_strategy(
+                    base_folder, trading_day, strategy_map=strategy_map)
                 base_folder = info['base_folder']
                 strategy_infos[base_folder] = info
                 strategy_short_names[short_name] = base_folder
@@ -311,9 +313,10 @@ def main():
 
         if trade_executor_base_folder is not None and os.path.exists(trade_executor_base_folder):
             trade_executor_info = PositionUtils.get_account_from_strategy(trade_executor_base_folder, trading_day)
-            trade_executor_base_folder = trade_executor_info['base_folder']
-            compact_trade_executor_positions = PositionUtils.padded_positions(
-                instruments, TradingAccount.compact_position_summary(trade_executor_info['position_summary']))
+            if trade_executor_info is not None:
+                trade_executor_base_folder = trade_executor_info['base_folder']
+                compact_trade_executor_positions = PositionUtils.padded_positions(
+                    instruments, TradingAccount.compact_position_summary(trade_executor_info['position_summary']))
 
         # For each strategy, find its expected positions (with port weight and scaling factor adjustment).
         strategy_positions = {}
