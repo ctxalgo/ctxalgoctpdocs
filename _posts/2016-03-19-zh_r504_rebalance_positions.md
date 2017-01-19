@@ -14,7 +14,7 @@ import sys
 import math
 from time import sleep
 from optparse import OptionParser
-from ctxalgolib.rule_checking.rule_checker_message_sender import RuleCheckerMessageSender
+from ctxalgolib.rule_checking.rule_checker_message_sender import RuleCheckerMessageSendingUtils
 from ctxalgolib.rule_checking.error_codes import ErrorCodes
 from ctxalgolib.ohlc.trading_days import TradingDays
 from ctxalgolib.data_feed.zeromq_feed_utils import ZeromqFeedUtils as Topics
@@ -228,12 +228,7 @@ def position_distance(strategy_positions, expected_positions):
 
 def send_exception_to_rule_checker(source, title, content, rule_checker, error_code):
     if rule_checker is not None:
-        context = zmq.Context()
-        p = RuleCheckerMessageSender(context, address=rule_checker, sleep_second=5)
-        p.send_general_exception(source, title, content, error_code=error_code)
-        sleep(5)
-        p.dispose()
-        context.term()
+        RuleCheckerMessageSendingUtils.send_exception(source, title, content, error_code, rule_checker)
 
 
 def main():
@@ -359,6 +354,11 @@ def main():
         if options.view_only:
             print('Position is not re-balanced because script is run with --view-only mode.')
             if pos_diff == 0:
+                if options.rule_checker is not None:
+                    source = 'Strategy position checker'
+                    title = 'Position sum correct in product {}'.format(product)
+                    body = ''
+                    RuleCheckerMessageSendingUtils.send_information(source, title, body, options.rule_checker)
                 sys.exit(0)
             else:
                 if options.rule_checker is not None:
