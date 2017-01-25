@@ -16,7 +16,7 @@ to setup Z3.
 
 ```python
 from ctxalgolib.ohlc.abstract_ohlc import OhlcAttributes
-from ctxalgolib.ohlc.constraint_based_ohlc_generator import OhlcBarConstraint
+from ctxalgolib.ohlc.constraint_based_ohlc_generator import DirectOhlcBarConstraint
 from ctxalgoctp.ctp.backtesting_utils import *
 
 
@@ -45,8 +45,8 @@ config = {
 # start_date and end_date specifies the range of rows where a constraint should be applied.
 # If start_date is None, it means starting from the first ohlc bar. If end_date is None, it means ends at the last bar.
 constraints = [
-    OhlcBarConstraint(OhlcAttributes.highs, '>', 3000, start_date=None, end_date=datetime(2014, 1, 10, 15, 0)),
-    OhlcBarConstraint(OhlcAttributes.volumes, '=', 500, start_date=None, end_date=datetime(2014, 1, 10, 15, 0)),
+    DirectOhlcBarConstraint(OhlcAttributes.highs, '>', 3000, start_date=None, end_date=datetime(2014, 1, 10, 15, 0)),
+    DirectOhlcBarConstraint(OhlcAttributes.volumes, '=', 500, start_date=None, end_date=datetime(2014, 1, 10, 15, 0)),
 ]
 
 # Backtest with the constraints.
