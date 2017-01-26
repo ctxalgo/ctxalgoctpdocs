@@ -350,6 +350,7 @@ def main():
             # assert set(strategy_positions[base_folder].keys()) == instruments
 
         # Re-pad positions again, needed because
+        # FIXME: This part is quite similar to the part above, need refactoring.
         instruments = instruments.union(missing_sids_in_account)
         for sid in missing_sids_in_account:
             account_positions[sid] = {
