@@ -310,12 +310,14 @@ def main():
                 trader_signature = Topics.strategy_signature(product, trader)
                 trade_executor_base_folder = os.path.join(options.strategy_log_folder, trader_signature)
 
+        missing_sids_in_account = set([])
         if trade_executor_base_folder is not None and os.path.exists(trade_executor_base_folder):
             trade_executor_info = PositionUtils.get_account_from_strategy(trade_executor_base_folder, trading_day)
             if trade_executor_info is not None:
                 trade_executor_base_folder = trade_executor_info['base_folder']
-                compact_trade_executor_positions = PositionUtils.padded_positions(
+                compact_trade_executor_positions, missing_sids = PositionUtils.padded_positions(
                     instruments, TradingAccount.compact_position_summary(trade_executor_info['position_summary']))
+                missing_sids_in_account = missing_sids_in_account.union(missing_sids)
 
         # For each strategy, find its expected positions (with port weight and scaling factor adjustment).
         strategy_positions = {}
@@ -333,17 +335,45 @@ def main():
                 assert expected_name in expected_position, '{} not in expected_positions.'.format(expected_name)
                 assert entry_time in expected_position[expected_name], '{} not in {}'.format(entry_time, expected_name)
                 port_weight = port_weights[expected_name] if expected_name in port_weights else 1.0
-                expected_positions[base_folder] = PositionUtils.padded_expected_positions(
+                expected_positions[base_folder], missing_sids = PositionUtils.padded_expected_positions(
                     instruments, PositionUtils.adjusted_positions(
                         expected_position[expected_name][entry_time], port_weight, scaling_factor))
+                missing_sids_in_account = missing_sids_in_account.union(missing_sids)
 
             # Pad strategy positions and expected positions with instruments in account.
-            strategy_positions[base_folder] = PositionUtils.padded_positions(
+            strategy_positions[base_folder], missing_sids = PositionUtils.padded_positions(
                 instruments, TradingAccount.compact_position_summary(data['position_summary']))
+            missing_sids_in_account = missing_sids_in_account.union(missing_sids)
 
             if expected_positions[base_folder] is not None:
                 assert set(strategy_positions[base_folder].keys()) == set(expected_positions[base_folder].keys())
-            assert set(strategy_positions[base_folder].keys()) == instruments
+            # assert set(strategy_positions[base_folder].keys()) == instruments
+
+        # Re-pad positions again, needed because
+        instruments = instruments.union(missing_sids_in_account)
+        for sid in missing_sids_in_account:
+            account_positions[sid] = {
+                'long': {'today_volume': 0, 'yesterday_volume': 0, 'volume': 0},
+                'short': {'today_volume': 0, 'yesterday_volume': 0, 'volume': 0}
+            }
+        if compact_trade_executor_positions is not None:
+            compact_trade_executor_positions, missing = PositionUtils.padded_positions(
+                instruments, TradingAccount.compact_position_summary(trade_executor_info['position_summary']))
+            assert len(missing) == 0
+        for base_folder, data in strategy_infos.items():
+            strategy_positions[base_folder], missing = PositionUtils.padded_positions(
+                instruments, TradingAccount.compact_position_summary(data['position_summary']))
+            assert len(missing) == 0
+            if expected_positions[base_folder] is not None:
+                strategy_signature = data['signature']
+                entry_time = strategy_map[strategy_signature]['entry_time']
+                expected_name = strategy_map[strategy_signature]['expected_name']
+                scaling_factor = strategy_map[strategy_signature]['scaling_factor']
+                port_weight = port_weights[expected_name] if expected_name in port_weights else 1.0
+                expected_positions[base_folder], missing_sids = PositionUtils.padded_expected_positions(
+                    instruments, PositionUtils.adjusted_positions(
+                        expected_position[expected_name][entry_time], port_weight, scaling_factor))
+                assert len(missing_sids) == 0
 
         pos_diff, output = compare_position_differences(
             account_positions, strategy_positions, compact_trade_executor_positions, strategy_short_names,
