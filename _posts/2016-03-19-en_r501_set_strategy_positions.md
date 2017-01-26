@@ -68,9 +68,9 @@ def main():
         for direction, pos2 in pos.items():
             price = pos2['average_price']
             volume = pos2['volume']
-            trade_id -= 1
-            order_ref = 'sync_order_ref_' + str(trade_id)
+            trade_id += 1
             timestamp = datetime.combine(trading_day, time(14, 50))
+            order_ref = TradingAccount.get_datetime_prefixed_id_str(sid, trade_id, timestamp)
             reason = ''
             volume_multiple = future_info_fac.volume_multiple_calculator().volume_multiple(sid, trading_day)
             margin_rate = future_info_fac.margin_calculator().margin(sid, direction, trading_day)
