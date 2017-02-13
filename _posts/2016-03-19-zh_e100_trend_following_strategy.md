@@ -81,7 +81,7 @@ class TrendFollowingStrategy(AbstractStrategy):
 
 ```python
 def main():
-    start_date = '2016-12-10'  # Backtesting start date.
+    start_date = '2014-12-10'  # Backtesting start date.
     end_date = '2016-12-31'    # Backtesting end date.
 
     # The values in config will be used to instantiate the strategy objects by the backtest method.
@@ -94,7 +94,7 @@ def main():
         }
     }
     start_time = datetime.now()
-    report, data_source = backtest(TrendFollowingStrategy, config, start_date, end_date)
+    report, data_source = backtest(TrendFollowingStrategy, config, start_date, end_date, log_in_console=True)
     end_time = datetime.now()
     print('Backtesting duration: ' + str(end_time - start_time))
 

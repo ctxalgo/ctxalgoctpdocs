@@ -84,7 +84,7 @@ class ChangePosition(AbstractStrategy):
 
 
 def main():
-    cmd_options = '--account simnow_future4 --name test.s1 --positions a1701:0 --loggers console,file,tcp://139.196.234.169 --trade-time 210500'
+    cmd_options = '--account simnow_future4 --name test.s1 --positions cu1703:0'  # --loggers console,file,tcp://139.196.234.169 --trade-time 210500'
     parser = get_command_line_parser(strategy_class=ChangePosition, cmd_options=cmd_options)
     parser.add_option(
         '--trade-time', type='string', dest='trade_time', default=None,

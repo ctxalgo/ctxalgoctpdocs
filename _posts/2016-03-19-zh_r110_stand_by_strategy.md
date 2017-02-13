@@ -116,13 +116,13 @@ def main():
     account = '--account simnow_future4'
 
     # TODO: Specify the instruments to trade.
-    instruments = '--instruments cu1612,a1701'
+    instruments = '--instruments cu1703,a1701'
 
     # TODO: Set strategy name
     strategy_name = 'test.stand_by_strategy'
 
     local_bookkeep = '--local-bookkeep'
-    # local_bookkeep = ''
+    local_bookkeep = ''
 
     if external_trade_executor:
         # The trade executor server is assumed to be at the same machine as current strategy.

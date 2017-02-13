@@ -28,10 +28,19 @@ class JustConnect(AbstractStrategy):
         display_positions(self)
         # Add a timer to tell the strategy to terminate in exit_in_second.
         self.add_timer(countdown=self.parameters.exit_in_second, action=self.on_timer)
+        # self.add_timer(countdown=5, action=self.on_timer2)
 
     def on_tick(self, instrument_id, tick):
         print('Tick: {}, {}, {}, {}, {}'.format(
             instrument_id, tick['timestamp'], self.now(), tick['last_price'], tick['volume']))
+
+    # def on_timer2(self, trigger_time, supposed_trigger_time, timer_name):
+    #  from guppy import hpy
+    #     for m in sorted(sys.modules.keys()):
+    #         print(m)
+    #     h = hpy()
+    #     print(h.heap())
+    #     print('-----------------------')
 
     def on_timer(self, trigger_time, supposed_trigger_time, timer_name):
         self.set_should_exit(True)
@@ -40,7 +49,8 @@ class JustConnect(AbstractStrategy):
 def main():
     # Pass the following command line options to the strategy.
     # You need to change the account information and the instrument ids.
-    cmd_options = '--account simnow_future4 --name test.s1 --instruments cu1703'
+    cmd_options = '--account simnow_future4 --name test.s1 --instruments cu1703 --data-producer tcp://139.196.203.113' # --base-folder c:\\jasonw\\strategies\\realsmall.good_morning_095500 --instruments cu1703' #--data-producer tcp://139.196.234.169'
+    # cmd_options = '--account simnow_future4 --name test.s1 --instruments cu1703'  # --data-producer tcp://139.196.234.169'
     parser = get_command_line_parser(strategy_class=JustConnect, cmd_options=cmd_options)
     parser.add_option(
         '--exit', type='int', dest='exit', default=10,
