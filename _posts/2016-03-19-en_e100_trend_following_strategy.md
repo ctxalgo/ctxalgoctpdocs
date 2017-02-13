@@ -10,7 +10,8 @@ a double moving average trend following strategy, the code to perform backtestin
 the code to investigate trades through generated charts.
 
 ```python
-from ctxalgolib.ta.online_indicators.moving_averages import MovingAveragesIndicator
+import talib
+import numpy as np
 from ctxalgolib.charting.charts import ChartsWithReport
 from ctxalgolib.ta.cross import cross_direction
 from ctxalgoctp.ctp.backtesting_utils import *
@@ -26,18 +27,6 @@ class TrendFollowingStrategy(AbstractStrategy):
     2. If the fast moving average down-cross the slow moving average, change position to -1.
     That is, the position can be 0, -1 and 1.
     """
-    def __init__(self, instrument_ids, parameters, base_folder,
-                 periods=None, description=None, logger=None):
-        AbstractStrategy.__init__(
-            self, instrument_ids, parameters, base_folder, periods=periods, description=description, logger=logger)
-
-        # Setup the moving average calculators. This strategy needs two moving averages, a fast one and a slow one.
-        # The fast moving average use the fast_ma_period as its parameter, the slow moving average uses slow_ma_period.
-        # Note that you can directly reference the parameters, such as fast_ma_period
-        # through self.parameters.fast_ma_period.
-        self.ma_ind1 = MovingAveragesIndicator(period=self.parameters.fast_ma_period)
-        self.ma_ind2 = MovingAveragesIndicator(period=self.parameters.slow_ma_period)
-
     def on_bar(self, instrument_id, bars, tick):
         # Check if there is enough ohlc bars to calculate the slow moving average because it needs
         # more bars than the fast moving average.
@@ -49,8 +38,8 @@ class TrendFollowingStrategy(AbstractStrategy):
         # check its definition to see if you need to include instrument_id or not.
         if self.ohlc(instrument_id=instrument_id).length >= self.parameters.slow_ma_period:
             # Calculate the two moving averages.
-            ma_fast = self.ma_ind1.calculate(self.ohlc())
-            ma_slow = self.ma_ind2.calculate(self.ohlc())
+            ma_fast = talib.SMA(np.array(self.ohlc().closes), timeperiod=self.parameters.fast_ma_period)
+            ma_slow = talib.SMA(np.array(self.ohlc().closes), timeperiod=self.parameters.slow_ma_period)
 
             # Check if fast moving average up-crosses or down-crosses slow moving average.
             # cross_direction return 1 if ma_fast up-crosses ma_slow, -1 if ma_fast down-crosses ma_fast,
@@ -93,7 +82,7 @@ def main():
         }
     }
     start_time = datetime.now()
-    report, data_source = backtest(TrendFollowingStrategy, config, start_date, end_date, log_in_console=True)
+    report, data_source = backtest(TrendFollowingStrategy, config, start_date, end_date)
     end_time = datetime.now()
     print('Backtesting duration: ' + str(end_time - start_time))
 
