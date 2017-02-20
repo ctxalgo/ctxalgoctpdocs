@@ -2254,7 +2254,13 @@ A positive number makes the order easier to execute. A negative number makes the
 to execute, because a negative number crosses the book in the opposite direction.
 If not present, defaults to 0, meaning to place the order at the top of the order book.</dd>
 </dl>
-<p>cancellation: int or TimeBasedOrderCancellation. If int, it means TimeBasedOrderCancellation(int).</p>
+<p>cancellation: int or TimeBasedOrderCancellation. If int, it means TimeBasedOrderCancellation(int).
+setter: a function pointer which takes two parameters:</p>
+<blockquote>
+<div>volume: int, the volume to open or close a position.
+spec: A cloned object of open_spec or close_spec. If setter is given, then it is invoked, which
+may change the spec object. This allows customized algorithm to decide on limit order prices
+to be implemented.</div></blockquote>
 </div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2805,7 +2811,7 @@ instrument_id, kind and period to find the ohlc.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Feb 20, 2017.
+      Last updated on Feb 21, 2017.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
