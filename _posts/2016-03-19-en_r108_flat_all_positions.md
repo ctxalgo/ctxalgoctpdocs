@@ -56,7 +56,7 @@ class FlatAllPositions(AbstractStrategy):
 
 
 def main():
-    cmd_options = '--account simnow_future --name test.flat_all_positions --order-timeout 10 --order-kind market --exit 15'
+    cmd_options = '--account simnow_future --name test.flat_all_positions --order-timeout 10 --order-kind limit --exit 30'
     parser = get_command_line_parser(strategy_class=FlatAllPositions, cmd_options=cmd_options)
     parser.add_option(
         '--order-kind', type=str, dest='order_kind', default='limit',
