@@ -8,6 +8,7 @@ language: en
 ```python
 import zmq
 from ctxalgolib.data_feed.chore_server_config import ChoreServerConfig
+from ctxalgolib.mission_control.message_constants import MissionControlMessages
 from ctxalgoctp.ctp.live_strategy_utils import *
 
 
@@ -24,6 +25,10 @@ class StandByStrategy(AbstractStrategy):
         self.exit_requested = False
         self.set_should_terminate_after_market_close(False)
 
+    def on_check_finish_and_exit(self, trigger_time, supposed_trigger_time, timer_name):
+        if not self.has_pending_order():
+            self.set_should_exit(True)
+
     def on_message_from_mission_controller(self, message):
         self.send_message_to_mission_controller('Received message: ' + message)
         if message == 'connect_trading':
@@ -39,6 +44,12 @@ class StandByStrategy(AbstractStrategy):
         elif message == 'get_investor_position':
             self.get_investor_position('')
             display_positions(self)
+        elif message == MissionControlMessages.finish_and_exit:
+            self.cancel_orders()
+            self.add_timer(countdown=10, action=self.on_check_finish_and_exit)
+            reply = {
+                'kind': MissionControlMessages.finish_and_exit,
+            }
         elif message.startswith('change_position_to:'):
             parts = message.split(':')
             positions = StrategyCommandLineUtils.parse_positions(':'.join(parts[1:]))
@@ -113,10 +124,10 @@ def main():
     external_trade_executor = False
 
     # TODO: If you trade locally, you have to specify the trading account.
-    account = '--account simnow_future4'
+    account = '--account simnow_future'
 
     # TODO: Specify the instruments to trade.
-    instruments = '--instruments cu1703,a1701'
+    instruments = '--instruments cu1703,a1703'
 
     # TODO: Set strategy name
     strategy_name = 'test.stand_by_strategy'

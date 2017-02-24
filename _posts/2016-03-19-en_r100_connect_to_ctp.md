@@ -50,8 +50,8 @@ class JustConnect(AbstractStrategy):
 def main():
     # Pass the following command line options to the strategy.
     # You need to change the account information and the instrument ids.
-    cmd_options = '--account simnow_future4 --name test.s1 --instruments cu1703 --data-producer tcp://139.196.203.113' # --base-folder c:\\jasonw\\strategies\\realsmall.good_morning_095500 --instruments cu1703' #--data-producer tcp://139.196.234.169'
-    # cmd_options = '--account simnow_future4 --name test.s1 --instruments cu1703'  # --data-producer tcp://139.196.234.169'
+    # cmd_options = '--account simnow_future --name test.s1 --instruments cu1703 --data-producer tcp://139.196.203.113' # --base-folder c:\\jasonw\\strategies\\realsmall.good_morning_095500 --instruments cu1703' #--data-producer tcp://139.196.234.169'
+    cmd_options = '--account simnow_future --name test.s1 --instruments cu1703'  # --data-producer tcp://139.196.234.169'
     parser = get_command_line_parser(strategy_class=JustConnect, cmd_options=cmd_options)
     parser.add_option(
         '--exit', type='int', dest='exit', default=10,

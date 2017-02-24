@@ -52,18 +52,22 @@ def main():
 
     done = False
     for i in range(3):
+        print (i)
         # Try to send messages for a couple of times to avoid slow joiner further.
         remaining_strategies = set(strategies)
         for s in remaining_strategies:
+            print('Send finish_and_exit message to strategy {}.'.format(s))
             mc.send_to_strategy(s, MissionControlMessages.finish_and_exit)
 
+        sleep(5)
         # Get replies from
         for w in range(5):
             replies = mc.poll_from_strategy(timeout=2)
-            for replied_strategy, body in replies.items():
-                data = json.loads(body)
-                if 'kind' in data and data['kind'] == MissionControlMessages.finish_and_exit:
-                    remaining_strategies.remove(replied_strategy)
+            for replied_strategy, bodies in replies.items():
+                for body in bodies:
+                    if body.find(MissionControlMessages.finish_and_exit) >= 0:
+                        remaining_strategies.remove(replied_strategy)
+                        print('Received finish_and_exit reply from strategy {}.'.format(replied_strategy))
             if len(remaining_strategies) == 0:
                 done = True
                 break
