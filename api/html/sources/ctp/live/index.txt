@@ -4,6 +4,7 @@ live
 .. toctree::
    :maxdepth: 2
 
+   r603_finish_and_exit_strategies
    r102_cancel_order_after_fully_executed
    r503_compare_position_against_trade_executor
    r500_sync_external_positions
