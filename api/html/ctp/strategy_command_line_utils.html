@@ -164,7 +164,7 @@
 <h1>strategy_command_line_utils<a class="headerlink" href="#strategy-command-line-utils" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="module-ctxalgoctp.ctp.strategy_command_line_utils"></span><dl class="class">
 <dt id="ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.strategy_command_line_utils.</code><code class="descname">StrategyCommandLineUtils</code><span class="sig-paren">(</span><em>name=True</em>, <em>account=True</em>, <em>instruments=True</em>, <em>positions=True</em>, <em>mission_control=True</em>, <em>logger=True</em>, <em>base_folder=True</em>, <em>data_producer=True</em>, <em>trade_executor=True</em>, <em>local_bookkeep=True</em>, <em>start_order_ref=True</em>, <em>trade_execution_server=False</em>, <em>ohlcs=True</em>, <em>context=None</em>, <em>strategy_class=None</em>, <em>auto_parse=False</em>, <em>cmd_options=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.strategy_command_line_utils.</code><code class="descname">StrategyCommandLineUtils</code><span class="sig-paren">(</span><em>name=True</em>, <em>account=True</em>, <em>instruments=True</em>, <em>positions=True</em>, <em>mission_control=True</em>, <em>logger=True</em>, <em>base_folder=True</em>, <em>data_producer=True</em>, <em>trade_executor=True</em>, <em>local_bookkeep=True</em>, <em>start_order_ref=True</em>, <em>trade_execution_server=False</em>, <em>ohlcs=True</em>, <em>dominant_provider=True</em>, <em>context=None</em>, <em>strategy_class=None</em>, <em>auto_parse=False</em>, <em>cmd_options=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -192,6 +192,7 @@ is created, you need to call dispose_context to dispose it.</li>
 call self.parse() to get command line options parsed. If you need to add additional options, you
 need to set this to False, and after initialization, call self.add_option to add new options, and then
 call self.parse to parse the command line options.</li>
+<li><strong>dominant_provider</strong> &#8211; bool, if True, include options for dominant providers.</li>
 <li><strong>cmd_options</strong> &#8211; string, or [string], if provided, the values here are parsed as command line options,
 otherwise, use the command line options from the running program.
 If type is string, then it is space-separated before parsing, for example,
@@ -370,6 +371,11 @@ the log file is appended.</div></blockquote>
 <code class="descname">get_historical_ohlc_length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.get_historical_ohlc_length" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.get_dominant_provider">
+<code class="descname">get_dominant_provider</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.get_dominant_provider" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>
@@ -394,7 +400,7 @@ the log file is appended.</div></blockquote>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Mar 14, 2017.
+      Last updated on Mar 15, 2017.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

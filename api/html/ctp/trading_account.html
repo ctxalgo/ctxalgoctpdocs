@@ -586,6 +586,19 @@ metrics have the following keys: volume, yesterday_volume, today_volume.
 yesterday_volume and today_volume only have meaning when trading_day is not None.</div></blockquote>
 </dd></dl>
 
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trading_account.TradingAccount.position_summary_for_actual_instrument_id">
+<code class="descname">position_summary_for_actual_instrument_id</code><span class="sig-paren">(</span><em>actual_instrument_id</em>, <em>trading_day=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.position_summary_for_actual_instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return position summary only for given actual_instrument_id.
+:param actual_instrument_id: string, actual instrument id.
+:param trading_day: date, trading day.
+:return: dict{string: dict{string: dict{string: dict{string: value}}}}.</p>
+<blockquote>
+<div>Meaning dict{instrument_id: dict{actual_instrument_id: dict{direction: dict{metrics: value}}}}.
+metrics have the following keys: volume, yesterday_volume, today_volume.
+yesterday_volume and today_volume only have meaning when trading_day is not None.</div></blockquote>
+</dd></dl>
+
 <dl class="staticmethod">
 <dt id="ctxalgoctp.ctp.trading_account.TradingAccount.add_position_summary">
 <em class="property">static </em><code class="descname">add_position_summary</code><span class="sig-paren">(</span><em>s1</em>, <em>s2</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.add_position_summary" title="Permalink to this definition">¶</a></dt>
@@ -649,7 +662,10 @@ metric: string, can be &#8216;yesterday_volume&#8217;, &#8216;today_volume&#8217
 <em class="property">static </em><code class="descname">get_dominant_mapping</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.get_dominant_mapping" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a position summary, return the mapping from actual instrument id to instrument id.
 :param s: Same as TradingAccount.position_summary.
-:return: dict{string: string}, meaning dict{actual_instrument_id: instrument_id}.</p>
+:return: dict{string: [string]}, meaning dict{actual_instrument_id: [dominant_instrument_id]}.</p>
+<blockquote>
+<div>The dominant instrument ids is a list because there can be multiple level of dominant instrument ids
+mapping to the same actual instrument id.</div></blockquote>
 </dd></dl>
 
 <dl class="staticmethod">
@@ -716,7 +732,7 @@ See the comment of the return type of the position_summary method.</td>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Mar 14, 2017.
+      Last updated on Mar 15, 2017.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

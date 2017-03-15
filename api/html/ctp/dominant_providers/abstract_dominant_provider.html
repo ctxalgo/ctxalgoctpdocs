@@ -200,7 +200,12 @@
 dominant instrument id, otherwise, return actual_instrument_id.
 :param actual_instrument_id: string, actual instrument id.
 :param trading_day: date, current trading day.
-:return: string, an instrument id.</p>
+:return: [string], the list of possible dominant instrument sids for actual_instrument_id.</p>
+<blockquote>
+<div>The result is a list because for a given actual instrument id, there can be multiple dominant
+ids, since we allow dominant, sub-dominant to point to the same actual instrument id.
+In case there are multiple elements in the result, lower level of dominant instrument ids are places
+before higher level of dominant instrument ids.</div></blockquote>
 </dd></dl>
 
 <dl class="method">
@@ -241,7 +246,7 @@ dominant instrument id, otherwise, return actual_instrument_id.
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Mar 14, 2017.
+      Last updated on Mar 15, 2017.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

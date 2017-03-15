@@ -853,10 +853,10 @@ This only effect real trading. In real trading some CTP providers does not offer
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.warn_should_use_relative_instrument_id">
-<code class="descname">warn_should_use_relative_instrument_id</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>relative_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.warn_should_use_relative_instrument_id" title="Permalink to this definition">¶</a></dt>
+<code class="descname">warn_should_use_relative_instrument_id</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>relative_ids</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.factories.ctp_real_factory.CtpRealFactory.warn_should_use_relative_instrument_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Give a warning that the strategy should use relative_id to trade, but it uses instrument_id.
 :param instrument_id: string, the instrument id the strategy uses to trade.
-:param relative_id: string, the instrument id that the strategy SHOULD use to trade.</p>
+:param relative_ids: [string], the instrument ids that the strategy SHOULD use to trade.</p>
 </dd></dl>
 
 <dl class="method">
@@ -893,7 +893,7 @@ This only effect real trading. In real trading some CTP providers does not offer
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Mar 14, 2017.
+      Last updated on Mar 15, 2017.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
