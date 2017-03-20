@@ -190,6 +190,13 @@ takes that into consideration. If None, use a default security company.</div></b
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trading_account.TradingAccount.forget_dominant_instrument_ids">
+<code class="descname">forget_dominant_instrument_ids</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.forget_dominant_instrument_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clean up all dominant instrument id information in current account&#8217;s position data.
+Internal use only.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trading_account.TradingAccount.is_position_info_valid">
 <code class="descname">is_position_info_valid</code><span class="sig-paren">(</span><em>position_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.is_position_info_valid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Does the given position info contain the necessary information?
@@ -328,7 +335,7 @@ there is no position in that direction. Each list has maximal two elements.</td>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trading_account.TradingAccount.add_position_info">
-<code class="descname">add_position_info</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>position_info</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.add_position_info" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_position_info</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>position_info</em>, <em>store=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trading_account.TradingAccount.add_position_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add position_info into current account.
 :param instrument_id: string, instrument id.
 :param position_info: dict{string: object}, keys are position info data item names.</p>

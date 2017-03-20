@@ -2850,7 +2850,7 @@ and &#8216;scaling_factor&#8217;.</td>
 
 <dl class="staticmethod">
 <dt id="ctxalgoctp.ctp.position_utils.PositionUtils.get_account_from_strategy">
-<em class="property">static </em><code class="descname">get_account_from_strategy</code><span class="sig-paren">(</span><em>path</em>, <em>trading_day</em>, <em>strategy_map=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.position_utils.PositionUtils.get_account_from_strategy" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">get_account_from_strategy</code><span class="sig-paren">(</span><em>path</em>, <em>trading_day</em>, <em>strategy_map=None</em>, <em>dominant_provider_name='dummy'</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.position_utils.PositionUtils.get_account_from_strategy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return account information from individual strategy.
 :param path: string, If path is a folder, it is interpreted as the base folder of the strategy.</p>
 <blockquote>
@@ -2866,6 +2866,7 @@ If path is a file, it is interpreted as the account file.</div></blockquote>
 <li><strong>strategy_map</strong> &#8211; dict{string: dict{string: value}}, meaning
 dict{CTX_strategy_name: dict{metric: value}}, where metric can be &#8216;expected_name&#8217;, &#8216;entry_time&#8217;
 and &#8216;scaling_factor&#8217;.</li>
+<li><strong>dominant_provider_name</strong> &#8211; string, dominant provider name.</li>
 </ul>
 </td>
 </tr>

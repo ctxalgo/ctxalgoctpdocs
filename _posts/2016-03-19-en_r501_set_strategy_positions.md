@@ -16,6 +16,7 @@ from ctxalgolib.trading_utils.instrument_utils import InstrumentUtils
 from ctxalgolib.trading_utils.future_info_calculator_factory import FutureInfoCalculatorFactory
 from ctxalgoctp.ctp.trading_account import TradingAccount
 from ctxalgoctp.ctp.trading_account_loaders.local_trading_account_loader import LocalTradingAccountLoader
+from ctxalgoctp.ctp.strategy_command_line_utils import StrategyCommandLineUtils
 
 
 def parse_position(path):
@@ -54,28 +55,32 @@ def main():
                       help='The initial capital of current account.')
     parser.add_option('--security-company', type='string', dest='security_company', default=None,
                       help='Security company name.')
+    parser.add_option('--dominant-provider', type='string', dest='dominant_provider', default='dummy',
+                      help='Specify dominant provider, valid values are real and dummy, default is dummy.')
     options, args= parser.parse_args()
 
     trading_day = datetime.strptime(options.trading_day, '%Y%m%d').date()
     base_folder = options.base_folder
     security_company = options.security_company
+    dominant_provider = StrategyCommandLineUtils.create_dominant_provider(options.dominant_provider)
 
     # Create positions into account.
     future_info_fac = FutureInfoCalculatorFactory(security_company)
     account = TradingAccount(security_company=security_company, available=options.initial_capital)
     trade_id = 0
-    for sid, pos in parse_position(options.position).items():
+    for actual_sid, pos in parse_position(options.position).items():
         for direction, pos2 in pos.items():
             price = pos2['average_price']
             volume = pos2['volume']
             trade_id += 1
             timestamp = datetime.combine(trading_day, time(14, 50))
-            order_ref = TradingAccount.get_datetime_prefixed_id_str(sid, trade_id, timestamp)
+            dominant_sid = dominant_provider.dominant_instrument_id_or_self(actual_sid, trading_day)[0]
+            order_ref = TradingAccount.get_datetime_prefixed_id_str(dominant_sid, trade_id, timestamp)
             reason = ''
-            volume_multiple = future_info_fac.volume_multiple_calculator().volume_multiple(sid, trading_day)
-            margin_rate = future_info_fac.margin_calculator().margin(sid, direction, trading_day)
+            volume_multiple = future_info_fac.volume_multiple_calculator().volume_multiple(dominant_sid, trading_day)
+            margin_rate = future_info_fac.margin_calculator().margin(dominant_sid, direction, trading_day)
             account.open_positions(
-                sid, price, volume, trade_id, order_ref, timestamp, reason, trading_day, sid,
+                dominant_sid, price, volume, trade_id, order_ref, timestamp, reason, trading_day, actual_sid,
                 volume_multiple=volume_multiple, margin_rate=margin_rate,
                 check_available=False)
 
