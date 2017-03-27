@@ -121,6 +121,9 @@ def get_cmd_parser():
 
     parser.add_option('--dominant-provider', type='string', dest='dominant_provider', default='dummy',
                       help='Specify dominant provider, valid values are real and dummy, default is dummy.')
+
+    parser.add_option('--output-trading-day', type='string', dest='output_trading_day', default=None,
+                      help='The trading included in output account backup files.')
     return parser
 
 
@@ -415,12 +418,19 @@ def main():
 
         # Construct strategies' positions from rebalanced positions.
         now = datetime.now()
+
+        if options.output_trading_day is None:
+            output_trading_day = trading_day
+        else:
+            output_trading_day = datetime.strptime(options.output_trading_day, '%Y%m%d').date()
+
         for base_folder, strategy_info in strategy_infos.items():
             account = strategy_info['account']
             LocalTradingAccountLoader(future_info_fac).change_positions(
                 account, new_positions[base_folder], now, strategy_info['dominant_provider'],
                 position_prices, trading_day_as_now=trading_day)
-            PositionUtils.save_account(account, strategy_info['uuid'], base_folder, trading_day, options.overwrite)
+
+            PositionUtils.save_account(account, strategy_info['uuid'], base_folder, output_trading_day, options.overwrite)
 
         # Sync position for trade executor if provided.
         if trade_executor_info is not None:

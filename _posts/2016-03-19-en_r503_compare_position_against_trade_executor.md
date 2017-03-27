@@ -17,9 +17,17 @@ from ctxalgoctp.ctp.trading_account import TradingAccount
 from ctxalgoctp.ctp.position_utils import PositionUtils
 
 
-def get_account_from_path(path):
+def get_account_from_path(path, trading_day=None):
     if os.path.isdir(path):
-        path = os.path.join(path, C.account_file_name)
+        if trading_day is None:
+            path = os.path.join(path, C.account_file_name)
+        else:
+            for f in reversed(sorted(os.listdir(os.path.join(path, C.account_backup_folder_name)))):
+                parts = f.split('_')
+                td = parts[1]
+                if td == trading_day.strftime('%Y%m%d'):
+                    path = os.path.join(path, C.account_backup_folder_name, f)
+                    break
     return TradingAccount.from_json_file(None, path)
 
 
@@ -91,7 +99,7 @@ def main():
             name = 's{}'.format(id_+1)
             strategy_map[name] = s
             strategies.append(name)
-            position = get_account_from_path(s).position_summary(trading_day=trading_day)
+            position = get_account_from_path(s, trading_day=trading_day).position_summary(trading_day=trading_day)
             strategy_positions[name] = position
             positions[name] = position
     else:
@@ -106,13 +114,13 @@ def main():
 
     for name, base_folder in strategy_map.items():
         strategies.append(name)
-        position = get_account_from_path(base_folder).position_summary(trading_day=trading_day)
+        position = get_account_from_path(base_folder, trading_day=trading_day).position_summary(trading_day=trading_day)
         strategy_positions[name] = position
         positions[name] = position
 
     # Load positions from trade executor and all individual strategies.
     if options.trade_executor is not None and os.path.isdir(options.trade_executor):
-        trade_executor_positions = get_account_from_path(options.trade_executor).position_summary(trading_day=trading_day)
+        trade_executor_positions = get_account_from_path(options.trade_executor, trading_day=trading_day).position_summary(trading_day=trading_day)
         positions['trader'] = trade_executor_positions
         trader_base_folder = options.trade_executor
     else:
@@ -128,7 +136,7 @@ def main():
             trader = trader[sep_pos+1:]
         trader_signature = Topics.strategy_signature(product, trader)
         trader_base_folder = os.path.join(options.strategy_log_folder, trader_signature)
-        trade_executor_positions = get_account_from_path(trader_base_folder).position_summary(trading_day=trading_day)
+        trade_executor_positions = get_account_from_path(trader_base_folder, trading_day=trading_day).position_summary(trading_day=trading_day)
         positions['trader'] = trade_executor_positions
 
     # Get the full list of instruments from trade executor and all individual strategies.
