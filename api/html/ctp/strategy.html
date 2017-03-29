@@ -1144,6 +1144,11 @@ from which we can get order ref for an order placement.</div></blockquote>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.day_session_start_time">
+<code class="descname">day_session_start_time</code><span class="sig-paren">(</span><em>delta=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.day_session_start_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.bars_in_last_days">
 <code class="descname">bars_in_last_days</code><span class="sig-paren">(</span><em>ohlc</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>start=-1</em>, <em>end=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.bars_in_last_days" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2777,7 +2782,7 @@ If an instrument has both long and short sided positions, its corresponding valu
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.today_ohlc">
-<code class="descname">today_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>ohlc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.today_ohlc" title="Permalink to this definition">¶</a></dt>
+<code class="descname">today_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>ohlc=None</em>, <em>session=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.today_ohlc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return today&#8217;s ohlc, the sliced part only contain bars from today.
 :param instrument_id: string, the instrument id. If None, use self.instrument_id().
 :param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
@@ -2795,6 +2800,10 @@ use the last timestamp in ohlc as current time.</li>
 <li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
 <li><strong>ohlc</strong> &#8211; OHLC, the ohlc object. If not None, use this ohlc, instead of using
 instrument_id, kind and period to find the ohlc.</li>
+<li><strong>session</strong> &#8211; string, values can be &#8216;day&#8217;, &#8216;night&#8217;, or None.
+If &#8216;day&#8217;, only return bars in the day trading session.
+If &#8216;night&#8217;, only return bars in the night trading session.
+If None, return bars in both day and night trading sessions.</li>
 </ul>
 </td>
 </tr>
@@ -2837,7 +2846,7 @@ instrument_id, kind and period to find the ohlc.</li>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.yesterday_ohlc">
-<code class="descname">yesterday_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>ohlc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.yesterday_ohlc" title="Permalink to this definition">¶</a></dt>
+<code class="descname">yesterday_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>ohlc=None</em>, <em>session=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.yesterday_ohlc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the sliced part from the given ohlc, the sliced part only contain bars from yesterday.
 :param instrument_id: string, the instrument id. If None, use self.instrument_id().
 :param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
@@ -2855,6 +2864,10 @@ use the last timestamp in ohlc as current time.</li>
 <li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
 <li><strong>ohlc</strong> &#8211; OHLC, the ohlc object. If not None, use this ohlc, instead of using
 instrument_id, kind and period to find the ohlc.</li>
+<li><strong>session</strong> &#8211; string, values can be &#8216;day&#8217;, &#8216;night&#8217;, or None.
+If &#8216;day&#8217;, only return bars in the day trading session.
+If &#8216;night&#8217;, only return bars in the night trading session.
+If None, return bars in both day and night trading sessions.</li>
 </ul>
 </td>
 </tr>
@@ -3486,6 +3499,11 @@ to cancel those orders.</p>
 :param instrument_id: string, instrument id. If None, use self.instrument_id().
 :return: float, contract value.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.day_session_start_time">
+<code class="descname">day_session_start_time</code><span class="sig-paren">(</span><em>delta=0</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.day_session_start_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.default_period">
@@ -5403,7 +5421,7 @@ If an instrument has both long and short sided positions, its corresponding valu
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.today_ohlc">
-<code class="descname">today_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>ohlc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.today_ohlc" title="Permalink to this definition">¶</a></dt>
+<code class="descname">today_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>ohlc=None</em>, <em>session=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.today_ohlc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return today&#8217;s ohlc, the sliced part only contain bars from today.
 :param instrument_id: string, the instrument id. If None, use self.instrument_id().
 :param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
@@ -5421,6 +5439,10 @@ use the last timestamp in ohlc as current time.</li>
 <li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
 <li><strong>ohlc</strong> &#8211; OHLC, the ohlc object. If not None, use this ohlc, instead of using
 instrument_id, kind and period to find the ohlc.</li>
+<li><strong>session</strong> &#8211; string, values can be &#8216;day&#8217;, &#8216;night&#8217;, or None.
+If &#8216;day&#8217;, only return bars in the day trading session.
+If &#8216;night&#8217;, only return bars in the night trading session.
+If None, return bars in both day and night trading sessions.</li>
 </ul>
 </td>
 </tr>
@@ -5486,7 +5508,7 @@ the UUID changes.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.yesterday_ohlc">
-<code class="descname">yesterday_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>ohlc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.yesterday_ohlc" title="Permalink to this definition">¶</a></dt>
+<code class="descname">yesterday_ohlc</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>kind=None</em>, <em>period=None</em>, <em>now=None</em>, <em>is_trading_day=True</em>, <em>ohlc=None</em>, <em>session=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.yesterday_ohlc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the sliced part from the given ohlc, the sliced part only contain bars from yesterday.
 :param instrument_id: string, the instrument id. If None, use self.instrument_id().
 :param kind: string, ohlc kind such as &#8216;time-based&#8217; or &#8216;volatility-based&#8217;.</p>
@@ -5504,6 +5526,10 @@ use the last timestamp in ohlc as current time.</li>
 <li><strong>is_trading_day</strong> &#8211; boolean, if True, count days by trading days, otherwise, by calendar days.</li>
 <li><strong>ohlc</strong> &#8211; OHLC, the ohlc object. If not None, use this ohlc, instead of using
 instrument_id, kind and period to find the ohlc.</li>
+<li><strong>session</strong> &#8211; string, values can be &#8216;day&#8217;, &#8216;night&#8217;, or None.
+If &#8216;day&#8217;, only return bars in the day trading session.
+If &#8216;night&#8217;, only return bars in the night trading session.
+If None, return bars in both day and night trading sessions.</li>
 </ul>
 </td>
 </tr>
