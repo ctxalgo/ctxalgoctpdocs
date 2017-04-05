@@ -35,13 +35,9 @@ class JustConnect(AbstractStrategy):
         print('Tick: {}, {}, {}, {}, {}'.format(
             instrument_id, tick['timestamp'], self.now(), tick['last_price'], tick['volume']))
 
-    # def on_timer2(self, trigger_time, supposed_trigger_time, timer_name):
-    #  from guppy import hpy
-    #     for m in sorted(sys.modules.keys()):
-    #         print(m)
-    #     h = hpy()
-    #     print(h.heap())
-    #     print('-----------------------')
+    def on_bar(self, instrument_id, bars, tick):
+        ohlc = self.ohlc(instrument_id=instrument_id)
+        print('Bar: {}, {}, {}'.format(instrument_id, ohlc.dates[-1], ohlc.closes[-1]))
 
     def on_timer(self, trigger_time, supposed_trigger_time, timer_name):
         self.set_should_exit(True)
