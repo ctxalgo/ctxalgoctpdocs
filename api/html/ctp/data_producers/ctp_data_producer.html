@@ -87,6 +87,7 @@
 <li class="toctree-l3"><a class="reference internal" href="backtesting_data_producer.html">backtesting_data_producer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="abstract_data_producer.html">abstract_data_producer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="zmq_data_producer.html">zmq_data_producer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_data_producer.html">composite_data_producer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fake_data_producer.html">fake_data_producer</a></li>
 </ul>
 </li>
@@ -264,12 +265,12 @@ data to generate all kinds of ohlc bars.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.subscribe_tick">
-<code class="descname">subscribe_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>market_enabled=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.subscribe_tick" title="Permalink to this definition">¶</a></dt>
+<code class="descname">subscribe_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>market_enabled=True</em>, <em>strategy_signature=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.subscribe_tick" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.subscribe_ohlcs">
-<code class="descname">subscribe_ohlcs</code><span class="sig-paren">(</span><em>periods</em>, <em>historical_ohlcs</em>, <em>market_periods</em>, <em>trading_day</em>, <em>order_book_level=1</em>, <em>with_open_interest=False</em>, <em>profits=False</em>, <em>use_mid_ask_bid=False</em>, <em>dominants=False</em>, <em>market_enabled=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.subscribe_ohlcs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">subscribe_ohlcs</code><span class="sig-paren">(</span><em>periods</em>, <em>historical_ohlcs</em>, <em>market_periods</em>, <em>trading_day</em>, <em>order_book_level=1</em>, <em>with_open_interest=False</em>, <em>profits=False</em>, <em>use_mid_ask_bid=False</em>, <em>dominants=False</em>, <em>market_enabled=True</em>, <em>strategy_signature=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.subscribe_ohlcs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -367,8 +368,48 @@ data to generate all kinds of ohlc bars.
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.subscribe_ticks">
-<code class="descname">subscribe_ticks</code><span class="sig-paren">(</span><em>periods</em>, <em>market_enabled=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.subscribe_ticks" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">subscribe_ticks</code><span class="sig-paren">(</span><em>periods</em>, <em>market_enabled=True</em>, <em>strategy_signature=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.subscribe_ticks" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>periods</strong> &#8211; </li>
+<li><strong>market_enabled</strong> &#8211; </li>
+<li><strong>strategy_signature</strong> &#8211; string, the signature of the strategy that subscribes the ohlcs.
+Only used in composite data producer.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.subscribed_bar_topics">
+<code class="descname">subscribed_bar_topics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.subscribed_bar_topics" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">[string]: the set of zmq topics for subscribed bars.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.subscribed_tick_topics">
+<code class="descname">subscribed_tick_topics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.ctp_data_producer.CtpDataProducer.subscribed_tick_topics" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">[string]: the set of zmq topics for subscribed ticks.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
@@ -394,7 +435,7 @@ data to generate all kinds of ohlc bars.
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Apr 05, 2017.
+      Last updated on Apr 06, 2017.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

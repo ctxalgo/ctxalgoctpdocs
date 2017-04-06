@@ -32,12 +32,17 @@ class JustConnect(AbstractStrategy):
         # self.add_timer(countdown=5, action=self.on_timer2)
 
     def on_tick(self, instrument_id, tick):
-        print('Tick: {}, {}, {}, {}, {}'.format(
+        print('{} Tick: {}, {}, {}, {}, {}'.format(
+            self.strategy_signature(),
             instrument_id, tick['timestamp'], self.now(), tick['last_price'], tick['volume']))
 
     def on_bar(self, instrument_id, bars, tick):
-        ohlc = self.ohlc(instrument_id=instrument_id)
-        print('Bar: {}, {}, {}'.format(instrument_id, ohlc.dates[-1], ohlc.closes[-1]))
+        for kind, data in bars.items():
+            for period, data2 in data.items():
+                ohlc = self.ohlc(instrument_id=instrument_id, kind=kind, period=period)
+                print('{} Bar: {}, {}, {}, {}, {}'.format(
+                    self.strategy_signature(),
+                    kind, Periodicity.name(period), instrument_id, ohlc.dates[-1], ohlc.closes[-1]))
 
     def on_timer(self, trigger_time, supposed_trigger_time, timer_name):
         self.set_should_exit(True)
@@ -46,8 +51,7 @@ class JustConnect(AbstractStrategy):
 def main():
     # Pass the following command line options to the strategy.
     # You need to change the account information and the instrument ids.
-    # cmd_options = '--account simnow_future --name test.s1 --instruments cu1703 --data-producer tcp://139.196.203.113' # --base-folder c:\\jasonw\\strategies\\realsmall.good_morning_095500 --instruments cu1703' #--data-producer tcp://139.196.234.169'
-    cmd_options = '--account simnow_future --name test.s1 --instruments cu1703'  # --data-producer tcp://139.196.234.169'
+    cmd_options = '--account simnow_future --name test.s1 --instruments cu1705'
     parser = get_command_line_parser(strategy_class=JustConnect, cmd_options=cmd_options)
     parser.add_option(
         '--exit', type='int', dest='exit', default=10,

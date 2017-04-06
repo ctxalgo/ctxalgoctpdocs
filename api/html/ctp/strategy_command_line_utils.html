@@ -253,7 +253,7 @@ if there is parameters in it, otherwise, use cmd_options.</td>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.get_mission_control">
-<code class="descname">get_mission_control</code><span class="sig-paren">(</span><em>strategy_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.get_mission_control" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_mission_control</code><span class="sig-paren">(</span><em>strategy_name=None</em>, <em>config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.get_mission_control" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get a mission control used in a strategy.
 :param strategy_name: class, strategy class name. If not provided, use self.strategy_class.
 :return: MissionControl.</p>
@@ -300,6 +300,11 @@ the log file is appended.</div></blockquote>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.parse_trade_executor">
+<code class="descname">parse_trade_executor</code><span class="sig-paren">(</span><em>executor</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.parse_trade_executor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.get_trade_executor">
 <code class="descname">get_trade_executor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.get_trade_executor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the trade executor.
@@ -333,7 +338,7 @@ the log file is appended.</div></blockquote>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.get_strategy_signature">
-<code class="descname">get_strategy_signature</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.get_strategy_signature" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_strategy_signature</code><span class="sig-paren">(</span><em>config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy_command_line_utils.StrategyCommandLineUtils.get_strategy_signature" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -408,7 +413,7 @@ the log file is appended.</div></blockquote>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Apr 05, 2017.
+      Last updated on Apr 06, 2017.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

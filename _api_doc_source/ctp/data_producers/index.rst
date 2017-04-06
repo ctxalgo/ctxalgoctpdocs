@@ -8,4 +8,5 @@ data_producers
    backtesting_data_producer
    abstract_data_producer
    zmq_data_producer
+   composite_data_producer
    fake_data_producer

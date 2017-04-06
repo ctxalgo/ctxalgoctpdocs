@@ -87,6 +87,7 @@
 <li class="toctree-l3"><a class="reference internal" href="backtesting_data_producer.html">backtesting_data_producer</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">abstract_data_producer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="zmq_data_producer.html">zmq_data_producer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite_data_producer.html">composite_data_producer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fake_data_producer.html">fake_data_producer</a></li>
 </ul>
 </li>
@@ -219,7 +220,7 @@ register for tick data. For those data producers, you will have a set_should_enf
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_ohlcs">
-<code class="descname">subscribe_ohlcs</code><span class="sig-paren">(</span><em>periods</em>, <em>historical_ohlcs</em>, <em>market_periods</em>, <em>trading_day</em>, <em>order_book_level=1</em>, <em>with_open_interest=False</em>, <em>profits=False</em>, <em>use_mid_ask_bid=False</em>, <em>dominants=False</em>, <em>market_enabled=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_ohlcs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">subscribe_ohlcs</code><span class="sig-paren">(</span><em>periods</em>, <em>historical_ohlcs</em>, <em>market_periods</em>, <em>trading_day</em>, <em>order_book_level=1</em>, <em>with_open_interest=False</em>, <em>profits=False</em>, <em>use_mid_ask_bid=False</em>, <em>dominants=False</em>, <em>market_enabled=True</em>, <em>strategy_signature=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_ohlcs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subscribe ohlcs so a strategy can use those subscribed ohlcs.
 :param periods: dict{string: dict{string: [Periodicity or float/int]}}, meaning</p>
 <blockquote>
@@ -238,6 +239,8 @@ Market periods for all instruments appearing in periods.</li>
 <li><strong>with_open_interest</strong> &#8211; bool, whether the generated ohlcs contain the open_interest column.</li>
 <li><strong>profits</strong> &#8211; bool, whether the generated ohlcs contain the profits column.</li>
 <li><strong>use_mid_ask_bid</strong> &#8211; bool, whether to use mid bid ask price to generated ohlcs.</li>
+<li><strong>strategy_signature</strong> &#8211; string, the signature of the strategy that subscribes the ohlcs.
+Only used in composite data producer.</li>
 </ul>
 </td>
 </tr>
@@ -247,14 +250,31 @@ Market periods for all instruments appearing in periods.</li>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_ticks">
-<code class="descname">subscribe_ticks</code><span class="sig-paren">(</span><em>periods</em>, <em>market_enabled=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_ticks" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">subscribe_ticks</code><span class="sig-paren">(</span><em>periods</em>, <em>market_enabled=True</em>, <em>strategy_signature=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_ticks" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>periods</strong> &#8211; </li>
+<li><strong>market_enabled</strong> &#8211; </li>
+<li><strong>strategy_signature</strong> &#8211; string, the signature of the strategy that subscribes the ohlcs.
+Only used in composite data producer.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_tick">
-<code class="descname">subscribe_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>market_enabled=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_tick" title="Permalink to this definition">¶</a></dt>
+<code class="descname">subscribe_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>market_enabled=True</em>, <em>strategy_signature=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribe_tick" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subscribe tick data for the given instrument.
-:param instrument_id: string, instrument id.</p>
+:param instrument_id: string, instrument id.
+:param strategy_signature: string, the signature of the strategy that subscribes the ohlcs.</p>
+<blockquote>
+<div>Only used in composite data producer.</div></blockquote>
 </dd></dl>
 
 <dl class="method">
@@ -297,6 +317,32 @@ Not all data producers need this.</p>
 If current data producer does not rely on an data subscription, return an empty list.
 The ZmqDataProducer needs to return data subscriptions which represent zmq connections.
 :return: [AbstractDataSubscriber], the list of subscriptions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribed_tick_topics">
+<code class="descname">subscribed_tick_topics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribed_tick_topics" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">[string]: the set of zmq topics for subscribed ticks.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribed_bar_topics">
+<code class="descname">subscribed_bar_topics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_producers.abstract_data_producer.AbstractDataProducer.subscribed_bar_topics" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">[string]: the set of zmq topics for subscribed bars.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -381,7 +427,7 @@ The market message queue is maintained only in the backtesting market object.
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Apr 05, 2017.
+      Last updated on Apr 06, 2017.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
