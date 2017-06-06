@@ -253,7 +253,7 @@ Title: 将策略中收到的交易数据发送到zeromq队列中
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r600_fake_market_broker.FakeMarketBroker.add_alarm_timer">
-<code class="descname">add_alarm_timer</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r600_fake_market_broker.FakeMarketBroker.add_alarm_timer" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_alarm_timer</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>name=None</em>, <em>action=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r600_fake_market_broker.FakeMarketBroker.add_alarm_timer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add an alarm timer.
 :param trigger_time: datetime or time, or string in form of HH:MM:SS or yyyy-mm-dd HH:MM:SS, or</p>
 <blockquote>
@@ -309,7 +309,7 @@ This will be passed into the action when it is invoked. If None, a default name 
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r600_fake_market_broker.FakeMarketBroker.add_countdown_timer">
-<code class="descname">add_countdown_timer</code><span class="sig-paren">(</span><em>interval</em>, <em>repeated=True</em>, <em>start_time=None</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r600_fake_market_broker.FakeMarketBroker.add_countdown_timer" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_countdown_timer</code><span class="sig-paren">(</span><em>interval</em>, <em>repeated=True</em>, <em>start_time=None</em>, <em>name=None</em>, <em>action=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r600_fake_market_broker.FakeMarketBroker.add_countdown_timer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a count down timer.
 :param interval: int, or timedelta, the number of seconds or the time delta for the timer to countdown.
 :param repeated: bool, if True, the timer will be repeated, otherwise, only once.
@@ -2984,7 +2984,7 @@ same thread object.</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jun 05, 2017.
+      Last updated on Jun 06, 2017.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
