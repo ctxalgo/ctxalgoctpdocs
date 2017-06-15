@@ -613,8 +613,17 @@ if [None], cancel all pending orders.</div></blockquote>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.cancel_pending_orders">
+<code class="descname">cancel_pending_orders</code><span class="sig-paren">(</span><em>reason=''</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.cancel_pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancel all pending orders of a given instrument.
+:param reason: string, reason for the cancellation.
+:param instrument_id: string, instrument id.
+:return: [CtxReturnAndRequestID].</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.change_position_to">
-<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>position</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>market=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.change_position_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_position_to</code><span class="sig-paren">(</span><em>position</em>, <em>price=None</em>, <em>cross_book=True</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>instrument_id=None</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>market=False</em>, <em>scheme='normal'</em>, <em>volume_quota=9223372036854775807</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.change_position_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change the position of the given instrument to new_position. If price is given, all underlying orders
 are limit orders at that price, otherwise, market orders.
 :param position: int, the new position for the instrument.</p>
@@ -984,6 +993,20 @@ If there is no position, return None.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.get_reach_position_action_summary">
+<code class="descname">get_reach_position_action_summary</code><span class="sig-paren">(</span><em>position</em>, <em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.get_reach_position_action_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return summary of reach position actions.
+:param position: int, the new position.
+:param instrument_id: string, instrument id.
+:return: dict{string: object}, the summary.</p>
+<blockquote>
+<div>It has three keys:
+details: whose value is the object returned by self._get_reach_position_actions.
+total_opens: int, the number of volumes to open. (long and short positions are abs-ed and then summed).
+total_closes: int, the number of volumes to close. (long and short positions are abs-ed and then summed).</div></blockquote>
 </dd></dl>
 
 <dl class="method">
@@ -2209,6 +2232,14 @@ to cancel those orders.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.pending_order_refs">
+<code class="descname">pending_order_refs</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.pending_order_refs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return pending order refs for give instrument id. 
+:param instrument_id: string, instrument id.
+:return: [string], pending order refs.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.pending_orders">
 <code class="descname">pending_orders</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.pending_orders" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2330,7 +2361,7 @@ between the current price and the position price.</li>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.reach_position">
-<code class="descname">reach_position</code><span class="sig-paren">(</span><em>position</em>, <em>open_spec=None</em>, <em>close_spec=None</em>, <em>instrument_id=None</em>, <em>reason=''</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.reach_position" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reach_position</code><span class="sig-paren">(</span><em>position</em>, <em>open_spec=None</em>, <em>close_spec=None</em>, <em>instrument_id=None</em>, <em>reason=''</em>, <em>scheme='normal'</em>, <em>volume_quota=9223372036854775807</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r104_automatic_order_cancellation.AutomaticOrderCancellation.reach_position" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reach to given position for the instrument.
 :param position: int, the position to reach.
 :param open_spec: dict{string: object}, specifies how to place open orders. It can have the following keys:</p>
@@ -2365,6 +2396,13 @@ to be implemented.</div></blockquote>
 <li><strong>close_spec</strong> &#8211; same as open_spec.</li>
 <li><strong>instrument_id</strong> &#8211; string, instrument id. If None, use self.instrument_id().</li>
 <li><strong>reason</strong> &#8211; string, the reason for this operation.</li>
+<li><strong>scheme</strong> &#8211; ReachPositionScheme. Decides how to handle the situation when we need to close some positions
+and open some other positions.
+If the value is ReachPositionScheme.normal, this method can do both open and close positions.
+If the value is ReachPositionScheme.no_open_if_need_close, then if we need to close some positions,
+this method will not open any positions.</li>
+<li><strong>volume_quota</strong> &#8211; int, the maximum number of volumes that this method can place order to change.
+volume_quota is used to implement sophisticated trading schemes such as twap.</li>
 </ul>
 </td>
 </tr>
@@ -2914,7 +2952,7 @@ If None, return bars in both day and night trading sessions.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jun 12, 2017.
+      Last updated on Jun 15, 2017.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
