@@ -35,6 +35,7 @@ ctp
    state_utils
    constants
    datetime_utils
+   market_periods_utils
    strategy
    callback_base
    market_order_simulator

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>tick_and_bar_publisher &mdash; ctxalgoctp 0.1 documentation</title>
+  <title>market_periods_utils &mdash; ctxalgoctp 0.1 documentation</title>
   
 
   
@@ -32,8 +32,8 @@
   
     <link rel="top" title="ctxalgoctp 0.1 documentation" href="../index.html"/>
         <link rel="up" title="ctp" href="index.html"/>
-        <link rel="next" title="market_data_feed" href="market_data_feed.html"/>
-        <link rel="prev" title="offline_optimization" href="offline_optimization.html"/> 
+        <link rel="next" title="strategy" href="strategy.html"/>
+        <link rel="prev" title="datetime_utils" href="datetime_utils.html"/> 
 
   
   <script src="../static/js/modernizr.min.js"></script>
@@ -96,7 +96,7 @@
 <li class="toctree-l2"><a class="reference internal" href="position_utils.html">position_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="optimization.html">optimization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="offline_optimization.html">offline_optimization</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">tick_and_bar_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
 <li class="toctree-l2"><a class="reference internal" href="market_data_feed.html">market_data_feed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="base.html">base</a></li>
 <li class="toctree-l2"><a class="reference internal" href="order_cancellation.html">order_cancellation</a></li>
@@ -104,7 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="state_utils.html">state_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="constants.html">constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datetime_utils.html">datetime_utils</a></li>
-<li class="toctree-l2"><a class="reference internal" href="market_periods_utils.html">market_periods_utils</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">market_periods_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="strategy.html">strategy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="callback_base.html">callback_base</a></li>
 <li class="toctree-l2"><a class="reference internal" href="market_order_simulator.html">market_order_simulator</a></li>
@@ -147,11 +147,11 @@
       
           <li><a href="index.html">ctp</a> &raquo;</li>
       
-    <li>tick_and_bar_publisher</li>
+    <li>market_periods_utils</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../sources/ctp/tick_and_bar_publisher.txt" rel="nofollow"> View page source</a>
+            <a href="../sources/ctp/market_periods_utils.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -161,27 +161,52 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-ctxalgoctp.ctp.tick_and_bar_publisher">
-<span id="tick-and-bar-publisher"></span><h1>tick_and_bar_publisher<a class="headerlink" href="#module-ctxalgoctp.ctp.tick_and_bar_publisher" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.market_periods_utils">
+<span id="market-periods-utils"></span><h1>market_periods_utils<a class="headerlink" href="#module-ctxalgoctp.ctp.market_periods_utils" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="ctxalgoctp.ctp.tick_and_bar_publisher.AbstractTickAndBarPublisher">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.tick_and_bar_publisher.</code><code class="descname">AbstractTickAndBarPublisher</code><a class="headerlink" href="#ctxalgoctp.ctp.tick_and_bar_publisher.AbstractTickAndBarPublisher" title="Permalink to this definition">¶</a></dt>
+<dt id="ctxalgoctp.ctp.market_periods_utils.MarketPeriodsUtils">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.market_periods_utils.</code><code class="descname">MarketPeriodsUtils</code><a class="headerlink" href="#ctxalgoctp.ctp.market_periods_utils.MarketPeriodsUtils" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<dl class="method">
-<dt id="ctxalgoctp.ctp.tick_and_bar_publisher.AbstractTickAndBarPublisher.get_ohlc_generators">
-<code class="descname">get_ohlc_generators</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>ohlcs</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.tick_and_bar_publisher.AbstractTickAndBarPublisher.get_ohlc_generators" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the ohlc generators needed to generate the kinds of
-:param instrument_id: string, instrument id whose ohlcs are to be generated.
-:param ohlcs:
-:return:</p>
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.market_periods_utils.MarketPeriodsUtils.market_intervals">
+<em class="property">static </em><code class="descname">market_intervals</code><span class="sig-paren">(</span><em>start_time</em>, <em>end_time</em>, <em>market_periods</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_periods_utils.MarketPeriodsUtils.market_intervals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the market intervals between start_time and end_time.
+For example, if start_time is 9:30, end_time is 10:50, then for cu, the returned values are:
+[{</p>
+<blockquote>
+<div><blockquote>
+<div>&#8216;start&#8217;: 9:30,
+&#8216;end&#8217;: 10:15,
+&#8216;interval&#8217;: timedelta(minutes=45),</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div>&#8216;start&#8217;: 10:30,
+&#8216;end&#8217;: 10:50,
+&#8216;interval&#8217;: timedelta(minutes=20)</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>]
+:param start_time: datetime, start time, inclusive.
+:param end_time: datetime, end time, inclusive.
+:param market_periods: [(start_ts, end_ts)], where start_ts and end_ts are of type datetime. The list</p>
+<blockquote>
+<div>contains all market periods of an instrument in current trading day.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">[dict{string: object}].</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-</dd></dl>
+<dl class="staticmethod">
+<dt id="ctxalgoctp.ctp.market_periods_utils.MarketPeriodsUtils.split_intervals">
+<em class="property">static </em><code class="descname">split_intervals</code><span class="sig-paren">(</span><em>intervals</em>, <em>slices</em>, <em>minimum_slice_length</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.market_periods_utils.MarketPeriodsUtils.split_intervals" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<dl class="class">
-<dt id="ctxalgoctp.ctp.tick_and_bar_publisher.CtpTickAndBarPublisher">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.tick_and_bar_publisher.</code><code class="descname">CtpTickAndBarPublisher</code><a class="headerlink" href="#ctxalgoctp.ctp.tick_and_bar_publisher.CtpTickAndBarPublisher" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 </dd></dl>
 
 </div>
@@ -193,10 +218,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="market_data_feed.html" class="btn btn-neutral float-right" title="market_data_feed" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="strategy.html" class="btn btn-neutral float-right" title="strategy" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="offline_optimization.html" class="btn btn-neutral" title="offline_optimization" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="datetime_utils.html" class="btn btn-neutral" title="datetime_utils" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
