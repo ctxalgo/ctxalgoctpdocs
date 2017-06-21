@@ -380,6 +380,13 @@ is used, previous ones are ignored.</td>
 </tbody>
 </table>
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.AbstractState.call_on_enter_actions">
+<code class="descname">call_on_enter_actions</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState.call_on_enter_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invoke all callbacks in self.on_enter_actions.
+:param data: dict, can be None, the data passed into the on_enter method.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.twap.AbstractState.instrument_id">
 <code class="descname">instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState.instrument_id" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
@@ -487,9 +494,21 @@ is used, previous ones are ignored.</td>
 <dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState" title="ctxalgoctp.ctp.trade_executors.twap.AbstractState"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.trade_executors.twap.AbstractState</span></code></a></p>
 <p>The state that waits for the first tick to arrive, after that, we know that we can carry on limit orders.</p>
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_enter">
+<code class="descname">on_enter</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_enter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_tick">
 <code class="descname">on_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_tick" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.call_on_enter_actions">
+<code class="descname">call_on_enter_actions</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.call_on_enter_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invoke all callbacks in self.on_enter_actions.
+:param data: dict, can be None, the data passed into the on_enter method.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.cancel_pending_orders">
@@ -551,11 +570,6 @@ is used, previous ones are ignored.</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_enter">
-<code class="descname">on_enter</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_enter" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_order_finish">
 <code class="descname">on_order_finish</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_order_finish" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -612,6 +626,13 @@ is used, previous ones are ignored.</td>
 <dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.perform">
 <code class="descname">perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.perform" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.call_on_enter_actions">
+<code class="descname">call_on_enter_actions</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.call_on_enter_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invoke all callbacks in self.on_enter_actions.
+:param data: dict, can be None, the data passed into the on_enter method.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.cancel_pending_orders">
@@ -718,7 +739,16 @@ is used, previous ones are ignored.</td>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState.perform">
 <code class="descname">perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.TwapState.perform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Perform a single slice of twap.
+:return: int, 0 means target position has been reached, 1 means otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState.call_on_enter_actions">
+<code class="descname">call_on_enter_actions</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.TwapState.call_on_enter_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invoke all callbacks in self.on_enter_actions.
+:param data: dict, can be None, the data passed into the on_enter method.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState.cancel_pending_orders">
@@ -814,7 +844,7 @@ is used, previous ones are ignored.</td>
 
 <dl class="class">
 <dt id="ctxalgoctp.ctp.trade_executors.twap.Twapper">
-<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.twap.</code><code class="descname">Twapper</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>strategy</em>, <em>duration</em>, <em>number_of_slices</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.Twapper" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.twap.</code><code class="descname">Twapper</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>strategy</em>, <em>duration</em>, <em>number_of_slices</em>, <em>name=None</em>, <em>on_enter_state_action=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.Twapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p>Class that performs twap.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -826,6 +856,7 @@ is used, previous ones are ignored.</td>
 <li><strong>strategy</strong> &#8211; AbstractStrategy, the trading strategy.</li>
 <li><strong>duration</strong> &#8211; timedelta, the default time duration for a single twap for a single instrument.</li>
 <li><strong>number_of_slices</strong> &#8211; int, the number of times to trade inside a duration.</li>
+<li><strong>on_enter_state_action</strong> &#8211; function pointer which will be called when a state is entered.</li>
 </ul>
 </td>
 </tr>
