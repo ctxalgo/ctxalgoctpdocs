@@ -609,6 +609,13 @@ If None, no cancellation policy is specified.</li>
 This is a syntax sugar for setting up TimeBasedCancellation. If not None, you should not specify
 cancellation as well.</li>
 <li><strong>market</strong> &#8211; bool, if True, send market orders.</li>
+<li><strong>scheme</strong> &#8211; ReachPositionScheme. Decides how to handle the situation when we need to close some positions
+and open some other positions.
+If the value is ReachPositionScheme.normal, this method can do both open and close positions.
+If the value is ReachPositionScheme.no_open_if_need_close, then if we need to close some positions,
+this method will not open any positions.</li>
+<li><strong>volume_quota</strong> &#8211; int, the maximum number of volumes that this method can place order to change.
+volume_quota is used to implement sophisticated trading schemes such as twap.</li>
 </ul>
 </td>
 </tr>
@@ -629,7 +636,7 @@ to cancel those orders.</p>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r116_place_order_and_cancel_immediately.PlaceOrderAndCancelItImmediately.change_positions_to">
-<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>positions</em>, <em>prices=None</em>, <em>cross_book=False</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>market=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r116_place_order_and_cancel_immediately.PlaceOrderAndCancelItImmediately.change_positions_to" title="Permalink to this definition">¶</a></dt>
+<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>positions</em>, <em>prices=None</em>, <em>cross_book=False</em>, <em>tick_delta=None</em>, <em>reason=''</em>, <em>cancellation=None</em>, <em>cancel_in_time=None</em>, <em>market=False</em>, <em>scheme='normal'</em>, <em>volume_quota=9223372036854775807</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r116_place_order_and_cancel_immediately.PlaceOrderAndCancelItImmediately.change_positions_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change positions of multiple instruments to their new values.
 :param positions: dict{string: int}, keys are instrument ids,</p>
 <blockquote>
@@ -659,6 +666,13 @@ If close long or open short, the limit order price will be min(price, order_book
 This is a syntax sugar for setting up TimeBasedCancellation. If not None, you should not specify
 cancellation as well.</li>
 <li><strong>market</strong> &#8211; bool, if True, send market orders.</li>
+<li><strong>scheme</strong> &#8211; ReachPositionScheme. Decides how to handle the situation when we need to close some positions
+and open some other positions.
+If the value is ReachPositionScheme.normal, this method can do both open and close positions.
+If the value is ReachPositionScheme.no_open_if_need_close, then if we need to close some positions,
+this method will not open any positions.</li>
+<li><strong>volume_quota</strong> &#8211; int, the maximum number of volumes that this method can place order to change.
+volume_quota is used to implement sophisticated trading schemes such as twap.</li>
 </ul>
 </td>
 </tr>
