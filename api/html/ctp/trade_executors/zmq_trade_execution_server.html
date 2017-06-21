@@ -33,7 +33,7 @@
     <link rel="top" title="ctxalgoctp 0.1 documentation" href="../../index.html"/>
         <link rel="up" title="trade_executors" href="index.html"/>
         <link rel="next" title="zmq_trade_executor" href="zmq_trade_executor.html"/>
-        <link rel="prev" title="position_recovery" href="position_recovery.html"/> 
+        <link rel="prev" title="twap" href="twap.html"/> 
 
   
   <script src="../../static/js/modernizr.min.js"></script>
@@ -82,6 +82,7 @@
 <li class="toctree-l3"><a class="reference internal" href="abstract_trade_executor.html">abstract_trade_executor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ctp_trade_executor.html">ctp_trade_executor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="position_recovery.html">position_recovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="twap.html">twap</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">zmq_trade_execution_server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="zmq_trade_executor.html">zmq_trade_executor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trade_request_response_utils.html">trade_request_response_utils</a></li>
@@ -1392,7 +1393,21 @@ The returned information will be accessible through the corresponding callback f
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.has_pending_order">
 <code class="descname">has_pending_order</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>orders=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.has_pending_order" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Check if there is pending orders.
+:param instrument_id: string, instrument id, If None, return True if there is pending order for any instrument.</p>
+<blockquote>
+<div>If not None, check if there is pending orders for that particular instrument.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>orders</strong> &#8211; [string], list of order_refs. If not None, check if any of the given orders are pending.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.zmq_trade_execution_server.TradeExecutorServer.has_position">
@@ -3274,7 +3289,7 @@ If None, return bars in both day and night trading sessions.</li>
         <a href="zmq_trade_executor.html" class="btn btn-neutral float-right" title="zmq_trade_executor" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="position_recovery.html" class="btn btn-neutral" title="position_recovery" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="twap.html" class="btn btn-neutral" title="twap" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -3284,7 +3299,7 @@ If None, return bars in both day and night trading sessions.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jun 20, 2017.
+      Last updated on Jun 21, 2017.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

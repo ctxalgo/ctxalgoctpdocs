@@ -1024,7 +1024,21 @@ The returned information will be accessible through the corresponding callback f
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r115_change_position_with_cancel.ChangePositionWithCancel.has_pending_order">
 <code class="descname">has_pending_order</code><span class="sig-paren">(</span><em>instrument_id=None</em>, <em>orders=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.live.r115_change_position_with_cancel.ChangePositionWithCancel.has_pending_order" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Check if there is pending orders.
+:param instrument_id: string, instrument id, If None, return True if there is pending order for any instrument.</p>
+<blockquote>
+<div>If not None, check if there is pending orders for that particular instrument.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>orders</strong> &#8211; [string], list of order_refs. If not None, check if any of the given orders are pending.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.live.r115_change_position_with_cancel.ChangePositionWithCancel.has_position">
@@ -2906,7 +2920,7 @@ If None, return bars in both day and night trading sessions.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jun 20, 2017.
+      Last updated on Jun 21, 2017.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.

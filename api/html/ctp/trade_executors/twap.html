@@ -1,0 +1,902 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>twap &mdash; ctxalgoctp 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="ctxalgoctp 0.1 documentation" href="../../index.html"/>
+        <link rel="up" title="trade_executors" href="index.html"/>
+        <link rel="next" title="zmq_trade_execution_server" href="zmq_trade_execution_server.html"/>
+        <link rel="prev" title="position_recovery" href="position_recovery.html"/> 
+
+  
+  <script src="../../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> ctxalgoctp
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">ctp</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../live/index.html">live</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../factories/index.html">factories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../context_loaders/index.html">context_loaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_gen/index.html">code_gen</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">trade_executors</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="abstract_trade_executor.html">abstract_trade_executor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ctp_trade_executor.html">ctp_trade_executor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="position_recovery.html">position_recovery</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">twap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zmq_trade_execution_server.html">zmq_trade_execution_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zmq_trade_executor.html">zmq_trade_executor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trade_request_response_utils.html">trade_request_response_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backtesting_trade_executor.html">backtesting_trade_executor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../logger/index.html">logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../execution_drivers/index.html">execution_drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../stress_testing/index.html">stress_testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_producers/index.html">data_producers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategies/index.html">strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dominant_providers/index.html">dominant_providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_account_loaders/index.html">trading_account_loaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../slippage_models.html">slippage_models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategy_utils.html">strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exchanges.html">exchanges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtester.html">backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_account.html">trading_account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategy_command_line_utils.html">strategy_command_line_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report_pdf_generator.html">report_pdf_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../position_utils.html">position_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optimization.html">optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../offline_optimization.html">offline_optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tick_and_bar_publisher.html">tick_and_bar_publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../market_data_feed.html">market_data_feed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base.html">base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../order_cancellation.html">order_cancellation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roll.html">roll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../state_utils.html">state_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constants.html">constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datetime_utils.html">datetime_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../market_periods_utils.html">market_periods_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../strategy.html">strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callback_base.html">callback_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../market_order_simulator.html">market_order_simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plain_backtester.html">plain_backtester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_utils.html">basic_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../live_strategy_utils.html">live_strategy_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backtesting_utils.html">backtesting_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comm.html">comm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report_generator.html">report_generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils.html">utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../future_info_provider.html">future_info_provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../trading_constants.html">trading_constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../report.html">report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../position_rebalancer.html">position_rebalancer</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">ctxalgoctp</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">ctp</a> &raquo;</li>
+      
+          <li><a href="index.html">trade_executors</a> &raquo;</li>
+      
+    <li>twap</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../sources/ctp/trade_executors/twap.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-ctxalgoctp.ctp.trade_executors.twap">
+<span id="twap"></span><h1>twap<a class="headerlink" href="#module-ctxalgoctp.ctp.trade_executors.twap" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.twap.</code><code class="descname">StateMachine</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>strategy</em>, <em>duration</em>, <em>number_of_slices</em>, <em>minimum_slice_length</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>instrument_id</strong> &#8211; string, instrument id. A state machine is for a single instrument only,
+to support trading multiple instruments, different state machines are created.</li>
+<li><strong>strategy</strong> &#8211; AbstractStrategy, the strategy.</li>
+<li><strong>duration</strong> &#8211; timedelta, the duration of a twap task.</li>
+<li><strong>number_of_slices</strong> &#8211; int, the number of slices in a twap task.
+This means we will split duration into number_of_slices parts and trade a certain amount of volumes
+in each part, that&#8217;s is the twap semantics.</li>
+<li><strong>minimum_slice_length</strong> &#8211; int, the minimum length (in second) of each slice in a twap operation.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.instrument_id">
+<code class="descname">instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string, the instrument id associated with current state machine.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.market_periods">
+<code class="descname">market_periods</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.market_periods" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">[(start_time, end_time)], where start_time and end_time are of type datetime.
+The trading periods for the associated instrument id.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.minimum_slice_length">
+<code class="descname">minimum_slice_length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.minimum_slice_length" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int, minimum slice length in seconds.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.strategy">
+<code class="descname">strategy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.strategy" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">AbstractStrategy, the CTX strategy.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.add_target_position">
+<code class="descname">add_target_position</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.add_target_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a target position into current state machine.
+:param p: int, the target position.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.has_target_position">
+<code class="descname">has_target_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.has_target_position" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool, return True if there is at least one new target position.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.latest_target_position">
+<code class="descname">latest_target_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.latest_target_position" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int, Return the latest arrived target position.
+Note: if multiple target positions arrived before the next twap duration, only the last target position
+is used, previous ones are ignored.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.set_states">
+<code class="descname">set_states</code><span class="sig-paren">(</span><em>states</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.set_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the states in current state machine.
+:param states: dict{string: AbstractState}, meaning dict{state_name: state_object}.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.set_start_state">
+<code class="descname">set_start_state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.set_start_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the start state of current machine.
+:param name: string, name of the start state.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.state">
+<code class="descname">state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.state" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> &#8211; string, state name.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">AbstractState, the state given its name.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.current_state">
+<code class="descname">current_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.current_state" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">AbstractState: current state.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.transit_to">
+<code class="descname">transit_to</code><span class="sig-paren">(</span><em>name</em>, <em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.transit_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transit from self.current_state to the state with name.
+:param name: string, name of the next state.
+:param data: dict, optional data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.AbstractState">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.twap.</code><code class="descname">AbstractState</code><span class="sig-paren">(</span><em>name</em>, <em>machine</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; string, name of the state.</li>
+<li><strong>machine</strong> &#8211; StateMachine, the state machine.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.AbstractState.instrument_id">
+<code class="descname">instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState.instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string, instrument id associated with current state.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.AbstractState.strategy">
+<code class="descname">strategy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState.strategy" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">AbstractStrategy, the CTX strategy.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.AbstractState.has_pending_order">
+<code class="descname">has_pending_order</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState.has_pending_order" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool, True if there is pending order for the associated instrument.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.AbstractState.cancel_pending_orders">
+<code class="descname">cancel_pending_orders</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState.cancel_pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancel all pending orders for the associated instrument.
+:return: [string], list of order refs, the order refs of the cancelled orders.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.AbstractState.has_target_position">
+<code class="descname">has_target_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState.has_target_position" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool, return True if there is at least one new target position.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.AbstractState.latest_target_position">
+<code class="descname">latest_target_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState.latest_target_position" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int, the latest arrived target position.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.AbstractState.on_tick">
+<code class="descname">on_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState.on_tick" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.AbstractState.on_enter">
+<code class="descname">on_enter</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState.on_enter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.AbstractState.on_order_finish">
+<code class="descname">on_order_finish</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState.on_order_finish" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.AbstractState.on_timer">
+<code class="descname">on_timer</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>supposed_trigger_time</em>, <em>timer_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState.on_timer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.AbstractState.transit_to">
+<code class="descname">transit_to</code><span class="sig-paren">(</span><em>name</em>, <em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState.transit_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transit from current state to the next state.
+:param name: string, name of the next state.
+:param data: dict, optional data sent to the next state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.twap.</code><code class="descname">PreTickState</code><span class="sig-paren">(</span><em>machine</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState" title="ctxalgoctp.ctp.trade_executors.twap.AbstractState"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.trade_executors.twap.AbstractState</span></code></a></p>
+<p>The state that waits for the first tick to arrive, after that, we know that we can carry on limit orders.</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_tick">
+<code class="descname">on_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_tick" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.cancel_pending_orders">
+<code class="descname">cancel_pending_orders</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.cancel_pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancel all pending orders for the associated instrument.
+:return: [string], list of order refs, the order refs of the cancelled orders.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.has_pending_order">
+<code class="descname">has_pending_order</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.has_pending_order" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool, True if there is pending order for the associated instrument.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.has_target_position">
+<code class="descname">has_target_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.has_target_position" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool, return True if there is at least one new target position.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.instrument_id">
+<code class="descname">instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string, instrument id associated with current state.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.latest_target_position">
+<code class="descname">latest_target_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.latest_target_position" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int, the latest arrived target position.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_enter">
+<code class="descname">on_enter</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_enter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_order_finish">
+<code class="descname">on_order_finish</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_order_finish" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_timer">
+<code class="descname">on_timer</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>supposed_trigger_time</em>, <em>timer_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.on_timer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.strategy">
+<code class="descname">strategy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.strategy" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">AbstractStrategy, the CTX strategy.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.PreTickState.transit_to">
+<code class="descname">transit_to</code><span class="sig-paren">(</span><em>name</em>, <em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.PreTickState.transit_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transit from current state to the next state.
+:param name: string, name of the next state.
+:param data: dict, optional data sent to the next state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.twap.</code><code class="descname">CancelAndWaitState</code><span class="sig-paren">(</span><em>machine</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState" title="ctxalgoctp.ctp.trade_executors.twap.AbstractState"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.trade_executors.twap.AbstractState</span></code></a></p>
+<p>The state that we cancel pending orders and wait for new target position to arrive.</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.on_enter">
+<code class="descname">on_enter</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.on_enter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.on_order_finish">
+<code class="descname">on_order_finish</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.on_order_finish" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.on_timer">
+<code class="descname">on_timer</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>supposed_trigger_time</em>, <em>timer_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.on_timer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.perform">
+<code class="descname">perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.perform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.cancel_pending_orders">
+<code class="descname">cancel_pending_orders</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.cancel_pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancel all pending orders for the associated instrument.
+:return: [string], list of order refs, the order refs of the cancelled orders.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.has_pending_order">
+<code class="descname">has_pending_order</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.has_pending_order" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool, True if there is pending order for the associated instrument.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.has_target_position">
+<code class="descname">has_target_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.has_target_position" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool, return True if there is at least one new target position.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.instrument_id">
+<code class="descname">instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string, instrument id associated with current state.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.latest_target_position">
+<code class="descname">latest_target_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.latest_target_position" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int, the latest arrived target position.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.on_tick">
+<code class="descname">on_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.on_tick" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.strategy">
+<code class="descname">strategy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.strategy" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">AbstractStrategy, the CTX strategy.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.transit_to">
+<code class="descname">transit_to</code><span class="sig-paren">(</span><em>name</em>, <em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.CancelAndWaitState.transit_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transit from current state to the next state.
+:param name: string, name of the next state.
+:param data: dict, optional data sent to the next state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.twap.</code><code class="descname">TwapState</code><span class="sig-paren">(</span><em>machine</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.TwapState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ctxalgoctp.ctp.trade_executors.twap.AbstractState" title="ctxalgoctp.ctp.trade_executors.twap.AbstractState"><code class="xref py py-class docutils literal"><span class="pre">ctxalgoctp.ctp.trade_executors.twap.AbstractState</span></code></a></p>
+<p>The state where twap is carried out.</p>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState.on_enter">
+<code class="descname">on_enter</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.TwapState.on_enter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState.on_timer">
+<code class="descname">on_timer</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>supposed_trigger_time</em>, <em>timer_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.TwapState.on_timer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState.perform">
+<code class="descname">perform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.TwapState.perform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState.cancel_pending_orders">
+<code class="descname">cancel_pending_orders</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.TwapState.cancel_pending_orders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancel all pending orders for the associated instrument.
+:return: [string], list of order refs, the order refs of the cancelled orders.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState.has_pending_order">
+<code class="descname">has_pending_order</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.TwapState.has_pending_order" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool, True if there is pending order for the associated instrument.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState.has_target_position">
+<code class="descname">has_target_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.TwapState.has_target_position" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool, return True if there is at least one new target position.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState.instrument_id">
+<code class="descname">instrument_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.TwapState.instrument_id" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string, instrument id associated with current state.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState.latest_target_position">
+<code class="descname">latest_target_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.TwapState.latest_target_position" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int, the latest arrived target position.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState.on_order_finish">
+<code class="descname">on_order_finish</code><span class="sig-paren">(</span><em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.TwapState.on_order_finish" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState.on_tick">
+<code class="descname">on_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.TwapState.on_tick" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState.strategy">
+<code class="descname">strategy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.TwapState.strategy" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">AbstractStrategy, the CTX strategy.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.TwapState.transit_to">
+<code class="descname">transit_to</code><span class="sig-paren">(</span><em>name</em>, <em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.TwapState.transit_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transit from current state to the next state.
+:param name: string, name of the next state.
+:param data: dict, optional data sent to the next state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.Twapper">
+<em class="property">class </em><code class="descclassname">ctxalgoctp.ctp.trade_executors.twap.</code><code class="descname">Twapper</code><span class="sig-paren">(</span><em>instrument_ids</em>, <em>strategy</em>, <em>duration</em>, <em>number_of_slices</em>, <em>name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.Twapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Class that performs twap.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>instrument_ids</strong> &#8211; [string], list of instrument ids that need to be twapped.</li>
+<li><strong>strategy</strong> &#8211; AbstractStrategy, the trading strategy.</li>
+<li><strong>duration</strong> &#8211; timedelta, the default time duration for a single twap for a single instrument.</li>
+<li><strong>number_of_slices</strong> &#8211; int, the number of times to trade inside a duration.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.Twapper.on_timer">
+<code class="descname">on_timer</code><span class="sig-paren">(</span><em>trigger_time</em>, <em>supposed_trigger_time</em>, <em>timer_name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.Twapper.on_timer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.Twapper.on_tick">
+<code class="descname">on_tick</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>tick</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.Twapper.on_tick" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.Twapper.on_order_finish">
+<code class="descname">on_order_finish</code><span class="sig-paren">(</span><em>instrument_id</em>, <em>order_ref</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.Twapper.on_order_finish" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.Twapper.change_positions_to">
+<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>positions</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.Twapper.change_positions_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adjust positions for given instruments.
+:param positions: dict{string: int}, meaning dict{instrument_id: target_position}.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="zmq_trade_execution_server.html" class="btn btn-neutral float-right" title="zmq_trade_execution_server" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="position_recovery.html" class="btn btn-neutral" title="position_recovery" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, .
+      Last updated on Jun 21, 2017.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../static/jquery.js"></script>
+      <script type="text/javascript" src="../../static/underscore.js"></script>
+      <script type="text/javascript" src="../../static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
