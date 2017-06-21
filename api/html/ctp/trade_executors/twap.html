@@ -238,6 +238,32 @@ The trading periods for the associated instrument id.</td>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.duration">
+<code class="descname">duration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.duration" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">timedelta, twap operation durtion.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.number_of_slices">
+<code class="descname">number_of_slices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.number_of_slices" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int, number of slices in a twap operation.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.strategy">
 <code class="descname">strategy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.strategy" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
@@ -294,9 +320,9 @@ is used, previous ones are ignored.</td>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.trade_executors.twap.StateMachine.set_start_state">
-<code class="descname">set_start_state</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.set_start_state" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_start_state</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.trade_executors.twap.StateMachine.set_start_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the start state of current machine.
-:param name: string, name of the start state.</p>
+:param state: string or AbstractState, name of the start state or the state object itself.</p>
 </dd></dl>
 
 <dl class="method">
