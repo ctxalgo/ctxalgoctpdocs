@@ -2266,23 +2266,13 @@ to cancel those orders.</p>
 <dd><p>Return difference between holding position and target positions.
 :param target_positions: dict{string: int}, keys are instrument ids, values are the positions that</p>
 <blockquote>
-<div>should be reached for those instruments (treated as single sided position).
-If a position is None, it means its target position is not known, then in the result, there will
-be an entry for this instrument.</div></blockquote>
+<div>should be reached for those instruments (treated as single sided position).</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string: dict{string: object}}, For each instrument whose current holding position is different
-from the given target position, there is an entry in the result dict. For instruments whose holding
-position is the same as the given target position, there is no entry in the result list.<p>Keys are those instruments, values are dicts with the following keys:
-instrument_id: string, the instrument id, same as key.
-target: int, the target position.
-long: int, the current holding long position.
-short: int, the current holding short position.
-long_pending: int, the current pending position in the long direction.
-short_pending: int, the current pending position in the short direction.</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dict{string: dict{string: int}},
+meaning dict{instrument_id, dict{actual_instrument_id: volume_difference}}.</td>
 </tr>
 </tbody>
 </table>
@@ -2935,7 +2925,7 @@ If None, return bars in both day and night trading sessions.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jun 21, 2017.
+      Last updated on Jun 23, 2017.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
