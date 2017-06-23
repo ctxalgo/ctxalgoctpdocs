@@ -19,7 +19,7 @@ means to reach one long position for instrument cu1610, and -2 position for inst
 
 ```python
 from ctxalgoctp.ctp.live_strategy_utils import *
-
+from ctxalgoctp.ctp.strategy import ReachPositionScheme
 
 class ChangePosition(AbstractStrategy):
     def __init__(self, instrument_ids, parameters, base_folder, periods=None, description=None, logger=None):
@@ -64,7 +64,7 @@ class ChangePosition(AbstractStrategy):
         self.add_timer(countdown=1, action=self.on_timer)
 
     def on_timer(self, trigger_time, supposed_trigger_time, timer_name):
-        if not self.position_difference(self.parameters.target_positions):
+        if not self.position_difference(self.parameters.target_positions) and not self.has_pending_order():
             self.set_should_exit(True)
 
     def on_order_insert(self, order_info):
@@ -79,12 +79,14 @@ class ChangePosition(AbstractStrategy):
             if sid in self.parameters.target_positions and not self.has_pending_order(instrument_id=sid):
                 self.tick_count += 1
                 self.last_tick_count_time = self.now()
-                self.change_position_to(self.parameters.target_positions[sid]['position'], instrument_id=sid)
+                self.change_position_to(
+                    self.parameters.target_positions[sid]['position'], instrument_id=sid,
+                    volume_quota=10, scheme=ReachPositionScheme.normal)
                 self.context.has_traded = True
 
 
 def main():
-    cmd_options = '--account simnow_future4 --name test.s1 --positions cu1703:0'  # --loggers console,file,tcp://139.196.234.169 --trade-time 210500'
+    cmd_options = '--account simnow_future --name test.s1 --positions cu1708:0 --local-bookkeep --dominant-provider real --data-producer tcp://139.196.234.169' # --trade-executor test.trade_executor@tcp://127.0.0.1:3000 --loggers console,file,tcp://139.196.234.169'
     parser = get_command_line_parser(strategy_class=ChangePosition, cmd_options=cmd_options)
     parser.add_option(
         '--trade-time', type='string', dest='trade_time', default=None,
