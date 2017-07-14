@@ -220,6 +220,11 @@ If None, there is no slippage for all the trades.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.update_prices">
+<code class="descname">update_prices</code><span class="sig-paren">(</span><em>prices</em>, <em>volumes</em>, <em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.update_prices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.update_price">
 <code class="descname">update_price</code><span class="sig-paren">(</span><em>price=None</em>, <em>volume=None</em>, <em>timestamp=None</em>, <em>instrument_id=None</em>, <em>ohlcs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.update_price" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update the observed instrument price into current backtester.
@@ -246,6 +251,14 @@ ignore price, volume and timestamp parameters.</li>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.change_positions_to">
+<code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>prices</em>, <em>new_positions</em>, <em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.change_positions_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change position of multiple instruments.
+:param prices: dict{string: float}, meaning dict{instrument_id: price}.
+:param new_positions: dict{string: int}, meaning dict{instrument_id: position}.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1329,7 +1342,7 @@ If None, return bars in both day and night trading sessions.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 13, 2017.
+      Last updated on Jul 14, 2017.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
