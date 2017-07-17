@@ -222,7 +222,26 @@ If None, there is no slippage for all the trades.</li>
 <dl class="method">
 <dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.update_prices">
 <code class="descname">update_prices</code><span class="sig-paren">(</span><em>prices</em>, <em>volumes</em>, <em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.update_prices" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Update prices for all the instruments.
+:param prices: [float] or dict{string: float}.</p>
+<blockquote>
+<div>If the type is [float], then it represents the current prices of the instruments given
+by self.instrument_ids(). If the type is dict{string: float}, then the prices are indexed by keys.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>volumes</strong> &#8211; [int] or dict{string: int}.
+If the type is [int], then it represents the current volume of the instruments given
+by self.instrument_ids(). If the type is dict{string: float}, then the volumes are indexed by keys.</li>
+<li><strong>timestamp</strong> &#8211; datetime, current timestamp.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.update_price">
@@ -257,8 +276,20 @@ ignore price, volume and timestamp parameters.</li>
 <dt id="ctxalgoctp.ctp.plain_backtester.PlainBacktester.change_positions_to">
 <code class="descname">change_positions_to</code><span class="sig-paren">(</span><em>prices</em>, <em>new_positions</em>, <em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.plain_backtester.PlainBacktester.change_positions_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Change position of multiple instruments.
-:param prices: dict{string: float}, meaning dict{instrument_id: price}.
-:param new_positions: dict{string: int}, meaning dict{instrument_id: position}.</p>
+:param prices: [float] or dict{string: float},</p>
+<blockquote>
+<div>If the type is list, it represents the prices of the instruments given by self.instrument_ids().
+If the type is dict, it means dict{instrument_id: price}.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>new_positions</strong> &#8211; [int] or dict{string: int}.
+If the type is list, it represents the new positions of the instruments given by self.instrument_ids().
+If the type is dict, it means dict{instrument_id: position}.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
