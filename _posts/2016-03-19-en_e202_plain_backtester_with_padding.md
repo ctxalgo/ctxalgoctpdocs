@@ -15,7 +15,7 @@ from ctxalgolib.ohlc.timestamp_generator import CommodityFutureTimestampGenerato
 from ctxalgolib.profiler_utils import profile
 from ctxalgoctp.ctp.plain_backtester import PlainBacktester
 from ctxalgoctp.ctp.slippage_models import VolumeBasedSlippageModel
-from ctxalgoctp.ctp.backtesting_utils import prepare_hisorical_data
+from ctxalgoctp.ctp.backtesting_utils import prepare_historical_data
 
 
 def main():
@@ -30,11 +30,11 @@ def main():
     # Uncomment the following code if you need to do data download and padding again.
     # For example, when you want to change the start and end time, period, instruments.
     # timestamp_gen = CommodityFutureTimestampGenerator(start_time, end_time, period)
-    # prepare_hisorical_data(
-    #     sids, period, start_time, end_time, original_data_folder,
-    #     profits=True, dominants=True,
-    #     text_file=False, enforce_fetch=True,
-    #     timestamp_generator=timestamp_gen, padded_data_folder=padded_data_folder)
+    prepare_historical_data(
+        sids, period, start_time, end_time, original_data_folder,
+        profits=True, dominants=True,
+        text_file=False, enforce_fetch=True,
+        timestamp_generator=timestamp_gen, padded_data_folder=padded_data_folder)
 
     # Get historical ohlcs.
     feed = HistoricalLocalDataFeed(
