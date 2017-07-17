@@ -9,10 +9,15 @@ language: zh
 
 ```python
 from datetime import datetime, time
+
 from ctxalgolib.data_feed.historical_data_fetcher import HistoricalLocalDataFeed
 from ctxalgolib.ohlc.periodicity import Periodicity
 from ctxalgolib.ohlc.timestamp_generator import CommodityFutureTimestampGenerator
 from ctxalgolib.profiler_utils import profile
+from ctxalgolib.portfolio.centroid_portfolio import CentroidPortfolio
+from ctxalgolib.portfolio.positionator import Positionator
+from ctxalgolib.trading_utils.future_info_calculator import FutureVolumeMultipleCalculator, FutureTickSizeCalculator
+
 from ctxalgoctp.ctp.plain_backtester import PlainBacktester
 from ctxalgoctp.ctp.slippage_models import VolumeBasedSlippageModel
 from ctxalgoctp.ctp.backtesting_utils import prepare_historical_data
@@ -20,7 +25,6 @@ from ctxalgoctp.ctp.backtesting_utils import prepare_historical_data
 
 def main():
     sids = ['cu00', 'ag00']
-    sids = ['cu00']
     original_data_folder = 'c:\\tmp\\bin_data'
     padded_data_folder = 'c:\\tmp\\bin_padded_data'
     start_time = datetime(2016, 1, 1)
@@ -30,11 +34,11 @@ def main():
     # Uncomment the following code if you need to do data download and padding again.
     # For example, when you want to change the start and end time, period, instruments.
     # timestamp_gen = CommodityFutureTimestampGenerator(start_time, end_time, period)
-    prepare_historical_data(
-        sids, period, start_time, end_time, original_data_folder,
-        profits=True, dominants=True,
-        text_file=False, enforce_fetch=True,
-        timestamp_generator=timestamp_gen, padded_data_folder=padded_data_folder)
+    # prepare_historical_data(
+    #     sids, period, start_time, end_time, original_data_folder,
+    #     profits=True, dominants=True,
+    #     text_file=False, enforce_fetch=True,
+    #     timestamp_generator=timestamp_gen, padded_data_folder=padded_data_folder)
 
     # Get historical ohlcs.
     feed = HistoricalLocalDataFeed(
@@ -50,31 +54,42 @@ def main():
 
     # Setup backtester.
     backtester = PlainBacktester(
-        initial_capital=1000000.0,                  # Initial capital
+        initial_capital=1000000.0 * 10,             # Initial capital
         has_commission=True,                        # Include commission in trading
         slippage_model=VolumeBasedSlippageModel())  # Setup slippage model
     backtester.set_instrument_ids(sids)
 
+    # Use centroid as portfolio builder. You can choose different portfolio builders, look inside ctxalgolib.portfolio.
+    port_gen = CentroidPortfolio()
+
+    # A positionator takes a portfolio from a portfolio builder and turns it into positions to trade.
+    # Here you specify desired exposure, future volume multiples.
+    positionator = Positionator(
+        instrument_ids=sids, desired_exposure=1000000.0, volume_multiple_calculator=FutureVolumeMultipleCalculator())
+
+    tick_size = FutureTickSizeCalculator()
+
     # Iterate over all bars.
     for bar in range(bars):
         ts = ohlcs[first_sid].dates[bar]
-        backtester.update_prices(
-            prices={sid: ohlcs[sid].closes[bar] for sid in sids},
-            volumes={sid: ohlcs[sid].volumes[bar] for sid in sids},
-            timestamp=ts)
+        prices = [ohlcs[sid].closes[bar] for sid in sids]
+        volumes = [ohlcs[sid].volumes[bar] for sid in sids]
+        profits = [ohlcs[sid].profits[bar] for sid in sids]
+        # Position change will cost 1 tick size.
+        cost = [1.0 * tick_size.tick_size(sid, ts) / prices[i] for i, sid in enumerate(sids)]
 
-        # Decide on positions purely based on time, just for illustration.
-        position = None
+        # Update the plain backtester with latest known price, volume.
+        # This is necessary for the plain backtester to maintain information such pnl.
+        backtester.update_prices(prices=prices, volumes=volumes, timestamp=ts)
+
+        # Update the profit series of the portfolio.
+        port_gen.update_profits(profits, ts)
+
+        # Dummy strategy: change position at 11:00 every day.
         if ts.time() == time(11, 0):
-            position = 1
-        elif ts.time() == time(14, 30):
-            position = 0
-
-        if position is not None:
-            backtester.change_positions_to(
-                prices={sid: ohlcs[sid].closes[bar] for sid in sids},
-                new_positions={sid: position for sid in sids},
-                timestamp=ts)
+            portfolio = port_gen.update([1, 0], cost=cost)
+            positions = positionator.int_positions(portfolio, prices, ts)
+            backtester.change_positions_to(prices=prices, new_positions=positions, timestamp=ts)
 
     # Print the backtest report.
     print(backtester.report())
@@ -82,6 +97,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # Use the following line if you want to profile your code.
+    # profile(main)
 
 
 
