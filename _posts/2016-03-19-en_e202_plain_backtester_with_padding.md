@@ -60,7 +60,7 @@ def main():
     backtester.set_instrument_ids(sids)
 
     # Use centroid as portfolio builder. You can choose different portfolio builders, look inside ctxalgolib.portfolio.
-    port_gen = CentroidPortfolio()
+    port_gen = CentroidPortfolio(len(sids))
 
     # A positionator takes a portfolio from a portfolio builder and turns it into positions to trade.
     # Here you specify desired exposure, future volume multiples.
@@ -88,7 +88,7 @@ def main():
         # Dummy strategy: change position at 11:00 every day.
         if ts.time() == time(11, 0):
             portfolio = port_gen.update([1, 0], cost=cost)
-            positions = positionator.int_positions(portfolio, prices, ts)
+            positions = [int(p) for p in positionator.positions(portfolio, prices, ts)]
             backtester.change_positions_to(prices=prices, new_positions=positions, timestamp=ts)
 
     # Print the backtest report.
