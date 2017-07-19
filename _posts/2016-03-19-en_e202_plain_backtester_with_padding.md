@@ -21,30 +21,31 @@ from ctxalgolib.trading_utils.future_info_calculator import FutureVolumeMultiple
 from ctxalgoctp.ctp.plain_backtester import PlainBacktester
 from ctxalgoctp.ctp.slippage_models import VolumeBasedSlippageModel
 from ctxalgoctp.ctp.backtesting_utils import prepare_historical_data
+from ctxalgolib.data_feed.web_mongo_data_feed import WebMongoDataFeed
 
 
 def main():
-    sids = ['cu00', 'ag00']
+    sids = ['TA00']
     original_data_folder = 'c:\\tmp\\bin_data'
     padded_data_folder = 'c:\\tmp\\bin_padded_data'
-    start_time = datetime(2016, 1, 1)
+    start_time = datetime(2015, 1, 1)
     end_time = datetime(2017, 7, 1)
     period = Periodicity.ONE_MINUTE
 
     # Uncomment the following code if you need to do data download and padding again.
     # For example, when you want to change the start and end time, period, instruments.
-    # timestamp_gen = CommodityFutureTimestampGenerator(start_time, end_time, period)
-    # prepare_historical_data(
-    #     sids, period, start_time, end_time, original_data_folder,
-    #     profits=True, dominants=True,
-    #     text_file=False, enforce_fetch=True,
-    #     timestamp_generator=timestamp_gen, padded_data_folder=padded_data_folder)
+    timestamp_gen = CommodityFutureTimestampGenerator(start_time, end_time, period)
+    web_feed = WebMongoDataFeed(base_url='http://eqb.dscloud.biz:5008/')
+    prepare_historical_data(
+        sids, period, start_time, end_time, original_data_folder,
+        profits=True, dominants=False,
+        text_file=False, enforce_fetch=True,
+        timestamp_generator=timestamp_gen, padded_data_folder=padded_data_folder, data_feed=web_feed)
 
-    # Get historical ohlcs.
     feed = HistoricalLocalDataFeed(
         padded_data_folder, sids=sids, period=period,
         start_time=start_time, end_time=end_time,
-        profits=True, dominants=True, text_file=False, enforce_fetch=False)
+        profits=True, dominants=False, text_file=False, enforce_fetch=False)
 
     ohlcs = feed.ohlcs(sids, start_time=start_time, end_time=end_time, periodicity=period)
 
@@ -60,7 +61,7 @@ def main():
     backtester.set_instrument_ids(sids)
 
     # Use centroid as portfolio builder. You can choose different portfolio builders, look inside ctxalgolib.portfolio.
-    port_gen = CentroidPortfolio(len(sids))
+    port_gen = CentroidPortfolio(sids)
 
     # A positionator takes a portfolio from a portfolio builder and turns it into positions to trade.
     # Here you specify desired exposure, future volume multiples.
@@ -76,7 +77,7 @@ def main():
         volumes = [ohlcs[sid].volumes[bar] for sid in sids]
         profits = [ohlcs[sid].profits[bar] for sid in sids]
         # Position change will cost 1 tick size.
-        cost = [1.0 * tick_size.tick_size(sid, ts) / prices[i] for i, sid in enumerate(sids)]
+        cost = [0.0 if prices[i] == 0 else 1.0 * tick_size.tick_size(sid, ts) / prices[i] for i, sid in enumerate(sids)]
 
         # Update the plain backtester with latest known price, volume.
         # This is necessary for the plain backtester to maintain information such pnl.
