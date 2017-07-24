@@ -263,6 +263,13 @@ to the existing strategy code without change the code itself.</li>
 </tbody>
 </table>
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.given_periods">
+<code class="descname">given_periods</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.given_periods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the periods given from command line.
+:return: Same as the periods parameter in this class&#8217; __init__.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStrategy.set_kind">
 <code class="descname">set_kind</code><span class="sig-paren">(</span><em>kind</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStrategy.set_kind" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set strategy kind.
@@ -3791,6 +3798,13 @@ The returned information will be accessible through the corresponding callback f
 </dd></dl>
 
 <dl class="method">
+<dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.given_periods">
+<code class="descname">given_periods</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.given_periods" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the periods given from command line.
+:return: Same as the periods parameter in this class&#8217; __init__.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.has_long_position">
 <code class="descname">has_long_position</code><span class="sig-paren">(</span><em>instrument_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.strategy.AbstractStateBasedStrategy.has_long_position" title="Permalink to this definition">¶</a></dt>
 <dd><p>Does current strategy have long positions?
@@ -5722,7 +5736,7 @@ If None, return bars in both day and night trading sessions.</li>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2016, .
-      Last updated on Jul 22, 2017.
+      Last updated on Jul 24, 2017.
     </p>
   </div>
   Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
