@@ -20,15 +20,21 @@ from ctxalgolib.trading_utils.future_info_calculator import FutureVolumeMultiple
 
 from ctxalgoctp.ctp.plain_backtester import PlainBacktester
 from ctxalgoctp.ctp.slippage_models import VolumeBasedSlippageModel
-from ctxalgoctp.ctp.backtesting_utils import prepare_historical_data
+from ctxalgoctp.ctp.backtesting_utils import prepare_future_historical_data
 from ctxalgolib.data_feed.web_mongo_data_feed import WebMongoDataFeed
+from eqbstrategies.future.strategy_base import correct_instrument_ids
 
 
 def main():
     sids = ['TA00']
+
+    assets = ['au', 'cu', 'v', 'm', 'ta', 'rb', 'p', 'zn', 'al', 'l', 'ru', 'y', 'c', 'cf', 'oi', 'j', 'ag', 'fg', 'rm',
+              'jm', 'i', 'jd', 'pp', 'hc', 'cs', 'ma', 'sn', 'ni', 'zc', 'sr', 'bu']
+    sids = correct_instrument_ids(map(lambda asset: asset + '00', assets))
+
     original_data_folder = 'c:\\tmp\\bin_data'
     padded_data_folder = 'c:\\tmp\\bin_padded_data'
-    start_time = datetime(2015, 1, 1)
+    start_time = datetime(2010, 1, 1)
     end_time = datetime(2017, 7, 1)
     period = Periodicity.ONE_MINUTE
 
@@ -36,7 +42,7 @@ def main():
     # For example, when you want to change the start and end time, period, instruments.
     timestamp_gen = CommodityFutureTimestampGenerator(start_time, end_time, period)
     web_feed = WebMongoDataFeed(base_url='http://eqb.dscloud.biz:5008/')
-    prepare_historical_data(
+    prepare_future_historical_data(
         sids, period, start_time, end_time, original_data_folder,
         profits=True, dominants=False,
         text_file=False, enforce_fetch=True,
@@ -47,6 +53,7 @@ def main():
         start_time=start_time, end_time=end_time,
         profits=True, dominants=False, text_file=False, enforce_fetch=False)
 
+    sids = ['TA00']
     ohlcs = feed.ohlcs(sids, start_time=start_time, end_time=end_time, periodicity=period)
 
     # Find the total number of bars.
