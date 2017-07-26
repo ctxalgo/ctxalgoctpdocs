@@ -15,6 +15,7 @@ ctp
    data_producers/index
    strategies/index
    dominant_providers/index
+   data_preparation/index
    trading_account_loaders/index
    scripts/index
    slippage_models

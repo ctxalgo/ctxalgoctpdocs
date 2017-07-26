@@ -20,7 +20,7 @@ from ctxalgolib.trading_utils.future_info_calculator import FutureVolumeMultiple
 
 from ctxalgoctp.ctp.plain_backtester import PlainBacktester
 from ctxalgoctp.ctp.slippage_models import VolumeBasedSlippageModel
-from ctxalgoctp.ctp.backtesting_utils import prepare_future_historical_data
+from ctxalgoctp.ctp.data_preparation.future_data_preparation import prepare_future_historical_data
 from ctxalgolib.data_feed.web_mongo_data_feed import WebMongoDataFeed
 from eqbstrategies.future.strategy_base import correct_instrument_ids
 
