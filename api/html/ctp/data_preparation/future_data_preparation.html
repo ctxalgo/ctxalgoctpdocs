@@ -168,8 +168,42 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="future-data-preparation">
-<h1>future_data_preparation<a class="headerlink" href="#future-data-preparation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-ctxalgoctp.ctp.data_preparation.future_data_preparation">
+<span id="future-data-preparation"></span><h1>future_data_preparation<a class="headerlink" href="#module-ctxalgoctp.ctp.data_preparation.future_data_preparation" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="ctxalgoctp.ctp.data_preparation.future_data_preparation.prepare_future_historical_data">
+<code class="descclassname">ctxalgoctp.ctp.data_preparation.future_data_preparation.</code><code class="descname">prepare_future_historical_data</code><span class="sig-paren">(</span><em>sids</em>, <em>period</em>, <em>start_time</em>, <em>end_time</em>, <em>original_data_folder</em>, <em>profits=True</em>, <em>dominants=True</em>, <em>open_interests=False</em>, <em>text_file=False</em>, <em>enforce_fetch=True</em>, <em>timestamp_generator=None</em>, <em>ohlc_padder=None</em>, <em>padded_data_folder=None</em>, <em>data_feed=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ctxalgoctp.ctp.data_preparation.future_data_preparation.prepare_future_historical_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare historical data.
+:param sids: [string], list of instruments to prepare data for.
+:param period: Periodicity, the period of the ohlc.
+:param start_time: datetime, start time.
+:param end_time: datetime, end time.
+:param original_data_folder: string, folder to store raw downloaded ohlc dta.
+:param profits: bool, whether or not to include profits field.
+:param dominants: bool, whether or not to include dominant field.
+:param open_interests: bool, whether or not to include open interest field.
+:param text_file: bool, whether the downloaded data is stored in csv form (otherwise in binary form).</p>
+<blockquote>
+<div>Storing data in csv form is much slower than in binary form.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>enforce_fetch</strong> &#8211; bool, whether or not to enforce a fetch for remote database.</li>
+<li><strong>timestamp_generator</strong> &#8211; AbstractTimestampGenerator, a timestamp generator.
+If given, it means that we want to pad downloaded ohlc data.</li>
+<li><strong>ohlc_padder</strong> &#8211; AbstractOhlcPadder, padder used for ohlc padding.
+If None, a default padder is given.</li>
+<li><strong>padded_data_folder</strong> &#8211; string, the folder to store padded ohlc.</li>
+<li><strong>data_feed</strong> &#8211; AbstractDataFeed, used to download trading data.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 
 
